@@ -1,0 +1,5 @@
+import type { ArticleDraftSource } from "@/lib/articleGenerator/articleGeneratorTypes";
+
+export function AdminArticleSourcePanel({ sources }: { sources: readonly ArticleDraftSource[] }) {
+  return <section className="admin-section-card"><h2>Fonti raccolte</h2>{sources.length ? <div className="admin-log-list">{sources.map((source) => <article key={source.id}><div className="admin-card-head"><strong>{source.label}</strong><span className={`admin-status source-${source.factConfidence}`}>{source.factConfidence}</span></div><p>{source.shortSummary}</p><dl className="admin-metadata"><dt>Modulo</dt><dd>{source.type}</dd><dt>Riferimento</dt><dd>{source.referenceId}</dd><dt>Verificata per bozza</dt><dd>{source.verifiedForDraft ? "Sì" : "No"}</dd><dt>Testo lungo copiato</dt><dd>No</dd><dt>URL</dt><dd>{source.referenceUrl ?? "Nessun URL inventato"}</dd></dl>{source.riskFlags.length > 0 && <p className="notice">Controlli: {source.riskFlags.join(", ")}</p>}</article>)}</div> : <p className="admin-warning critical">Nessuna fonte: bozza bloccata.</p>}</section>;
+}

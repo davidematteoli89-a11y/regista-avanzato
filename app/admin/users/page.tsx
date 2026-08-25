@@ -1,0 +1,4 @@
+import { AdminTable } from "@/components/admin/AdminTable";
+import { AdminWarningBox } from "@/components/admin/AdminWarningBox";
+import { getAdminUsers } from "@/lib/admin/getAdminUsers";
+export default async function AdminUsersPage() { const users = await getAdminUsers(); return <main className="admin-page"><header><h2>Utenti</h2><p>Profili free e utilizzo ricerca esclusivamente mock. Nessun pagamento interno.</p></header><AdminTable columns={[{ key: "displayName", label: "Utente" }, { key: "role", label: "Ruolo" }, { key: "advancedSearchesUsed", label: "Ricerche usate" }, { key: "searchLimit", label: "Limite" }, { key: "paymentStatus", label: "Pagamenti" }]} rows={users} /><AdminWarningBox warning={{ id: "privacy", level: "warning", title: "Dati sensibili assenti", message: "Non mostrare email, token o altri dati personali finché accesso e audit non sono reali." }} /></main>; }

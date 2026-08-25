@@ -1,0 +1,5 @@
+import { AdminArticleGeneratorPanel } from "@/components/admin/AdminArticleGeneratorPanel";
+import { AdminWarningBox } from "@/components/admin/AdminWarningBox";
+import { generateArticleDraft } from "@/lib/articleGenerator/articleDraftGenerator";
+
+export default function NewArticleDraftPage() { const result = generateArticleDraft({ draftId: "draft-preview-new", workingTitle: "Dal comunicato alla storia: preview mock", format: "short_article", tone: "cautious", destination: "website_preview", sourceRefs: [{ type: "news_radar", id: "news-official-injury" }, { type: "story_library", id: "story-mock-4-4" }], includeCta: true }); return <main className="admin-page"><header><h2>Nuova bozza — simulazione</h2><p>Generazione deterministica da riferimenti mock: nessun form operativo, AI, rete o salvataggio.</p></header><AdminArticleGeneratorPanel result={result} /><AdminWarningBox warning={{ id: "generator-off", level: "critical", title: "Generator non operativo", message: "La preview non salva, non pubblica e non invia contenuti al sito o a Substack." }} /></main>; }

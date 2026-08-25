@@ -1,0 +1,3 @@
+import { LoginRequiredBlock } from "./LoginRequiredBlock";
+import type { ReactNode } from "react";
+export function StatsPreviewBlock({ title = "Anteprima statistiche", fullAccess = false, children }: { title?: string; fullAccess?: boolean; children?: ReactNode }) { return <section className="preview-block"><span className="eyebrow">Statistiche</span><h2>{fullAccess ? title : "Anteprima statistiche"}</h2>{children ?? <div className="preview-grid"><div><strong>Risultati base</strong><span>Disponibili</span></div><div><strong>Classifica</strong><span>Disponibile</span></div><div className={fullAccess ? "" : "preview-blur"}><strong>Metriche avanzate</strong><span>{fullAccess ? "Mock" : "—"}</span></div></div>}{!fullAccess && <LoginRequiredBlock />}</section>; }

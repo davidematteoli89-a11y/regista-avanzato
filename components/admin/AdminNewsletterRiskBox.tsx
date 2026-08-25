@@ -1,0 +1,3 @@
+import type { NewsletterDraftRisk, NewsletterDraftRiskLevel } from "@/lib/newsletterGenerator/newsletterGeneratorTypes";
+
+export function AdminNewsletterRiskBox({ riskLevel, risks }: { riskLevel: NewsletterDraftRiskLevel; risks: readonly NewsletterDraftRisk[] }) { return <section className={`admin-warning article-risk risk-${riskLevel}`}><strong>Rischio complessivo: {riskLevel}</strong>{risks.length ? <ul>{risks.map((risk) => <li key={risk.id}><strong>{risk.code}</strong>: {risk.message}</li>)}</ul> : <p>Nessun rischio specifico rilevato dal mock; la review umana resta obbligatoria.</p>}<p>Invio automatico: vietato · pubblicazione automatica: vietata.</p></section>; }

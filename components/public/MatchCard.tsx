@@ -1,0 +1,3 @@
+import Link from "next/link";
+import type { PublicMatch } from "@/lib/publicData/publicDataTypes";
+export function MatchCard({ match }: { match: PublicMatch }) { const score = match.status === "finished" ? `${match.homeScore} – ${match.awayScore}` : "–"; return <article className="match-card"><div><span className="eyebrow">{match.round ?? match.season}</span><p className="muted">{new Date(match.kickoffAt).toLocaleDateString("it-IT")}</p></div><div className="match-score"><span>{match.homeTeamName}</span><strong>{score}</strong><span>{match.awayTeamName}</span></div><Link href={`/partite/${match.id}`}>Scheda partita</Link></article>; }

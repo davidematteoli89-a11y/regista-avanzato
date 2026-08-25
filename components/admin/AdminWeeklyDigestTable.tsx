@@ -1,0 +1,5 @@
+import Link from "next/link";
+import type { WeeklyDigestCandidate } from "@/lib/weeklyDigest/weeklyDigestTypes";
+import { AdminWeeklyDigestDestinationBadge } from "./AdminWeeklyDigestDestinationBadge";
+import { AdminWeeklyDigestPriorityBadge } from "./AdminWeeklyDigestPriorityBadge";
+export function AdminWeeklyDigestTable({ candidates }: { candidates: readonly WeeklyDigestCandidate[] }) { return <div className="table-scroll"><table className="stats-table admin-table"><thead><tr><th>Candidato</th><th>Tipo</th><th>Priorità</th><th>Score admin</th><th>Destinazione</th><th>Review</th><th>Warning</th></tr></thead><tbody>{candidates.map((candidate) => <tr key={candidate.id}><td><Link href={`/admin/weekly-digest/candidates#${candidate.id}`}>{candidate.title}</Link></td><td>{candidate.type}</td><td><AdminWeeklyDigestPriorityBadge priority={candidate.priority} /></td><td>{candidate.score.value}/100</td><td>{candidate.destinations[0] ? <AdminWeeklyDigestDestinationBadge destination={candidate.destinations[0]} /> : "—"}</td><td>{candidate.reviewStatus}</td><td>{candidate.warnings.length}</td></tr>)}</tbody></table></div>; }

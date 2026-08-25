@@ -1,0 +1,4 @@
+import Link from "next/link";
+import type { StoryRelatedEntity } from "@/lib/storyLibrary/storyTypes";
+const href = (item: StoryRelatedEntity) => item.type === "match" ? `/partite/${item.id}` : item.type === "player" ? `/giocatori/${item.id}` : item.type === "team" ? `/squadre/${item.id}` : item.type === "video_radar" ? "/video-radar" : item.type === "historical_echo" ? "/il-calcio-si-ripete" : "/storie";
+export function StoryRelatedItems({ items }: { items: readonly StoryRelatedEntity[] }) { return <section><h2>Collegamenti</h2>{items.length ? <ul>{items.map((item) => <li key={`${item.type}-${item.id}`}><Link href={href(item)}>{item.label}</Link> <span className="muted">({item.type.replaceAll("_", " ")})</span></li>)}</ul> : <p className="muted">Nessun collegamento pubblico disponibile.</p>}</section>; }

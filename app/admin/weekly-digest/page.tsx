@@ -1,0 +1,5 @@
+import Link from "next/link";
+import { AdminWeeklyDigestCard } from "@/components/admin/AdminWeeklyDigestCard";
+import { AdminWarningBox } from "@/components/admin/AdminWarningBox";
+import { getAdminWeeklyDigests } from "@/lib/weeklyDigest/getAdminWeeklyDigests";
+export default async function AdminWeeklyDigestsPage() { const digests = await getAdminWeeklyDigests(); return <main className="admin-page"><header><h2>Weekly Digest</h2><p>Bozze settimanali mock, organizzate per review editoriale privata.</p><nav className="section-nav"><Link href="/admin/weekly-digest/candidates">Candidati</Link><Link href="/admin/weekly-digest/rules">Regole e blocchi</Link></nav></header><div className="admin-section-grid">{digests.map(({ digest, overview }) => <AdminWeeklyDigestCard key={digest.id} digest={digest} overview={overview} />)}</div><AdminWarningBox warning={{ id: "weekly-private", level: "critical", title: "Nessun invio o pubblicazione", message: "Il digest non invia email, non chiama Substack e non trasforma candidati in contenuti pubblici." }} /></main>; }

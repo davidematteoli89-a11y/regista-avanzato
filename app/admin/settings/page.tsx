@@ -1,0 +1,3 @@
+import { AdminEmptyState } from "@/components/admin/AdminEmptyState";
+import { AdminWarningBox } from "@/components/admin/AdminWarningBox";
+export default function AdminSettingsPage() { return <main className="admin-page"><header><h2>Impostazioni</h2><p>Stato descrittivo; nessuna variabile ambiente o credenziale viene letta o mostrata.</p></header><AdminEmptyState title="Configurazione non operativa" message="Provider, Supabase, ruoli e integrazioni si configurano server-side in step futuri." /><AdminWarningBox warning={{ id: "secrets", level: "critical", title: "Segreti protetti", message: "Token, service role ed env non devono essere visualizzati nella dashboard." }} /></main>; }

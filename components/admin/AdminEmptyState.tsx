@@ -1,0 +1,1 @@
+export function AdminEmptyState({ title, message }: { title: string; message: string }) { return <section className="admin-empty"><h2>{title}</h2><p>{message}</p><span>Nessuna azione disponibile in modalità mock.</span></section>; }

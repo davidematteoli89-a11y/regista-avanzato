@@ -1,0 +1,2 @@
+import type { TrackingLevel } from "@/config/competitions";
+export function CompetitionCoverageBadge({ trackingLevel }: { trackingLevel: TrackingLevel }) { const label = trackingLevel === "full_official" ? "Statistiche complete disponibili" : trackingLevel === "apify_light_plus_p1" || trackingLevel === "apify_light_plus_p2" ? "Aggiornamento settimanale da fonte esterna" : "Copertura essenziale"; return <span className={`stats-badge coverage-${trackingLevel}`}>{label}</span>; }

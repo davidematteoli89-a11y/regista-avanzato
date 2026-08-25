@@ -1,0 +1,3 @@
+import { MOCK_VIDEO_SCRIPTS } from "./mockVideoScripts";
+import type { VideoScriptDraft, VideoScriptFormat, VideoScriptRiskLevel } from "./videoScriptTypes";
+export async function getAdminVideoScripts(filters: { format?: VideoScriptFormat; riskLevel?: VideoScriptRiskLevel } = {}): Promise<VideoScriptDraft[]> { return MOCK_VIDEO_SCRIPTS.filter((script) => script.visibility === "private_admin").filter((script) => !filters.format || script.format === filters.format).filter((script) => !filters.riskLevel || script.riskLevel === filters.riskLevel).map((script) => ({ ...script, sections: [...script.sections], sources: [...script.sources], risks: [...script.risks], reviewChecklist: [...script.reviewChecklist] })); }

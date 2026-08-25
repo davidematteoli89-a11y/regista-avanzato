@@ -1,0 +1,4 @@
+import { MOCK_MATCH_STATS, MOCK_PUBLIC_MATCHES } from "./mockPublicData";
+import { getPublicHighlightLinks } from "./getPublicHighlightLinks";
+import type { PublicMatchDetail } from "./publicDataTypes";
+export async function getPublicMatchDetail(matchId: string, options: { includeFullStats?: boolean; includeFullHighlights?: boolean } = {}): Promise<PublicMatchDetail | null> { const match = MOCK_PUBLIC_MATCHES.find((item) => item.id === matchId); if (!match) return null; const score = match.status === "finished" ? `${match.homeScore}–${match.awayScore}` : "in programma"; return { match, baseSummary: `${match.homeTeamName} – ${match.awayTeamName}: ${score}. Dato dimostrativo.`, teamStats: options.includeFullStats ? MOCK_MATCH_STATS[matchId] ?? null : null, highlights: options.includeFullHighlights ? await getPublicHighlightLinks(matchId, true) : null }; }

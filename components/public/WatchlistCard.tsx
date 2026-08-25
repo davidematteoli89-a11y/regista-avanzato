@@ -1,0 +1,2 @@
+import type { VideoWatchlistItem } from "@/lib/videoRadar/videoRadarTypes";
+export function WatchlistCard({ item, preview = false }: { item: VideoWatchlistItem; preview?: boolean }) { return <article className={`watchlist-card${preview ? " preview-card" : ""}`}><span className="eyebrow">Priorità {item.priority}</span><h2>{item.title}</h2><p>{item.reasonToWatch}</p>{item.competitionName && <p className="muted">{item.competitionName}</p>}{item.scheduledAt && <time dateTime={item.scheduledAt}>{new Date(item.scheduledAt).toLocaleString("it-IT")}</time>}</article>; }

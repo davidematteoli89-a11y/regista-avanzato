@@ -1,0 +1,3 @@
+import { MOCK_VIDEO_WATCHLIST } from "./mockVideoRadarData";
+import type { PublicWatchlistResult, VideoAccessState } from "./videoRadarTypes";
+export async function getPublicWatchlist(access: VideoAccessState): Promise<PublicWatchlistResult> { const approved = MOCK_VIDEO_WATCHLIST.filter((item) => item.status === "approved"); return { items: access.canViewFullRadar ? approved : approved.slice(0, 1).map((item) => ({ ...item, reasonToWatch: "Anteprima watchlist weekend." })), preview: !access.canViewFullRadar, message: access.canViewFullRadar ? "Watchlist mock completa." : "Anteprima watchlist; login free richiesto per i dettagli.", consumesSearchQuota: false }; }

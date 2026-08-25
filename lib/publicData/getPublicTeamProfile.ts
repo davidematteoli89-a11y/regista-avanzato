@@ -1,0 +1,3 @@
+import { MOCK_PUBLIC_MATCHES, MOCK_PUBLIC_TEAMS, MOCK_TEAM_STATS } from "./mockPublicData";
+import type { PublicTeamProfile } from "./publicDataTypes";
+export async function getPublicTeamProfile(teamId: string, includeFullStats = false): Promise<PublicTeamProfile | null> { const team = MOCK_PUBLIC_TEAMS.find((item) => item.id === teamId); const stats = MOCK_TEAM_STATS[teamId]; if (!team || !stats) return null; return { team, recentMatches: MOCK_PUBLIC_MATCHES.filter((match) => match.homeTeamId === teamId || match.awayTeamId === teamId), baseStats: { matches: stats.matches, wins: stats.wins, draws: stats.draws, losses: stats.losses, goalsFor: stats.goalsFor, goalsAgainst: stats.goalsAgainst }, fullStats: includeFullStats ? stats : null }; }

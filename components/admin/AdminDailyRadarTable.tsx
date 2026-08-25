@@ -1,0 +1,5 @@
+import Link from "next/link";
+import type { DailyRadarCandidate } from "@/lib/dailyRadar/dailyRadarTypes";
+import { AdminDailyRadarDestinationBadge } from "./AdminDailyRadarDestinationBadge";
+import { AdminDailyRadarPriorityBadge } from "./AdminDailyRadarPriorityBadge";
+export function AdminDailyRadarTable({ candidates }: { candidates: readonly DailyRadarCandidate[] }) { return <div className="table-scroll"><table className="stats-table admin-table"><thead><tr><th>Candidato</th><th>Tipo</th><th>Priorità</th><th>Score admin</th><th>Destinazione</th><th>Review</th><th>Warning</th></tr></thead><tbody>{candidates.map((candidate) => <tr key={candidate.id}><td><Link href={`/admin/daily-radar/candidates#${candidate.id}`}>{candidate.title}</Link></td><td>{candidate.type}</td><td><AdminDailyRadarPriorityBadge priority={candidate.priority} /></td><td>{candidate.score.value}/100</td><td>{candidate.destinations[0] ? <AdminDailyRadarDestinationBadge destination={candidate.destinations[0]} /> : "—"}</td><td>{candidate.reviewStatus}</td><td>{candidate.warnings.length}</td></tr>)}</tbody></table></div>; }

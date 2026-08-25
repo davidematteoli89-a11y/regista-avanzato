@@ -1,0 +1,3 @@
+import type { VideoRadarItem, VideoRadarStatus, VideoRadarType } from "./videoRadarTypes";
+export type VideoRadarFilters = { types?: readonly VideoRadarType[]; statuses?: readonly VideoRadarStatus[]; originalOnly?: boolean; tag?: string | null };
+export function filterVideoRadarItems(items: readonly VideoRadarItem[], filters: VideoRadarFilters = {}): VideoRadarItem[] { return items.filter((item) => (!filters.types?.length || filters.types.includes(item.type)) && (!filters.statuses?.length || filters.statuses.includes(item.status)) && (!filters.originalOnly || item.originalContent) && (!filters.tag || item.tags.includes(filters.tag))); }

@@ -1,0 +1,1 @@
+export function AdminMockNotice() { return <aside className="admin-mock-notice"><strong>Modalità mock / dry-run</strong><span>Non collegato a Supabase. Nessuna chiamata, scrittura o azione reale è disponibile.</span></aside>; }

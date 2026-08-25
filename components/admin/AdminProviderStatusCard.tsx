@@ -1,0 +1,3 @@
+import type { AdminProvider } from "@/lib/admin/adminTypes";
+import { AdminStatusBadge } from "./AdminStatusBadge";
+export function AdminProviderStatusCard({ provider }: { provider: AdminProvider }) { return <article className="admin-section-card"><div className="admin-card-head"><h2>{provider.name}</h2><AdminStatusBadge status={provider.status} /></div><p>{provider.type} · priorità {provider.priority}</p><p>{provider.note}</p><ul><li>Chiamate reali: {provider.realCalls}</li><li>Token esposti: no</li><li>Budget mensile: {provider.monthlyBudgetEur === null ? "non configurato" : `${provider.monthlyBudgetEur} €`}</li></ul></article>; }

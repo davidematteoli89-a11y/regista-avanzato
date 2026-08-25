@@ -1,0 +1,12 @@
+node_modules/
+.next/
+out/
+# File ambiente locali/segreti; il template resta versionabile.
+.env*
+!.env.example
+env.local.pages
+.vercel/
+*.log
+.DS_Store
+coverage/
+*.tsbuildinfo

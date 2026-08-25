@@ -1,0 +1,4 @@
+import { MOCK_STORY_LIBRARY, MOCK_STORY_SOURCES } from "./mockStoryLibrary";
+import { checkStoryCopyright } from "./storyCopyrightRules";
+import { validateStorySource } from "./storySourceRules";
+export async function getAdminStoryDetail(storyId: string) { const story = MOCK_STORY_LIBRARY.find((item) => item.id === storyId || item.slug === storyId); if (!story) return null; const sources = MOCK_STORY_SOURCES.filter((source) => story.sourceIds.includes(source.id)); return { story: { ...story }, sources: sources.map((source) => ({ ...source })), sourceWarnings: sources.flatMap((source) => validateStorySource(source).warnings), copyright: checkStoryCopyright({ sourceType: sources[0]?.type ?? "original_note", body: story.originalBody, sourceReference: sources[0]?.referenceNote, claimsOriginal: story.originalOrReworked }) }; }

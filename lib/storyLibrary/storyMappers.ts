@@ -1,0 +1,4 @@
+import { canShowFullStory } from "./storyAccessRules";
+import type { StoryItem, StoryMarkdownFrontmatter } from "./storyTypes";
+export function mapStoryForPublic(story: StoryItem): StoryItem { return canShowFullStory(story) ? { ...story, sourceIds: [], reviewWarnings: [] } : { ...story, originalBody: "", keyFacts: [], sourceIds: [], timeline: [], reviewWarnings: [] }; }
+export function mapFrontmatterToDraft(frontmatter: StoryMarkdownFrontmatter, body: string): Pick<StoryItem, "title" | "category" | "format" | "summary" | "visibility" | "originalBody" | "status" | "reviewStatus" | "autoPublished"> { return { title: frontmatter.title, category: frontmatter.category, format: frontmatter.format, summary: frontmatter.summary, visibility: "private_admin", originalBody: body, status: "draft", reviewStatus: "not_reviewed", autoPublished: false }; }

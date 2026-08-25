@@ -1,0 +1,4 @@
+import Link from "next/link";
+import type { VideoScriptDraft } from "@/lib/videoScriptGenerator/videoScriptTypes";
+import { AdminVideoFormatBadge } from "./AdminVideoFormatBadge";
+export function AdminVideoScriptTable({ scripts }: { scripts: readonly VideoScriptDraft[] }) { return <div className="table-scroll"><table className="stats-table admin-table"><thead><tr><th>Titolo</th><th>Formato</th><th>Durata</th><th>Destinazione</th><th>Rischio</th><th>Fonti</th><th>Visibilità</th></tr></thead><tbody>{scripts.map((script) => <tr key={script.id}><td><Link href={`/admin/generated-content/video-scripts/${script.id}`}>{script.title}</Link></td><td><AdminVideoFormatBadge format={script.format} /></td><td>{script.durationSeconds}s</td><td>{script.destination}</td><td>{script.riskLevel}</td><td>{script.sources.length}</td><td>{script.visibility}</td></tr>)}</tbody></table></div>; }

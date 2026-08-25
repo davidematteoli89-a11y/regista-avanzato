@@ -1,0 +1,3 @@
+import { AdminTable } from "@/components/admin/AdminTable";
+import { getAdminCompetitions } from "@/lib/admin/getAdminCompetitions";
+export default async function AdminCompetitionsPage() { const items = await getAdminCompetitions(); return <main className="admin-page"><header><h2>Competizioni</h2><p>Configurazione descrittiva di 43 competizioni; nessun aggiornamento reale.</p></header><AdminTable columns={[{ key: "name", label: "Competizione" }, { key: "trackingLevel", label: "Tracking" }, { key: "provider", label: "Provider" }, { key: "apifyPriority", label: "Priorità Apify" }, { key: "status", label: "Stato" }]} rows={items} /></main>; }

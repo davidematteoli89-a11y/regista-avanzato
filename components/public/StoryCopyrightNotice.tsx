@@ -1,0 +1,1 @@
+export function StoryCopyrightNotice() { return <aside className="notice story-copyright"><strong>Fonti e copyright</strong><p>Le storie pubbliche sono originali o rielaborate. Conserviamo metadati, note e riassunti brevi: non ripubblichiamo articoli, libri, PDF o trascrizioni integrali.</p></aside>; }

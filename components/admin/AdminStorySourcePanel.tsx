@@ -1,0 +1,4 @@
+import type { StorySource } from "@/lib/storyLibrary/storyTypes";
+import { StorySourceBadge } from "@/components/public/StorySourceBadge";
+import { validateStorySource } from "@/lib/storyLibrary/storySourceRules";
+export function AdminStorySourcePanel({ sources }: { sources: readonly StorySource[] }) { return <section className="admin-section-card"><h2>Fonti</h2>{sources.length ? <div className="admin-log-list">{sources.map((source) => { const validation = validateStorySource(source); return <article key={source.id}><StorySourceBadge source={source} /><h3>{source.title}</h3><p>{source.referenceNote}</p><p>Autore/editore: {source.author ?? source.publisher ?? "non disponibile"}</p>{validation.warnings.length > 0 && <ul>{validation.warnings.map((warning) => <li key={warning}>{warning}</li>)}</ul>}<p className="muted">Testo integrale protetto conservato: no.</p></article>; })}</div> : <p className="notice">Nessuna fonte associata: review bloccata.</p>}</section>; }

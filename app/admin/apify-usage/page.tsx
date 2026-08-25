@@ -1,0 +1,4 @@
+import { AdminBudgetBar } from "@/components/admin/AdminBudgetBar";
+import { AdminWarningBox } from "@/components/admin/AdminWarningBox";
+import { getAdminApifyUsage } from "@/lib/admin/getAdminApifyUsage";
+export default async function AdminApifyUsagePage() { const usage = await getAdminApifyUsage(); return <main className="admin-page"><header><h2>Apify Usage</h2><p>Budget mock e piano P1/P2. Run reali: {usage.realRuns}.</p></header><AdminBudgetBar usage={usage} /><div className="admin-stats-grid"><article className="admin-stat-card"><span>P1 pianificate</span><strong className="admin-stat-value">{usage.p1Planned}</strong></article><article className="admin-stat-card"><span>P2 pianificate</span><strong className="admin-stat-value">{usage.p2Planned}</strong></article></div>{usage.warnings.map((message, index) => <AdminWarningBox key={message} warning={{ id: String(index), level: "warning", title: "Avviso Apify", message }} />)}</main>; }

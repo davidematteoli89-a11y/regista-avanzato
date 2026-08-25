@@ -1,0 +1,5 @@
+import Link from "next/link";
+import { AdminDailyRadarReviewPanel } from "@/components/admin/AdminDailyRadarReviewPanel";
+import { AdminWarningBox } from "@/components/admin/AdminWarningBox";
+import { getAdminDailyRadarCandidates } from "@/lib/dailyRadar/getAdminDailyRadarCandidates";
+export default async function AdminDailyRadarCandidatesPage() { const candidates = await getAdminDailyRadarCandidates(); return <main className="admin-page"><header><h2>Candidati Daily Radar</h2><p>Queue ordinata per priorità e score tecnico interno.</p><Link href="/admin/daily-radar">Torna al Daily Radar</Link></header><div className="admin-section-grid">{candidates.map(({ sources: _sources, signal: _signal, ...candidate }) => <AdminDailyRadarReviewPanel key={candidate.id} candidate={candidate} />)}</div><AdminWarningBox warning={{ id: "candidate-review", level: "warning", title: "Review obbligatoria", message: "Una priorità urgente non autorizza pubblicazione, invio, produzione o generazione di contenuti finali." }} /></main>; }

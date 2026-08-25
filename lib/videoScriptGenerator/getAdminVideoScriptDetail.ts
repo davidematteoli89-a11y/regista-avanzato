@@ -1,0 +1,3 @@
+import { canAutomaticallyProduceVideo, canAutomaticallyPublishVideo, isPrivateAdminVideoScript } from "./videoScriptAccessRules";
+import { MOCK_VIDEO_SCRIPTS } from "./mockVideoScripts";
+export async function getAdminVideoScriptDetail(scriptId: string) { const draft = MOCK_VIDEO_SCRIPTS.find((item) => item.id === scriptId || item.slug === scriptId); if (!draft) return null; return { draft, privateAdminOnly: isPrivateAdminVideoScript(draft), canProduceAutomatically: canAutomaticallyProduceVideo(draft), canPublishAutomatically: canAutomaticallyPublishVideo(draft), externalAiCalls: 0 as const, videoGenerations: 0 as const, downloads: 0 as const, uploads: 0 as const, filesWritten: 0 as const, databaseWrites: 0 as const }; }

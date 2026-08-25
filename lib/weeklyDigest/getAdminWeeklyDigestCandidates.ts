@@ -1,0 +1,3 @@
+import { sortWeeklyDigestCandidates } from "./weeklyDigestFilters";
+import { MOCK_WEEKLY_DIGESTS } from "./mockWeeklyDigestData";
+export async function getAdminWeeklyDigestCandidates(digestId = MOCK_WEEKLY_DIGESTS[0]?.id) { const digest = MOCK_WEEKLY_DIGESTS.find((item) => item.id === digestId) ?? MOCK_WEEKLY_DIGESTS[0]; if (!digest) return []; return sortWeeklyDigestCandidates(digest.candidates).map((candidate) => ({ ...candidate, sources: digest.sources.filter((source) => candidate.sourceIds.includes(source.id)), signal: digest.signals.find((signal) => signal.id === candidate.signalId) ?? null })); }

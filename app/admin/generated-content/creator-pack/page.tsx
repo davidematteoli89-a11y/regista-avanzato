@@ -1,0 +1,4 @@
+import { AdminCreatorPackCard } from "@/components/admin/AdminCreatorPackCard";
+import { AdminWarningBox } from "@/components/admin/AdminWarningBox";
+import { getAdminCreatorPacks } from "@/lib/videoScriptGenerator/getAdminCreatorPacks";
+export default async function AdminCreatorPacksPage() { const packs = await getAdminCreatorPacks(); return <main className="admin-page"><header><h2>Creator Pack</h2><p>Hook, reel seed e idee collegate: tutto private_admin.</p></header><div className="admin-section-grid">{packs[0] ? <AdminCreatorPackCard pack={packs[0]} /> : <p>Nessun Creator Pack mock.</p>}</div><AdminWarningBox warning={{ id: "creator-pack-private", level: "critical", title: "Idee, non asset prodotti", message: "Il pack non contiene video, clip, file o contenuti pubblicati." }} /></main>; }

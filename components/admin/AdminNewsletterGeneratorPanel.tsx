@@ -1,0 +1,6 @@
+import type { NewsletterDraftFormat, NewsletterDraftPlan } from "@/lib/newsletterGenerator/newsletterGeneratorTypes";
+
+const formats: NewsletterDraftFormat[] = ["weekly_digest", "daily_radar_digest", "talent_radar", "minor_league_report", "historical_echo_digest", "video_watchlist", "creator_pack", "article_roundup", "matchday_recap", "scouting_notes"];
+const plans: NewsletterDraftPlan[] = ["free", "paid", "mixed", "internal_only"];
+
+export function AdminNewsletterGeneratorPanel() { return <section className="admin-section-card"><h2>Generatore mock</h2><p>Configura soltanto una preview locale in memoria. Il pulsante resta disabilitato: non esistono azioni server, invii o pubblicazioni.</p><div className="newsletter-generator-grid"><label>Formato<select defaultValue="weekly_digest" disabled>{formats.map((format) => <option key={format}>{format}</option>)}</select></label><label>Piano<select defaultValue="free" disabled>{plans.map((plan) => <option key={plan}>{plan}</option>)}</select></label><label>Titolo<input value="Bozza deterministica mock" readOnly /></label></div><button type="button" disabled>Genera bozza (non collegato)</button><dl className="admin-metadata"><dt>AI esterne</dt><dd>0</dd><dt>API Substack</dt><dd>0</dd><dt>Email</dt><dd>0</dd><dt>Pubblicazioni</dt><dd>0</dd><dt>Database/file</dt><dd>0</dd></dl></section>; }

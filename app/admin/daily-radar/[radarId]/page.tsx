@@ -1,0 +1,8 @@
+import Link from "next/link";
+import { AdminDailyRadarDigestPreview } from "@/components/admin/AdminDailyRadarDigestPreview";
+import { AdminDailyRadarSignalBox } from "@/components/admin/AdminDailyRadarSignalBox";
+import { AdminDailyRadarSourcePanel } from "@/components/admin/AdminDailyRadarSourcePanel";
+import { AdminDailyRadarTable } from "@/components/admin/AdminDailyRadarTable";
+import { getAdminDailyRadarDetail } from "@/lib/dailyRadar/getAdminDailyRadarDetail";
+type Params = { radarId: string };
+export default async function AdminDailyRadarDetailPage({ params }: { params: Params | Promise<Params> }) { const { radarId } = await Promise.resolve(params); const detail = await getAdminDailyRadarDetail(radarId); if (!detail) return <main className="admin-page"><h2>Daily Radar non trovato</h2><Link href="/admin/daily-radar">Torna alla lista</Link></main>; const { item } = detail; return <main className="admin-page"><header><h2>{item.title}</h2><p>{item.signals.length} segnali · {item.candidates.length} candidati · review {item.reviewStatus}</p><Link href="/admin/daily-radar">Torna alla lista</Link></header><AdminDailyRadarDigestPreview digest={item.digestPreview} /><AdminDailyRadarTable candidates={item.candidates} /><section><h2>Segnali raccolti</h2><div className="admin-section-grid">{item.signals.map((signal) => <AdminDailyRadarSignalBox key={signal.id} signal={signal} />)}</div></section><AdminDailyRadarSourcePanel sources={item.sources} /><section className="admin-section-card"><h2>Stato run mock</h2><p>{detail.runWarnings.join(" ")}</p><p className="muted">Provider: 0 · Apify: 0 · AI: 0 · DB: 0 · quota ricerca: 0 · scheduler: no · auto publish/send: no/no.</p></section></main>; }

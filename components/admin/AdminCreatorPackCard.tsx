@@ -1,0 +1,3 @@
+import Link from "next/link";
+import type { CreatorPack } from "@/lib/videoScriptGenerator/videoScriptTypes";
+export function AdminCreatorPackCard({ pack }: { pack: CreatorPack }) { return <article className="admin-section-card"><div className="admin-card-head"><span className="admin-status newsletter-plan-internal_only">creator pack</span><span className="admin-status">{pack.status}</span></div><h2>{pack.title}</h2><p>{pack.items.length} elementi · {pack.sourceIds.length} fonti interne · private_admin</p><Link href={`/admin/generated-content/creator-pack/${pack.id}`}>Apri pack privato</Link></article>; }

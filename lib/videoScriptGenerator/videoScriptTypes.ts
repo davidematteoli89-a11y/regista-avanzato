@@ -1,0 +1,27 @@
+export type VideoScriptStatus = "generated" | "draft" | "pending_review" | "approved" | "produced" | "published_external" | "rejected" | "archived";
+export type VideoScriptVisibility = "private_admin" | "creator_pack" | "website_preview" | "substack_paid_candidate" | "social_ready_after_review";
+export type VideoScriptFormat = "reel_30" | "reel_60" | "short_vertical" | "video_2_min" | "video_3_min" | "tactical_board" | "talent_profile" | "historical_echo_video" | "news_explainer" | "match_story" | "creator_pack_item";
+export type VideoScriptSourceType = "story_library" | "news_radar" | "historical_echo" | "video_radar" | "article_draft" | "newsletter_draft" | "match_trigger" | "stats_signal" | "manual_note" | "official_video_link" | "mock_data";
+export type VideoScriptRiskLevel = "low" | "medium" | "high" | "blocked";
+export type VideoScriptFactConfidence = "verified" | "likely" | "uncertain" | "opinion" | "unknown";
+export type VideoScriptDestination = "instagram_reel" | "tiktok" | "youtube_shorts" | "youtube_video" | "website_preview" | "substack_paid" | "creator_pack" | "private_note";
+export type VideoScriptTone = "clear_fast" | "narrative" | "analytical" | "cautious" | "creator_friendly" | "tactical";
+export type SafeVisualKind = "original_graphic" | "tactical_board" | "future_site_screenshot" | "data_visualization" | "drawn_map_or_lineup" | "future_authorized_photo" | "official_external_link" | "original_voiceover";
+export type ForbiddenVideoOperation = "download_video" | "reupload_clip" | "local_video_file" | "unauthorized_compilation" | "unofficial_stream" | "pirated_source" | "raw_match_clip_storage";
+export type VideoScriptRiskCode = "missing_source" | "rumor" | "injury" | "controversy" | "unverified_data" | "copyright_video" | "unofficial_video" | "assertive_claim" | "scouting_claim" | "rights_review" | "forbidden_visual";
+
+export type VideoScriptSource = { id: string; type: VideoScriptSourceType; referenceId: string; label: string; shortSummary: string; referenceUrl: string | null; factConfidence: VideoScriptFactConfidence; riskFlags: VideoScriptRiskCode[]; verifiedForDraft: boolean; officialVideoLinkVerified: boolean; copiedLongText: false; downloadedVideo: false };
+export type VideoScriptHook = { text: string; style: "question" | "contrast" | "fact" | "narrative"; factConfidence: VideoScriptFactConfidence; sourceIds: string[] };
+export type VideoScriptVisualCue = { id: string; scene: number; kind: SafeVisualKind; description: string; rightsReviewRequired: boolean; sourceIds: string[]; forbiddenOperations: ForbiddenVideoOperation[] };
+export type VideoScriptCTA = { text: string; destination: VideoScriptDestination; requiresLinkVerification: boolean };
+export type VideoScriptSection = { id: string; scene: number; timing: string; voiceover: string; onScreenText: string; visualCues: VideoScriptVisualCue[]; sourceIds: string[]; factConfidence: VideoScriptFactConfidence; productionNotes: string[] };
+export type VideoScriptRisk = { id: string; code: VideoScriptRiskCode; level: VideoScriptRiskLevel; message: string; blocksAutomaticProductionAndPublish: true };
+export type VideoScriptReviewItem = { id: string; label: string; description: string; required: true; status: "pending" | "passed" | "blocked" };
+export type VideoScriptDraft = { id: string; slug: string; title: string; status: VideoScriptStatus; visibility: VideoScriptVisibility; format: VideoScriptFormat; destination: VideoScriptDestination; tone: VideoScriptTone; durationSeconds: number; hook: VideoScriptHook; sections: VideoScriptSection[]; cta: VideoScriptCTA; sources: VideoScriptSource[]; risks: VideoScriptRisk[]; riskLevel: VideoScriptRiskLevel; reviewChecklist: VideoScriptReviewItem[]; internalPrompt: string; formattedPreview: string; sourcesToVerify: string[]; reviewedByHuman: boolean; generatedWithoutExternalAi: true; autoProduce: false; autoPublish: false; createdAt: string; updatedAt: string };
+export type VideoScriptSourceRef = { type: "story_library" | "news_radar" | "historical_echo" | "video_radar" | "article_draft" | "newsletter_draft" | "match_trigger"; id: string };
+export type VideoScriptGenerationInput = { scriptId?: string; title?: string; format: VideoScriptFormat; destination: VideoScriptDestination; tone: VideoScriptTone; sourceRefs: VideoScriptSourceRef[]; ctaText?: string };
+export type VideoScriptGenerationResult = { success: boolean; draft: VideoScriptDraft; output: string; warnings: string[]; externalAiCalls: 0; videoGenerations: 0; downloads: 0; uploads: 0; networkCalls: 0; filesWritten: 0; databaseWrites: 0; published: false; produced: false };
+export type VideoScriptSourceCollectionResult = { sources: VideoScriptSource[]; missingRefs: VideoScriptSourceRef[]; warnings: string[] };
+export type CreatorPackStatus = "generated" | "draft" | "pending_review" | "approved" | "rejected" | "archived";
+export type CreatorPackItem = { id: string; type: "hook" | "reel_seed" | "short_script" | "carousel_idea" | "newsletter_idea"; title: string; content: string; relatedScriptId: string | null; sourceIds: string[]; reviewed: false };
+export type CreatorPack = { id: string; title: string; status: CreatorPackStatus; visibility: "private_admin"; items: CreatorPackItem[]; sourceIds: string[]; autoPublish: false; createdAt: string; updatedAt: string };

@@ -1,0 +1,5 @@
+import Link from "next/link";
+import { AdminWeeklyDigestReviewPanel } from "@/components/admin/AdminWeeklyDigestReviewPanel";
+import { AdminWarningBox } from "@/components/admin/AdminWarningBox";
+import { getAdminWeeklyDigestCandidates } from "@/lib/weeklyDigest/getAdminWeeklyDigestCandidates";
+export default async function AdminWeeklyDigestCandidatesPage() { const candidates = await getAdminWeeklyDigestCandidates(); return <main className="admin-page"><header><h2>Candidati Weekly Digest</h2><p>Queue privata ordinata per priorità e score tecnico interno.</p><Link href="/admin/weekly-digest">Torna ai digest</Link></header><div className="admin-section-grid">{candidates.map(({ sources: _sources, signal: _signal, ...candidate }) => <AdminWeeklyDigestReviewPanel key={candidate.id} candidate={candidate} />)}</div><AdminWarningBox warning={{ id: "weekly-review", level: "warning", title: "Score non è approvazione", message: "Ogni candidato richiede fonti, fact-check, diritti e decisione umana sulla destinazione free/paid/internal." }} /></main>; }

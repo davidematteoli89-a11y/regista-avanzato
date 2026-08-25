@@ -1,0 +1,3 @@
+import { sortDailyRadarCandidates } from "./dailyRadarFilters";
+import { MOCK_DAILY_RADAR_ITEMS } from "./mockDailyRadarData";
+export async function getAdminDailyRadarCandidates(radarId = MOCK_DAILY_RADAR_ITEMS[0]?.id) { const item = MOCK_DAILY_RADAR_ITEMS.find((radar) => radar.id === radarId) ?? MOCK_DAILY_RADAR_ITEMS[0]; if (!item) return []; return sortDailyRadarCandidates(item.candidates).map((candidate) => ({ ...candidate, sources: item.sources.filter((source) => candidate.sourceIds.includes(source.id)), signal: item.signals.find((signal) => signal.id === candidate.signalId) ?? null })); }

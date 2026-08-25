@@ -1,0 +1,2 @@
+import { MOCK_DAILY_RADAR_ITEMS } from "./mockDailyRadarData";
+export async function getAdminDailyRadar() { return MOCK_DAILY_RADAR_ITEMS.map((item) => ({ item, overview: { signalCount: item.signals.length, candidateCount: item.candidates.length, urgentCount: item.candidates.filter((candidate) => candidate.priority === "urgent").length, highCount: item.candidates.filter((candidate) => candidate.priority === "high").length, suggestedDestinations: [...new Set(item.candidates.flatMap((candidate) => candidate.destinations))] } })); }

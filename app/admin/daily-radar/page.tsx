@@ -1,0 +1,5 @@
+import Link from "next/link";
+import { AdminDailyRadarCard } from "@/components/admin/AdminDailyRadarCard";
+import { AdminWarningBox } from "@/components/admin/AdminWarningBox";
+import { getAdminDailyRadar } from "@/lib/dailyRadar/getAdminDailyRadar";
+export default async function AdminDailyRadarPage() { const radars = await getAdminDailyRadar(); return <main className="admin-page"><header><h2>Daily Radar</h2><p>Overview mock dei segnali editoriali giornalieri, esclusivamente privata.</p><nav className="section-nav"><Link href="/admin/daily-radar/candidates">Candidati</Link><Link href="/admin/daily-radar/rules">Regole e blocchi</Link></nav></header><div className="admin-section-grid">{radars.map(({ item, overview }) => <AdminDailyRadarCard key={item.id} item={item} overview={overview} />)}</div><AdminWarningBox warning={{ id: "daily-radar-private", level: "critical", title: "Triage, non pubblicazione", message: "Score, warning e suggerimenti restano admin. Nessun candidato diventa pubblico senza review umana." }} /></main>; }

@@ -1,0 +1,4 @@
+import type { HighlightLink } from "@/lib/videoRadar/videoRadarTypes";
+import { EmbedAvailabilityBadge } from "./EmbedAvailabilityBadge";
+import { OfficialSourceBadge } from "./OfficialSourceBadge";
+export function HighlightLinkList({ links }: { links: readonly HighlightLink[] }) { return links.length ? <div className="highlight-link-list">{links.map((link) => <article className="public-stat-card" key={link.id}><div className="stats-badge-row"><OfficialSourceBadge source={link.source} /><EmbedAvailabilityBadge availability={link.embedAvailability} /></div><h3>{link.title}</h3>{link.url ? <a href={link.url} target="_blank" rel="noreferrer">Apri link ufficiale</a> : <p className="muted">URL ufficiale non ancora configurato; nessun collegamento inventato.</p>}{link.editorialNote && <p className="muted">{link.editorialNote}</p>}</article>)}</div> : <p className="notice">Nessun link ufficiale approvato disponibile.</p>; }

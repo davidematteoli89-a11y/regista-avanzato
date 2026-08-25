@@ -1,0 +1,8 @@
+import Link from "next/link";
+import { AdminWeeklyDigestExportPreview } from "@/components/admin/AdminWeeklyDigestExportPreview";
+import { AdminWeeklyDigestPreview } from "@/components/admin/AdminWeeklyDigestPreview";
+import { AdminWeeklyDigestSourcePanel } from "@/components/admin/AdminWeeklyDigestSourcePanel";
+import { AdminWeeklyDigestTable } from "@/components/admin/AdminWeeklyDigestTable";
+import { getAdminWeeklyDigestDetail } from "@/lib/weeklyDigest/getAdminWeeklyDigestDetail";
+type Params = { digestId: string };
+export default async function AdminWeeklyDigestDetailPage({ params }: { params: Params | Promise<Params> }) { const { digestId } = await Promise.resolve(params); const detail = await getAdminWeeklyDigestDetail(digestId); if (!detail) return <main className="admin-page"><h2>Weekly Digest non trovato</h2><Link href="/admin/weekly-digest">Torna alla lista</Link></main>; const { digest } = detail; return <main className="admin-page"><header><h2>{digest.title}</h2><p>{digest.signals.length} segnali · {digest.candidates.length} candidati · tutto private_admin</p><Link href="/admin/weekly-digest">Torna alla lista</Link></header><AdminWeeklyDigestPreview digest={digest} /><AdminWeeklyDigestTable candidates={digest.candidates} /><AdminWeeklyDigestSourcePanel sources={digest.sources} /><AdminWeeklyDigestExportPreview preview={digest.exportPreview} /><section className="admin-section-card"><h2>Stato run mock</h2><p>{detail.runWarnings.join(" ")}</p><p className="muted">Provider/Apify/Substack/AI/email/video/rete/file/DB/quota: tutti 0 · scheduler: no · auto publish/send: no/no.</p></section></main>; }

@@ -1,0 +1,8 @@
+import Link from "next/link";
+import { AdminVideoScriptPreview } from "@/components/admin/AdminVideoScriptPreview";
+import { AdminVideoScriptReviewChecklist } from "@/components/admin/AdminVideoScriptReviewChecklist";
+import { AdminVideoScriptRiskBox } from "@/components/admin/AdminVideoScriptRiskBox";
+import { AdminVideoScriptSourcePanel } from "@/components/admin/AdminVideoScriptSourcePanel";
+import { getAdminVideoScriptDetail } from "@/lib/videoScriptGenerator/getAdminVideoScriptDetail";
+type Params = { scriptId: string };
+export default async function AdminVideoScriptDetailPage({ params }: { params: Params | Promise<Params> }) { const { scriptId } = await Promise.resolve(params); const detail = await getAdminVideoScriptDetail(scriptId); if (!detail) return <main className="admin-page"><h2>Script non trovato</h2><Link href="/admin/generated-content/video-scripts">Torna agli script</Link></main>; const { draft } = detail; return <main className="admin-page"><header><h2>{draft.title}</h2><p>{draft.durationSeconds} secondi · {draft.destination} · private_admin</p><Link href="/admin/generated-content/video-scripts">Torna agli script</Link></header><AdminVideoScriptRiskBox riskLevel={draft.riskLevel} risks={draft.risks} /><div className="article-admin-detail"><AdminVideoScriptPreview script={draft} /><AdminVideoScriptSourcePanel sources={draft.sources} /></div><AdminVideoScriptReviewChecklist items={draft.reviewChecklist} /><section className="admin-section-card"><h2>Output testuale mock in memoria</h2><pre className="article-markdown-preview">{draft.formattedPreview}</pre><p className="muted">AI: 0 · video: 0 · download/upload: 0/0 · file/DB: 0/0 · auto-produce: no · auto-publish: no.</p></section></main>; }

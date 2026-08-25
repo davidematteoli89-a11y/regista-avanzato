@@ -1,0 +1,2 @@
+import type { StoryTimelineEvent } from "@/lib/storyLibrary/storyTypes";
+export function StoryTimeline({ events }: { events: readonly StoryTimelineEvent[] }) { return events.length ? <ol className="story-timeline">{events.map((event) => <li key={event.id}><time>{event.dateLabel}</time><h3>{event.title}</h3><p>{event.description}</p></li>)}</ol> : <p className="muted">Timeline non disponibile per questa anteprima.</p>; }

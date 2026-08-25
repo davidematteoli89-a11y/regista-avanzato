@@ -1,0 +1,8 @@
+import Link from "next/link";
+import { AdminNewsReviewPanel } from "@/components/admin/AdminNewsReviewPanel";
+import { AdminNewsSourcePanel } from "@/components/admin/AdminNewsSourcePanel";
+import { getAdminNewsRadarDetail } from "@/lib/newsRadar/getAdminNewsRadarDetail";
+
+type Params = { newsId: string };
+
+export default async function AdminNewsDetailPage({ params }: { params: Params | Promise<Params> }) { const { newsId } = await Promise.resolve(params); const detail = await getAdminNewsRadarDetail(newsId); if (!detail) return <main className="admin-page"><h2>News non trovata</h2><Link href="/admin/news-radar">Torna alla queue</Link></main>; const item = detail.news; return <main className="admin-page"><header><h2>{item.title}</h2><p>{item.summary}</p><Link href="/admin/news-radar">Torna alla queue</Link></header><div className="admin-section-grid"><AdminNewsReviewPanel item={item} ruleCheck={detail.ruleCheck} /><section className="admin-section-card"><h2>Segnali</h2><ul>{item.signals.map((signal) => <li key={signal.id}>{signal.type} · {signal.strength} · {signal.label}</li>)}</ul><h3>Spunto editoriale</h3><p><strong>Titolo prudente:</strong> {item.editorialSuggestion.cautiousHeadline}</p><p>{item.editorialSuggestion.angle}</p><p className="muted">Output: idea soltanto, nessun articolo completo.</p></section><section className="admin-section-card"><h2>Entità collegate</h2>{item.relatedEntities.length ? <ul>{item.relatedEntities.map((entity) => <li key={`${entity.type}-${entity.id}`}>{entity.type}: {entity.label}</li>)}</ul> : <p>Nessuna entità mock collegata.</p>}</section></div><AdminNewsSourcePanel sources={item.sources} /></main>; }

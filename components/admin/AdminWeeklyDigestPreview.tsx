@@ -1,0 +1,3 @@
+import type { WeeklyDigest } from "@/lib/weeklyDigest/weeklyDigestTypes";
+import { AdminWeeklyDigestSectionBox } from "./AdminWeeklyDigestSectionBox";
+export function AdminWeeklyDigestPreview({ digest }: { digest: WeeklyDigest }) { return <section><header className="admin-section-card"><span className="admin-status">{digest.visibility}</span><h1>{digest.title}</h1><p>{digest.weekStart} → {digest.weekEnd} · {digest.sections.length} sezioni · review {digest.reviewStatus}</p></header><div className="admin-section-grid weekly-section-grid">{digest.sections.map((section) => <AdminWeeklyDigestSectionBox key={section.id} section={section} />)}</div></section>; }

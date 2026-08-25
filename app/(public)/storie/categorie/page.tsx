@@ -1,0 +1,4 @@
+import Link from "next/link";
+import type { StoryCategory } from "@/lib/storyLibrary/storyTypes";
+const CATEGORIES: StoryCategory[] = ["legendary_match", "player_profile", "team_story", "tactical_story", "transfer_story", "underdog_story", "rivalry", "record", "comeback", "scandal_or_controversy", "cultural_story", "italian_connection", "historical_echo", "talent_story"];
+export default function StoryCategoriesPage() { return <main className="stack"><header><span className="eyebrow">Story Library</span><h1>Categorie narrative</h1><p>Una tassonomia editoriale per collegare storia, presente e formati futuri.</p><Link href="/storie">Torna alle storie</Link></header><div className="story-category-grid">{CATEGORIES.map((category) => <article className="story-card" key={category}><h2>{category.replaceAll("_", " ")}</h2><p>Categoria predisposta; contenuti pubblici mostrati soltanto se approvati.</p></article>)}</div></main>; }

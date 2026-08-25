@@ -1,0 +1,3 @@
+import Link from "next/link";
+import { PUBLIC_STATS_LOGIN_MESSAGE } from "@/lib/publicData/accessRules";
+export function LoginRequiredBlock({ message = PUBLIC_STATS_LOGIN_MESSAGE, title = "Contenuto completo riservato agli utenti loggati" }: { message?: string; title?: string }) { return <aside className="access-box locked-block"><span className="eyebrow">Account free richiesto</span><h2>{title}</h2><p>{message}</p><div className="actions"><Link className="button-link" href="/login">Accedi</Link><Link href="/registrati">Registrati gratis</Link></div><p className="muted">Questa visualizzazione non consuma ricerche avanzate.</p></aside>; }

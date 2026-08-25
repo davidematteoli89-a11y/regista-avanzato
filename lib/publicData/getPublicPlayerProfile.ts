@@ -1,0 +1,3 @@
+import { MOCK_PLAYER_STATS, MOCK_PUBLIC_PLAYERS, MOCK_PUBLIC_TEAMS } from "./mockPublicData";
+import type { PublicPlayerProfile } from "./publicDataTypes";
+export async function getPublicPlayerProfile(playerId: string, includeFullStats = false): Promise<PublicPlayerProfile | null> { const player = MOCK_PUBLIC_PLAYERS.find((item) => item.id === playerId); const stats = MOCK_PLAYER_STATS[playerId]; if (!player || !stats) return null; return { player, team: MOCK_PUBLIC_TEAMS.find((item) => item.id === player.teamId) ?? null, baseStats: { appearances: stats.appearances, minutes: stats.minutes, goals: stats.goals, assists: stats.assists }, fullStats: includeFullStats ? stats : null }; }

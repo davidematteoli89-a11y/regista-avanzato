@@ -1,0 +1,1 @@
+export function AdminReviewBadge({ status }: { status: "draft" | "pending_review" | "approved" | "rejected" }) { return <span className={`admin-status status-${status}`}>{status.replaceAll("_", " ")}</span>; }
