@@ -23,9 +23,11 @@ export async function advancedSearch(input: AdvancedSearchInput): Promise<Advanc
     .sort((left, right) => right.relevanceScore - left.relevanceScore)
     .slice(0, query.filters.limit);
   return {
-    mode: "safe_mock", query, allowed: true, quotaConsumed: false, totalResults: results.length,
+    mode: "safe_mock", query, allowed: true, quotaConsumed: input.limitStatus.persisted, totalResults: results.length,
     groups: groupSearchResults(results), limitStatus: input.limitStatus,
-    message: `${results.length} risultati mock. La quota non è stata consumata in questo step.`,
+    message: input.limitStatus.persisted
+      ? `${results.length} risultati mock. Una ricerca avanzata è stata conteggiata dalla RPC.`
+      : `${results.length} risultati mock. La quota non è stata consumata in modalità safe.`,
     warnings: ["Indice dimostrativo in memoria: nessun risultato proviene da Supabase o provider esterni."],
   };
 }

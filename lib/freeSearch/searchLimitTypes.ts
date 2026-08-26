@@ -7,7 +7,7 @@ export type SearchUsagePeriod = {
 };
 
 export type SearchLimitStatus = {
-  mode: "safe_mock" | "supabase_future";
+  mode: "safe_mock" | "supabase";
   user_id: string | null;
   allowed: boolean;
   used_count: number;
@@ -16,7 +16,7 @@ export type SearchLimitStatus = {
   period_start: string;
   period_end: string;
   reason: string;
-  persisted: false;
+  persisted: boolean;
 };
 
 export type SearchUsageAction =
@@ -29,15 +29,15 @@ export type SearchUsageAction =
   | "view_match_page";
 
 export type SearchUsageIncrementResult = {
-  mode: "safe_mock";
+  mode: "safe_mock" | "supabase";
   action: SearchUsageAction;
   eligibleForIncrement: boolean;
-  incremented: false;
-  persisted: false;
+  incremented: boolean;
+  persisted: boolean;
   used_count: number;
   preview_used_count: number;
   search_limit: 3;
   remaining: number;
-  requiresAtomicRpc: true;
+  requiresAtomicRpc: boolean;
   reason: string;
 };

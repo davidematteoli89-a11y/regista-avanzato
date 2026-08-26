@@ -17,6 +17,7 @@ export type UserProfile = {
   displayName: string | null;
   avatarUrl: string | null;
   role: "free_user" | "editor" | "admin" | "super_admin";
+  status: "draft" | "review_needed" | "approved" | "published" | "archived" | "rejected";
   createdAt: string | null;
   updatedAt: string | null;
 };
@@ -31,6 +32,7 @@ export type UserSearchUsage = {
   remaining: number;
   canSearch: boolean;
   persisted: boolean;
+  lastIncremented?: boolean;
   message: string;
 };
 

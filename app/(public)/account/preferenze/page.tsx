@@ -6,6 +6,8 @@ import { getUserPreferences } from "@/lib/auth/preferences";
 import { logoutAction } from "../actions";
 import { savePreferencesAction } from "./actions";
 
+export const dynamic = "force-dynamic";
+
 type PageProps = { searchParams: Promise<{ state?: string | string[] }> };
 
 export default async function PreferencesPage({ searchParams }: PageProps) {

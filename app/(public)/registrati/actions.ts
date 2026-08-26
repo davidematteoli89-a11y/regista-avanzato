@@ -20,7 +20,10 @@ export async function registerAction(formData: FormData): Promise<void> {
   const { data, error } = await supabase.auth.signUp({
     email,
     password,
-    options: { emailRedirectTo: redirectTo },
+    options: {
+      emailRedirectTo: redirectTo,
+      data: displayName ? { display_name: displayName } : undefined,
+    },
   });
 
   if (error || !data.user) redirect("/registrati?state=error");

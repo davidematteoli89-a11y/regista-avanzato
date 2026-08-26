@@ -7,6 +7,8 @@ import { getUserProfile } from "@/lib/auth/profile";
 import { getUserSearchUsage } from "@/lib/auth/searchUsage";
 import { logoutAction } from "./actions";
 
+export const dynamic = "force-dynamic";
+
 export default async function AccountPage() {
   const user = await getCurrentUser();
 

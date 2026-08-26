@@ -10,6 +10,7 @@ type ProfileRow = {
   display_name: string | null;
   avatar_url: string | null;
   role: UserProfile["role"];
+  status: UserProfile["status"];
   created_at: string | null;
   updated_at: string | null;
 };
@@ -20,10 +21,13 @@ function mapProfile(row: ProfileRow): UserProfile {
     displayName: row.display_name,
     avatarUrl: row.avatar_url,
     role: row.role,
+    status: row.status,
     createdAt: row.created_at,
     updatedAt: row.updated_at,
   };
 }
+
+const PROFILE_SELECT = "id, display_name, avatar_url, role, status, created_at, updated_at";
 
 export async function getUserProfile(userId?: string): Promise<UserProfile | null> {
   if (!getSupabaseRuntimeStatus().configured) return null;
@@ -35,7 +39,7 @@ export async function getUserProfile(userId?: string): Promise<UserProfile | nul
     const supabase = await createSupabaseServerClient();
     const { data, error } = await supabase
       .from("users_profile")
-      .select("id, display_name, avatar_url, role, created_at, updated_at")
+      .select(PROFILE_SELECT)
       .eq("id", targetUserId)
       .maybeSingle();
 
@@ -65,24 +69,43 @@ export async function createUserProfile(input: {
     const supabase = await createSupabaseServerClient();
     const { data, error } = await supabase
       .from("users_profile")
-      .upsert(
-        { id: input.userId, display_name: input.displayName ?? null, role: "free_user" },
-        { onConflict: "id" },
-      )
-      .select("id, display_name, avatar_url, role, created_at, updated_at")
-      .single();
+      .update({ display_name: input.displayName ?? null })
+      .eq("id", input.userId)
+      .select(PROFILE_SELECT)
+      .maybeSingle();
 
-    if (error) {
-      return { ok: false, mode: "supabase", persisted: false, data: null, message: "Profilo non salvato." };
+    if (data) {
+      return {
+        ok: true,
+        mode: "supabase",
+        persisted: true,
+        data: mapProfile(data as ProfileRow),
+        message: "Profilo aggiornato.",
+      };
     }
 
-    return {
-      ok: true,
-      mode: "supabase",
-      persisted: true,
-      data: mapProfile(data as ProfileRow),
-      message: "Profilo free salvato.",
-    };
+    if (error) return { ok: false, mode: "supabase", persisted: false, data: null, message: "Profilo non aggiornato." };
+
+    const fallback = await getUserProfile(input.userId);
+    if (fallback) return { ok: true, mode: "supabase", persisted: true, data: fallback, message: "Profilo letto." };
+
+    const { data: inserted, error: insertError } = await supabase
+      .from("users_profile")
+      .insert({ id: input.userId, display_name: input.displayName ?? null })
+      .select(PROFILE_SELECT)
+      .maybeSingle();
+
+    if (insertError || !inserted) {
+      return {
+        ok: false,
+        mode: "supabase",
+        persisted: false,
+        data: null,
+        message: "Profilo non disponibile: attendere il trigger Auth e riprovare.",
+      };
+    }
+
+    return { ok: true, mode: "supabase", persisted: true, data: mapProfile(inserted as ProfileRow), message: "Profilo inizializzato." };
   } catch {
     return { ok: false, mode: "supabase", persisted: false, data: null, message: "Profilo non salvato." };
   }
