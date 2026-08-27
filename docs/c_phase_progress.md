@@ -82,3 +82,33 @@ Pagine locali verificate:
 - `/competizioni/serie-a/classifica`.
 
 Le pagine leggono dati demo da Supabase public views. Restano mock/dry-run provider, Apify, statistiche profonde, profili dettagliati e contenuti editoriali automatici.
+
+## C.2.1 — Preview online verificata
+
+Stato: completato.
+
+Deployment verificato:
+
+- Vercel Preview: Ready.
+- Branch: `preview`.
+- Commit: `bb9f8dd`.
+- Environment: Preview.
+- Production non toccata.
+
+Pagine online verificate:
+
+- `/competizioni`.
+- `/competizioni/serie-a`.
+- `/competizioni/serie-a/squadre`.
+- `/competizioni/serie-a/partite`.
+- `/competizioni/serie-a/classifica`.
+
+Esito:
+
+- le pagine online mostrano i dati demo persistiti in Supabase staging;
+- i public readers C.1 risultano validati anche su Vercel Preview;
+- il dataset C.2 resta limitato e controllato;
+- provider reali spenti;
+- Apify spento;
+- nessun import automatico attivato;
+- nessun deploy Production eseguito.

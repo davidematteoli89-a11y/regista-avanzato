@@ -50,3 +50,33 @@ Non configurate su Production:
 - Aprire il Preview URL in incognito e confermare richiesta Vercel Authentication.
 - Confermare in dashboard Vercel che Production Branch sia `production`.
 - Confermare che il deployment del commit `b5327ba` sia Environment Preview.
+
+## C.2.1 — Public Stats Hub demo su Preview
+
+Stato: verificato online.
+
+Deployment verificato:
+
+- Environment: Preview.
+- Branch: `preview`.
+- Commit: `bb9f8dd`.
+- Deployment status: Ready.
+- Production non toccata.
+
+Pagine verificate online:
+
+- `/competizioni`.
+- `/competizioni/serie-a`.
+- `/competizioni/serie-a/squadre`.
+- `/competizioni/serie-a/partite`.
+- `/competizioni/serie-a/classifica`.
+
+Esito:
+
+- dati demo Supabase visibili online;
+- public views e public readers funzionanti in Preview;
+- Vercel Preview continua a essere l’unico ambiente collegato a Supabase staging;
+- provider reali spenti;
+- Apify spento;
+- nessun deploy Production;
+- nessuna attivazione import.
