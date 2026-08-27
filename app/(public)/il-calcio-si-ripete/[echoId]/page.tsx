@@ -6,6 +6,8 @@ import { HistoricalEchoCTA } from "@/components/public/HistoricalEchoCTA";
 import { HistoricalEchoTimeline } from "@/components/public/HistoricalEchoTimeline";
 import { getPublicHistoricalEchoDetail } from "@/lib/historicalEcho/getPublicHistoricalEchoDetail";
 
+export const dynamic = "force-dynamic";
+
 type Params = { echoId: string };
 
 export default async function HistoricalEchoDetailPage({ params }: { params: Params | Promise<Params> }) {

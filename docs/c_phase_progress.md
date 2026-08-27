@@ -112,3 +112,45 @@ Esito:
 - Apify spento;
 - nessun import automatico attivato;
 - nessun deploy Production eseguito.
+
+## C.3 — Contenuti editoriali manuali da Supabase
+
+Stato: predisposto in locale, seed non applicato.
+
+Reader collegati:
+
+- articoli da `public_articles_published`;
+- news da `public_news_published`;
+- storie da `public_stories_published`;
+- Historical Echo da `public_historical_echoes`.
+
+Pagine coinvolte:
+
+- `/articoli`;
+- `/articoli/[articleId]`;
+- `/news`;
+- `/news/[newsId]`;
+- `/storie`;
+- `/storie/[storyId]`;
+- `/il-calcio-si-ripete`;
+- `/il-calcio-si-ripete/[echoId]`.
+
+Seed locale creato:
+
+- `supabase/manual/editorial_seed_c3.sql`.
+
+Il seed non è stato applicato. Quando verrà applicato manualmente nello staging, pubblicherà al massimo:
+
+- 1 articolo demo;
+- 1 news demo;
+- 1 story demo;
+- 1 Historical Echo demo.
+
+Restano spenti:
+
+- provider reali;
+- Apify;
+- import automatici;
+- generatori;
+- Substack API;
+- Production.

@@ -6,6 +6,8 @@ import { NewsSourceBadge } from "@/components/public/NewsSourceBadge";
 import { NewsletterCTA } from "@/components/public/NewsletterCTA";
 import { getPublicNewsDetail } from "@/lib/newsRadar/getPublicNewsDetail";
 
+export const dynamic = "force-dynamic";
+
 type Params = { newsId: string };
 
 export default async function NewsDetailPage({ params }: { params: Params | Promise<Params> }) {

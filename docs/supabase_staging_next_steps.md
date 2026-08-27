@@ -107,3 +107,31 @@ FASE C:
 - Non importare dati reali.
 - Non pubblicare contenuti reali.
 - Non rimuovere Deployment Protection dal Preview.
+
+## Stato C.3
+
+- Reader editoriali predisposti in locale per leggere solo public view Supabase sicure.
+- View usate:
+  - `public_articles_published`;
+  - `public_news_published`;
+  - `public_stories_published`;
+  - `public_historical_echoes`.
+- File seed manuale creato: `supabase/manual/editorial_seed_c3.sql`.
+- Il seed C.3 non è stato applicato.
+
+## Prossimo passo C.3
+
+Se confermato, applicare manualmente nello staging solo la SEZIONE 1 del file:
+
+- `supabase/manual/editorial_seed_c3.sql`
+
+Poi eseguire la SEZIONE 2 per verificare:
+
+- 1 articolo demo in `public_articles_published`;
+- 1 news demo in `public_news_published`;
+- 1 story demo in `public_stories_published`;
+- 1 Historical Echo demo in `public_historical_echoes`;
+- `active_providers = 0`;
+- `enabled_imports = 0`.
+
+Non usare `db push`, `db reset`, provider reali o Apify.
