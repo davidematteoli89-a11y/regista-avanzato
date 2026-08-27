@@ -71,13 +71,32 @@ Contro:
 
 FASE C:
 
-1. Public readers Supabase per competitions/teams/matches.
-2. Seed demo pubblicato e controllato.
+1. Public readers Supabase per competitions/teams/matches: avviato in C.1.
+2. Seed demo pubblicato e controllato: prossimo passo C.2.
 3. Admin editorial content reale manuale.
 4. Provider stable solo in dry-run.
 5. Primo import reale solo dopo conferma.
 6. Apify ancora spento fino a test budget.
 7. Substack CTA finale.
+
+## Stato C.1
+
+- `public_competitions`, `public_teams`, `public_matches` e `public_standings` sono predisposte come fonti pubbliche.
+- I reader pubblici provano Supabase staging e cadono in fallback mock solo se Supabase non è configurato o la view non è disponibile.
+- Se Supabase è configurato ma le view sono vuote, la UI deve mostrare un empty state controllato.
+- Non sono stati attivati provider, Apify, import o Production.
+
+## Stato C.2
+
+- Seed demo corretto applicato manualmente.
+- `public_competitions`: 1.
+- `public_teams`: 4.
+- `public_matches`: 2.
+- `public_standings`: 4.
+- Provider attivi: 0.
+- Import abilitati: 0.
+- Route pubbliche principali verificate localmente con dati demo Supabase.
+- Prossimo passo: C.3 admin/editorial content reale manuale oppure commit C.1/C.2 prima di procedere.
 
 ## Cose da non fare ancora
 
