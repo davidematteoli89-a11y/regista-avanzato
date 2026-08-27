@@ -11,3 +11,5 @@ supabase/.temp/
 .DS_Store
 coverage/
 *.tsbuildinfo
+AGENTS.md
+CLAUDE.md
