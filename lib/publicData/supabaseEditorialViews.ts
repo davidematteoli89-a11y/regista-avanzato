@@ -374,6 +374,18 @@ async function readRows<T extends Record<string, unknown>>(viewName: string, ord
   return { configured: true, rows: (data ?? []) as T[], error };
 }
 
+async function readRowByPublicIdentifier<T extends { id: string; slug: string }>(viewName: string, identifier: string) {
+  const supabase = createPublicClient();
+  if (!supabase) return { configured: false, row: null as T | null, error: null };
+
+  const bySlug = await supabase.from(viewName).select("*").eq("slug", identifier).maybeSingle();
+  if (bySlug.error) return { configured: true, row: null as T | null, error: bySlug.error };
+  if (bySlug.data) return { configured: true, row: bySlug.data as T, error: null };
+
+  const byId = await supabase.from(viewName).select("*").eq("id", identifier).maybeSingle();
+  return { configured: true, row: (byId.data ?? null) as T | null, error: byId.error };
+}
+
 export async function readEditorialArticlesFromSupabase(): Promise<EditorialList<PublicArticleView> | null> {
   const result = await readRows<PublicArticlePublishedRow>("public_articles_published");
   if (!result.configured || result.error) return null;
@@ -385,9 +397,9 @@ export async function readEditorialArticlesFromSupabase(): Promise<EditorialList
 }
 
 export async function readEditorialArticleFromSupabase(slug: string): Promise<PublicArticleView | null | undefined> {
-  const list = await readEditorialArticlesFromSupabase();
-  if (!list) return undefined;
-  return list.items.find((item) => item.id === slug || item.slug === slug) ?? null;
+  const result = await readRowByPublicIdentifier<PublicArticlePublishedRow>("public_articles_published", slug);
+  if (!result.configured || result.error) return undefined;
+  return result.row ? mapArticleRow(result.row) : null;
 }
 
 export async function readNewsFromSupabase(): Promise<EditorialList<PublicNewsRadarItem> | null> {
@@ -401,9 +413,9 @@ export async function readNewsFromSupabase(): Promise<EditorialList<PublicNewsRa
 }
 
 export async function readNewsDetailFromSupabase(slug: string): Promise<PublicNewsRadarItem | null | undefined> {
-  const list = await readNewsFromSupabase();
-  if (!list) return undefined;
-  return list.items.find((item) => item.id === slug || item.slug === slug) ?? null;
+  const result = await readRowByPublicIdentifier<PublicNewsPublishedRow>("public_news_published", slug);
+  if (!result.configured || result.error) return undefined;
+  return result.row ? mapNewsRow(result.row) : null;
 }
 
 export async function readStoriesFromSupabase(): Promise<EditorialList<StoryItem> | null> {
@@ -417,9 +429,9 @@ export async function readStoriesFromSupabase(): Promise<EditorialList<StoryItem
 }
 
 export async function readStoryDetailFromSupabase(slug: string): Promise<StoryItem | null | undefined> {
-  const list = await readStoriesFromSupabase();
-  if (!list) return undefined;
-  return list.items.find((item) => item.id === slug || item.slug === slug) ?? null;
+  const result = await readRowByPublicIdentifier<PublicStoryPublishedRow>("public_stories_published", slug);
+  if (!result.configured || result.error) return undefined;
+  return result.row ? mapStoryRow(result.row) : null;
 }
 
 export async function readHistoricalEchoesFromSupabase(): Promise<EditorialList<PublicHistoricalEcho> | null> {
@@ -433,7 +445,7 @@ export async function readHistoricalEchoesFromSupabase(): Promise<EditorialList<
 }
 
 export async function readHistoricalEchoDetailFromSupabase(slug: string): Promise<PublicHistoricalEcho | null | undefined> {
-  const list = await readHistoricalEchoesFromSupabase();
-  if (!list) return undefined;
-  return list.items.find((item) => item.id === slug || item.slug === slug) ?? null;
+  const result = await readRowByPublicIdentifier<PublicHistoricalEchoRow>("public_historical_echoes", slug);
+  if (!result.configured || result.error) return undefined;
+  return result.row ? mapHistoricalEchoRow(result.row) : null;
 }
