@@ -81,3 +81,24 @@ Prima della produzione restano obbligatori:
 - workflow di review editoriale;
 - conferma repository privato e branch Production isolato;
 - provider e Apify ancora spenti fino a dry-run approvati.
+
+## Nota C.4.3 — Auth Preview
+
+La verifica Preview ha confermato:
+
+- navbar auth-aware funzionante;
+- CTA `Accedi` e `Registrati gratis` funzionanti da non loggato;
+- `Account` visibile dopo login;
+- `/admin` accessibile solo all'account admin;
+- logout admin funzionante;
+- `/admin` bloccato dopo logout;
+- provider e Apify spenti;
+- Production non toccata.
+
+Prima della Production resta obbligatorio:
+
+- configurare Supabase Auth `Site URL` e `Redirect URLs` per il dominio Production reale;
+- mantenere separati URL locali, Preview e Production;
+- rigenerare eventuali email/link dopo ogni cambio URL Auth;
+- testare registrazione, conferma email, login, logout e recovery password sul dominio finale;
+- misurare performance login/logout senza Vercel Preview Protection.

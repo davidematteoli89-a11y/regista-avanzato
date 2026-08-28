@@ -47,7 +47,7 @@ La dashboard admin resta mock/dry-run sul piano dei dati operativi, ma il codice
 - Nessun log, costo, provider config o source payload visibile fuori da admin.
 - Dopo login Supabase, la navbar pubblica non deve più mostrare `Accedi`/`Registrati gratis`; deve mostrare `Account` senza esporre ruolo o dati admin.
 
-## C.4.3 — Test Preview da completare manualmente
+## C.4.3 — Test Preview completato manualmente
 
 La verifica tecnica ha confermato:
 
@@ -55,15 +55,18 @@ La verifica tecnica ha confermato:
 - Deployment Protection attiva con redirect anonimo a Vercel SSO;
 - Production non toccata.
 
-Restano da confermare in browser autenticato:
+Conferme browser manuali:
 
 - tasto `Esci` visibile in `/admin`;
 - click `Esci` con redirect a `/login`;
 - `/admin` bloccato dopo logout;
 - navbar pubblica `Accedi`/`Registrati gratis` da non loggato;
 - navbar pubblica `Account` da loggato.
+- registrazione funzionante dopo configurazione corretta degli URL Supabase Auth;
+- `/admin` accessibile solo con account admin;
+- utenti non loggati/non admin bloccati o 404.
 
-Nota: il test automatico non è stato completato perché la protezione Vercel funziona e il browser agent non è disponibile nella sessione locale.
+Nota: il test automatico non è stato completato perché la protezione Vercel funziona e il browser agent non è disponibile nella sessione locale. La chiusura è basata su verifica manuale dell'utente.
 
 Checklist aggiornata dopo fix CTA:
 
@@ -71,6 +74,13 @@ Checklist aggiornata dopo fix CTA:
 - `Accedi` deve aprire `/login`;
 - `Registrati gratis` deve aprire `/registrati`;
 - da loggato, la navbar deve mostrare solo `Account` verso `/account`.
+
+## Supabase Auth URL per Preview
+
+- Per test Preview, `Site URL` e `Redirect URLs` in Supabase Auth devono puntare al dominio Preview usato.
+- `localhost` deve restare solo per sviluppo locale.
+- Link email già generati prima del cambio URL possono puntare ancora al vecchio URL.
+- Dopo cambio URL, rigenerare registrazione/email di conferma.
 
 ## Nota performance login/logout
 

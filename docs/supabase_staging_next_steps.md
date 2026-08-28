@@ -116,17 +116,29 @@ FASE C:
 - Bug manuale rilevato: il CTA `Accedi gratis` da non loggato era visibile ma non navigava correttamente sul dominio Preview.
 - Fix locale preparato: CTA separati `Accedi` -> `/login` e `Registrati gratis` -> `/registrati`; `Accedi` usa anchor HTML standard.
 - Test browser autenticato ancora da completare manualmente:
+  - completato dall'utente e verificato come funzionante.
+- Conferme:
   - navbar `Accedi`/`Registrati gratis` da non loggato;
-  - click `Accedi` verso `/login`;
-  - click `Registrati gratis` verso `/registrati`;
+  - `Accedi` apre `/login`;
+  - `Registrati gratis` apre `/registrati`;
+  - registrazione funzionante;
   - navbar `Account` da loggato;
-  - tasto `Esci` admin;
-  - redirect a `/login`;
+  - `/account` funzionante;
+  - `/admin` funzionante solo con account admin;
+  - utenti non loggati/non admin bloccati o 404;
+  - tasto `Esci` admin funzionante;
   - `/admin` bloccato dopo logout.
-- Test manuale Preview poi completato dall'utente: flusso funzionale, login/logout percepiti come lenti.
+- Test manuale Preview completato dall'utente: flusso funzionale, login/logout percepiti come lenti.
 - Ottimizzazione locale applicata:
   - deduplica per-request di `getCurrentUser()`;
   - quota ricerca senza lettura sessione duplicata quando `userId` è già noto.
+
+## Supabase Auth URL/Redirect per Preview
+
+- Per Preview, Supabase Auth deve avere `Site URL` e `Redirect URLs` coerenti con il dominio Preview/alias usato.
+- `localhost` resta corretto solo per sviluppo locale.
+- I link email già generati prima della modifica URL possono continuare a puntare al vecchio URL.
+- Dopo aver cambiato URL Supabase Auth, rigenerare la registrazione o l'email di conferma.
 
 ## Performance auth da monitorare
 

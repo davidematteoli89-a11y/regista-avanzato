@@ -158,7 +158,7 @@ Non eseguito:
 
 ## C.4.3 — Deployment Preview admin logout/navbar
 
-Stato: deployment fix CTA trovato e Ready; test manuale completato dall'utente, con nota performance da monitorare.
+Stato: completato e verificato manualmente sul Preview.
 
 Deployment individuato:
 
@@ -219,12 +219,13 @@ Motivo:
 - il browser agent non è disponibile localmente;
 - non sono disponibili credenziali/sessione Supabase admin per test automatico, e non devono essere richieste/stampate in chat.
 
-Checklist manuale Preview dopo push:
+Checklist manuale Preview completata:
 
 - aprire il Preview URL dopo autenticazione Vercel;
 - da Supabase logout: homepage mostra `Accedi` e `Registrati gratis`;
 - click su `Accedi` apre `/login`;
 - click su `Registrati gratis` apre `/registrati`;
+- registrazione funzionante;
 - login con utente admin test;
 - homepage mostra `Account`;
 - `/account` funziona;
@@ -239,8 +240,20 @@ Risultato manuale:
 
 - C.4.3 è stato verificato manualmente sul dominio Preview;
 - il flusso è funzionale;
+- `/admin` funziona solo con account admin;
+- utenti non loggati/non admin restano bloccati o ricevono 404;
+- provider e Apify restano spenti;
+- Production non è stata toccata;
 - login/logout sono percepiti come lenti;
 - tempi precisi non sono ancora stati annotati.
+
+Nota Supabase Auth:
+
+- la conferma email dipende dalla configurazione Supabase Auth `Site URL` e `Redirect URLs`;
+- su Preview questi URL devono puntare al dominio Preview o all'alias Preview usato per i test;
+- `localhost` è corretto solo per sviluppo locale;
+- i link email già generati prima del cambio URL possono continuare a puntare al vecchio URL;
+- dopo la correzione degli URL, rigenerare la registrazione o l'email di conferma.
 
 Audit performance locale:
 

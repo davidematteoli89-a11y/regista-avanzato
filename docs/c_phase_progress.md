@@ -293,7 +293,7 @@ Verifica Preview da fare dopo push:
 
 ## C.4.3 — Verifica Preview admin logout e navbar auth
 
-Stato: test manuale Preview completato dall'utente; audit performance login/logout in corso.
+Stato: chiusa.
 
 Deployment iniziale verificato:
 
@@ -344,24 +344,34 @@ Limite della verifica automatica dopo `11646dc`:
 - `agent-browser` non è disponibile localmente;
 - senza sessione browser Vercel autenticata e senza password Supabase, non è possibile completare automaticamente login, click su `Esci` admin e controllo visuale della navbar.
 
-Test manuali da completare sul Preview dopo commit/push:
+Test manuali completati sul Preview:
 
 - da utente Supabase non loggato: homepage mostra `Accedi` e `Registrati gratis`, non `Account`;
 - click su `Accedi` apre `/login`;
 - click su `Registrati gratis` apre `/registrati`;
+- registrazione funzionante;
 - dopo login Supabase: homepage mostra `Account` e non `Accedi`/`Registrati gratis`;
 - `/account` apre correttamente;
-- `/admin` apre per utente admin;
+- `/admin` apre solo con account admin;
+- utenti non loggati/non admin restano bloccati o ricevono 404;
 - il tasto `Esci` è visibile nell'header admin;
-- click su `Esci` reindirizza a `/login`;
+- click su `Esci` funziona e chiude la sessione;
 - dopo logout, `/admin` mostra 404/blocco equivalente;
 - dopo logout, homepage torna a mostrare `Accedi` e `Registrati gratis`.
 
 Risultati manuali riportati:
 
 - il test manuale Preview C.4.3 è stato completato;
-- accesso e uscita risultano funzionalmente corretti, ma percepiti come lenti;
+- accesso e uscita risultano funzionalmente corretti;
+- login/logout sono stati percepiti come lenti, ma senza blocchi funzionali;
 - tempi precisi non ancora registrati nei documenti.
+
+Nota Supabase Auth URL:
+
+- per Preview, Supabase Auth deve avere `Site URL` e `Redirect URLs` coerenti con il dominio Preview, non solo con `localhost`;
+- `localhost` resta valido per sviluppo locale;
+- i link email generati prima del cambio URL possono continuare a puntare al vecchio URL;
+- dopo una modifica a `Site URL`/`Redirect URLs`, conviene rigenerare registrazione/email di conferma.
 
 Audit performance:
 
