@@ -135,3 +135,29 @@ Poi eseguire la SEZIONE 2 per verificare:
 - `enabled_imports = 0`.
 
 Non usare `db push`, `db reset`, provider reali o Apify.
+
+## Stato C.4
+
+- Admin editoriale collegato in lettura a Supabase staging.
+- Sezioni coinvolte:
+  - `/admin/generated-content/articles`;
+  - `/admin/news-radar`;
+  - `/admin/story-library`;
+  - `/admin/historical-echo`.
+- View usate:
+  - `admin_public_articles`;
+  - `admin_news_archive`;
+  - `admin_story_library`;
+  - `admin_historical_echoes`.
+- Nessuna scrittura admin reale è stata implementata.
+- Nessun provider/import/Apify è stato attivato.
+
+## Prossimo passo staging
+
+Prima di rendere operative azioni manuali:
+
+- definire Server Actions separate per create/update/unpublish;
+- aggiungere audit log obbligatorio;
+- testare RLS per editor e admin;
+- preferire unpublish/rollback a delete;
+- mantenere publish massivo disabilitato.

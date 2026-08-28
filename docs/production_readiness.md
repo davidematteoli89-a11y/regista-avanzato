@@ -67,3 +67,17 @@ Non pronto per Production:
 - Import automatici.
 - Pubblicazione dati non verificati.
 - Download/reupload highlights video.
+
+## Nota C.4
+
+L’admin editoriale può leggere contenuti manuali da Supabase staging, ma questo non rende il progetto pronto per Production.
+
+Prima della produzione restano obbligatori:
+
+- view admin con colonne esplicite o audit di `admin_*`;
+- Server Actions sicure per ogni scrittura;
+- audit log per create/update/unpublish;
+- test RLS per editor/admin/free_user/anon;
+- workflow di review editoriale;
+- conferma repository privato e branch Production isolato;
+- provider e Apify ancora spenti fino a dry-run approvati.

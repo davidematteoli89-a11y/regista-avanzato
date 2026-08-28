@@ -185,3 +185,37 @@ Conferme:
 - nessun deploy Production;
 - nessuna modifica schema/RLS;
 - nessun import automatico.
+
+## C.4 — Admin editoriale manuale sicuro
+
+Stato: implementazione minima completata in locale.
+
+Collegato:
+
+- `/admin/generated-content/articles` mostra articoli manuali da Supabase staging;
+- `/admin/news-radar` mostra news manuali da Supabase staging;
+- `/admin/story-library` mostra storie manuali da Supabase staging;
+- `/admin/historical-echo` mostra Historical Echo manuali da Supabase staging.
+
+Reader admin creati:
+
+- `getAdminEditorialArticles()`;
+- `getAdminNewsItems()`;
+- `getAdminStories()`;
+- `getAdminHistoricalEchoes()`;
+- `getAdminEditorialSummary()`.
+
+Le letture usano view `admin_*` server-side con sessione Supabase e RLS/RBAC. Non usano service role nel client.
+
+Restano mock/dry-run:
+
+- generatori articolo/newsletter/video;
+- queue candidate News Radar;
+- motore Historical Echo;
+- import Markdown/PDF;
+- publish/edit/delete;
+- audit log scritture;
+- provider reali;
+- Apify.
+
+Prossimo passo consigliato: C.5, pianificare azioni manuali admin sicure con Server Actions, audit log e rollback, senza attivare provider o automazioni.

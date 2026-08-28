@@ -42,3 +42,24 @@ La dashboard admin resta mock/dry-run sul piano dei dati operativi, ma il codice
 - Utente admin: accesso alle aree operative via helper server-side e view `admin_*`, verificato localmente.
 - Logout: `/admin` bloccato dopo uscita, verificato localmente.
 - Nessun log, costo, provider config o source payload visibile fuori da admin.
+
+## Stato C.4
+
+- Le sezioni admin editoriali iniziano a leggere contenuti da Supabase staging con reader server-side.
+- Reader collegati:
+  - `getAdminEditorialArticles()`;
+  - `getAdminNewsItems()`;
+  - `getAdminStories()`;
+  - `getAdminHistoricalEchoes()`;
+  - `getAdminEditorialSummary()`.
+- Le query passano da view `admin_*` protette da RLS/RBAC.
+- Il client usato è quello server-side della sessione, non `SUPABASE_SERVICE_ROLE_KEY`.
+- Le code mock/dry-run restano visibili e chiaramente separate dai blocchi Supabase staging.
+
+## TODO sicurezza per azioni reali
+
+- Aggiungere Server Actions con controllo `requireAdmin()` o helper equivalente.
+- Bloccare update massivi senza filtro `id`.
+- Registrare ogni scrittura in `admin_audit_logs`.
+- Implementare rollback/unpublish prima di delete.
+- Testare editor/admin/free_user/anon su ogni azione.
