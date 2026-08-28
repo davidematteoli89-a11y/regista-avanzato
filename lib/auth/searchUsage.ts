@@ -79,7 +79,7 @@ function mapRpcStatus(userId: string | null, row: SearchUsageStatusRow, incremen
 
 export async function getUserSearchUsage(userId?: string): Promise<UserSearchUsage> {
   const runtime = getSupabaseRuntimeStatus();
-  const user = await getCurrentUser();
+  const user = userId ? null : await getCurrentUser();
   const targetUserId = userId ?? user?.id ?? null;
 
   if (!runtime.configured || !targetUserId) {
@@ -109,7 +109,7 @@ export async function incrementUserSearchUsage(input: {
   userId?: string;
 }): Promise<UserSearchUsage> {
   const runtime = getSupabaseRuntimeStatus();
-  const user = await getCurrentUser();
+  const user = input.userId ? null : await getCurrentUser();
   const targetUserId = input.userId ?? user?.id ?? null;
 
   if (!runtime.configured || !targetUserId) {

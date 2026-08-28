@@ -51,7 +51,7 @@ La dashboard admin resta mock/dry-run sul piano dei dati operativi, ma il codice
 
 La verifica tecnica ha confermato:
 
-- deployment Preview Ready per il branch `preview`;
+- deployment Preview Ready per il branch `preview` e commit `11646dc`;
 - Deployment Protection attiva con redirect anonimo a Vercel SSO;
 - Production non toccata.
 
@@ -64,6 +64,25 @@ Restano da confermare in browser autenticato:
 - navbar pubblica `Account` da loggato.
 
 Nota: il test automatico non è stato completato perché la protezione Vercel funziona e il browser agent non è disponibile nella sessione locale.
+
+Checklist aggiornata dopo fix CTA:
+
+- da non loggato, la navbar deve mostrare `Accedi` e `Registrati gratis`;
+- `Accedi` deve aprire `/login`;
+- `Registrati gratis` deve aprire `/registrati`;
+- da loggato, la navbar deve mostrare solo `Account` verso `/account`.
+
+## Nota performance login/logout
+
+- `force-dynamic` sul layout pubblico è intenzionale per evitare navbar statica non coerente con la sessione.
+- `getCurrentUser()` è deduplicata per richiesta con `React.cache`.
+- Le letture quota non rileggono la sessione quando ricevono già `userId`.
+- Il logout admin resta minimale: `signOut()` Supabase server-side e redirect a `/login`.
+- La lentezza percepita su Preview può dipendere da Vercel Authentication, Supabase Auth remoto e cold start Preview.
+- Prima di ulteriori ottimizzazioni, misurare nel browser i tempi di:
+  - click `Accedi` -> `/login`;
+  - submit login -> `/account`;
+  - click `Esci` admin -> `/login`.
 
 ## Stato C.4
 

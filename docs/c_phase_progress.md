@@ -263,7 +263,7 @@ Conferme:
 
 ## C.4.2 — Admin logout visibile
 
-Stato: implementato localmente, non committato.
+Stato: implementato e committato.
 
 Modifica:
 
@@ -293,15 +293,25 @@ Verifica Preview da fare dopo push:
 
 ## C.4.3 — Verifica Preview admin logout e navbar auth
 
-Stato: bug Preview individuato sul CTA pubblico, fix locale preparato e da verificare dopo push.
+Stato: test manuale Preview completato dall'utente; audit performance login/logout in corso.
 
-Deployment verificato:
+Deployment iniziale verificato:
 
 - Commit atteso: `9690fa2`.
 - Branch: `preview`.
 - Environment: Preview.
 - Status: Ready.
 - URL Preview individuato: `https://regista-avanzato-ao7cjk4xf-davide-matteoli.vercel.app`.
+- Alias branch Preview: `https://regista-avanzato-git-preview-davide-matteoli.vercel.app`.
+- Production non toccata.
+
+Deployment dopo fix CTA:
+
+- Commit: `11646dc`.
+- Branch: `preview`.
+- Environment: Preview.
+- Status: Ready.
+- URL deployment: `https://regista-avanzato-kwh385tqr-davide-matteoli.vercel.app`.
 - Alias branch Preview: `https://regista-avanzato-git-preview-davide-matteoli.vercel.app`.
 - Production non toccata.
 
@@ -326,9 +336,11 @@ Fix locale:
 - il link primario `Accedi` usa un anchor HTML standard per garantire navigazione anche se la client navigation di Next non si inizializza correttamente;
 - da loggato resta `Account` verso `/account`.
 
-Limite della verifica automatica:
+Limite della verifica automatica dopo `11646dc`:
 
-- il connettore Vercel non ha permesso di listare i deployment del progetto `regista-avanzato`;
+- Vercel CLI ha confermato il deployment Preview Ready;
+- una richiesta anonima all'alias Preview reindirizza a Vercel SSO, quindi Deployment Protection è attiva;
+- il fetch protetto del connettore Vercel non riesce a creare un URL condivisibile;
 - `agent-browser` non è disponibile localmente;
 - senza sessione browser Vercel autenticata e senza password Supabase, non è possibile completare automaticamente login, click su `Esci` admin e controllo visuale della navbar.
 
@@ -344,3 +356,32 @@ Test manuali da completare sul Preview dopo commit/push:
 - click su `Esci` reindirizza a `/login`;
 - dopo logout, `/admin` mostra 404/blocco equivalente;
 - dopo logout, homepage torna a mostrare `Accedi` e `Registrati gratis`.
+
+Risultati manuali riportati:
+
+- il test manuale Preview C.4.3 è stato completato;
+- accesso e uscita risultano funzionalmente corretti, ma percepiti come lenti;
+- tempi precisi non ancora registrati nei documenti.
+
+Audit performance:
+
+- la navbar pubblica legge la sessione con una chiamata Supabase Auth server-side per richiesta;
+- `force-dynamic` sul layout pubblico resta necessario finché la navbar deve reagire ai cookie Supabase;
+- su `/account` esistevano letture auth duplicate tra layout, pagina e quota;
+- `getCurrentUser()` ora è deduplicata per richiesta con `React.cache`;
+- `getUserSearchUsage()` e `incrementUserSearchUsage()` non rileggono più l'utente quando ricevono già `userId`;
+- il logout admin non esegue query profilo o quota: chiama solo `signOut()` e poi redirect a `/login`.
+
+Causa probabile della lentezza:
+
+- Vercel Preview protetto aggiunge il passaggio Vercel Authentication;
+- Supabase Auth staging aggiunge chiamata remota per `getUser()`/login/logout;
+- il layout pubblico dinamico evita cache statica e quindi privilegia correttezza auth rispetto a velocità;
+- su free tier/staging è normale percepire qualche latenza in più rispetto a produzione ottimizzata.
+
+Da misurare nel browser:
+
+- tempo click `Accedi` -> render `/login`;
+- tempo submit login -> `/account`;
+- tempo click `Esci` admin -> `/login`;
+- eventuali doppie navigazioni nel Network panel.

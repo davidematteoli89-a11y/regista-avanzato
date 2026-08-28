@@ -158,7 +158,7 @@ Non eseguito:
 
 ## C.4.3 — Deployment Preview admin logout/navbar
 
-Stato: deployment e protezione verificati; bug CTA pubblico rilevato manualmente e fix locale preparato.
+Stato: deployment fix CTA trovato e Ready; test manuale completato dall'utente, con nota performance da monitorare.
 
 Deployment individuato:
 
@@ -190,6 +190,21 @@ Fix locale da verificare dopo push:
 - usare anchor HTML standard per il link primario `Accedi`, così la navigazione non dipende dalla client navigation di Next;
 - mantenere `Account` verso `/account` quando la sessione Supabase esiste.
 
+Deployment dopo fix CTA:
+
+- Commit: `11646dc`.
+- Branch: `preview`.
+- Environment/target: Preview.
+- Status: Ready.
+- URL deployment: `https://regista-avanzato-kwh385tqr-davide-matteoli.vercel.app`.
+- Alias branch: `https://regista-avanzato-git-preview-davide-matteoli.vercel.app`.
+
+Protezione dopo fix:
+
+- richiesta anonima all'alias Preview: redirect verso Vercel SSO;
+- Deployment Protection/Vercel Authentication attiva;
+- nessun contenuto applicativo esposto fuori dalla protezione.
+
 Verifica non completabile automaticamente in questa sessione:
 
 - navbar anon/logged-in;
@@ -200,6 +215,7 @@ Verifica non completabile automaticamente in questa sessione:
 Motivo:
 
 - il Preview è protetto correttamente da Vercel Authentication;
+- il fetch protetto del connettore Vercel non riesce a creare un URL condivisibile;
 - il browser agent non è disponibile localmente;
 - non sono disponibili credenziali/sessione Supabase admin per test automatico, e non devono essere richieste/stampate in chat.
 
@@ -218,6 +234,34 @@ Checklist manuale Preview dopo push:
 - click `Esci` reindirizza a `/login`;
 - dopo logout, `/admin` mostra 404/blocco equivalente;
 - homepage torna a mostrare `Accedi` e `Registrati gratis`.
+
+Risultato manuale:
+
+- C.4.3 è stato verificato manualmente sul dominio Preview;
+- il flusso è funzionale;
+- login/logout sono percepiti come lenti;
+- tempi precisi non sono ancora stati annotati.
+
+Audit performance locale:
+
+- navbar pubblica: 1 lettura Supabase Auth server-side per richiesta;
+- `getCurrentUser()` deduplicata per richiesta con `React.cache`;
+- `/account`: la quota ricerca non rilegge più la sessione se la pagina passa già `userId`;
+- logout admin: nessuna query profilo/quota, solo `signOut()` e redirect;
+- nessun provider, Apify o fetch applicativo esterno coinvolto.
+
+Possibili cause esterne:
+
+- Vercel Authentication davanti al Preview;
+- Supabase Auth staging remoto;
+- route pubbliche dinamiche per leggere i cookie Supabase;
+- cold start/region Preview.
+
+Misure consigliate:
+
+- registrare tempi approssimativi da click a render per login/logout;
+- controllare nel Network panel eventuali doppie richieste a `/login`, `/account` o `/admin`;
+- verificare se il ritardo è prima o dopo la chiamata Supabase Auth.
 
 Non eseguito:
 

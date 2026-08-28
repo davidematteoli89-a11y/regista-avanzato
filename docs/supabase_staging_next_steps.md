@@ -110,7 +110,8 @@ FASE C:
 
 - Deployment Preview del branch `preview` trovato e Ready.
 - Preview protetto da Vercel Authentication: richiesta anonima reindirizzata a Vercel SSO.
-- URL Preview individuato: `https://regista-avanzato-ao7cjk4xf-davide-matteoli.vercel.app`.
+- Commit fix CTA: `11646dc`.
+- URL Preview individuato: `https://regista-avanzato-kwh385tqr-davide-matteoli.vercel.app`.
 - Alias branch Preview: `https://regista-avanzato-git-preview-davide-matteoli.vercel.app`.
 - Bug manuale rilevato: il CTA `Accedi gratis` da non loggato era visibile ma non navigava correttamente sul dominio Preview.
 - Fix locale preparato: CTA separati `Accedi` -> `/login` e `Registrati gratis` -> `/registrati`; `Accedi` usa anchor HTML standard.
@@ -122,6 +123,17 @@ FASE C:
   - tasto `Esci` admin;
   - redirect a `/login`;
   - `/admin` bloccato dopo logout.
+- Test manuale Preview poi completato dall'utente: flusso funzionale, login/logout percepiti come lenti.
+- Ottimizzazione locale applicata:
+  - deduplica per-request di `getCurrentUser()`;
+  - quota ricerca senza lettura sessione duplicata quando `userId` è già noto.
+
+## Performance auth da monitorare
+
+- Vercel Authentication su Preview può aggiungere latenza percepita.
+- Supabase Auth staging remoto può rendere login/logout più lenti del mock locale.
+- Il layout pubblico resta dinamico per mostrare correttamente `Accedi`/`Account`.
+- Prima di altre modifiche, raccogliere tempi approssimativi e Network panel su `/login`, `/account`, `/admin`.
 
 ## Cose da non fare ancora
 
