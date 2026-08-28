@@ -260,3 +260,33 @@ Conferme:
 - nessuna attivazione Apify;
 - nessuna modifica schema/RLS;
 - nessuna automazione admin.
+
+## C.4.2 — Admin logout visibile
+
+Stato: implementato localmente, non committato.
+
+Modifica:
+
+- aggiunto un tasto `Esci` visibile nell'header dell'area admin;
+- il logout usa Supabase Auth server-side con la sessione utente;
+- dopo il logout l'utente viene reindirizzato a `/login`;
+- `/admin` resta protetto server-side e continua a mostrare 404 o blocco equivalente per non autenticati/non autorizzati.
+- corretta la navbar pubblica: `Accedi gratis` era hardcoded e non leggeva la sessione Supabase;
+- la navbar pubblica ora legge l'utente server-side e mostra `Account` quando l'utente è loggato;
+- il layout pubblico è forzato dinamico per evitare una navbar prerenderizzata non coerente con i cookie di sessione.
+
+Non modificato:
+
+- schema/RLS;
+- provider/import;
+- Apify;
+- scritture editoriali;
+- protezione admin principale;
+- logout pubblico/account.
+
+Verifica Preview da fare dopo push:
+
+- da anonimo la navbar pubblica mostra `Accedi gratis`;
+- dopo login Supabase la navbar mostra `Account`;
+- dopo logout la navbar torna a `Accedi gratis`;
+- `/admin` resta bloccato dopo logout.

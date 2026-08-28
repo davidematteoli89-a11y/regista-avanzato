@@ -119,6 +119,8 @@ Protezione:
 
 - dopo logout Supabase, `/admin` mostra 404;
 - il blocco server-side admin è quindi confermato anche online su Preview.
+- C.4.2 aggiunge un tasto `Esci` visibile nell'header admin, con logout Supabase server-side e redirect a `/login`.
+- La navbar pubblica è stata allineata allo stato Auth: il link `Accedi gratis` era hardcoded e ora diventa `Account` quando esiste una sessione Supabase.
 
 Restano non implementati:
 

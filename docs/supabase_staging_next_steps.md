@@ -98,6 +98,14 @@ FASE C:
 - Route pubbliche principali verificate localmente con dati demo Supabase.
 - Prossimo passo: C.3 admin/editorial content reale manuale oppure commit C.1/C.2 prima di procedere.
 
+## Stato C.4.2
+
+- L'area admin ha un tasto `Esci` visibile nell'header.
+- Il logout admin usa Supabase Auth server-side e reindirizza a `/login`.
+- La navbar pubblica non mostra più `Accedi gratis` quando esiste una sessione Supabase: mostra `Account`.
+- Il route group pubblico è dinamico per leggere i cookie/sessione a ogni richiesta.
+- Da verificare su Preview dopo push: login, navbar `Account`, logout, navbar `Accedi gratis`, `/admin` bloccato dopo logout.
+
 ## Cose da non fare ancora
 
 - Non fare deploy production.

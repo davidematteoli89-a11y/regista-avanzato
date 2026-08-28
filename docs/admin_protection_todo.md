@@ -10,6 +10,8 @@ La dashboard admin resta mock/dry-run sul piano dei dati operativi, ma il codice
 - Non collegare provider reali, Apify o dati sensibili.
 - Non inserire `SUPABASE_SERVICE_ROLE_KEY` in ambienti client.
 - Mostrare chiaramente stato mock/non produttivo nelle pagine admin.
+- Mostrare un tasto `Esci` visibile nell'area admin per chiudere la sessione Supabase senza passare dall'account pubblico.
+- La navbar pubblica legge ora la sessione server-side: da non loggato mostra `Accedi gratis`, da loggato mostra `Account`.
 
 ## Protezione applicativa futura
 
@@ -41,7 +43,9 @@ La dashboard admin resta mock/dry-run sul piano dei dati operativi, ma il codice
 - Utente editor: accesso solo alle aree editoriali previste.
 - Utente admin: accesso alle aree operative via helper server-side e view `admin_*`, verificato localmente.
 - Logout: `/admin` bloccato dopo uscita, verificato localmente.
+- C.4.2: il logout admin deve reindirizzare a `/login` e lasciare `/admin` bloccato per non autenticati.
 - Nessun log, costo, provider config o source payload visibile fuori da admin.
+- Dopo login Supabase, la navbar pubblica non deve più mostrare `Accedi gratis`; deve mostrare `Account` senza esporre ruolo o dati admin.
 
 ## Stato C.4
 
