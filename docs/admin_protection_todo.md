@@ -11,7 +11,7 @@ La dashboard admin resta mock/dry-run sul piano dei dati operativi, ma il codice
 - Non inserire `SUPABASE_SERVICE_ROLE_KEY` in ambienti client.
 - Mostrare chiaramente stato mock/non produttivo nelle pagine admin.
 - Mostrare un tasto `Esci` visibile nell'area admin per chiudere la sessione Supabase senza passare dall'account pubblico.
-- La navbar pubblica legge ora la sessione server-side: da non loggato mostra `Accedi gratis`, da loggato mostra `Account`.
+- La navbar pubblica legge ora la sessione server-side: da non loggato mostra `Accedi` e `Registrati gratis`, da loggato mostra `Account`.
 
 ## Protezione applicativa futura
 
@@ -45,7 +45,25 @@ La dashboard admin resta mock/dry-run sul piano dei dati operativi, ma il codice
 - Logout: `/admin` bloccato dopo uscita, verificato localmente.
 - C.4.2: il logout admin deve reindirizzare a `/login` e lasciare `/admin` bloccato per non autenticati.
 - Nessun log, costo, provider config o source payload visibile fuori da admin.
-- Dopo login Supabase, la navbar pubblica non deve più mostrare `Accedi gratis`; deve mostrare `Account` senza esporre ruolo o dati admin.
+- Dopo login Supabase, la navbar pubblica non deve più mostrare `Accedi`/`Registrati gratis`; deve mostrare `Account` senza esporre ruolo o dati admin.
+
+## C.4.3 — Test Preview da completare manualmente
+
+La verifica tecnica ha confermato:
+
+- deployment Preview Ready per il branch `preview`;
+- Deployment Protection attiva con redirect anonimo a Vercel SSO;
+- Production non toccata.
+
+Restano da confermare in browser autenticato:
+
+- tasto `Esci` visibile in `/admin`;
+- click `Esci` con redirect a `/login`;
+- `/admin` bloccato dopo logout;
+- navbar pubblica `Accedi`/`Registrati gratis` da non loggato;
+- navbar pubblica `Account` da loggato.
+
+Nota: il test automatico non è stato completato perché la protezione Vercel funziona e il browser agent non è disponibile nella sessione locale.
 
 ## Stato C.4
 

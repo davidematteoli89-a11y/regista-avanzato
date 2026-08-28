@@ -155,3 +155,75 @@ Non eseguito:
 - attivazione Apify;
 - import automatici;
 - azioni reali admin.
+
+## C.4.3 — Deployment Preview admin logout/navbar
+
+Stato: deployment e protezione verificati; bug CTA pubblico rilevato manualmente e fix locale preparato.
+
+Deployment individuato:
+
+- Project: `regista-avanzato`.
+- Branch: `preview`.
+- Commit atteso: `9690fa2`.
+- Environment/target: Preview.
+- Status: Ready.
+- URL: `https://regista-avanzato-ao7cjk4xf-davide-matteoli.vercel.app`.
+- Alias branch: `https://regista-avanzato-git-preview-davide-matteoli.vercel.app`.
+
+Verifica protezione:
+
+- richiesta anonima al Preview URL: redirect verso Vercel SSO;
+- Deployment Protection/Vercel Authentication attiva;
+- nessun contenuto applicativo esposto fuori dalla protezione.
+
+Bug manuale rilevato:
+
+- sul dominio Preview branch, da utente Supabase non loggato, il tasto `Accedi gratis` è visibile ma non naviga correttamente;
+- la route corretta di login è `/login`;
+- la route corretta di registrazione è `/registrati`.
+
+Fix locale da verificare dopo push:
+
+- sostituire il CTA unico `Accedi gratis` con:
+  - `Accedi` verso `/login`;
+  - `Registrati gratis` verso `/registrati`;
+- usare anchor HTML standard per il link primario `Accedi`, così la navigazione non dipende dalla client navigation di Next;
+- mantenere `Account` verso `/account` quando la sessione Supabase esiste.
+
+Verifica non completabile automaticamente in questa sessione:
+
+- navbar anon/logged-in;
+- login Supabase admin;
+- click sul tasto `Esci` in `/admin`;
+- controllo post-logout di `/admin`.
+
+Motivo:
+
+- il Preview è protetto correttamente da Vercel Authentication;
+- il browser agent non è disponibile localmente;
+- non sono disponibili credenziali/sessione Supabase admin per test automatico, e non devono essere richieste/stampate in chat.
+
+Checklist manuale Preview dopo push:
+
+- aprire il Preview URL dopo autenticazione Vercel;
+- da Supabase logout: homepage mostra `Accedi` e `Registrati gratis`;
+- click su `Accedi` apre `/login`;
+- click su `Registrati gratis` apre `/registrati`;
+- login con utente admin test;
+- homepage mostra `Account`;
+- `/account` funziona;
+- `/admin` funziona;
+- tasto `Esci` visibile nell'header admin;
+- `/admin/generated-content/articles`, `/admin/news-radar`, `/admin/story-library`, `/admin/historical-echo` restano funzionanti;
+- click `Esci` reindirizza a `/login`;
+- dopo logout, `/admin` mostra 404/blocco equivalente;
+- homepage torna a mostrare `Accedi` e `Registrati gratis`.
+
+Non eseguito:
+
+- deploy CLI;
+- deploy Production;
+- promozione a Production;
+- modifica env;
+- attivazione provider;
+- attivazione Apify.

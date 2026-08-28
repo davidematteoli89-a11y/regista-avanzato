@@ -286,7 +286,61 @@ Non modificato:
 
 Verifica Preview da fare dopo push:
 
-- da anonimo la navbar pubblica mostra `Accedi gratis`;
+- da anonimo la navbar pubblica mostra `Accedi` e `Registrati gratis`;
 - dopo login Supabase la navbar mostra `Account`;
-- dopo logout la navbar torna a `Accedi gratis`;
+- dopo logout la navbar torna a `Accedi` e `Registrati gratis`;
 - `/admin` resta bloccato dopo logout.
+
+## C.4.3 — Verifica Preview admin logout e navbar auth
+
+Stato: bug Preview individuato sul CTA pubblico, fix locale preparato e da verificare dopo push.
+
+Deployment verificato:
+
+- Commit atteso: `9690fa2`.
+- Branch: `preview`.
+- Environment: Preview.
+- Status: Ready.
+- URL Preview individuato: `https://regista-avanzato-ao7cjk4xf-davide-matteoli.vercel.app`.
+- Alias branch Preview: `https://regista-avanzato-git-preview-davide-matteoli.vercel.app`.
+- Production non toccata.
+
+Protezione verificata:
+
+- una richiesta HTTP anonima al Preview URL restituisce redirect a Vercel SSO;
+- Deployment Protection/Vercel Authentication risulta attiva;
+- il contenuto applicativo non è leggibile senza autenticazione Vercel.
+
+Bug osservato manualmente:
+
+- da utente Supabase non loggato, la navbar mostra `Accedi gratis`;
+- il tasto non naviga correttamente sul dominio Preview;
+- `/login` esiste ed è la route corretta per l'accesso;
+- `/registrati` esiste ed è la route corretta per la registrazione free.
+
+Fix locale:
+
+- il CTA non loggato è stato reso più esplicito:
+  - `Accedi` punta a `/login`;
+  - `Registrati gratis` punta a `/registrati`;
+- il link primario `Accedi` usa un anchor HTML standard per garantire navigazione anche se la client navigation di Next non si inizializza correttamente;
+- da loggato resta `Account` verso `/account`.
+
+Limite della verifica automatica:
+
+- il connettore Vercel non ha permesso di listare i deployment del progetto `regista-avanzato`;
+- `agent-browser` non è disponibile localmente;
+- senza sessione browser Vercel autenticata e senza password Supabase, non è possibile completare automaticamente login, click su `Esci` admin e controllo visuale della navbar.
+
+Test manuali da completare sul Preview dopo commit/push:
+
+- da utente Supabase non loggato: homepage mostra `Accedi` e `Registrati gratis`, non `Account`;
+- click su `Accedi` apre `/login`;
+- click su `Registrati gratis` apre `/registrati`;
+- dopo login Supabase: homepage mostra `Account` e non `Accedi`/`Registrati gratis`;
+- `/account` apre correttamente;
+- `/admin` apre per utente admin;
+- il tasto `Esci` è visibile nell'header admin;
+- click su `Esci` reindirizza a `/login`;
+- dopo logout, `/admin` mostra 404/blocco equivalente;
+- dopo logout, homepage torna a mostrare `Accedi` e `Registrati gratis`.

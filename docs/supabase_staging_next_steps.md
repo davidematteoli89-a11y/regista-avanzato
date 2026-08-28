@@ -102,9 +102,26 @@ FASE C:
 
 - L'area admin ha un tasto `Esci` visibile nell'header.
 - Il logout admin usa Supabase Auth server-side e reindirizza a `/login`.
-- La navbar pubblica non mostra più `Accedi gratis` quando esiste una sessione Supabase: mostra `Account`.
+- La navbar pubblica non mostra più `Accedi`/`Registrati gratis` quando esiste una sessione Supabase: mostra `Account`.
 - Il route group pubblico è dinamico per leggere i cookie/sessione a ogni richiesta.
-- Da verificare su Preview dopo push: login, navbar `Account`, logout, navbar `Accedi gratis`, `/admin` bloccato dopo logout.
+- Da verificare su Preview dopo push: login, navbar `Account`, logout, navbar `Accedi`/`Registrati gratis`, `/admin` bloccato dopo logout.
+
+## Stato C.4.3
+
+- Deployment Preview del branch `preview` trovato e Ready.
+- Preview protetto da Vercel Authentication: richiesta anonima reindirizzata a Vercel SSO.
+- URL Preview individuato: `https://regista-avanzato-ao7cjk4xf-davide-matteoli.vercel.app`.
+- Alias branch Preview: `https://regista-avanzato-git-preview-davide-matteoli.vercel.app`.
+- Bug manuale rilevato: il CTA `Accedi gratis` da non loggato era visibile ma non navigava correttamente sul dominio Preview.
+- Fix locale preparato: CTA separati `Accedi` -> `/login` e `Registrati gratis` -> `/registrati`; `Accedi` usa anchor HTML standard.
+- Test browser autenticato ancora da completare manualmente:
+  - navbar `Accedi`/`Registrati gratis` da non loggato;
+  - click `Accedi` verso `/login`;
+  - click `Registrati gratis` verso `/registrati`;
+  - navbar `Account` da loggato;
+  - tasto `Esci` admin;
+  - redirect a `/login`;
+  - `/admin` bloccato dopo logout.
 
 ## Cose da non fare ancora
 

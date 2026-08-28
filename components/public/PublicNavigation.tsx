@@ -13,11 +13,16 @@ export async function PublicNavigation() {
       <Link className="public-brand" href="/">
         Regista Avanzato<span>Dati, storie, calcio</span>
       </Link>
-      <div>{links.map(([label, href]) => <Link key={href} href={href}>{label}</Link>)}</div>
+      <div className="public-navigation-links">
+        {links.map(([label, href]) => <Link key={href} href={href}>{label}</Link>)}
+      </div>
       {user ? (
         <Link className="button-link" href="/account">Account</Link>
       ) : (
-        <Link className="button-link" href="/login">Accedi gratis</Link>
+        <div className="public-auth-actions">
+          <a className="button-link" href="/login">Accedi</a>
+          <a href="/registrati">Registrati gratis</a>
+        </div>
       )}
     </nav>
   );
