@@ -154,3 +154,34 @@ Restano spenti:
 - generatori;
 - Substack API;
 - Production.
+
+## C.3.1 — Dettagli editoriali verificati su Preview
+
+Stato: completato e verificato online dopo il fix `8f83ef1`.
+
+Contesto:
+
+- le pagine elenco editoriali mostravano già i contenuti demo Supabase;
+- le pagine dettaglio non trovavano i contenuti demo prima del fix;
+- il fix ha reso coerenti liste e dettagli usando lo slug pubblico dalle public view.
+
+Pagine dettaglio verificate online sul dominio Preview:
+
+- `/articoli/articolo-demo-c3`;
+- `/news/news-demo-c3`;
+- `/storie/storia-demo-c3`;
+- `/il-calcio-si-ripete/echo-demo-c3`.
+
+Nota operativa:
+
+- il problema residuo osservato dopo il fix dipendeva dal dominio aperto: era Production (`regista-avanzato-rouge.vercel.app`), non il dominio Preview;
+- il dominio Preview collegato al branch `preview` mostra correttamente i dettagli editoriali demo;
+- Production non è stata toccata.
+
+Conferme:
+
+- provider reali spenti;
+- Apify spento;
+- nessun deploy Production;
+- nessuna modifica schema/RLS;
+- nessun import automatico.
