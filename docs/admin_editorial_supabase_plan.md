@@ -87,3 +87,43 @@ I blocchi admin mostrano:
 - I detail admin specifici restano in buona parte mock e non leggono ancora il record Supabase puntuale.
 - Le view `admin_*` usano `select *` a livello SQL: accettabile solo perché protette da RBAC, ma in futuro conviene creare view admin con colonne esplicite per area.
 - Le azioni reali dovranno avere audit log e conferme anti-mass-update prima dell’attivazione.
+
+## Verifica Preview C.4.1
+
+Stato: completata online su Vercel Preview.
+
+Deployment:
+
+- Commit: `8a8f8b5`.
+- Branch: `preview`.
+- Environment: Preview.
+- Status: Ready.
+
+Route verificate con utente Supabase admin:
+
+- `/admin/generated-content/articles`;
+- `/admin/news-radar`;
+- `/admin/story-library`;
+- `/admin/historical-echo`.
+
+Risultati:
+
+- i blocchi Supabase staging sono visibili nelle pagine admin editoriali;
+- i contenuti demo editoriali pubblicati in staging sono visibili;
+- i blocchi mock/dry-run restano separati;
+- provider reali spenti;
+- Apify spento;
+- nessuna azione reale di publish/edit/delete attiva.
+
+Protezione:
+
+- dopo logout Supabase, `/admin` mostra 404;
+- il blocco server-side admin è quindi confermato anche online su Preview.
+
+Restano non implementati:
+
+- scrittura manuale admin;
+- edit/delete/publish reali;
+- audit log per azioni editoriali;
+- detail admin puntuali da record Supabase;
+- attivazione provider/import.

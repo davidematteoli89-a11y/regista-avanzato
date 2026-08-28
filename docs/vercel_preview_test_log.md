@@ -113,3 +113,45 @@ Non eseguito:
 - attivazione provider;
 - attivazione Apify;
 - import automatici.
+
+## C.4.1 — Admin editoriale Supabase su Preview
+
+Stato: verificato online.
+
+Deployment verificato:
+
+- Environment: Preview.
+- Branch: `preview`.
+- Commit: `8a8f8b5`.
+- Deployment status: Ready.
+- Production non toccata.
+
+Route admin testate online con utente Supabase admin:
+
+- `/admin/generated-content/articles`: ok.
+- `/admin/news-radar`: ok.
+- `/admin/story-library`: ok.
+- `/admin/historical-echo`: ok.
+
+Esito:
+
+- blocco Supabase staging visibile;
+- contenuti demo editoriali visibili;
+- mock/dry-run separati dai blocchi staging;
+- provider spenti;
+- Apify spento;
+- nessuna azione reale di publish/edit/delete esposta.
+
+Test protezione:
+
+- dopo logout Supabase, `/admin` mostra 404;
+- l’area admin è bloccata correttamente per utente non autenticato.
+
+Non eseguito:
+
+- deploy Production;
+- promozione Preview a Production;
+- attivazione provider;
+- attivazione Apify;
+- import automatici;
+- azioni reali admin.

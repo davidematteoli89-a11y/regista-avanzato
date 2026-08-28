@@ -219,3 +219,44 @@ Restano mock/dry-run:
 - Apify.
 
 Prossimo passo consigliato: C.5, pianificare azioni manuali admin sicure con Server Actions, audit log e rollback, senza attivare provider o automazioni.
+
+## C.4.1 — Preview online admin editoriale verificata
+
+Stato: completato.
+
+Deployment verificato:
+
+- Commit: `8a8f8b5`.
+- Branch: `preview`.
+- Environment: Preview.
+- Status: Ready.
+- Production non toccata.
+
+Route admin verificate online da utente Supabase admin:
+
+- `/admin/generated-content/articles`;
+- `/admin/news-radar`;
+- `/admin/story-library`;
+- `/admin/historical-echo`.
+
+Esito:
+
+- blocco Supabase staging visibile nelle sezioni admin editoriali;
+- contenuti demo editoriali visibili da Supabase staging;
+- blocchi mock/dry-run ancora separati dai dati reali staging;
+- provider reali spenti;
+- Apify spento;
+- nessuna azione reale di publish/edit/delete attiva.
+
+Test protezione:
+
+- dopo logout Supabase, `/admin` mostra 404;
+- l’area admin risulta quindi bloccata correttamente per utente non autenticato.
+
+Conferme:
+
+- nessun deploy Production;
+- nessuna attivazione provider;
+- nessuna attivazione Apify;
+- nessuna modifica schema/RLS;
+- nessuna automazione admin.
