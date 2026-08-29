@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { updateAdminEditorialInternalNotesAction } from "@/lib/admin/adminEditorialActions";
+import { unpublishAdminEditorialContentAction, updateAdminEditorialInternalNotesAction } from "@/lib/admin/adminEditorialActions";
 import type { AdminEditorialReadResult } from "@/lib/admin/adminEditorialTypes";
 import { AdminStatusBadge } from "./AdminStatusBadge";
 
@@ -63,20 +63,50 @@ export function AdminEditorialContentTable({ result }: { result: AdminEditorialR
                     {showManualActions && (
                       <td>
                         {contentType ? (
-                          <form action={updateAdminEditorialInternalNotesAction} className="admin-inline-action-form">
-                            <input type="hidden" name="contentType" value={contentType} />
-                            <input type="hidden" name="contentId" value={item.id} />
-                            <label>
-                              <span>Note interne</span>
-                              <textarea name="internalNotes" defaultValue={item.internalNotes ?? ""} maxLength={4000} rows={2} />
-                            </label>
-                            <div className="admin-inline-action-footer">
-                              <span className="admin-status">Staging manual action</span>
-                              <button type="submit" className="button-secondary">
-                                Salva note
-                              </button>
-                            </div>
-                          </form>
+                          <div className="admin-inline-actions-stack">
+                            <form action={updateAdminEditorialInternalNotesAction} className="admin-inline-action-form">
+                              <input type="hidden" name="contentType" value={contentType} />
+                              <input type="hidden" name="contentId" value={item.id} />
+                              <label>
+                                <span>Note interne</span>
+                                <textarea name="internalNotes" defaultValue={item.internalNotes ?? ""} maxLength={4000} rows={2} />
+                              </label>
+                              <div className="admin-inline-action-footer">
+                                <span className="admin-status">Staging manual action</span>
+                                <button type="submit" className="button-secondary">
+                                  Salva note
+                                </button>
+                              </div>
+                            </form>
+                            {item.status === "published" && (
+                              <form action={unpublishAdminEditorialContentAction} className="admin-inline-action-form admin-inline-action-form-danger">
+                                <input type="hidden" name="contentType" value={contentType} />
+                                <input type="hidden" name="contentId" value={item.id} />
+                                <p className="muted">Non elimina il contenuto. Lo rimuove dalla pubblicazione.</p>
+                                <label>
+                                  <span>Destinazione</span>
+                                  <select name="targetStatus" defaultValue="draft">
+                                    <option value="draft">draft</option>
+                                    <option value="archived">archived</option>
+                                  </select>
+                                </label>
+                                <label>
+                                  <span>Motivo</span>
+                                  <textarea name="reason" maxLength={1000} rows={2} placeholder="Motivo della rimozione pubblicazione" />
+                                </label>
+                                <label className="admin-inline-checkbox">
+                                  <input type="checkbox" name="confirmUnpublish" required />
+                                  <span>Confermo rimozione pubblicazione</span>
+                                </label>
+                                <div className="admin-inline-action-footer">
+                                  <span className="admin-status status-inactive">Staging destructive-like action</span>
+                                  <button type="submit" className="button-secondary button-danger">
+                                    Rimuovi da pubblicazione
+                                  </button>
+                                </div>
+                              </form>
+                            )}
+                          </div>
                         ) : (
                           "—"
                         )}
@@ -92,7 +122,7 @@ export function AdminEditorialContentTable({ result }: { result: AdminEditorialR
         <p className="admin-empty-inline">Nessun contenuto editoriale disponibile nella fonte corrente.</p>
       )}
       <p className="muted">
-        Le note interne e gli score possono comparire solo in admin. Le pagine pubbliche continuano a leggere esclusivamente public view filtrate. Unpublish, publish, delete e create restano disabilitati.
+        Le note interne e gli score possono comparire solo in admin. Le pagine pubbliche continuano a leggere esclusivamente public view filtrate. La rimozione pubblicazione è disponibile solo per contenuti published in staging; publish, delete e create restano disabilitati.
       </p>
     </section>
   );

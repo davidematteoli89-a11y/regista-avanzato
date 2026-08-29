@@ -643,3 +643,43 @@ Rischi residui:
 Prossimo passo consigliato:
 
 - C.5.4 piano/test controllato per `unpublish_editorial_content`, oppure provider stable dry-run se si preferisce chiudere prima il lato dati.
+
+## C.5.4 — Unpublish manuale controllato
+
+Stato: implementato localmente, non committato e non deployato.
+
+Implementato:
+
+- Server Action `unpublishAdminEditorialContentAction`;
+- UI minima nelle tabelle admin editoriali Supabase staging;
+- visibilità azione solo per contenuti `published`;
+- target consentiti `draft` e `archived`;
+- checkbox di conferma obbligatoria;
+- motivo opzionale, massimo 1000 caratteri;
+- chiamata esclusiva alla RPC `unpublish_editorial_content`.
+
+Garanzie mantenute:
+
+- nessun uso di service role;
+- nessuna scrittura diretta alle tabelle editoriali;
+- nessuna scrittura diretta ad audit log;
+- audit log gestito dalla RPC transazionale;
+- nessun delete;
+- nessun publish;
+- nessun create draft;
+- provider/Apify/import spenti;
+- Production non toccata.
+
+Verifica locale:
+
+- `npm run lint`: ok;
+- `npm run typecheck`: ok;
+- `npm run build`: ok.
+
+Da verificare manualmente su Preview:
+
+- rimuovere dalla pubblicazione un contenuto demo published;
+- confermare che sparisca dalle public views;
+- confermare che resti visibile in admin con status `draft` o `archived`;
+- confermare audit log `unpublish_editorial_content`;
+- confermare che publish/delete/create draft restino assenti.

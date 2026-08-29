@@ -432,3 +432,49 @@ Da non fare ancora:
 - Apify;
 - import automatici;
 - Production deploy.
+
+## C.5.4 — Test staging richiesto per unpublish
+
+La UI e la Server Action per `unpublish_editorial_content` sono preparate localmente.
+
+Prima del test Preview:
+
+- confermare commit/push della modifica;
+- attendere deployment Preview Ready;
+- usare solo utente admin test;
+- scegliere un contenuto demo sacrificabile;
+- non usare dati reali.
+
+Query audit post-test:
+
+```sql
+select
+  action,
+  entity_type,
+  entity_id,
+  before_data,
+  after_data,
+  metadata,
+  created_at
+from public.admin_audit_logs
+where action = 'unpublish_editorial_content'
+order by created_at desc
+limit 5;
+```
+
+Esito atteso:
+
+- `action = unpublish_editorial_content`;
+- `before_data.status = published`;
+- `after_data.status` uguale a `draft` oppure `archived`;
+- `after_data.visibility = private_admin`;
+- `published_at` nullo dopo l’azione;
+- `metadata.target_status` valorizzato;
+- `metadata.reason_present` coerente;
+- provider/Apify/import ancora spenti.
+
+Rollback manuale:
+
+- non previsto automaticamente in app;
+- se serve ripubblicare il demo, usare una query manuale controllata oppure un futuro workflow `publish` separato;
+- non implementare publish nella stessa fase.

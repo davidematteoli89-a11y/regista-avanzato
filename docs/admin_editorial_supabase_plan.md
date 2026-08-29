@@ -469,3 +469,79 @@ Non attivo:
 Prossimo step consigliato:
 
 - C.5.4: progettare e testare `unpublish_editorial_content` su un solo contenuto demo sacrificabile, con conferma esplicita e rollback documentato.
+
+## C.5.4 — Unpublish manuale controllato
+
+Stato: implementato localmente, non committato e non deployato.
+
+Obiettivo:
+
+- collegare in modo minimo la RPC `unpublish_editorial_content`;
+- permettere solo la rimozione pubblicazione di un singolo contenuto demo/staging;
+- mantenere audit log transazionale dentro Supabase.
+
+Audit RPC:
+
+- RPC già creata dalla migrazione `0008_admin_editorial_transactional_actions.sql`;
+- richiede `public.is_admin()`;
+- accetta solo content type whitelistati:
+  - `article`;
+  - `news`;
+  - `story`;
+  - `historical_echo`;
+- accetta solo target status:
+  - `draft`;
+  - `archived`;
+- opera solo su record con `status = published`;
+- imposta `visibility = private_admin`;
+- azzera `published_at`;
+- aggiorna `reviewed_at`, `approved_by`, `updated_at`;
+- scrive `admin_audit_logs` nello stesso blocco SQL;
+- non esegue delete.
+
+Server Action:
+
+- `unpublishAdminEditorialContentAction`;
+- usa `requireAdmin()`;
+- usa Supabase server client con cookie/sessione reale;
+- non usa service role;
+- valida UUID;
+- valida target `draft`/`archived`;
+- valida reason max 1000 caratteri;
+- richiede checkbox `Confermo rimozione pubblicazione`;
+- chiama solo RPC `unpublish_editorial_content`;
+- non scrive direttamente tabelle editoriali;
+- non scrive direttamente `admin_audit_logs`.
+
+UI staging:
+
+- visibile solo quando `source = supabase_staging`;
+- visibile solo quando `realWritesEnabled = true`;
+- visibile solo per contenuti `status = published`;
+- badge `Staging destructive-like action`;
+- testo: “Non elimina il contenuto. Lo rimuove dalla pubblicazione.”;
+- bottone `Rimuovi da pubblicazione`.
+
+Restano disabilitati:
+
+- publish;
+- delete;
+- create draft;
+- azioni massive;
+- editor visuale complesso;
+- AI generation;
+- Substack API;
+- provider/import/Apify.
+
+Test Preview richiesto:
+
+1. login admin;
+2. aprire `/admin/generated-content/articles`;
+3. scegliere un contenuto demo published sacrificabile;
+4. selezionare target `draft` oppure `archived`;
+5. inserire motivo;
+6. spuntare conferma;
+7. cliccare `Rimuovi da pubblicazione`;
+8. verificare sparizione dalle public views;
+9. verificare presenza in admin view con nuovo status;
+10. verificare riga `admin_audit_logs` con action `unpublish_editorial_content`.

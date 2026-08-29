@@ -391,3 +391,48 @@ Nota:
 
 - la Preview resta il solo ambiente online collegato a Supabase staging;
 - Production non deve ricevere env o deploy finché non viene completata una readiness review dedicata.
+
+## C.5.4 — Test Preview da eseguire
+
+Stato: da verificare dopo commit/push e deployment Preview.
+
+Commit atteso:
+
+- da definire al commit C.5.4.
+
+Route principale:
+
+- `/admin/generated-content/articles`.
+
+Elementi UI attesi:
+
+- form note interne ancora presente;
+- nuova sezione `Rimuovi da pubblicazione` solo su contenuti `published`;
+- select target `draft`/`archived`;
+- campo `Motivo`;
+- checkbox `Confermo rimozione pubblicazione`;
+- badge `Staging destructive-like action`;
+- nessun publish;
+- nessun delete;
+- nessun create draft.
+
+Test manuale:
+
+1. login come admin;
+2. aprire route admin editoriale;
+3. scegliere un contenuto demo `published`;
+4. impostare target `draft` o `archived`;
+5. inserire motivo non sensibile;
+6. spuntare conferma;
+7. cliccare `Rimuovi da pubblicazione`;
+8. verificare ritorno pagina senza errore;
+9. verificare public view/pagina pubblica;
+10. verificare `admin_audit_logs`.
+
+Risultato atteso:
+
+- contenuto non più pubblicato;
+- contenuto ancora presente in admin;
+- audit log `unpublish_editorial_content`;
+- provider/Apify spenti;
+- Production non toccata.

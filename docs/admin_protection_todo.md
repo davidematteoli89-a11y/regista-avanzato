@@ -268,3 +268,36 @@ Nota sicurezza:
 - non rimuovere `public.is_admin()`;
 - non usare service role;
 - non aggirare RLS.
+
+## C.5.4 — Protezione unpublish manuale
+
+Stato: implementato localmente per test staging, non deployato.
+
+Controlli applicati:
+
+- accesso alla route admin resta protetto da `requireAdmin()`;
+- la Server Action `unpublishAdminEditorialContentAction` richiama `requireAdmin()` prima della RPC;
+- nessun service role usato;
+- content type whitelistato;
+- target status whitelistato a `draft`/`archived`;
+- UUID obbligatorio;
+- checkbox di conferma obbligatoria;
+- reason limitata a 1000 caratteri;
+- update reale demandato solo alla RPC `unpublish_editorial_content`;
+- audit log demandato solo alla RPC transazionale.
+
+Limiti intenzionali:
+
+- nessun publish;
+- nessun delete;
+- nessun create draft;
+- nessuna azione bulk;
+- nessun provider/import/Apify.
+
+Da verificare su Preview:
+
+- admin può rimuovere dalla pubblicazione un solo contenuto demo;
+- anon/free_user non accedono all’admin;
+- contenuto rimosso non compare più nelle public views;
+- audit log contiene `unpublish_editorial_content`;
+- UI non mostra azione su record non `published`.

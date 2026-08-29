@@ -264,3 +264,30 @@ Gate Production obbligatori:
 6. completare privacy/cookie/legal;
 7. eseguire provider dry-run prima di qualsiasi dato reale;
 8. approvare manualmente ogni passaggio verso Production.
+
+## Nota C.5.4 — Unpublish staging-only
+
+È stata preparata localmente una prima azione manuale per rimuovere dalla pubblicazione un contenuto editoriale demo.
+
+Non rende il progetto pronto per Production.
+
+Vincoli:
+
+- solo admin;
+- solo Server Action server-side;
+- solo RPC `unpublish_editorial_content`;
+- solo record `published`;
+- target limitato a `draft`/`archived`;
+- nessun delete;
+- nessun publish inverso;
+- nessuna azione massiva.
+
+Prima della Production servirà:
+
+- test Preview completo;
+- audit log verificato;
+- UX con conferma più forte se si useranno contenuti reali;
+- piano rollback;
+- test anon/free_user;
+- eventuale separazione permessi admin/editor;
+- revisione legale/editoriale prima di rimuovere contenuti reali.
