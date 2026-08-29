@@ -185,3 +185,25 @@ Prima della Production resta obbligatorio:
 - confermare comportamento anon/free_user/editor/admin;
 - collegare Server Actions solo dopo test RPC positivo;
 - mantenere provider e Apify disattivati fino alle rispettive fasi.
+
+## Nota C.5.3 — Prima Server Action editoriale
+
+È stata preparata localmente una prima Server Action per aggiornare solo note interne:
+
+- `updateAdminEditorialInternalNotesAction`;
+- usa sessione Supabase server-side;
+- chiama solo la RPC `update_editorial_internal_notes`;
+- non scrive direttamente le tabelle;
+- non scrive direttamente audit log;
+- non usa service role.
+
+Questa modifica non rende ancora il progetto pronto per Production.
+
+Gate obbligatori:
+
+- test positivo su Preview con account admin;
+- verifica riga `admin_audit_logs`;
+- test blocco anon/free_user;
+- gestione errori senza leakage;
+- nessun unpublish/publish/delete finché non viene pianificata C.5.4;
+- revisione UX prima di rendere le azioni disponibili fuori dallo staging.

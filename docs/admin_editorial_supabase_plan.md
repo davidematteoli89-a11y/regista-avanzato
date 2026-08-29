@@ -318,3 +318,62 @@ Rollback:
 - `drop function if exists public.update_editorial_internal_notes(text, uuid, text);`
 - `drop function if exists public.unpublish_editorial_content(text, uuid, text, text);`
 - nessun dato va cancellato per rimuovere le funzioni.
+
+## C.5.3 — Server Action minima per note interne
+
+Stato: implementata localmente, non committata e non deployata.
+
+Action:
+
+- `updateAdminEditorialInternalNotesAction(formData)`.
+
+File:
+
+- `lib/admin/adminEditorialActions.ts`.
+
+Comportamento:
+
+- usa `requireAdmin()` prima della chiamata RPC;
+- accetta solo `contentType`, `contentId`, `internalNotes`;
+- valida content type whitelistato: `article`, `news`, `story`, `historical_echo`;
+- valida UUID;
+- limita `internalNotes` a 4000 caratteri;
+- chiama solo la RPC `update_editorial_internal_notes`;
+- non aggiorna direttamente tabelle editoriali;
+- non scrive direttamente `admin_audit_logs`;
+- revalida solo la route admin collegata al content type;
+- non espone dettagli SQL sensibili.
+
+UI minima:
+
+- aggiunta nella tabella `AdminEditorialContentTable`;
+- visibile solo quando la fonte è `supabase_staging` e `realWritesEnabled = true`;
+- textarea piccola `Note interne`;
+- bottone `Salva note`;
+- badge `Staging manual action`.
+
+Ancora disabilitato:
+
+- `unpublish_editorial_content`;
+- publish;
+- delete;
+- create draft;
+- upload;
+- editor complesso;
+- AI generation;
+- Substack API;
+- provider/import/Apify.
+
+Audit log:
+
+- resta garantito dalla RPC transazionale applicata in C.5.2-A;
+- la Server Action non implementa un doppio write fragile.
+
+Test manuale richiesto:
+
+- login Preview/local come admin;
+- aprire una delle quattro sezioni admin editoriali;
+- modificare una nota interna su contenuto demo;
+- verificare che la pagina ritorni aggiornata;
+- verificare `admin_audit_logs`;
+- verificare che anon/free_user non possano accedere alla UI admin o chiamare la action.

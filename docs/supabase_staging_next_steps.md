@@ -315,3 +315,38 @@ Non usare:
 - `supabase db reset`;
 - Production;
 - provider o Apify.
+
+## C.5.3 — Test Server Action note interne
+
+Implementazione locale pronta:
+
+- Server Action: `updateAdminEditorialInternalNotesAction`;
+- RPC chiamata: `update_editorial_internal_notes`;
+- UI: textarea `Note interne` + bottone `Salva note` nelle tabelle admin Supabase staging.
+
+Test manuale staging/Preview consigliato:
+
+1. login come account admin;
+2. aprire `/admin/generated-content/articles`;
+3. modificare la nota interna di un contenuto demo;
+4. verificare redirect/reload della pagina admin;
+5. controllare che la nota risulti aggiornata;
+6. controllare `admin_audit_logs` per action `update_editorial_internal_notes`;
+7. ripetere su `news`, `story` o `historical_echo` solo se il primo test è pulito;
+8. verificare logout e blocco `/admin`;
+9. verificare che provider/import/Apify restino spenti.
+
+Da non testare ancora:
+
+- `unpublish_editorial_content`;
+- delete;
+- publish;
+- create;
+- azioni massive.
+
+Se il test fallisce:
+
+- non abbassare `is_admin()`;
+- non usare service role;
+- registrare codice errore applicativo;
+- verificare sessione Supabase Auth e ruolo `users_profile`.

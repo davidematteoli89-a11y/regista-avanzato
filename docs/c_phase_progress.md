@@ -526,3 +526,40 @@ Non implementato:
 Prossima sottofase:
 
 - C.5.3: piano e test tramite Server Action/admin session reale per verificare `update + audit log` positivo senza abbassare la sicurezza.
+
+## C.5.3 — Server Action minima per test RPC update note + audit
+
+Stato: implementata localmente, non deployata e non committata.
+
+Implementato:
+
+- Server Action `updateAdminEditorialInternalNotesAction`;
+- UI minima nella tabella admin Supabase staging;
+- salvataggio note interne tramite RPC `update_editorial_internal_notes`.
+
+Percorso dati:
+
+1. admin autenticato apre una sezione admin editoriale;
+2. il form invia `contentType`, `contentId`, `internalNotes`;
+3. la Server Action valida input e chiama `requireAdmin()`;
+4. il client Supabase server-side usa i cookie della sessione reale;
+5. la RPC aggiorna il record e scrive audit log nello stesso blocco SQL.
+
+Non implementato:
+
+- unpublish;
+- publish;
+- delete;
+- create draft;
+- upload;
+- AI generation;
+- Substack;
+- provider/import/Apify.
+
+Da testare manualmente:
+
+- salvataggio nota da admin;
+- riga `admin_audit_logs` creata;
+- blocco anon/free_user;
+- nessun impatto sulle public view salvo aggiornamento metadati admin;
+- comportamento Preview dopo eventuale commit/push.

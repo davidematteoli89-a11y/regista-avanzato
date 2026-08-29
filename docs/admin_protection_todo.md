@@ -208,3 +208,38 @@ Da verificare in C.5.3:
 - rollback/unpublish rimuove pubblicazione ma non cancella dati;
 - pagine pubbliche non mostrano più il contenuto dopo unpublish;
 - pagine admin continuano a leggerlo come private/draft/archived.
+
+## C.5.3 — Prima Server Action admin collegata
+
+Implementata localmente:
+
+- `updateAdminEditorialInternalNotesAction`.
+
+Protezione:
+
+- la action usa `requireAdmin()`;
+- usa il client Supabase server-side con cookie sessione utente;
+- non usa `SUPABASE_SERVICE_ROLE_KEY`;
+- non chiama provider o Apify;
+- non scrive direttamente tabelle editoriali o audit log.
+
+Validazioni:
+
+- content type whitelistato;
+- UUID obbligatorio;
+- note massimo 4000 caratteri;
+- nessun update massivo;
+- nessun nome tabella dinamico.
+
+Limite voluto:
+
+- `unpublish_editorial_content` resta non collegata;
+- la UI permette solo salvataggio note interne;
+- editori non ancora abilitati al test positivo finché la policy audit resta admin-only.
+
+Test richiesti prima di considerarla stabile:
+
+- admin salva nota e genera audit;
+- free_user/anon bloccati da `/admin`;
+- errore RPC gestito senza dettagli sensibili;
+- nessuna modifica pubblica indesiderata.

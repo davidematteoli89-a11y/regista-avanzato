@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { updateAdminEditorialInternalNotesAction } from "@/lib/admin/adminEditorialActions";
 import type { AdminEditorialReadResult } from "@/lib/admin/adminEditorialTypes";
 import { AdminStatusBadge } from "./AdminStatusBadge";
 
@@ -6,7 +7,17 @@ function labelDate(value: string | null) {
   return value ? new Date(value).toLocaleDateString("it-IT") : "—";
 }
 
+function contentTypeForArea(area: string) {
+  if (area === "articles") return "article";
+  if (area === "news") return "news";
+  if (area === "stories") return "story";
+  if (area === "historical_echo") return "historical_echo";
+  return null;
+}
+
 export function AdminEditorialContentTable({ result }: { result: AdminEditorialReadResult }) {
+  const showManualActions = result.source === "supabase_staging" && result.realWritesEnabled;
+
   return (
     <section className="admin-section-card">
       <div className="admin-card-head">
@@ -32,28 +43,57 @@ export function AdminEditorialContentTable({ result }: { result: AdminEditorialR
                 <th>Pubblicato</th>
                 <th>Warning</th>
                 <th>Note admin</th>
+                {showManualActions && <th>Azione manuale</th>}
               </tr>
             </thead>
             <tbody>
-              {result.items.map((item) => (
-                <tr key={`${item.area}-${item.id}`}>
-                  <td>{item.detailHref ? <Link href={item.detailHref}>{item.title}</Link> : item.title}</td>
-                  <td>{item.area}</td>
-                  <td>{item.status}</td>
-                  <td>{item.visibility}</td>
-                  <td>{item.reviewStatus ?? "—"}</td>
-                  <td>{labelDate(item.publishedAt)}</td>
-                  <td>{item.internalWarnings.length}</td>
-                  <td>{item.internalNotes ? "presenti" : "—"}</td>
-                </tr>
-              ))}
+              {result.items.map((item) => {
+                const contentType = contentTypeForArea(item.area);
+
+                return (
+                  <tr key={`${item.area}-${item.id}`}>
+                    <td>{item.detailHref ? <Link href={item.detailHref}>{item.title}</Link> : item.title}</td>
+                    <td>{item.area}</td>
+                    <td>{item.status}</td>
+                    <td>{item.visibility}</td>
+                    <td>{item.reviewStatus ?? "—"}</td>
+                    <td>{labelDate(item.publishedAt)}</td>
+                    <td>{item.internalWarnings.length}</td>
+                    <td>{item.internalNotes ? "presenti" : "—"}</td>
+                    {showManualActions && (
+                      <td>
+                        {contentType ? (
+                          <form action={updateAdminEditorialInternalNotesAction} className="admin-inline-action-form">
+                            <input type="hidden" name="contentType" value={contentType} />
+                            <input type="hidden" name="contentId" value={item.id} />
+                            <label>
+                              <span>Note interne</span>
+                              <textarea name="internalNotes" defaultValue={item.internalNotes ?? ""} maxLength={4000} rows={2} />
+                            </label>
+                            <div className="admin-inline-action-footer">
+                              <span className="admin-status">Staging manual action</span>
+                              <button type="submit" className="button-secondary">
+                                Salva note
+                              </button>
+                            </div>
+                          </form>
+                        ) : (
+                          "—"
+                        )}
+                      </td>
+                    )}
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         </div>
       ) : (
         <p className="admin-empty-inline">Nessun contenuto editoriale disponibile nella fonte corrente.</p>
       )}
-      <p className="muted">Le note interne e gli score possono comparire solo in admin. Le pagine pubbliche continuano a leggere esclusivamente public view filtrate.</p>
+      <p className="muted">
+        Le note interne e gli score possono comparire solo in admin. Le pagine pubbliche continuano a leggere esclusivamente public view filtrate. Unpublish, publish, delete e create restano disabilitati.
+      </p>
     </section>
   );
 }

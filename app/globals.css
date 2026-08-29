@@ -16,8 +16,9 @@ p { color: #b7c8bf; line-height: 1.6; }
 .stack { display: grid; gap: 24px; }
 .form-card, .access-box, .preview-block { border: 1px solid #274136; border-radius: 16px; padding: 24px; background: #101a17; }
 .form-card label { display: grid; gap: 8px; color: #dce8e0; }
-input, select, button { font: inherit; }
-input, select { width: 100%; padding: 12px; border: 1px solid #385448; border-radius: 8px; background: #0b1110; color: #edf5ef; }
+input, select, button, textarea { font: inherit; }
+input, select, textarea { width: 100%; padding: 12px; border: 1px solid #385448; border-radius: 8px; background: #0b1110; color: #edf5ef; }
+textarea { resize: vertical; }
 button, .button-link { border: 0; border-radius: 8px; padding: 11px 16px; background: #7ee2a8; color: #0b1110; cursor: pointer; text-decoration: none; }
 button:disabled { cursor: not-allowed; opacity: .45; }
 .button-secondary { background: transparent; border: 1px solid #385448; color: #edf5ef; }
@@ -119,6 +120,10 @@ button:disabled { cursor: not-allowed; opacity: .45; }
 .admin-log-list article { padding: 18px; border: 1px solid #274136; border-radius: 12px; background: #101a17; }
 .admin-empty { border-style: dashed; }
 .admin-empty span, .admin-empty-inline { color: #91a39a; }
+.admin-inline-action-form { display: grid; min-width: 260px; gap: 10px; }
+.admin-inline-action-form label { display: grid; gap: 6px; color: #dce8e0; }
+.admin-inline-action-form label span { color: #91a39a; font-size: .78rem; }
+.admin-inline-action-footer { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; }
 .story-grid, .story-category-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
 .story-category-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .story-card, .story-body, .admin-story-card { padding: 22px; border: 1px solid #274136; border-radius: 16px; background: #101a17; }

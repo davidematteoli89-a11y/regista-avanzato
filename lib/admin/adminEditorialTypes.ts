@@ -24,7 +24,7 @@ export type AdminEditorialReadResult = {
   items: AdminEditorialRecord[];
   source: AdminEditorialSource;
   warning: string | null;
-  realWritesEnabled: false;
+  realWritesEnabled: boolean;
   providerCalls: 0;
   apifyCalls: 0;
   aiCalls: 0;

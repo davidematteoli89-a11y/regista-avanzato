@@ -45,12 +45,17 @@ const emptyCounters: Record<AdminEditorialArea, number> = {
   historical_echo: 0,
 };
 
-function baseResult(items: AdminEditorialRecord[], source: AdminEditorialReadResult["source"], warning: string | null): AdminEditorialReadResult {
+function baseResult(
+  items: AdminEditorialRecord[],
+  source: AdminEditorialReadResult["source"],
+  warning: string | null,
+  realWritesEnabled = false,
+): AdminEditorialReadResult {
   return {
     items,
     source,
     warning,
-    realWritesEnabled: false,
+    realWritesEnabled,
     providerCalls: 0,
     apifyCalls: 0,
     aiCalls: 0,
@@ -246,28 +251,28 @@ export async function getAdminEditorialArticles(): Promise<AdminEditorialReadRes
   const result = await readAdminView<AdminArticleRow>("admin_public_articles", "id, slug, title, status, visibility, published_at, created_at, updated_at, reviewed_at, internal_notes");
   if (!result.configured) return baseResult(mockRecords("articles"), "mock_fallback", "Supabase non configurato: lettura admin articoli in fallback mock.");
   if (result.error) return baseResult(mockRecords("articles"), "mock_fallback", "View admin_public_articles non disponibile o non autorizzata: fallback mock.");
-  return baseResult(result.rows.map(mapArticleRow), "supabase_staging", "Lettura server-side da admin_public_articles. Scritture reali disabilitate.");
+  return baseResult(result.rows.map(mapArticleRow), "supabase_staging", "Lettura server-side da admin_public_articles. Note interne modificabili via RPC transazionale staging.", true);
 }
 
 export async function getAdminNewsItems(): Promise<AdminEditorialReadResult> {
   const result = await readAdminView<AdminNewsRow>("admin_news_archive", "id, slug, title, status, visibility, published_at, created_at, updated_at, reviewed_at, internal_notes, review_status, internal_warnings, internal_score");
   if (!result.configured) return baseResult(mockRecords("news"), "mock_fallback", "Supabase non configurato: lettura admin news in fallback mock.");
   if (result.error) return baseResult(mockRecords("news"), "mock_fallback", "View admin_news_archive non disponibile o non autorizzata: fallback mock.");
-  return baseResult(result.rows.map(mapNewsRow), "supabase_staging", "Lettura server-side da admin_news_archive. Rumor e warning restano solo admin.");
+  return baseResult(result.rows.map(mapNewsRow), "supabase_staging", "Lettura server-side da admin_news_archive. Note interne modificabili via RPC transazionale staging.", true);
 }
 
 export async function getAdminStories(): Promise<AdminEditorialReadResult> {
   const result = await readAdminView<AdminStoryRow>("admin_story_library", "id, slug, title, status, visibility, published_at, created_at, updated_at, reviewed_at, internal_notes, story_type");
   if (!result.configured) return baseResult(mockRecords("stories"), "mock_fallback", "Supabase non configurato: lettura admin storie in fallback mock.");
   if (result.error) return baseResult(mockRecords("stories"), "mock_fallback", "View admin_story_library non disponibile o non autorizzata: fallback mock.");
-  return baseResult(result.rows.map(mapStoryRow), "supabase_staging", "Lettura server-side da admin_story_library. Fonti e note interne restano in admin.");
+  return baseResult(result.rows.map(mapStoryRow), "supabase_staging", "Lettura server-side da admin_story_library. Note interne modificabili via RPC transazionale staging.", true);
 }
 
 export async function getAdminHistoricalEchoes(): Promise<AdminEditorialReadResult> {
   const result = await readAdminView<AdminHistoricalEchoRow>("admin_historical_echoes", "id, slug, title, status, visibility, published_at, created_at, updated_at, reviewed_at, internal_notes, echo_type, reviewed_by_human, internal_score, internal_warnings");
   if (!result.configured) return baseResult(mockRecords("historical_echo"), "mock_fallback", "Supabase non configurato: lettura admin Historical Echo in fallback mock.");
   if (result.error) return baseResult(mockRecords("historical_echo"), "mock_fallback", "View admin_historical_echoes non disponibile o non autorizzata: fallback mock.");
-  return baseResult(result.rows.map(mapHistoricalEchoRow), "supabase_staging", "Lettura server-side da admin_historical_echoes. Score e warning restano solo admin.");
+  return baseResult(result.rows.map(mapHistoricalEchoRow), "supabase_staging", "Lettura server-side da admin_historical_echoes. Note interne modificabili via RPC transazionale staging.", true);
 }
 
 export async function getAdminEditorialSummary(): Promise<AdminEditorialSummary> {
