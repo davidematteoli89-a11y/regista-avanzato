@@ -600,3 +600,46 @@ Esito audit atteso e confermato:
 - `entity_type = article`;
 - `before_data`, `after_data`, `metadata` presenti;
 - `created_at` recente.
+
+## C.6 — MVP staging closure audit
+
+Stato: audit finale staging completato a livello documentale.
+
+Percentuale stimata MVP staging tecnico: 80%.
+
+Completo per staging:
+
+- frontend pubblico buildabile e disponibile su Preview;
+- login, registrazione, account e preferenze collegati a Supabase staging;
+- navbar pubblica auth-aware verificata;
+- quota ricerca 3/3 verificata via RPC;
+- `/admin` protetto server-side con ruolo admin;
+- dati demo competizioni/squadre/partite/classifica letti da public views;
+- contenuti editoriali demo letti da public views;
+- view admin editoriali con colonne esplicite applicate in staging;
+- RPC 0008 applicate in staging;
+- Server Action `updateAdminEditorialInternalNotesAction` verificata su Preview;
+- audit log `update_editorial_internal_notes` scritto correttamente.
+
+Resta spento/non implementato:
+
+- provider stabile reale;
+- Apify/SofaScore;
+- import automatici;
+- Substack API;
+- AI generation;
+- publish/unpublish/delete/create draft;
+- Production deploy.
+
+Rischi residui:
+
+- confermare repo GitHub Private;
+- confermare service role key ruotata;
+- mantenere env Supabase solo Preview finché Production non è pronta;
+- migration history manuale da allineare;
+- altre view `admin_*` fuori scope editoriale da audire;
+- legal/privacy/cookie ancora da preparare.
+
+Prossimo passo consigliato:
+
+- C.5.4 piano/test controllato per `unpublish_editorial_content`, oppure provider stable dry-run se si preferisce chiudere prima il lato dati.

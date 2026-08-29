@@ -360,3 +360,34 @@ Nota:
 
 - il test positivo richiede sessione admin reale nel browser;
 - non va simulato dal Supabase SQL Editor, dove `auth.uid()` risulta `null`.
+
+## C.6 — Stato Preview a chiusura MVP staging
+
+Stato: Preview valida come demo staging protetta.
+
+Verificato:
+
+- deployment Preview funzionante;
+- Vercel Authentication attiva;
+- navbar pubblica auth-aware;
+- login/registrazione/account funzionanti;
+- pagine competizioni demo da Supabase;
+- pagine editoriali demo da Supabase;
+- admin protetto;
+- admin editoriale legge dati Supabase staging;
+- update note interne admin funzionante;
+- audit log creato dalla RPC.
+
+Non verificato/non attivo in Preview:
+
+- Production;
+- provider reali;
+- Apify;
+- import automatici;
+- Substack API;
+- publish/unpublish/delete/create draft.
+
+Nota:
+
+- la Preview resta il solo ambiente online collegato a Supabase staging;
+- Production non deve ricevere env o deploy finché non viene completata una readiness review dedicata.

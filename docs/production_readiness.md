@@ -226,3 +226,41 @@ Confermato:
 - Production non toccata.
 
 Le scritture admin restano comunque staging-only finché non saranno completati i test multi-entità, rollback e hardening operativo pre-produzione.
+
+## Nota C.6 — Chiusura MVP staging tecnico
+
+Stato: staging tecnico solido, non pronto per Production.
+
+Pronto in Preview/staging:
+
+- frontend pubblico con dati demo Supabase;
+- Auth Supabase Preview funzionante;
+- account e preferenze funzionanti;
+- quota ricerca 3/3 reale;
+- `/admin` protetto server-side;
+- view pubbliche e view admin editoriali verificate;
+- prima Server Action admin reale verificata;
+- audit log transazionale confermato.
+
+Non pronto per Production:
+
+- provider reali non attivati;
+- Apify non attivato;
+- import non attivati;
+- Substack API non collegata;
+- publish/unpublish/delete/create draft non attivi;
+- migration tracking non ancora normalizzato;
+- policy privacy/cookie da preparare;
+- revisione legale highlights/fonti da completare;
+- altre view admin fuori scope editoriale da audire.
+
+Gate Production obbligatori:
+
+1. confermare repo GitHub Private;
+2. confermare rotazione service role key;
+3. separare env Preview/Production;
+4. definire migration tracking;
+5. testare RLS con matrice anon/free_user/editor/admin;
+6. completare privacy/cookie/legal;
+7. eseguire provider dry-run prima di qualsiasi dato reale;
+8. approvare manualmente ogni passaggio verso Production.

@@ -439,3 +439,33 @@ Audit log confermato:
 - `after_data` presente;
 - `metadata` presente;
 - `created_at` recente.
+
+## C.6 — Stato admin editoriale a chiusura MVP staging
+
+Stato: admin editoriale staging verificato per lettura e prima scrittura controllata.
+
+Completo:
+
+- reader admin editoriali leggono view Supabase staging;
+- view admin editoriali usano colonne esplicite;
+- filtro RBAC interno `is_editor_or_admin()` confermato sulle view;
+- `/admin` protetto server-side;
+- Server Action note interne attiva solo per admin;
+- update note interne demandato alla RPC transazionale;
+- audit log scritto dalla RPC.
+
+Non attivo:
+
+- publish;
+- unpublish UI;
+- delete;
+- create draft;
+- upload;
+- editor complesso;
+- AI generation;
+- Substack API;
+- provider/import/Apify.
+
+Prossimo step consigliato:
+
+- C.5.4: progettare e testare `unpublish_editorial_content` su un solo contenuto demo sacrificabile, con conferma esplicita e rollback documentato.

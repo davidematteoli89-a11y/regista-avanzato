@@ -402,3 +402,33 @@ Non eseguire ancora:
 - delete;
 - create draft;
 - azioni massive.
+
+## C.6 — Prossimi passi dopo chiusura MVP staging
+
+Stato attuale:
+
+- Supabase staging funzionante;
+- public views demo verificate;
+- view admin editoriali esplicite verificate;
+- RPC `update_editorial_internal_notes` verificata tramite Server Action;
+- audit log confermato;
+- provider/Apify/import spenti.
+
+Da decidere prima di nuove migrazioni:
+
+- strategia migration tracking:
+  - lasciare staging manuale fino alla prossima migrazione;
+  - allineare `supabase_migrations.schema_migrations` con procedura controllata;
+  - ricreare staging in futuro usando il flow Supabase migrations corretto;
+- piano C.5.4 per testare `unpublish_editorial_content` solo su contenuti demo;
+- audit delle altre view `admin_*` non editoriali;
+- eventuale generazione tipi Supabase.
+
+Da non fare ancora:
+
+- `db push`;
+- `db reset`;
+- provider reali;
+- Apify;
+- import automatici;
+- Production deploy.
