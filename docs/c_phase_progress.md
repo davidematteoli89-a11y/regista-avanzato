@@ -470,3 +470,49 @@ Piano C.5.2:
 - testare ruoli prima di aggiungere form operativi alla UI.
 
 Provider, Apify, Production e import restano spenti/non toccati.
+
+## C.5.2 — Migrazione RPC transazionali admin editoriali
+
+Stato: migrazione preparata, non applicata.
+
+File creato:
+
+- `supabase/migrations/0008_admin_editorial_transactional_actions.sql`.
+
+RPC incluse:
+
+- `update_editorial_internal_notes`;
+- `unpublish_editorial_content`.
+
+Audit schema:
+
+- `content_status`: `draft`, `review_needed`, `approved`, `published`, `archived`, `rejected`;
+- `content_visibility`: `private_admin`, `public_free`, `public_login_required`, `public_preview`, `substack_free`, `substack_paid`;
+- le quattro tabelle editoriali hanno campi compatibili per note interne e rollback;
+- `admin_audit_logs` ha campi sufficienti per audit sintetico.
+
+Decisione ruoli:
+
+- prima versione limitata ad admin/super_admin;
+- editor escluso fino a test/policy dedicati;
+- `grant execute` solo ad authenticated, con blocco interno per free_user.
+
+Garanzia transazionale:
+
+- ogni funzione esegue lettura before, update singolo, lettura after e insert audit nella stessa chiamata SQL;
+- se l’audit fallisce, fallisce anche la modifica;
+- non ci sono delete o update massivi.
+
+Non implementato:
+
+- UI form;
+- Server Actions app;
+- publish;
+- create draft;
+- delete;
+- provider/import/Apify;
+- deploy o Production.
+
+Prossima sottofase:
+
+- C.5.2-A: applicazione manuale su Supabase staging e test RPC con utente admin controllato.

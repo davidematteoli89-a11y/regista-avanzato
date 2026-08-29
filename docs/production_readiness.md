@@ -152,3 +152,28 @@ Gate obbligatori prima di attivare scritture reali:
 - test ruoli anon/free_user/editor/admin;
 - UI con conferma esplicita per rollback/unpublish;
 - nessun uso di `SUPABASE_SERVICE_ROLE_KEY` nel client o per bypassare RLS.
+
+## Nota C.5.2 — RPC transazionali preparate
+
+La migrazione `0008_admin_editorial_transactional_actions.sql` prepara due RPC admin-only:
+
+- `update_editorial_internal_notes`;
+- `unpublish_editorial_content`.
+
+Non è stata applicata al database.
+
+La scelta iniziale è prudente:
+
+- solo admin/super_admin;
+- editor esclusi fino a test dedicato;
+- nessuna UI o Server Action reale ancora collegata;
+- nessun publish o delete.
+
+Prima della Production resta obbligatorio:
+
+- applicare e testare la migrazione su staging;
+- verificare audit log per ogni mutazione;
+- testare rollback su dati demo;
+- confermare comportamento anon/free_user/editor/admin;
+- collegare Server Actions solo dopo test RPC positivo;
+- mantenere provider e Apify disattivati fino alle rispettive fasi.

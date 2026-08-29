@@ -164,3 +164,40 @@ TODO C.5.2:
 - decidere se gli `editor` possono scrivere audit log o se le prime scritture restano solo `admin/super_admin`;
 - validare `content_type`, `id`, `status` e `visibility` dentro SQL;
 - testare anon/free_user/editor/admin prima di esporre form in UI.
+
+## C.5.2 — RPC transazionali preparate
+
+Preparata migrazione non applicata:
+
+- `0008_admin_editorial_transactional_actions.sql`.
+
+Funzioni:
+
+- `update_editorial_internal_notes`;
+- `unpublish_editorial_content`.
+
+Scelta di sicurezza:
+
+- solo admin/super_admin nella prima versione;
+- niente editor finché non viene estesa e testata la policy di audit log;
+- niente Server Actions UI finché la migrazione non viene applicata e testata.
+
+Controlli integrati:
+
+- `auth.uid()` presente;
+- `public.is_admin()` obbligatorio;
+- content type whitelistato;
+- update singolo per UUID;
+- audit append-only nello stesso blocco SQL;
+- niente delete;
+- niente publish massivo;
+- niente nomi tabella dinamici.
+
+Da verificare in C.5.2-A:
+
+- anon non esegue RPC;
+- free_user non esegue RPC;
+- admin esegue RPC e genera audit;
+- rollback/unpublish rimuove pubblicazione ma non cancella dati;
+- pagine pubbliche non mostrano più il contenuto dopo unpublish;
+- pagine admin continuano a leggerlo come private/draft/archived.

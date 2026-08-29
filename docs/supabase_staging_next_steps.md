@@ -276,3 +276,44 @@ Fino a quel momento:
 - nessun delete reale;
 - nessun publish massivo;
 - nessun uso di service role per bypassare RLS.
+
+## C.5.2-A — Applicazione manuale futura RPC admin
+
+Migrazione pronta ma non applicata:
+
+- `supabase/migrations/0008_admin_editorial_transactional_actions.sql`.
+
+Applicazione consigliata:
+
+1. aprire Supabase SQL Editor sullo staging Regista Avanzato;
+2. copiare il contenuto della migrazione `0008`;
+3. eseguire una sola volta;
+4. verificare funzioni e grant;
+5. testare prima `update_editorial_internal_notes` su un record demo;
+6. verificare riga in `admin_audit_logs`;
+7. testare `unpublish_editorial_content` solo dopo aver scelto un contenuto demo sacrificabile;
+8. verificare che anon/free_user non possano eseguire le RPC;
+9. verificare provider/import/Apify spenti.
+
+Query di verifica incluse nel file:
+
+- presenza funzioni;
+- grant execute;
+- selezione record demo;
+- test update note;
+- controllo audit log;
+- controllo provider/import spenti.
+
+Rollback SQL, se necessario:
+
+```sql
+drop function if exists public.update_editorial_internal_notes(text, uuid, text);
+drop function if exists public.unpublish_editorial_content(text, uuid, text, text);
+```
+
+Non usare:
+
+- `supabase db push`;
+- `supabase db reset`;
+- Production;
+- provider o Apify.

@@ -248,3 +248,66 @@ Azioni ancora vietate:
 - AI generation;
 - Substack API;
 - provider/import/Apify.
+
+## C.5.2 — Migrazione RPC transazionali admin editoriali
+
+Stato: migrazione SQL preparata, non applicata.
+
+Migrazione:
+
+- `supabase/migrations/0008_admin_editorial_transactional_actions.sql`.
+
+RPC preparate:
+
+- `update_editorial_internal_notes(p_content_type text, p_content_id uuid, p_internal_notes text)`;
+- `unpublish_editorial_content(p_content_type text, p_content_id uuid, p_target_status text, p_reason text default null)`.
+
+Content type ammessi:
+
+- `article` → `public_articles`;
+- `news` → `news_archive`;
+- `story` → `story_library`;
+- `historical_echo` → `historical_echoes`.
+
+Scelta ruoli:
+
+- prima versione solo `admin`/`super_admin` tramite `public.is_admin()`;
+- `editor` escluso intenzionalmente perché `admin_audit_logs` oggi accetta insert solo da admin;
+- abilitare editor richiede test dedicato e possibile modifica RLS.
+
+Transazionalità:
+
+- ogni RPC legge `before_data`, aggiorna un solo record con `where id = p_content_id`, legge `after_data` e inserisce `admin_audit_logs` nello stesso blocco funzione;
+- se update o audit falliscono, l’intera chiamata SQL viene annullata;
+- questo evita modifiche editoriali senza audit log.
+
+Sicurezza:
+
+- funzioni `security definer` con `search_path = public, pg_temp`;
+- controllo interno `auth.uid()` + `public.is_admin()`;
+- nessun nome tabella libero da input;
+- nessun delete;
+- nessun publish massivo;
+- `before_data`/`after_data` sintetici, senza body, payload grezzi, token o contenuti lunghi;
+- `internal_notes` non viene copiato integralmente nell’audit, ma solo presenza e lunghezza.
+
+Permessi:
+
+- `revoke all` da `public`, `anon`, `authenticated`;
+- `grant execute` solo a `authenticated`;
+- i `free_user` vengono bloccati dentro la funzione dal controllo ruolo.
+
+Piano test C.5.2-A:
+
+- applicare manualmente la migrazione solo su staging;
+- verificare esistenza funzioni e grant execute;
+- testare chiamata admin su un contenuto demo;
+- verificare audit log;
+- testare che anon/free_user falliscano;
+- verificare provider/import/Apify ancora spenti.
+
+Rollback:
+
+- `drop function if exists public.update_editorial_internal_notes(text, uuid, text);`
+- `drop function if exists public.unpublish_editorial_content(text, uuid, text, text);`
+- nessun dato va cancellato per rimuovere le funzioni.
