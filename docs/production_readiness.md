@@ -103,22 +103,30 @@ Prima della Production resta obbligatorio:
 - testare registrazione, conferma email, login, logout e recovery password sul dominio finale;
 - misurare performance login/logout senza Vercel Preview Protection.
 
-## Nota C.4.4 — View admin esplicite
+## Nota C.4.4 / C.4.4-A — View admin esplicite
 
-Prima della Production va applicato e verificato lo hardening delle view admin editoriali:
+Lo hardening delle view admin editoriali è stato applicato e verificato manualmente su Supabase staging:
 
 - `admin_public_articles`;
 - `admin_news_archive`;
 - `admin_story_library`;
 - `admin_historical_echoes`.
 
-La migrazione preparata `0007_admin_editorial_views_explicit_columns.sql` restringe queste view alle colonne effettivamente usate dalla UI admin.
+La migrazione `0007_admin_editorial_views_explicit_columns.sql` restringe queste view alle colonne effettivamente usate dalla UI admin.
 
-Gate obbligatori:
+Verifiche completate su staging:
 
-- applicazione manuale prima su staging;
-- verifica admin/editor;
-- verifica blocco anon/free_user;
-- controllo colonne esposte;
+- controllo colonne esposte tramite `information_schema.columns`;
+- conferma del filtro RBAC interno `where public.is_editor_or_admin()` tramite `pg_views`;
+- `anon` senza grant;
+- `authenticated` con `select`, ma senza righe per utenti non staff grazie al filtro RBAC;
+- provider e Apify spenti;
+- Production non toccata.
+
+Gate ancora obbligatori prima della Production:
+
+- audit delle altre view `admin_*` fuori scope editoriale;
+- verifica admin/editor sul dominio Preview aggiornato;
+- verifica blocco anon/free_user in Preview;
 - rollback plan disponibile;
 - nessun uso di `select *` nelle view admin editoriali usate dal codice.

@@ -130,9 +130,9 @@ Restano non implementati:
 - detail admin puntuali da record Supabase;
 - attivazione provider/import.
 
-## C.4.4 — View admin editoriali a colonne esplicite
+## C.4.4 / C.4.4-A — View admin editoriali a colonne esplicite
 
-Stato: migrazione preparata, non applicata.
+Stato: migrazione preparata, committata e applicata manualmente su Supabase staging.
 
 Migrazione:
 
@@ -177,3 +177,18 @@ Rollback manuale:
 - se la migrazione crea problemi, ricreare temporaneamente le view con la logica precedente `select * from public.<table> where public.is_editor_or_admin()`;
 - poi ripristinare `revoke all` e `grant select ... to authenticated`;
 - verificare subito `/admin/generated-content/articles`, `/admin/news-radar`, `/admin/story-library`, `/admin/historical-echo`.
+
+Verifica C.4.4-A su staging:
+
+- la migrazione `0007_admin_editorial_views_explicit_columns.sql` è stata applicata manualmente dal Supabase SQL Editor sul progetto staging Regista Avanzato;
+- `information_schema.columns` conferma che le quattro view espongono solo le colonne esplicite previste;
+- `pg_views` conferma il filtro RBAC interno `where public.is_editor_or_admin()`;
+- `grant select` a `authenticated` è accettabile perché i profili non staff non ricevono righe dal filtro RBAC;
+- `anon` non ha grant sulle view admin;
+- `postgres` e `service_role` mantengono i permessi tecnici normali Supabase;
+- provider reali e Apify restano spenti;
+- Production non è stata toccata.
+
+Rischio residuo:
+
+- eventuali altre view `admin_*` fuori scope editoriale potrebbero ancora derivare dal pattern generico `select *` e vanno auditate in una fase successiva.

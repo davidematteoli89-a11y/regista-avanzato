@@ -117,7 +117,7 @@ Checklist aggiornata dopo fix CTA:
 
 ## C.4.4 — Hardening view admin
 
-- Preparata migrazione `0007_admin_editorial_views_explicit_columns.sql`.
+- Preparata e applicata manualmente su Supabase staging la migrazione `0007_admin_editorial_views_explicit_columns.sql`.
 - Obiettivo: sostituire le quattro view admin editoriali usate dal codice con versioni a colonne esplicite.
 - Nessuna policy RLS viene modificata.
 - Nessuna tabella base viene alterata.
@@ -128,11 +128,17 @@ Checklist aggiornata dopo fix CTA:
   - `internal_score`.
 - Le public view restano separate e non ricevono score/warning/note interne.
 
-Verifiche obbligatorie prima/dopo applicazione staging:
+Verifiche C.4.4-A completate su staging:
 
-- applicare manualmente solo la migrazione `0007`;
-- verificare che le quattro view esistano;
-- verificare grant solo a `authenticated`;
-- verificare che anon non legga le view admin;
-- verificare che free_user non staff non legga le view admin;
-- verificare che admin legga ancora le sezioni editoriali.
+- le quattro view esistono dopo la ricreazione;
+- `information_schema.columns` conferma colonne esplicite;
+- `pg_views` conferma `where public.is_editor_or_admin()`;
+- `anon` non ha grant;
+- `authenticated` ha `select`, ma i `free_user` non ricevono righe grazie al filtro RBAC;
+- `postgres` e `service_role` hanno permessi tecnici normali Supabase;
+- provider e Apify restano spenti.
+
+Da completare in futuro:
+
+- audit delle altre view `admin_*` non editoriali ancora fuori scope;
+- verifica end-to-end Preview dopo eventuale commit/deploy della sola documentazione o dopo successive modifiche operative.

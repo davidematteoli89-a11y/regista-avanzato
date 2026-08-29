@@ -396,9 +396,9 @@ Da misurare nel browser:
 - tempo click `Esci` admin -> `/login`;
 - eventuali doppie navigazioni nel Network panel.
 
-## C.4.4 — Admin view con colonne esplicite
+## C.4.4 / C.4.4-A — Admin view con colonne esplicite
 
-Stato: migrazione preparata, non applicata.
+Stato: migrazione preparata, committata e applicata manualmente su Supabase staging.
 
 Audit:
 
@@ -428,9 +428,17 @@ Colonne escluse dalle liste admin:
 - author/approved ids non usati;
 - colonne future non richieste dalla UI.
 
-Da verificare prima di applicare:
+Verifica C.4.4-A completata:
 
-- staging corrente;
-- nessuna dipendenza SQL dalle quattro view;
-- lettura admin dopo migrazione;
-- anon/free_user non autorizzati.
+- la migrazione `0007_admin_editorial_views_explicit_columns.sql` è stata applicata manualmente su Supabase staging Regista Avanzato;
+- le quattro view admin editoriali sono state ricreate correttamente con colonne esplicite;
+- `information_schema.columns` conferma le colonne previste;
+- `pg_views` conferma il filtro interno `where public.is_editor_or_admin()`;
+- `grant select` a `authenticated` resta accettabile perché il filtro RBAC non restituisce righe ai `free_user`;
+- `anon` non ha grant sulle view admin;
+- provider reali e Apify restano spenti;
+- Production non è stata toccata.
+
+Resta fuori scope:
+
+- audit e bonifica di eventuali altre view `admin_*` non editoriali create in origine con `select *`.

@@ -211,9 +211,9 @@ Prima di rendere operative azioni manuali:
 - preferire unpublish/rollback a delete;
 - mantenere publish massivo disabilitato.
 
-## C.4.4 — Prossimo hardening SQL manuale
+## C.4.4-A — Hardening SQL manuale applicato
 
-Migrazione pronta ma non applicata:
+Migrazione applicata manualmente su Supabase staging:
 
 - `supabase/migrations/0007_admin_editorial_views_explicit_columns.sql`.
 
@@ -223,14 +223,21 @@ Obiettivo:
 - preservare i nomi view già usati dai reader admin;
 - ridurre rischio di leakage futuro se le tabelle base ricevono nuove colonne.
 
-Applicazione consigliata:
+Esito:
 
-1. aprire Supabase SQL Editor sullo staging Regista Avanzato;
-2. copiare solo il contenuto di `0007_admin_editorial_views_explicit_columns.sql`;
-3. eseguire una volta;
-4. verificare che le view esistano e abbiano solo le colonne previste;
-5. testare `/admin/generated-content/articles`, `/admin/news-radar`, `/admin/story-library`, `/admin/historical-echo`;
-6. verificare anon/free_user bloccati sulle view admin.
+- le view `admin_public_articles`, `admin_news_archive`, `admin_story_library` e `admin_historical_echoes` sono state ricreate;
+- `information_schema.columns` conferma le colonne esplicite;
+- `pg_views` conferma il filtro RBAC `where public.is_editor_or_admin()`;
+- `anon` non ha grant;
+- `authenticated` ha `select`, ma i profili non staff non ricevono righe dal filtro RBAC;
+- provider reali e Apify restano spenti;
+- Production non è stata toccata.
+
+Prossimi controlli consigliati:
+
+1. verificare in locale le quattro pagine admin editoriali dopo la modifica SQL;
+2. verificare in Preview al prossimo deploy non Production;
+3. pianificare audit delle altre view `admin_*` fuori scope editoriale.
 
 Non usare ancora:
 
