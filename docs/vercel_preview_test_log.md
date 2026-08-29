@@ -394,11 +394,17 @@ Nota:
 
 ## C.5.4 — Test Preview da eseguire
 
-Stato: da verificare dopo commit/push e deployment Preview.
+Stato: test manuale Preview completato.
 
-Commit atteso:
+Commit verificato:
 
-- da definire al commit C.5.4.
+- `08d03bd`.
+
+Deployment:
+
+- target/environment: Preview;
+- status: Ready;
+- alias: `https://regista-avanzato-git-preview-davide-matteoli.vercel.app`.
 
 Route principale:
 
@@ -416,23 +422,38 @@ Elementi UI attesi:
 - nessun delete;
 - nessun create draft.
 
-Test manuale:
+Test manuale completato:
 
-1. login come admin;
-2. aprire route admin editoriale;
-3. scegliere un contenuto demo `published`;
-4. impostare target `draft` o `archived`;
-5. inserire motivo non sensibile;
-6. spuntare conferma;
-7. cliccare `Rimuovi da pubblicazione`;
-8. verificare ritorno pagina senza errore;
-9. verificare public view/pagina pubblica;
-10. verificare `admin_audit_logs`.
+1. login come admin riuscito;
+2. route `/admin/generated-content/articles` usata;
+3. contenuto demo `published` selezionato;
+4. target `draft` usato;
+5. conferma spuntata;
+6. click `Rimuovi da pubblicazione` completato;
+7. pagina aggiornata senza errore;
+8. contenuto rimosso dalla pubblicazione;
+9. `admin_audit_logs` verificato.
 
-Risultato atteso:
+Risultato confermato:
 
-- contenuto non più pubblicato;
-- contenuto ancora presente in admin;
-- audit log `unpublish_editorial_content`;
+- `action = unpublish_editorial_content`;
+- `entity_type = article`;
+- `entity_id = f528beb7-6c57-4cb3-9c0b-4cca9757bd38`;
+- `before_data.status = published`;
+- `before_data.visibility = public_free`;
+- `after_data.status = draft`;
+- `after_data.visibility = private_admin`;
+- `after_data.published_at = null`;
+- `created_at` recente;
 - provider/Apify spenti;
 - Production non toccata.
+
+Nota C.5.4-A:
+
+- audit metadata ha `reason_present = false` e `reason_preview = ""`;
+- il codice form/action passa correttamente `reason` alla RPC;
+- se il motivo è stato lasciato vuoto, il risultato è coerente;
+- se il motivo era compilato, serve micro-fix separato per renderlo obbligatorio;
+- non è stato usato service role;
+- non è stato fatto deploy CLI;
+- publish/delete/create draft/bulk restano disabilitati.

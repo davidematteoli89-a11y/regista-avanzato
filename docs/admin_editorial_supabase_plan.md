@@ -545,3 +545,47 @@ Test Preview richiesto:
 8. verificare sparizione dalle public views;
 9. verificare presenza in admin view con nuovo status;
 10. verificare riga `admin_audit_logs` con action `unpublish_editorial_content`.
+
+## C.5.4-A — Verifica Preview unpublish
+
+Stato: verificata manualmente su Vercel Preview con sessione admin reale.
+
+Verifica deployment:
+
+- branch: `preview`;
+- commit: `08d03bd`;
+- environment/target: `Preview`;
+- status: Ready;
+- alias Preview: `https://regista-avanzato-git-preview-davide-matteoli.vercel.app`.
+
+Test manuale completato:
+
+- login admin riuscito;
+- `/admin/generated-content/articles` usata per il test;
+- contenuto demo sacrificabile: `f528beb7-6c57-4cb3-9c0b-4cca9757bd38`;
+- target usato: `draft`;
+- azione `Rimuovi da pubblicazione` completata;
+- pagina admin aggiornata senza errore;
+- contenuto rimosso dalla pubblicazione;
+- audit log `unpublish_editorial_content` presente.
+
+Audit log confermato:
+
+- `action = unpublish_editorial_content`;
+- `entity_type = article`;
+- `entity_id = f528beb7-6c57-4cb3-9c0b-4cca9757bd38`;
+- `before_data.status = published`;
+- `before_data.visibility = public_free`;
+- `after_data.status = draft`;
+- `after_data.visibility = private_admin`;
+- `after_data.published_at = null`;
+- `created_at` recente.
+
+Nota motivo:
+
+- il form UI espone `textarea name="reason"`;
+- la Server Action legge `reason` da `FormData`;
+- la Server Action passa il valore alla RPC come `p_reason`;
+- nel test verificato `metadata.reason_present = false` e `reason_preview = ""`;
+- questo è coerente se il campo motivo è stato lasciato vuoto o è arrivato vuoto;
+- se in un test futuro il campo viene compilato e resta comunque vuoto nell’audit, rendere `reason` obbligatorio lato UI/server con micro-fix dedicato.

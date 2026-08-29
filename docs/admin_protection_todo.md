@@ -301,3 +301,37 @@ Da verificare su Preview:
 - contenuto rimosso non compare più nelle public views;
 - audit log contiene `unpublish_editorial_content`;
 - UI non mostra azione su record non `published`.
+
+## C.5.4-A — Stato verifica Preview
+
+Verificato:
+
+- deployment Preview del commit `08d03bd` Ready;
+- target/environment Preview confermato;
+- alias branch Preview disponibile.
+- click reale `Rimuovi da pubblicazione` completato manualmente;
+- cambio status `published` → `draft` confermato;
+- cambio visibility `public_free` → `private_admin` confermato;
+- `published_at = null` confermato;
+- riga audit log `unpublish_editorial_content` confermata.
+
+Contenuto demo testato:
+
+- `f528beb7-6c57-4cb3-9c0b-4cca9757bd38`.
+
+Nota sicurezza:
+
+- test eseguito con sessione admin reale;
+- nessun service role usato;
+- nessun SQL Editor usato per simulare sessione admin app;
+- publish/delete/create draft/bulk restano assenti.
+
+Nota motivo audit:
+
+- `reason_present = false` e `reason_preview = ""`;
+- codice form/action passa correttamente il campo `reason` alla RPC;
+- dato accettabile se il motivo è stato lasciato vuoto nel test;
+- se il motivo era compilato, valutare micro-fix per renderlo obbligatorio lato UI/server.
+
+- eseguire il test su un contenuto demo sacrificabile;
+- confermare che publish/delete/create draft/bulk restino assenti.

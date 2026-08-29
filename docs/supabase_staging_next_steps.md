@@ -478,3 +478,37 @@ Rollback manuale:
 - non previsto automaticamente in app;
 - se serve ripubblicare il demo, usare una query manuale controllata oppure un futuro workflow `publish` separato;
 - non implementare publish nella stessa fase.
+
+## C.5.4-A — Verifica Preview unpublish completata
+
+Deployment:
+
+- Preview Ready per il commit `08d03bd`;
+- target `preview`;
+- alias branch Preview confermato.
+
+Risultato:
+
+- unpublish manuale controllato riuscito;
+- contenuto demo `f528beb7-6c57-4cb3-9c0b-4cca9757bd38`;
+- target finale `draft`;
+- `visibility = private_admin`;
+- `published_at = null`;
+- audit log presente con `action = unpublish_editorial_content`;
+- provider/Apify/import spenti;
+- Production non toccata.
+
+Nota `reason`:
+
+- audit metadata: `reason_present = false`, `reason_preview = ""`;
+- il codice passa il campo `reason` alla RPC;
+- se il motivo è stato lasciato vuoto, nessun fix necessario;
+- se il motivo era compilato, prossimo micro-fix consigliato: rendere `reason` obbligatorio lato form e Server Action.
+
+Non usare:
+
+- service role;
+- SQL Editor per simulare sessione admin app;
+- db push/reset;
+- provider/Apify;
+- Production.

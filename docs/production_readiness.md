@@ -291,3 +291,27 @@ Prima della Production servirà:
 - test anon/free_user;
 - eventuale separazione permessi admin/editor;
 - revisione legale/editoriale prima di rimuovere contenuti reali.
+
+## Nota C.5.4-A — Preview unpublish validato funzionalmente
+
+Il deployment Preview del commit `08d03bd` è Ready e l’azione reale di unpublish è stata verificata manualmente con sessione admin.
+
+Confermato:
+
+- unpublish su contenuto demo published;
+- status finale `draft`;
+- `visibility = private_admin`;
+- `published_at = null`;
+- audit log `unpublish_editorial_content`;
+- assenza di publish/delete/create draft/bulk;
+- provider/Apify spenti;
+- Production non toccata.
+
+Production resta comunque bloccata finché non sono completati:
+
+- rollback/piano ripristino demo;
+- test multi-entità;
+- privacy/cookie/legal;
+- migration tracking;
+- revisione finale admin UX;
+- piano contenuti reali.

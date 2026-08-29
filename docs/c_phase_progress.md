@@ -683,3 +683,42 @@ Da verificare manualmente su Preview:
 - confermare che resti visibile in admin con status `draft` o `archived`;
 - confermare audit log `unpublish_editorial_content`;
 - confermare che publish/delete/create draft restino assenti.
+
+## C.5.4-A — Verifica Preview unpublish manuale
+
+Stato: verificata manualmente su Vercel Preview.
+
+Confermato:
+
+- commit C.5.4 `08d03bd`;
+- branch `preview`;
+- deployment Vercel Preview Ready;
+- target `preview`;
+- alias `https://regista-avanzato-git-preview-davide-matteoli.vercel.app`;
+- login admin riuscito;
+- unpublish manuale controllato riuscito;
+- RPC `unpublish_editorial_content` funzionante;
+- update + audit log avvenuti correttamente;
+- contenuto demo rimosso dalla pubblicazione;
+- publish/delete/create draft/bulk restano disabilitati;
+- provider/Apify spenti;
+- Production non toccata.
+
+Audit log:
+
+- `action = unpublish_editorial_content`;
+- `entity_type = article`;
+- `entity_id = f528beb7-6c57-4cb3-9c0b-4cca9757bd38`;
+- `before_data.status = published`;
+- `before_data.visibility = public_free`;
+- `after_data.status = draft`;
+- `after_data.visibility = private_admin`;
+- `after_data.published_at = null`;
+- `created_at` recente.
+
+Nota `reason`:
+
+- audit metadata: `reason_present = false`, `reason_preview = ""`;
+- codice verificato: il form invia `reason` e la Server Action lo passa come `p_reason`;
+- se il motivo era vuoto, comportamento ok;
+- se il motivo era compilato, preparare micro-fix per renderlo obbligatorio e ritestare.
