@@ -142,3 +142,25 @@ Da completare in futuro:
 
 - audit delle altre view `admin_*` non editoriali ancora fuori scope;
 - verifica end-to-end Preview dopo eventuale commit/deploy della sola documentazione o dopo successive modifiche operative.
+
+## C.5.1 — Blocco sicurezza per Server Actions reali
+
+Audit completato:
+
+- le tabelle editoriali hanno campi sufficienti per note interne e rollback/unpublish;
+- RLS staff consente gestione delle tabelle editoriali solo a `is_editor_or_admin()`;
+- `admin_audit_logs` è append-only e consente insert solo a `is_admin()`;
+- non esiste ancora una RPC transazionale che garantisca `update + audit log` nello stesso blocco.
+
+Decisione:
+
+- non attivare Server Actions reali finché non esiste una funzione SQL transazionale controllata;
+- non usare `service_role` per bypassare RLS;
+- non implementare update multi-step da TypeScript come se fosse audit obbligatorio.
+
+TODO C.5.2:
+
+- preparare migrazione RPC per mutazioni editoriali singole e auditate;
+- decidere se gli `editor` possono scrivere audit log o se le prime scritture restano solo `admin/super_admin`;
+- validare `content_type`, `id`, `status` e `visibility` dentro SQL;
+- testare anon/free_user/editor/admin prima di esporre form in UI.

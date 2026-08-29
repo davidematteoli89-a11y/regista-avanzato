@@ -442,3 +442,31 @@ Verifica C.4.4-A completata:
 Resta fuori scope:
 
 - audit e bonifica di eventuali altre view `admin_*` non editoriali create in origine con `select *`.
+
+## C.5.1 — Server Actions admin sicure + audit log
+
+Stato: audit completato, nessuna Server Action reale attivata.
+
+Risultato audit:
+
+- le pagine admin editoriali candidate sono `/admin/generated-content/articles`, `/admin/news-radar`, `/admin/story-library`, `/admin/historical-echo`;
+- le tabelle `public_articles`, `news_archive`, `story_library` e `historical_echoes` hanno già campi per `status`, `visibility`, `internal_notes`, `reviewed_at`, `approved_by`, `published_at` e `updated_at`;
+- `admin_audit_logs` supporta audit append-only con `before_data`, `after_data` e `metadata`;
+- RLS permette gestione editoriale a `is_editor_or_admin()`;
+- l’audit log permette insert solo a `is_admin()`.
+
+Perché non è stata implementata la mutazione reale:
+
+- una Server Action TypeScript farebbe almeno due operazioni separate: update contenuto e insert audit log;
+- senza una RPC SQL transazionale non si può garantire che ogni update abbia sempre il relativo audit log;
+- estendere le scritture agli editor richiede una decisione RLS esplicita perché oggi l’audit insert è solo admin.
+
+Piano C.5.2:
+
+- creare una migrazione SQL non applicata con RPC transazionali per `update_internal_notes` e `unpublish/rollback`;
+- mantenere whitelist dei content type;
+- aggiornare solo record singoli via UUID;
+- scrivere audit log nello stesso blocco SQL;
+- testare ruoli prima di aggiungere form operativi alla UI.
+
+Provider, Apify, Production e import restano spenti/non toccati.

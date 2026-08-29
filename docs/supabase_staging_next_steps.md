@@ -245,3 +245,34 @@ Non usare ancora:
 - `supabase db reset`;
 - Production;
 - provider o Apify.
+
+## C.5.1 — Piano scritture admin auditate
+
+Audit completato senza modifiche DB:
+
+- le tabelle editoriali sono pronte per aggiornamenti manuali minimi;
+- `admin_audit_logs` è presente e append-only;
+- le policy attuali proteggono le tabelle da anon/free_user;
+- manca però una RPC transazionale per garantire `update + audit log` come singola operazione.
+
+Prossimo passo consigliato:
+
+1. preparare una nuova migrazione SQL versionata, non applicata automaticamente;
+2. creare funzioni RPC per:
+   - aggiornamento `internal_notes`;
+   - rollback/unpublish singolo da `published` a `draft` o `archived`;
+3. validare in SQL:
+   - content type whitelistato;
+   - UUID;
+   - transizioni status ammesse;
+   - update solo per `id`;
+4. scrivere sempre su `admin_audit_logs` nello stesso blocco;
+5. decidere se abilitare solo admin/super_admin o anche editor;
+6. testare anon/free_user/editor/admin su staging.
+
+Fino a quel momento:
+
+- nessuna form admin deve modificare dati reali;
+- nessun delete reale;
+- nessun publish massivo;
+- nessun uso di service role per bypassare RLS.

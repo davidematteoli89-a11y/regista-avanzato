@@ -130,3 +130,25 @@ Gate ancora obbligatori prima della Production:
 - verifica blocco anon/free_user in Preview;
 - rollback plan disponibile;
 - nessun uso di `select *` nelle view admin editoriali usate dal codice.
+
+## Nota C.5.1 — Scritture admin e audit log
+
+Le scritture editoriali admin non sono ancora pronte per Production.
+
+Audit C.5.1:
+
+- tabelle editoriali idonee a note interne e rollback manuale;
+- RLS staff presente sulle tabelle operative;
+- `admin_audit_logs` append-only presente;
+- insert audit consentito solo ad admin/super_admin;
+- nessuna RPC transazionale ancora disponibile per garantire `update + audit log`.
+
+Gate obbligatori prima di attivare scritture reali:
+
+- RPC SQL transazionali per ogni mutazione editoriale;
+- audit log scritto nello stesso blocco della modifica;
+- niente update massivi;
+- niente delete reale;
+- test ruoli anon/free_user/editor/admin;
+- UI con conferma esplicita per rollback/unpublish;
+- nessun uso di `SUPABASE_SERVICE_ROLE_KEY` nel client o per bypassare RLS.

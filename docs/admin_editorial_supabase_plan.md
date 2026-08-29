@@ -192,3 +192,59 @@ Verifica C.4.4-A su staging:
 Rischio residuo:
 
 - eventuali altre view `admin_*` fuori scope editoriale potrebbero ancora derivare dal pattern generico `select *` e vanno auditate in una fase successiva.
+
+## C.5.1 — Server Actions admin sicure + audit log
+
+Stato: audit completato, implementazione reale rimandata.
+
+Pagine admin candidate per prime azioni manuali:
+
+- `/admin/generated-content/articles`;
+- `/admin/news-radar`;
+- `/admin/story-library`;
+- `/admin/historical-echo`.
+
+Tabelle editoriali candidate:
+
+- `public_articles`;
+- `news_archive`;
+- `story_library`;
+- `historical_echoes`.
+
+Campi disponibili nelle tabelle:
+
+- `status`;
+- `visibility`;
+- `internal_notes`;
+- `reviewed_at`;
+- `approved_by`;
+- `published_at`;
+- `updated_at`.
+
+Tabella audit disponibile:
+
+- `admin_audit_logs`;
+- campi principali: `admin_user_id`, `action`, `entity_type`, `entity_id`, `before_data`, `after_data`, `metadata`, `created_at`;
+- RLS append-only: `select` e `insert` solo per admin, nessun `update/delete`.
+
+Decisione tecnica:
+
+- non implementare ancora Server Actions reali da UI;
+- il codice client/server può aggiornare le tabelle editoriali via RLS staff, ma non può garantire in modo atomico `update + audit log`;
+- per rispettare l’obbligo di audit serve una RPC SQL transazionale o funzione `security definer` controllata;
+- gli editor non possono ancora scrivere audit log perché `admin_audit_logs_admin_insert` usa `public.is_admin()`.
+
+Azioni previste per C.5.2:
+
+- `update_editorial_internal_notes(content_type, id, notes)`;
+- `unpublish_editorial_content(content_type, id, target_status)`;
+- entrambe devono aggiornare un singolo record, scrivere audit log nello stesso blocco SQL e rifiutare input non whitelistato.
+
+Azioni ancora vietate:
+
+- delete reale;
+- publish massivo;
+- create draft da UI;
+- AI generation;
+- Substack API;
+- provider/import/Apify.
