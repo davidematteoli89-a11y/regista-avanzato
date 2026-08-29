@@ -165,9 +165,9 @@ TODO C.5.2:
 - validare `content_type`, `id`, `status` e `visibility` dentro SQL;
 - testare anon/free_user/editor/admin prima di esporre form in UI.
 
-## C.5.2 — RPC transazionali preparate
+## C.5.2 / C.5.2-A — RPC transazionali preparate e applicate su staging
 
-Preparata migrazione non applicata:
+Migrazione applicata manualmente su Supabase staging:
 
 - `0008_admin_editorial_transactional_actions.sql`.
 
@@ -180,7 +180,7 @@ Scelta di sicurezza:
 
 - solo admin/super_admin nella prima versione;
 - niente editor finché non viene estesa e testata la policy di audit log;
-- niente Server Actions UI finché la migrazione non viene applicata e testata.
+- niente Server Actions UI finché le RPC non vengono testate con una sessione admin reale dell’app.
 
 Controlli integrati:
 
@@ -193,11 +193,18 @@ Controlli integrati:
 - niente publish massivo;
 - niente nomi tabella dinamici.
 
-Da verificare in C.5.2-A:
+Verificato in C.5.2-A:
 
+- il Supabase SQL Editor non fornisce una sessione Auth admin dell’app: `auth.uid()` risulta `null`;
+- `public.is_admin()` risulta `false`;
+- la RPC blocca correttamente la chiamata con `admin_editorial_action_forbidden`;
+- il controllo `public.is_admin()` resta obbligatorio e non va rimosso.
+
+Da verificare in C.5.3:
+
+- admin esegue RPC tramite Server Action/sessione reale e genera audit;
 - anon non esegue RPC;
 - free_user non esegue RPC;
-- admin esegue RPC e genera audit;
 - rollback/unpublish rimuove pubblicazione ma non cancella dati;
 - pagine pubbliche non mostrano più il contenuto dopo unpublish;
 - pagine admin continuano a leggerlo come private/draft/archived.

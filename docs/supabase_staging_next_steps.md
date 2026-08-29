@@ -277,32 +277,30 @@ Fino a quel momento:
 - nessun publish massivo;
 - nessun uso di service role per bypassare RLS.
 
-## C.5.2-A — Applicazione manuale futura RPC admin
+## C.5.2-A — Applicazione manuale RPC admin
 
-Migrazione pronta ma non applicata:
+Migrazione applicata manualmente su Supabase staging:
 
 - `supabase/migrations/0008_admin_editorial_transactional_actions.sql`.
 
-Applicazione consigliata:
+Verifica eseguita:
 
-1. aprire Supabase SQL Editor sullo staging Regista Avanzato;
-2. copiare il contenuto della migrazione `0008`;
-3. eseguire una sola volta;
-4. verificare funzioni e grant;
-5. testare prima `update_editorial_internal_notes` su un record demo;
-6. verificare riga in `admin_audit_logs`;
-7. testare `unpublish_editorial_content` solo dopo aver scelto un contenuto demo sacrificabile;
-8. verificare che anon/free_user non possano eseguire le RPC;
-9. verificare provider/import/Apify spenti.
+- dal Supabase SQL Editor, `auth.uid()` risulta `null`;
+- dal Supabase SQL Editor, `public.is_admin()` risulta `false`;
+- una chiamata diretta a `update_editorial_internal_notes` fallisce correttamente con `admin_editorial_action_forbidden`;
+- il blocco è atteso perché il SQL Editor non rappresenta la sessione Supabase Auth dell’utente admin dell’app;
+- il controllo `public.is_admin()` resta corretto e non va rimosso.
 
-Query di verifica incluse nel file:
+Resta da testare:
 
-- presenza funzioni;
-- grant execute;
-- selezione record demo;
-- test update note;
-- controllo audit log;
-- controllo provider/import spenti.
+- chiamata positiva tramite Server Action con sessione admin reale;
+- scrittura audit log associata alla modifica;
+- fallimento per anon/free_user da contesto applicativo;
+- eventuale test `unpublish_editorial_content` solo su contenuto demo sacrificabile.
+
+Prossimo passo consigliato:
+
+- C.5.3: creare un piano per Server Action di test controllata, senza UI definitiva e senza abbassare la sicurezza.
 
 Rollback SQL, se necessario:
 

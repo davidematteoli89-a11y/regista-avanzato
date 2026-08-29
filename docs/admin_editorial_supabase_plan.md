@@ -249,9 +249,9 @@ Azioni ancora vietate:
 - Substack API;
 - provider/import/Apify.
 
-## C.5.2 — Migrazione RPC transazionali admin editoriali
+## C.5.2 / C.5.2-A — Migrazione RPC transazionali admin editoriali
 
-Stato: migrazione SQL preparata, non applicata.
+Stato: migrazione SQL preparata, applicata manualmente su Supabase staging e verificata lato blocco sicurezza.
 
 Migrazione:
 
@@ -297,14 +297,21 @@ Permessi:
 - `grant execute` solo a `authenticated`;
 - i `free_user` vengono bloccati dentro la funzione dal controllo ruolo.
 
-Piano test C.5.2-A:
+Verifica C.5.2-A:
 
-- applicare manualmente la migrazione solo su staging;
-- verificare esistenza funzioni e grant execute;
-- testare chiamata admin su un contenuto demo;
-- verificare audit log;
-- testare che anon/free_user falliscano;
-- verificare provider/import/Apify ancora spenti.
+- la migrazione `0008_admin_editorial_transactional_actions.sql` è stata applicata manualmente su Supabase staging;
+- le RPC risultano create;
+- il test diretto da Supabase SQL Editor ha confermato `auth.uid() = null` e `public.is_admin() = false`;
+- la chiamata diretta a `update_editorial_internal_notes` dal SQL Editor fallisce correttamente con `admin_editorial_action_forbidden`;
+- questo comportamento è atteso perché il SQL Editor non esegue la funzione come sessione Supabase Auth dell’utente admin dell’app;
+- non va rimosso `public.is_admin()`;
+- non va abbassata la sicurezza;
+- `unpublish_editorial_content` non è stata testata e non va chiamata su contenuti demo finché non c’è un piano dedicato.
+
+Test positivo rimandato:
+
+- il test `update + audit log` positivo va eseguito nella fase successiva tramite Server Action o altro contesto che usi davvero la sessione admin Supabase dell’app;
+- la UI resta non collegata finché non viene definito il piano C.5.3.
 
 Rollback:
 

@@ -471,9 +471,9 @@ Piano C.5.2:
 
 Provider, Apify, Production e import restano spenti/non toccati.
 
-## C.5.2 — Migrazione RPC transazionali admin editoriali
+## C.5.2 / C.5.2-A — Migrazione RPC transazionali admin editoriali
 
-Stato: migrazione preparata, non applicata.
+Stato: migrazione preparata, applicata manualmente su Supabase staging e verificata lato blocco sicurezza.
 
 File creato:
 
@@ -503,6 +503,16 @@ Garanzia transazionale:
 - se l’audit fallisce, fallisce anche la modifica;
 - non ci sono delete o update massivi.
 
+Verifica C.5.2-A:
+
+- migrazione `0008_admin_editorial_transactional_actions.sql` applicata manualmente su staging;
+- RPC create;
+- `select auth.uid(), public.is_admin();` dal Supabase SQL Editor restituisce `auth.uid = null` e `is_admin = false`;
+- la chiamata diretta a `update_editorial_internal_notes` dal SQL Editor fallisce con `admin_editorial_action_forbidden`;
+- il risultato è corretto: il SQL Editor non simula la sessione Supabase Auth dell’utente admin dell’app;
+- il controllo `public.is_admin()` non va rimosso né indebolito;
+- `unpublish_editorial_content` non è stata eseguita.
+
 Non implementato:
 
 - UI form;
@@ -515,4 +525,4 @@ Non implementato:
 
 Prossima sottofase:
 
-- C.5.2-A: applicazione manuale su Supabase staging e test RPC con utente admin controllato.
+- C.5.3: piano e test tramite Server Action/admin session reale per verificare `update + audit log` positivo senza abbassare la sicurezza.

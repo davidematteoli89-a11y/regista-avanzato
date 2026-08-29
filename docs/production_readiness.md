@@ -160,7 +160,7 @@ La migrazione `0008_admin_editorial_transactional_actions.sql` prepara due RPC a
 - `update_editorial_internal_notes`;
 - `unpublish_editorial_content`.
 
-Non è stata applicata al database.
+È stata applicata manualmente su Supabase staging.
 
 La scelta iniziale è prudente:
 
@@ -169,9 +169,17 @@ La scelta iniziale è prudente:
 - nessuna UI o Server Action reale ancora collegata;
 - nessun publish o delete.
 
+Verifica C.5.2-A:
+
+- il SQL Editor Supabase non ha sessione Auth admin dell’app: `auth.uid()` è `null`;
+- `public.is_admin()` risulta `false`;
+- la chiamata diretta alla RPC dal SQL Editor fallisce con `admin_editorial_action_forbidden`;
+- questo conferma il blocco sicurezza, non un bug;
+- non va rimosso né indebolito il controllo `public.is_admin()`.
+
 Prima della Production resta obbligatorio:
 
-- applicare e testare la migrazione su staging;
+- testare chiamata positiva tramite Server Action/sessione admin reale;
 - verificare audit log per ogni mutazione;
 - testare rollback su dati demo;
 - confermare comportamento anon/free_user/editor/admin;
