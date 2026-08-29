@@ -114,3 +114,25 @@ Checklist aggiornata dopo fix CTA:
 - Registrare ogni scrittura in `admin_audit_logs`.
 - Implementare rollback/unpublish prima di delete.
 - Testare editor/admin/free_user/anon su ogni azione.
+
+## C.4.4 — Hardening view admin
+
+- Preparata migrazione `0007_admin_editorial_views_explicit_columns.sql`.
+- Obiettivo: sostituire le quattro view admin editoriali usate dal codice con versioni a colonne esplicite.
+- Nessuna policy RLS viene modificata.
+- Nessuna tabella base viene alterata.
+- Nessun dato viene cancellato.
+- Le colonne interne restano visibili solo dove servono alla UI admin:
+  - `internal_notes`;
+  - `internal_warnings`;
+  - `internal_score`.
+- Le public view restano separate e non ricevono score/warning/note interne.
+
+Verifiche obbligatorie prima/dopo applicazione staging:
+
+- applicare manualmente solo la migrazione `0007`;
+- verificare che le quattro view esistano;
+- verificare grant solo a `authenticated`;
+- verificare che anon non legga le view admin;
+- verificare che free_user non staff non legga le view admin;
+- verificare che admin legga ancora le sezioni editoriali.

@@ -85,7 +85,7 @@ I blocchi admin mostrano:
 ## Rischi residui
 
 - I detail admin specifici restano in buona parte mock e non leggono ancora il record Supabase puntuale.
-- Le view `admin_*` usano `select *` a livello SQL: accettabile solo perché protette da RBAC, ma in futuro conviene creare view admin con colonne esplicite per area.
+- Le view `admin_*` originali usavano `select *` a livello SQL: C.4.4 prepara una migrazione per restringere le quattro view editoriali admin usate dal codice.
 - Le azioni reali dovranno avere audit log e conferme anti-mass-update prima dell’attivazione.
 
 ## Verifica Preview C.4.1
@@ -129,3 +129,51 @@ Restano non implementati:
 - audit log per azioni editoriali;
 - detail admin puntuali da record Supabase;
 - attivazione provider/import.
+
+## C.4.4 — View admin editoriali a colonne esplicite
+
+Stato: migrazione preparata, non applicata.
+
+Migrazione:
+
+- `supabase/migrations/0007_admin_editorial_views_explicit_columns.sql`.
+
+View analizzate:
+
+- `admin_public_articles`;
+- `admin_news_archive`;
+- `admin_story_library`;
+- `admin_historical_echoes`.
+
+Problema:
+
+- le view staff create in `0003_rls_policies.sql` erano generate genericamente con `select *`;
+- anche se protette da `public.is_editor_or_admin()`, `select *` aumenta il rischio futuro di esporre colonne nuove o non necessarie alle UI admin.
+
+Colonne mantenute:
+
+- `admin_public_articles`: `id`, `slug`, `title`, `status`, `visibility`, `published_at`, `created_at`, `updated_at`, `reviewed_at`, `internal_notes`;
+- `admin_news_archive`: `id`, `slug`, `title`, `status`, `visibility`, `published_at`, `created_at`, `updated_at`, `reviewed_at`, `internal_notes`, `review_status`, `internal_warnings`, `internal_score`;
+- `admin_story_library`: `id`, `slug`, `title`, `status`, `visibility`, `published_at`, `created_at`, `updated_at`, `reviewed_at`, `internal_notes`, `story_type`;
+- `admin_historical_echoes`: `id`, `slug`, `title`, `status`, `visibility`, `published_at`, `created_at`, `updated_at`, `reviewed_at`, `internal_notes`, `echo_type`, `reviewed_by_human`, `internal_score`, `internal_warnings`.
+
+Colonne escluse:
+
+- body/testi lunghi non necessari alle liste admin;
+- raw/source payload;
+- relation id non usati dalla UI;
+- author/approved ids non mostrati;
+- campi futuri non richiesti dai reader;
+- qualsiasi token/config/costo/log, non presenti in queste view editoriali.
+
+Compatibilità codice:
+
+- `lib/admin/getAdminEditorialContent.ts` già seleziona solo le colonne mantenute;
+- `lib/admin/adminEditorialTypes.ts` non richiede modifiche;
+- le pagine admin C.4 restano compatibili.
+
+Rollback manuale:
+
+- se la migrazione crea problemi, ricreare temporaneamente le view con la logica precedente `select * from public.<table> where public.is_editor_or_admin()`;
+- poi ripristinare `revoke all` e `grant select ... to authenticated`;
+- verificare subito `/admin/generated-content/articles`, `/admin/news-radar`, `/admin/story-library`, `/admin/historical-echo`.

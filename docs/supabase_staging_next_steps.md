@@ -210,3 +210,31 @@ Prima di rendere operative azioni manuali:
 - testare RLS per editor e admin;
 - preferire unpublish/rollback a delete;
 - mantenere publish massivo disabilitato.
+
+## C.4.4 — Prossimo hardening SQL manuale
+
+Migrazione pronta ma non applicata:
+
+- `supabase/migrations/0007_admin_editorial_views_explicit_columns.sql`.
+
+Obiettivo:
+
+- sostituire le view admin editoriali `select *` con view a colonne esplicite;
+- preservare i nomi view già usati dai reader admin;
+- ridurre rischio di leakage futuro se le tabelle base ricevono nuove colonne.
+
+Applicazione consigliata:
+
+1. aprire Supabase SQL Editor sullo staging Regista Avanzato;
+2. copiare solo il contenuto di `0007_admin_editorial_views_explicit_columns.sql`;
+3. eseguire una volta;
+4. verificare che le view esistano e abbiano solo le colonne previste;
+5. testare `/admin/generated-content/articles`, `/admin/news-radar`, `/admin/story-library`, `/admin/historical-echo`;
+6. verificare anon/free_user bloccati sulle view admin.
+
+Non usare ancora:
+
+- `supabase db push`;
+- `supabase db reset`;
+- Production;
+- provider o Apify.

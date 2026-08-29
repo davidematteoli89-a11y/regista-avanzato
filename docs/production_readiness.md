@@ -102,3 +102,23 @@ Prima della Production resta obbligatorio:
 - rigenerare eventuali email/link dopo ogni cambio URL Auth;
 - testare registrazione, conferma email, login, logout e recovery password sul dominio finale;
 - misurare performance login/logout senza Vercel Preview Protection.
+
+## Nota C.4.4 — View admin esplicite
+
+Prima della Production va applicato e verificato lo hardening delle view admin editoriali:
+
+- `admin_public_articles`;
+- `admin_news_archive`;
+- `admin_story_library`;
+- `admin_historical_echoes`.
+
+La migrazione preparata `0007_admin_editorial_views_explicit_columns.sql` restringe queste view alle colonne effettivamente usate dalla UI admin.
+
+Gate obbligatori:
+
+- applicazione manuale prima su staging;
+- verifica admin/editor;
+- verifica blocco anon/free_user;
+- controllo colonne esposte;
+- rollback plan disponibile;
+- nessun uso di `select *` nelle view admin editoriali usate dal codice.

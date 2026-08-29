@@ -395,3 +395,42 @@ Da misurare nel browser:
 - tempo submit login -> `/account`;
 - tempo click `Esci` admin -> `/login`;
 - eventuali doppie navigazioni nel Network panel.
+
+## C.4.4 — Admin view con colonne esplicite
+
+Stato: migrazione preparata, non applicata.
+
+Audit:
+
+- `0003_rls_policies.sql` crea view staff generiche `admin_*` con `select *`;
+- le quattro view usate dalle pagine admin editoriali sono:
+  - `admin_public_articles`;
+  - `admin_news_archive`;
+  - `admin_story_library`;
+  - `admin_historical_echoes`;
+- i reader admin C.4 selezionano già colonne esplicite e non richiedono modifiche.
+
+Migrazione preparata:
+
+- `supabase/migrations/0007_admin_editorial_views_explicit_columns.sql`.
+
+Scelta tecnica:
+
+- `CREATE OR REPLACE VIEW` non è sicuro per rimuovere colonne da view esistenti;
+- la migrazione usa quindi `DROP VIEW IF EXISTS` e `CREATE VIEW` solo per le quattro view editoriali admin;
+- non altera tabelle, dati, provider, import o RLS.
+
+Colonne escluse dalle liste admin:
+
+- body/testi lunghi;
+- source payload e JSON non necessari;
+- relation id non mostrati;
+- author/approved ids non usati;
+- colonne future non richieste dalla UI.
+
+Da verificare prima di applicare:
+
+- staging corrente;
+- nessuna dipendenza SQL dalle quattro view;
+- lettura admin dopo migrazione;
+- anon/free_user non autorizzati.
