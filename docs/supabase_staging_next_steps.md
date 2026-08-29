@@ -115,8 +115,7 @@ FASE C:
 - Alias branch Preview: `https://regista-avanzato-git-preview-davide-matteoli.vercel.app`.
 - Bug manuale rilevato: il CTA `Accedi gratis` da non loggato era visibile ma non navigava correttamente sul dominio Preview.
 - Fix locale preparato: CTA separati `Accedi` -> `/login` e `Registrati gratis` -> `/registrati`; `Accedi` usa anchor HTML standard.
-- Test browser autenticato ancora da completare manualmente:
-  - completato dall'utente e verificato come funzionante.
+- Test browser autenticato completato manualmente e verificato come funzionante.
 - Conferme:
   - navbar `Accedi`/`Registrati gratis` da non loggato;
   - `Accedi` apre `/login`;
@@ -350,3 +349,56 @@ Se il test fallisce:
 - non usare service role;
 - registrare codice errore applicativo;
 - verificare sessione Supabase Auth e ruolo `users_profile`.
+
+## C.5.3-A — Verifica Preview note interne completata
+
+La verifica manuale su Vercel Preview è stata completata con sessione admin reale.
+
+Confermato:
+
+- deployment Preview del commit `91e3e89` Ready;
+- login admin riuscito;
+- `/admin/generated-content/articles` accessibile;
+- textarea `Note interne`, bottone `Salva note` e badge `Staging manual action` visibili;
+- salvataggio nota interna demo riuscito;
+- pagina aggiornata senza errore;
+- `admin_audit_logs` contiene una nuova riga `update_editorial_internal_notes`;
+- `before_data`, `after_data`, `metadata` e `created_at` recente presenti;
+- unpublish/publish/delete/create draft non presenti;
+- provider/Apify spenti;
+- Production non toccata.
+
+Query audit usata per la verifica:
+
+```sql
+select
+  action,
+  entity_type,
+  entity_id,
+  before_data,
+  after_data,
+  metadata,
+  created_at
+from public.admin_audit_logs
+where action = 'update_editorial_internal_notes'
+order by created_at desc
+limit 5;
+```
+
+Risultato atteso:
+
+- `action = update_editorial_internal_notes`;
+- `entity_type` coerente con la sezione testata, inizialmente `article`;
+- `entity_id` uguale al contenuto modificato;
+- `before_data` presente;
+- `after_data` presente;
+- `metadata` presente;
+- `created_at` recente.
+
+Non eseguire ancora:
+
+- `unpublish_editorial_content`;
+- publish;
+- delete;
+- create draft;
+- azioni massive.

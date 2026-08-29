@@ -284,3 +284,79 @@ Non eseguito:
 - modifica env;
 - attivazione provider;
 - attivazione Apify.
+
+## C.5.3-A — Server Action note interne admin
+
+Stato: verifica manuale Preview completata.
+
+Commit verificato:
+
+- `91e3e89`.
+
+Branch/environment attesi:
+
+- branch `preview`;
+- environment `Preview`;
+- Deployment Protection attiva.
+
+Route da testare:
+
+- `/admin/generated-content/articles`.
+
+Elementi UI attesi:
+
+- blocco Supabase staging;
+- textarea `Note interne`;
+- bottone `Salva note`;
+- badge `Staging manual action`;
+- nessun bottone unpublish;
+- nessun publish;
+- nessun delete;
+- nessun create draft operativo.
+
+Test manuale completato:
+
+1. deployment Preview commit `91e3e89` Ready;
+2. login come admin riuscito;
+3. `/admin/generated-content/articles` accessibile;
+4. textarea `Note interne` visibile;
+5. bottone `Salva note` visibile;
+6. badge `Staging manual action` visibile;
+7. modifica nota interna demo riuscita;
+8. pagina aggiornata senza errore;
+9. `admin_audit_logs` verificato con nuova riga `update_editorial_internal_notes`.
+
+Query audit:
+
+```sql
+select
+  action,
+  entity_type,
+  entity_id,
+  before_data,
+  after_data,
+  metadata,
+  created_at
+from public.admin_audit_logs
+where action = 'update_editorial_internal_notes'
+order by created_at desc
+limit 5;
+```
+
+Risultato confermato:
+
+- `action = update_editorial_internal_notes`;
+- `entity_type = article`;
+- `before_data`, `after_data`, `metadata` presenti;
+- `created_at` recente.
+- unpublish non presente;
+- publish non presente;
+- delete non presente;
+- create draft non presente;
+- provider/Apify spenti;
+- Production non toccata.
+
+Nota:
+
+- il test positivo richiede sessione admin reale nel browser;
+- non va simulato dal Supabase SQL Editor, dove `auth.uid()` risulta `null`.

@@ -243,3 +243,28 @@ Test richiesti prima di considerarla stabile:
 - free_user/anon bloccati da `/admin`;
 - errore RPC gestito senza dettagli sensibili;
 - nessuna modifica pubblica indesiderata.
+
+## C.5.3-A — Test Preview completato
+
+La Server Action è stata verificata manualmente su Vercel Preview con sessione admin reale.
+
+Verificato manualmente:
+
+- Deployment Preview del commit `91e3e89` in stato Ready;
+- login admin riuscito;
+- `/admin/generated-content/articles` accessibile;
+- textarea `Note interne`, bottone `Salva note` e badge `Staging manual action` visibili;
+- salvataggio nota interna demo riuscito;
+- pagina aggiornata senza errore;
+- riga `admin_audit_logs` creata dalla RPC `update_editorial_internal_notes`;
+- `before_data`, `after_data`, `metadata` e `created_at` recente confermati;
+- nessun pulsante unpublish/publish/delete/create esposto;
+- provider/Apify spenti;
+- Production non toccata.
+
+Nota sicurezza:
+
+- il test positivo non va simulato dal SQL Editor, dove `auth.uid()` risulta `null`;
+- non rimuovere `public.is_admin()`;
+- non usare service role;
+- non aggirare RLS.

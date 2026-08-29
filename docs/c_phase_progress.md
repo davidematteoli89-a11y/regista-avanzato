@@ -563,3 +563,40 @@ Da testare manualmente:
 - blocco anon/free_user;
 - nessun impatto sulle public view salvo aggiornamento metadati admin;
 - comportamento Preview dopo eventuale commit/push.
+
+## C.5.3-A — Verifica Preview Server Action note interne
+
+Stato: verificata manualmente su Vercel Preview.
+
+Commit verificato:
+
+- `91e3e89`.
+
+Risultati confermati:
+
+- deployment Preview del commit `91e3e89` Ready;
+- login admin riuscito;
+- `/admin/generated-content/articles` accessibile;
+- blocco Supabase staging visibile;
+- textarea `Note interne` visibile;
+- bottone `Salva note` visibile;
+- badge `Staging manual action` visibile;
+- modifica nota interna demo riuscita;
+- pagina aggiornata senza errore;
+- `admin_audit_logs` contiene una nuova riga `update_editorial_internal_notes`;
+- `before_data`, `after_data`, `metadata` e `created_at` recente presenti;
+- unpublish/publish/delete/create draft non presenti;
+- provider/Apify spenti;
+- Production non toccata.
+
+Nota operativa:
+
+- il test positivo non va completato dal SQL Editor perché `auth.uid()` lì è `null`;
+- non richiedere o condividere password in chat.
+
+Esito audit atteso e confermato:
+
+- `action = update_editorial_internal_notes`;
+- `entity_type = article`;
+- `before_data`, `after_data`, `metadata` presenti;
+- `created_at` recente.

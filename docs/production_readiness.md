@@ -207,3 +207,22 @@ Gate obbligatori:
 - gestione errori senza leakage;
 - nessun unpublish/publish/delete finché non viene pianificata C.5.4;
 - revisione UX prima di rendere le azioni disponibili fuori dallo staging.
+
+## Nota C.5.3-A — Verifica Preview completata
+
+La verifica Preview della Server Action note interne è stata completata con sessione admin reale dell’app.
+
+Confermato:
+
+- deployment Preview del commit `91e3e89` Ready;
+- login admin riuscito;
+- `/admin/generated-content/articles` accessibile;
+- form note interne visibile nell’admin protetto;
+- salvataggio note riuscito;
+- riga audit log creata dalla RPC `update_editorial_internal_notes`;
+- `before_data`, `after_data`, `metadata` e `created_at` recente presenti;
+- nessun pulsante unpublish/publish/delete/create esposto;
+- provider/Apify spenti;
+- Production non toccata.
+
+Le scritture admin restano comunque staging-only finché non saranno completati i test multi-entità, rollback e hardening operativo pre-produzione.

@@ -377,3 +377,65 @@ Test manuale richiesto:
 - verificare che la pagina ritorni aggiornata;
 - verificare `admin_audit_logs`;
 - verificare che anon/free_user non possano accedere alla UI admin o chiamare la action.
+
+## C.5.3-A — Verifica Preview Server Action note interne
+
+Stato: verificata manualmente su Vercel Preview con sessione admin reale.
+
+Deployment atteso:
+
+- branch `preview`;
+- commit `91e3e89`;
+- environment `Preview`;
+- Deployment Protection attiva.
+
+Limite della verifica automatica:
+
+- il dominio Preview è protetto;
+- l’agente non deve conoscere credenziali Supabase admin;
+- il test positivo richiede una sessione reale dell’app, quindi va eseguito manualmente nel browser.
+
+Checklist Preview completata:
+
+- deployment Preview del commit `91e3e89` in stato Ready;
+- login admin riuscito;
+- `/admin/generated-content/articles` accessibile;
+- blocco Supabase staging visibile;
+- textarea `Note interne` visibile;
+- bottone `Salva note` visibile;
+- badge `Staging manual action` visibile;
+- salvataggio nota interna su contenuto demo riuscito;
+- pagina aggiornata senza errore;
+- nuova riga `admin_audit_logs` con `action = update_editorial_internal_notes`.
+
+Query audit:
+
+```sql
+select
+  action,
+  entity_type,
+  entity_id,
+  before_data,
+  after_data,
+  metadata,
+  created_at
+from public.admin_audit_logs
+where action = 'update_editorial_internal_notes'
+order by created_at desc
+limit 5;
+```
+
+Ancora vietato/non presente:
+
+- unpublish;
+- publish;
+- delete;
+- create draft;
+- provider/import/Apify.
+
+Audit log confermato:
+
+- `before_data` presente;
+- `after_data` presente;
+- `metadata` presente;
+- `created_at` recente.
