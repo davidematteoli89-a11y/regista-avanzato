@@ -10,7 +10,8 @@
     "typecheck": "tsc --noEmit",
     "audit:providers": "node --no-warnings --experimental-strip-types scripts/provider/auditProviderConfig.ts",
     "dry-run:stable-provider": "node --no-warnings --experimental-strip-types scripts/provider/dryRunStableProvider.ts",
-    "dry-run:provider-logging": "node --no-warnings --experimental-strip-types scripts/provider/dryRunProviderLogging.ts"
+    "dry-run:provider-logging": "node --no-warnings --experimental-strip-types scripts/provider/dryRunProviderLogging.ts",
+    "dry-run:provider-writer-guards": "node --no-warnings --experimental-strip-types scripts/provider/dryRunProviderWriterGuards.ts"
   },
   "dependencies": {
     "@supabase/ssr": "0.12.4",

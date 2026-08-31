@@ -347,3 +347,47 @@ Prima dell’attivazione reale restano obbligatori:
 - budget reale da Supabase;
 - rollback batch;
 - approvazione manuale per ogni primo import.
+
+## D.5 — Writer/log guard disabilitati
+
+Stato: preparato localmente.
+
+Sono stati introdotti contratti safe per i futuri writer provider:
+
+- `assertProviderWritesDisabled()`;
+- `buildProviderImportBatchId()`;
+- `buildProviderImportLogPreview()`;
+- `buildApiUsageLogPreview()`;
+- `buildRollbackPlanPreview()`.
+
+Il comportamento voluto è conservativo:
+
+- un tentativo di scrittura viene bloccato;
+- il writer restituisce solo preview/report;
+- non apre client Supabase;
+- non usa service role;
+- non chiama provider;
+- non chiama Apify.
+
+Comando di verifica:
+
+```bash
+npm run dry-run:provider-writer-guards
+```
+
+Risultato atteso:
+
+- `real_writes_enabled=false`;
+- `write_attempt_blocked=true`;
+- preview log ok;
+- rollback preview ok;
+- warnings 0.
+
+Prima di trasformare questo layer in writer reale serviranno:
+
+1. decisione su `batch_id/import_run_id` nello schema;
+2. writer server-side esplicito e testato;
+3. RLS/admin policy sui log;
+4. rollback query;
+5. flag manuale per ambiente staging;
+6. conferma utente prima del primo DB write.

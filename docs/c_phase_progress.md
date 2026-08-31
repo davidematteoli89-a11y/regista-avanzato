@@ -869,3 +869,31 @@ Conferme:
 Prossimo step consigliato:
 
 - D.5: progettare writer log/import ancora spenti, prima di qualunque attivazione reale.
+
+## D.5 — Provider writer/log guard disabilitati
+
+Stato: implementato localmente, non committato finché non confermato.
+
+Creato:
+
+- `lib/provider/providerWriteGuards.ts`;
+- `lib/provider/providerImportWriter.ts`;
+- `scripts/provider/dryRunProviderWriterGuards.ts`;
+- script npm `dry-run:provider-writer-guards`.
+
+Confermato:
+
+- `realWritesEnabled=false`;
+- tentativo scrittura bloccato;
+- preview `provider_import_logs` ok;
+- preview `api_usage_logs` ok;
+- preview rollback ok;
+- nessuna fetch esterna;
+- nessuna scrittura DB;
+- nessun token letto/stampato;
+- provider/Apify/import restano spenti;
+- Production non toccata.
+
+Nota:
+
+- `batch_id` è preview-only perché non esiste ancora nello schema staging.

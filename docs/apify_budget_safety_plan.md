@@ -181,3 +181,23 @@ Prima di una run Apify reale serviranno ancora:
 - log persistiti;
 - dry-run su una sola competizione P1;
 - conferma manuale.
+
+## D.5 — Writer guard e budget ancora spenti
+
+D.5 aggiunge solo guardie locali per impedire scritture provider/import.
+
+Impatto su Apify:
+
+- nessuna run Apify;
+- nessuna lettura token;
+- nessuna scrittura `apify_usage_logs`;
+- nessun aggiornamento `apify_budget_status`;
+- nessun actor input operativo.
+
+Il budget guard resta simulato. Prima di Apify reale servirà un writer separato con:
+
+- controllo budget letto da Supabase staging;
+- hard stop transazionale prima della run;
+- log `skipped_budget` se bloccato;
+- preservazione ultimo dato valido;
+- approvazione manuale.

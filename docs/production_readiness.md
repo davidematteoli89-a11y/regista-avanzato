@@ -410,3 +410,23 @@ Restano bloccanti:
 - nessun monitoraggio costi reale;
 - Apify ancora spento;
 - migration tracking Supabase ancora da decidere.
+
+## Nota D.5 — Writer provider ancora disabilitati
+
+È stato preparato un layer di guardie per i futuri writer provider/import:
+
+- `realWritesEnabled=false`;
+- tentativi di scrittura bloccati;
+- nessun client Supabase;
+- nessun service role;
+- nessuna chiamata provider;
+- nessuna chiamata Apify.
+
+Production resta non pronta perché:
+
+- i log non vengono ancora persistiti;
+- `batch_id/import_run_id` non è ancora modellato nello schema;
+- non esiste writer transazionale di import;
+- non esiste rollback reale per batch;
+- provider e import restano spenti;
+- serve un piano dati/licenze prima di qualunque chiamata reale.

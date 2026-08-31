@@ -330,3 +330,58 @@ Limiti:
 D.5 consigliato:
 
 - progettare writer/import log server-side in modalità ancora disabilitata, con batch id, rollback e flag esplicito prima di ogni scrittura.
+
+## D.5 — Provider writer/log guard disabilitati
+
+Stato: preparato localmente, nessuna scrittura reale.
+
+Nuovo comando:
+
+```bash
+npm run dry-run:provider-writer-guards
+```
+
+Creati:
+
+- `lib/provider/providerWriteGuards.ts`;
+- `lib/provider/providerImportWriter.ts`;
+- `scripts/provider/dryRunProviderWriterGuards.ts`.
+
+Il layer rappresenta la forma futura dei writer provider, ma mantiene:
+
+- `realWritesEnabled=false`;
+- `external_fetch=false`;
+- `db_write=false`;
+- provider reali disattivati;
+- Apify disattivato;
+- nessun uso di service role;
+- nessuna lettura token/env.
+
+Output atteso:
+
+```text
+mode=dry_run
+competition_slug=serie-a
+provider=stable_provider
+real_writes_enabled=false
+external_fetch=false
+db_write=false
+batch_id=stable_provider:serie-a:dry_run:20260831120000
+provider_import_log_preview=ok
+api_usage_log_preview=ok
+rollback_plan_preview=ok
+write_attempt_blocked=true
+warnings=0
+```
+
+Nota schema:
+
+- `provider_import_logs`, `api_usage_logs` e `import_logs` esistono già;
+- lo schema attuale non ha una colonna `batch_id/import_run_id`;
+- in D.5 `batch_id` è quindi solo preview/documentale;
+- prima di un writer reale andrà deciso se aggiungere una colonna dedicata o usare metadata/notes in modo controllato.
+
+Rollback preview:
+
+- D.5 non richiede rollback perché non scrive dati;
+- il piano futuro prevede batch id, rollback ordinato e verifica prima di ogni commit dati.

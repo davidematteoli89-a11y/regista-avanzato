@@ -659,3 +659,24 @@ Prima di scrivere davvero log nello staging serviranno:
 Nota migration history:
 
 - le migrazioni applicate manualmente restano da allineare con una strategia di tracking prima di usare flussi automatici.
+
+## D.5 — Prima dei writer provider reali
+
+Il layer D.5 è volutamente bloccante:
+
+- nessuna insert su `provider_import_logs`;
+- nessuna insert su `api_usage_logs`;
+- nessuna insert su `import_logs`;
+- nessun upsert dati calcistici;
+- nessun uso service role.
+
+Prima di scrivere log reali nello staging decidere:
+
+1. se aggiungere `batch_id`/`import_run_id` alle tabelle log;
+2. come collegare `provider_import_logs` e `import_logs`;
+3. come gestire rollback per batch;
+4. come testare RLS/admin sui log;
+5. quale flag abilita scritture staging;
+6. come impedire esecuzioni lato utente.
+
+D.5 fornisce solo preview locali e guardie.
