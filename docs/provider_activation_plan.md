@@ -74,3 +74,153 @@ Il frontend non conosce provider esterni. Solo job server-side chiamano adapter,
 ## Go/no-go
 
 Go solo se contratto/licenza, budget, mapper testati, upsert idempotente, monitoraggio e fallback sono tutti verificati. In assenza di uno di questi elementi, mantenere `active: false` e usare mock.
+
+## D.1 — Provider activation dry-run audit
+
+Stato: piano dry-run preparato, nessun provider attivato.
+
+Provider modellati nel codice:
+
+- `mock_provider`: attivo nel catalogo locale, usato come fallback sviluppo/demo;
+- `manual_provider`: attivo nel catalogo locale, dedicato a fonti editoriali e link ufficiali manuali;
+- `stable_provider`: wrapper astratto per futuro provider stabile FULL_OFFICIAL, disattivato;
+- `the_stats_api`: adapter placeholder, disattivato;
+- `api_football`: adapter placeholder, disattivato;
+- `apify_sofascore`: adapter placeholder/dry-run per campionati minori, disattivato.
+
+Provider seedati nello staging:
+
+- 6 provider base da `0006_seed_base_data.sql`;
+- provider reali disattivati;
+- Apify disattivato;
+- import non abilitati.
+
+Competizioni modellate:
+
+- totale catalogo locale: 43;
+- FULL_OFFICIAL: 14;
+- APIFY_LIGHT_PLUS_PRIORITY_1: 15;
+- APIFY_LIGHT_PLUS_PRIORITY_2: 14;
+- TRIGGER concreti: 0.
+
+FULL_OFFICIAL:
+
+- Serie A;
+- Premier League;
+- LaLiga;
+- Bundesliga;
+- Ligue 1;
+- UEFA Champions League;
+- UEFA Europa League;
+- Copa Libertadores;
+- Brasileirão Série A;
+- Argentina Primera División;
+- Eredivisie;
+- Jupiler Pro League;
+- Primeira Liga;
+- Süper Lig.
+
+APIFY_LIGHT_PLUS_PRIORITY_1:
+
+- Swiss Super League;
+- Austrian Bundesliga;
+- Danish Superliga;
+- Allsvenskan;
+- Eliteserien;
+- Ekstraklasa;
+- HNL;
+- Serbian SuperLiga;
+- J1 League;
+- K League 1;
+- Major League Soccer;
+- Uruguayan Primera División;
+- Categoría Primera A;
+- Chilean Primera División;
+- Ligue 2.
+
+APIFY_LIGHT_PLUS_PRIORITY_2:
+
+- Super League Greece;
+- Czech First League;
+- Ukrainian Premier League;
+- Liga I Romania;
+- Nemzeti Bajnokság I;
+- Slovak Super Liga;
+- Slovenian PrvaLiga;
+- Premier League Bosnia and Herzegovina;
+- Bulgarian First League;
+- Liga 1 Peru;
+- Paraguayan Primera División;
+- Venezuelan Primera División;
+- Bolivian División Profesional;
+- Russian Premier League.
+
+Admin stato provider/import:
+
+- `/admin/providers` legge `data_providers` da Supabase staging se configurato, fallback mock;
+- `/admin/competitions` mostra configurazione descrittiva locale;
+- `/admin/imports` resta mock/dry-run;
+- `/admin/apify-usage` resta mock/dry-run;
+- nessuna pagina pubblica usa provider esterni.
+
+Tabelle principali coinvolte:
+
+- provider: `data_providers`, `provider_competition_config`;
+- import/log: `provider_import_logs`, `import_logs`, `api_usage_logs`;
+- Apify: `apify_usage_logs`, `apify_budget_status`;
+- calcio: `competitions`, `teams`, `players`, `matches`, `match_events`, `standings`;
+- statistiche: `team_match_stats`, `team_season_stats`, `player_match_stats`, `player_season_stats`.
+
+Query read-only staging:
+
+```sql
+select count(*) as active_providers
+from public.data_providers
+where is_active = true;
+
+select provider_key, name, provider_type, is_active, priority, monthly_budget_eur, warning_budget_eur, hard_stop_budget_eur
+from public.data_providers
+order by priority;
+
+select count(*) as enabled_imports
+from public.provider_competition_config
+where import_enabled = true;
+
+select tracking_level, count(*) as competitions
+from public.competitions
+group by tracking_level
+order by tracking_level;
+
+select c.slug, c.name, c.tracking_level, p.provider_key, pc.import_enabled, pc.priority, pc.data_confidence
+from public.provider_competition_config pc
+join public.competitions c on c.id = pc.competition_id
+join public.data_providers p on p.id = pc.provider_id
+order by c.tracking_level, c.slug, pc.priority;
+
+select status, count(*) as runs
+from public.import_logs
+group by status
+order by status;
+
+select status, count(*) as provider_runs
+from public.provider_import_logs
+group by status
+order by status;
+
+select *
+from public.apify_budget_status
+order by period_start desc
+limit 12;
+
+select count(*) as teams_demo from public.public_teams;
+select count(*) as matches_demo from public.public_matches;
+select count(*) as standings_demo from public.public_standings;
+```
+
+Go/no-go D.2:
+
+- non inserire token prima del dry-run;
+- non attivare `is_active` o `import_enabled`;
+- non aggiungere env su Production;
+- prima simulare un provider stabile su una sola competizione demo;
+- prima simulare Apify con budget mock e latest round only.

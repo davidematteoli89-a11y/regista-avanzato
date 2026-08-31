@@ -315,3 +315,27 @@ Production resta comunque bloccata finché non sono completati:
 - migration tracking;
 - revisione finale admin UX;
 - piano contenuti reali.
+
+## Nota D.1 — Provider reali non pronti per Production
+
+Il piano provider è stato preparato solo in modalità dry-run.
+
+Stato:
+
+- stable provider disattivato;
+- TheStatsAPI disattivato;
+- API-Football disattivato;
+- Apify/SofaScore disattivato;
+- import disattivati;
+- provider/manual/mock disponibili solo come fallback o contenuto controllato.
+
+Prima di Production è obbligatorio:
+
+- dry-run provider stabile su una sola competizione;
+- budget giornaliero/mensile configurato;
+- mapping ID esterni verificato;
+- logging `api_usage_logs`/`provider_import_logs`;
+- rollback batch;
+- nessuna pagina pubblica con provider diretto;
+- revisione licenze/diritti dati;
+- Apify test separato con budget hard stop.

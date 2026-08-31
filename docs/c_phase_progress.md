@@ -722,3 +722,37 @@ Nota `reason`:
 - codice verificato: il form invia `reason` e la Server Action lo passa come `p_reason`;
 - se il motivo era vuoto, comportamento ok;
 - se il motivo era compilato, preparare micro-fix per renderlo obbligatorio e ritestare.
+
+## D.1 — Provider activation dry-run plan
+
+Stato: audit/piano preparato, nessuna attivazione.
+
+Risultati audit:
+
+- provider modellati: mock, manual, stable wrapper, TheStatsAPI, API-Football, Apify/SofaScore;
+- provider seedati: 6;
+- provider reali spenti;
+- Apify spento;
+- import spenti;
+- competizioni catalogo locale: 43;
+- FULL_OFFICIAL: 14;
+- APIFY P1: 15;
+- APIFY P2: 14;
+- TRIGGER concreti: 0.
+
+Script esistenti:
+
+- import competizioni/squadre/partite/eventi/statistiche;
+- weekly Apify light import;
+- full stats import;
+- tutti da mantenere dry-run/mock finché non autorizzati.
+
+Documenti D.1:
+
+- `docs/provider_activation_plan.md`;
+- `docs/provider_dry_run_plan.md`;
+- `docs/apify_budget_safety_plan.md`.
+
+Prossimo step consigliato:
+
+- D.2: creare o eseguire solo un audit script provider config, senza fetch e senza DB write.

@@ -512,3 +512,63 @@ Non usare:
 - db push/reset;
 - provider/Apify;
 - Production.
+
+## D.1 — Query read-only provider staging
+
+Usare solo in Supabase SQL Editor/staging e senza modifiche dati.
+
+```sql
+select count(*) as active_providers
+from public.data_providers
+where is_active = true;
+
+select provider_key, name, provider_type, is_active, priority, monthly_budget_eur, warning_budget_eur, hard_stop_budget_eur
+from public.data_providers
+order by priority;
+
+select count(*) as enabled_imports
+from public.provider_competition_config
+where import_enabled = true;
+
+select tracking_level, count(*) as competitions
+from public.competitions
+group by tracking_level
+order by tracking_level;
+
+select c.slug, c.name, c.tracking_level, c.apify_enabled, c.apify_priority, p.provider_key, pc.import_enabled, pc.priority, pc.data_confidence
+from public.provider_competition_config pc
+join public.competitions c on c.id = pc.competition_id
+join public.data_providers p on p.id = pc.provider_id
+order by c.tracking_level, c.slug, pc.priority;
+
+select status, count(*) as import_runs
+from public.import_logs
+group by status
+order by status;
+
+select status, count(*) as provider_runs
+from public.provider_import_logs
+group by status
+order by status;
+
+select provider_key, is_active, monthly_budget_eur, warning_budget_eur, hard_stop_budget_eur
+from public.data_providers
+where provider_key = 'apify_sofascore';
+
+select *
+from public.apify_budget_status
+order by period_start desc
+limit 12;
+
+select count(*) as teams_demo from public.public_teams;
+select count(*) as matches_demo from public.public_matches;
+select count(*) as standings_demo from public.public_standings;
+```
+
+D.2 consigliato:
+
+- audit provider config in script locale dry-run;
+- nessun token;
+- nessun provider attivo;
+- nessun import reale;
+- nessun db push/reset.
