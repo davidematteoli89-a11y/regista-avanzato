@@ -363,3 +363,27 @@ Prima della Production resta obbligatorio:
 - logging su Supabase;
 - rollback;
 - test staging con una sola competizione.
+
+## Nota D.3 — Dry-run stable provider completato
+
+È stato completato un dry-run locale per `serie-a`.
+
+Confermato:
+
+- nessun provider reale chiamato;
+- nessun token letto;
+- nessuna fetch;
+- nessuna scrittura DB;
+- payload futuri simulati per team, partite e classifica;
+- warnings `0`.
+
+Production resta bloccata perché mancano ancora:
+
+- scelta provider reale;
+- verifica licenza/contratto;
+- mapping ID esterni;
+- budget enforcement;
+- logging persistito;
+- import writer controllato;
+- rollback batch;
+- test staging con dati reali minimi e approvazione esplicita.

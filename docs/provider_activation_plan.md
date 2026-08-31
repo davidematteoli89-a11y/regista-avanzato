@@ -274,3 +274,37 @@ D.3 consigliato:
 - nessun fetch reale;
 - nessun token;
 - nessuna scrittura DB.
+
+## D.3 — Stable provider dry-run eseguito
+
+Stato: completato localmente, nessun provider attivato.
+
+Comando:
+
+```bash
+npm run dry-run:stable-provider
+```
+
+Risultato:
+
+- competizione: `serie-a`;
+- tracking level: `full_official`;
+- provider candidato: `stable_provider`;
+- candidati esterni: `the_stats_api/api_football`;
+- mapped teams: 4;
+- mapped matches: 2;
+- mapped standings: 4;
+- planned tables: `teams`, `matches`, `standings`, `provider_import_logs`;
+- warnings: 0.
+
+Safety checks:
+
+- `stable_provider` off;
+- `the_stats_api` off;
+- `api_football` off;
+- Apify off;
+- fetch esterne 0;
+- scritture DB 0;
+- token letti/stampati 0.
+
+Questo dry-run non abilita l’import reale. Serve solo a validare forma del piano dati e guardie operative.

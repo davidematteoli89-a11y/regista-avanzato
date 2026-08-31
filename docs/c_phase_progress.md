@@ -798,3 +798,40 @@ Verifiche:
 Prossimo step consigliato:
 
 - D.3: dry-run stable provider su una singola competizione, senza fetch reale e senza Supabase write.
+
+## D.3 — Stable provider dry-run su `serie-a`
+
+Stato: implementato ed eseguito localmente.
+
+Creato:
+
+- `scripts/provider/dryRunStableProvider.ts`;
+- script npm `dry-run:stable-provider`.
+
+Output principale:
+
+- `competition_slug=serie-a`;
+- `competition_name=Serie A`;
+- `tracking_level=full_official`;
+- `provider_candidate=stable_provider`;
+- `external_provider_candidates=the_stats_api/api_football`;
+- `mapped_teams_count=4`;
+- `mapped_matches_count=2`;
+- `mapped_standings_count=4`;
+- `planned_tables=teams,matches,standings,provider_import_logs`;
+- `warnings=0`.
+
+Conferme:
+
+- nessuna fetch esterna;
+- nessuna chiamata provider;
+- nessuna chiamata Apify/SofaScore;
+- nessuna scrittura DB;
+- nessun token letto/stampato;
+- `.env.local` non letto;
+- provider/import restano spenti;
+- Production non toccata.
+
+D.4 consigliato:
+
+- simulazione budget/logging provider stabile in memoria, preparando forma futura di `api_usage_logs` e `provider_import_logs` senza scrivere Supabase.

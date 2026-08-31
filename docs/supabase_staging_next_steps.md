@@ -597,3 +597,36 @@ Uso consigliato prima di ogni futura attivazione:
 3. confermare Apify off;
 4. confermare warning `0`;
 5. solo dopo procedere con piani D.3/D.4.
+
+## D.3 — Stable provider dry-run locale
+
+Comando:
+
+```bash
+npm run dry-run:stable-provider
+```
+
+Risultato D.3:
+
+- competizione `serie-a`;
+- FULL_OFFICIAL confermato;
+- stable provider simulato;
+- 4 team payload futuri;
+- 2 match payload futuri;
+- 4 standing payload futuri;
+- planned tables:
+  - `teams`;
+  - `matches`;
+  - `standings`;
+  - `provider_import_logs`;
+- nessuna scrittura DB.
+
+Prima di usare Supabase staging per import reali:
+
+- definire mapping provider UUID;
+- definire mapping competition/team/match external ID;
+- creare batch id;
+- loggare `provider_import_logs`;
+- loggare `api_usage_logs`;
+- avere rollback per batch;
+- tenere `import_enabled=false` finché non viene approvato un writer.

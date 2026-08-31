@@ -142,8 +142,88 @@ Regole per ogni script:
 
 Script futuri, solo se necessari:
 
-- `scripts/provider/dryRunStableProvider.ts`;
 - `scripts/provider/checkProviderBudget.ts`.
+
+## D.3 — Stable provider dry-run singola competizione
+
+Stato: implementato localmente e verificato.
+
+Script:
+
+- `scripts/provider/dryRunStableProvider.ts`;
+- comando `npm run dry-run:stable-provider`;
+- default competition: `serie-a`.
+
+Uso:
+
+```bash
+npm run dry-run:stable-provider
+```
+
+Oppure:
+
+```bash
+npm run dry-run:stable-provider -- --competition=serie-a
+```
+
+Cosa simula:
+
+- futuro provider `stable_provider`;
+- candidati esterni `the_stats_api/api_football`;
+- mapping verso payload futuri:
+  - `teams`;
+  - `matches`;
+  - `standings`;
+  - `provider_import_logs`;
+- 4 squadre demo;
+- 2 partite demo;
+- 4 righe classifica demo;
+- summary import mock.
+
+Cosa non fa:
+
+- non legge `.env.local`;
+- non legge `process.env`;
+- non stampa token;
+- non chiama TheStatsAPI;
+- non chiama API-Football;
+- non chiama Apify;
+- non chiama SofaScore;
+- non fa fetch;
+- non apre client Supabase;
+- non scrive DB;
+- non attiva provider/import.
+
+Output verificato:
+
+```text
+competition_slug=serie-a
+competition_name=Serie A
+tracking_level=full_official
+provider_candidate=stable_provider
+external_provider_candidates=the_stats_api/api_football
+mode=dry_run
+fetch_external=false
+db_write=false
+mapped_teams_count=4
+mapped_matches_count=2
+mapped_standings_count=4
+planned_tables=teams,matches,standings,provider_import_logs
+safety_checks=stable_provider_off:ok, the_stats_api_off:ok, api_football_off:ok, apify_off:ok, no_external_fetch:ok, no_db_write:ok, no_token_read:ok
+warnings=0
+```
+
+Limiti:
+
+- payload statico/demo, non proveniente da provider reale;
+- nessun confronto con Supabase live;
+- nessun mapping ID esterno reale;
+- nessuna deduplica DB effettiva;
+- nessun log persistito.
+
+D.4 consigliato:
+
+- dry-run provider budget/logging: simulare request budget e provider_import_logs/api_usage_logs in memoria, senza token e senza DB write.
 
 ## Rollback
 

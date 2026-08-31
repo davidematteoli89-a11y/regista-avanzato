@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
-    "audit:providers": "node --no-warnings --experimental-strip-types scripts/provider/auditProviderConfig.ts"
+    "audit:providers": "node --no-warnings --experimental-strip-types scripts/provider/auditProviderConfig.ts",
+    "dry-run:stable-provider": "node --no-warnings --experimental-strip-types scripts/provider/dryRunStableProvider.ts"
   },
   "dependencies": {
     "@supabase/ssr": "0.12.4",
