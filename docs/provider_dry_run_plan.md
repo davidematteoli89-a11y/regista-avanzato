@@ -86,11 +86,50 @@ Questi script sono stati progettati come dry-run/mock e devono restare senza fet
 
 ## Script proposti per D.2
 
-Solo se serve maggiore osservabilità:
+Stato D.2: creato script locale read-only.
 
-- `scripts/provider/auditProviderConfig.ts`;
-- `scripts/provider/dryRunStableProvider.ts`;
-- `scripts/provider/checkProviderBudget.ts`.
+Script disponibile:
+
+- `scripts/provider/auditProviderConfig.ts`.
+
+Comando:
+
+```bash
+npm run audit:providers
+```
+
+Lo script controlla:
+
+- provider modellati in `config/providers.ts`;
+- stato atteso provider:
+  - `mock_provider` on;
+  - `manual_provider` on;
+  - `stable_provider` off;
+  - `the_stats_api` off;
+  - `api_football` off;
+  - `apify_sofascore` off;
+- conteggio competizioni totali;
+- conteggio FULL_OFFICIAL;
+- conteggio APIFY P1;
+- conteggio APIFY P2;
+- conteggio TRIGGER;
+- seed `import_enabled=false`;
+- presenza documentazione guardie budget Apify.
+
+Output D.2 verificato:
+
+```text
+providers_total=6
+providers_state=stable_provider:off, the_stats_api:off, api_football:off, apify_sofascore:off, manual_provider:on, mock_provider:on
+competitions_total=43
+full_official=14
+apify_light_plus_p1=15
+apify_light_plus_p2=14
+trigger=0
+seed_import_enabled_default=false
+apify_budget_doc=present
+warnings=0
+```
 
 Regole per ogni script:
 
@@ -100,6 +139,11 @@ Regole per ogni script:
 - nessuna scrittura DB;
 - nessun import reale;
 - report leggibile e sicuro.
+
+Script futuri, solo se necessari:
+
+- `scripts/provider/dryRunStableProvider.ts`;
+- `scripts/provider/checkProviderBudget.ts`.
 
 ## Rollback
 

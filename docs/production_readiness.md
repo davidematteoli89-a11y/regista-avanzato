@@ -339,3 +339,27 @@ Prima di Production è obbligatorio:
 - nessuna pagina pubblica con provider diretto;
 - revisione licenze/diritti dati;
 - Apify test separato con budget hard stop.
+
+## Nota D.2 — Audit provider locale
+
+È stato aggiunto uno script read-only:
+
+- `npm run audit:providers`.
+
+Esito corrente:
+
+- provider reali spenti;
+- Apify spento;
+- import spenti;
+- warnings `0`.
+
+Questo è un controllo preflight utile, ma non rende il progetto pronto per dati reali.
+
+Prima della Production resta obbligatorio:
+
+- dry-run provider con payload;
+- controllo licenze;
+- budget enforcement reale;
+- logging su Supabase;
+- rollback;
+- test staging con una sola competizione.

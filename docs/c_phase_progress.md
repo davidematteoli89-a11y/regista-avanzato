@@ -756,3 +756,45 @@ Documenti D.1:
 Prossimo step consigliato:
 
 - D.2: creare o eseguire solo un audit script provider config, senza fetch e senza DB write.
+
+## D.2 — Provider config audit script
+
+Stato: implementato localmente e verificato.
+
+Creato:
+
+- `scripts/provider/auditProviderConfig.ts`;
+- script npm `audit:providers`.
+
+Output principale:
+
+- provider totali: 6;
+- provider state: stable/the_stats_api/api_football/apify off, manual/mock on;
+- competizioni totali: 43;
+- FULL_OFFICIAL: 14;
+- APIFY P1: 15;
+- APIFY P2: 14;
+- TRIGGER: 0;
+- seed import enabled default: false;
+- budget doc Apify: presente;
+- warnings: 0.
+
+Conferme:
+
+- nessuna fetch esterna;
+- nessuna chiamata provider;
+- nessuna chiamata Apify/SofaScore;
+- nessuna scrittura DB;
+- nessun token letto o stampato;
+- `.env.local` non letto.
+
+Verifiche:
+
+- `npm run audit:providers`: ok;
+- `npm run lint`: ok;
+- `npm run typecheck`: ok;
+- `npm run build`: ok.
+
+Prossimo step consigliato:
+
+- D.3: dry-run stable provider su una singola competizione, senza fetch reale e senza Supabase write.

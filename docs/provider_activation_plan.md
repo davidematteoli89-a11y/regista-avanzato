@@ -224,3 +224,53 @@ Go/no-go D.2:
 - non aggiungere env su Production;
 - prima simulare un provider stabile su una sola competizione demo;
 - prima simulare Apify con budget mock e latest round only.
+
+## D.2 — Provider config audit script
+
+Stato: implementato localmente, nessuna chiamata esterna.
+
+File:
+
+- `scripts/provider/auditProviderConfig.ts`;
+- comando `npm run audit:providers`.
+
+Cosa fa:
+
+- legge solo file statici versionati;
+- analizza `config/providers.ts`;
+- analizza `config/competitions.ts`;
+- controlla la migrazione seed per `import_enabled=false`;
+- controlla che il documento budget Apify citi hard stop;
+- stampa report testuale sicuro.
+
+Cosa non fa:
+
+- non legge `.env.local`;
+- non stampa env;
+- non legge token;
+- non chiama provider;
+- non chiama Apify;
+- non chiama SofaScore;
+- non fa scraping;
+- non apre connessioni DB;
+- non scrive Supabase;
+- non attiva import.
+
+Esito corrente:
+
+- provider totali: 6;
+- provider reali spenti;
+- Apify spento;
+- competizioni totali: 43;
+- FULL_OFFICIAL: 14;
+- APIFY P1: 15;
+- APIFY P2: 14;
+- TRIGGER: 0;
+- warnings: 0.
+
+D.3 consigliato:
+
+- dry-run stabile limitato a `serie-a`, usando solo adapter mock/fallback e payload futuri;
+- nessun fetch reale;
+- nessun token;
+- nessuna scrittura DB.

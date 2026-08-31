@@ -572,3 +572,28 @@ D.2 consigliato:
 - nessun provider attivo;
 - nessun import reale;
 - nessun db push/reset.
+
+## D.2 — Audit provider locale completato
+
+Comando:
+
+```bash
+npm run audit:providers
+```
+
+Risultato:
+
+- provider reali spenti;
+- Apify spento;
+- import seed default `false`;
+- warnings `0`;
+- nessuna lettura DB;
+- nessuna scrittura DB.
+
+Uso consigliato prima di ogni futura attivazione:
+
+1. eseguire `npm run audit:providers`;
+2. confermare provider reali off se si è ancora in fase dry-run;
+3. confermare Apify off;
+4. confermare warning `0`;
+5. solo dopo procedere con piani D.3/D.4.

@@ -46,6 +46,34 @@ Moduli già presenti:
 
 Tutti devono restare dry-run/mock finché non viene approvata una fase dedicata.
 
+## Audit D.2
+
+Lo script locale:
+
+```bash
+npm run audit:providers
+```
+
+conferma:
+
+- `apify_sofascore:off`;
+- competizioni P1: 15;
+- competizioni P2: 14;
+- documentazione hard stop presente;
+- `warnings=0`;
+- chiamate Apify = 0;
+- chiamate SofaScore = 0;
+- scraping = 0;
+- scritture DB = 0.
+
+Nota:
+
+- lo script non legge token;
+- non legge `.env.local`;
+- non costruisce actor input operativo;
+- non lancia run;
+- non modifica budget.
+
 ## Piano dry-run Apify
 
 1. Lasciare `apify_sofascore` disattivato.
