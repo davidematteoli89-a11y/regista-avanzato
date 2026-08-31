@@ -147,3 +147,37 @@ Se il budget stimato è `>= 24`:
 - saltare P2;
 - importare solo P1 essenziali in futura modalità approvata;
 - nessuna promessa di copertura profonda.
+
+## D.4 — Scenari budget simulati
+
+È stato preparato lo script locale:
+
+```bash
+npm run dry-run:provider-logging
+```
+
+Lo script non usa Apify e non legge token. Simula solo le decisioni budget in memoria.
+
+Scenari verificati:
+
+| Scenario | Spesa mese | Costo stimato run | Esito |
+| --- | ---: | ---: | --- |
+| A | 0 € | 0 € | `should_run=true`, nessun warning |
+| B | 24 € | 1 € | `should_run=true`, `warning=true`, revisione manuale richiesta |
+| C | 30 € | 1 € | `should_run=false`, `hard_stop=true` |
+
+Interpretazione:
+
+- sotto 24 € il budget è disponibile;
+- da 24 € scatta warning e P2 va trattata con estrema cautela;
+- a 30 € o oltre non parte nessuna run;
+- il dry-run non scrive `apify_budget_status` e non crea `apify_usage_logs`.
+
+Prima di una run Apify reale serviranno ancora:
+
+- verifica termini/licenza;
+- token solo server-side;
+- budget letto da Supabase staging;
+- log persistiti;
+- dry-run su una sola competizione P1;
+- conferma manuale.

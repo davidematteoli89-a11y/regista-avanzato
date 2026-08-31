@@ -835,3 +835,37 @@ Conferme:
 D.4 consigliato:
 
 - simulazione budget/logging provider stabile in memoria, preparando forma futura di `api_usage_logs` e `provider_import_logs` senza scrivere Supabase.
+
+## D.4 — Provider logging/budget dry-run
+
+Stato: implementato localmente, non committato finché non confermato.
+
+Creato:
+
+- `scripts/provider/dryRunProviderLogging.ts`;
+- script npm `dry-run:provider-logging`.
+
+Risultato atteso:
+
+- run simulata su `serie-a`;
+- provider `stable_provider`;
+- fetch esterne `false`;
+- DB write `false`;
+- shape `provider_import_logs` ok;
+- shape `api_usage_logs` ok;
+- budget guard Apify ok;
+- soglie budget: 30 €/mese, warning 24 €, hard stop 30 €;
+- warnings `0`.
+
+Conferme:
+
+- provider reali spenti;
+- Apify spento;
+- import spenti;
+- nessun token letto/stampato;
+- nessuna scrittura Supabase;
+- Production non toccata.
+
+Prossimo step consigliato:
+
+- D.5: progettare writer log/import ancora spenti, prima di qualunque attivazione reale.

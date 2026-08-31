@@ -387,3 +387,26 @@ Production resta bloccata perché mancano ancora:
 - import writer controllato;
 - rollback batch;
 - test staging con dati reali minimi e approvazione esplicita.
+
+## Nota D.4 — Logging/budget provider solo simulato
+
+È stato preparato un dry-run locale per verificare la forma futura di log provider e budget guard:
+
+- comando: `npm run dry-run:provider-logging`;
+- `provider_import_logs` simulato;
+- `api_usage_logs` simulato;
+- budget guard Apify simulato con 30 €/24 €/30 €;
+- scenario hard stop confermato in memoria.
+
+Questo non sblocca la Production.
+
+Restano bloccanti:
+
+- nessun writer Supabase reale per log/import;
+- nessun provider reale scelto;
+- nessuna licenza dati verificata;
+- nessun token configurato;
+- nessun import reale approvato;
+- nessun monitoraggio costi reale;
+- Apify ancora spento;
+- migration tracking Supabase ancora da decidere.

@@ -630,3 +630,32 @@ Prima di usare Supabase staging per import reali:
 - loggare `api_usage_logs`;
 - avere rollback per batch;
 - tenere `import_enabled=false` finché non viene approvato un writer.
+
+## D.4 — Logging/budget provider in dry-run
+
+È disponibile un nuovo controllo locale:
+
+```bash
+npm run dry-run:provider-logging
+```
+
+Lo script prepara solo la forma futura di:
+
+- `provider_import_logs`;
+- `api_usage_logs`;
+- guardia budget Apify.
+
+Non legge Supabase staging e non modifica dati.
+
+Prima di scrivere davvero log nello staging serviranno:
+
+1. writer server-side con client Supabase sicuro;
+2. flag esplicito `realWritesEnabled`;
+3. batch id per import;
+4. rollback documentato;
+5. test RLS/admin sui log;
+6. conferma manuale per primo writer.
+
+Nota migration history:
+
+- le migrazioni applicate manualmente restano da allineare con una strategia di tracking prima di usare flussi automatici.

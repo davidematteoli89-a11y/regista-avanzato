@@ -248,3 +248,85 @@ Vietato:
 - chiamare provider da route pubbliche;
 - fare fetch provider su render pagina;
 - usare Apify per richieste utente.
+
+## D.4 — Provider logging/budget dry-run
+
+Stato: preparato localmente, nessuna chiamata reale.
+
+Comando:
+
+```bash
+npm run dry-run:provider-logging
+```
+
+Lo script simula in memoria:
+
+- una run futura su `serie-a`;
+- provider candidato `stable_provider`;
+- shape futura per `provider_import_logs`;
+- shape futura per `api_usage_logs`;
+- budget guard Apify con soglie 30/24/30 €.
+
+Output atteso:
+
+```text
+mode=dry_run
+competition_slug=serie-a
+provider=stable_provider
+external_fetch=false
+db_write=false
+provider_import_log_shape=ok
+api_usage_log_shape=ok
+apify_budget_guard=ok
+monthly_budget_limit=30
+warning_threshold=24
+hard_stop=30
+estimated_cost=0
+should_run=true reason=budget_available_for_dry_run
+warnings=0
+```
+
+Campi simulati per `provider_import_logs`:
+
+- `provider_id`;
+- `competition_id`;
+- `script_name`;
+- `status`;
+- `started_at`;
+- `finished_at`;
+- `items_imported`;
+- `errors`;
+- `notes`.
+
+Campi simulati per `api_usage_logs`:
+
+- `provider_id`;
+- `endpoint`;
+- `request_count`;
+- `date`;
+- `competition_id`;
+- `script_name`;
+- `response_status`;
+- `estimated_cost_eur`;
+- `notes`.
+
+Lo script non fa:
+
+- lettura `.env.local`;
+- lettura/stampa token;
+- fetch esterne;
+- chiamate TheStatsAPI/API-Football;
+- chiamate Apify/SofaScore;
+- scritture Supabase;
+- attivazione provider/import.
+
+Limiti:
+
+- non valida ancora UUID reali Supabase;
+- non scrive record su `provider_import_logs` o `api_usage_logs`;
+- non misura costi reali;
+- non sostituisce il futuro writer transazionale.
+
+D.5 consigliato:
+
+- progettare writer/import log server-side in modalità ancora disabilitata, con batch id, rollback e flag esplicito prima di ogni scrittura.

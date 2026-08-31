@@ -308,3 +308,42 @@ Safety checks:
 - token letti/stampati 0.
 
 Questo dry-run non abilita l’import reale. Serve solo a validare forma del piano dati e guardie operative.
+
+## D.4 — Provider logging/budget dry-run
+
+Stato: completato localmente, senza provider reali e senza DB write.
+
+Nuovo comando:
+
+```bash
+npm run dry-run:provider-logging
+```
+
+Controlli simulati:
+
+- `provider_import_logs` shape compatibile con schema staging;
+- `api_usage_logs` shape compatibile con schema staging;
+- budget guard Apify 30/24/30 €;
+- run mock su `serie-a`;
+- provider stabile ancora spento;
+- TheStatsAPI/API-Football ancora spenti;
+- Apify ancora spento;
+- import ancora spenti.
+
+Scenari budget simulati:
+
+- A: 0 € + 0 € → run consentita;
+- B: 24 € + 1 € → run consentita con warning;
+- C: 30 € + 1 € → run bloccata da hard stop.
+
+Il dry-run conferma la forma futura dei report, ma non rende ancora attivabile il provider reale.
+
+Prima dell’attivazione reale restano obbligatori:
+
+- scelta provider effettivo;
+- credenziali solo server-side;
+- writer log transazionale;
+- mapping ID esterni;
+- budget reale da Supabase;
+- rollback batch;
+- approvazione manuale per ogni primo import.
