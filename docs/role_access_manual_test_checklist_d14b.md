@@ -43,6 +43,25 @@ Verificare senza stampare email complete:
 
 Non toccare l’admin esistente.
 
+Query read-only compatibile con lo schema staging:
+
+```sql
+select
+  p.id,
+  left(coalesce(u.email, ''), 6) || '***' as email_masked,
+  p.display_name,
+  p.role,
+  p.status,
+  p.created_at
+from public.users_profile p
+join auth.users u on u.id = p.id
+where u.email ilike '%regista-test%'
+   or p.display_name ilike '%regista-test%'
+order by p.created_at desc;
+```
+
+Nota: `public.users_profile` non contiene `email`; l’email va letta, se necessario, da `auth.users` e sempre mascherata.
+
 ### 4. Aprire Preview
 
 Usare solo il dominio Preview:
@@ -159,3 +178,11 @@ Quando la checklist verrà eseguita manualmente, registrare:
 - conferma assenza bottoni scrittura;
 - conferma DB invariato;
 - eventuali errori.
+
+## D.14-C — Esecuzione guidata
+
+Documento operativo:
+
+- `docs/role_access_manual_test_d14c.md`.
+
+D.14-C aggiunge istruzioni puntuali per eseguire manualmente la checklist su Preview e registrare i risultati, senza creare utenti o modificare ruoli.

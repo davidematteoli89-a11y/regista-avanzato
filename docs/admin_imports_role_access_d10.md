@@ -188,3 +188,17 @@ La checklist richiede:
 - nessun cleanup distruttivo senza conferma.
 
 D.14-B non crea utenti e non modifica ruoli.
+
+## D.14-C — Esecuzione manuale guidata
+
+Preparato:
+
+- `docs/role_access_manual_test_d14c.md`.
+
+Aggiornamento importante:
+
+- la query utenti test deve fare join tra `public.users_profile` e `auth.users`;
+- `users_profile` non contiene email;
+- le email vanno sempre mascherate.
+
+I test `free_user`/`editor` restano da eseguire manualmente su Preview.

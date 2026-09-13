@@ -1026,3 +1026,18 @@ Fino alla conferma:
 - non usare service role;
 - non scrivere DB;
 - non toccare Production.
+
+## D.14-C — Esecuzione manuale ruoli
+
+Preparato:
+
+- `docs/role_access_manual_test_d14c.md`.
+
+Prima di proseguire servono risultati manuali:
+
+- esistenza o assenza utenti test staging;
+- esito `free_user` su `/admin/imports`;
+- esito `editor` su `/admin/imports`;
+- conferma DB invariato con query read-only.
+
+Non creare utenti o modificare ruoli senza conferma esplicita.

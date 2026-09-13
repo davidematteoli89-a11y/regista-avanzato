@@ -223,3 +223,18 @@ Stato:
 - test `free_user` ed `editor` ancora da eseguire;
 - provider/Apify/import spenti;
 - Production non toccata.
+
+## D.14-C — Guida esecuzione manuale
+
+Documento:
+
+- `docs/role_access_manual_test_d14c.md`.
+
+Integra:
+
+- query read-only corretta per cercare utenti test tramite `auth.users.email` mascherata;
+- conferma che `public.users_profile` non contiene `email`;
+- istruzioni Preview per `free_user` ed `editor`;
+- template esito da compilare dopo test.
+
+Nessun utente creato e nessun ruolo modificato in D.14-C preparatoria.

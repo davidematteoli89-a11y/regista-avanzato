@@ -714,3 +714,17 @@ Production resta non pronta finché:
 - provider/Apify/import restano non approvati.
 
 D.14-B non crea utenti e non modifica ruoli.
+
+## Nota D.14-C — Test ruoli da eseguire manualmente
+
+D.14-C prepara l’esecuzione manuale della checklist ruoli.
+
+Production resta bloccata finché:
+
+- `free_user` non viene verificato come bloccato;
+- `editor` non viene verificato come read-only;
+- DB invariato non viene riconfermato;
+- eventuali utenti test non hanno piano cleanup;
+- provider/import/Apify restano non approvati.
+
+Nessuna creazione utente o modifica ruolo viene eseguita automaticamente.

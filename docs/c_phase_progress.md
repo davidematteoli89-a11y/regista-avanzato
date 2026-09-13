@@ -694,6 +694,26 @@ Non fatto:
 - nessun provider/Apify/import attivato;
 - nessuna Production.
 
+## D.14-C — Guida esecuzione manuale ruoli
+
+Stato: guida preparata, test non ancora eseguito.
+
+Creato:
+
+- `docs/role_access_manual_test_d14c.md`.
+
+Nota tecnica:
+
+- `users_profile` non contiene `email`;
+- query read-only aggiornata con join su `auth.users` e mascheramento email.
+
+Resta da fare manualmente:
+
+- verificare se gli utenti test esistono;
+- testare `free_user` bloccato;
+- testare `editor` read-only;
+- confermare DB invariato.
+
 Verifica locale:
 
 - `npm run lint`: ok;
