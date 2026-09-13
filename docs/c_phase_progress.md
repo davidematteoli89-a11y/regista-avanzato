@@ -1055,3 +1055,71 @@ Non fatto:
 Prossimo step consigliato:
 
 - D.9 — verifica Preview della sezione `/admin/imports` e test RLS applicativo read-only.
+
+## D.9 — Verifica Preview `/admin/imports`
+
+Stato: verifica tecnica parziale completata, test admin UI manuale ancora da fare.
+
+Verificato:
+
+- branch locale/remoto `preview` allineato al commit `dbc83703c1364721ecb8a4a88db72067d2ff9734`;
+- Vercel Preview Ready;
+- target/environment = Preview;
+- branch alias disponibile;
+- Deployment Protection/Vercel Authentication attiva;
+- richiesta non autenticata a `/admin/imports` viene intercettata da Vercel SSO;
+- Production non toccata.
+
+Non verificabile automaticamente da questo ambiente:
+
+- UI interna dopo Vercel Authentication;
+- login Supabase admin;
+- rendering effettivo della sezione `Provider import runs`;
+- empty state visuale;
+- assenza bottoni lato browser.
+
+Motivo:
+
+- `agent-browser` non disponibile;
+- nessuna sessione Vercel/Supabase admin nel browser dell’agente.
+
+Da verificare manualmente:
+
+- `/admin/imports` mostra `Provider import runs`;
+- badge sicurezza presenti;
+- empty state visibile;
+- nessun bottone `Run/Import/Delete/Update`;
+- logout/non admin bloccati.
+
+## D.9-B — Preview `/admin/imports` verificata manualmente
+
+Stato: completata.
+
+Verifica manuale utente:
+
+- URL: `https://regista-avanzato-git-preview-davide-matteoli.vercel.app/admin/imports`;
+- commit Preview: `dbc83703c1364721ecb8a4a88db72067d2ff9734`;
+- `/admin/imports` accessibile da admin;
+- sezione `Provider import runs` visibile;
+- empty state corretto;
+- badge `Read-only`, `Provider off`, `Apify off`, `realWritesEnabled=false` presenti;
+- nessun bottone `Run/Import/Delete/Update` o altra scrittura;
+- non autenticato bloccato da Vercel Authentication.
+
+Stato sicurezza:
+
+- DB invariato per quanto verificato;
+- provider reali spenti;
+- Apify spento;
+- import spenti;
+- `realWritesEnabled=false`;
+- Production non toccata.
+
+Residui:
+
+- test applicativo free_user ancora da fare se serve copertura completa;
+- writer reali ancora disabilitati.
+
+Prossimo step consigliato:
+
+- D.10 — test RLS applicativo free_user/editor/admin per import runs, senza creare run reali.

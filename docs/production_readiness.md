@@ -551,3 +551,50 @@ Production resta bloccata finché non sono completati:
 - piano retention/privacy log;
 - writer staging con rollback;
 - approvazione legale/licenze provider.
+
+## Nota D.9 — Preview `/admin/imports` pronta per test manuale
+
+La build Preview che include `/admin/imports` read-only è Ready e protetta da Vercel Authentication.
+
+Questo non rende Production pronta.
+
+Confermato:
+
+- Preview Ready;
+- branch alias attivo;
+- accesso non autenticato intercettato da SSO;
+- nessun deploy Production;
+- nessun provider/Apify/import;
+- nessuna scrittura DB.
+
+Ancora necessario:
+
+- test manuale admin della sezione `Provider import runs`;
+- test manuale empty state;
+- test assenza azioni di scrittura;
+- test blocco non-admin/free_user.
+
+## Nota D.9-B — Verifica Preview admin imports completata
+
+La verifica manuale Preview di `/admin/imports` è stata completata.
+
+Confermato:
+
+- admin accede a `/admin/imports`;
+- `Provider import runs` visibile;
+- empty state corretto;
+- badge sicurezza presenti;
+- nessun bottone `Run/Import/Delete/Update`;
+- non autenticato bloccato da Vercel Authentication;
+- provider reali spenti;
+- Apify spento;
+- import spenti;
+- `realWritesEnabled=false`;
+- Production non toccata.
+
+Production resta non pronta perché:
+
+- test free_user applicativo ancora da completare;
+- writer provider/import reali ancora disabilitati;
+- provider/licenze/budget non approvati;
+- retention/privacy log ancora da chiudere.

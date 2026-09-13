@@ -457,3 +457,103 @@ Nota C.5.4-A:
 - non è stato usato service role;
 - non è stato fatto deploy CLI;
 - publish/delete/create draft/bulk restano disabilitati.
+
+## D.9 — Verifica Preview `/admin/imports`
+
+Stato: verifica tecnica parziale completata.
+
+Commit atteso:
+
+- `dbc83703c1364721ecb8a4a88db72067d2ff9734`.
+
+Deployment verificato via Vercel CLI read-only:
+
+- progetto: `regista-avanzato`;
+- target/environment: Preview;
+- status: Ready;
+- deployment URL: `https://regista-avanzato-ari19a6ix-davide-matteoli.vercel.app`;
+- branch alias: `https://regista-avanzato-git-preview-davide-matteoli.vercel.app`;
+- route `/admin/imports` presente tra gli output build.
+
+Verifica accesso non autenticato:
+
+- richiesta HTTP read-only a `/admin/imports`;
+- risposta iniziale Vercel `302` verso SSO;
+- Vercel Authentication/Deployment Protection attiva;
+- senza sessione Vercel la route non è direttamente accessibile.
+
+Limite verifica automatica:
+
+- `agent-browser` non disponibile localmente;
+- la Vercel app non ha potuto creare una fetch autenticata per il path;
+- senza sessione browser Vercel + login Supabase admin non è possibile verificare automaticamente la UI interna.
+
+Checklist manuale residua:
+
+1. aprire il branch alias Preview;
+2. superare Vercel Authentication;
+3. login Supabase come admin;
+4. aprire `/admin/imports`;
+5. verificare sezione `Provider import runs`;
+6. verificare badge `Read-only`, `Provider off`, `Apify off`, `realWritesEnabled=false`;
+7. verificare empty state con tabella vuota;
+8. verificare assenza bottoni `Run`, `Import`, `Delete`, `Update` o altre scritture;
+9. logout e conferma blocco `/admin/imports`.
+
+Non fatto:
+
+- nessun deploy CLI;
+- nessun deploy Production;
+- nessuna scrittura DB;
+- nessun provider;
+- nessun Apify;
+- nessun import.
+
+## D.9-B — Verifica manuale Preview `/admin/imports` completata
+
+Stato: completata manualmente dall’utente su Preview.
+
+URL verificato:
+
+- `https://regista-avanzato-git-preview-davide-matteoli.vercel.app/admin/imports`.
+
+Commit Preview verificato:
+
+- `dbc83703c1364721ecb8a4a88db72067d2ff9734`.
+
+Risultati UI admin:
+
+- `/admin/imports` accessibile da utente admin;
+- sezione `Provider import runs` visibile;
+- empty state corretto con tabella vuota;
+- badge sicurezza presenti:
+  - `Read-only`;
+  - `Provider off`;
+  - `Apify off`;
+  - `realWritesEnabled=false`;
+- nessun bottone `Run`;
+- nessun bottone `Import`;
+- nessun bottone `Delete`;
+- nessun bottone `Update`;
+- nessun altro bottone di scrittura dati.
+
+Accesso non autenticato:
+
+- bloccato da Vercel Authentication/Deployment Protection.
+
+Stato operativo:
+
+- DB invariato per quanto verificato;
+- provider reali spenti;
+- Apify spento;
+- import spenti;
+- `realWritesEnabled=false`;
+- Production non toccata.
+
+Residuo:
+
+- test applicativo free_user su `/admin/imports` resta da fare se non disponibile un utente free_user controllato.
+
+Prossimo step consigliato:
+
+- D.10 — test RLS applicativo free_user/editor/admin o hardening reader/log visibility, senza provider reali e senza scritture DB.

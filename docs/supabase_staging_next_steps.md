@@ -832,3 +832,54 @@ Non eseguire ancora:
 - delete run;
 - provider fetch;
 - Apify.
+
+## D.9 — Verifica Preview da completare manualmente
+
+Verifica tecnica già completata:
+
+- Vercel Preview Ready;
+- alias branch Preview attivo;
+- `/admin/imports` incluso nella build;
+- Vercel Authentication attiva;
+- accesso non autenticato bloccato da SSO;
+- nessun deploy CLI;
+- nessun provider/import/Apify.
+
+Da verificare manualmente con admin Supabase:
+
+1. `/admin/imports` accessibile dopo login admin;
+2. sezione `Provider import runs` visibile;
+3. badge sicurezza visibili;
+4. empty state coerente con `provider_import_runs_count = 0`;
+5. nessun bottone di scrittura/import/delete/update;
+6. dopo logout la route torna bloccata.
+
+Se la UI non mostra empty state, verificare:
+
+- presenza env Supabase solo Preview;
+- RLS su `provider_import_runs`;
+- ruolo admin/editor del profilo;
+- eventuali errori runtime Vercel.
+
+## D.9-B — Preview `/admin/imports` verificata
+
+La verifica manuale su Preview ha confermato:
+
+- `/admin/imports` accessibile da admin;
+- sezione `Provider import runs` visibile;
+- empty state corretto;
+- badge sicurezza presenti;
+- nessun bottone di scrittura/import/run/delete/update;
+- non autenticato bloccato da Vercel Authentication.
+
+Stato invariato:
+
+- provider reali spenti;
+- Apify spento;
+- import spenti;
+- `realWritesEnabled=false`;
+- nessuna Production.
+
+Prossimo step consigliato:
+
+- D.10 — test RLS applicativo con free_user/editor/admin oppure preparazione reader/log visibility successiva, sempre senza provider reali e senza scritture.

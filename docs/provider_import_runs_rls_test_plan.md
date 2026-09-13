@@ -172,3 +172,58 @@ Comportamento con tabella vuota:
 Residuo:
 
 - verificare in Preview con utente admin/editor reale che `/admin/imports` mostri la sezione e rimanga vuota.
+
+## D.9 — Preview readiness
+
+Verifica tecnica Preview:
+
+- deployment Preview Ready;
+- branch alias attivo;
+- route `/admin/imports` presente nella build;
+- Vercel Authentication attiva;
+- accesso non autenticato intercettato da SSO.
+
+Resta da verificare manualmente con sessione admin:
+
+- sezione `Provider import runs`;
+- badge `Read-only`, `Provider off`, `Apify off`, `realWritesEnabled=false`;
+- empty state;
+- nessun bottone di scrittura/import;
+- blocco per logout/non admin.
+
+DB invariato:
+
+- nessuna scrittura eseguita;
+- `provider_import_runs_count` resta da confermare manualmente con query read-only se necessario;
+- provider/import restano spenti.
+
+## D.9-B — Risultato Preview manuale
+
+La UI admin è stata verificata manualmente dall’utente su Preview.
+
+Confermato:
+
+- URL verificato: `https://regista-avanzato-git-preview-davide-matteoli.vercel.app/admin/imports`;
+- commit Preview: `dbc83703c1364721ecb8a4a88db72067d2ff9734`;
+- `/admin/imports` accessibile da admin;
+- sezione `Provider import runs` visibile;
+- empty state corretto;
+- badge presenti:
+  - `Read-only`;
+  - `Provider off`;
+  - `Apify off`;
+  - `realWritesEnabled=false`;
+- nessun bottone di scrittura/import/run/delete/update;
+- non autenticato bloccato da Vercel Authentication.
+
+Stato DB/provider:
+
+- DB invariato per quanto verificato;
+- nessun provider attivato;
+- Apify non attivato;
+- import spenti;
+- Production non toccata.
+
+Residuo:
+
+- test free_user applicativo ancora da fare, se viene creato o reso disponibile un utente free_user controllato.

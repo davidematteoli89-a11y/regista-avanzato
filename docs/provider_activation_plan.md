@@ -513,3 +513,43 @@ La sezione serve solo a rendere auditabile lo stato futuro dei batch. Non autori
 Prossimo step consigliato:
 
 - D.9 — verifica Preview di `/admin/imports` e test RLS applicativo con admin/editor/free_user, senza creare run reali.
+
+## D.9 — Preview check import runs
+
+Verifica tecnica Preview completata:
+
+- deployment Preview Ready;
+- alias branch Preview attivo;
+- route `/admin/imports` presente;
+- Vercel Authentication attiva per accesso non autenticato.
+
+Il test admin UI resta manuale perché richiede sessione Vercel e sessione Supabase admin.
+
+Fino al completamento manuale:
+
+- non attivare provider;
+- non attivare import;
+- non creare run;
+- non abilitare writer;
+- mantenere `realWritesEnabled=false`.
+
+## D.9-B — Preview imports verificata manualmente
+
+La pagina `/admin/imports` è stata verificata manualmente su Preview.
+
+Confermato:
+
+- admin vede la sezione `Provider import runs`;
+- empty state corretto;
+- badge `Read-only`, `Provider off`, `Apify off`, `realWritesEnabled=false`;
+- nessun bottone di run/import/delete/update;
+- accesso non autenticato bloccato da Vercel Authentication;
+- provider/import restano spenti;
+- DB invariato per quanto verificato;
+- Production non toccata.
+
+Questa verifica abilita solo maggiore visibilità read-only. Non abilita provider o writer.
+
+Prossimo step consigliato:
+
+- D.10 — test RLS applicativo per ruoli su import runs, senza run reali.
