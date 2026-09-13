@@ -963,3 +963,59 @@ Stato operativo:
 Prossimo step:
 
 - D.7: test RLS/readiness per `provider_import_runs` e visibilità admin.
+
+## D.7 — RLS/readiness provider_import_runs
+
+Stato: preparato localmente.
+
+Creati:
+
+- `supabase/manual/provider_import_runs_rls_d7.sql`;
+- `docs/provider_import_runs_rls_test_plan.md`.
+
+Obiettivo:
+
+- verificare manualmente in SQL Editor che `provider_import_runs` sia presente e protetta;
+- confermare colonne `batch_id/import_run_id` sui log;
+- confermare provider/import ancora spenti;
+- preparare eventuale admin visibility read-only.
+
+Non fatto:
+
+- nessuna scrittura DB;
+- nessun test insert;
+- nessun provider;
+- nessun Apify;
+- nessun deploy;
+- nessuna Production.
+
+## D.7-B — Risultati manuali RLS/readiness documentati
+
+D.7-A è stata eseguita manualmente nel Supabase SQL Editor del progetto staging “Regista Avanzato”.
+
+Risultati confermati:
+
+- `provider_import_runs` presente;
+- RLS attiva = `true`;
+- `provider_import_runs_count = 0`;
+- provider esterni ancora off;
+- import ancora disabilitati;
+- nessuna policy `DELETE`;
+- SQL Editor senza sessione app:
+  - `auth.uid() = null`;
+  - `is_admin() = false`;
+  - `is_editor_or_admin() = false`.
+
+Non fatto:
+
+- nessuna scrittura DB;
+- nessun dato reale inserito;
+- nessun provider attivato;
+- nessun Apify attivato;
+- nessun `db push/reset`;
+- nessun deploy;
+- Production non toccata.
+
+Prossimo step consigliato:
+
+- D.8 — creare un reader admin read-only per `provider_import_runs` in `/admin/imports`, con empty state e senza writer reali.

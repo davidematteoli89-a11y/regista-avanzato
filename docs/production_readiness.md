@@ -478,3 +478,51 @@ Restano bloccanti:
 - retention/privacy log non finalizzate;
 - provider/licenze non approvati;
 - rollback batch non ancora testato.
+
+## Nota D.7 — RLS/readiness in preparazione
+
+È stato preparato un test read-only per `provider_import_runs`.
+
+Production resta bloccata finché non sono verificati:
+
+- RLS effettiva su staging;
+- assenza accesso anon/free_user;
+- lettura admin/editor;
+- nessuna policy delete;
+- nessun dato sensibile nei log;
+- writer reali ancora disabilitati;
+- provider/import ancora spenti.
+
+## Nota D.7-B — Readiness provider_import_runs verificata in staging
+
+D.7-A è stata verificata manualmente su Supabase staging “Regista Avanzato” con sole query read-only.
+
+Confermato:
+
+- `provider_import_runs` presente;
+- RLS attiva;
+- `provider_import_runs_count = 0`;
+- provider esterni ancora off;
+- import ancora disabilitati;
+- nessuna policy `DELETE`;
+- SQL Editor senza sessione applicativa:
+  - `auth.uid() = null`;
+  - `is_admin() = false`;
+  - `is_editor_or_admin() = false`.
+
+Production resta non pronta perché:
+
+- manca ancora test RLS con sessione applicativa admin/editor/free_user;
+- non esiste ancora reader admin read-only per import run;
+- writer reali sono disabilitati;
+- provider e Apify restano spenti;
+- migration history Supabase resta manuale;
+- privacy/retention dei log non è ancora chiusa.
+
+Blocco operativo invariato:
+
+- nessun provider reale;
+- nessun Apify;
+- nessun import;
+- nessun `db push/reset`;
+- nessun passaggio Production.

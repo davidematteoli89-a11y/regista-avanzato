@@ -450,3 +450,45 @@ Prima di qualunque writer reale:
 3. preparare solo writer staging con rollback;
 4. mantenere provider reali spenti;
 5. richiedere conferma manuale.
+
+## D.7 — Readiness senza writer reali
+
+Prima di qualunque writer provider è stato preparato un controllo read-only:
+
+- `supabase/manual/provider_import_runs_rls_d7.sql`;
+- `docs/provider_import_runs_rls_test_plan.md`.
+
+Il controllo non inserisce dati e non abilita import.
+
+Serve a confermare:
+
+- `provider_import_runs` protetta da RLS;
+- nessuna policy delete;
+- log collegati tramite colonne batch/import;
+- provider e import ancora spenti.
+
+## D.7-B — Esito readiness provider_import_runs
+
+La verifica manuale read-only D.7-A è stata completata sullo staging “Regista Avanzato”.
+
+Confermato:
+
+- `provider_import_runs` presente;
+- RLS attiva;
+- count = 0;
+- provider esterni ancora off;
+- import ancora disabilitati;
+- nessuna policy `DELETE`;
+- SQL Editor non ha sessione app admin (`auth.uid() = null`, helper admin/editor = false).
+
+Impatto sul piano provider:
+
+- il modello run/batch è pronto come base di tracciamento;
+- nessun writer reale è ancora consentito;
+- nessun provider reale può essere attivato prima di test RLS applicativi;
+- Apify resta spento;
+- `realWritesEnabled=false` resta il blocco operativo principale.
+
+Prossimo step:
+
+- D.8 — visibilità admin read-only delle import run, senza import reali.

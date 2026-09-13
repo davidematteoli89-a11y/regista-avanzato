@@ -195,3 +195,51 @@ Residui:
 Prossimo step consigliato:
 
 - D.7 — RLS/readiness test per `provider_import_runs` e admin visibility, senza provider e senza import reali.
+
+## D.7 — Readiness/RLS test plan
+
+Preparato file read-only:
+
+- `supabase/manual/provider_import_runs_rls_d7.sql`.
+
+Preparato documento:
+
+- `docs/provider_import_runs_rls_test_plan.md`.
+
+Il test D.7 verifica:
+
+- tabella esistente;
+- RLS attiva;
+- policy/grants;
+- colonne `batch_id/import_run_id`;
+- indici;
+- count righe;
+- provider/import ancora spenti;
+- assenza policy delete.
+
+Nessuna query di scrittura viene inclusa.
+
+## D.7-B — Risultati readiness registrati
+
+D.7-A è stata eseguita manualmente dal Supabase SQL Editor sul progetto staging “Regista Avanzato”.
+
+Risultati:
+
+- `provider_import_runs` presente;
+- RLS attiva confermata;
+- `provider_import_runs_count = 0`;
+- provider esterni ancora off;
+- nessuna configurazione con `import_enabled = true`;
+- nessuna policy `DELETE` su `provider_import_runs`;
+- nel SQL Editor non c’è sessione applicativa:
+  - `auth.uid() = null`;
+  - `is_admin() = false`;
+  - `is_editor_or_admin() = false`.
+
+La migrazione 0009 resta applicata manualmente su staging, ma la migration history Supabase può non essere allineata al flusso CLI. Non usare `db push/reset` senza piano dedicato.
+
+Residui prima dei writer reali:
+
+- test RLS da sessione applicativa admin/editor/free_user;
+- reader admin read-only opzionale;
+- writer reali ancora bloccati da `realWritesEnabled=false`.

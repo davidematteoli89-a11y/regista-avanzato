@@ -744,3 +744,60 @@ Residui prima di writer reali:
 Prossimo step consigliato:
 
 - D.7 — RLS/readiness test per `provider_import_runs`, senza provider e senza import reali.
+
+## D.7 — Query read-only pronte
+
+Per verificare `provider_import_runs` su staging usare:
+
+```bash
+pbcopy < supabase/manual/provider_import_runs_rls_d7.sql
+```
+
+Poi incollare nel SQL Editor del progetto Supabase staging “Regista Avanzato”.
+
+Il file controlla:
+
+- esistenza tabella;
+- RLS;
+- policy;
+- grants;
+- colonne;
+- indici;
+- count righe;
+- provider off;
+- import disabilitati;
+- assenza policy delete.
+
+Se i risultati sono corretti, il prossimo step può essere:
+
+- D.7-A documentazione risultati; oppure
+- D.8 reader admin read-only per import runs, se serve visibilità UI.
+
+## D.7-B — Risultati query read-only ricevuti
+
+Risultati manuali D.7-A registrati da SQL Editor staging “Regista Avanzato”:
+
+- `provider_import_runs` esiste;
+- RLS attiva;
+- conteggio righe = 0;
+- provider esterni off;
+- nessuna riga con import abilitato;
+- nessuna policy `DELETE`;
+- contesto SQL Editor non autenticato come app user:
+  - `auth.uid() = null`;
+  - `is_admin() = false`;
+  - `is_editor_or_admin() = false`.
+
+Conferme:
+
+- nessuna scrittura DB;
+- nessun seed/provider/import reale;
+- nessun `db push/reset`;
+- Production non toccata;
+- `realWritesEnabled=false`.
+
+Prossimi step sicuri:
+
+1. D.8 — reader admin read-only per mostrare `provider_import_runs` in `/admin/imports`;
+2. test RLS con sessione applicativa admin/editor/free_user;
+3. mantenere writer reali disabilitati fino a conferma esplicita.
