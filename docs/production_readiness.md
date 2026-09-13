@@ -764,3 +764,32 @@ Prima di Production restano obbligatori:
 - nessuna scrittura DB nella prima probe;
 - provider/import/Apify ancora spenti;
 - test ruoli staging completati o consapevolmente differiti.
+
+## Nota D.16-A — Verifica manuale provider/costi/licenze
+
+D.16-A non avvicina ancora il progetto alla Production: aggiunge solo una checklist manuale per confrontare `api_football` e `the_stats_api`.
+
+Production resta bloccata finché:
+
+- provider definitivo non è scelto manualmente;
+- prezzo/piano non è verificato;
+- rate limit non è verificato;
+- licenza/caching/pubblicazione non sono verificati;
+- endpoint della prima probe non è scelto;
+- token provider non è gestito solo in env sicura;
+- repo GitHub Private non è confermato;
+- service role Supabase ruotata/confermata non è documentata;
+- Vercel env restano solo Preview;
+- `real_provider_probe_enabled=false` non viene sbloccato con fase dedicata;
+- `realWritesEnabled=false` resta default;
+- provider/import/Apify restano spenti;
+- nessuna scrittura DB viene introdotta.
+
+D.16-A conferma:
+
+- nessuna real-call;
+- nessuna fetch provider;
+- nessun token letto/stampato;
+- nessun DB write;
+- nessun deploy;
+- Production non toccata.

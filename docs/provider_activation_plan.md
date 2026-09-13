@@ -665,3 +665,34 @@ NO writer reali finché:
 - budget Apify con warning 24 €/mese e hard stop 30 €/mese;
 - nessuna chiamata provider/Apify lato utente;
 - nessun deploy Production senza checklist dedicata.
+
+## D.16-A — Provider manual verification checklist
+
+Creato:
+
+- `docs/provider_manual_verification_checklist_d16a.md`.
+
+Obiettivo:
+
+- confrontare manualmente `api_football` e `the_stats_api` prima di qualunque probe reale;
+- non inventare prezzi, rate limit, licenze o copertura;
+- mantenere tutte le voci non confermate come “da verificare manualmente”.
+
+Decisione provvisoria:
+
+- preferred provvisorio: `api_football`;
+- alternative: `the_stats_api`;
+- nessuna modifica a config, DB, provider o import.
+
+Gate prima di real-call:
+
+- provider scelto manualmente;
+- prezzo, rate limit e licenza verificati;
+- endpoint scelto;
+- token solo in env sicura;
+- provider ancora off in `data_providers`;
+- nessun `import_enabled=true`;
+- `real_provider_probe_enabled=false` fino a nuova conferma;
+- `realWritesEnabled=false`;
+- nessun DB write;
+- Production non toccata.

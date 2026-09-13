@@ -114,3 +114,43 @@ Opzione B:
 - Nessun db push/reset.
 - Provider/Apify/import spenti.
 - Production non toccata.
+
+## D.16-A — Checklist manuale provider/costi/licenze
+
+Documento aggiunto:
+
+- `docs/provider_manual_verification_checklist_d16a.md`.
+
+D.16-A non apre la probe reale: prepara solo la verifica manuale aggiornata di provider, prezzo, rate limit, licenza, caching, pubblicazione e copertura.
+
+Decisione provvisoria:
+
+- provider preferito provvisorio: `api_football`;
+- alternativa: `the_stats_api`;
+- scelta finale subordinata a verifica manuale su fonti ufficiali.
+
+Gate aggiornato prima di D.16-B:
+
+- provider scelto manualmente;
+- prezzo/piano verificato;
+- rate limit verificato;
+- licenza/caching/pubblicazione verificati;
+- endpoint scelto;
+- token creato solo in env sicura, mai committato e mai stampato;
+- GitHub repo Private confermato;
+- service role Supabase ruotata/confermata;
+- env Supabase solo Preview;
+- provider ancora off;
+- nessun `import_enabled=true`;
+- `real_provider_probe_enabled=false` fino a conferma esplicita;
+- `realWritesEnabled=false`;
+- nessuna scrittura DB;
+- Production non toccata.
+
+Conferme D.16-A:
+
+- nessuna real-call;
+- nessuna fetch provider;
+- nessun token letto/stampato;
+- nessuna scrittura DB;
+- provider/Apify/import spenti.

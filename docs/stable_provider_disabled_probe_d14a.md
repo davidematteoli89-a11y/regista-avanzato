@@ -104,3 +104,29 @@ Finché il gate D.15 non viene soddisfatto:
 - nessun token letto;
 - nessun DB write;
 - provider/import spenti.
+
+## D.16-A — Checklist manuale prima della probe
+
+D.16-A mantiene la probe disabilitata e aggiunge solo documentazione:
+
+- `docs/provider_manual_verification_checklist_d16a.md`.
+
+La checklist richiede verifica manuale di:
+
+- provider definitivo;
+- prezzo/piano;
+- rate limit;
+- copertura Serie A;
+- endpoint più sicuro;
+- licenza/caching/pubblicazione;
+- modalità auth;
+- rischi payload e mapper.
+
+La probe resta bloccata:
+
+- `real_provider_probe_enabled=false`;
+- `external_fetch=false`;
+- `token_read=false`;
+- `db_write=false`;
+- provider/import off;
+- Production non toccata.

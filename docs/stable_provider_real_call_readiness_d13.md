@@ -256,3 +256,35 @@ D.15 conferma che la probe resta disabilitata e definisce il gate prima di una f
 - nessun import;
 - provider/import ancora off;
 - Production non toccata.
+
+## D.16-A — Verifica manuale provider/costi/licenze
+
+D.16-A aggiunge:
+
+- `docs/provider_manual_verification_checklist_d16a.md`.
+
+La checklist confronta `api_football` e `the_stats_api` senza chiamare provider e senza usare web search automatica.
+
+Stato decisione:
+
+- `api_football` resta preferito provvisorio;
+- `the_stats_api` resta alternativa;
+- tutti i dati commerciali/legali/tecnici aggiornati restano “da verificare manualmente” finché non confermati su fonti ufficiali.
+
+Prima della vera probe D.16-B devono essere confermati:
+
+- prezzo e piano;
+- rate limit;
+- copertura Serie A;
+- endpoint `fixtures` o `standings`;
+- licenza di pubblicazione;
+- regole di caching/storage;
+- token solo in env sicura;
+- repo GitHub Private;
+- service role Supabase ruotata/confermata;
+- env Vercel solo Preview;
+- provider/import ancora spenti;
+- `real_provider_probe_enabled=false` fino ad autorizzazione;
+- `realWritesEnabled=false`;
+- nessuna scrittura DB;
+- Production non toccata.

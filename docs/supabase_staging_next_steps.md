@@ -1092,3 +1092,32 @@ Prima di D.16:
 - decidere provider definitivo;
 - verificare manualmente prezzo/rate limit/licenza;
 - decidere se completare prima i test ruoli `free_user`/`editor`.
+
+## D.16-A — Verifica manuale provider/costi/licenze
+
+Aggiunto:
+
+- `docs/provider_manual_verification_checklist_d16a.md`.
+
+Staging resta invariato:
+
+- nessuna real-call;
+- nessuna fetch provider;
+- nessun token letto/stampato;
+- nessuna scrittura DB;
+- nessun `provider_import_runs` insert;
+- nessun provider attivato;
+- nessun import attivato;
+- Apify spento;
+- Production non toccata.
+
+Prima di D.16-B servono:
+
+- scelta provider confermata manualmente;
+- prezzo e rate limit verificati;
+- licenza/caching/pubblicazione verificati;
+- endpoint scelto;
+- token solo in env sicura;
+- `real_provider_probe_enabled=false` fino ad autorizzazione esplicita;
+- `realWritesEnabled=false`;
+- DB write ancora vietati.

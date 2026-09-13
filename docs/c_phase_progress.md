@@ -1407,3 +1407,42 @@ Conferme:
 - `import_enabled=false`;
 - provider/Apify/import spenti;
 - Production non toccata.
+
+## D.16-A — Verifica manuale provider/costi/licenze
+
+Stato: checklist manuale preparata, nessuna real-call.
+
+Creato:
+
+- `docs/provider_manual_verification_checklist_d16a.md`.
+
+Decisione provvisoria:
+
+- provider preferito provvisorio: `api_football`;
+- alternativa: `the_stats_api`;
+- scelta finale vincolata a verifica manuale di copertura, prezzi, rate limit, licenza, caching e pubblicazione.
+
+Gate prima di D.16-B:
+
+- provider scelto manualmente;
+- prezzo/rate limit/licenza verificati;
+- endpoint scelto;
+- token solo in env sicura;
+- repo GitHub Private confermato;
+- service role Supabase ruotata/confermata;
+- env Vercel solo Preview;
+- provider/import/Apify ancora spenti;
+- `real_provider_probe_enabled=false` fino a conferma esplicita;
+- `realWritesEnabled=false`;
+- nessuna scrittura DB;
+- Production non toccata.
+
+Conferme:
+
+- nessuna real-call;
+- nessuna fetch provider;
+- nessun token letto/stampato;
+- nessuna scrittura DB;
+- nessun `db push/reset`;
+- provider/Apify/import spenti;
+- Production non toccata.

@@ -210,3 +210,31 @@ Il gate non abilita writer:
 - provider in `data_providers` ancora off.
 
 Prima di D.16 serve verifica manuale di provider, costi, rate limit e licenza.
+
+## D.16-A — Gate provider aggiornato
+
+D.16-A documenta la checklist manuale:
+
+- `docs/provider_manual_verification_checklist_d16a.md`.
+
+Il gate resta chiuso per writer e probe reale finché:
+
+- provider scelto manualmente;
+- prezzo/piano verificato;
+- rate limit verificato;
+- licenza/caching/pubblicazione verificati;
+- endpoint scelto;
+- token creato solo in env sicura, non committato e non stampato;
+- GitHub repo Private confermato;
+- service role Supabase ruotata/confermata;
+- env Vercel solo Preview;
+- provider off;
+- import off;
+- Apify off;
+- `real_provider_probe_enabled=false`;
+- `realWritesEnabled=false`;
+- nessun DB write;
+- nessun `provider_import_runs` insert;
+- Production non toccata.
+
+D.16-A non modifica codice, migrazioni, ruoli, provider o dati.
