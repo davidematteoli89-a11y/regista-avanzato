@@ -643,3 +643,18 @@ Fino ad allora:
 - nessun import live;
 - nessun import storico massivo;
 - nessun deploy Production.
+
+## Nota D.12-A — Suite test ruoli controllata
+
+D.12-A documenta una suite di test per `/admin/imports` senza creare utenti e senza modificare ruoli.
+
+Production resta bloccata finché non saranno completati:
+
+- test applicativo `free_user` negativo;
+- test applicativo `editor` read-only;
+- riconferma admin/non autenticato;
+- verifica che nessuna UI provider/import esponga azioni run/import/delete/update;
+- conferma che `realWritesEnabled=false` resta default;
+- conferma provider/Apify/import spenti.
+
+Nessuna Production readiness viene aumentata da D.12-A: è una fase di preparazione e controllo.

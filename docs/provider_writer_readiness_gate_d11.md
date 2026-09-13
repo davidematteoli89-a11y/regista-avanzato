@@ -94,3 +94,23 @@ In D.11:
 ## Prossimo step consigliato
 
 D.12 — preparare una checklist operativa per test ruoli controllati `free_user`/`editor` oppure iniziare un piano provider reale solo documentale, mantenendo writer e provider disabilitati.
+
+## D.12-A — Suite test ruoli controllata
+
+D.12-A aggiunge una suite documentale senza creare utenti e senza modificare ruoli.
+
+Documento dedicato:
+
+- `docs/role_access_test_suite_d12a.md`.
+
+La suite chiude il requisito operativo di pianificazione, ma non sostituisce i test end-to-end futuri con utenti `free_user` ed `editor`.
+
+Gate invariato:
+
+- nessun writer reale;
+- nessun import reale;
+- nessun provider reale;
+- nessun Apify;
+- nessuna Production;
+- `realWritesEnabled=false` resta default;
+- test `free_user`/`editor` richiesti prima di qualunque scrittura reale.

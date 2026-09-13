@@ -134,3 +134,20 @@ Motivazione:
 Gate:
 
 - nessun writer reale prima di test ruoli controllati e checklist dedicata.
+
+## D.12-A — Suite ruoli controllata preparata
+
+È stata preparata la suite documentale `docs/role_access_test_suite_d12a.md`.
+
+La suite formalizza:
+
+- ruoli effettivi: `free_user`, `editor`, `admin`, `super_admin`;
+- `status = approved` come requisito per entrare nell’area admin;
+- `free_user` bloccato da `requireAdmin()` / `notFound()`;
+- `editor`, `admin` e `super_admin` ammessi all’admin layout se approved;
+- `provider_import_runs` leggibile via RLS solo da `is_editor_or_admin()`;
+- INSERT/UPDATE su `provider_import_runs` riservati ad admin dalla RLS;
+- nessuna policy DELETE;
+- `/admin/imports` resta UI read-only senza bottoni run/import/delete/update.
+
+In D.12-A non vengono creati utenti, non vengono modificati ruoli e non viene scritto nel database.

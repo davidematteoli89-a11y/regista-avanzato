@@ -1185,3 +1185,33 @@ Readiness gate:
 Documento dedicato:
 
 - `docs/provider_writer_readiness_gate_d11.md`.
+
+## D.12-A — Suite test ruoli controllata
+
+Stato: documentazione preparata, nessun test con nuovi utenti eseguito.
+
+Creato:
+
+- `docs/role_access_test_suite_d12a.md`.
+
+Confermato da audit locale:
+
+- ruoli effettivi: `free_user`, `editor`, `admin`, `super_admin`;
+- admin layout accessibile solo con profilo `approved` e ruolo `editor/admin/super_admin`;
+- `free_user` escluso da `requireAdmin()`;
+- `provider_import_runs` SELECT consentito via RLS solo a `is_editor_or_admin()`;
+- INSERT/UPDATE RLS riservati ad admin;
+- nessuna DELETE policy;
+- `/admin/imports` resta read-only e senza bottoni di scrittura.
+
+Non fatto:
+
+- nessun utente creato;
+- nessun ruolo modificato;
+- nessuna scrittura DB;
+- nessun provider/Apify/import attivato;
+- nessuna Production.
+
+Prossimo passo consigliato:
+
+- D.12-B — test applicativo con utenti controllati `free_user` ed `editor`, solo dopo conferma esplicita.

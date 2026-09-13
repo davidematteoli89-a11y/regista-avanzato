@@ -78,6 +78,24 @@ Per test positivo/negativo completo servono sessioni reali:
 
 Nessun test insert va eseguito in D.7 senza conferma separata.
 
+## D.12-A — Suite applicativa ruoli
+
+La suite `docs/role_access_test_suite_d12a.md` completa la pianificazione dei test applicativi per `/admin/imports`.
+
+Matrice attesa:
+
+- non autenticato: bloccato da Vercel Authentication o login app;
+- `free_user` approved: bloccato da `requireAdmin()` / `notFound()`, nessun SELECT su `provider_import_runs`;
+- `editor` approved: accesso read-only e SELECT consentito da `is_editor_or_admin()`;
+- `admin` approved: accesso read-only già verificato; eventuali INSERT/UPDATE restano non esposti dalla UI;
+- `super_admin` approved: accesso previsto come admin.
+
+Residui:
+
+- test applicativo `free_user` con utente controllato;
+- test applicativo `editor` con utente controllato;
+- nessuna creazione utente o modifica ruolo senza conferma separata.
+
 ## Admin visibility
 
 Se utile, il prossimo passaggio può aggiungere un reader admin read-only per mostrare `provider_import_runs` nell’area admin.

@@ -929,3 +929,23 @@ Non fare ancora:
 - import;
 - writer DB;
 - Production deploy.
+
+## D.12-A — Suite ruoli prima dei writer reali
+
+Preparata la suite:
+
+- `docs/role_access_test_suite_d12a.md`.
+
+Stato:
+
+- admin già verificato manualmente su `/admin/imports`;
+- non autenticato già bloccato;
+- `free_user` ed `editor` restano test residui, da eseguire solo con utenti controllati e conferma separata;
+- nessun utente creato;
+- nessun ruolo modificato;
+- nessuna scrittura DB.
+
+Prossimo passo consigliato:
+
+- D.12-B — eseguire test applicativo `free_user`/`editor` solo quando saranno disponibili utenti staging controllati;
+- in alternativa D.13 — ulteriore audit documentale provider/import, mantenendo writer reali disabilitati.
