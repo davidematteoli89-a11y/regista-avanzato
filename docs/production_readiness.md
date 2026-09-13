@@ -728,3 +728,14 @@ Production resta bloccata finché:
 - provider/import/Apify restano non approvati.
 
 Nessuna creazione utente o modifica ruolo viene eseguita automaticamente.
+
+## Nota D.14-D — Utenti test mancanti
+
+La verifica manuale read-only ha confermato che non sono presenti utenti `regista-test-*` nello staging.
+
+Production resta bloccata perché:
+
+- i test `free_user`/`editor` non sono ancora eseguiti;
+- serve piano D.14-E per utenti test staging;
+- nessuna creazione utente o modifica ruolo è stata autorizzata;
+- provider/import/Apify restano non approvati.

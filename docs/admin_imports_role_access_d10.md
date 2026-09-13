@@ -202,3 +202,15 @@ Aggiornamento importante:
 - le email vanno sempre mascherate.
 
 I test `free_user`/`editor` restano da eseguire manualmente su Preview.
+
+## D.14-D — Verifica utenti test mancanti
+
+La ricerca manuale read-only degli utenti `regista-test-*` su Supabase staging ha restituito:
+
+```text
+Success. No rows returned.
+```
+
+Quindi i test end-to-end `free_user`/`editor` non possono ancora essere completati senza creare o predisporre utenti test.
+
+Nessun utente creato e nessun ruolo modificato in D.14-D.

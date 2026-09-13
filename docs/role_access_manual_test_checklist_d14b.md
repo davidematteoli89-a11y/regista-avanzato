@@ -186,3 +186,20 @@ Documento operativo:
 - `docs/role_access_manual_test_d14c.md`.
 
 D.14-C aggiunge istruzioni puntuali per eseguire manualmente la checklist su Preview e registrare i risultati, senza creare utenti o modificare ruoli.
+
+## D.14-D — Utenti test non trovati
+
+La query read-only D.14-C è stata eseguita manualmente nello staging “Regista Avanzato”.
+
+Risultato:
+
+- `Success. No rows returned`;
+- nessun utente test `regista-test-*` trovato;
+- nessun utente creato;
+- nessun ruolo modificato;
+- nessuna scrittura DB.
+
+Le email operative della fase successiva vanno documentate solo mascherate:
+
+- `davide.m***@funcode.it`;
+- `caffe1***@gmail.com`.

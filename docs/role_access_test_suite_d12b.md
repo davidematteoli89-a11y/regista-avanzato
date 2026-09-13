@@ -238,3 +238,16 @@ Integra:
 - template esito da compilare dopo test.
 
 Nessun utente creato e nessun ruolo modificato in D.14-C preparatoria.
+
+## D.14-D — Nessun utente test esistente
+
+Risultato manuale della query read-only su staging:
+
+- nessuna riga per utenti `regista-test-*`;
+- nessun utente creato;
+- nessun ruolo modificato;
+- nessuna scrittura DB.
+
+Conseguenza:
+
+- per completare i test end-to-end `free_user`/`editor` servirà D.14-E con piano di creazione controllata o riuso manuale di utenti staging.

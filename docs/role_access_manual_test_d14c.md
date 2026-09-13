@@ -199,3 +199,22 @@ Errori:
 - Nessun Apify/SofaScore.
 - Nessun import attivato.
 - Nessuna Production.
+
+## D.14-D — Risultato query utenti test
+
+La query read-only è stata eseguita manualmente su Supabase staging “Regista Avanzato”.
+
+Risultato:
+
+```text
+Success. No rows returned.
+```
+
+Conclusione:
+
+- non risultano utenti test `regista-test-*`;
+- nessun utente è stato creato;
+- nessun ruolo è stato modificato;
+- nessuna scrittura DB è stata eseguita.
+
+La fase successiva è D.14-E: piano controllato per creare utenti test staging solo dopo conferma.

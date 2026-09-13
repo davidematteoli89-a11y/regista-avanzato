@@ -714,6 +714,24 @@ Resta da fare manualmente:
 - testare `editor` read-only;
 - confermare DB invariato.
 
+## D.14-D — Verifica utenti test mancanti
+
+Stato: verifica manuale read-only registrata.
+
+Risultato:
+
+- query `regista-test-*` su Supabase staging: `Success. No rows returned`;
+- nessun utente test trovato;
+- nessun utente creato;
+- nessun ruolo modificato;
+- nessuna scrittura DB;
+- provider/Apify/import spenti;
+- Production non toccata.
+
+Prossimo passo:
+
+- D.14-E — piano creazione controllata utenti test staging.
+
 Verifica locale:
 
 - `npm run lint`: ok;

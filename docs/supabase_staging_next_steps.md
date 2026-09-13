@@ -1041,3 +1041,17 @@ Prima di proseguire servono risultati manuali:
 - conferma DB invariato con query read-only.
 
 Non creare utenti o modificare ruoli senza conferma esplicita.
+
+## D.14-D — Utenti test assenti
+
+Verifica manuale read-only completata:
+
+- query utenti `regista-test-*` eseguita nel SQL Editor staging;
+- risultato: nessuna riga;
+- nessun utente creato;
+- nessun ruolo modificato;
+- nessuna scrittura DB.
+
+Prossimo passo:
+
+- D.14-E — piano creazione controllata utenti test staging, usando solo email mascherate nei documenti e nessuna password.
