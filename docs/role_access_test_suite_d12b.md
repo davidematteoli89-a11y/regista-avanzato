@@ -206,3 +206,20 @@ Prima di procedere servono conferme esplicite su:
 1. riutilizzo o creazione degli utenti test;
 2. eventuale promozione manuale di un utente a `editor`;
 3. cleanup finale.
+
+## D.14-B — Checklist manuale pronta
+
+Documento operativo:
+
+- `docs/role_access_manual_test_checklist_d14b.md`.
+
+D.14-B trasforma il piano D.12-B in una checklist eseguibile manualmente quando l’utente è al PC.
+
+Stato:
+
+- nessun utente creato;
+- nessun ruolo modificato;
+- nessuna query update preparata per esecuzione immediata;
+- test `free_user` ed `editor` ancora da eseguire;
+- provider/Apify/import spenti;
+- Production non toccata.

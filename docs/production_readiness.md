@@ -700,3 +700,17 @@ Production resta bloccata:
 - provider/import/Apify spenti;
 - `real_provider_probe_enabled=false`;
 - `realWritesEnabled=false`.
+
+## Nota D.14-B — Checklist manuale ruoli
+
+D.14-B prepara la checklist finale per verificare `free_user` ed `editor` su `/admin/imports`.
+
+Production resta non pronta finché:
+
+- il test `free_user` non conferma blocco;
+- il test `editor` non conferma accesso read-only;
+- DB post-test non resta invariato;
+- non viene chiuso il cleanup utenti test;
+- provider/Apify/import restano non approvati.
+
+D.14-B non crea utenti e non modifica ruoli.

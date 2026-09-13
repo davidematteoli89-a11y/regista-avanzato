@@ -1007,3 +1007,22 @@ Lo script non tocca Supabase staging:
 - nessuna Production.
 
 Serve solo a fissare il contratto sicuro della futura probe.
+
+## D.14-B — Checklist manuale accessi ruoli
+
+Preparata:
+
+- `docs/role_access_manual_test_checklist_d14b.md`.
+
+Da eseguire manualmente quando disponibili utenti staging:
+
+- `regista-test-free-user`;
+- `regista-test-editor`.
+
+Fino alla conferma:
+
+- non creare utenti;
+- non modificare ruoli;
+- non usare service role;
+- non scrivere DB;
+- non toccare Production.

@@ -172,3 +172,19 @@ Non eseguito in D.12-B:
 - modifica ruoli;
 - scritture DB;
 - provider/import/Apify.
+
+## D.14-B — Checklist manuale ruoli
+
+Preparata checklist:
+
+- `docs/role_access_manual_test_checklist_d14b.md`.
+
+La checklist richiede:
+
+- verifica utenti test da Dashboard staging;
+- test `free_user` su Preview con atteso blocco;
+- test `editor` su Preview con atteso accesso read-only;
+- query post-test solo read-only;
+- nessun cleanup distruttivo senza conferma.
+
+D.14-B non crea utenti e non modifica ruoli.

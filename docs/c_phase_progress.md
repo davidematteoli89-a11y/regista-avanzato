@@ -670,6 +670,30 @@ Garanzie mantenute:
 - provider/Apify/import spenti;
 - Production non toccata.
 
+## D.14-B — Checklist manuale ruoli
+
+Stato: checklist preparata, test non ancora eseguito.
+
+Creato:
+
+- `docs/role_access_manual_test_checklist_d14b.md`.
+
+La checklist copre:
+
+- verifica utenti test staging;
+- test `free_user` bloccato;
+- test `editor` read-only;
+- query read-only per DB invariato;
+- cleanup non distruttivo.
+
+Non fatto:
+
+- nessun utente creato;
+- nessun ruolo modificato;
+- nessuna scrittura DB;
+- nessun provider/Apify/import attivato;
+- nessuna Production.
+
 Verifica locale:
 
 - `npm run lint`: ok;

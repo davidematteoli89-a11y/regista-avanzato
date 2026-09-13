@@ -167,3 +167,19 @@ Il gate resta chiuso perché:
 - Production non toccata.
 
 Per passare a una real-call servirà una nuova conferma esplicita.
+
+## D.14-B — Checklist ruoli prima dei writer
+
+La checklist manuale D.14-B è parte del gate prima di writer/provider reali.
+
+Documento:
+
+- `docs/role_access_manual_test_checklist_d14b.md`.
+
+Il gate resta chiuso finché:
+
+- `free_user` non è verificato come bloccato;
+- `editor` non è verificato come read-only;
+- nessuna scrittura provider/import è stata introdotta;
+- `provider_import_runs_count` resta 0 salvo test writer approvato;
+- provider/Apify/import restano spenti.
