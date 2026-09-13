@@ -1240,3 +1240,38 @@ Conferme:
 - nessuna scrittura DB;
 - nessun provider/Apify/import attivato;
 - Production non toccata.
+
+## D.13 — Stable provider real-call readiness
+
+Stato: piano documentale preparato, nessuna real-call eseguita.
+
+Creato:
+
+- `docs/stable_provider_real_call_readiness_d13.md`.
+
+Audit:
+
+- `stable_provider` è un wrapper/placeholder disattivato;
+- `the_stats_api` e `api_football` sono candidati configurati ma spenti;
+- non ci sono adapter real-call specifici;
+- gli script attuali sono solo audit/dry-run locali;
+- writer e import restano bloccati da guardie.
+
+Decisione provvisoria:
+
+- preferenza provvisoria: `api_football`;
+- alternativa: `the_stats_api`;
+- scelta finale subordinata a verifica manuale di copertura, costi, rate limit e licenza.
+
+Non fatto:
+
+- nessuna chiamata provider;
+- nessuna fetch esterna;
+- nessun token letto/stampato;
+- nessuna scrittura DB;
+- nessun provider/Apify/import attivato;
+- nessuna Production.
+
+Prossimo step consigliato:
+
+- D.14 — scelta provider e preparazione script probe read-only, senza eseguirlo.

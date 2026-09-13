@@ -443,6 +443,34 @@ Risultato:
 - provider/import ancora disattivati;
 - `realWritesEnabled=false`.
 
+## D.13 — Stable provider real-call readiness
+
+D.13 prepara solo il piano per una futura prima chiamata reale read-only.
+
+Documento dedicato:
+
+- `docs/stable_provider_real_call_readiness_d13.md`.
+
+Stato:
+
+- nessuna chiamata TheStatsAPI;
+- nessuna chiamata API-Football;
+- nessuna fetch esterna;
+- nessun token letto;
+- nessuna scrittura DB;
+- provider reali ancora off;
+- `import_enabled=false`;
+- Apify off;
+- Production non toccata.
+
+Decisione provvisoria:
+
+- `api_football` è il provider preferito provvisorio solo per una futura probe read-only;
+- `the_stats_api` resta alternativa;
+- la scelta finale richiede verifica manuale di copertura, prezzo, rate limit, licenza e payload.
+
+La futura real-call dovrà essere uno script separato dall’import writer, massimo una richiesta su `serie-a`, output sanificato e nessuna scrittura DB.
+
 Prima di qualunque writer reale:
 
 1. testare RLS con sessione app admin/editor/free_user;

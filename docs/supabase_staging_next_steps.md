@@ -964,3 +964,27 @@ Prima di eseguire il test servono istruzioni dell’utente su:
 4. come effettuare cleanup dopo il test.
 
 D.12-B conferma che il test può essere completato senza service role e senza Production, usando sessioni browser reali su Preview.
+
+## D.13 — Readiness prima chiamata provider stabile
+
+Preparato:
+
+- `docs/stable_provider_real_call_readiness_d13.md`.
+
+D.13 non usa Supabase live e non scrive dati.
+
+Prima di qualunque real-call:
+
+- confermare provider tra API-Football e TheStatsAPI;
+- verificare manualmente docs, prezzi, rate limit e licenza;
+- creare eventuale script probe separato da import/writer;
+- mantenere `provider_import_runs_count = 0`;
+- mantenere provider/import off;
+- mantenere `realWritesEnabled=false`;
+- non usare service role;
+- non toccare Production.
+
+Prossimo step consigliato:
+
+- D.14 — scelta provider e bozza script probe read-only, ancora senza eseguirlo;
+- oppure D.12-C — completare prima test utenti `free_user`/`editor`.

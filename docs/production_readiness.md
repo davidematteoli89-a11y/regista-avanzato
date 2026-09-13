@@ -670,3 +670,19 @@ Production resta bloccata finché:
 - non viene confermato che le query post-test lasciano provider/import spenti;
 - non viene completato un piano cleanup utenti test;
 - non viene confermato che nessuna service role è usata nel client o nelle azioni non necessarie.
+
+## Nota D.13 — Provider real-call readiness
+
+D.13 prepara la readiness per una futura prima chiamata provider, senza chiamarla.
+
+Production resta bloccata perché:
+
+- nessun provider reale è stato scelto definitivamente;
+- prezzi/rate limit/licenza non sono ancora verificati;
+- non esiste ancora script probe approvato;
+- non è stata completata alcuna real-call read-only controllata;
+- nessun writer reale è abilitato;
+- `realWritesEnabled=false`;
+- provider/import/Apify restano spenti.
+
+Qualunque futura real-call deve restare fuori Production, limitata a una richiesta, senza DB write e con token mai stampato.

@@ -440,6 +440,32 @@ write_attempt_blocked=true
 warnings=0
 ```
 
+## D.13 — Ponte verso real-call read-only
+
+D.13 non cambia gli script dry-run esistenti.
+
+Gli script restano:
+
+- locali;
+- senza fetch esterne;
+- senza token;
+- senza scritture DB;
+- con provider reali spenti;
+- con Apify spento.
+
+Il futuro script real-call dovrà essere separato dagli script dry-run e dagli import writer.
+
+Prima probe futura:
+
+- una sola richiesta;
+- competizione `serie-a`;
+- endpoint standings o fixtures;
+- output console sanificato;
+- nessun DB write;
+- nessun import;
+- nessun Apify;
+- nessuna Production.
+
 Nota schema:
 
 - `provider_import_logs`, `api_usage_logs` e `import_logs` esistono già;

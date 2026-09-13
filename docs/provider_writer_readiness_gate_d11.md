@@ -128,3 +128,26 @@ Il readiness gate resta chiuso finché:
 - nessuna UI di import reale viene aggiunta.
 
 La creazione o modifica ruoli degli utenti test richiede conferma separata.
+
+## D.13 — Gate real-call provider stabile
+
+Il readiness gate viene esteso alla prima real-call provider.
+
+Prima di qualsiasi chiamata TheStatsAPI/API-Football devono essere confermati:
+
+- provider scelto;
+- copertura Serie A;
+- endpoint e rate limit;
+- costo;
+- licenza/caching;
+- token in env sicuro, mai committato;
+- script probe separato da writer/import;
+- massimo una richiesta;
+- nessuna scrittura DB;
+- `realWritesEnabled=false`;
+- provider non attivato in `data_providers`;
+- nessun `import_enabled=true`;
+- Apify off;
+- Production non toccata.
+
+D.13 non autorizza chiamate reali: documenta solo la procedura.
