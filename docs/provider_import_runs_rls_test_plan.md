@@ -96,6 +96,34 @@ Residui:
 - test applicativo `editor` con utente controllato;
 - nessuna creazione utente o modifica ruolo senza conferma separata.
 
+## D.12-B — Query post-test read-only
+
+D.12-B mantiene le verifiche DB in sola lettura.
+
+Query da usare dopo i test browser, solo su staging:
+
+```sql
+select count(*) as provider_import_runs_count
+from public.provider_import_runs;
+
+select provider_key, is_active
+from public.data_providers
+where provider_key in ('stable_provider', 'the_stats_api', 'api_football', 'apify_sofascore')
+order by provider_key;
+
+select c.slug, pc.import_enabled
+from public.competitions c
+left join public.provider_competition_config pc on pc.competition_id = c.id
+where pc.import_enabled = true
+limit 20;
+```
+
+Atteso:
+
+- `provider_import_runs_count = 0`;
+- provider esterni off;
+- nessun import enabled.
+
 ## Admin visibility
 
 Se utile, il prossimo passaggio può aggiungere un reader admin read-only per mostrare `provider_import_runs` nell’area admin.

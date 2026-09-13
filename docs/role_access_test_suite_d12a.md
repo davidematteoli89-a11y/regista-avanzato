@@ -127,3 +127,19 @@ Osservazioni:
 - Apify spento.
 - Import spenti.
 - Production non toccata.
+
+## D.12-B — Piano operativo utenti staging
+
+Documento successivo:
+
+- `docs/role_access_test_suite_d12b.md`.
+
+D.12-B prepara il test con utenti staging `free_user` ed `editor`, ma non crea utenti e non modifica ruoli.
+
+Il piano prevede:
+
+- verifica manuale Dashboard degli utenti test riutilizzabili;
+- matrice Preview per non autenticato/admin/free_user/editor;
+- query read-only post-test per confermare DB invariato;
+- cleanup futuro se vengono creati utenti test;
+- conferma esplicita prima di qualunque creazione utente o modifica ruolo.

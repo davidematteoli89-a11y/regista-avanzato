@@ -151,3 +151,24 @@ La suite formalizza:
 - `/admin/imports` resta UI read-only senza bottoni run/import/delete/update.
 
 In D.12-A non vengono creati utenti, non vengono modificati ruoli e non viene scritto nel database.
+
+## D.12-B — Piano test end-to-end free_user/editor
+
+Preparato:
+
+- `docs/role_access_test_suite_d12b.md`.
+
+La procedura spiega come completare i residui D.10 senza service role e senza Production:
+
+- verificare se esistono utenti staging test riutilizzabili;
+- usare un utente `free_user approved` per test negativo;
+- usare un utente `editor approved` per test read-only;
+- confermare che `/admin/imports` non espone azioni run/import/delete/update;
+- confermare DB invariato con sole query read-only.
+
+Non eseguito in D.12-B:
+
+- creazione utenti;
+- modifica ruoli;
+- scritture DB;
+- provider/import/Apify.

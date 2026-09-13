@@ -658,3 +658,15 @@ Production resta bloccata finché non saranno completati:
 - conferma provider/Apify/import spenti.
 
 Nessuna Production readiness viene aumentata da D.12-A: è una fase di preparazione e controllo.
+
+## Nota D.12-B — Test ruoli staging pianificato
+
+D.12-B prepara la procedura per utenti staging `free_user` ed `editor`, ma non crea utenti e non modifica ruoli.
+
+Production resta bloccata finché:
+
+- non viene verificato `free_user` end-to-end come non autorizzato all’admin;
+- non viene verificato `editor` end-to-end come read-only;
+- non viene confermato che le query post-test lasciano provider/import spenti;
+- non viene completato un piano cleanup utenti test;
+- non viene confermato che nessuna service role è usata nel client o nelle azioni non necessarie.

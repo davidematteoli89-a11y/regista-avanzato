@@ -1215,3 +1215,28 @@ Non fatto:
 Prossimo passo consigliato:
 
 - D.12-B — test applicativo con utenti controllati `free_user` ed `editor`, solo dopo conferma esplicita.
+
+## D.12-B — Piano test applicativo free_user/editor
+
+Stato: piano preparato, test non ancora eseguito.
+
+Creato:
+
+- `docs/role_access_test_suite_d12b.md`.
+
+Piano:
+
+- verificare manualmente se esistono utenti test staging riutilizzabili;
+- usare `regista-test-free-user` per test negativo;
+- usare `regista-test-editor` per test read-only;
+- mantenere admin già verificato;
+- confermare DB invariato con query read-only;
+- nessuna creazione utente o modifica ruolo senza conferma.
+
+Conferme:
+
+- nessun utente creato;
+- nessun ruolo modificato;
+- nessuna scrittura DB;
+- nessun provider/Apify/import attivato;
+- Production non toccata.

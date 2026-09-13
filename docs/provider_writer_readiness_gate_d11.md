@@ -114,3 +114,17 @@ Gate invariato:
 - nessuna Production;
 - `realWritesEnabled=false` resta default;
 - test `free_user`/`editor` richiesti prima di qualunque scrittura reale.
+
+## D.12-B — Gate operativo utenti test
+
+D.12-B definisce come eseguire i test `free_user`/`editor` senza abbassare la sicurezza.
+
+Il readiness gate resta chiuso finché:
+
+- non viene verificato un `free_user approved` bloccato da `/admin/imports`;
+- non viene verificato un `editor approved` ammesso solo read-only;
+- `provider_import_runs_count` resta invariato salvo test writer esplicitamente autorizzati;
+- provider/Apify/import restano spenti;
+- nessuna UI di import reale viene aggiunta.
+
+La creazione o modifica ruoli degli utenti test richiede conferma separata.

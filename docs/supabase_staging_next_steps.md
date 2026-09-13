@@ -949,3 +949,18 @@ Prossimo passo consigliato:
 
 - D.12-B — eseguire test applicativo `free_user`/`editor` solo quando saranno disponibili utenti staging controllati;
 - in alternativa D.13 — ulteriore audit documentale provider/import, mantenendo writer reali disabilitati.
+
+## D.12-B — Piano pronto, test non eseguito
+
+Preparato:
+
+- `docs/role_access_test_suite_d12b.md`.
+
+Prima di eseguire il test servono istruzioni dell’utente su:
+
+1. riutilizzare utenti staging esistenti o crearne di nuovi;
+2. quale email test usare, senza password in chat;
+3. se autorizzare una promozione manuale a `editor`;
+4. come effettuare cleanup dopo il test.
+
+D.12-B conferma che il test può essere completato senza service role e senza Production, usando sessioni browser reali su Preview.
