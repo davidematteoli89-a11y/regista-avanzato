@@ -553,3 +553,22 @@ Questa verifica abilita solo maggiore visibilità read-only. Non abilita provide
 Prossimo step consigliato:
 
 - D.10 — test RLS applicativo per ruoli su import runs, senza run reali.
+
+## D.10 — Ruoli applicativi import runs
+
+Audit completato senza modifiche a utenti/ruoli.
+
+La visibilità import runs è coerente con il piano provider:
+
+- `free_user` non accede ad admin;
+- `editor/admin` approved possono accedere in sola lettura;
+- nessuna azione writer presente;
+- provider/import restano spenti;
+- `realWritesEnabled=false`.
+
+Prima di qualunque attivazione provider restano necessari:
+
+- test `free_user` negativo con utente controllato;
+- test `editor` positivo read-only con utente controllato;
+- conferma DB invariato;
+- nessun writer reale.

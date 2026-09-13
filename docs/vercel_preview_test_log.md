@@ -557,3 +557,39 @@ Residuo:
 Prossimo step consigliato:
 
 - D.10 — test RLS applicativo free_user/editor/admin o hardening reader/log visibility, senza provider reali e senza scritture DB.
+
+## D.10 — Accesso applicativo ruoli `/admin/imports`
+
+Audit codice completato.
+
+Stato Preview già noto da D.9-B:
+
+- admin accede;
+- non autenticato bloccato da Vercel Authentication;
+- sezione import runs visibile;
+- nessun bottone di scrittura.
+
+Verifica read-only D.10:
+
+- `curl -I -L` su `/admin/imports` ha ricevuto redirect Vercel SSO;
+- la risposta iniziale è `302` verso `vercel.com/sso-api`;
+- conferma Deployment Protection/Vercel Authentication attiva per richieste non autenticate.
+
+Matrice attesa:
+
+- non autenticato: bloccato;
+- `free_user`: bloccato;
+- `editor`: accesso read-only se approved;
+- `admin`: accesso read-only.
+
+Residui manuali:
+
+- test `free_user` non eseguito perché non è stato creato/modificato un utente controllato;
+- test `editor` non eseguito perché non è stato creato/modificato un utente controllato.
+
+Non fatto:
+
+- nessuna modifica ruoli;
+- nessun nuovo utente;
+- nessuna scrittura DB;
+- nessun provider/Apify/import.

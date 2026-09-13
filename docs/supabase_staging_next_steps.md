@@ -883,3 +883,24 @@ Stato invariato:
 Prossimo step consigliato:
 
 - D.10 — test RLS applicativo con free_user/editor/admin oppure preparazione reader/log visibility successiva, sempre senza provider reali e senza scritture.
+
+## D.10 — Audit accessi applicativi `/admin/imports`
+
+Il codice è coerente con la matrice attesa:
+
+- non autenticato bloccato prima da Vercel Authentication o poi da login app;
+- `free_user` bloccato da `requireAdmin()`;
+- `editor/admin/super_admin` approved ammessi;
+- reader `provider_import_runs` solo SELECT e RLS-aware;
+- nessuna service role;
+- nessuna scrittura.
+
+Da fare solo con conferma separata:
+
+- creare o usare utente `free_user` controllato per test negativo;
+- creare o usare utente `editor` controllato per test positivo read-only;
+- non modificare ruoli dell’admin test senza piano.
+
+Prossimo step consigliato:
+
+- D.11 — piano test ruoli controllato o chiusura residuo se si decide di non creare utenti aggiuntivi ora.

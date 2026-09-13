@@ -227,3 +227,35 @@ Stato DB/provider:
 Residuo:
 
 - test free_user applicativo ancora da fare, se viene creato o reso disponibile un utente free_user controllato.
+
+## D.10 — Matrice ruoli applicativa
+
+Audit codice completato.
+
+Atteso:
+
+- non autenticato: bloccato da Vercel Authentication o redirect login app;
+- `free_user`: bloccato da `requireAdmin()` / `notFound()`;
+- `editor`: accesso consentito in sola lettura, se `status = approved`;
+- `admin`: accesso consentito in sola lettura.
+
+Risultati codice:
+
+- `requireAdmin()` usa sessione Supabase server-side;
+- ruoli ammessi: `editor`, `admin`, `super_admin`;
+- `free_user` escluso;
+- reader `provider_import_runs` usa solo SELECT;
+- RLS resta il secondo livello di protezione;
+- nessuna service role.
+
+Verifica non autenticata:
+
+- richiesta HTTP read-only a `/admin/imports` su Preview;
+- redirect Vercel SSO confermato;
+- accesso diretto all’app admin non consentito senza Vercel Authentication.
+
+Residui:
+
+- test manuale `free_user`;
+- test manuale `editor`;
+- nessuna creazione/modifica ruoli in D.10.

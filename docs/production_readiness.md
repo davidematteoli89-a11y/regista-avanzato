@@ -598,3 +598,23 @@ Production resta non pronta perché:
 - writer provider/import reali ancora disabilitati;
 - provider/licenze/budget non approvati;
 - retention/privacy log ancora da chiudere.
+
+## Nota D.10 — Accesso ruoli `/admin/imports`
+
+Audit codice completato.
+
+Risultato:
+
+- admin/editor/super_admin approved sono ammessi all’admin layout;
+- `free_user` è bloccato;
+- non autenticato è bloccato da Vercel Authentication e/o login app;
+- reader import runs è solo read-only;
+- nessuna service role;
+- nessuna azione writer in UI.
+
+Production resta bloccata perché:
+
+- test manuale `free_user` non ancora eseguito;
+- test manuale `editor` non ancora eseguito;
+- writer/import/provider reali ancora disabilitati;
+- nessun piano dati reali/licenze approvato.

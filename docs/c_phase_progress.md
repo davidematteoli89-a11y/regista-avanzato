@@ -1123,3 +1123,37 @@ Residui:
 Prossimo step consigliato:
 
 - D.10 — test RLS applicativo free_user/editor/admin per import runs, senza creare run reali.
+
+## D.10 — Accesso ruoli `/admin/imports`
+
+Stato: audit codice completato, test manuali free_user/editor non eseguiti perché non sono stati creati/modificati utenti o ruoli.
+
+Matrice attesa:
+
+- non autenticato: bloccato da Vercel Authentication o login app;
+- `free_user`: bloccato da `requireAdmin()` / `notFound()`;
+- `editor` approved: ammesso all’admin layout e sola lettura;
+- `admin` approved: ammesso e sola lettura.
+
+Audit codice:
+
+- `app/admin/layout.tsx` usa `requireAdmin()` server-side;
+- `requireAdmin()` ammette solo `editor`, `admin`, `super_admin` con `status = approved`;
+- `free_user` resta escluso;
+- `adminProviderImportRuns` usa client Supabase server-side con sessione utente;
+- reader `provider_import_runs` solo `SELECT`;
+- nessuna service role;
+- `/admin/imports` non contiene bottoni/form di scrittura.
+
+Già verificato da D.9-B:
+
+- admin vede `/admin/imports`;
+- non autenticato bloccato da Vercel Authentication;
+- empty state e badge sicurezza corretti;
+- nessun bottone run/import/delete/update.
+
+Residui:
+
+- test applicativo `free_user` se disponibile utente controllato;
+- test applicativo `editor` se disponibile utente controllato;
+- nessuna modifica ruoli senza conferma.
