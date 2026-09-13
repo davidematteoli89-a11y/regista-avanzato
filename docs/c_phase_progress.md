@@ -1019,3 +1019,39 @@ Non fatto:
 Prossimo step consigliato:
 
 - D.8 — creare un reader admin read-only per `provider_import_runs` in `/admin/imports`, con empty state e senza writer reali.
+
+## D.8 — Admin reader read-only per provider_import_runs
+
+Stato: implementato localmente, non ancora committato.
+
+Creato:
+
+- `lib/admin/adminProviderImportRuns.ts`.
+
+Aggiornato:
+
+- `/admin/imports` mostra una sezione `Provider import runs`.
+
+Comportamento:
+
+- lettura server-side con sessione Supabase;
+- RLS rispettata;
+- nessuna service role;
+- solo `SELECT`;
+- massimo 20 run ordinate per `created_at desc`;
+- empty state se la tabella è vuota;
+- badge sicurezza: `Read-only`, `Provider off`, `Apify off`, `realWritesEnabled=false`.
+
+Non fatto:
+
+- nessuna scrittura DB;
+- nessun insert/update/delete/upsert;
+- nessun provider;
+- nessun Apify;
+- nessun import;
+- nessun deploy;
+- Production non toccata.
+
+Prossimo step consigliato:
+
+- D.9 — verifica Preview della sezione `/admin/imports` e test RLS applicativo read-only.

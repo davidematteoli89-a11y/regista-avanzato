@@ -243,3 +243,46 @@ Residui prima dei writer reali:
 - test RLS da sessione applicativa admin/editor/free_user;
 - reader admin read-only opzionale;
 - writer reali ancora bloccati da `realWritesEnabled=false`.
+
+## D.8 — Admin reader read-only
+
+È stato preparato un reader admin server-side read-only per `provider_import_runs`.
+
+Oggetto:
+
+- `lib/admin/adminProviderImportRuns.ts`.
+
+Caratteristiche:
+
+- usa il client Supabase server-side con sessione utente;
+- rispetta RLS;
+- non usa service role;
+- esegue solo `SELECT`;
+- legge massimo 20 run ordinate per `created_at desc`;
+- restituisce source `supabase_staging`, `empty` o `unavailable`;
+- non abilita writer reali.
+
+Colonne lette:
+
+- `id`;
+- `batch_id`;
+- `provider_key`;
+- `competition_slug`;
+- `mode`;
+- `status`;
+- `external_fetch`;
+- `db_write`;
+- `estimated_cost_eur`;
+- `actual_cost_eur`;
+- `records_planned`;
+- `records_inserted`;
+- `records_updated`;
+- `records_skipped`;
+- `warnings_count`;
+- `started_at`;
+- `finished_at`;
+- `created_at`.
+
+Nessuna colonna raw, token, payload provider o configurazione privata viene letta.
+
+La pagina `/admin/imports` mostra la sezione `Provider import runs` con empty state quando la tabella è vuota.

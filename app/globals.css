@@ -109,6 +109,8 @@ button:disabled { cursor: not-allowed; opacity: .45; }
 .admin-card-head h2 { margin: 0; }
 .admin-stat-value { display: block; margin-top: 12px; font-size: 2rem; color: #edf5ef; }
 .admin-status { display: inline-flex; padding: 4px 8px; border-radius: 999px; background: #24282a; color: #c3cdd1; font-size: .7rem; text-transform: uppercase; }
+.admin-badge-row { display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-end; }
+.admin-safety-badge { display: inline-flex; padding: 5px 9px; border-radius: 999px; background: #173424; color: #8ee5b0; font-size: .72rem; text-transform: uppercase; }
 .status-mock, .status-dry_run { background: #2a2416; color: #e8c66a; }
 .status-active, .status-approved { background: #173424; color: #8ee5b0; }
 .status-inactive, .status-not_connected, .status-rejected { background: #331919; color: #ef9b9b; }

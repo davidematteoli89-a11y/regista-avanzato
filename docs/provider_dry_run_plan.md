@@ -451,3 +451,21 @@ Rollback preview:
 
 - D.5 non richiede rollback perché non scrive dati;
 - il piano futuro prevede batch id, rollback ordinato e verifica prima di ogni commit dati.
+
+## D.8 — Visibilità admin read-only import run
+
+La pagina `/admin/imports` è stata predisposta per mostrare `provider_import_runs` in sola lettura.
+
+Il reader:
+
+- non chiama provider;
+- non chiama Apify;
+- non fa fetch esterne;
+- non scrive DB;
+- non legge token;
+- non usa service role;
+- rispetta RLS.
+
+Il comportamento atteso in staging è empty state perché `provider_import_runs_count = 0`.
+
+Questo completa la visibilità minima prima di qualunque futuro writer reale.

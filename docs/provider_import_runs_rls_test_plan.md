@@ -146,3 +146,29 @@ Residui:
 Prossimo step consigliato:
 
 - D.8 — admin reader read-only per `provider_import_runs` in `/admin/imports`, con empty state e nessuna scrittura.
+
+## D.8 — Collegamento UI admin read-only
+
+Preparato reader admin read-only per rendere visibile `provider_import_runs` in `/admin/imports`.
+
+Vincoli rispettati:
+
+- solo lettura server-side;
+- solo sessione utente Supabase;
+- RLS rispettata;
+- nessun service role;
+- nessun insert/update/delete/upsert;
+- nessuna fetch esterna;
+- nessun provider attivato;
+- Apify spento;
+- `realWritesEnabled=false`.
+
+Comportamento con tabella vuota:
+
+- mostra empty state esplicito;
+- comunica che l’assenza di run è corretta in staging;
+- ribadisce che provider reali, Apify e scritture sono ancora disabilitati.
+
+Residuo:
+
+- verificare in Preview con utente admin/editor reale che `/admin/imports` mostri la sezione e rimanga vuota.

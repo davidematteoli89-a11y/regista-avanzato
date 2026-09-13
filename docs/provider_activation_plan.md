@@ -492,3 +492,24 @@ Impatto sul piano provider:
 Prossimo step:
 
 - D.8 — visibilità admin read-only delle import run, senza import reali.
+
+## D.8 — Reader admin import runs
+
+Implementata visibilità read-only in `/admin/imports` per le future run provider/import.
+
+Stato:
+
+- reader server-side con sessione utente;
+- RLS rispettata;
+- nessuna service role;
+- nessuna scrittura DB;
+- nessun comando import;
+- nessun provider reale;
+- nessun Apify;
+- empty state atteso con `provider_import_runs_count = 0`.
+
+La sezione serve solo a rendere auditabile lo stato futuro dei batch. Non autorizza ancora run reali.
+
+Prossimo step consigliato:
+
+- D.9 — verifica Preview di `/admin/imports` e test RLS applicativo con admin/editor/free_user, senza creare run reali.

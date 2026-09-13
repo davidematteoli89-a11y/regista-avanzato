@@ -801,3 +801,34 @@ Prossimi step sicuri:
 1. D.8 — reader admin read-only per mostrare `provider_import_runs` in `/admin/imports`;
 2. test RLS con sessione applicativa admin/editor/free_user;
 3. mantenere writer reali disabilitati fino a conferma esplicita.
+
+## D.8 — Reader admin read-only implementato
+
+La pagina `/admin/imports` ora include una sezione read-only per `provider_import_runs`.
+
+Stato atteso in staging:
+
+- tabella vuota;
+- empty state visibile;
+- provider reali off;
+- Apify off;
+- import disabilitati;
+- `realWritesEnabled=false`.
+
+Verifiche da fare dopo commit/push e Preview:
+
+1. login come admin;
+2. aprire `/admin/imports`;
+3. confermare sezione `Provider import runs`;
+4. confermare empty state;
+5. confermare assenza di bottoni `run`, `import`, `delete`, `refresh provider`;
+6. verificare che logout/non admin restino bloccati da `/admin`.
+
+Non eseguire ancora:
+
+- writer reali;
+- insert run;
+- update run;
+- delete run;
+- provider fetch;
+- Apify.

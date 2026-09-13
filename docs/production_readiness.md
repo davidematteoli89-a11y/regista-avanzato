@@ -526,3 +526,28 @@ Blocco operativo invariato:
 - nessun import;
 - nessun `db push/reset`;
 - nessun passaggio Production.
+
+## Nota D.8 — Admin visibility read-only per import runs
+
+È stato aggiunto un reader admin read-only per mostrare `provider_import_runs` in `/admin/imports`.
+
+Questo non cambia lo stato Production.
+
+Confermato a livello di implementazione locale:
+
+- solo lettura;
+- nessuna service role;
+- nessun writer;
+- nessun comando import;
+- nessun provider reale;
+- nessun Apify;
+- `realWritesEnabled=false`;
+- empty state atteso perché `provider_import_runs_count = 0`.
+
+Production resta bloccata finché non sono completati:
+
+- test Preview della sezione `/admin/imports`;
+- test RLS applicativo con admin/editor/free_user;
+- piano retention/privacy log;
+- writer staging con rollback;
+- approvazione legale/licenze provider.
