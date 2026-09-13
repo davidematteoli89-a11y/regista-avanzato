@@ -897,3 +897,32 @@ Confermato:
 Nota:
 
 - `batch_id` è preview-only perché non esiste ancora nello schema staging.
+
+## D.6 — Batch/import run schema plan
+
+Stato: preparato localmente, non applicato.
+
+Creato:
+
+- `supabase/migrations/0009_provider_import_runs.sql`;
+- `docs/provider_import_runs_schema_plan.md`.
+
+Aggiornati:
+
+- `lib/provider/providerImportWriter.ts`;
+- `scripts/provider/dryRunProviderLogging.ts`;
+- `scripts/provider/dryRunProviderWriterGuards.ts`.
+
+Risultato:
+
+- le preview ora includono `import_run_preview=ok`;
+- `provider_import_logs` e `api_usage_logs` preview hanno `import_run_id`/`batch_id`;
+- rollback preview considera `provider_import_runs`;
+- scritture reali ancora bloccate.
+
+Non fatto:
+
+- nessuna applicazione migrazione;
+- nessun `db push/reset`;
+- nessuna scrittura Supabase;
+- nessuna attivazione provider/Apify/import.

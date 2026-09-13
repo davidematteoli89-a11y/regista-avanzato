@@ -201,3 +201,19 @@ Il budget guard resta simulato. Prima di Apify reale servirà un writer separato
 - log `skipped_budget` se bloccato;
 - preservazione ultimo dato valido;
 - approvazione manuale.
+
+## D.6 — Collegamento futuro Apify a import run
+
+La migrazione 0009 proposta riguarda il modello generale `provider_import_runs`.
+
+Per Apify, in una fase futura, andrà valutato se collegare anche:
+
+- `apify_usage_logs.import_run_id`;
+- `apify_usage_logs.batch_id`.
+
+In D.6 non viene aggiunto nulla ad Apify:
+
+- nessuna run;
+- nessun token;
+- nessun budget live;
+- nessuna scrittura.

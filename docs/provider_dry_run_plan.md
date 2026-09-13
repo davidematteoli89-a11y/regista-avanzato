@@ -331,6 +331,44 @@ D.5 consigliato:
 
 - progettare writer/import log server-side in modalità ancora disabilitata, con batch id, rollback e flag esplicito prima di ogni scrittura.
 
+## D.6 — Batch/import run schema plan
+
+D.6 prepara il passaggio da preview locali a run tracciabili, senza applicare migrazioni.
+
+Nuova migrazione preparata:
+
+- `supabase/migrations/0009_provider_import_runs.sql`.
+
+Nuovo documento:
+
+- `docs/provider_import_runs_schema_plan.md`.
+
+Modello proposto:
+
+- tabella `provider_import_runs`;
+- `batch_id` unico;
+- `provider_key`;
+- `competition_id`/`competition_slug`;
+- `mode`;
+- `status`;
+- flag `external_fetch` e `db_write`;
+- costi stimati/effettivi;
+- contatori record;
+- `metadata`;
+- `created_by`;
+- RLS admin/editor.
+
+Le preview D.5 sono state allineate per mostrare:
+
+```text
+import_run_preview=ok
+provider_import_log_preview=ok
+api_usage_log_preview=ok
+rollback_plan_preview=ok
+```
+
+La migrazione non è stata applicata.
+
 ## D.5 — Provider writer/log guard disabilitati
 
 Stato: preparato localmente, nessuna scrittura reale.

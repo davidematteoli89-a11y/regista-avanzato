@@ -14,6 +14,8 @@ type CompetitionState = {
 
 type ProviderImportLogShape = {
   table: "provider_import_logs";
+  import_run_id: "future_import_run_uuid";
+  batch_id: string;
   provider_id: "future_provider_uuid";
   competition_id: "future_competition_uuid";
   script_name: "dryRunProviderLogging";
@@ -27,6 +29,8 @@ type ProviderImportLogShape = {
 
 type ApiUsageLogShape = {
   table: "api_usage_logs";
+  import_run_id: "future_import_run_uuid";
+  batch_id: string;
   provider_id: "future_provider_uuid";
   endpoint: "dry-run/no-external-endpoint";
   request_count: 0;
@@ -107,6 +111,8 @@ function isProviderActive(providers: ProviderState[], providerId: string): boole
 function buildProviderImportLogShape(): ProviderImportLogShape {
   return {
     table: "provider_import_logs",
+    import_run_id: "future_import_run_uuid",
+    batch_id: "stable_provider:serie-a:dry_run:future",
     provider_id: "future_provider_uuid",
     competition_id: "future_competition_uuid",
     script_name: "dryRunProviderLogging",
@@ -122,6 +128,8 @@ function buildProviderImportLogShape(): ProviderImportLogShape {
 function buildApiUsageLogShape(): ApiUsageLogShape {
   return {
     table: "api_usage_logs",
+    import_run_id: "future_import_run_uuid",
+    batch_id: "stable_provider:serie-a:dry_run:future",
     provider_id: "future_provider_uuid",
     endpoint: "dry-run/no-external-endpoint",
     request_count: 0,
@@ -262,6 +270,7 @@ function main(): void {
   console.info("env_values_read=0");
   console.info("tokens_printed=0");
   console.info("");
+  console.info("import_run_preview=ok");
   console.info(`provider_import_log_shape=${warnings.length ? "needs_review" : "ok"}`);
   console.info(`provider_import_log_fields=${formatFields(providerImportLogShape)}`);
   console.info(`api_usage_log_shape=${warnings.length ? "needs_review" : "ok"}`);

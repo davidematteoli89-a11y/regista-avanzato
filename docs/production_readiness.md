@@ -430,3 +430,25 @@ Production resta non pronta perché:
 - non esiste rollback reale per batch;
 - provider e import restano spenti;
 - serve un piano dati/licenze prima di qualunque chiamata reale.
+
+## Nota D.6 — Schema import run solo pianificato
+
+È stata preparata una migrazione per `provider_import_runs`, ma non applicata.
+
+Production resta bloccata perché:
+
+- la migrazione 0009 non è ancora testata su staging;
+- i writer reali sono ancora disabilitati;
+- i provider reali sono spenti;
+- non esiste ancora un flusso import reale approvato;
+- i log devono essere testati con RLS prima di dati reali;
+- serve decisione retention/privacy sui log.
+
+Prima di Production:
+
+1. applicare e verificare 0009 su staging;
+2. mantenere `realWritesEnabled=false`;
+3. testare solo writer mock/staging;
+4. confermare nessuna pagina pubblica accede ai log;
+5. definire rollback batch;
+6. solo dopo valutare provider reali.

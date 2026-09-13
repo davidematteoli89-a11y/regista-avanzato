@@ -94,13 +94,14 @@ function main(): void {
   console.info("env_values_read=0");
   console.info("tokens_printed=0");
   console.info(`batch_id=${batchId}`);
+  console.info("import_run_preview=ok");
   console.info("provider_import_log_preview=ok");
   console.info("api_usage_log_preview=ok");
   console.info("rollback_plan_preview=ok");
   console.info("write_attempt_blocked=true");
   console.info("write_block_reason=PROVIDER_WRITES_DISABLED");
   console.info(`policy_guard_blocks=${policyGuardBlocks}`);
-  console.info("planned_log_tables=provider_import_logs,api_usage_logs,import_logs");
+  console.info("planned_log_tables=provider_import_runs,provider_import_logs,api_usage_logs,import_logs");
   console.info(`warnings=${warnings.length}`);
   for (const warning of warnings) console.info(`warning=${warning}`);
   console.info("confirmation=no_external_provider_calls,no_apify_calls,no_sofascore_calls,no_scraping,no_db_writes,no_env_output");

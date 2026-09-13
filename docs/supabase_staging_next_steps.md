@@ -680,3 +680,30 @@ Prima di scrivere log reali nello staging decidere:
 6. come impedire esecuzioni lato utente.
 
 D.5 fornisce solo preview locali e guardie.
+
+## D.6 — Migrazione 0009 preparata
+
+Preparata, ma non applicata:
+
+- `supabase/migrations/0009_provider_import_runs.sql`.
+
+La migrazione aggiunge un modello tracciabile per import provider:
+
+- tabella `provider_import_runs`;
+- `batch_id`;
+- collegamenti opzionali dai log esistenti tramite `import_run_id`/`batch_id`;
+- indici;
+- RLS;
+- policy lettura editor/admin e scrittura admin.
+
+Prima di applicarla allo staging:
+
+1. confermare manualmente che Supabase Regista Avanzato sia il progetto target;
+2. non usare `db push/reset`;
+3. copiare solo 0009 nel SQL Editor o usare comando manuale controllato;
+4. verificare tabelle/colonne/indici;
+5. verificare anon/free_user bloccati;
+6. verificare editor/admin read;
+7. lasciare provider/import spenti.
+
+Supabase live non è stato modificato in D.6.

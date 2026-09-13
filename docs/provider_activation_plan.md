@@ -391,3 +391,34 @@ Prima di trasformare questo layer in writer reale serviranno:
 4. rollback query;
 5. flag manuale per ambiente staging;
 6. conferma utente prima del primo DB write.
+
+## D.6 — Modello `provider_import_runs`
+
+Decisione tecnica proposta, non applicata:
+
+- introdurre `provider_import_runs` come testata batch;
+- collegare `provider_import_logs`, `api_usage_logs` e `import_logs` tramite `import_run_id` e `batch_id`;
+- mantenere RLS stretta;
+- nessun accesso anon;
+- lettura editor/admin;
+- scrittura admin soltanto in futura fase server-side controllata;
+- nessuna policy delete.
+
+La migrazione preparata è:
+
+- `supabase/migrations/0009_provider_import_runs.sql`.
+
+Il layer preview è stato aggiornato:
+
+- `buildProviderImportRunPreview()`;
+- `provider_import_log_preview` include `import_run_id` e `batch_id`;
+- `api_usage_log_preview` include `import_run_id` e `batch_id`;
+- rollback preview ora considera `provider_import_runs`.
+
+Prima dell’applicazione manuale:
+
+1. rileggere integralmente la migrazione;
+2. verificare che lo staging sia sacrificabile;
+3. applicare solo 0009;
+4. controllare RLS/grant;
+5. non attivare writer reali.
