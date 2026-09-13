@@ -988,3 +988,22 @@ Prossimo step consigliato:
 
 - D.14 — scelta provider e bozza script probe read-only, ancora senza eseguirlo;
 - oppure D.12-C — completare prima test utenti `free_user`/`editor`.
+
+## D.14-A — Script probe stabile disabilitato
+
+Creato comando:
+
+```bash
+npm run probe:stable-provider:disabled
+```
+
+Lo script non tocca Supabase staging:
+
+- nessun client Supabase;
+- nessuna scrittura DB;
+- nessun provider attivato;
+- nessun import attivato;
+- nessuna service role;
+- nessuna Production.
+
+Serve solo a fissare il contratto sicuro della futura probe.

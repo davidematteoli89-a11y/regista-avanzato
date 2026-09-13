@@ -1275,3 +1275,29 @@ Non fatto:
 Prossimo step consigliato:
 
 - D.14 — scelta provider e preparazione script probe read-only, senza eseguirlo.
+
+## D.14-A — Probe provider disabilitata
+
+Stato: script creato e disabilitato.
+
+Creato:
+
+- `scripts/provider/disabledStableProviderProbe.ts`;
+- `docs/stable_provider_disabled_probe_d14a.md`.
+
+Comando:
+
+```bash
+npm run probe:stable-provider:disabled
+```
+
+Conferme:
+
+- `real_provider_probe_enabled=false`;
+- `external_fetch=false`;
+- `token_read=false`;
+- `db_write=false`;
+- `provider_activated=false`;
+- `import_enabled=false`;
+- provider/Apify/import spenti;
+- Production non toccata.

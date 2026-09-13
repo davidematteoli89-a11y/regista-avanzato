@@ -466,6 +466,33 @@ Prima probe futura:
 - nessun Apify;
 - nessuna Production.
 
+## D.14-A — Probe disabilitata
+
+Nuovo comando:
+
+```bash
+npm run probe:stable-provider:disabled
+```
+
+Output atteso:
+
+```text
+mode=disabled_probe
+competition_slug=serie-a
+provider_candidate=api_football
+provider_alternative=the_stats_api
+real_provider_probe_enabled=false
+external_fetch=false
+db_write=false
+token_read=false
+provider_activated=false
+import_enabled=false
+blocked_reason=REAL_PROVIDER_PROBE_DISABLED
+warnings=0
+```
+
+Questo comando è diverso da una real-call: non legge env, non chiama provider e non scrive dati.
+
 Nota schema:
 
 - `provider_import_logs`, `api_usage_logs` e `import_logs` esistono già;

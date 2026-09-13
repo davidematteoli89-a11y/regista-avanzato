@@ -686,3 +686,17 @@ Production resta bloccata perché:
 - provider/import/Apify restano spenti.
 
 Qualunque futura real-call deve restare fuori Production, limitata a una richiesta, senza DB write e con token mai stampato.
+
+## Nota D.14-A — Probe disabilitata
+
+D.14-A aggiunge uno script preparatorio disabilitato.
+
+Production resta bloccata:
+
+- nessuna real-call eseguita;
+- nessun token provider configurato o letto;
+- nessuna fetch;
+- nessun DB write;
+- provider/import/Apify spenti;
+- `real_provider_probe_enabled=false`;
+- `realWritesEnabled=false`.

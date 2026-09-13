@@ -213,3 +213,29 @@ In alternativa, completare prima D.12-C con utenti staging `free_user`/`editor`.
 - Nessun `db push/reset`.
 - Provider/Apify/import non attivati.
 - Production non toccata.
+
+## D.14-A — Probe provider disabilitata
+
+Preparato lo script:
+
+- `scripts/provider/disabledStableProviderProbe.ts`.
+
+Comando:
+
+```bash
+npm run probe:stable-provider:disabled
+```
+
+La probe resta disabilitata:
+
+- provider provvisorio: `api_football`;
+- alternativa: `the_stats_api`;
+- `real_provider_probe_enabled=false`;
+- `external_fetch=false`;
+- `token_read=false`;
+- `db_write=false`;
+- `provider_activated=false`;
+- `import_enabled=false`;
+- blocco atteso: `REAL_PROVIDER_PROBE_DISABLED`.
+
+D.14-A non esegue nessuna real-call e non legge token.

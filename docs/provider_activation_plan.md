@@ -471,6 +471,26 @@ Decisione provvisoria:
 
 La futura real-call dovrà essere uno script separato dall’import writer, massimo una richiesta su `serie-a`, output sanificato e nessuna scrittura DB.
 
+## D.14-A — Script probe disabilitato
+
+Creato:
+
+- `scripts/provider/disabledStableProviderProbe.ts`.
+
+Aggiunto comando:
+
+- `npm run probe:stable-provider:disabled`.
+
+La probe è soltanto preparatoria:
+
+- non chiama API-Football;
+- non chiama TheStatsAPI;
+- non legge token;
+- non fa fetch;
+- non scrive DB;
+- non attiva provider/import;
+- conferma `blocked_reason=REAL_PROVIDER_PROBE_DISABLED`.
+
 Prima di qualunque writer reale:
 
 1. testare RLS con sessione app admin/editor/free_user;

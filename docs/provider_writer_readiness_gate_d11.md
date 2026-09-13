@@ -151,3 +151,19 @@ Prima di qualsiasi chiamata TheStatsAPI/API-Football devono essere confermati:
 - Production non toccata.
 
 D.13 non autorizza chiamate reali: documenta solo la procedura.
+
+## D.14-A — Probe disabilitata nel gate
+
+La presenza di `npm run probe:stable-provider:disabled` non apre il gate provider.
+
+Il gate resta chiuso perché:
+
+- `real_provider_probe_enabled=false`;
+- `realWritesEnabled=false`;
+- `external_fetch=false`;
+- `db_write=false`;
+- `token_read=false`;
+- provider/import non attivati;
+- Production non toccata.
+
+Per passare a una real-call servirà una nuova conferma esplicita.
