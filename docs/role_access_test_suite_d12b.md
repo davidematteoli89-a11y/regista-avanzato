@@ -251,3 +251,16 @@ Risultato manuale della query read-only su staging:
 Conseguenza:
 
 - per completare i test end-to-end `free_user`/`editor` servirà D.14-E con piano di creazione controllata o riuso manuale di utenti staging.
+
+## D.14-E — Utenti test staging
+
+Preparato il piano:
+
+- `docs/staging_test_users_creation_plan_d14e.md`.
+
+Utenti previsti, documentati solo con email mascherate:
+
+- free_user: `davide.m***@funcode.it`;
+- editor: `caffe1***@gmail.com`.
+
+Nessun utente è stato creato e nessun ruolo è stato modificato.

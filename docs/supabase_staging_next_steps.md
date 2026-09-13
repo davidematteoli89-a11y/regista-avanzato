@@ -1055,3 +1055,19 @@ Verifica manuale read-only completata:
 Prossimo passo:
 
 - D.14-E — piano creazione controllata utenti test staging, usando solo email mascherate nei documenti e nessuna password.
+
+## D.14-E — Piano creazione utenti test
+
+Creato:
+
+- `docs/staging_test_users_creation_plan_d14e.md`.
+
+Azioni ancora non autorizzate:
+
+- creare utenti;
+- modificare ruoli;
+- eseguire update ruolo editor;
+- cancellare utenti;
+- toccare Production.
+
+Le email operative sono documentate solo in forma mascherata.

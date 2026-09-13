@@ -732,6 +732,27 @@ Prossimo passo:
 
 - D.14-E — piano creazione controllata utenti test staging.
 
+## D.14-E — Piano creazione controllata utenti test
+
+Stato: piano documentale preparato, nessuna azione su utenti.
+
+Creato:
+
+- `docs/staging_test_users_creation_plan_d14e.md`.
+
+Utenti previsti:
+
+- `free_user` con email mascherata `davide.m***@funcode.it`;
+- `editor` con email mascherata `caffe1***@gmail.com`.
+
+Non fatto:
+
+- nessun utente creato;
+- nessun ruolo modificato;
+- nessuna scrittura DB;
+- nessun provider/Apify/import attivato;
+- Production non toccata.
+
 Verifica locale:
 
 - `npm run lint`: ok;

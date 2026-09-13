@@ -739,3 +739,14 @@ Production resta bloccata perché:
 - serve piano D.14-E per utenti test staging;
 - nessuna creazione utente o modifica ruolo è stata autorizzata;
 - provider/import/Apify restano non approvati.
+
+## Nota D.14-E — Piano utenti test staging
+
+D.14-E documenta come creare utenti test staging, ma non li crea.
+
+Production resta bloccata finché:
+
+- utenti `free_user`/`editor` non sono testati end-to-end;
+- eventuale promozione editor non è documentata e rollbackabile;
+- DB invariato non è confermato dopo test;
+- provider/import/Apify restano non approvati.

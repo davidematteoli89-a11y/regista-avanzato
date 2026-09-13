@@ -214,3 +214,12 @@ Success. No rows returned.
 Quindi i test end-to-end `free_user`/`editor` non possono ancora essere completati senza creare o predisporre utenti test.
 
 Nessun utente creato e nessun ruolo modificato in D.14-D.
+
+## D.14-E — Piano utenti test
+
+Il piano `docs/staging_test_users_creation_plan_d14e.md` definisce la futura predisposizione controllata di:
+
+- utente test `free_user`;
+- utente test `editor`.
+
+Le email sono documentate solo mascherate. La promozione editor richiede conferma esplicita e update vincolato a UUID specifico.

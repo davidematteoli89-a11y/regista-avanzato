@@ -203,3 +203,11 @@ Le email operative della fase successiva vanno documentate solo mascherate:
 
 - `davide.m***@funcode.it`;
 - `caffe1***@gmail.com`.
+
+## D.14-E — Piano creazione controllata
+
+Documento:
+
+- `docs/staging_test_users_creation_plan_d14e.md`.
+
+Il piano definisce come creare manualmente utenti test staging solo dopo conferma esplicita, con email mascherate nei docs e nessuna password salvata.

@@ -183,3 +183,16 @@ Il gate resta chiuso finché:
 - nessuna scrittura provider/import è stata introdotta;
 - `provider_import_runs_count` resta 0 salvo test writer approvato;
 - provider/Apify/import restano spenti.
+
+## D.14-E — Utenti test e writer gate
+
+La creazione utenti test staging non apre il gate writer.
+
+Anche dopo D.14-E, restano obbligatori:
+
+- conferma esplicita prima di creare utenti;
+- conferma esplicita prima di modificare ruolo editor;
+- nessun writer provider/import;
+- `realWritesEnabled=false`;
+- nessun provider/Apify/import;
+- Production non toccata.
