@@ -113,3 +113,24 @@ limit 20;
 ## Prossimo step consigliato
 
 D.11 — preparare test manuale controllato per ruoli `free_user`/`editor`, oppure documentare formalmente che al momento il progetto usa solo admin test e mantiene `editor/free_user` come test residuo.
+
+## D.11 — Chiusura residui ruoli
+
+Decisione:
+
+- non creare utenti `free_user`/`editor`;
+- non modificare ruoli;
+- mantenere i test `free_user`/`editor` come residui consapevoli.
+
+Motivazione:
+
+- admin già verificato manualmente;
+- non autenticato già bloccato;
+- `requireAdmin()` esclude `free_user`;
+- `editor` è ammesso solo se `status=approved`;
+- `/admin/imports` è read-only;
+- provider/import/Apify restano spenti.
+
+Gate:
+
+- nessun writer reale prima di test ruoli controllati e checklist dedicata.

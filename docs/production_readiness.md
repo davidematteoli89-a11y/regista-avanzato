@@ -618,3 +618,28 @@ Production resta bloccata perché:
 - test manuale `editor` non ancora eseguito;
 - writer/import/provider reali ancora disabilitati;
 - nessun piano dati reali/licenze approvato.
+
+## Nota D.11 — Gate prima dei writer reali
+
+D.11 formalizza che i residui `free_user`/`editor` non vengono risolti creando utenti o modificando ruoli in questa fase.
+
+Production e writer reali restano bloccati finché non sono completati:
+
+- test ruoli controllati;
+- verifica repo GitHub Private;
+- conferma service role Supabase ruotata;
+- env Supabase solo Preview;
+- migrazioni manuali tracciate;
+- `realWritesEnabled=false` come default;
+- import con `import_run_id`, `batch_id`, lifecycle, rollback, audit/log;
+- budget Apify con warning 24 €/mese e hard stop 30 €/mese;
+- nessuna chiamata provider/Apify lato utente;
+- checklist Production dedicata.
+
+Fino ad allora:
+
+- nessun writer reale;
+- nessun provider reale;
+- nessun import live;
+- nessun import storico massivo;
+- nessun deploy Production.

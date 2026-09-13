@@ -1157,3 +1157,31 @@ Residui:
 - test applicativo `free_user` se disponibile utente controllato;
 - test applicativo `editor` se disponibile utente controllato;
 - nessuna modifica ruoli senza conferma.
+
+## D.11 — Chiusura residui ruoli e gate writer
+
+Stato: documentazione aggiornata, nessuna modifica utenti/ruoli.
+
+Decisione:
+
+- non vengono creati utenti `free_user`/`editor`;
+- non vengono modificati ruoli;
+- i test `free_user`/`editor` restano residui consapevoli.
+
+La fase resta safe perché:
+
+- admin verificato;
+- non autenticato bloccato;
+- `requireAdmin()` esclude `free_user`;
+- `editor` ammesso solo se approved;
+- `/admin/imports` read-only;
+- writer reali disabilitati;
+- provider/Apify/import spenti.
+
+Readiness gate:
+
+- nessun writer/import reale prima di checklist completa su sicurezza, RLS ruoli, batch/import run, rollback, audit/log, budget Apify e Production readiness.
+
+Documento dedicato:
+
+- `docs/provider_writer_readiness_gate_d11.md`.

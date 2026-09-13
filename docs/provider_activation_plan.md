@@ -572,3 +572,29 @@ Prima di qualunque attivazione provider restano necessari:
 - test `editor` positivo read-only con utente controllato;
 - conferma DB invariato;
 - nessun writer reale.
+
+## D.11 — Readiness gate provider/import
+
+Decisione D.11:
+
+- non creare utenti;
+- non modificare ruoli;
+- non abilitare writer;
+- non attivare provider;
+- non attivare Apify;
+- non attivare import.
+
+I test `free_user`/`editor` restano residui consapevoli.
+
+NO writer reali finché:
+
+- GitHub repo Private confermato;
+- service role Supabase ruotata/rigenerata se esposta;
+- env Supabase solo Preview;
+- migrazioni manuali tracciate;
+- RLS testata da app con admin/editor/free_user/non autenticato;
+- `realWritesEnabled=false` resta default;
+- ogni import ha `import_run_id`, `batch_id`, lifecycle, rollback e audit/log;
+- budget Apify con warning 24 €/mese e hard stop 30 €/mese;
+- nessuna chiamata provider/Apify lato utente;
+- nessun deploy Production senza checklist dedicata.

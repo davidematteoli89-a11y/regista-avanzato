@@ -904,3 +904,28 @@ Da fare solo con conferma separata:
 Prossimo step consigliato:
 
 - D.11 — piano test ruoli controllato o chiusura residuo se si decide di non creare utenti aggiuntivi ora.
+
+## D.11 — Residui ruoli chiusi come consapevoli
+
+Decisione:
+
+- non creare utenti `free_user`/`editor` ora;
+- non modificare ruoli ora;
+- mantenere test `free_user`/`editor` come residuo documentato.
+
+Prima di writer reali:
+
+1. predisporre utenti controllati per test ruoli;
+2. verificare RLS applicativo con admin/editor/free_user/non autenticato;
+3. confermare repo privato e service role ruotata;
+4. confermare env Supabase solo Preview;
+5. mantenere `realWritesEnabled=false`;
+6. completare piano rollback/audit/log per batch.
+
+Non fare ancora:
+
+- provider reali;
+- Apify;
+- import;
+- writer DB;
+- Production deploy.
