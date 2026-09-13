@@ -196,3 +196,17 @@ Anche dopo D.14-E, restano obbligatori:
 - `realWritesEnabled=false`;
 - nessun provider/Apify/import;
 - Production non toccata.
+
+## D.15 — Provider probe readiness gate
+
+D.15 aggiunge un gate specifico per la futura prima probe reale.
+
+Il gate non abilita writer:
+
+- `realWritesEnabled=false`;
+- nessuna scrittura DB;
+- nessun `provider_import_runs` insert;
+- nessun import;
+- provider in `data_providers` ancora off.
+
+Prima di D.16 serve verifica manuale di provider, costi, rate limit e licenza.

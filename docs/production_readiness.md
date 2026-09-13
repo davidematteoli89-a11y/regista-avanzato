@@ -750,3 +750,17 @@ Production resta bloccata finché:
 - eventuale promozione editor non è documentata e rollbackabile;
 - DB invariato non è confermato dopo test;
 - provider/import/Apify restano non approvati.
+
+## Nota D.15 — Provider probe readiness
+
+D.15 non rende il progetto pronto per Production.
+
+Prima di Production restano obbligatori:
+
+- nessuna real-call senza gate D.15 completato;
+- provider scelto e licenza verificata;
+- token non committato e non stampato;
+- probe reale solo Preview/locale;
+- nessuna scrittura DB nella prima probe;
+- provider/import/Apify ancora spenti;
+- test ruoli staging completati o consapevolmente differiti.

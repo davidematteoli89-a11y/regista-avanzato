@@ -239,3 +239,20 @@ La probe resta disabilitata:
 - blocco atteso: `REAL_PROVIDER_PROBE_DISABLED`.
 
 D.14-A non esegue nessuna real-call e non legge token.
+
+## D.15 — Provider probe readiness gate
+
+Documento:
+
+- `docs/provider_probe_readiness_d15.md`.
+
+D.15 conferma che la probe resta disabilitata e definisce il gate prima di una futura D.16:
+
+- scelta provider definitiva;
+- verifica manuale prezzo/rate limit/licenza;
+- token solo in env sicura;
+- massimo una request;
+- nessuna scrittura DB;
+- nessun import;
+- provider/import ancora off;
+- Production non toccata.

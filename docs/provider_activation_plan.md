@@ -491,6 +491,25 @@ La probe è soltanto preparatoria:
 - non attiva provider/import;
 - conferma `blocked_reason=REAL_PROVIDER_PROBE_DISABLED`.
 
+## D.15 — Gate prima della probe reale
+
+Creato:
+
+- `docs/provider_probe_readiness_d15.md`.
+
+Il gate richiede:
+
+- provider scelto definitivamente;
+- prezzo/rate limit/licenza verificati manualmente;
+- token solo in env sicura;
+- una sola request;
+- output sanificato;
+- nessun DB write;
+- nessun `import_enabled=true`;
+- provider ancora off in `data_providers`;
+- `realWritesEnabled=false`;
+- Production non toccata.
+
 Prima di qualunque writer reale:
 
 1. testare RLS con sessione app admin/editor/free_user;

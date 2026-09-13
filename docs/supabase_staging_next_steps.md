@@ -1071,3 +1071,24 @@ Azioni ancora non autorizzate:
 - toccare Production.
 
 Le email operative sono documentate solo in forma mascherata.
+
+## D.15 — Provider probe readiness
+
+Creato:
+
+- `docs/provider_probe_readiness_d15.md`.
+
+Stato:
+
+- probe provider ancora disabilitata;
+- nessun token letto;
+- nessuna fetch;
+- nessuna scrittura DB;
+- provider/import spenti;
+- Production non toccata.
+
+Prima di D.16:
+
+- decidere provider definitivo;
+- verificare manualmente prezzo/rate limit/licenza;
+- decidere se completare prima i test ruoli `free_user`/`editor`.

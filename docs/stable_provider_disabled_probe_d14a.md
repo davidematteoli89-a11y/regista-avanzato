@@ -88,3 +88,19 @@ Prima di abilitare qualunque richiesta reale:
 D.14-B — checklist manuale finale per test ruoli `free_user`/`editor`, ancora senza creare utenti o modificare ruoli.
 
 Oppure D.15 — scelta provider e bozza di probe reale, ma ancora non eseguita.
+
+## D.15 — Gate successivo
+
+La probe disabilitata resta il comportamento corrente.
+
+D.15 aggiunge il documento:
+
+- `docs/provider_probe_readiness_d15.md`.
+
+Finché il gate D.15 non viene soddisfatto:
+
+- `real_provider_probe_enabled=false`;
+- nessuna fetch;
+- nessun token letto;
+- nessun DB write;
+- provider/import spenti.

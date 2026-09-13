@@ -753,6 +753,29 @@ Non fatto:
 - nessun provider/Apify/import attivato;
 - Production non toccata.
 
+## D.15 — Provider probe readiness gate
+
+Stato: piano documentale preparato.
+
+Creato:
+
+- `docs/provider_probe_readiness_d15.md`.
+
+Confermato:
+
+- probe disabilitata;
+- `real_provider_probe_enabled=false`;
+- `external_fetch=false`;
+- `token_read=false`;
+- `db_write=false`;
+- provider/Apify/import spenti;
+- Production non toccata.
+
+Prossimo step consigliato:
+
+- D.16-A — verifica manuale provider/costi/licenze;
+- oppure D.15-B — completare test utenti staging prima della probe reale.
+
 Verifica locale:
 
 - `npm run lint`: ok;

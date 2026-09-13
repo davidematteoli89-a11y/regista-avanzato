@@ -493,6 +493,23 @@ warnings=0
 
 Questo comando è diverso da una real-call: non legge env, non chiama provider e non scrive dati.
 
+## D.15 — Readiness probe
+
+D.15 non modifica i dry-run.
+
+La prossima probe reale potrà essere progettata solo dopo:
+
+- scelta provider;
+- verifica manuale costi/rate limit/licenza;
+- token in env sicura;
+- massimo una richiesta;
+- nessuna scrittura DB;
+- provider/import ancora spenti.
+
+Documento:
+
+- `docs/provider_probe_readiness_d15.md`.
+
 Nota schema:
 
 - `provider_import_logs`, `api_usage_logs` e `import_logs` esistono già;
