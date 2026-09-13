@@ -452,3 +452,29 @@ Prima di Production:
 4. confermare nessuna pagina pubblica accede ai log;
 5. definire rollback batch;
 6. solo dopo valutare provider reali.
+
+## Nota D.6-B — 0009 applicata su staging
+
+La migrazione `0009_provider_import_runs.sql` è stata applicata manualmente su Supabase staging.
+
+Questo migliora la tracciabilità futura, ma non rende il progetto pronto per Production.
+
+Confermato:
+
+- `provider_import_runs` presente;
+- colonne `batch_id/import_run_id` presenti sui log;
+- RLS attiva;
+- nessuna riga reale inserita;
+- provider reali spenti;
+- Apify spento;
+- import spenti;
+- no `db push/reset`;
+- Production non toccata.
+
+Restano bloccanti:
+
+- test RLS applicativo su `provider_import_runs`;
+- writer reali ancora disabilitati;
+- retention/privacy log non finalizzate;
+- provider/licenze non approvati;
+- rollback batch non ancora testato.

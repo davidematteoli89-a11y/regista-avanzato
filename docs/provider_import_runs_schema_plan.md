@@ -137,3 +137,61 @@ La migrazione 0009 è solo preparata.
 Non è stata applicata.
 Non sono state fatte scritture DB.
 Non sono stati attivati provider/import/Apify.
+
+## D.6-B — Applicazione manuale su Supabase staging
+
+Stato: applicata manualmente su Supabase staging “Regista Avanzato”.
+
+Dettagli:
+
+- migrazione: `supabase/migrations/0009_provider_import_runs.sql`;
+- data documentazione: 2026-09-13;
+- metodo: Supabase SQL Editor;
+- `supabase db push`: non usato;
+- `supabase db reset`: non usato;
+- Production: non toccata.
+
+Oggetti creati/aggiornati:
+
+- tabella `provider_import_runs`;
+- RLS attiva su `provider_import_runs`;
+- policy `provider_import_runs_editor_select`;
+- policy `provider_import_runs_admin_insert`;
+- policy `provider_import_runs_admin_update`;
+- colonne `import_run_id` e `batch_id` su `provider_import_logs`;
+- colonne `import_run_id` e `batch_id` su `api_usage_logs`;
+- colonne `import_run_id` e `batch_id` su `import_logs`;
+- indici su `provider_import_runs`;
+- indici per `import_run_id`/`batch_id` sui log collegati.
+
+Verifiche read-only registrate:
+
+- `provider_import_runs` esiste;
+- RLS attiva;
+- policy create;
+- colonne batch/import presenti sui log;
+- indici presenti;
+- `provider_import_runs_count = 0`;
+- provider esterni ancora off;
+- import ancora disabilitati.
+
+Sicurezza:
+
+- nessuna riga reale inserita;
+- nessun provider attivato;
+- Apify non attivato;
+- nessuna fetch esterna;
+- nessun token letto o stampato;
+- Production non toccata.
+
+Residui:
+
+- migration history Supabase resta manuale;
+- serve test RLS con sessione applicativa/admin prima dei writer reali;
+- writer reali ancora disabilitati;
+- `realWritesEnabled=false`;
+- nessuna scrittura provider ancora consentita.
+
+Prossimo step consigliato:
+
+- D.7 — RLS/readiness test per `provider_import_runs` e admin visibility, senza provider e senza import reali.

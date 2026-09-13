@@ -926,3 +926,40 @@ Non fatto:
 - nessun `db push/reset`;
 - nessuna scrittura Supabase;
 - nessuna attivazione provider/Apify/import.
+
+## D.6-B — Applicazione manuale 0009 documentata
+
+Stato: completata manualmente su Supabase staging “Regista Avanzato”.
+
+Applicata:
+
+- `supabase/migrations/0009_provider_import_runs.sql`.
+
+Metodo:
+
+- SQL Editor;
+- nessun `db push`;
+- nessun `db reset`;
+- Production non toccata.
+
+Verifiche read-only:
+
+- `provider_import_runs` esiste;
+- RLS attiva;
+- policy presenti;
+- colonne `import_run_id`/`batch_id` presenti su `provider_import_logs`, `api_usage_logs`, `import_logs`;
+- indici presenti;
+- `provider_import_runs_count = 0`;
+- provider esterni off;
+- import disabilitati.
+
+Stato operativo:
+
+- writer reali disabilitati;
+- `realWritesEnabled=false`;
+- nessuna fetch esterna;
+- nessun provider/Apify attivato.
+
+Prossimo step:
+
+- D.7: test RLS/readiness per `provider_import_runs` e visibilità admin.

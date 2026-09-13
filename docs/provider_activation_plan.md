@@ -422,3 +422,31 @@ Prima dell’applicazione manuale:
 3. applicare solo 0009;
 4. controllare RLS/grant;
 5. non attivare writer reali.
+
+## D.6-B — 0009 applicata, writer ancora bloccati
+
+La migrazione `0009_provider_import_runs.sql` è stata applicata manualmente su Supabase staging “Regista Avanzato”.
+
+Metodo:
+
+- SQL Editor;
+- no `db push`;
+- no `db reset`;
+- no Production.
+
+Risultato:
+
+- `provider_import_runs` disponibile;
+- log provider/API/import collegabili tramite `import_run_id` e `batch_id`;
+- RLS/policy create;
+- nessuna riga reale inserita;
+- provider/import ancora disattivati;
+- `realWritesEnabled=false`.
+
+Prima di qualunque writer reale:
+
+1. testare RLS con sessione app admin/editor/free_user;
+2. verificare che anon/free_user non leggano o scrivano run/log;
+3. preparare solo writer staging con rollback;
+4. mantenere provider reali spenti;
+5. richiedere conferma manuale.

@@ -707,3 +707,40 @@ Prima di applicarla allo staging:
 7. lasciare provider/import spenti.
 
 Supabase live non è stato modificato in D.6.
+
+## D.6-B — 0009 applicata manualmente
+
+La migrazione `0009_provider_import_runs.sql` è stata applicata su Supabase staging “Regista Avanzato”.
+
+Metodo:
+
+- SQL Editor;
+- nessun `supabase db push`;
+- nessun `supabase db reset`;
+- nessuna Production.
+
+Verifiche read-only registrate:
+
+- tabella `provider_import_runs` presente;
+- RLS attiva;
+- policy create;
+- colonne `batch_id` e `import_run_id` presenti su:
+  - `provider_import_logs`;
+  - `api_usage_logs`;
+  - `import_logs`;
+- indici presenti;
+- `provider_import_runs_count = 0`;
+- provider esterni ancora off;
+- import ancora disabilitati.
+
+Residui prima di writer reali:
+
+1. test RLS con sessione app;
+2. test admin/editor visibility;
+3. verificare blocco anon/free_user;
+4. definire writer transazionale staging;
+5. mantenere `realWritesEnabled=false` fino a conferma.
+
+Prossimo step consigliato:
+
+- D.7 — RLS/readiness test per `provider_import_runs`, senza provider e senza import reali.

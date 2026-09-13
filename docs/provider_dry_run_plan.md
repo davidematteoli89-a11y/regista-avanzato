@@ -369,6 +369,34 @@ rollback_plan_preview=ok
 
 La migrazione non è stata applicata.
 
+## D.6-B — Migrazione 0009 applicata manualmente
+
+La migrazione `0009_provider_import_runs.sql` è stata applicata manualmente su Supabase staging “Regista Avanzato” tramite SQL Editor.
+
+Conferme:
+
+- nessun `db push`;
+- nessun `db reset`;
+- nessun deploy;
+- nessuna Production;
+- provider reali ancora spenti;
+- Apify ancora spento;
+- import ancora spenti.
+
+Le verifiche read-only hanno confermato:
+
+- `provider_import_runs` presente;
+- RLS attiva;
+- policy create;
+- colonne `batch_id/import_run_id` presenti sui log;
+- indici presenti;
+- `provider_import_runs_count = 0`.
+
+I dry-run restano la fonte operativa per testare forma e guardie:
+
+- `npm run dry-run:provider-logging`;
+- `npm run dry-run:provider-writer-guards`.
+
 ## D.5 — Provider writer/log guard disabilitati
 
 Stato: preparato localmente, nessuna scrittura reale.
