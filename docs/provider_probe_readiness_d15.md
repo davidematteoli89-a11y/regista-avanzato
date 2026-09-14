@@ -154,3 +154,29 @@ Conferme D.16-A:
 - nessun token letto/stampato;
 - nessuna scrittura DB;
 - provider/Apify/import spenti.
+
+## D.16-B — API-Football Free scelto per prima probe futura
+
+Documento aggiunto:
+
+- `docs/api_football_free_probe_plan_d16b.md`.
+
+Decisione:
+
+- provider della futura prima probe: `api_football`;
+- piano iniziale: Free;
+- alternativa: `the_stats_api`;
+- nessun upgrade a pagamento prima di probe riuscita, payload compatibile, limiti chiari, licenza/caching/pubblicazione confermati e costi sostenibili.
+
+D.16-B non esegue la probe. Il gate resta chiuso:
+
+- `real_provider_probe_enabled=false`;
+- `external_fetch=false`;
+- `token_read=false`;
+- `db_write=false`;
+- provider/import off;
+- `realWritesEnabled=false`;
+- `/admin/imports` read-only;
+- Production non toccata.
+
+D.16-C potrà essere aperta solo con conferma esplicita, token in env sicura, massimo una richiesta read-only e nessuna scrittura DB.

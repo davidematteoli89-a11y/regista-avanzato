@@ -1121,3 +1121,28 @@ Prima di D.16-B servono:
 - `real_provider_probe_enabled=false` fino ad autorizzazione esplicita;
 - `realWritesEnabled=false`;
 - DB write ancora vietati.
+
+## D.16-B — Piano API-Football Free senza real-call
+
+Aggiunto:
+
+- `docs/api_football_free_probe_plan_d16b.md`.
+
+Staging non cambia:
+
+- nessuna scrittura DB;
+- nessun insert/update/delete/upsert;
+- nessun `provider_import_runs` insert;
+- provider/import ancora spenti;
+- Apify spento;
+- `realWritesEnabled=false`;
+- `/admin/imports` read-only.
+
+Prima di D.16-C:
+
+- account/API-Football Free creato manualmente;
+- token in env sicura;
+- token non committato/stampato;
+- massimo una richiesta read-only;
+- nessun DB write;
+- Production non toccata.

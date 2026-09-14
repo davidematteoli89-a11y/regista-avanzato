@@ -133,3 +133,28 @@ D.16-B, se autorizzata, dovrà essere una probe separata:
 - Nessun `db push/reset`.
 - Provider/Apify/import spenti.
 - Production non toccata.
+
+## D.16-B — Decisione API-Football Free
+
+Documento aggiunto:
+
+- `docs/api_football_free_probe_plan_d16b.md`.
+
+Decisione utente:
+
+- usare `api_football` come provider scelto per la prima futura probe read-only;
+- partire dal piano Free;
+- mantenere `the_stats_api` come alternativa.
+
+La scelta del piano Free serve solo a ridurre rischio economico e validare tecnicamente auth, endpoint e payload. Non abilita import, writer o attivazioni provider.
+
+Prima di un eventuale piano a pagamento restano da confermare:
+
+- probe riuscita;
+- payload compatibile;
+- rate limit chiari;
+- licenza/caching/pubblicazione confermati;
+- costi sostenibili;
+- nessun problema di sicurezza.
+
+D.16-B non esegue real-call e sposta l’eventuale prima richiesta reale a D.16-C, solo dopo conferma esplicita.

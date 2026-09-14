@@ -793,3 +793,23 @@ D.16-A conferma:
 - nessun DB write;
 - nessun deploy;
 - Production non toccata.
+
+## Nota D.16-B — API-Football Free scelto per probe futura
+
+D.16-B non rende il progetto pronto per Production.
+
+Decisione:
+
+- usare `api_football` piano Free per la prima futura probe read-only;
+- mantenere `the_stats_api` come alternativa;
+- valutare piano a pagamento solo dopo probe riuscita e verifica di limiti, licenza, caching, pubblicazione e costi.
+
+Production resta bloccata perché:
+
+- nessuna real-call è stata ancora eseguita;
+- nessun token provider deve essere in Production;
+- provider/import/Apify restano spenti;
+- `real_provider_probe_enabled=false`;
+- `realWritesEnabled=false`;
+- nessuna scrittura DB è autorizzata;
+- D.16-C richiede conferma separata e massimo una richiesta read-only fuori Production.

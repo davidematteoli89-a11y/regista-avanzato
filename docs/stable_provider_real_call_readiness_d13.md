@@ -288,3 +288,26 @@ Prima della vera probe D.16-B devono essere confermati:
 - `realWritesEnabled=false`;
 - nessuna scrittura DB;
 - Production non toccata.
+
+## D.16-B — Piano API-Football Free
+
+D.16-B aggiorna la destinazione della prima probe futura:
+
+- provider: `api_football`;
+- piano: Free;
+- competizione: `serie-a`;
+- endpoint candidato: `standings` o `fixtures`;
+- massimo una richiesta;
+- nessuna scrittura DB;
+- nessun import;
+- nessuna attivazione provider;
+- nessun Apify;
+- Production non toccata.
+
+Documento:
+
+- `docs/api_football_free_probe_plan_d16b.md`.
+
+La real-call viene spostata a D.16-C e richiederà nuova conferma esplicita.
+
+Nota: eventuale upgrade a piano a pagamento solo dopo test tecnico riuscito e verifica di payload, costi, rate limit, licenza, caching e pubblicazione.

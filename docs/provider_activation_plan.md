@@ -696,3 +696,39 @@ Gate prima di real-call:
 - `realWritesEnabled=false`;
 - nessun DB write;
 - Production non toccata.
+
+## D.16-B — API-Football Free per prima probe
+
+Creato:
+
+- `docs/api_football_free_probe_plan_d16b.md`.
+
+Decisione:
+
+- prima probe futura su `api_football`;
+- piano Free;
+- `the_stats_api` resta alternativa.
+
+Motivazione:
+
+- ridurre rischio economico;
+- testare endpoint/auth/payload prima di qualunque piano a pagamento;
+- evitare attivazioni provider/import premature.
+
+La probe non è stata eseguita. Restano spenti:
+
+- API-Football in DB/config runtime;
+- TheStatsAPI;
+- Apify;
+- import;
+- writer reali.
+
+Prima di D.16-C:
+
+- account/API-Football Free creato manualmente;
+- token solo in env sicura;
+- massimo una richiesta;
+- nessuna scrittura DB;
+- nessun provider/import attivato;
+- `realWritesEnabled=false`;
+- Production non toccata.

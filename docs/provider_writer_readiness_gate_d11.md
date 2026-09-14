@@ -238,3 +238,20 @@ Il gate resta chiuso per writer e probe reale finché:
 - Production non toccata.
 
 D.16-A non modifica codice, migrazioni, ruoli, provider o dati.
+
+## D.16-B — Scelta provider senza apertura writer
+
+D.16-B sceglie `api_football` Free per una futura probe read-only, ma non apre il gate writer.
+
+Il gate writer resta chiuso:
+
+- nessun writer reale;
+- nessuna scrittura DB;
+- nessun insert in `provider_import_runs`;
+- nessun import;
+- nessuna attivazione provider;
+- `realWritesEnabled=false`;
+- `/admin/imports` read-only;
+- Production non toccata.
+
+L’eventuale D.16-C dovrà restare separata dai writer e limitata a una singola richiesta read-only.

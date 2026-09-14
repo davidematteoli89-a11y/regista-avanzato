@@ -1446,3 +1446,42 @@ Conferme:
 - nessun `db push/reset`;
 - provider/Apify/import spenti;
 - Production non toccata.
+
+## D.16-B — API-Football Free per prima probe futura
+
+Stato: piano documentale preparato, nessuna real-call.
+
+Creato:
+
+- `docs/api_football_free_probe_plan_d16b.md`.
+
+Decisione:
+
+- provider scelto per prima futura probe: `api_football`;
+- piano iniziale: Free;
+- alternativa mantenuta: `the_stats_api`;
+- eventuale upgrade a pagamento solo dopo probe riuscita, payload compatibile, limiti chiari, licenza/caching/pubblicazione confermati e costi sostenibili.
+
+Piano D.16-C:
+
+- massimo una richiesta read-only;
+- competizione `serie-a`;
+- endpoint candidato `standings` o `fixtures`;
+- output sanificato;
+- token solo da env sicura;
+- nessuna scrittura DB;
+- nessun import;
+- nessun provider attivato;
+- nessun Apify;
+- Production non toccata.
+
+Conferme:
+
+- nessuna chiamata API-Football;
+- nessuna chiamata TheStatsAPI;
+- nessuna fetch provider;
+- nessun token letto/stampato;
+- nessuna scrittura DB;
+- nessun `db push/reset`;
+- provider/Apify/import spenti;
+- Production non toccata.

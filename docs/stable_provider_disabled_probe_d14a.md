@@ -130,3 +130,19 @@ La probe resta bloccata:
 - `db_write=false`;
 - provider/import off;
 - Production non toccata.
+
+## D.16-B — Provider scelto, probe ancora disabilitata
+
+D.16-B sceglie `api_football` piano Free per la prima futura probe, ma non cambia lo script disabilitato.
+
+Resta vero:
+
+- nessuna chiamata API-Football;
+- nessuna chiamata TheStatsAPI;
+- nessun token letto;
+- nessuna fetch;
+- nessun DB write;
+- provider/import spenti;
+- `blocked_reason=REAL_PROVIDER_PROBE_DISABLED`.
+
+La prossima fase D.16-C richiederà conferma esplicita prima di qualunque real-call.
