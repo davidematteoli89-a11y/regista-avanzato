@@ -311,3 +311,19 @@ Documento:
 La real-call viene spostata a D.16-C e richiederà nuova conferma esplicita.
 
 Nota: eventuale upgrade a piano a pagamento solo dopo test tecnico riuscito e verifica di payload, costi, rate limit, licenza, caching e pubblicazione.
+
+## D.16-C1 — Preparazione sicura API-Football key
+
+D.16-C1 aggiunge:
+
+- `docs/api_football_key_setup_d16c1.md`.
+
+La futura chiave API-Football Free dovrà essere gestita solo in env sicura locale/Preview, mai in chat, mai in docs, mai in `.env.example` come valore reale e mai in Production.
+
+Nomi env previsti:
+
+- `API_FOOTBALL_API_KEY`;
+- `API_FOOTBALL_BASE_URL`;
+- `API_FOOTBALL_PROBE_ENABLED=false`.
+
+La real-call resta non autorizzata: D.16-C1 non legge token, non chiama provider e non scrive DB.

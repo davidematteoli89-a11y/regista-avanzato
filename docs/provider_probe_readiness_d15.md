@@ -180,3 +180,25 @@ D.16-B non esegue la probe. Il gate resta chiuso:
 - Production non toccata.
 
 D.16-C potrà essere aperta solo con conferma esplicita, token in env sicura, massimo una richiesta read-only e nessuna scrittura DB.
+
+## D.16-C1 — Preparazione env API-Football
+
+Documento:
+
+- `docs/api_football_key_setup_d16c1.md`.
+
+Stato:
+
+- nessuna API key inserita;
+- nessun token letto/stampato;
+- nessuna real-call;
+- nessuna fetch provider;
+- nessuna scrittura DB.
+
+Nomi env futuri:
+
+- `API_FOOTBALL_API_KEY`;
+- `API_FOOTBALL_BASE_URL`;
+- `API_FOOTBALL_PROBE_ENABLED=false`.
+
+Il gate D.16-C2 resta chiuso finché la chiave non viene preparata manualmente in env sicura e la real-call non viene autorizzata esplicitamente.

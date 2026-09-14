@@ -1,0 +1,127 @@
+# D.16-C1 — Preparazione sicura API-Football Free key
+
+Stato: preparazione documentale, nessuna chiave inserita e nessuna real-call eseguita.
+
+D.16-C1 prepara la gestione futura della chiave API-Football Free per una probe read-only. Non crea token, non legge `.env.local`, non stampa valori e non chiama API-Football.
+
+## Stato di partenza
+
+- Ultimo commit di riferimento: `967c09bba3b407487a71e6443554dc67ffc55e2e`.
+- Provider scelto per prima futura probe: `api_football`.
+- Piano scelto: Free.
+- Alternativa: `the_stats_api`.
+- Probe corrente: disabilitata.
+- `real_provider_probe_enabled=false`.
+- `external_fetch=false`.
+- `token_read=false`.
+- `db_write=false`.
+- `realWritesEnabled=false`.
+- Provider/import/Apify spenti.
+- `/admin/imports` read-only.
+- Production non toccata.
+
+## File env
+
+File controllati:
+
+- `.gitignore`;
+- `.env.example`;
+- `package.json`;
+- `scripts/provider/*`;
+- documentazione provider D.13–D.16.
+
+Risultato:
+
+- `.env.local` è ignorato e non è stato letto;
+- `.env*` è ignorato con eccezione esplicita per `.env.example`;
+- `.vercel/` è ignorato;
+- `.env.example` è presente ed è il posto corretto dove documentare solo nomi variabili e placeholder non segreti.
+
+## Nomi env futuri
+
+Variabili da usare per una futura D.16-C2/D.16-C, senza inserirle ora:
+
+```env
+API_FOOTBALL_API_KEY=
+API_FOOTBALL_BASE_URL=
+API_FOOTBALL_PROBE_ENABLED=false
+```
+
+Note:
+
+- `API_FOOTBALL_API_KEY` è il nome preferito per la chiave futura.
+- `API_FOOTBALL_BASE_URL` resta configurabile ma non contiene segreti.
+- `API_FOOTBALL_PROBE_ENABLED=false` è il default sicuro.
+- `API_FOOTBALL_KEY` resta nel template solo come placeholder legacy/compatibilità documentale finché il codice della probe reale non definirà il nome definitivo.
+
+## Dove inserire la chiave in futuro
+
+Quando autorizzato:
+
+- solo in `.env.local` locale oppure env Vercel Preview dedicata;
+- mai in chat;
+- mai nei docs;
+- mai in `.env.example`;
+- mai in Production;
+- mai in All Environments;
+- mai nel client;
+- mai stampata in console.
+
+La futura probe dovrà leggere la chiave solo server-side/script-side e dovrà interrompersi se rischia di stamparla.
+
+## Checklist manuale account/API key
+
+Prima di qualunque real-call:
+
+- [ ] Account API-Football Free creato manualmente dall’utente.
+- [ ] Piano Free confermato.
+- [ ] Limiti/rate limit del piano Free confermati.
+- [ ] Endpoint `standings` o `fixtures` confermato come disponibile nel piano Free.
+- [ ] Costo della singola probe confermato come nullo o accettabile.
+- [ ] Licenza/caching/pubblicazione verificati.
+- [ ] Token/API key creato manualmente dall’utente.
+- [ ] Token salvato solo in env sicura.
+- [ ] Token non incollato in chat.
+- [ ] Token non committato.
+- [ ] Token non stampato.
+- [ ] Production esclusa.
+
+## Gate prima di D.16-C2
+
+Non procedere alla fase successiva finché:
+
+- account/API-Football Free non è pronto;
+- nome env definitivo confermato;
+- token disponibile solo in env sicura;
+- `API_FOOTBALL_PROBE_ENABLED=false` resta default;
+- `real_provider_probe_enabled=false` resta vero fino ad autorizzazione esplicita;
+- script probe reale non è ancora creato o resta separato da import/writer;
+- massimo una richiesta futura;
+- nessuna scrittura DB;
+- nessun insert/update/delete/upsert;
+- provider/import ancora spenti;
+- `realWritesEnabled=false`;
+- `/admin/imports` resta read-only;
+- Production non toccata.
+
+## Cosa non viene fatto in D.16-C1
+
+- Nessuna chiave creata.
+- Nessuna chiave salvata.
+- Nessuna chiave letta.
+- Nessuna chiave stampata.
+- Nessuna chiamata API-Football.
+- Nessuna chiamata TheStatsAPI.
+- Nessuna chiamata Apify/SofaScore.
+- Nessuna fetch provider.
+- Nessuno scraping.
+- Nessuna scrittura DB.
+- Nessun `db push/reset`.
+- Nessun provider attivato.
+- Nessun import attivato.
+- Nessun deploy.
+- Production non toccata.
+
+## Prossimo step consigliato
+
+D.16-C2 — preparare lo script della probe reale in modalità ancora disabilitata, con guardia esplicita su `API_FOOTBALL_PROBE_ENABLED=false`, senza eseguire la real-call.

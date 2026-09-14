@@ -813,3 +813,18 @@ Production resta bloccata perché:
 - `realWritesEnabled=false`;
 - nessuna scrittura DB è autorizzata;
 - D.16-C richiede conferma separata e massimo una richiesta read-only fuori Production.
+
+## Nota D.16-C1 — Preparazione API-Football key
+
+D.16-C1 documenta dove mettere in futuro la chiave API-Football Free, ma non inserisce né legge token.
+
+Production resta esclusa:
+
+- nessun token in Production;
+- nessun token in All Environments;
+- nessuna real-call;
+- nessuna fetch provider;
+- nessuna scrittura DB;
+- provider/import/Apify spenti;
+- `API_FOOTBALL_PROBE_ENABLED=false`;
+- `realWritesEnabled=false`.

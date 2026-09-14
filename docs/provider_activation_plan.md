@@ -732,3 +732,25 @@ Prima di D.16-C:
 - nessun provider/import attivato;
 - `realWritesEnabled=false`;
 - Production non toccata.
+
+## D.16-C1 — Preparazione API-Football key
+
+Creato:
+
+- `docs/api_football_key_setup_d16c1.md`.
+
+Aggiornato:
+
+- `.env.example` con placeholder non segreti:
+  - `API_FOOTBALL_API_KEY=`;
+  - `API_FOOTBALL_BASE_URL=`;
+  - `API_FOOTBALL_PROBE_ENABLED=false`.
+
+La chiave reale non viene inserita né letta. Il piano conferma:
+
+- token solo in env sicura;
+- mai token in chat o docs;
+- mai token in Production;
+- nessuna real-call;
+- nessun provider/import attivato;
+- writer ancora bloccati.

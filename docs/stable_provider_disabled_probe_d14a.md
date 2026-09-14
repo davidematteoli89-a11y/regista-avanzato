@@ -146,3 +146,17 @@ Resta vero:
 - `blocked_reason=REAL_PROVIDER_PROBE_DISABLED`.
 
 La prossima fase D.16-C richiederà conferma esplicita prima di qualunque real-call.
+
+## D.16-C1 — Key setup senza sblocco probe
+
+D.16-C1 documenta la gestione futura della chiave API-Football Free, ma non cambia lo script disabilitato.
+
+Restano veri:
+
+- `real_provider_probe_enabled=false`;
+- `API_FOOTBALL_PROBE_ENABLED=false`;
+- nessuna chiave letta;
+- nessuna fetch;
+- nessun DB write;
+- provider/import spenti;
+- `blocked_reason=REAL_PROVIDER_PROBE_DISABLED`.

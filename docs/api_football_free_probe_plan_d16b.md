@@ -127,3 +127,17 @@ Prima della vera probe devono essere completati:
 - I writer restano disabilitati.
 - Provider, Apify e import restano spenti.
 - Il prossimo step consigliato è D.16-C, solo con conferma esplicita e con massimo una richiesta read-only.
+
+## D.16-C1 — Preparazione sicura API key
+
+Documento aggiunto:
+
+- `docs/api_football_key_setup_d16c1.md`.
+
+D.16-C1 prepara solo i nomi env futuri:
+
+- `API_FOOTBALL_API_KEY`;
+- `API_FOOTBALL_BASE_URL`;
+- `API_FOOTBALL_PROBE_ENABLED=false`.
+
+La chiave non viene creata, letta, stampata o salvata. La futura real-call resta bloccata finché non verrà autorizzata una fase separata.

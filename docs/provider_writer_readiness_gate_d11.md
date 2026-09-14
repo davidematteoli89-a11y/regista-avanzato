@@ -255,3 +255,17 @@ Il gate writer resta chiuso:
 - Production non toccata.
 
 L’eventuale D.16-C dovrà restare separata dai writer e limitata a una singola richiesta read-only.
+
+## D.16-C1 — Env provider senza writer
+
+D.16-C1 aggiunge solo documentazione e placeholder env non segreti.
+
+Il gate writer resta chiuso:
+
+- nessuna chiave letta;
+- nessuna scrittura DB;
+- nessun `provider_import_runs` insert;
+- nessun import;
+- nessuna attivazione provider;
+- `realWritesEnabled=false`;
+- Production non toccata.

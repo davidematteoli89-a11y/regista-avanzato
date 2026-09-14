@@ -1146,3 +1146,20 @@ Prima di D.16-C:
 - massimo una richiesta read-only;
 - nessun DB write;
 - Production non toccata.
+
+## D.16-C1 — Preparazione sicura API-Football key
+
+Aggiunto:
+
+- `docs/api_football_key_setup_d16c1.md`.
+
+Nessun cambiamento a Supabase staging:
+
+- nessuna scrittura DB;
+- nessun provider attivato;
+- nessun import attivato;
+- nessun token letto/stampato;
+- nessun `provider_import_runs` insert;
+- `realWritesEnabled=false`.
+
+La futura chiave API-Football Free dovrà essere inserita solo manualmente in env sicura locale/Preview, mai in Production e mai in chat.

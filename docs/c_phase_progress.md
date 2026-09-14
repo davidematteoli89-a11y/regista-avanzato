@@ -1485,3 +1485,29 @@ Conferme:
 - nessun `db push/reset`;
 - provider/Apify/import spenti;
 - Production non toccata.
+
+## D.16-C1 — Preparazione sicura API-Football key
+
+Stato: preparazione env/documentazione, nessuna chiave inserita e nessuna real-call.
+
+Creato:
+
+- `docs/api_football_key_setup_d16c1.md`.
+
+Aggiornato:
+
+- `.env.example` con placeholder non segreti per `API_FOOTBALL_API_KEY`, `API_FOOTBALL_BASE_URL` e `API_FOOTBALL_PROBE_ENABLED=false`.
+
+Conferme:
+
+- `.env.local` non letto;
+- nessuna API key creata, salvata, letta o stampata;
+- nessuna chiamata API-Football;
+- nessuna fetch provider;
+- nessuna scrittura DB;
+- provider/Apify/import spenti;
+- Production non toccata.
+
+Prossimo step consigliato:
+
+- D.16-C2 — preparare script probe API-Football ancora disabilitato, senza real-call.
