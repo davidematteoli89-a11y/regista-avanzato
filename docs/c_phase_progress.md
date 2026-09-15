@@ -31,6 +31,34 @@ Resta mock:
 - Nessun import automatico.
 - Nessuna pubblicazione massiva delle 43 competizioni.
 
+## D.17-B2 — Setup locale TheStatsAPI
+
+Stato: completato senza real-call.
+
+Verificato:
+
+- `.env.local` ignorato da Git e non staged;
+- `THESTATSAPI_API_KEY` presente senza stampare valori;
+- `THESTATSAPI_BASE_URL` presente senza stampare valori;
+- `THESTATSAPI_PROBE_ENABLED=false`;
+- `token_printed=false`;
+- `external_fetch=false`;
+- `db_write=false`.
+
+Conferme:
+
+- nessuna chiamata TheStatsAPI;
+- nessuna chiamata API-Football;
+- API-Football resta sospeso/no retry;
+- nessuna fetch provider;
+- nessuna scrittura DB;
+- nessun `service_role`;
+- provider/import spenti;
+- Apify spento;
+- Production non toccata.
+
+Prossimo step consigliato: D.17-C — preparare script TheStatsAPI probe gated, senza esecuzione real-call.
+
 ## Prossimo passo
 
 C.2 — seed demo pubblicato controllato.

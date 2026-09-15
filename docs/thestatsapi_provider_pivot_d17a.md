@@ -70,3 +70,21 @@ Prima di qualsiasi richiesta reale TheStatsAPI:
 ## Prossimo step consigliato
 
 D.17-B — setup key TheStatsAPI sicuro e documentale, ancora senza real-call.
+
+## D.17-B2 — Setup locale key verificato
+
+La verifica locale TheStatsAPI è stata completata senza real-call:
+
+- key presente solo in `.env.local`;
+- base URL presente solo in configurazione locale;
+- `THESTATSAPI_PROBE_ENABLED=false`;
+- nessun valore segreto stampato o documentato;
+- nessuna fetch provider;
+- nessuna scrittura DB;
+- API-Football resta sospeso/no retry;
+- Apify spento;
+- Production non toccata.
+
+Documento dedicato:
+
+- `docs/thestatsapi_key_setup_d17b.md`.

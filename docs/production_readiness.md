@@ -68,6 +68,25 @@ Non pronto per Production:
 - Pubblicazione dati non verificati.
 - Download/reupload highlights video.
 
+## Nota D.17-B2 — TheStatsAPI solo locale
+
+TheStatsAPI è stato scelto come provider candidato dopo la sospensione API-Football, ma non è pronto per Production.
+
+Stato:
+
+- key presente solo in `.env.local`;
+- `.env.local` ignorato e non committato;
+- `THESTATSAPI_PROBE_ENABLED=false`;
+- nessuna real-call TheStatsAPI;
+- nessuna fetch provider;
+- nessuna scrittura DB;
+- provider/import spenti;
+- Apify spento;
+- API-Football sospeso/no retry;
+- Production non toccata.
+
+Prima della Production resta obbligatorio completare probe gated, licenza, rate limit, mapping, log, RLS e readiness writer.
+
 ## Nota C.4
 
 L’admin editoriale può leggere contenuti manuali da Supabase staging, ma questo non rende il progetto pronto per Production.

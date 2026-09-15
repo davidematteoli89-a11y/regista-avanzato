@@ -94,6 +94,23 @@ Stop immediato se:
 - Qualsiasi tentativo di scrittura DB.
 - Qualsiasi tentativo di attivare provider/import.
 
+## D.17-B2 — TheStatsAPI key setup locale
+
+TheStatsAPI è il provider scelto per la prossima probe futura dopo il pivot D.17-A.
+
+Verifica locale completata:
+
+- `THESTATSAPI_API_KEY` presente in `.env.local`;
+- `THESTATSAPI_BASE_URL` presente in `.env.local`;
+- `THESTATSAPI_PROBE_ENABLED=false`;
+- nessun valore stampato;
+- nessun token committato;
+- nessuna real-call;
+- nessuna fetch provider;
+- nessuna scrittura DB.
+
+Il gate resta chiuso: la futura probe TheStatsAPI dovrà essere preparata con script separato, default disabled e una sola richiesta solo dopo conferma esplicita.
+
 ## Prossimo step consigliato
 
 Opzione A:

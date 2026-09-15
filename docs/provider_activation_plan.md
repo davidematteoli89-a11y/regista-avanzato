@@ -8,10 +8,25 @@ Il frontend non conosce provider esterni. Solo job server-side chiamano adapter,
 
 - `mock_provider`: usato per sviluppo/demo.
 - Stable provider: disattivato.
-- TheStatsAPI adapter: placeholder.
-- API-Football adapter: placeholder.
+- TheStatsAPI adapter: placeholder, scelto per la prossima futura probe gated.
+- API-Football adapter: placeholder, sospeso dopo tentativo R1 con HTTP 403 e nessun retry previsto.
 - Apify/SofaScore: disattivato.
 - Manual provider: disponibile per contenuti/link inseriti manualmente.
+
+## D.17-B2 — Setup locale TheStatsAPI
+
+TheStatsAPI è stato preparato solo a livello locale/documentale:
+
+- key inserita dall'utente in `.env.local`;
+- `.env.local` ignorato da Git e non staged;
+- `THESTATSAPI_PROBE_ENABLED=false`;
+- nessun token letto/stampato nei report;
+- nessuna real-call TheStatsAPI;
+- nessuna fetch provider;
+- nessuna scrittura DB;
+- provider/import ancora spenti;
+- Apify spento;
+- Production non toccata.
 
 ## Checklist prima dei provider reali
 

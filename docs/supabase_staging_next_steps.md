@@ -156,6 +156,27 @@ FASE C:
 - Non pubblicare contenuti reali.
 - Non rimuovere Deployment Protection dal Preview.
 
+## D.17-B2 — TheStatsAPI key setup locale
+
+La key TheStatsAPI è stata verificata solo come presenza locale in `.env.local`, senza stampare valori.
+
+Stato:
+
+- `.env.local` ignorato da Git;
+- `.env.local` non staged;
+- `THESTATSAPI_API_KEY_PRESENT=true`;
+- `THESTATSAPI_BASE_URL_PRESENT=true`;
+- `THESTATSAPI_PROBE_ENABLED=false`;
+- nessuna real-call;
+- nessuna fetch provider;
+- nessuna scrittura DB;
+- provider/import spenti;
+- Apify spento;
+- API-Football sospeso/no retry;
+- Production non toccata.
+
+Prossimo step: preparare uno script TheStatsAPI gated e disabilitato di default, senza collegarlo a import o writer.
+
 ## Stato C.3
 
 - Reader editoriali predisposti in locale per leggere solo public view Supabase sicure.
