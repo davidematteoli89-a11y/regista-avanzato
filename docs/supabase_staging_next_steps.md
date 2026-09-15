@@ -1181,3 +1181,21 @@ Supabase staging resta invariato:
 - `/admin/imports` read-only.
 
 Il prossimo step consigliato è provare solo l’output disabled dello script, non una real-call.
+
+## D.16-C2-C — Checklist finale pre-real-call
+
+Aggiunto:
+
+- `docs/api_football_pre_real_call_checklist_d16c2c.md`.
+
+Supabase staging resta invariato:
+
+- nessuna scrittura DB;
+- nessun `provider_import_runs` write;
+- nessun `api_usage_logs` write;
+- nessun `provider_import_logs` write;
+- nessun `import_logs` write;
+- provider/import spenti;
+- `realWritesEnabled=false`.
+
+La futura D.16-C3 dovrà essere massimo una richiesta read-only su standings Serie A, senza DB write.

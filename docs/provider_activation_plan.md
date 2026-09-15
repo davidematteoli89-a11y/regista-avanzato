@@ -777,3 +777,24 @@ Il piano operativo resta:
 - nessuna scrittura DB;
 - provider/import spenti;
 - Production non toccata.
+
+## D.16-C2-C — Checklist finale prima della probe
+
+Creato:
+
+- `docs/api_football_pre_real_call_checklist_d16c2c.md`.
+
+Endpoint consigliato:
+
+- API-Football standings Serie A.
+
+Condizioni per D.16-C3:
+
+- key rigenerata;
+- massimo una richiesta;
+- niente retry/loop/paginazione;
+- output summary sanificato;
+- nessun DB write;
+- nessun provider/import attivato;
+- Production esclusa;
+- conferma esplicita dell’utente.

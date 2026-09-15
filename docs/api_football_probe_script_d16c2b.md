@@ -101,3 +101,28 @@ In una futura modalità abilitata, lo script potrà verificare solo presenza/ass
 D.16-C2-C — eseguire solo la modalità disabled dello script per verificare l’output di blocco, ancora senza real-call.
 
 Solo dopo, una D.16-C3 separata potrà valutare una singola real-call, con conferma esplicita e key rigenerata.
+
+## D.16-C2-C — Checklist finale pre-real-call
+
+Documento aggiunto:
+
+- `docs/api_football_pre_real_call_checklist_d16c2c.md`.
+
+Endpoint consigliato per D.16-C3:
+
+- standings Serie A.
+
+Motivo:
+
+- payload più semplice e stabile;
+- utile per verificare mapping verso classifiche/Supabase;
+- minore rischio rispetto a endpoint più ampi.
+
+La real-call resta non autorizzata:
+
+- `enabled=false`;
+- `blocked_reason=API_FOOTBALL_PROBE_DISABLED`;
+- `requests_executed=0`;
+- nessuna fetch provider;
+- nessun token letto/stampato;
+- nessuna scrittura DB.

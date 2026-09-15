@@ -1576,3 +1576,38 @@ Conferme D.16-C2-B:
 - nessun DB write;
 - provider/Apify/import spenti;
 - Production non toccata.
+
+## D.16-C2-C — Checklist finale pre-real-call API-Football
+
+Stato: checklist finale preparata, nessuna real-call.
+
+Creato:
+
+- `docs/api_football_pre_real_call_checklist_d16c2c.md`.
+
+Decisione:
+
+- endpoint consigliato per D.16-C3: standings Serie A;
+- endpoint alternativo: fixtures Serie A se standings non è disponibile o non adatto.
+
+Verifica disabled:
+
+- `npm run probe:api-football:gated`;
+- `enabled=false`;
+- `blocked_reason=API_FOOTBALL_PROBE_DISABLED`;
+- `external_fetch=false`;
+- `db_write=false`;
+- `token_read=false`;
+- `token_printed=false`;
+- `requests_executed=0`.
+
+Gate:
+
+- key esposta da rigenerare/ruotare;
+- nuova key solo in `.env.local`;
+- massimo una richiesta futura;
+- niente retry/loop/paginazione;
+- nessuna scrittura DB;
+- nessun provider/import attivato;
+- Production non toccata;
+- D.16-C3 solo con conferma esplicita.

@@ -186,3 +186,20 @@ Lo script resta bloccato di default:
 - nessuna scrittura DB.
 
 D.16-C2-B non esegue lo script e non effettua real-call.
+
+## D.16-C2-C — Checklist finale key/probe
+
+Documento:
+
+- `docs/api_football_pre_real_call_checklist_d16c2c.md`.
+
+Prima di D.16-C3:
+
+- key accidentalmente condivisa in chat da considerare esposta;
+- key da rigenerare/ruotare manualmente;
+- nuova key solo in `.env.local`;
+- `API_FOOTBALL_PROBE_ENABLED=false` fino al momento esatto della probe;
+- `REAL_PROVIDER_PROBE_ENABLED=false` fino al momento esatto della probe;
+- nessun token in chat, docs, commit o Production.
+
+D.16-C2-C non legge `.env.local` e non legge/stampa token.

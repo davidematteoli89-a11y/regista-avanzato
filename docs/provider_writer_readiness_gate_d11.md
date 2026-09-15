@@ -283,3 +283,19 @@ Il gate writer resta chiuso anche dopo D.16-C2-B:
 - nessun log provider scritto;
 - nessun `provider_import_runs` insert;
 - `realWritesEnabled=false`.
+
+## D.16-C2-C — Writer gate ancora chiuso
+
+La checklist finale pre-real-call non modifica il gate writer.
+
+Prima di qualunque writer reale restano vietati:
+
+- DB write;
+- provider_import_runs write;
+- provider_import_logs write;
+- api_usage_logs write;
+- import_logs write;
+- provider activation;
+- import activation.
+
+La futura D.16-C3, se autorizzata, resta solo read-only e non apre i writer.

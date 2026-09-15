@@ -175,3 +175,25 @@ Il comando è separato dagli import e dai writer. La real-call resta bloccata fi
 - conferma esplicita utente ricevuta.
 
 D.16-C2-B non chiama provider, non legge/stampa token e non scrive DB.
+
+## D.16-C2-C — Endpoint consigliato
+
+Checklist finale:
+
+- `docs/api_football_pre_real_call_checklist_d16c2c.md`.
+
+Endpoint consigliato per la futura D.16-C3:
+
+- standings Serie A.
+
+Endpoint alternativo:
+
+- fixtures Serie A, solo se standings non è disponibile o non adatto.
+
+D.16-C2-C è solo checklist:
+
+- nessuna real-call;
+- nessuna fetch provider;
+- nessun token letto/stampato;
+- nessuna scrittura DB;
+- D.16-C3 richiede conferma esplicita.

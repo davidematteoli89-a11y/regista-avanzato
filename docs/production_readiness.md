@@ -862,3 +862,21 @@ Production resta esclusa:
 - `realWritesEnabled=false`.
 
 Una futura real-call richiede fase separata, massimo una richiesta e conferma esplicita.
+
+## Nota D.16-C2-C — Checklist finale pre-real-call
+
+D.16-C2-C crea solo checklist finale per una futura real-call API-Football Free.
+
+Endpoint consigliato:
+
+- standings Serie A.
+
+Production resta esclusa:
+
+- nessuna env provider Production;
+- nessuna real-call;
+- nessuna fetch provider;
+- nessuna scrittura DB;
+- nessun provider/import attivato;
+- key esposta da rigenerare prima della probe;
+- D.16-C3 richiede conferma esplicita.

@@ -249,3 +249,26 @@ Gate richiesti per una futura real-call:
 - Production off.
 
 D.16-C2-B non esegue lo script.
+
+## D.16-C2-C — Gate finale pre-real-call
+
+Documento:
+
+- `docs/api_football_pre_real_call_checklist_d16c2c.md`.
+
+Decisione finale pre-probe:
+
+- D.16-C3 consigliata su endpoint standings Serie A;
+- fixtures Serie A resta alternativa.
+
+Gate ancora chiuso:
+
+- key esposta da rigenerare;
+- `API_FOOTBALL_PROBE_ENABLED=false`;
+- `REAL_PROVIDER_PROBE_ENABLED=false`;
+- `enabled=false`;
+- `requests_executed=0`;
+- nessuna fetch provider;
+- nessuna scrittura DB;
+- provider/import off;
+- Production off.
