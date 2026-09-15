@@ -59,6 +59,34 @@ Conferme:
 
 Prossimo step consigliato: D.17-C — preparare script TheStatsAPI probe gated, senza esecuzione real-call.
 
+## D.17-C — Script TheStatsAPI probe gated
+
+Stato: preparato localmente, nessuna real-call.
+
+Creato:
+
+- `scripts/provider/theStatsApiProbe.ts`;
+- comando `npm run probe:thestatsapi:gated`.
+
+Comportamento default:
+
+- `THESTATSAPI_PROBE_ENABLED=false`;
+- `enabled=false`;
+- `blocked_reason=THESTATSAPI_PROBE_DISABLED`;
+- `external_fetch=false`;
+- `db_write=false`;
+- `token_read=false`;
+- `token_printed=false`;
+- `requests_executed=0`.
+
+Restano confermati:
+
+- API-Football sospeso/no retry;
+- provider/import spenti;
+- Apify spento;
+- `realWritesEnabled=false`;
+- Production non toccata.
+
 ## Prossimo passo
 
 C.2 — seed demo pubblicato controllato.

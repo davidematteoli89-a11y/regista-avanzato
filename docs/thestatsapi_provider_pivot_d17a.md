@@ -88,3 +88,22 @@ La verifica locale TheStatsAPI è stata completata senza real-call:
 Documento dedicato:
 
 - `docs/thestatsapi_key_setup_d17b.md`.
+
+## D.17-C — Script probe gated
+
+È stato preparato lo script separato:
+
+- `scripts/provider/theStatsApiProbe.ts`;
+- comando: `npm run probe:thestatsapi:gated`.
+
+Stato:
+
+- default disabled;
+- nessuna real-call;
+- nessuna fetch provider;
+- nessun token letto/stampato in modalità disabled;
+- nessuna scrittura DB;
+- provider/import spenti;
+- API-Football sospeso/no retry;
+- Apify spento;
+- Production non toccata.

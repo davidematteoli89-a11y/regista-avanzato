@@ -177,6 +177,24 @@ Stato:
 
 Prossimo step: preparare uno script TheStatsAPI gated e disabilitato di default, senza collegarlo a import o writer.
 
+## D.17-C — Script TheStatsAPI gated senza DB
+
+Preparato script locale:
+
+- `scripts/provider/theStatsApiProbe.ts`.
+
+Il comando `npm run probe:thestatsapi:gated` resta bloccato di default e non tocca Supabase:
+
+- nessuna lettura token in modalità disabled;
+- nessuna fetch provider;
+- nessuna scrittura DB;
+- nessuna riga `provider_import_runs`;
+- nessun log import/API usage scritto;
+- nessun import abilitato;
+- nessun provider attivato.
+
+Qualunque futura real-call TheStatsAPI dovrà essere una fase separata, con conferma esplicita e massimo una richiesta read-only.
+
 ## Stato C.3
 
 - Reader editoriali predisposti in locale per leggere solo public view Supabase sicure.

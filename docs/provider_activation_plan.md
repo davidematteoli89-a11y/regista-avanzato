@@ -28,6 +28,25 @@ TheStatsAPI è stato preparato solo a livello locale/documentale:
 - Apify spento;
 - Production non toccata.
 
+## D.17-C — Script TheStatsAPI gated
+
+Preparato script separato dagli import:
+
+- `scripts/provider/theStatsApiProbe.ts`;
+- comando: `npm run probe:thestatsapi:gated`.
+
+Il comando default non effettua real-call:
+
+- `THESTATSAPI_PROBE_ENABLED=false`;
+- `enabled=false`;
+- `external_fetch=false`;
+- `db_write=false`;
+- `token_read=false`;
+- `token_printed=false`;
+- `requests_executed=0`.
+
+La futura real-call TheStatsAPI resta vietata finché non saranno confermati endpoint, licenza, rate limit e gate espliciti.
+
 ## Checklist prima dei provider reali
 
 - [ ] Confermare provider stabile da usare.

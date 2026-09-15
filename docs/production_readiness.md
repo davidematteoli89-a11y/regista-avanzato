@@ -87,6 +87,21 @@ Stato:
 
 Prima della Production resta obbligatorio completare probe gated, licenza, rate limit, mapping, log, RLS e readiness writer.
 
+## Nota D.17-C — Script TheStatsAPI non abilita Production
+
+Lo script TheStatsAPI gated è solo preparatorio:
+
+- default disabled;
+- nessuna real-call;
+- nessuna fetch provider;
+- nessuna scrittura DB;
+- nessun token stampato;
+- nessun import;
+- provider spenti;
+- Apify spento.
+
+Production resta bloccata fino a real-call controllata, mapping validato, licenza/costi verificati, RLS/readiness e writer guard completati.
+
 ## Nota C.4
 
 L’admin editoriale può leggere contenuti manuali da Supabase staging, ma questo non rende il progetto pronto per Production.

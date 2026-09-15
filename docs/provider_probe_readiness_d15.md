@@ -111,6 +111,34 @@ Verifica locale completata:
 
 Il gate resta chiuso: la futura probe TheStatsAPI dovrà essere preparata con script separato, default disabled e una sola richiesta solo dopo conferma esplicita.
 
+## D.17-C — TheStatsAPI probe gated preparata
+
+Script preparato:
+
+- `scripts/provider/theStatsApiProbe.ts`;
+- comando: `npm run probe:thestatsapi:gated`.
+
+La modalità default deve restare:
+
+- `enabled=false`;
+- `blocked_reason=THESTATSAPI_PROBE_DISABLED`;
+- `external_fetch=false`;
+- `db_write=false`;
+- `token_read=false`;
+- `token_printed=false`;
+- `requests_planned=1`;
+- `requests_executed=0`.
+
+Gate per futura real-call:
+
+- `THESTATSAPI_PROBE_ENABLED=true`;
+- `REAL_PROVIDER_PROBE_ENABLED=true`;
+- conferma manuale esplicita;
+- endpoint confermato;
+- piano/licenza/rate limit confermati.
+
+Finché il gate è chiuso non deve essere letto alcun token e non deve essere fatta alcuna fetch.
+
 ## Prossimo step consigliato
 
 Opzione A:

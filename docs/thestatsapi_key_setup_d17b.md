@@ -51,3 +51,16 @@ Prima di D.17-C restano obbligatori:
 ## Prossimo step consigliato
 
 D.17-C — preparare lo script TheStatsAPI probe gated, ma non eseguirlo in modalità real-call.
+
+## D.17-C — Script gated preparato
+
+Lo script TheStatsAPI gated è stato preparato per la futura probe, ma resta disabilitato di default:
+
+- comando previsto: `npm run probe:thestatsapi:gated`;
+- default `THESTATSAPI_PROBE_ENABLED=false`;
+- richiede anche `REAL_PROVIDER_PROBE_ENABLED=true` per qualunque futura fetch;
+- massimo 1 richiesta futura;
+- nessuna lettura token in modalità disabled;
+- nessuna fetch provider in modalità disabled;
+- nessuna scrittura DB;
+- nessuna attivazione provider/import.

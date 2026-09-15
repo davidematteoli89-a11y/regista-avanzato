@@ -13,7 +13,8 @@
     "dry-run:provider-logging": "node --no-warnings --experimental-strip-types scripts/provider/dryRunProviderLogging.ts",
     "dry-run:provider-writer-guards": "node --no-warnings --experimental-strip-types scripts/provider/dryRunProviderWriterGuards.ts",
     "probe:stable-provider:disabled": "node --no-warnings --experimental-strip-types scripts/provider/disabledStableProviderProbe.ts",
-    "probe:api-football:gated": "node --no-warnings --experimental-strip-types scripts/provider/apiFootballProbe.ts"
+    "probe:api-football:gated": "node --no-warnings --experimental-strip-types scripts/provider/apiFootballProbe.ts",
+    "probe:thestatsapi:gated": "node --no-warnings --experimental-strip-types scripts/provider/theStatsApiProbe.ts"
   },
   "dependencies": {
     "@supabase/ssr": "0.12.4",
