@@ -1273,3 +1273,18 @@ Supabase staging resta invariato:
 - writer guards attivi.
 
 R2 reale resta bloccato finché non vengono chiariti manualmente piano/key/restrizioni e la stagione da usare.
+
+## D.17-A — Pivot provider senza impatto DB
+
+TheStatsAPI diventa il provider scelto per i prossimi test, ma D.17-A non cambia Supabase staging.
+
+Staging resta invariato:
+
+- nessuna scrittura DB;
+- nessun write su tabelle log/import;
+- nessun provider/import attivato;
+- `realWritesEnabled=false`;
+- writer guards attivi;
+- Apify spento.
+
+API-Football resta documentato come R1 con HTTP `403` e sospeso per ora.

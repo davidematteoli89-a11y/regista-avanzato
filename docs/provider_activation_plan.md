@@ -859,6 +859,33 @@ La fase prepara controlli manuali dashboard e non attiva nulla:
 
 Prima del retry R2 servirà scegliere se usare ancora `season=2026` o modificare in fase dedicata verso `season=2025`.
 
+## D.17-A — Pivot verso TheStatsAPI
+
+Decisione:
+
+- API-Football resta sospeso dopo HTTP `403`;
+- nessun retry API-Football previsto per ora;
+- TheStatsAPI diventa provider scelto per i prossimi test;
+- API-Football resta fallback futuro documentato;
+- Apify resta separato e spento.
+
+Preparazione:
+
+- aggiunto `docs/thestatsapi_provider_pivot_d17a.md`;
+- aggiunti placeholder non segreti in `.env.example`:
+  - `THESTATSAPI_API_KEY=`;
+  - `THESTATSAPI_BASE_URL=`;
+  - `THESTATSAPI_PROBE_ENABLED=false`.
+
+Conferme:
+
+- nessuna real-call TheStatsAPI;
+- nessuna fetch provider;
+- nessun token letto/stampato;
+- nessuna scrittura DB;
+- provider/import spenti;
+- Production non toccata.
+
 ## D.16-C2-C — Checklist finale prima della probe
 
 Creato:

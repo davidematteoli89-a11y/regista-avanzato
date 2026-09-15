@@ -896,6 +896,22 @@ La checklist dashboard API-Football non cambia lo stato Production.
 
 Il `403` deve essere risolto su staging/local prima di qualunque decisione Production.
 
+## Nota D.17-A — Pivot TheStatsAPI non cambia Production
+
+D.17-A documenta solo il pivot provider.
+
+- API-Football sospeso dopo HTTP `403`.
+- TheStatsAPI scelto per prossimi test.
+- Nessuna real-call TheStatsAPI.
+- Nessuna fetch provider.
+- Nessun token letto/stampato.
+- Nessuna scrittura DB.
+- Provider/import spenti.
+- Apify spento.
+- Production non toccata.
+
+Production resta bloccata finché non saranno completati probe, mapping, licenza/costi, writer guard e test RLS/readiness.
+
 ## Nota D.16-C2-A — Key locale verificata senza token output
 
 La verifica D.16-C2-A conferma solo il setup locale:

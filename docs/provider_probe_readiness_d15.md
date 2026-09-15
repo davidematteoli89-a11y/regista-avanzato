@@ -274,6 +274,29 @@ Checklist manuale copre:
 
 R2 reale resta bloccato finché l'utente non conferma questi punti e autorizza una sola richiesta.
 
+## D.17-A — Pivot readiness TheStatsAPI
+
+La prossima probe provider non prosegue con API-Football.
+
+Decisione:
+
+- API-Football sospeso dopo `403`;
+- nessun retry API-Football previsto ora;
+- TheStatsAPI scelto per il prossimo percorso di test;
+- TheStatsAPI ancora senza real-call;
+- key/setup TheStatsAPI da preparare in step separato;
+- default previsto: `THESTATSAPI_PROBE_ENABLED=false`.
+
+Gate invariato:
+
+- massimo una richiesta futura;
+- output sanificato;
+- nessun token stampato;
+- nessuna scrittura DB;
+- provider/import spenti;
+- Apify spento;
+- Production esclusa.
+
 Nomi env futuri:
 
 - `API_FOOTBALL_API_KEY`;

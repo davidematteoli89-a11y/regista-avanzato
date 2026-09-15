@@ -1702,3 +1702,32 @@ Verifiche:
 La checklist manuale copre account, piano Free, API Football v3, key, restrizioni IP/domain, endpoint/header/parametri e scelta futura `season=2026` vs `season=2025`.
 
 Nessuna seconda real-call, nessuna fetch provider, nessun DB write, provider/import spenti, Apify spento, TheStatsAPI non chiamato, Production non toccata.
+
+## D.17-A — Pivot provider verso TheStatsAPI
+
+Stato: completato localmente come preparazione, senza real-call.
+
+Creato:
+
+- `docs/thestatsapi_provider_pivot_d17a.md`.
+
+Aggiornato:
+
+- `.env.example` con placeholder TheStatsAPI non segreti.
+
+Decisione:
+
+- API-Football sospeso per ora dopo HTTP `403`;
+- nessun retry API-Football previsto;
+- TheStatsAPI scelto per prossimi test provider;
+- API-Football resta fallback futuro;
+- Apify resta separato e spento.
+
+Conferme:
+
+- nessuna real-call TheStatsAPI;
+- nessuna fetch provider;
+- nessun token letto/stampato;
+- nessuna scrittura DB;
+- provider/import spenti;
+- Production non toccata.
