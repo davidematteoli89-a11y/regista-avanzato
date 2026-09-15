@@ -158,3 +158,20 @@ Stato:
 - Production non toccata.
 
 La futura D.16-C2-B deve preparare la probe reale come script gated, ma senza eseguirla.
+
+## D.16-C2-B — Probe script pronto ma non eseguito
+
+Preparato:
+
+- `scripts/provider/apiFootballProbe.ts`;
+- `npm run probe:api-football:gated`;
+- `docs/api_football_probe_script_d16c2b.md`.
+
+Il comando è separato dagli import e dai writer. La real-call resta bloccata finché:
+
+- `API_FOOTBALL_PROBE_ENABLED=true`;
+- `REAL_PROVIDER_PROBE_ENABLED=true`;
+- key rigenerata presente solo in env sicura;
+- conferma esplicita utente ricevuta.
+
+D.16-C2-B non chiama provider, non legge/stampa token e non scrive DB.

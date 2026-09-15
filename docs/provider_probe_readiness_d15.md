@@ -227,3 +227,25 @@ Il gate resta chiuso:
 - nessuna scrittura DB;
 - provider/import spenti;
 - Production non toccata.
+
+## D.16-C2-B — Script probe API-Football gated
+
+Preparato:
+
+- `scripts/provider/apiFootballProbe.ts`;
+- comando `npm run probe:api-football:gated`;
+- documento `docs/api_football_probe_script_d16c2b.md`.
+
+Lo script è separato da import, writer e UI. In modalità default deve fermarsi prima di leggere la key e prima di qualunque fetch.
+
+Gate richiesti per una futura real-call:
+
+- `API_FOOTBALL_PROBE_ENABLED=true`;
+- `REAL_PROVIDER_PROBE_ENABLED=true`;
+- massimo una richiesta;
+- output sanificato;
+- nessuna scrittura DB;
+- provider/import off;
+- Production off.
+
+D.16-C2-B non esegue lo script.

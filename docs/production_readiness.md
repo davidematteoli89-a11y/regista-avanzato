@@ -846,3 +846,19 @@ Production resta bloccata:
 - nessuna fetch provider;
 - nessun DB write;
 - provider/import/Apify spenti.
+
+## Nota D.16-C2-B — Script probe gated, non Production
+
+D.16-C2-B prepara lo script tecnico `scripts/provider/apiFootballProbe.ts`, ma non lo esegue.
+
+Production resta esclusa:
+
+- nessuna env provider in Production;
+- nessuna real-call;
+- nessuna fetch provider;
+- nessuna scrittura DB;
+- nessun provider/import attivato;
+- `API_FOOTBALL_PROBE_ENABLED=false` default;
+- `realWritesEnabled=false`.
+
+Una futura real-call richiede fase separata, massimo una richiesta e conferma esplicita.

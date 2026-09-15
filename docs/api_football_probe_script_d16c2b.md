@@ -1,0 +1,103 @@
+# D.16-C2-B — Script probe API-Football gated
+
+Stato: script preparato, non eseguito.
+
+D.16-C2-B introduce lo script tecnico per una futura prima probe reale API-Football, ma lo lascia bloccato di default. Questa fase non esegue chiamate esterne, non legge/stampa token e non scrive nel database.
+
+## File creati/modificati
+
+- `scripts/provider/apiFootballProbe.ts`;
+- `package.json`.
+
+Comando preparato:
+
+```bash
+npm run probe:api-football:gated
+```
+
+Nota: il comando non è stato eseguito in D.16-C2-B.
+
+## Gate dello script
+
+Lo script può procedere verso una futura real-call solo se entrambi i gate sono esplicitamente veri:
+
+- `API_FOOTBALL_PROBE_ENABLED=true`;
+- `REAL_PROVIDER_PROBE_ENABLED=true`.
+
+Con i default attuali:
+
+- `API_FOOTBALL_PROBE_ENABLED=false`;
+- `real_provider_probe_enabled=false`;
+- nessuna fetch viene eseguita;
+- nessuna key viene letta;
+- nessuna scrittura DB viene tentata.
+
+## Output disabled previsto
+
+Quando bloccato, lo script deve fermarsi subito e produrre solo output sanificato:
+
+```text
+mode=api_football_probe
+enabled=false
+blocked_reason=API_FOOTBALL_PROBE_DISABLED
+external_fetch=false
+db_write=false
+token_read=false
+token_printed=false
+requests_planned=1
+requests_executed=0
+```
+
+## Futura probe, non eseguita ora
+
+La futura real-call, se autorizzata in una fase separata, dovrà essere:
+
+- provider: `api_football`;
+- competizione: `serie-a`;
+- endpoint candidato: `standings` oppure `fixtures`;
+- richieste massime: 1;
+- modalità: read-only;
+- output: summary sanificato;
+- nessun payload completo stampato se contiene metadata non classificati;
+- nessuna scrittura DB;
+- nessun insert in `provider_import_runs`;
+- nessun import;
+- nessuna attivazione provider;
+- nessun Apify;
+- Production esclusa.
+
+## Sicurezza token
+
+- La API key incollata accidentalmente in chat resta considerata esposta.
+- Non copiarla.
+- Non usarla.
+- Non inserirla nei docs.
+- Non stamparla.
+- Prima di qualunque real-call futura, rigenerare/ruotare la key e sostituirla manualmente in `.env.local`.
+- La key futura non deve essere inserita in Production.
+
+Lo script, nella modalità disabled, non legge `API_FOOTBALL_API_KEY`.
+
+In una futura modalità abilitata, lo script potrà verificare solo presenza/assenza della key e non dovrà stampare valore, lunghezza, prefisso, suffisso, hash o porzioni della key.
+
+## Cosa non viene fatto in D.16-C2-B
+
+- Nessuna esecuzione dello script reale.
+- Nessuna chiamata API-Football.
+- Nessuna chiamata TheStatsAPI.
+- Nessuna chiamata Apify/SofaScore.
+- Nessuna fetch provider.
+- Nessuno scraping.
+- Nessun token letto/stampato.
+- Nessuna scrittura DB.
+- Nessun `db push/reset`.
+- Nessun provider/import attivato.
+- Nessun bottone UI aggiunto.
+- Nessun deploy.
+- Production non toccata.
+
+## Prossimo step consigliato
+
+D.16-C2-C — eseguire solo la modalità disabled dello script per verificare l’output di blocco, ancora senza real-call.
+
+Solo dopo, una D.16-C3 separata potrà valutare una singola real-call, con conferma esplicita e key rigenerata.

@@ -754,3 +754,26 @@ La chiave reale non viene inserita né letta. Il piano conferma:
 - nessuna real-call;
 - nessun provider/import attivato;
 - writer ancora bloccati.
+
+## D.16-C2-B — Script probe API-Football preparato
+
+Creato:
+
+- `scripts/provider/apiFootballProbe.ts`;
+- `docs/api_football_probe_script_d16c2b.md`.
+
+Aggiornato:
+
+- `package.json` con `probe:api-football:gated`.
+
+La fase non esegue il comando e non abilita provider.
+
+Il piano operativo resta:
+
+- script separato dagli import;
+- massimo una richiesta futura;
+- default disabled;
+- nessuna fetch in D.16-C2-B;
+- nessuna scrittura DB;
+- provider/import spenti;
+- Production non toccata.

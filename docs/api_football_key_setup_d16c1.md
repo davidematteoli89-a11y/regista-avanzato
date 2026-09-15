@@ -164,3 +164,25 @@ Conferme:
 Prossimo step consigliato:
 
 - D.16-C2-B — preparare uno script di probe reale ancora gated/disabilitato, senza eseguirlo.
+
+## D.16-C2-B — Script gated preparato
+
+Documento aggiunto:
+
+- `docs/api_football_probe_script_d16c2b.md`.
+
+Script preparato:
+
+- `scripts/provider/apiFootballProbe.ts`;
+- comando npm: `probe:api-football:gated`.
+
+Lo script resta bloccato di default:
+
+- `API_FOOTBALL_PROBE_ENABLED=false`;
+- `REAL_PROVIDER_PROBE_ENABLED` non abilitato;
+- nessuna fetch;
+- nessuna key letta in modalità disabled;
+- nessun token stampato;
+- nessuna scrittura DB.
+
+D.16-C2-B non esegue lo script e non effettua real-call.

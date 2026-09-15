@@ -1542,3 +1542,37 @@ Conferme:
 Prossimo step consigliato:
 
 - D.16-C2-B — preparare script probe reale gated/disabilitato, senza eseguire real-call.
+
+## D.16-C2-B — Script probe API-Football gated
+
+Stato: script preparato, non eseguito.
+
+Creato:
+
+- `scripts/provider/apiFootballProbe.ts`;
+- `docs/api_football_probe_script_d16c2b.md`.
+
+Aggiornato:
+
+- `package.json` con `probe:api-football:gated`.
+
+Caratteristiche:
+
+- separato dagli import;
+- massimo una richiesta futura;
+- default disabled;
+- richiede `API_FOOTBALL_PROBE_ENABLED=true` e `REAL_PROVIDER_PROBE_ENABLED=true` per procedere;
+- output disabled sanificato;
+- nessun token stampato;
+- nessuna scrittura DB;
+- nessun provider/import attivato.
+
+Conferme D.16-C2-B:
+
+- script non eseguito;
+- nessuna chiamata API-Football;
+- nessuna fetch provider;
+- nessun token letto/stampato;
+- nessun DB write;
+- provider/Apify/import spenti;
+- Production non toccata.

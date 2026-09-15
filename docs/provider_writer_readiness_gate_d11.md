@@ -269,3 +269,17 @@ Il gate writer resta chiuso:
 - nessuna attivazione provider;
 - `realWritesEnabled=false`;
 - Production non toccata.
+
+## D.16-C2-B — Probe separata dai writer
+
+Lo script `scripts/provider/apiFootballProbe.ts` è separato dai writer provider.
+
+Il gate writer resta chiuso anche dopo D.16-C2-B:
+
+- nessun import writer chiamato;
+- nessun Supabase client admin;
+- nessuna service role;
+- nessun insert/update/delete/upsert;
+- nessun log provider scritto;
+- nessun `provider_import_runs` insert;
+- `realWritesEnabled=false`.

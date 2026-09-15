@@ -1163,3 +1163,21 @@ Nessun cambiamento a Supabase staging:
 - `realWritesEnabled=false`.
 
 La futura chiave API-Football Free dovrà essere inserita solo manualmente in env sicura locale/Preview, mai in Production e mai in chat.
+
+## D.16-C2-B — Script probe preparato senza DB write
+
+Aggiunto:
+
+- `scripts/provider/apiFootballProbe.ts`;
+- `docs/api_football_probe_script_d16c2b.md`.
+
+Supabase staging resta invariato:
+
+- nessuna scrittura DB;
+- nessun insert in `provider_import_runs`;
+- nessun log provider scritto;
+- nessun provider attivato;
+- nessun import attivato;
+- `/admin/imports` read-only.
+
+Il prossimo step consigliato è provare solo l’output disabled dello script, non una real-call.
