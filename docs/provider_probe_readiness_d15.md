@@ -254,6 +254,26 @@ La fase:
 
 Provider/import restano spenti, Apify spento, TheStatsAPI non chiamato, Production non toccata.
 
+## D.16-C3-R2 manual check — Dashboard API-Football
+
+Creato:
+
+- `docs/api_football_dashboard_manual_check_d16c3r2.md`.
+
+La fase non fa fetch provider e non legge token.
+
+Checklist manuale copre:
+
+- account/email;
+- piano Free;
+- API Football v3;
+- key;
+- restrizioni IP/domain;
+- endpoint/header/parametri;
+- verifica `season=2026` o possibile scelta `season=2025`.
+
+R2 reale resta bloccato finché l'utente non conferma questi punti e autorizza una sola richiesta.
+
 Nomi env futuri:
 
 - `API_FOOTBALL_API_KEY`;

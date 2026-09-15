@@ -841,6 +841,24 @@ R2 readiness non autorizza chiamate provider. Serve solo a chiarire i gate manua
 
 Provider/import restano spenti e Production resta esclusa.
 
+## D.16-C3-R2 manual check — Nessuna attivazione provider
+
+Documento:
+
+- `docs/api_football_dashboard_manual_check_d16c3r2.md`.
+
+La fase prepara controlli manuali dashboard e non attiva nulla:
+
+- nessuna chiamata API-Football;
+- nessuna fetch provider;
+- nessuna scrittura DB;
+- nessun provider/import attivato;
+- Apify spento;
+- TheStatsAPI non chiamato;
+- Production non toccata.
+
+Prima del retry R2 servirà scegliere se usare ancora `season=2026` o modificare in fase dedicata verso `season=2025`.
+
 ## D.16-C2-C — Checklist finale prima della probe
 
 Creato:

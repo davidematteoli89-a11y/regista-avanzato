@@ -117,3 +117,18 @@ Limiti:
 - Apify spento.
 - TheStatsAPI non chiamato.
 - Production non toccata.
+
+## Manual check dashboard
+
+Documento operativo aggiunto:
+
+- `docs/api_football_dashboard_manual_check_d16c3r2.md`.
+
+Questa verifica è solo manuale/dashboard:
+
+- nessuna seconda real-call;
+- nessuna fetch provider;
+- nessun token letto/stampato;
+- nessuna scrittura DB.
+
+La decisione principale prima di un eventuale R2 è confermare se restare su `season=2026` o passare a `season=2025`, dopo controllo piano/API/key/restrizioni nella dashboard API-SPORTS.

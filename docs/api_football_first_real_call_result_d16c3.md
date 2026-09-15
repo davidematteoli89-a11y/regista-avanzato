@@ -86,6 +86,29 @@ Audit script:
 
 Prima di un eventuale retry, verificare manualmente account, piano Free, API Football v3, restrizioni IP/domain, quota e abilitazione endpoint.
 
+## D.16-C3-R2 manual check — Dashboard provider
+
+Creato:
+
+- `docs/api_football_dashboard_manual_check_d16c3r2.md`.
+
+Scopo:
+
+- guidare verifica manuale nella dashboard API-SPORTS/API-Football;
+- non eseguire seconda richiesta;
+- non leggere/stampare token;
+- non scrivere DB.
+
+Punti da chiarire manualmente:
+
+- account/email;
+- piano Free;
+- API Football v3;
+- key rigenerata/corretta;
+- restrizioni IP/domain;
+- endpoint/parametri;
+- possibile passaggio da `season=2026` a `season=2025`.
+
 ## Script safety update
 
 Prima della chiamata, lo script `scripts/provider/apiFootballProbe.ts` è stato allineato al report richiesto da D.16-C3:

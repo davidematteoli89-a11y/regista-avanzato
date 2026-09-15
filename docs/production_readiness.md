@@ -881,6 +881,21 @@ D.16-C3-R2 è solo documentazione/readiness.
 
 Il `403` di R1 resta un blocco provider da risolvere manualmente prima di qualunque avanzamento verso Production.
 
+## Nota D.16-C3-R2 manual check — Production ancora esclusa
+
+La checklist dashboard API-Football non cambia lo stato Production.
+
+- Nessuna seconda real-call.
+- Nessuna fetch provider.
+- Nessun token letto/stampato.
+- Nessuna scrittura DB.
+- Provider/import spenti.
+- Apify spento.
+- TheStatsAPI non chiamato.
+- Production non toccata.
+
+Il `403` deve essere risolto su staging/local prima di qualunque decisione Production.
+
 ## Nota D.16-C2-A — Key locale verificata senza token output
 
 La verifica D.16-C2-A conferma solo il setup locale:

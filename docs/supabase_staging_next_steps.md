@@ -1259,3 +1259,17 @@ D.16-C3-R2 è solo readiness/documentazione:
 - writer guards ancora bloccanti.
 
 Prossimo step eventuale: retry R2 solo dopo verifica manuale API-Football e nuova conferma esplicita.
+
+## D.16-C3-R2 manual check — Staging invariato
+
+La verifica dashboard API-Football è solo documentale/manuale.
+
+Supabase staging resta invariato:
+
+- nessuna scrittura DB;
+- nessun provider/import attivato;
+- nessun write su tabelle log/import;
+- `realWritesEnabled=false`;
+- writer guards attivi.
+
+R2 reale resta bloccato finché non vengono chiariti manualmente piano/key/restrizioni e la stagione da usare.

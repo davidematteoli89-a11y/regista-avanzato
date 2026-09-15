@@ -1681,3 +1681,24 @@ Risultati:
 - Apify spento;
 - TheStatsAPI non chiamato;
 - Production non toccata.
+
+## D.16-C3-R2 manual check — Dashboard API-Football
+
+Stato: completata come checklist manuale, senza fetch.
+
+Creato:
+
+- `docs/api_football_dashboard_manual_check_d16c3r2.md`.
+
+Verifiche:
+
+- branch `preview`;
+- working tree pulito prima delle modifiche;
+- probe API-Football gated disabled;
+- audit provider ok;
+- writer guards ok;
+- audit statico script confermato.
+
+La checklist manuale copre account, piano Free, API Football v3, key, restrizioni IP/domain, endpoint/header/parametri e scelta futura `season=2026` vs `season=2025`.
+
+Nessuna seconda real-call, nessuna fetch provider, nessun DB write, provider/import spenti, Apify spento, TheStatsAPI non chiamato, Production non toccata.

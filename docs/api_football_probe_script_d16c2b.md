@@ -207,3 +207,19 @@ Conferme:
 - output solo summary sanificato.
 
 D.16-C3-R2 non esegue nessuna seconda real-call.
+
+## D.16-C3-R2 manual check — Nessuna modifica script
+
+La fase manual check non modifica lo script.
+
+Valori statici da verificare contro dashboard/provider:
+
+- base URL: `https://v3.football.api-sports.io`;
+- endpoint: `/standings`;
+- header: `x-apisports-key`;
+- parametri: `league=135`, `season=2026`.
+
+Possibile scelta futura:
+
+- mantenere `season=2026`;
+- oppure preparare fase dedicata per `season=2025`, se la dashboard indica che il piano Free non espone ancora la stagione 2026.

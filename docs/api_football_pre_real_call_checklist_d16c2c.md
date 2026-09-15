@@ -202,3 +202,20 @@ Prima di un eventuale R2 verificare manualmente:
 - Production esclusa.
 
 D.16-C3-R2 non esegue fetch e non legge/stampa token.
+
+## D.16-C3-R2 manual check — Decisione prima del retry
+
+Documento dashboard:
+
+- `docs/api_football_dashboard_manual_check_d16c3r2.md`.
+
+Prima di R2 reale serve conferma esplicita su:
+
+- account/email API-SPORTS;
+- piano Free;
+- API Football v3;
+- quota disponibile;
+- key rigenerata e copiata correttamente;
+- restrizioni IP/domain;
+- stagione da usare: `2026` oppure `2025`;
+- autorizzazione a una sola nuova richiesta.
