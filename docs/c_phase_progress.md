@@ -87,6 +87,46 @@ Restano confermati:
 - `realWritesEnabled=false`;
 - Production non toccata.
 
+## D.17-D — Checklist pre-real-call TheStatsAPI
+
+Stato: completata localmente, senza real-call.
+
+Creato:
+
+- `docs/thestatsapi_pre_real_call_checklist_d17d.md`.
+
+Audit statico script:
+
+- endpoint candidato: `/football/standings`;
+- metodo candidato: `GET`;
+- header/auth candidato: `Authorization: Bearer <token>`;
+- parametro candidato: `competition=serie-a`;
+- endpoint non ancora definitivo e da confermare da documentazione/dashboard TheStatsAPI;
+- hard limit una richiesta;
+- nessun retry/loop/paginazione;
+- nessun Supabase client;
+- nessun DB writer;
+- output sanificato.
+
+Verifica disabled:
+
+- `enabled=false`;
+- `blocked_reason=THESTATSAPI_PROBE_DISABLED`;
+- `external_fetch=false`;
+- `db_write=false`;
+- `token_read=false`;
+- `token_printed=false`;
+- `requests_executed=0`.
+
+Restano confermati:
+
+- nessuna real-call TheStatsAPI;
+- nessuna fetch provider;
+- API-Football sospeso/no retry;
+- provider/import spenti;
+- Apify spento;
+- Production non toccata.
+
 ## Prossimo passo
 
 C.2 — seed demo pubblicato controllato.

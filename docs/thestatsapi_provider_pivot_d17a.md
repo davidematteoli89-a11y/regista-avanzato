@@ -107,3 +107,18 @@ Stato:
 - API-Football sospeso/no retry;
 - Apify spento;
 - Production non toccata.
+
+## D.17-D — Checklist pre-real-call
+
+La checklist pre-real-call TheStatsAPI è stata preparata senza abilitare la probe.
+
+Decisione confermata:
+
+- TheStatsAPI resta il provider candidato;
+- API-Football resta sospeso/no retry;
+- endpoint TheStatsAPI ancora da confermare;
+- nessuna real-call;
+- nessuna fetch provider;
+- nessuna scrittura DB;
+- provider/import spenti;
+- Production non toccata.

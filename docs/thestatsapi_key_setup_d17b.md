@@ -64,3 +64,15 @@ Lo script TheStatsAPI gated è stato preparato per la futura probe, ma resta dis
 - nessuna fetch provider in modalità disabled;
 - nessuna scrittura DB;
 - nessuna attivazione provider/import.
+
+## D.17-D — Checklist pre-real-call
+
+La checklist finale prima della prima eventuale richiesta TheStatsAPI è stata preparata.
+
+Conferme:
+
+- nessuna real-call TheStatsAPI;
+- nessuna fetch provider;
+- nessun token letto/stampato;
+- endpoint ancora candidato e da confermare;
+- D.17-E richiede conferma esplicita utente.

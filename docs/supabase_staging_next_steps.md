@@ -195,6 +195,25 @@ Il comando `npm run probe:thestatsapi:gated` resta bloccato di default e non toc
 
 Qualunque futura real-call TheStatsAPI dovrà essere una fase separata, con conferma esplicita e massimo una richiesta read-only.
 
+## D.17-D — Checklist pre-real-call senza Supabase write
+
+La checklist finale TheStatsAPI è stata preparata.
+
+Per Supabase staging non cambia nulla:
+
+- nessuna scrittura DB;
+- nessun insert/update/delete/upsert;
+- nessun write su `provider_import_runs`;
+- nessun write su `provider_import_logs`;
+- nessun write su `api_usage_logs`;
+- nessun write su `import_logs`;
+- provider/import spenti;
+- `realWritesEnabled=false`;
+- Apify spento;
+- Production non toccata.
+
+Prima di D.17-E bisogna confermare endpoint TheStatsAPI, auth/header e parametri. In caso contrario il gate resta chiuso.
+
 ## Stato C.3
 
 - Reader editoriali predisposti in locale per leggere solo public view Supabase sicure.

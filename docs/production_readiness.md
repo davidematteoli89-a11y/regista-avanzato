@@ -102,6 +102,26 @@ Lo script TheStatsAPI gated è solo preparatorio:
 
 Production resta bloccata fino a real-call controllata, mapping validato, licenza/costi verificati, RLS/readiness e writer guard completati.
 
+## Nota D.17-D — Checklist TheStatsAPI non abilita Production
+
+D.17-D è solo checklist finale pre-real-call.
+
+Confermato:
+
+- nessuna real-call TheStatsAPI;
+- nessuna fetch provider;
+- nessun token letto/stampato;
+- nessuna scrittura DB;
+- nessun `service_role`;
+- nessun `db push/reset`;
+- provider/import spenti;
+- Apify spento;
+- API-Football sospeso/no retry;
+- endpoint TheStatsAPI ancora da confermare;
+- Production non toccata.
+
+D.17-E non può procedere senza conferma esplicita, endpoint verificato e garanzia di una sola richiesta read-only.
+
 ## Nota C.4
 
 L’admin editoriale può leggere contenuti manuali da Supabase staging, ma questo non rende il progetto pronto per Production.

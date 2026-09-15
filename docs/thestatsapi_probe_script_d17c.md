@@ -98,6 +98,24 @@ Lo script contiene un endpoint candidato per calcio/standings, da confermare con
 
 Se l'endpoint non è confermato o il piano/licenza non sono chiari, non attivare i gate.
 
+## D.17-D — Checklist pre-real-call
+
+Checklist dedicata:
+
+- `docs/thestatsapi_pre_real_call_checklist_d17d.md`.
+
+Audit statico confermato:
+
+- endpoint candidato: `/football/standings`;
+- metodo candidato: `GET`;
+- header/auth candidato: `Authorization: Bearer <token>`;
+- parametro candidato: `competition=serie-a`;
+- endpoint ancora da confermare da documentazione/dashboard TheStatsAPI;
+- nessuna real-call eseguita;
+- nessuna fetch provider;
+- nessun token letto/stampato;
+- nessuna scrittura DB.
+
 ## Prossimo step consigliato
 
-D.17-C1 — verificare lo script solo in modalità disabled/gated e committare script + documentazione.
+D.17-E solo dopo conferma esplicita, endpoint verificato e gate abilitati temporaneamente per una sola richiesta read-only.

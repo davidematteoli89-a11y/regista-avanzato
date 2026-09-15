@@ -139,6 +139,36 @@ Gate per futura real-call:
 
 Finché il gate è chiuso non deve essere letto alcun token e non deve essere fatta alcuna fetch.
 
+## D.17-D — Checklist finale TheStatsAPI
+
+Documento aggiunto:
+
+- `docs/thestatsapi_pre_real_call_checklist_d17d.md`.
+
+La checklist blocca D.17-E finché non sono confermati:
+
+- endpoint TheStatsAPI;
+- base URL;
+- header/auth;
+- parametri;
+- piano/rate limit/licenza;
+- massimo una richiesta;
+- output sanificato;
+- nessun token stampato;
+- nessuna scrittura DB;
+- provider/import ancora spenti;
+- Production esclusa.
+
+Lo script è stato verificato solo in modalità disabled:
+
+- `enabled=false`;
+- `blocked_reason=THESTATSAPI_PROBE_DISABLED`;
+- `external_fetch=false`;
+- `db_write=false`;
+- `token_read=false`;
+- `token_printed=false`;
+- `requests_executed=0`.
+
 ## Prossimo step consigliato
 
 Opzione A:

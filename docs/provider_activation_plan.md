@@ -47,6 +47,26 @@ Il comando default non effettua real-call:
 
 La futura real-call TheStatsAPI resta vietata finché non saranno confermati endpoint, licenza, rate limit e gate espliciti.
 
+## D.17-D — Checklist pre-real-call TheStatsAPI
+
+Checklist creata:
+
+- `docs/thestatsapi_pre_real_call_checklist_d17d.md`.
+
+Stato:
+
+- nessuna real-call TheStatsAPI;
+- nessuna fetch provider;
+- nessun token letto/stampato;
+- nessuna scrittura DB;
+- endpoint candidato `/football/standings` non ancora definitivo;
+- API-Football sospeso/no retry;
+- Apify spento;
+- provider/import spenti;
+- Production non toccata.
+
+La prossima fase D.17-E richiede conferma esplicita e deve restare limitata a una sola richiesta read-only.
+
 ## Checklist prima dei provider reali
 
 - [ ] Confermare provider stabile da usare.
