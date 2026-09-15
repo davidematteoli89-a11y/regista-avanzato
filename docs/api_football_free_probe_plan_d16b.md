@@ -141,3 +141,20 @@ D.16-C1 prepara solo i nomi env futuri:
 - `API_FOOTBALL_PROBE_ENABLED=false`.
 
 La chiave non viene creata, letta, stampata o salvata. La futura real-call resta bloccata finché non verrà autorizzata una fase separata.
+
+## D.16-C2-A — Key presente solo localmente, probe ancora off
+
+La verifica locale ha confermato solo la presenza dei nomi env in `.env.local`, senza stampare valori.
+
+Stato:
+
+- key precedente eventualmente condivisa in chat: considerata esposta e da rigenerare;
+- nuova key: solo manuale in `.env.local`;
+- `API_FOOTBALL_PROBE_ENABLED=false`;
+- nessuna chiamata API-Football;
+- nessuna fetch provider;
+- nessuna scrittura DB;
+- provider/import/Apify spenti;
+- Production non toccata.
+
+La futura D.16-C2-B deve preparare la probe reale come script gated, ma senza eseguirla.

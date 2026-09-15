@@ -828,3 +828,21 @@ Production resta esclusa:
 - provider/import/Apify spenti;
 - `API_FOOTBALL_PROBE_ENABLED=false`;
 - `realWritesEnabled=false`.
+
+## Nota D.16-C2-A — Key locale verificata senza token output
+
+La verifica D.16-C2-A conferma solo il setup locale:
+
+- `.env.local` ignorato;
+- nomi env API-Football presenti localmente;
+- `API_FOOTBALL_PROBE_ENABLED=false`;
+- nessun valore token mostrato;
+- key accidentalmente condivisa in chat considerata esposta e da rigenerare manualmente.
+
+Production resta bloccata:
+
+- nessun token provider in Production;
+- nessuna real-call provider;
+- nessuna fetch provider;
+- nessun DB write;
+- provider/import/Apify spenti.

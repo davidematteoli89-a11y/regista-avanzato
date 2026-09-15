@@ -202,3 +202,28 @@ Nomi env futuri:
 - `API_FOOTBALL_PROBE_ENABLED=false`.
 
 Il gate D.16-C2 resta chiuso finché la chiave non viene preparata manualmente in env sicura e la real-call non viene autorizzata esplicitamente.
+
+## D.16-C2-A — Verifica key locale senza real-call
+
+Risultato:
+
+- `.env.local` ignorato da Git;
+- `.env.example` solo placeholder/default safe;
+- `API_FOOTBALL_API_KEY` presente localmente senza valore stampato;
+- `API_FOOTBALL_BASE_URL` presente localmente senza valore stampato;
+- `API_FOOTBALL_PROBE_ENABLED=false`;
+- `token_printed=false`.
+
+Nota sicurezza:
+
+- una key condivisa accidentalmente in chat è da considerare esposta;
+- usare solo una key rigenerata manualmente;
+- non committare, non stampare e non incollare token in chat.
+
+Il gate resta chiuso:
+
+- nessuna real-call;
+- nessuna fetch provider;
+- nessuna scrittura DB;
+- provider/import spenti;
+- Production non toccata.

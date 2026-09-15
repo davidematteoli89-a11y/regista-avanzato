@@ -125,3 +125,42 @@ Non procedere alla fase successiva finché:
 ## Prossimo step consigliato
 
 D.16-C2 — preparare lo script della probe reale in modalità ancora disabilitata, con guardia esplicita su `API_FOOTBALL_PROBE_ENABLED=false`, senza eseguire la real-call.
+
+## D.16-C2-A — Verifica setup locale senza stampare token
+
+Stato: verifica locale completata senza mostrare valori.
+
+Nota sicurezza:
+
+- una API key condivisa accidentalmente in chat deve essere considerata esposta;
+- non deve essere riutilizzata;
+- deve essere rigenerata manualmente dall’utente;
+- non deve essere copiata nei docs;
+- non deve essere committata;
+- non deve essere incollata di nuovo in chat.
+
+Verifiche locali consentite:
+
+- `.env.local` esiste;
+- `.env.local` è ignorato da Git;
+- `.env.example` contiene solo placeholder/default safe;
+- i nomi env risultano presenti in `.env.local` senza stampare valori:
+  - `API_FOOTBALL_API_KEY`;
+  - `API_FOOTBALL_BASE_URL`;
+  - `API_FOOTBALL_PROBE_ENABLED`;
+- `API_FOOTBALL_PROBE_ENABLED=false`;
+- `token_printed=false`.
+
+Conferme:
+
+- nessun valore della key letto o mostrato;
+- nessuna real-call API-Football;
+- nessuna fetch provider;
+- nessuna scrittura DB;
+- nessun `db push/reset`;
+- provider/import/Apify spenti;
+- Production non toccata.
+
+Prossimo step consigliato:
+
+- D.16-C2-B — preparare uno script di probe reale ancora gated/disabilitato, senza eseguirlo.

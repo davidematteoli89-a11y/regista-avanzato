@@ -1511,3 +1511,34 @@ Conferme:
 Prossimo step consigliato:
 
 - D.16-C2 — preparare script probe API-Football ancora disabilitato, senza real-call.
+
+## D.16-C2-A — Verifica setup key API-Football locale
+
+Stato: verifica setup locale completata, nessuna real-call.
+
+Risultati:
+
+- `.env.local` esiste ed è ignorato da Git;
+- `.env.example` contiene solo placeholder/default safe;
+- `API_FOOTBALL_API_KEY` presente localmente senza stampare valore;
+- `API_FOOTBALL_BASE_URL` presente localmente senza stampare valore;
+- `API_FOOTBALL_PROBE_ENABLED=false`;
+- `token_printed=false`.
+
+Nota sicurezza:
+
+- la key condivisa accidentalmente in chat è considerata esposta;
+- usare solo key rigenerata manualmente dall’utente;
+- non inserire token in docs, commit, chat o Production.
+
+Conferme:
+
+- nessuna chiamata API-Football;
+- nessuna fetch provider;
+- nessuna scrittura DB;
+- provider/Apify/import spenti;
+- Production non toccata.
+
+Prossimo step consigliato:
+
+- D.16-C2-B — preparare script probe reale gated/disabilitato, senza eseguire real-call.
