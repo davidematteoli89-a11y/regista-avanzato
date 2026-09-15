@@ -214,6 +214,26 @@ Per Supabase staging non cambia nulla:
 
 Prima di D.17-E bisogna confermare endpoint TheStatsAPI, auth/header e parametri. In caso contrario il gate resta chiuso.
 
+## D.17-E0 — Endpoint verificato senza Supabase write
+
+D.17-E0 non ha modificato Supabase staging.
+
+Risultato:
+
+- endpoint candidato TheStatsAPI scelto per prima probe: `GET /football/competitions/comp_5840/seasons/sn_6199313/standings`;
+- base URL `https://api.thestatsapi.com/api`;
+- auth Bearer;
+- nessuna real-call;
+- nessuna fetch provider;
+- nessun token letto/stampato;
+- nessun write su `provider_import_runs`, `provider_import_logs`, `api_usage_logs` o `import_logs`;
+- provider/import spenti;
+- `realWritesEnabled=false`;
+- Apify spento;
+- Production non toccata.
+
+D.17-E dovrà restare una singola richiesta read-only e non dovrà scrivere alcun log o dato su Supabase.
+
 ## Stato C.3
 
 - Reader editoriali predisposti in locale per leggere solo public view Supabase sicure.

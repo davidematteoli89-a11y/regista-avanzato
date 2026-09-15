@@ -106,7 +106,7 @@ Checklist dedicata:
 
 Audit statico confermato:
 
-- endpoint candidato: `/football/standings`;
+- endpoint candidato iniziale: `/football/standings`;
 - metodo candidato: `GET`;
 - header/auth candidato: `Authorization: Bearer <token>`;
 - parametro candidato: `competition=serie-a`;
@@ -115,6 +115,17 @@ Audit statico confermato:
 - nessuna fetch provider;
 - nessun token letto/stampato;
 - nessuna scrittura DB.
+
+## D.17-E0 — Endpoint aggiornato da documentazione
+
+La verifica documentale D.17-E0 ha aggiornato lo script al candidato documentato per Serie A standings:
+
+- `GET /football/competitions/comp_5840/seasons/sn_6199313/standings`;
+- base URL `https://api.thestatsapi.com/api`;
+- auth `Authorization: Bearer <token>`;
+- header `Accept: application/json`.
+
+Lo script resta disabled di default e non ha eseguito real-call.
 
 ## Prossimo step consigliato
 

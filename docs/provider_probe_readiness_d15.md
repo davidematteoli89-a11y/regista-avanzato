@@ -169,6 +169,26 @@ Lo script è stato verificato solo in modalità disabled:
 - `token_printed=false`;
 - `requests_executed=0`.
 
+## D.17-E0 — Endpoint/auth/parametri TheStatsAPI
+
+Documento aggiunto:
+
+- `docs/thestatsapi_endpoint_verification_d17e0.md`.
+
+Risultato:
+
+- base URL confermata: `https://api.thestatsapi.com/api`;
+- auth confermata: `Authorization: Bearer <token>`;
+- endpoint candidato finale: `GET /football/competitions/comp_5840/seasons/sn_6199313/standings`;
+- parametri/path: `competition_id=comp_5840`, `season_id=sn_6199313`;
+- header consigliato: `Accept: application/json`;
+- response attesa: JSON con `data`;
+- paginazione da evitare nella prima probe;
+- nessuna real-call;
+- nessuna fetch provider;
+- nessun token letto/stampato;
+- nessuna scrittura DB.
+
 ## Prossimo step consigliato
 
 Opzione A:

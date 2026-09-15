@@ -3,6 +3,9 @@ import { join } from "node:path";
 
 const PROVIDER = "the_stats_api";
 const COMPETITION_SLUG = "serie-a";
+const COMPETITION_ID = "comp_5840";
+const SEASON_ID = "sn_6199313";
+const CANDIDATE_ENDPOINT = `/football/competitions/${COMPETITION_ID}/seasons/${SEASON_ID}/standings`;
 const REQUESTS_PLANNED = 1;
 const LOCAL_ENV_ALLOWLIST = new Set(["THESTATSAPI_API_KEY", "THESTATSAPI_BASE_URL"]);
 
@@ -133,16 +136,17 @@ async function runFutureProbe(): Promise<void> {
   // Future real-call shape:
   // - max 1 request
   // - read-only
-  // - candidate endpoint only; confirm TheStatsAPI docs before enabling
+  // - candidate endpoint documented by TheStatsAPI public Serie A table page
+  // - confirm dashboard/current season before enabling
   // - no DB writes
   // - no provider/import activation
   // - no token logging
-  const endpoint = new URL("/football/standings", baseUrl);
-  endpoint.searchParams.set("competition", COMPETITION_SLUG);
+  const endpoint = new URL(CANDIDATE_ENDPOINT, baseUrl);
 
   const response = await fetch(endpoint, {
     method: "GET",
     headers: {
+      Accept: "application/json",
       Authorization: `Bearer ${apiKey}`,
     },
   });
@@ -159,6 +163,9 @@ async function runFutureProbe(): Promise<void> {
   console.info("mode=thestatsapi_probe");
   console.info(`provider=${PROVIDER}`);
   console.info(`competition_slug=${COMPETITION_SLUG}`);
+  console.info(`competition_id=${COMPETITION_ID}`);
+  console.info(`season_id=${SEASON_ID}`);
+  console.info(`endpoint=${CANDIDATE_ENDPOINT}`);
   console.info("enabled=true");
   console.info("external_fetch=true");
   console.info("db_write=false");

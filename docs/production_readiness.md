@@ -122,6 +122,26 @@ Confermato:
 
 D.17-E non può procedere senza conferma esplicita, endpoint verificato e garanzia di una sola richiesta read-only.
 
+## Nota D.17-E0 — Endpoint TheStatsAPI verificato fuori Production
+
+D.17-E0 ha verificato solo documentazione pubblica TheStatsAPI.
+
+Confermato:
+
+- base URL `https://api.thestatsapi.com/api`;
+- auth `Authorization: Bearer <token>`;
+- endpoint candidato finale per una sola prova read-only: `GET /football/competitions/comp_5840/seasons/sn_6199313/standings`;
+- nessuna real-call;
+- nessuna fetch provider;
+- nessun token letto/stampato;
+- nessuna scrittura DB;
+- provider/import spenti;
+- Apify spento;
+- API-Football sospeso/no retry;
+- Production non toccata.
+
+Production resta bloccata: D.17-E dovrà essere locale/Preview-safe, con una sola richiesta e output sanificato.
+
 ## Nota C.4
 
 L’admin editoriale può leggere contenuti manuali da Supabase staging, ma questo non rende il progetto pronto per Production.

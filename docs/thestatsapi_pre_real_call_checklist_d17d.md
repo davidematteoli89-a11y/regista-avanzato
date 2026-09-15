@@ -55,9 +55,16 @@ Dettagli tecnici previsti per una futura real-call, da confermare prima di abili
 
 ## Endpoint candidato
 
-L'endpoint TheStatsAPI non è ancora confermato come definitivo.
+D.17-E0 ha confermato da documentazione pubblica TheStatsAPI il formato generale API e un endpoint specifico Serie A standings.
 
-Non procedere a D.17-E finché endpoint, auth/header e parametri non sono verificati da documentazione/dashboard TheStatsAPI.
+Endpoint candidato finale per D.17-E:
+
+- `GET /football/competitions/comp_5840/seasons/sn_6199313/standings`;
+- base URL `https://api.thestatsapi.com/api`;
+- auth `Authorization: Bearer <token>`;
+- header `Accept: application/json`.
+
+Prima di D.17-E resta da ricontrollare che `sn_6199313` sia ancora la stagione corretta nella dashboard/documentazione TheStatsAPI.
 
 Endpoint semplici/read-only preferibili per la prima prova:
 
@@ -187,4 +194,4 @@ Stop immediato se:
 
 ## Prossimo step consigliato
 
-D.17-E potrà essere aperta solo con conferma esplicita dell'utente, endpoint confermato e gate temporanei abilitati per una sola richiesta read-only.
+D.17-E potrà essere aperta solo con conferma esplicita dell'utente e gate temporanei abilitati per una sola richiesta read-only.

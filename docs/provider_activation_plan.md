@@ -67,6 +67,28 @@ Stato:
 
 La prossima fase D.17-E richiede conferma esplicita e deve restare limitata a una sola richiesta read-only.
 
+## D.17-E0 — Verifica endpoint TheStatsAPI
+
+Verifica documentale completata senza real-call.
+
+Endpoint candidato finale per D.17-E:
+
+- `GET https://api.thestatsapi.com/api/football/competitions/comp_5840/seasons/sn_6199313/standings`;
+- auth `Authorization: Bearer <token>`;
+- header `Accept: application/json`.
+
+Decisione:
+
+- usare standings Serie A come prima prova read-only;
+- nessuna paginazione;
+- massimo una richiesta;
+- nessun DB write;
+- nessun import;
+- nessun provider activation;
+- API-Football sospeso/no retry;
+- Apify spento;
+- Production non toccata.
+
 ## Checklist prima dei provider reali
 
 - [ ] Confermare provider stabile da usare.

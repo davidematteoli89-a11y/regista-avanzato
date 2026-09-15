@@ -127,6 +127,37 @@ Restano confermati:
 - Apify spento;
 - Production non toccata.
 
+## D.17-E0 — Verifica endpoint TheStatsAPI
+
+Stato: completata da documentazione pubblica, senza real-call.
+
+Verificato:
+
+- base URL: `https://api.thestatsapi.com/api`;
+- auth: `Authorization: Bearer <token>`;
+- header consigliato: `Accept: application/json`;
+- endpoint candidate leggero: `GET /football/competitions`;
+- endpoint candidato finale Serie A standings: `GET /football/competitions/comp_5840/seasons/sn_6199313/standings`;
+- risposta attesa: JSON con `data`;
+- rischio payload: basso/medio per standings singola.
+
+Script aggiornato:
+
+- `scripts/provider/theStatsApiProbe.ts` usa ora endpoint/path documentato;
+- nessuna fetch eseguita;
+- probe resta disabled.
+
+Conferme:
+
+- nessuna real-call TheStatsAPI;
+- nessuna fetch provider;
+- nessun token letto/stampato;
+- nessuna scrittura DB;
+- provider/import spenti;
+- Apify spento;
+- API-Football sospeso/no retry;
+- Production non toccata.
+
 ## Prossimo passo
 
 C.2 — seed demo pubblicato controllato.

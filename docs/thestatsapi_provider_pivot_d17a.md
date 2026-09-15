@@ -122,3 +122,20 @@ Decisione confermata:
 - nessuna scrittura DB;
 - provider/import spenti;
 - Production non toccata.
+
+## D.17-E0 — Verifica endpoint
+
+TheStatsAPI resta il provider candidato.
+
+Verifica documentale completata:
+
+- base URL `https://api.thestatsapi.com/api`;
+- auth `Authorization: Bearer <token>`;
+- endpoint candidato finale `GET /football/competitions/comp_5840/seasons/sn_6199313/standings`;
+- parametri come path params `competition_id` e `season_id`;
+- nessuna real-call;
+- nessuna fetch provider;
+- nessun token letto/stampato;
+- API-Football sospeso/no retry;
+- Apify spento;
+- Production non toccata.

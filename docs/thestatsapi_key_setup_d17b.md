@@ -76,3 +76,17 @@ Conferme:
 - nessun token letto/stampato;
 - endpoint ancora candidato e da confermare;
 - D.17-E richiede conferma esplicita utente.
+
+## D.17-E0 — Endpoint verificato da documentazione
+
+D.17-E0 ha verificato da documentazione pubblica TheStatsAPI:
+
+- base URL candidata confermata;
+- auth Bearer confermata;
+- endpoint Serie A standings candidato individuato;
+- nessuna real-call;
+- nessun token letto/stampato;
+- nessuna fetch provider;
+- nessuna scrittura DB.
+
+La key resta solo locale e non va mai riportata in chat/docs/commit.
