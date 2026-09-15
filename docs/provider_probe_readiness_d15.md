@@ -236,6 +236,24 @@ Residuo:
 
 - verificare manualmente nel provider perché la key/piano restituisce `403`, senza condividere token.
 
+## D.16-C3-R2 — Readiness retry senza real-call
+
+Creato:
+
+- `docs/api_football_403_retry_readiness_d16c3r2.md`.
+
+La fase:
+
+- analizza localmente lo script;
+- documenta possibili cause del `403`;
+- prepara checklist manuale per eventuale R2;
+- non esegue nessuna seconda richiesta;
+- non legge/stampa token;
+- non scrive DB;
+- non attiva provider/import.
+
+Provider/import restano spenti, Apify spento, TheStatsAPI non chiamato, Production non toccata.
+
 Nomi env futuri:
 
 - `API_FOOTBALL_API_KEY`;

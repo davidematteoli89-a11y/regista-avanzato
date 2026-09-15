@@ -57,6 +57,35 @@ Lo script legge solo variabili già disponibili nel process environment e non ca
 - TheStatsAPI non chiamato.
 - Production non toccata.
 
+## D.16-C3-R2 — Readiness retry 403
+
+Documento creato:
+
+- `docs/api_football_403_retry_readiness_d16c3r2.md`.
+
+Esito:
+
+- nessuna seconda real-call;
+- nessuna fetch provider;
+- nessun token letto/stampato;
+- nessuna scrittura DB.
+
+La fase analizza solo il `403` ricevuto in R1 e prepara una checklist manuale prima di un eventuale R2.
+
+Audit script:
+
+- base URL default: `https://v3.football.api-sports.io`;
+- endpoint: `/standings`;
+- parametri: `league=135`, `season=2026`;
+- header: `x-apisports-key`;
+- una sola `fetch`;
+- nessun retry/loop/paginazione;
+- nessun Supabase client;
+- nessun `service_role`;
+- nessun writer DB.
+
+Prima di un eventuale retry, verificare manualmente account, piano Free, API Football v3, restrizioni IP/domain, quota e abilitazione endpoint.
+
 ## Script safety update
 
 Prima della chiamata, lo script `scripts/provider/apiFootballProbe.ts` è stato allineato al report richiesto da D.16-C3:

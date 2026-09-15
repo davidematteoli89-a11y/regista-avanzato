@@ -176,3 +176,29 @@ La real-call R1 ha eseguito una sola richiesta:
 - nessuna response completa stampata.
 
 La fase non autorizza retry automatici o seconda richiesta.
+
+## D.16-C3-R2 — Checklist retry 403
+
+Checklist dettagliata creata:
+
+- `docs/api_football_403_retry_readiness_d16c3r2.md`.
+
+Prima di un eventuale R2 verificare manualmente:
+
+- account/email confermati;
+- piano Free attivo;
+- API Football v3 abilitata;
+- key corretta e non esposta;
+- eventuali restrizioni IP/domain;
+- header `x-apisports-key`;
+- base URL `https://v3.football.api-sports.io`;
+- endpoint `/standings`;
+- parametri `league=135`, `season=2026`;
+- massimo una richiesta;
+- nessun retry;
+- nessun DB write;
+- nessun import;
+- nessun deploy;
+- Production esclusa.
+
+D.16-C3-R2 non esegue fetch e non legge/stampa token.

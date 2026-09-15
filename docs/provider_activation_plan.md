@@ -822,6 +822,25 @@ Conferme:
 
 Prima di qualunque ulteriore real-call, verificare manualmente piano/key/endpoint nel provider e aprire una nuova fase autorizzata.
 
+## D.16-C3-R2 — Preparazione retry 403
+
+Documento:
+
+- `docs/api_football_403_retry_readiness_d16c3r2.md`.
+
+R2 readiness non autorizza chiamate provider. Serve solo a chiarire i gate manuali:
+
+- piano Free attivo;
+- API Football v3 abilitata;
+- key corretta e non esposta;
+- eventuali restrizioni IP/domain risolte;
+- endpoint/parametri verificati;
+- massimo una richiesta;
+- nessun retry automatico;
+- nessun DB write.
+
+Provider/import restano spenti e Production resta esclusa.
+
 ## D.16-C2-C — Checklist finale prima della probe
 
 Creato:

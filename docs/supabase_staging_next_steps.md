@@ -1242,3 +1242,20 @@ Prima di ulteriori provider step:
 
 - verificare manualmente la causa del `403`;
 - mantenere ogni retry come fase separata e massimo una richiesta.
+
+## D.16-C3-R2 — Nessun impatto su Supabase staging
+
+D.16-C3-R2 è solo readiness/documentazione:
+
+- nessuna seconda richiesta provider;
+- nessuna fetch;
+- nessuna scrittura DB;
+- nessun write su `provider_import_runs`;
+- nessun write su `api_usage_logs`;
+- nessun write su `provider_import_logs`;
+- nessun write su `import_logs`;
+- provider/import spenti;
+- `realWritesEnabled=false`;
+- writer guards ancora bloccanti.
+
+Prossimo step eventuale: retry R2 solo dopo verifica manuale API-Football e nuova conferma esplicita.

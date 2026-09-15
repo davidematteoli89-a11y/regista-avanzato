@@ -1657,3 +1657,27 @@ Stato: prima richiesta reale eseguita, risposta provider `403`.
 - Production non toccata.
 
 Prossimo passo: verificare manualmente nel provider API-Football la causa del `403` e non riprovare senza nuova conferma esplicita.
+
+## D.16-C3-R2 — Readiness retry 403 API-Football
+
+Stato: completata localmente come analisi/preparazione, senza seconda real-call.
+
+Creato:
+
+- `docs/api_football_403_retry_readiness_d16c3r2.md`.
+
+Risultati:
+
+- probe API-Football default ancora disabled;
+- `requests_executed=0` nella verifica disabled;
+- audit script locale completato;
+- base URL/header/endpoint/parametri documentati;
+- possibili cause `403` documentate;
+- checklist manuale R2 preparata;
+- nessuna fetch provider;
+- nessun token letto/stampato;
+- nessuna scrittura DB;
+- provider/import spenti;
+- Apify spento;
+- TheStatsAPI non chiamato;
+- Production non toccata.

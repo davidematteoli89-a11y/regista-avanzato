@@ -186,3 +186,24 @@ Retry D.16-C3-R1:
 - nessun payload completo stampato;
 - nessuna scrittura DB;
 - provider/import non attivati.
+
+## D.16-C3-R2 — Audit script senza fetch
+
+Audit locale effettuato senza chiamate provider.
+
+Conferme:
+
+- base URL default: `https://v3.football.api-sports.io`;
+- endpoint: `/standings`;
+- parametri Serie A: `league=135`, `season=2026`;
+- header: `x-apisports-key`;
+- hard limit operativo: una sola chiamata `fetch` nello script;
+- nessun retry;
+- nessun loop;
+- nessuna paginazione;
+- nessun Supabase client;
+- nessun writer DB;
+- nessun `service_role`;
+- output solo summary sanificato.
+
+D.16-C3-R2 non esegue nessuna seconda real-call.

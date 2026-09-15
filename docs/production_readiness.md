@@ -866,6 +866,21 @@ Production resta bloccata:
 - nessun token deve essere inserito in Production;
 - nessun writer reale deve essere abilitato.
 
+## Nota D.16-C3-R2 — Retry readiness non cambia Production
+
+D.16-C3-R2 è solo documentazione/readiness.
+
+- Nessuna seconda real-call.
+- Nessuna fetch provider.
+- Nessun token letto/stampato.
+- Nessuna scrittura DB.
+- Nessun provider/import attivato.
+- Apify spento.
+- TheStatsAPI non chiamato.
+- Production non toccata.
+
+Il `403` di R1 resta un blocco provider da risolvere manualmente prima di qualunque avanzamento verso Production.
+
 ## Nota D.16-C2-A — Key locale verificata senza token output
 
 La verifica D.16-C2-A conferma solo il setup locale:
