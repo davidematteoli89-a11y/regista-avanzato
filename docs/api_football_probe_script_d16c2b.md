@@ -126,3 +126,63 @@ La real-call resta non autorizzata:
 - nessuna fetch provider;
 - nessun token letto/stampato;
 - nessuna scrittura DB.
+
+## D.16-C3 — Tentativo real-call bloccato prima della fetch
+
+Documento risultato:
+
+- `docs/api_football_first_real_call_result_d16c3.md`.
+
+Esito:
+
+- comando avviato con gate temporanei abilitati;
+- real-call non eseguita;
+- `requests_executed=0`;
+- blocco sanificato: `API_FOOTBALL_API_KEY_MISSING`;
+- nessuna key stampata;
+- nessuna response completa stampata;
+- nessuna scrittura DB;
+- provider/import ancora spenti.
+
+Motivo:
+
+- la key è presente solo in `.env.local`, ma la fase vieta a Codex di leggere/caricare `.env.local`;
+- lo script legge solo variabili già disponibili nel process environment.
+
+Aggiornamento sicurezza script:
+
+- output futuro allineato a D.16-C3 con `endpoint=standings`, `plan=free`, `api_errors_count`, conteggi standings e campi campione solo per nome campo;
+- nessun Supabase client;
+- nessun writer DB;
+- nessun service role;
+- nessun retry/loop/paginazione.
+
+## D.16-C3-R1 — Lettura mirata `.env.local` e prima risposta provider
+
+Lo script è stato aggiornato per supportare una lettura locale mirata, solo dopo gate attivi, senza usare `dotenv` generico.
+
+Variabili consentite dalla lettura mirata:
+
+- `API_FOOTBALL_API_KEY`;
+- `API_FOOTBALL_BASE_URL`.
+
+Comportamento:
+
+- se i gate sono false, la key non viene letta;
+- se i gate sono true, la key può essere letta da process env o da `.env.local`;
+- nessun valore viene stampato;
+- nessun prefisso/suffisso/hash/lunghezza viene stampato;
+- nessuna variabile Supabase viene letta.
+
+Retry D.16-C3-R1:
+
+- real-call eseguita una sola volta;
+- endpoint: standings Serie A;
+- `requests_executed=1`;
+- `http_status=403`;
+- `api_errors_count=2`;
+- `standings_rows_count=0`;
+- `mapping_theoretical_possible=false`;
+- nessun payload completo stampato;
+- nessuna scrittura DB;
+- provider/import non attivati.

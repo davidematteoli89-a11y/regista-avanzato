@@ -1611,3 +1611,49 @@ Gate:
 - nessun provider/import attivato;
 - Production non toccata;
 - D.16-C3 solo con conferma esplicita.
+
+## D.16-C3 — Tentativo prima real-call API-Football
+
+Stato: bloccata prima della richiesta.
+
+- Documento risultato creato: `docs/api_football_first_real_call_result_d16c3.md`.
+- Endpoint previsto: standings Serie A.
+- Richieste pianificate: 1.
+- Richieste eseguite: 0.
+- Motivo blocco: `API_FOOTBALL_API_KEY` non disponibile nel process environment.
+- `.env.local` non letto/caricato da Codex.
+- Nessuna fetch provider completata.
+- Nessun token stampato.
+- Nessuna response completa stampata.
+- Nessuna scrittura DB.
+- Provider/import ancora spenti.
+- Apify spento.
+- TheStatsAPI non chiamato.
+- Production non toccata.
+
+Lo script è stato allineato al report sanificato richiesto da D.16-C3, ma non è stato committato.
+
+## D.16-C3-R1 — Retry prima real-call API-Football
+
+Stato: prima richiesta reale eseguita, risposta provider `403`.
+
+- Script aggiornato con lettura mirata `.env.local` solo per variabili API-Football.
+- Gate disabled verificato dopo fix: `token_read=false`, `requests_executed=0`.
+- Real-call eseguita una sola volta con gate temporanei.
+- Endpoint: standings Serie A.
+- `requests_executed=1`.
+- `http_status=403`.
+- `api_errors_count=2`.
+- `response_top_level_keys=get,parameters,errors,results,paging,response`.
+- `standings_groups_count=0`.
+- `standings_rows_count=0`.
+- `mapping_theoretical_possible=false`.
+- Nessun token stampato.
+- Nessuna response completa stampata.
+- Nessuna scrittura DB.
+- Provider/import spenti.
+- Apify spento.
+- TheStatsAPI non chiamato.
+- Production non toccata.
+
+Prossimo passo: verificare manualmente nel provider API-Football la causa del `403` e non riprovare senza nuova conferma esplicita.

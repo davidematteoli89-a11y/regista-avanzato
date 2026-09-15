@@ -203,3 +203,34 @@ Prima di D.16-C3:
 - nessun token in chat, docs, commit o Production.
 
 D.16-C2-C non legge `.env.local` e non legge/stampa token.
+
+## D.16-C3 — Key non disponibile nel process environment
+
+L'utente ha confermato la rigenerazione/rotazione della key, ma il primo tentativo D.16-C3 si è fermato prima della real-call perché `API_FOOTBALL_API_KEY` non era disponibile nel process environment ereditato.
+
+La decisione di sicurezza resta:
+
+- non leggere/caricare `.env.local` da Codex;
+- non stampare valori;
+- non stampare prefisso/suffisso/hash/lunghezza key;
+- non copiare la key nei docs;
+- non abbassare il gate dello script.
+
+Per una futura riprova, la key deve essere resa disponibile al processo in modo sicuro dall'utente, senza essere mostrata a Codex o stampata in terminale.
+
+## D.16-C3-R1 — Lettura mirata autorizzata
+
+Per il retry D.16-C3-R1 è stata autorizzata una lettura mirata da `.env.local` solo per le variabili API-Football strettamente necessarie:
+
+- `API_FOOTBALL_API_KEY`;
+- `API_FOOTBALL_BASE_URL`.
+
+Garanzie mantenute:
+
+- la key non viene stampata;
+- non vengono stampati prefisso/suffisso/hash/lunghezza;
+- non vengono lette variabili Supabase;
+- non viene usato `dotenv` generico;
+- la key viene letta solo se entrambi i gate della probe sono true.
+
+La prova ha raggiunto il provider, ma ha ricevuto HTTP `403`. Il token resta segreto e non è stato inserito nei docs.

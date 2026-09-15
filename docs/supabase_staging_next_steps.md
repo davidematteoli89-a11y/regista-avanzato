@@ -1199,3 +1199,46 @@ Supabase staging resta invariato:
 - `realWritesEnabled=false`.
 
 La futura D.16-C3 dovrà essere massimo una richiesta read-only su standings Serie A, senza DB write.
+
+## D.16-C3 — Tentativo API-Football bloccato prima della fetch
+
+Risultato:
+
+- nessuna richiesta API-Football completata;
+- `requests_executed=0`;
+- blocco sanificato: `API_FOOTBALL_API_KEY_MISSING`;
+- `.env.local` non letto/caricato da Codex;
+- nessuna scrittura su Supabase staging;
+- nessun `provider_import_runs` write;
+- nessun `api_usage_logs` write;
+- nessun `provider_import_logs` write;
+- nessun `import_logs` write;
+- provider/import spenti;
+- Apify spento;
+- Production non toccata.
+
+Prossimo passo:
+
+- riprovare solo con procedura esplicita che renda la key disponibile nel process environment sicuro senza stampare valori;
+- mantenere comunque massimo una richiesta read-only e nessuna scrittura DB.
+
+## D.16-C3-R1 — Supabase invariato dopo real-call read-only
+
+La real-call API-Football R1 ha eseguito una sola richiesta esterna read-only e ha ricevuto HTTP `403`.
+
+Supabase staging resta invariato:
+
+- nessuna scrittura DB;
+- nessun insert/update/delete/upsert;
+- nessun write su `provider_import_runs`;
+- nessun write su `api_usage_logs`;
+- nessun write su `provider_import_logs`;
+- nessun write su `import_logs`;
+- provider/import spenti;
+- `realWritesEnabled=false`;
+- writer guards ancora bloccanti.
+
+Prima di ulteriori provider step:
+
+- verificare manualmente la causa del `403`;
+- mantenere ogni retry come fase separata e massimo una richiesta.

@@ -195,6 +195,47 @@ Stato:
 - nessuna fetch provider;
 - nessuna scrittura DB.
 
+## D.16-C3 — Tentativo bloccato prima della real-call
+
+- D.16-C3 è stata avviata con conferma dell'utente sulla rotazione della key.
+- La real-call non è stata completata.
+- Lo script si è fermato prima della fetch perché `API_FOOTBALL_API_KEY` non era disponibile nel process environment.
+- `.env.local` non è stato letto/caricato da Codex.
+- `requests_executed=0`.
+- Nessuna fetch provider completata.
+- Nessuna key/token stampata.
+- Nessuna response completa stampata.
+- Nessuna scrittura DB.
+
+Residuo:
+
+- riprovare solo con key disponibile nel process environment sicuro, senza stampare valori e senza caricare `.env.local` da Codex.
+
+## D.16-C3-R1 — Prima richiesta API-Football controllata
+
+- Script corretto con lettura mirata `.env.local` solo per `API_FOOTBALL_API_KEY` e `API_FOOTBALL_BASE_URL`.
+- Lettura key consentita solo con `API_FOOTBALL_PROBE_ENABLED=true` e `REAL_PROVIDER_PROBE_ENABLED=true`.
+- Real-call eseguita una sola volta.
+- Endpoint: standings Serie A.
+- `requests_executed=1`.
+- `http_status=403`.
+- `api_errors_count=2`.
+- `response_top_level_keys=get,parameters,errors,results,paging,response`.
+- `standings_groups_count=0`.
+- `standings_rows_count=0`.
+- `mapping_theoretical_possible=false`.
+- Nessun token stampato.
+- Nessuna response completa stampata.
+- Nessuna scrittura DB.
+- Provider/import non attivati.
+- Apify spento.
+- TheStatsAPI non chiamato.
+- Production non toccata.
+
+Residuo:
+
+- verificare manualmente nel provider perché la key/piano restituisce `403`, senza condividere token.
+
 Nomi env futuri:
 
 - `API_FOOTBALL_API_KEY`;

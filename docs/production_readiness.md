@@ -829,6 +829,43 @@ Production resta esclusa:
 - `API_FOOTBALL_PROBE_ENABLED=false`;
 - `realWritesEnabled=false`.
 
+## Nota D.16-C3 — Real-call API-Football bloccata prima della fetch
+
+D.16-C3 non produce readiness Production.
+
+- La richiesta API-Football non è stata eseguita.
+- `requests_executed=0`.
+- Blocco sanificato: key non disponibile nel process environment.
+- `.env.local` non letto/caricato.
+- Nessuna response completa stampata.
+- Nessuna scrittura DB.
+- Provider/import ancora spenti.
+- Apify spento.
+- TheStatsAPI non chiamato.
+- Production non toccata.
+
+Prima di Production resta necessario completare una probe reale con procedura sicura, output sanificato e nessuna scrittura DB.
+
+## Nota D.16-C3-R1 — API-Football 403, nessuna readiness Production
+
+La probe ha eseguito una sola richiesta read-only verso API-Football standings Serie A.
+
+Risultato:
+
+- `http_status=403`;
+- `requests_executed=1`;
+- nessun dato mappabile;
+- nessuna scrittura DB;
+- nessun import;
+- provider/import non attivati.
+
+Production resta bloccata:
+
+- il provider reale non è ancora validato;
+- il motivo del `403` va verificato manualmente fuori dal codice;
+- nessun token deve essere inserito in Production;
+- nessun writer reale deve essere abilitato.
+
 ## Nota D.16-C2-A — Key locale verificata senza token output
 
 La verifica D.16-C2-A conferma solo il setup locale:

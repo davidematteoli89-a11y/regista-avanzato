@@ -778,6 +778,50 @@ Il piano operativo resta:
 - provider/import spenti;
 - Production non toccata.
 
+## D.16-C3 — Real-call non completata
+
+- Tentativo effettuato con gate temporanei abilitati.
+- La richiesta reale non è partita perché la key non era disponibile nel process environment.
+- `requests_executed=0`.
+- Nessuna fetch provider completata.
+- Nessuna scrittura DB.
+- Nessun import attivato.
+- Nessun provider attivato.
+- Apify e TheStatsAPI non chiamati.
+- Production non toccata.
+
+Decisione:
+
+- non abbassare le protezioni;
+- non caricare `.env.local` da Codex;
+- riprovare solo con una procedura esplicita che renda la key disponibile al processo senza stamparla.
+
+## D.16-C3-R1 — API-Football raggiunta, risposta 403
+
+La prima richiesta controllata è stata eseguita una sola volta.
+
+- Provider: API-Football.
+- Endpoint: standings Serie A.
+- Richieste eseguite: 1.
+- HTTP status: `403`.
+- Errori API sanificati: `2`.
+- Righe standings: `0`.
+- Mapping teorico: non possibile in questa prova.
+
+Conferme:
+
+- nessun retry;
+- nessuna seconda richiesta;
+- nessun payload completo stampato;
+- nessun token stampato;
+- nessuna scrittura DB;
+- provider/import ancora spenti;
+- Apify spento;
+- TheStatsAPI non chiamato;
+- Production non toccata.
+
+Prima di qualunque ulteriore real-call, verificare manualmente piano/key/endpoint nel provider e aprire una nuova fase autorizzata.
+
 ## D.16-C2-C — Checklist finale prima della probe
 
 Creato:

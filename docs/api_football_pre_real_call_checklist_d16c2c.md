@@ -132,3 +132,47 @@ La real-call D.16-C3 può partire solo se tutti i punti seguenti sono confermati
 ## Prossimo step consigliato
 
 D.16-C3 — prima real-call API-Football Free su standings Serie A, solo dopo conferma esplicita, key rigenerata e gate completato.
+
+## D.16-C3 — Esito prima esecuzione controllata
+
+La prima esecuzione controllata è stata bloccata prima della richiesta reale.
+
+Risultato:
+
+- `requests_executed=0`;
+- `error=API_FOOTBALL_API_KEY_MISSING`;
+- nessuna fetch completata;
+- nessun token stampato;
+- nessun payload completo stampato;
+- nessuna scrittura DB.
+
+Nota importante:
+
+- la key non deve essere letta/caricata da `.env.local` da Codex;
+- per una futura riprova, la key deve essere disponibile nel process environment in modo sicuro e senza essere stampata.
+
+## D.16-C3-R1 — Checklist retry eseguita
+
+La riprova ha autorizzato una lettura mirata da `.env.local` limitata a:
+
+- `API_FOOTBALL_API_KEY`;
+- `API_FOOTBALL_BASE_URL`.
+
+La lettura avviene solo dopo gate attivi. Con gate default false resta confermato:
+
+- `enabled=false`;
+- `blocked_reason=API_FOOTBALL_PROBE_DISABLED`;
+- `token_read=false`;
+- `requests_executed=0`.
+
+La real-call R1 ha eseguito una sola richiesta:
+
+- endpoint: standings Serie A;
+- `http_status=403`;
+- `api_errors_count=2`;
+- `requests_executed=1`;
+- `token_printed=false`;
+- `db_write=false`;
+- nessuna response completa stampata.
+
+La fase non autorizza retry automatici o seconda richiesta.
