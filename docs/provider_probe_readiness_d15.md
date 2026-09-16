@@ -445,6 +445,24 @@ Gate richiesti per una futura real-call:
 - provider/import off;
 - Production off.
 
+## D.17-G — Debug 404 TheStatsAPI
+
+Documento:
+
+- `docs/thestatsapi_404_debug_d17g.md`.
+
+Risultato:
+
+- probabile perdita del segmento `/api` nella URL della probe precedente;
+- script corretto con `joinUrl()`;
+- URL shape competitions corretta: `https://api.thestatsapi.com/api/football/competitions`;
+- nessuna nuova real-call;
+- nessuna fetch provider;
+- nessun token letto/stampato;
+- nessuna scrittura DB.
+
+Prossimo retry consigliato solo con conferma esplicita: una richiesta singola su `/football/competitions`.
+
 ## D.17-E/F — Esito TheStatsAPI real probe
 
 Documento:

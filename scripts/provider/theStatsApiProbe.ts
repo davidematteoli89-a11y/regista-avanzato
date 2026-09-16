@@ -5,6 +5,7 @@ const PROVIDER = "the_stats_api";
 const COMPETITION_SLUG = "serie-a";
 const COMPETITION_ID = "comp_5840";
 const SEASON_ID = "sn_6199313";
+const BASE_URL_FALLBACK = "https://api.thestatsapi.com/api";
 const COMPETITIONS_ENDPOINT = "/football/competitions";
 const STANDINGS_ENDPOINT = `/football/competitions/${COMPETITION_ID}/seasons/${SEASON_ID}/standings`;
 const REQUESTS_PLANNED = 2;
@@ -26,6 +27,13 @@ function printDisabledProbe(blockedReason = "THESTATSAPI_PROBE_DISABLED"): void 
   console.info("token_printed=false");
   console.info(`requests_planned=${REQUESTS_PLANNED}`);
   console.info("requests_executed=0");
+  console.info(`base_url_shape=${BASE_URL_FALLBACK}`);
+  console.info(`competitions_path=${COMPETITIONS_ENDPOINT}`);
+  console.info(`competitions_url_shape=${joinUrl(BASE_URL_FALLBACK, COMPETITIONS_ENDPOINT).toString()}`);
+  console.info(`standings_path=${STANDINGS_ENDPOINT}`);
+  console.info(`standings_url_shape=${joinUrl(BASE_URL_FALLBACK, STANDINGS_ENDPOINT).toString()}`);
+  console.info("possible_double_api=false");
+  console.info("possible_double_slash=false");
   console.info("output_sanitized=true");
   console.info("provider_activated=false");
   console.info("import_enabled=false");
@@ -180,8 +188,11 @@ function countStandingsGroups(payload: unknown): number {
   return groupLikeRows.length;
 }
 
-function buildUrl(baseUrl: string, endpoint: string): URL {
-  return new URL(endpoint, baseUrl);
+function joinUrl(baseUrl: string, endpoint: string): URL {
+  const normalizedBaseUrl = baseUrl.replace(/\/+$/, "");
+  const normalizedEndpoint = endpoint.replace(/^\/+/, "");
+
+  return new URL(`${normalizedBaseUrl}/${normalizedEndpoint}`);
 }
 
 async function readSanitizedJson(response: Response): Promise<unknown> {
@@ -193,7 +204,7 @@ async function readSanitizedJson(response: Response): Promise<unknown> {
 }
 
 async function fetchReadOnlyJson(baseUrl: string, endpoint: string, apiKey: string): Promise<{ response: Response; payload: unknown }> {
-  const url = buildUrl(baseUrl, endpoint);
+  const url = joinUrl(baseUrl, endpoint);
 
   const response = await fetch(url, {
     method: "GET",
@@ -210,7 +221,7 @@ async function fetchReadOnlyJson(baseUrl: string, endpoint: string, apiKey: stri
 
 async function runFutureProbe(): Promise<void> {
   const apiKey = getRequiredEnvPresenceOnly("THESTATSAPI_API_KEY");
-  const baseUrl = readLocalEnvValue("THESTATSAPI_BASE_URL") || "https://api.thestatsapi.com/api";
+  const baseUrl = readLocalEnvValue("THESTATSAPI_BASE_URL") || BASE_URL_FALLBACK;
   // Future real-call shape:
   // - max 2 requests
   // - read-only

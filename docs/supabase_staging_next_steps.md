@@ -1385,3 +1385,18 @@ Risultato:
 - Production non toccata.
 
 Non procedere con writer o import finché non viene individuato e testato un endpoint valido.
+
+## D.17-G — Nessun impatto Supabase
+
+D.17-G ha corretto solo la composizione URL dello script provider.
+
+Supabase staging invariato:
+
+- nessuna scrittura DB;
+- nessun log provider scritto;
+- nessun import abilitato;
+- nessun provider attivato;
+- `realWritesEnabled=false`;
+- writer guards attivi.
+
+Prossimo eventuale retry resta read-only e senza DB write.

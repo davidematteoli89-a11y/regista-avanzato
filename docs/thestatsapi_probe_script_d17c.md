@@ -146,3 +146,19 @@ Esito:
 - `stopped_after=competitions_error`;
 - nessun token stampato;
 - nessun DB write.
+
+## D.17-G — Fix URL composition
+
+Lo script ora usa `joinUrl(baseUrl, endpoint)` invece di `new URL(endpoint, baseUrl)` per preservare il segmento `/api` del base URL.
+
+Output disabled sanificato aggiunto:
+
+- `base_url_shape`;
+- `competitions_path`;
+- `competitions_url_shape`;
+- `standings_path`;
+- `standings_url_shape`;
+- `possible_double_api`;
+- `possible_double_slash`.
+
+Nessuna nuova real-call eseguita.

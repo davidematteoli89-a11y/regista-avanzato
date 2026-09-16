@@ -131,3 +131,16 @@ La probe reale controllata è stata eseguita con gate attivi e stop sicuro:
 - nessuna scrittura DB.
 
 Conclusione: l'endpoint `/football/competitions` non è valido nella forma testata o richiede path/versione differente. Prima di ulteriori real-call serve revisione manuale della dashboard/documentazione TheStatsAPI.
+
+## D.17-G — Correzione URL composition
+
+Audit senza fetch completato.
+
+Risultato:
+
+- forma precedente probabile: `https://api.thestatsapi.com/football/competitions`;
+- forma corretta attesa: `https://api.thestatsapi.com/api/football/competitions`;
+- causa: endpoint assoluto con `/` usato con `new URL(endpoint, baseUrl)`;
+- correzione: `joinUrl()` con normalizzazione slash.
+
+Prossimo retry consigliato, solo con conferma: una singola richiesta su `GET /football/competitions`.

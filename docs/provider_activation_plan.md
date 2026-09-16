@@ -999,3 +999,21 @@ Probe reale controllata eseguita:
 - Production non toccata.
 
 Non procedere con import o mapping operativo finché non viene individuato un endpoint valido.
+
+## D.17-G — Debug endpoint 404
+
+D.17-G non ha chiamato provider.
+
+Correzione:
+
+- normalizzazione URL nello script TheStatsAPI;
+- preservazione `/api` nel base URL;
+- output disabled con URL shape sanificata.
+
+Decisione:
+
+- prossimo eventuale retry: singola richiesta `GET /football/competitions`;
+- no standings nello stesso step;
+- nessun import;
+- nessun DB write;
+- provider/import spenti.

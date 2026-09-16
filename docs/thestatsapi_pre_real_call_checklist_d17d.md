@@ -209,3 +209,15 @@ La checklist è stata rispettata:
 - nessuna paginazione;
 - nessun DB write;
 - nessun token stampato.
+
+## D.17-G — Checklist retry aggiornata
+
+Prima di una nuova real-call:
+
+- usare URL shape corretta `https://api.thestatsapi.com/api/football/competitions`;
+- massimo una richiesta;
+- nessun standings finché competitions non risponde;
+- nessun retry;
+- nessun DB write;
+- nessun token stampato;
+- Production esclusa.

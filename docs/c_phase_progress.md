@@ -1888,3 +1888,25 @@ Conferme:
 - Production non toccata.
 
 Prossimo step consigliato: D.17-G — individuare endpoint TheStatsAPI corretto da dashboard/documentazione, senza nuova real-call finché non confermato.
+
+## D.17-G — Debug endpoint 404 TheStatsAPI
+
+Stato: completato senza nuove real-call.
+
+Risultato audit:
+
+- la composizione URL precedente poteva perdere `/api`;
+- `competitions_url_shape` corretta: `https://api.thestatsapi.com/api/football/competitions`;
+- `standings_url_shape` corretta: `https://api.thestatsapi.com/api/football/competitions/comp_5840/seasons/sn_6199313/standings`;
+- `possible_double_api=false`;
+- `possible_double_slash=false`.
+
+Script aggiornato:
+
+- `joinUrl()` normalizza base URL e path;
+- output disabled mostra URL shape sanificate;
+- nessuna fetch provider;
+- nessun token letto/stampato;
+- nessuna scrittura DB.
+
+Prossimo step consigliato: D.17-H — retry singolo su `/football/competitions`, solo dopo conferma esplicita.

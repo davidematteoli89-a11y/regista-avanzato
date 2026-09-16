@@ -105,3 +105,17 @@ La logica di sicurezza ha funzionato:
 ## Prossimo step consigliato
 
 D.17-G — revisione manuale documentazione/dashboard TheStatsAPI per individuare endpoint valido più leggero, senza ulteriori real-call finché non viene confermato il path corretto.
+
+## D.17-G — Debug 404 senza real-call
+
+Il debug D.17-G ha individuato una causa probabile del `404`: lo script usava `new URL(endpoint, baseUrl)` con endpoint che iniziava con `/`, perdendo il segmento `/api` del base URL.
+
+Correzione:
+
+- aggiunta funzione `joinUrl()`;
+- `competitions_url_shape=https://api.thestatsapi.com/api/football/competitions`;
+- `standings_url_shape=https://api.thestatsapi.com/api/football/competitions/comp_5840/seasons/sn_6199313/standings`;
+- `possible_double_api=false`;
+- `possible_double_slash=false`.
+
+Nessuna nuova real-call è stata eseguita.

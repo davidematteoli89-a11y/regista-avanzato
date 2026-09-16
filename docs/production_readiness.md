@@ -1056,3 +1056,18 @@ Confermato:
 - Production non toccata.
 
 Production resta non pronta. Prima di ulteriori step serve endpoint TheStatsAPI valido e mapping dry-run senza DB write.
+
+## Nota D.17-G — Debug senza Production
+
+D.17-G ha corretto solo la composizione URL nello script TheStatsAPI.
+
+Confermato:
+
+- nessuna nuova real-call;
+- nessuna fetch provider;
+- nessun token letto/stampato;
+- nessuna scrittura DB;
+- nessun deploy;
+- Production non toccata.
+
+Production resta bloccata.
