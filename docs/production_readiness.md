@@ -1037,3 +1037,22 @@ Production resta esclusa:
 - nessun provider/import attivato;
 - key esposta da rigenerare prima della probe;
 - D.16-C3 richiede conferma esplicita.
+
+## Nota D.17-E/F — Probe TheStatsAPI non abilita Production
+
+La real probe TheStatsAPI ha restituito HTTP `404` sulla prima richiesta.
+
+Confermato:
+
+- `requests_executed=1`;
+- standings non eseguito;
+- nessun retry;
+- nessuna scrittura DB;
+- nessun import;
+- nessuna attivazione provider;
+- nessun token stampato;
+- API-Football sospeso/no retry;
+- Apify spento;
+- Production non toccata.
+
+Production resta non pronta. Prima di ulteriori step serve endpoint TheStatsAPI valido e mapping dry-run senza DB write.

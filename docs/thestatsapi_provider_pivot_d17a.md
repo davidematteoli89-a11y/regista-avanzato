@@ -108,6 +108,19 @@ Stato:
 - Apify spento;
 - Production non toccata.
 
+## D.17-E/F — Prima probe reale TheStatsAPI
+
+TheStatsAPI resta il provider candidato, ma la prima probe reale ha prodotto:
+
+- `/football/competitions`: HTTP `404`;
+- standings non eseguito;
+- `requests_executed=1`;
+- `mapping_theoretical_possible=false`;
+- nessun retry;
+- nessun DB write.
+
+Serve rivedere l'endpoint effettivo prima di altre probe.
+
 ## D.17-D — Checklist pre-real-call
 
 La checklist pre-real-call TheStatsAPI è stata preparata senza abilitare la probe.

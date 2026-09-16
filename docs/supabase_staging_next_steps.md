@@ -1366,3 +1366,22 @@ Staging resta invariato:
 - Apify spento.
 
 API-Football resta documentato come R1 con HTTP `403` e sospeso per ora.
+
+## D.17-E/F — TheStatsAPI probe senza Supabase write
+
+La probe TheStatsAPI non ha scritto nulla in Supabase.
+
+Risultato:
+
+- richiesta `/football/competitions`: HTTP `404`;
+- standings non eseguito;
+- nessuna riga creata in `provider_import_runs`;
+- nessun write su `provider_import_logs`;
+- nessun write su `api_usage_logs`;
+- nessun write su `import_logs`;
+- provider/import spenti;
+- `realWritesEnabled=false`;
+- Apify spento;
+- Production non toccata.
+
+Non procedere con writer o import finché non viene individuato e testato un endpoint valido.

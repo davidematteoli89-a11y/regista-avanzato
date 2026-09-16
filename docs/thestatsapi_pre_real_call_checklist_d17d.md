@@ -195,3 +195,17 @@ Stop immediato se:
 ## Prossimo step consigliato
 
 D.17-E potrà essere aperta solo con conferma esplicita dell'utente e gate temporanei abilitati per una sola richiesta read-only.
+
+## D.17-E/F — Checklist applicata
+
+La checklist è stata rispettata:
+
+- massimo due richieste pianificate;
+- prima richiesta `/football/competitions`;
+- risultato HTTP `404`;
+- stop immediato;
+- standings non eseguito;
+- nessun retry;
+- nessuna paginazione;
+- nessun DB write;
+- nessun token stampato.

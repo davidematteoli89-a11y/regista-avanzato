@@ -117,3 +117,17 @@ Fermarsi se:
 ## Prossimo step consigliato
 
 D.17-E — prima real-call TheStatsAPI controllata, una sola richiesta read-only, solo dopo conferma esplicita dell'utente.
+
+## D.17-E/F — Esito probe reale
+
+La probe reale controllata è stata eseguita con gate attivi e stop sicuro:
+
+- `/football/competitions`: HTTP `404`;
+- `requests_executed=1`;
+- standings Serie A non eseguito;
+- nessun retry;
+- nessuna response completa salvata;
+- nessun token stampato;
+- nessuna scrittura DB.
+
+Conclusione: l'endpoint `/football/competitions` non è valido nella forma testata o richiede path/versione differente. Prima di ulteriori real-call serve revisione manuale della dashboard/documentazione TheStatsAPI.

@@ -90,3 +90,13 @@ D.17-E0 ha verificato da documentazione pubblica TheStatsAPI:
 - nessuna scrittura DB.
 
 La key resta solo locale e non va mai riportata in chat/docs/commit.
+
+## D.17-E/F — Uso key nella probe reale
+
+Durante la probe reale controllata:
+
+- `token_read=true` solo durante l'esecuzione con gate espliciti;
+- `token_printed=false`;
+- nessun valore, prefisso, suffisso, hash o lunghezza della key è stato stampato;
+- `.env.local` non è stato committato;
+- nessuna scrittura DB.

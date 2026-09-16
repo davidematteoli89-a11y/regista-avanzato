@@ -445,6 +445,26 @@ Gate richiesti per una futura real-call:
 - provider/import off;
 - Production off.
 
+## D.17-E/F — Esito TheStatsAPI real probe
+
+Documento:
+
+- `docs/thestatsapi_real_probe_result_d17ef.md`.
+
+Risultato:
+
+- `requests_executed=1`;
+- endpoint `/football/competitions` con HTTP `404`;
+- standings non eseguito;
+- `mapping_theoretical_possible=false`;
+- nessun retry;
+- nessuna response completa salvata;
+- nessun token stampato;
+- nessuna scrittura DB;
+- provider/import spenti;
+- Apify spento;
+- API-Football sospeso/no retry.
+
 D.16-C2-B non esegue lo script.
 
 ## D.16-C2-C — Gate finale pre-real-call

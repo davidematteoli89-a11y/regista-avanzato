@@ -130,3 +130,19 @@ Lo script resta disabled di default e non ha eseguito real-call.
 ## Prossimo step consigliato
 
 D.17-E solo dopo conferma esplicita, endpoint verificato e gate abilitati temporaneamente per una sola richiesta read-only.
+
+## D.17-E/F — Probe reale controllata
+
+Lo script è stato aggiornato per due target massimi:
+
+1. `/football/competitions`;
+2. `/football/competitions/comp_5840/seasons/sn_6199313/standings`, solo se il primo target riesce.
+
+Esito:
+
+- target 1 HTTP `404`;
+- `requests_executed=1`;
+- target 2 non eseguito;
+- `stopped_after=competitions_error`;
+- nessun token stampato;
+- nessun DB write.

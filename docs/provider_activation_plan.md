@@ -982,3 +982,20 @@ Condizioni per D.16-C3:
 - nessun provider/import attivato;
 - Production esclusa;
 - conferma esplicita dell’utente.
+
+## D.17-E/F — TheStatsAPI real probe
+
+Probe reale controllata eseguita:
+
+- `requests_planned=2`;
+- `requests_executed=1`;
+- `/football/competitions`: HTTP `404`;
+- standings non eseguito;
+- nessun retry;
+- nessuna paginazione;
+- nessun DB write;
+- provider/import non attivati;
+- Apify spento;
+- Production non toccata.
+
+Non procedere con import o mapping operativo finché non viene individuato un endpoint valido.

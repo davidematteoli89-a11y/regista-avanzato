@@ -1858,3 +1858,33 @@ Conferme:
 - nessuna scrittura DB;
 - provider/import spenti;
 - Production non toccata.
+
+## D.17-E/F — TheStatsAPI real probe controllata
+
+Stato: completata con stop sicuro.
+
+Risultato:
+
+- `requests_executed=1`;
+- endpoint 1 `/football/competitions`: HTTP `404`;
+- top-level keys: `error`;
+- competitions count: `0`;
+- endpoint 2 standings Serie A: non eseguito;
+- `mapping_theoretical_possible=false`;
+- `missing_fields=standings_rows_or_expected_fields_not_detected`;
+- `useful_fields=unknown_until_successful_standings_payload`.
+
+Conferme:
+
+- nessun retry;
+- nessun loop;
+- nessuna paginazione;
+- nessuna response completa salvata;
+- nessun token stampato;
+- nessuna scrittura DB;
+- provider/import spenti;
+- Apify spento;
+- API-Football sospeso/no retry;
+- Production non toccata.
+
+Prossimo step consigliato: D.17-G — individuare endpoint TheStatsAPI corretto da dashboard/documentazione, senza nuova real-call finché non confermato.
