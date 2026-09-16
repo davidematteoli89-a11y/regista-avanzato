@@ -1071,3 +1071,18 @@ Confermato:
 - Production non toccata.
 
 Production resta bloccata.
+
+## D.17-H — Nessuna readiness Production
+
+D.17-H ha eseguito una sola probe read-only TheStatsAPI su `/football/competitions`:
+
+- URL shape corretta;
+- HTTP `403`;
+- token non stampato;
+- nessuna response completa salvata;
+- nessuna scrittura DB;
+- nessun import;
+- nessun deploy;
+- Production non toccata.
+
+Production resta non pronta. Serve debug provider/auth/endpoint e una nuova autorizzazione esplicita prima di qualsiasi ulteriore real-call.

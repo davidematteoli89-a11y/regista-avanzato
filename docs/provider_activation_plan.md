@@ -1017,3 +1017,19 @@ Decisione:
 - nessun import;
 - nessun DB write;
 - provider/import spenti.
+
+## D.17-H — TheStatsAPI competitions retry
+
+Risultato della singola richiesta reale controllata:
+
+- provider: TheStatsAPI;
+- endpoint: `GET /football/competitions`;
+- URL shape: `https://api.thestatsapi.com/api/football/competitions`;
+- `requests_executed=1`;
+- HTTP status: `403`;
+- standings non eseguito;
+- nessun retry;
+- nessuna scrittura DB;
+- provider/import non attivati.
+
+Il piano di attivazione resta bloccato: non procedere con standings/import finché il `403` non è chiarito.

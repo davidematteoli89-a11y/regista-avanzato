@@ -1910,3 +1910,26 @@ Script aggiornato:
 - nessuna scrittura DB.
 
 Prossimo step consigliato: D.17-H — retry singolo su `/football/competitions`, solo dopo conferma esplicita.
+
+## D.17-H — Retry singolo TheStatsAPI competitions
+
+Stato: completato con stop sicuro.
+
+Risultato:
+
+- endpoint: `GET /football/competitions`;
+- URL shape: `https://api.thestatsapi.com/api/football/competitions`;
+- `requests_executed=1`;
+- `http_status=403`;
+- `api_errors_count=3`;
+- `response_top_level_keys=error`;
+- `items_count=0`;
+- standings non eseguito;
+- nessun retry;
+- nessuna scrittura DB;
+- provider/import spenti;
+- Apify spento;
+- API-Football sospeso/no retry;
+- Production non toccata.
+
+Prossimo step consigliato: debug auth/account/endpoint TheStatsAPI senza retry automatico.

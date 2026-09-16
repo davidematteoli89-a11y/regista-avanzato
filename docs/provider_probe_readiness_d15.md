@@ -445,6 +445,22 @@ Gate richiesti per una futura real-call:
 - provider/import off;
 - Production off.
 
+## D.17-H — Readiness dopo retry TheStatsAPI
+
+La real probe singola TheStatsAPI ha confermato che:
+
+- URL shape corretta: `https://api.thestatsapi.com/api/football/competitions`;
+- richiesta eseguita: `1`;
+- risultato: HTTP `403`;
+- payload completo non salvato;
+- token non stampato;
+- DB write assente;
+- provider/import ancora spenti;
+- Apify spento;
+- API-Football sospeso/no retry.
+
+Readiness per standings non ancora raggiunta: serve chiarire autorizzazione/endpoint prima di D.17-I.
+
 ## D.17-G — Debug 404 TheStatsAPI
 
 Documento:

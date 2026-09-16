@@ -100,3 +100,20 @@ Motivo:
 ## Prossimo step consigliato
 
 D.17-H — retry singolo su endpoint leggero corretto `GET /football/competitions`, solo dopo conferma esplicita.
+
+## D.17-H — Retry eseguito su URL corretta
+
+Il retry singolo D.17-H è stato eseguito sulla URL shape corretta:
+
+- `https://api.thestatsapi.com/api/football/competitions`;
+- `requests_executed=1`;
+- `http_status=403`;
+- `api_errors_count=3`;
+- `response_top_level_keys=error`;
+- `items_count=0`;
+- `standings_executed=false`;
+- `token_read=true`;
+- `token_printed=false`;
+- `db_write=false`.
+
+Conclusione: il problema di composizione URL è risolto; il blocco residuo è autorizzativo/provider-side (`403`) e va analizzato senza retry automatico.

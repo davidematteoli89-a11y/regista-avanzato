@@ -221,3 +221,20 @@ Prima di una nuova real-call:
 - nessun DB write;
 - nessun token stampato;
 - Production esclusa.
+
+## D.17-H — Checklist applicata
+
+Checklist applicata per retry singolo:
+
+- target: `competitions`;
+- massimo una richiesta: rispettato;
+- standings non eseguito;
+- nessun retry;
+- nessun loop/paginazione;
+- token non stampato;
+- response completa non salvata;
+- nessuna scrittura DB;
+- provider/import non attivati;
+- Production non toccata.
+
+Risultato: HTTP `403`. Prossimo step: debug autorizzazione/endpoint prima di qualsiasi nuova real-call.

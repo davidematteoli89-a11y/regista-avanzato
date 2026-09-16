@@ -162,3 +162,22 @@ Output disabled sanificato aggiunto:
 - `possible_double_slash`.
 
 Nessuna nuova real-call eseguita.
+
+## D.17-H — Script limitato a competitions
+
+Lo script è stato reso compatibile con D.17-H:
+
+- `THESTATSAPI_PROBE_TARGET=competitions`;
+- `requests_planned=1`;
+- hard stop a una sola fetch;
+- standings non eseguito in questa fase;
+- output solo summary sanificato;
+- nessun token, header completo o payload completo stampato.
+
+Risultato real-call D.17-H:
+
+- `requests_executed=1`;
+- `http_status=403`;
+- `token_read=true`;
+- `token_printed=false`;
+- `db_write=false`.

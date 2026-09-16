@@ -8,7 +8,8 @@ const SEASON_ID = "sn_6199313";
 const BASE_URL_FALLBACK = "https://api.thestatsapi.com/api";
 const COMPETITIONS_ENDPOINT = "/football/competitions";
 const STANDINGS_ENDPOINT = `/football/competitions/${COMPETITION_ID}/seasons/${SEASON_ID}/standings`;
-const REQUESTS_PLANNED = 2;
+const PROBE_TARGET = process.env.THESTATSAPI_PROBE_TARGET || "competitions";
+const REQUESTS_PLANNED = 1;
 const LOCAL_ENV_ALLOWLIST = new Set(["THESTATSAPI_API_KEY", "THESTATSAPI_BASE_URL"]);
 
 const THESTATSAPI_PROBE_ENABLED = process.env.THESTATSAPI_PROBE_ENABLED === "true";
@@ -125,6 +126,21 @@ function countResponseItems(payload: unknown): number {
   return 0;
 }
 
+function countApiErrors(payload: unknown): number {
+  if (!payload || typeof payload !== "object" || Array.isArray(payload)) return 0;
+
+  const record = payload as Record<string, unknown>;
+  const candidates = [record.errors, record.error, record.messages];
+
+  for (const candidate of candidates) {
+    if (Array.isArray(candidate)) return candidate.length;
+    if (candidate && typeof candidate === "object") return Object.keys(candidate).length;
+    if (typeof candidate === "string" && candidate.trim()) return 1;
+  }
+
+  return 0;
+}
+
 function getFirstItemKeys(payload: unknown): string {
   if (!payload || typeof payload !== "object" || Array.isArray(payload)) return "none";
 
@@ -136,56 +152,6 @@ function getFirstItemKeys(payload: unknown): string {
   if (!firstItem || typeof firstItem !== "object" || Array.isArray(firstItem)) return "none";
 
   return Object.keys(firstItem).slice(0, 20).join(",");
-}
-
-function getArrayCandidate(payload: unknown): unknown[] | null {
-  if (Array.isArray(payload)) return payload;
-  if (!payload || typeof payload !== "object") return null;
-
-  const record = payload as Record<string, unknown>;
-  const candidates = [record.data, record.response, record.results, record.fixtures, record.standings];
-
-  for (const candidate of candidates) {
-    if (Array.isArray(candidate)) return candidate;
-  }
-
-  return null;
-}
-
-function getNestedArrayLength(payload: unknown, keys: string[]): number {
-  if (!payload || typeof payload !== "object" || Array.isArray(payload)) return 0;
-
-  let current: unknown = payload;
-
-  for (const key of keys) {
-    if (!current || typeof current !== "object" || Array.isArray(current)) return 0;
-    current = (current as Record<string, unknown>)[key];
-  }
-
-  return Array.isArray(current) ? current.length : 0;
-}
-
-function countStandingsRows(payload: unknown): number {
-  const directRows = countResponseItems(payload);
-  if (directRows > 0) return directRows;
-
-  const nestedRows = getNestedArrayLength(payload, ["data", "standings"]);
-  if (nestedRows > 0) return nestedRows;
-
-  return getNestedArrayLength(payload, ["standings"]);
-}
-
-function countStandingsGroups(payload: unknown): number {
-  const arrayCandidate = getArrayCandidate(payload);
-  if (!arrayCandidate) return getNestedArrayLength(payload, ["data", "groups"]);
-
-  const groupLikeRows = arrayCandidate.filter((item) => {
-    if (!item || typeof item !== "object" || Array.isArray(item)) return false;
-    const record = item as Record<string, unknown>;
-    return Array.isArray(record.rows) || Array.isArray(record.standings) || Array.isArray(record.teams);
-  });
-
-  return groupLikeRows.length;
 }
 
 function joinUrl(baseUrl: string, endpoint: string): URL {
@@ -220,46 +186,35 @@ async function fetchReadOnlyJson(baseUrl: string, endpoint: string, apiKey: stri
 }
 
 async function runFutureProbe(): Promise<void> {
+  if (PROBE_TARGET !== "competitions") {
+    throw new Error("THESTATSAPI_PROBE_TARGET_UNSUPPORTED");
+  }
+
   const apiKey = getRequiredEnvPresenceOnly("THESTATSAPI_API_KEY");
   const baseUrl = readLocalEnvValue("THESTATSAPI_BASE_URL") || BASE_URL_FALLBACK;
-  // Future real-call shape:
-  // - max 2 requests
+  // D.17-H real-call shape:
+  // - max 1 request
   // - read-only
-  // - target 1: competitions light auth/base-url check
-  // - target 2: Serie A standings mapping check, only if target 1 succeeds
+  // - target: competitions light auth/base-url check
+  // - standings is intentionally not executed in this phase
   // - no DB writes
   // - no provider/import activation
   // - no token logging
   const competitionsResult = await fetchReadOnlyJson(baseUrl, COMPETITIONS_ENDPOINT, apiKey);
-  const competitionsOk = competitionsResult.response.ok;
-
-  let requestsExecuted = 1;
-  let standingsResult: { response: Response; payload: unknown } | null = null;
-  let stoppedAfter = "competitions_error";
-
-  if (competitionsOk) {
-    standingsResult = await fetchReadOnlyJson(baseUrl, STANDINGS_ENDPOINT, apiKey);
-    requestsExecuted = 2;
-    stoppedAfter = standingsResult.response.ok ? "completed" : "standings_error";
-  }
-
-  const standingsPayload = standingsResult?.payload ?? null;
-  const standingsRowsCount = standingsResult ? countStandingsRows(standingsPayload) : 0;
-  const mappingTheoreticalPossible = Boolean(standingsResult?.response.ok && standingsRowsCount > 0);
-  const missingFields = mappingTheoreticalPossible ? "none_after_summary_review" : "standings_rows_or_expected_fields_not_detected";
-  const usefulFields = mappingTheoreticalPossible
-    ? "competition,season,team,position,played,wins,draws,losses,goals_for,goals_against,points,provider_ids"
-    : "unknown_until_successful_standings_payload";
+  const requestsExecuted = 1;
+  const competitionsItemsCount = countResponseItems(competitionsResult.payload);
+  const mappingTheoreticalPossible = Boolean(competitionsResult.response.ok && competitionsItemsCount > 0);
+  const warnings = competitionsResult.response.ok ? 0 : 1;
 
   console.info("Regista Avanzato — TheStatsAPI Probe");
   console.info("mode=thestatsapi_probe");
   console.info(`provider=${PROVIDER}`);
-  console.info("plan=current");
+  console.info("plan=d17h_competitions_single_request");
   console.info(`competition_slug=${COMPETITION_SLUG}`);
-  console.info(`competition_id=${COMPETITION_ID}`);
-  console.info(`season_id=${SEASON_ID}`);
-  console.info(`competitions_endpoint=${COMPETITIONS_ENDPOINT}`);
-  console.info(`standings_endpoint=${STANDINGS_ENDPOINT}`);
+  console.info(`target=${PROBE_TARGET}`);
+  console.info("endpoint=football_competitions");
+  console.info(`path=${COMPETITIONS_ENDPOINT}`);
+  console.info(`url_shape=${joinUrl(baseUrl, COMPETITIONS_ENDPOINT).toString()}`);
   console.info("enabled=true");
   console.info("external_fetch=true");
   console.info("db_write=false");
@@ -267,26 +222,20 @@ async function runFutureProbe(): Promise<void> {
   console.info("token_printed=false");
   console.info(`requests_planned=${REQUESTS_PLANNED}`);
   console.info(`requests_executed=${requestsExecuted}`);
-  console.info(`competitions_http_status=${competitionsResult.response.status}`);
-  console.info(`competitions_top_level_keys=${sanitizeTopLevelKeys(competitionsResult.payload)}`);
-  console.info(`competitions_count=${countResponseItems(competitionsResult.payload)}`);
-  console.info(`competitions_item_keys=${getFirstItemKeys(competitionsResult.payload)}`);
-  console.info(`standings_executed=${standingsResult ? "true" : "false"}`);
-  console.info(`standings_http_status=${standingsResult?.response.status ?? "not_executed"}`);
-  console.info(`standings_top_level_keys=${standingsResult ? sanitizeTopLevelKeys(standingsPayload) : "not_executed"}`);
-  console.info(`standings_rows_count=${standingsRowsCount}`);
-  console.info(`standings_groups_count=${standingsResult ? countStandingsGroups(standingsPayload) : 0}`);
+  console.info(`http_status=${competitionsResult.response.status}`);
+  console.info(`api_errors_count=${countApiErrors(competitionsResult.payload)}`);
+  console.info(`response_top_level_keys=${sanitizeTopLevelKeys(competitionsResult.payload)}`);
+  console.info(`items_count=${competitionsItemsCount}`);
+  console.info(`sample_fields_only=${getFirstItemKeys(competitionsResult.payload)}`);
   console.info(`mapping_theoretical_possible=${mappingTheoreticalPossible}`);
-  console.info(`missing_fields=${missingFields}`);
-  console.info(`useful_fields=${usefulFields}`);
-  console.info(`recommended_next_mapping_step=${mappingTheoreticalPossible ? "build_dry_run_mapper_no_db_write" : "inspect_sanitized_shape_or_choose_lighter_endpoint"}`);
-  console.info(`stopped_after=${stoppedAfter}`);
+  console.info("standings_executed=false");
+  console.info(`recommended_next_mapping_step=${mappingTheoreticalPossible ? "d17i_single_standings_request_no_db_write" : "debug_endpoint_or_auth_without_retry"}`);
   console.info("output_sanitized=true");
   console.info("provider_activated=false");
   console.info("import_enabled=false");
-  console.info(`warnings=${mappingTheoreticalPossible ? 0 : 1}`);
+  console.info(`warnings=${warnings}`);
   console.info("production=false");
-  console.info("confirmation=max_two_read_only_requests,no_retry,no_loop,no_pagination,no_token_output,no_db_write,no_provider_activation,no_import_activation");
+  console.info("confirmation=max_one_read_only_request,no_retry,no_loop,no_pagination,no_token_output,no_db_write,no_provider_activation,no_import_activation");
 }
 
 async function main(): Promise<void> {

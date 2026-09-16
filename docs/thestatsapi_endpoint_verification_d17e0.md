@@ -144,3 +144,16 @@ Risultato:
 - correzione: `joinUrl()` con normalizzazione slash.
 
 Prossimo retry consigliato, solo con conferma: una singola richiesta su `GET /football/competitions`.
+
+## D.17-H — Esito retry endpoint leggero
+
+L'endpoint leggero è stato ritestato dopo fix URL:
+
+- path: `/football/competitions`;
+- URL shape: `https://api.thestatsapi.com/api/football/competitions`;
+- HTTP status: `403`;
+- `api_errors_count=3`;
+- `response_top_level_keys=error`;
+- `items_count=0`.
+
+Endpoint raggiunto ma non autorizzato nella configurazione attuale. Serve debug auth/account/endpoint senza retry automatico.

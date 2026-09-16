@@ -119,3 +119,21 @@ Correzione:
 - `possible_double_slash=false`.
 
 Nessuna nuova real-call è stata eseguita.
+
+## D.17-H — Retry competitions dopo fix URL
+
+Retry singolo completato:
+
+- endpoint: `GET /football/competitions`;
+- URL shape: `https://api.thestatsapi.com/api/football/competitions`;
+- richieste eseguite: `1`;
+- HTTP status: `403`;
+- top-level keys: `error`;
+- items count: `0`;
+- standings: non eseguito;
+- mapping teorico: `false`;
+- response completa: non salvata;
+- token stampato: `false`;
+- DB write: `false`.
+
+Decisione: non procedere a standings finché non viene chiarita la causa del `403`.

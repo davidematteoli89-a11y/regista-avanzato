@@ -1400,3 +1400,20 @@ Supabase staging invariato:
 - writer guards attivi.
 
 Prossimo eventuale retry resta read-only e senza DB write.
+
+## D.17-H — Supabase invariato dopo retry TheStatsAPI
+
+D.17-H ha eseguito una sola richiesta provider read-only, senza toccare Supabase.
+
+Conferme:
+
+- nessuna scrittura su `provider_import_runs`;
+- nessuna scrittura su `api_usage_logs`;
+- nessuna scrittura su `provider_import_logs`;
+- nessuna scrittura su `import_logs`;
+- nessun insert/update/delete/upsert;
+- `realWritesEnabled=false`;
+- writer guards attivi;
+- provider/import spenti.
+
+Risultato provider: HTTP `403`, quindi nessun mapping/import da portare su staging.
