@@ -6,7 +6,9 @@ const COMPETITION_SLUG = "serie-a";
 const COMPETITION_ID = "comp_5840";
 const SEASON_ID = "sn_6199313";
 const BASE_URL_FALLBACK = "https://api.thestatsapi.com/api";
+const BASE_URL_V1_FALLBACK = "https://stats-api.com/api/v1";
 const COMPETITIONS_ENDPOINT = "/football/competitions";
+const COMPETITIONS_V1_ENDPOINT = "/football/competitions?limit=10";
 const STANDINGS_ENDPOINT = `/football/competitions/${COMPETITION_ID}/seasons/${SEASON_ID}/standings`;
 const PROBE_TARGET = process.env.THESTATSAPI_PROBE_TARGET || "competitions";
 const REQUESTS_PLANNED = 1;
@@ -31,6 +33,10 @@ function printDisabledProbe(blockedReason = "THESTATSAPI_PROBE_DISABLED"): void 
   console.info(`base_url_shape=${BASE_URL_FALLBACK}`);
   console.info(`competitions_path=${COMPETITIONS_ENDPOINT}`);
   console.info(`competitions_url_shape=${joinUrl(BASE_URL_FALLBACK, COMPETITIONS_ENDPOINT).toString()}`);
+  console.info("competitions_v1_target=competitions_v1");
+  console.info(`competitions_v1_base_url_shape=${BASE_URL_V1_FALLBACK}`);
+  console.info(`competitions_v1_path=${COMPETITIONS_V1_ENDPOINT}`);
+  console.info(`competitions_v1_url_shape=${joinUrl(BASE_URL_V1_FALLBACK, COMPETITIONS_V1_ENDPOINT).toString()}`);
   console.info(`standings_path=${STANDINGS_ENDPOINT}`);
   console.info(`standings_url_shape=${joinUrl(BASE_URL_FALLBACK, STANDINGS_ENDPOINT).toString()}`);
   console.info("possible_double_api=false");
@@ -186,21 +192,23 @@ async function fetchReadOnlyJson(baseUrl: string, endpoint: string, apiKey: stri
 }
 
 async function runFutureProbe(): Promise<void> {
-  if (PROBE_TARGET !== "competitions") {
+  if (PROBE_TARGET !== "competitions" && PROBE_TARGET !== "competitions_v1") {
     throw new Error("THESTATSAPI_PROBE_TARGET_UNSUPPORTED");
   }
 
   const apiKey = getRequiredEnvPresenceOnly("THESTATSAPI_API_KEY");
-  const baseUrl = readLocalEnvValue("THESTATSAPI_BASE_URL") || BASE_URL_FALLBACK;
+  const fallbackBaseUrl = PROBE_TARGET === "competitions_v1" ? BASE_URL_V1_FALLBACK : BASE_URL_FALLBACK;
+  const competitionsEndpoint = PROBE_TARGET === "competitions_v1" ? COMPETITIONS_V1_ENDPOINT : COMPETITIONS_ENDPOINT;
+  const baseUrl = readLocalEnvValue("THESTATSAPI_BASE_URL") || fallbackBaseUrl;
   // D.17-H real-call shape:
   // - max 1 request
   // - read-only
-  // - target: competitions light auth/base-url check
+  // - target: competitions or competitions_v1 light auth/base-url check
   // - standings is intentionally not executed in this phase
   // - no DB writes
   // - no provider/import activation
   // - no token logging
-  const competitionsResult = await fetchReadOnlyJson(baseUrl, COMPETITIONS_ENDPOINT, apiKey);
+  const competitionsResult = await fetchReadOnlyJson(baseUrl, competitionsEndpoint, apiKey);
   const requestsExecuted = 1;
   const competitionsItemsCount = countResponseItems(competitionsResult.payload);
   const mappingTheoreticalPossible = Boolean(competitionsResult.response.ok && competitionsItemsCount > 0);
@@ -209,12 +217,12 @@ async function runFutureProbe(): Promise<void> {
   console.info("Regista Avanzato — TheStatsAPI Probe");
   console.info("mode=thestatsapi_probe");
   console.info(`provider=${PROVIDER}`);
-  console.info("plan=d17h_competitions_single_request");
+  console.info(`plan=${PROBE_TARGET === "competitions_v1" ? "d17l_competitions_v1_single_request" : "d17h_competitions_single_request"}`);
   console.info(`competition_slug=${COMPETITION_SLUG}`);
   console.info(`target=${PROBE_TARGET}`);
-  console.info("endpoint=football_competitions");
-  console.info(`path=${COMPETITIONS_ENDPOINT}`);
-  console.info(`url_shape=${joinUrl(baseUrl, COMPETITIONS_ENDPOINT).toString()}`);
+  console.info(`endpoint=${PROBE_TARGET === "competitions_v1" ? "football_competitions_v1" : "football_competitions"}`);
+  console.info(`path=${competitionsEndpoint}`);
+  console.info(`url_shape=${joinUrl(baseUrl, competitionsEndpoint).toString()}`);
   console.info("enabled=true");
   console.info("external_fetch=true");
   console.info("db_write=false");

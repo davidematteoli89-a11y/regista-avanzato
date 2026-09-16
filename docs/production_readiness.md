@@ -1110,3 +1110,14 @@ Production resta bloccata perché:
 - account/piano/key non verificati;
 - nessun import reale consentito;
 - nessun writer reale consentito.
+
+## D.17-L — Production invariata
+
+D.17-L aggiunge solo supporto disabled a una URL shape alternativa.
+
+Production resta bloccata:
+
+- nessuna real-call riuscita;
+- nessun import;
+- nessun DB write;
+- nessun deploy.

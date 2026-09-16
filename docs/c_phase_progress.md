@@ -1973,3 +1973,21 @@ Risultato:
 - Production non toccata.
 
 Prossimo step consigliato: preparare supporto base URL `stats-api.com/api/v1` in modalità disabled, senza real-call.
+
+## D.17-L — Supporto disabled Stats API v1
+
+Stato: completato localmente.
+
+Risultato:
+
+- target `competitions_v1` aggiunto allo script gated;
+- base URL alternativa: `https://stats-api.com/api/v1`;
+- URL shape: `https://stats-api.com/api/v1/football/competitions?limit=10`;
+- probe default ancora disabled;
+- `external_fetch=false`;
+- `token_read=false`;
+- `requests_executed=0`;
+- provider/import spenti;
+- Production non toccata.
+
+Prossimo step: eventuale D.17-M retry singolo solo con conferma esplicita.

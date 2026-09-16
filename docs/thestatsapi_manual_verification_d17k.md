@@ -116,3 +116,13 @@ Motivo:
 - Apify spento.
 - API-Football sospeso/no retry.
 - Production non toccata.
+
+## D.17-L — Preparazione base URL alternativa
+
+D.17-L ha preparato lo script a rappresentare la base URL alternativa documentata:
+
+- `https://stats-api.com/api/v1`;
+- target: `competitions_v1`;
+- URL shape: `https://stats-api.com/api/v1/football/competitions?limit=10`.
+
+Nessuna API call è stata eseguita.

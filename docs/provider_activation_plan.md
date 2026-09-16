@@ -1057,3 +1057,14 @@ Decisione consigliata:
 - preparare supporto alla base URL documentata `https://stats-api.com/api/v1`;
 - mantenere lo script gated/disabled;
 - non fare request finché account/key/base URL non sono confermati.
+
+## D.17-L — Nessuna attivazione, solo supporto URL v1
+
+Lo script gated ora può rappresentare la URL alternativa Stats API v1 in output disabled.
+
+Non cambia lo stato provider:
+
+- TheStatsAPI non attivato;
+- import non attivati;
+- nessun writer;
+- nessuna chiamata provider.

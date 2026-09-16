@@ -1445,3 +1445,14 @@ D.17-K non richiede azioni Supabase:
 - writer guards invariati.
 
 Supabase staging resta invariato finché non esiste una probe provider riuscita e autorizzata.
+
+## D.17-L — Nessun impatto Supabase
+
+D.17-L modifica solo lo script gated e la documentazione.
+
+Supabase invariato:
+
+- nessuna scrittura DB;
+- nessun import log;
+- nessun provider import run;
+- writer guards invariati.

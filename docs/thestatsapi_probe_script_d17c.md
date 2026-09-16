@@ -209,3 +209,18 @@ La verifica documentale pubblica indica che lo script potrebbe dover supportare 
 
 Nessuna modifica codice è stata applicata in D.17-K.
 Qualunque aggiornamento deve avvenire in uno step separato, con probe default disabled e senza real-call.
+
+## D.17-L — Target disabled `competitions_v1`
+
+Lo script ora espone in modalità disabled anche la shape alternativa:
+
+- `competitions_v1_target=competitions_v1`;
+- `competitions_v1_base_url_shape=https://stats-api.com/api/v1`;
+- `competitions_v1_path=/football/competitions?limit=10`;
+- `competitions_v1_url_shape=https://stats-api.com/api/v1/football/competitions?limit=10`.
+
+La probe resta disabled di default:
+
+- `external_fetch=false`;
+- `token_read=false`;
+- `requests_executed=0`.

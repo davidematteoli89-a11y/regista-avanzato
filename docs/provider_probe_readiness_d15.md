@@ -551,3 +551,11 @@ Gate ancora chiuso:
 - nessuna scrittura DB;
 - provider/import off;
 - Production off.
+
+## D.17-L — Base URL alternativa pronta ma disabilitata
+
+Supporto disabled aggiunto per:
+
+- `https://stats-api.com/api/v1/football/competitions?limit=10`.
+
+La readiness resta bloccata perché non è stata eseguita alcuna nuova API call e account/piano/key restano non confermati.
