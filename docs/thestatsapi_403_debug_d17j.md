@@ -132,3 +132,20 @@ D.17-K — verifica manuale dashboard/documentazione TheStatsAPI senza API call:
 - decidere se correggere auth/header o fermare TheStatsAPI.
 
 Qualunque nuova real-call richiede conferma esplicita e deve restare massimo una richiesta.
+
+## D.17-K — Verifica documentale pubblica
+
+D.17-K ha consultato solo documentazione pubblica, senza API call.
+
+Risultato:
+
+- Bearer auth confermata da documentazione pubblica;
+- `Accept: application/json` confermato;
+- path logico competitions confermato;
+- path logico standings confermato;
+- dashboard/account/piano/key non verificati;
+- discrepanza base URL rilevata:
+  - sito TheStatsAPI: `https://api.thestatsapi.com/api`;
+  - docs Stats API v1: `https://stats-api.com/api/v1`.
+
+Decisione consigliata: preparare correzione base URL/endpoint in uno step separato senza API call, poi valutare un eventuale retry singolo solo dopo conferma esplicita.

@@ -1047,3 +1047,13 @@ Non sono stati attivati:
 - API-Football.
 
 Prima di qualsiasi retry serve conferma manuale di piano/key/auth/endpoint TheStatsAPI.
+
+## D.17-K — Piano provider aggiornato
+
+D.17-K non attiva provider e non autorizza retry.
+
+Decisione consigliata:
+
+- preparare supporto alla base URL documentata `https://stats-api.com/api/v1`;
+- mantenere lo script gated/disabled;
+- non fare request finché account/key/base URL non sono confermati.

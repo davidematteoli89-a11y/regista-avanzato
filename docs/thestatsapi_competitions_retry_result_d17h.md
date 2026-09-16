@@ -123,3 +123,12 @@ Risultato:
 - nessun `service_role`.
 
 Decisione: non fare ulteriori retry finché dashboard/documentazione TheStatsAPI non confermano account, piano, API inclusa, auth/header ed endpoint.
+
+## D.17-K — Nota post-verifica manuale
+
+La verifica documentale pubblica suggerisce che il path `/football/competitions` e Bearer auth siano corretti, ma ha rilevato una possibile discrepanza di base URL:
+
+- `https://api.thestatsapi.com/api`;
+- `https://stats-api.com/api/v1`.
+
+Non è stato eseguito alcun retry. La prossima azione consigliata è preparare un aggiornamento gated della base URL, senza chiamata provider.

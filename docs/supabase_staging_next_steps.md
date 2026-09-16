@@ -1433,3 +1433,15 @@ Conferme:
 - writer guards attivi.
 
 Nessun prossimo step Supabase finché TheStatsAPI non è chiarito.
+
+## D.17-K — Nessun impatto Supabase
+
+D.17-K non richiede azioni Supabase:
+
+- nessuna API call;
+- nessun import;
+- nessun provider log;
+- nessuna scrittura DB;
+- writer guards invariati.
+
+Supabase staging resta invariato finché non esiste una probe provider riuscita e autorizzata.

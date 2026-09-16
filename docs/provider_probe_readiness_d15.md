@@ -445,6 +445,21 @@ Gate richiesti per una futura real-call:
 - provider/import off;
 - Production off.
 
+## D.17-K — Readiness provider
+
+La verifica manuale/documentale non abilita ancora retry.
+
+Stato:
+
+- auth Bearer documentata pubblicamente;
+- path competitions documentato pubblicamente;
+- base URL da chiarire;
+- account/piano/key non verificati;
+- nessuna API call;
+- provider/import spenti.
+
+Readiness resta bloccata fino a scelta base URL e conferma dashboard/account.
+
 ## D.17-H — Readiness dopo retry TheStatsAPI
 
 La real probe singola TheStatsAPI ha confermato che:

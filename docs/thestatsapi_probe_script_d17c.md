@@ -199,3 +199,13 @@ Confermato:
 - nessun `service_role`;
 - nessun DB writer;
 - output sanificato.
+
+## D.17-K — Implicazione per lo script
+
+La verifica documentale pubblica indica che lo script potrebbe dover supportare anche:
+
+- `THESTATSAPI_BASE_URL=https://stats-api.com/api/v1`;
+- endpoint competitions con query opzionale `limit=10`.
+
+Nessuna modifica codice è stata applicata in D.17-K.
+Qualunque aggiornamento deve avvenire in uno step separato, con probe default disabled e senza real-call.

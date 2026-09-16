@@ -1098,3 +1098,15 @@ D.17-J non modifica readiness Production:
 - nessuna Production.
 
 Production resta bloccata finché il provider non è verificato in staging/read-only.
+
+## D.17-K — Production ancora bloccata
+
+D.17-K è sola verifica documentale.
+
+Production resta bloccata perché:
+
+- TheStatsAPI non ha ancora una probe riuscita;
+- base URL da chiarire;
+- account/piano/key non verificati;
+- nessun import reale consentito;
+- nessun writer reale consentito.

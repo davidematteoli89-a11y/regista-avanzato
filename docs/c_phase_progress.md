@@ -1954,3 +1954,22 @@ Risultato:
 - Production non toccata.
 
 Prossimo step consigliato: verifica manuale dashboard/documentazione TheStatsAPI prima di qualsiasi retry.
+
+## D.17-K — Verifica manuale/documentale TheStatsAPI
+
+Stato: completata localmente senza API call.
+
+Risultato:
+
+- nessuna real-call;
+- nessuna fetch provider endpoint;
+- nessun token letto/stampato;
+- auth Bearer confermata da docs pubbliche;
+- path competitions confermato da docs pubbliche;
+- path standings confermato da docs pubbliche;
+- base URL da chiarire: `api.thestatsapi.com/api` vs `stats-api.com/api/v1`;
+- dashboard/account/piano/key non verificati;
+- provider/import spenti;
+- Production non toccata.
+
+Prossimo step consigliato: preparare supporto base URL `stats-api.com/api/v1` in modalità disabled, senza real-call.
