@@ -1417,3 +1417,19 @@ Conferme:
 - provider/import spenti.
 
 Risultato provider: HTTP `403`, quindi nessun mapping/import da portare su staging.
+
+## D.17-J — Supabase invariato
+
+D.17-J non ha eseguito chiamate provider e non ha scritto dati.
+
+Conferme:
+
+- nessuna scrittura DB;
+- nessun `provider_import_runs` write;
+- nessun `api_usage_logs` write;
+- nessun `provider_import_logs` write;
+- nessun `import_logs` write;
+- provider/import spenti;
+- writer guards attivi.
+
+Nessun prossimo step Supabase finché TheStatsAPI non è chiarito.

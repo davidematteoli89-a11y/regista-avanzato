@@ -1033,3 +1033,17 @@ Risultato della singola richiesta reale controllata:
 - provider/import non attivati.
 
 Il piano di attivazione resta bloccato: non procedere con standings/import finché il `403` non è chiarito.
+
+## D.17-J — Nessuna attivazione provider
+
+D.17-J è solo debug del `403`.
+
+Non sono stati attivati:
+
+- provider reali;
+- import;
+- writer;
+- Apify;
+- API-Football.
+
+Prima di qualsiasi retry serve conferma manuale di piano/key/auth/endpoint TheStatsAPI.

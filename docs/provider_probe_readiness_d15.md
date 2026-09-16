@@ -461,6 +461,19 @@ La real probe singola TheStatsAPI ha confermato che:
 
 Readiness per standings non ancora raggiunta: serve chiarire autorizzazione/endpoint prima di D.17-I.
 
+## D.17-J — Readiness resta bloccata
+
+Nessuna nuova real-call.
+
+Il gate resta chiuso perché:
+
+- TheStatsAPI risponde `403`;
+- account/piano/API/key/auth/endpoint non sono ancora confermati;
+- standings non deve essere chiamato;
+- provider/import restano spenti.
+
+Prossimo step: verifica manuale dashboard/documentazione TheStatsAPI.
+
 ## D.17-G — Debug 404 TheStatsAPI
 
 Documento:

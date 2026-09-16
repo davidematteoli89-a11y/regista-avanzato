@@ -157,3 +157,15 @@ L'endpoint leggero è stato ritestato dopo fix URL:
 - `items_count=0`.
 
 Endpoint raggiunto ma non autorizzato nella configurazione attuale. Serve debug auth/account/endpoint senza retry automatico.
+
+## D.17-J — Endpoint non ancora confermato lato provider
+
+Audit statico conferma:
+
+- base URL: `https://api.thestatsapi.com/api`;
+- path candidato: `/football/competitions`;
+- URL shape: `https://api.thestatsapi.com/api/football/competitions`;
+- metodo: `GET`;
+- auth candidate: `Authorization: Bearer <token>`.
+
+Non è ancora confermato da dashboard/docs se questo path e questo header siano corretti per il piano/account corrente.

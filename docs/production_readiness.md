@@ -1086,3 +1086,15 @@ D.17-H ha eseguito una sola probe read-only TheStatsAPI su `/football/competitio
 - Production non toccata.
 
 Production resta non pronta. Serve debug provider/auth/endpoint e una nuova autorizzazione esplicita prima di qualsiasi ulteriore real-call.
+
+## D.17-J — Production ancora esclusa
+
+D.17-J non modifica readiness Production:
+
+- nessuna real-call;
+- nessuna fetch provider;
+- nessuna scrittura DB;
+- nessun deploy;
+- nessuna Production.
+
+Production resta bloccata finché il provider non è verificato in staging/read-only.

@@ -181,3 +181,21 @@ Risultato real-call D.17-H:
 - `token_read=true`;
 - `token_printed=false`;
 - `db_write=false`.
+
+## D.17-J — Audit statico script
+
+Audit statico completato senza fetch.
+
+Confermato:
+
+- doppio gate richiesto;
+- token letto solo dopo gate;
+- token non stampato;
+- `requests_planned=1`;
+- target `competitions`;
+- standings non eseguito in questa fase;
+- nessun retry/loop/paginazione;
+- nessun Supabase client;
+- nessun `service_role`;
+- nessun DB writer;
+- output sanificato.

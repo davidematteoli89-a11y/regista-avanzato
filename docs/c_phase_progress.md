@@ -1933,3 +1933,24 @@ Risultato:
 - Production non toccata.
 
 Prossimo step consigliato: debug auth/account/endpoint TheStatsAPI senza retry automatico.
+
+## D.17-J — Debug 403 TheStatsAPI senza retry
+
+Stato: completato localmente.
+
+Risultato:
+
+- nessuna nuova real-call;
+- nessuna fetch provider;
+- nessun token letto/stampato;
+- nessuna scrittura DB;
+- audit statico script completato;
+- auth candidate documentata;
+- endpoint/path candidati documentati;
+- possibili cause `403` documentate;
+- provider/import spenti;
+- Apify spento;
+- API-Football sospeso/no retry;
+- Production non toccata.
+
+Prossimo step consigliato: verifica manuale dashboard/documentazione TheStatsAPI prima di qualsiasi retry.

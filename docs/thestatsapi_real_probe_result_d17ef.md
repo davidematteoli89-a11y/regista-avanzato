@@ -137,3 +137,21 @@ Retry singolo completato:
 - DB write: `false`.
 
 Decisione: non procedere a standings finché non viene chiarita la causa del `403`.
+
+## D.17-J — Interpretazione 403
+
+Il `403` viene trattato come blocco auth/account/endpoint, non come problema di mapping.
+
+D.17-J non ha eseguito retry e non ha chiamato standings.
+
+Possibili cause ancora aperte:
+
+- piano/account non attivo;
+- API Football non inclusa;
+- key non valida/non abilitata;
+- auth/header non corretto;
+- endpoint non incluso;
+- restrizioni IP/domain;
+- quota/rate limit.
+
+Serve verifica manuale provider prima di qualsiasi nuova real-call.

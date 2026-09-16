@@ -117,3 +117,17 @@ Il retry singolo D.17-H è stato eseguito sulla URL shape corretta:
 - `db_write=false`.
 
 Conclusione: il problema di composizione URL è risolto; il blocco residuo è autorizzativo/provider-side (`403`) e va analizzato senza retry automatico.
+
+## D.17-J — Debug 403 senza nuova fetch
+
+D.17-J conferma che il `403` non è più spiegabile dalla perdita di `/api`.
+
+Stato:
+
+- URL shape corretta;
+- nessuna nuova real-call;
+- nessuna fetch provider;
+- nessun token letto/stampato;
+- nessuna scrittura DB.
+
+Il prossimo passo non è tecnico di import, ma verifica dashboard/documentazione provider.

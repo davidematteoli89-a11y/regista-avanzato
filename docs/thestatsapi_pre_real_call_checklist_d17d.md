@@ -238,3 +238,18 @@ Checklist applicata per retry singolo:
 - Production non toccata.
 
 Risultato: HTTP `403`. Prossimo step: debug autorizzazione/endpoint prima di qualsiasi nuova real-call.
+
+## D.17-J — Checklist bloccante aggiornata
+
+Prima di qualunque nuovo retry TheStatsAPI serve confermare manualmente:
+
+- account attivo;
+- piano attivo;
+- API Football inclusa;
+- key attiva e associata al prodotto giusto;
+- header auth corretto;
+- endpoint competitions corretto;
+- eventuali restrizioni IP/domain;
+- quota non esaurita.
+
+Finché questi punti restano non chiari, non eseguire ulteriori real-call.

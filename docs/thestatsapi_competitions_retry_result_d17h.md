@@ -105,3 +105,21 @@ D.17-H è completata con stop sicuro:
 Poiché il risultato è `403`, non procedere a D.17-I standings.
 
 Prossimo step consigliato: debug auth/endpoint/account TheStatsAPI senza retry automatico e senza ulteriori real-call finché non viene chiarita la causa del `403`.
+
+## D.17-J — Debug 403 senza retry
+
+D.17-J ha analizzato il `403` senza nuove chiamate provider.
+
+Risultato:
+
+- URL composition confermata corretta;
+- auth candidate nello script: `Authorization: Bearer <token>`;
+- `Accept: application/json`;
+- token letto solo dopo doppio gate;
+- token non stampato;
+- `requests_planned=1`;
+- nessun retry/loop/paginazione;
+- nessun DB writer;
+- nessun `service_role`.
+
+Decisione: non fare ulteriori retry finché dashboard/documentazione TheStatsAPI non confermano account, piano, API inclusa, auth/header ed endpoint.
