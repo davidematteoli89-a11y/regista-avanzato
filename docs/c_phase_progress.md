@@ -2101,3 +2101,31 @@ Conferme:
 - nessun Apify;
 - nessun `service_role`;
 - Production non toccata.
+
+## Punto 21 — Staging Manual Import Readiness
+
+Stato: completato localmente.
+
+Aggiunto:
+
+- `docs/manual_import_schema_target_review_p21.md`;
+- `scripts/provider/manualImportReadinessDryRun.ts`;
+- `docs/manual_import_collision_strategy_p21.md`;
+- `docs/manual_import_batch_rollback_preview_p21.md`;
+- `docs/provider_point_21_closure.md`;
+- sezione admin read-only “Staging manual import readiness”.
+
+Comando:
+
+- `npm run dry-run:manual-import-readiness`.
+
+Conferme:
+
+- batch plan simulato;
+- batch executable=false;
+- nessun SQL eseguibile;
+- nessuna scrittura DB;
+- nessun provider reale;
+- nessun Apify;
+- nessun deploy;
+- Production non toccata.

@@ -237,6 +237,42 @@ export default async function AdminImportsPage() {
       <section className="admin-section-card">
         <div className="admin-card-head">
           <div>
+            <h2>Staging manual import readiness</h2>
+            <p className="muted">
+              Readiness simulata per un futuro import manuale staging. Il batch plan è solo
+              preview e non è eseguibile da questa schermata.
+            </p>
+          </div>
+          <div className="admin-badge-row">
+            <span className="admin-safety-badge">Preview only</span>
+            <span className="admin-safety-badge">Batch executable=false</span>
+            <span className="admin-safety-badge">Provider calls disabled</span>
+            <span className="admin-safety-badge">DB writes disabled</span>
+          </div>
+        </div>
+        <dl className="admin-metadata">
+          <dt>Comando locale</dt>
+          <dd>
+            <code>npm run dry-run:manual-import-readiness</code>
+          </dd>
+          <dt>Batch plan</dt>
+          <dd>preview only</dd>
+          <dt>Requires approval</dt>
+          <dd>true</dd>
+          <dt>Requires staging</dt>
+          <dd>true</dd>
+          <dt>Requires backup/rollback</dt>
+          <dd>true</dd>
+          <dt>Collision strategy</dt>
+          <dd>create/update/skip preview</dd>
+          <dt>Next step</dt>
+          <dd>not executable yet; Punto 22 richiederebbe autorizzazione esplicita</dd>
+        </dl>
+      </section>
+
+      <section className="admin-section-card">
+        <div className="admin-card-head">
+          <div>
             <h2>Provider import runs</h2>
             <p className="muted">
               Lettura server-side read-only da <code>provider_import_runs</code>, rispettando RLS.

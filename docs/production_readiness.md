@@ -1178,3 +1178,18 @@ Production resta esclusa perché:
 - provider reali sospesi.
 
 Ogni eventuale import manuale dovrà nascere come step staging separato.
+
+## Punto 21 — Production ancora esclusa
+
+Punto 21 è readiness staging, non Production.
+
+Production resta esclusa:
+
+- batch plan simulato;
+- batch executable=false;
+- SQL eseguibile non generato;
+- nessuna scrittura DB;
+- nessun deploy;
+- provider reali sospesi.
+
+Punto 22, se autorizzato, dovrà comunque restare staging prima di qualunque discussione Production.

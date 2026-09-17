@@ -1518,3 +1518,19 @@ Conferme:
 - nessun `db push/reset`.
 
 Prima di qualsiasi step che tocchi Supabase servirà conferma esplicita e checklist preflight completa.
+
+## Punto 21 — Readiness staging senza toccare Supabase
+
+Punto 21 rivede lo schema locale e prepara batch/collision/rollback preview, ma non usa Supabase live.
+
+Conferme:
+
+- nessuna query DB;
+- nessun insert/update/delete/upsert;
+- nessun `service_role`;
+- nessun client Supabase admin;
+- nessuna migrazione;
+- nessun `db push/reset`;
+- nessun log import scritto.
+
+Prima di qualsiasi write staging servirà un Punto 22 separato con autorizzazione esplicita.

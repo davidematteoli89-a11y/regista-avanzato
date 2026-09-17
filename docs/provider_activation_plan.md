@@ -1155,3 +1155,22 @@ Stato operativo:
 - nessun SQL eseguibile generato;
 - provider reali sospesi;
 - Production non toccata.
+
+## Punto 21 — Readiness manual import non eseguibile
+
+Punto 21 aggiunge readiness finale per un futuro import manuale staging:
+
+- schema target review locale;
+- batch id preview;
+- collision strategy create/update/skip;
+- rollback preview;
+- comando `npm run dry-run:manual-import-readiness`;
+- sezione admin read-only.
+
+Non cambia lo stato:
+
+- import reale non disponibile;
+- DB write disabled;
+- SQL eseguibile non generato;
+- provider reali sospesi;
+- Production non toccata.

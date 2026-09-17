@@ -14,6 +14,7 @@
     "dry-run:provider-writer-guards": "node --no-warnings --experimental-strip-types scripts/provider/dryRunProviderWriterGuards.ts",
     "dry-run:manual-fixtures": "node --no-warnings --experimental-strip-types scripts/provider/manualFixtureDryRun.ts",
     "dry-run:manual-import-plan": "node --no-warnings --experimental-strip-types scripts/provider/manualImportPlanDryRun.ts",
+    "dry-run:manual-import-readiness": "node --no-warnings --experimental-strip-types scripts/provider/manualImportReadinessDryRun.ts",
     "probe:stable-provider:disabled": "node --no-warnings --experimental-strip-types scripts/provider/disabledStableProviderProbe.ts",
     "probe:api-football:gated": "node --no-warnings --experimental-strip-types scripts/provider/apiFootballProbe.ts",
     "probe:thestatsapi:gated": "node --no-warnings --experimental-strip-types scripts/provider/theStatsApiProbe.ts"

@@ -317,6 +317,34 @@ requires_staging_environment=true
 requires_backup_plan=true
 requires_rollback_plan=true
 ```
+
+## Punto 21 — Manual import readiness dry-run
+
+Nuovo comando:
+
+```bash
+npm run dry-run:manual-import-readiness
+```
+
+Il comando produce una readiness più vicina al DB, ma ancora senza query e senza scrittura.
+
+Output chiave atteso:
+
+```text
+mode=manual_import_readiness_dry_run
+external_fetch=false
+db_write=false
+token_read=false
+token_printed=false
+batch_executable=false
+blocked_real_execution=true
+collision_strategy=create_update_skip_preview
+rollback_preview_available=true
+sql_generated=false
+pseudo_sql_not_executable=true
+```
+
+È vietato usarlo come import reale: non contiene SQL eseguibile e non apre client DB.
 - nessuna deduplica DB effettiva;
 - nessun log persistito.
 
