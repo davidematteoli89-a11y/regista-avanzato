@@ -559,3 +559,16 @@ Supporto disabled aggiunto per:
 - `https://stats-api.com/api/v1/football/competitions?limit=10`.
 
 La readiness resta bloccata perché non è stata eseguita alcuna nuova API call e account/piano/key restano non confermati.
+
+## D.17-M/N/Z — Readiness finale Punto 17
+
+Readiness provider reale non raggiunta.
+
+Motivi:
+
+- HTTP `403` persistente;
+- account/piano/key non chiariti;
+- nessuna prova provider utile per mapping;
+- nessun import autorizzato.
+
+Provider/import restano spenti.

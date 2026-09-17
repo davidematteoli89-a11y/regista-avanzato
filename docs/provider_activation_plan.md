@@ -1068,3 +1068,17 @@ Non cambia lo stato provider:
 - import non attivati;
 - nessun writer;
 - nessuna chiamata provider.
+
+## D.17-M/N/Z — Piano attivazione bloccato
+
+Punto 17 chiuso senza provider attivabile.
+
+Non procedere con:
+
+- mapping reale;
+- standings;
+- import;
+- writer;
+- cron/provider run.
+
+Prossimo passo: chiarire account/key/piano o scegliere provider alternativo.

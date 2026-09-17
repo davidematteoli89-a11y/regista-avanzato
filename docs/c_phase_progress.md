@@ -1991,3 +1991,26 @@ Risultato:
 - Production non toccata.
 
 Prossimo step: eventuale D.17-M retry singolo solo con conferma esplicita.
+
+## D.17-M/N/Z — Chiusura completa Punto 17
+
+Stato: completato.
+
+Risultato finale:
+
+- target finale: `competitions_v1`;
+- richieste reali finali: `1`;
+- HTTP status: `403`;
+- top-level keys: `error`;
+- items count: `0`;
+- mapping teorico: `false`;
+- standings non eseguito;
+- nessun retry;
+- nessuna seconda richiesta;
+- nessuna scrittura DB;
+- provider/import spenti;
+- Apify spento;
+- API-Football sospeso/no retry;
+- Production non toccata.
+
+Decisione finale: TheStatsAPI/Stats API sospeso finché account/key/piano/base URL non vengono chiariti.

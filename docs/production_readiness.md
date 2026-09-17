@@ -1121,3 +1121,13 @@ Production resta bloccata:
 - nessun import;
 - nessun DB write;
 - nessun deploy.
+
+## D.17-M/N/Z — Production ancora non pronta
+
+Il Punto 17 non abilita Production:
+
+- nessun provider reale verificato;
+- nessun import reale;
+- nessuna pipeline dati;
+- nessuna garanzia costi/provider;
+- Production non toccata.

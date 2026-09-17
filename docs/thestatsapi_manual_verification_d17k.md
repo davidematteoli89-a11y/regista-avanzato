@@ -126,3 +126,13 @@ D.17-L ha preparato lo script a rappresentare la base URL alternativa documentat
 - URL shape: `https://stats-api.com/api/v1/football/competitions?limit=10`.
 
 Nessuna API call è stata eseguita.
+
+## D.17-M/N/Z — Chiusura Punto 17
+
+La verifica finale ha confermato che non è prudente procedere con TheStatsAPI/Stats API:
+
+- TheStatsAPI legacy continua a restituire `403`;
+- target `competitions_v1` ha rivelato un override locale del base URL;
+- script corretto per evitare override futuro;
+- nessuna prova riuscita con dati utili;
+- provider sospeso.

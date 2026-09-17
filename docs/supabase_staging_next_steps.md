@@ -1456,3 +1456,14 @@ Supabase invariato:
 - nessun import log;
 - nessun provider import run;
 - writer guards invariati.
+
+## D.17-M/N/Z — Nessun prossimo step Supabase
+
+Punto 17 non produce dati da importare.
+
+Supabase resta invariato:
+
+- nessuna scrittura DB;
+- nessun provider log;
+- nessun import run;
+- nessun writer reale.

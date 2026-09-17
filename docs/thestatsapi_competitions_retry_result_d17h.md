@@ -132,3 +132,14 @@ La verifica documentale pubblica suggerisce che il path `/football/competitions`
 - `https://stats-api.com/api/v1`.
 
 Non è stato eseguito alcun retry. La prossima azione consigliata è preparare un aggiornamento gated della base URL, senza chiamata provider.
+
+## D.17-M/N/Z — Esito finale
+
+La chiusura Punto 17 conferma:
+
+- `requests_executed=1` nel tentativo finale;
+- HTTP `403`;
+- nessuna standings call;
+- nessun retry;
+- nessun DB write;
+- provider sospeso.

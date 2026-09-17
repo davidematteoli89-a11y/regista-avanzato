@@ -149,3 +149,16 @@ Risultato:
   - docs Stats API v1: `https://stats-api.com/api/v1`.
 
 Decisione consigliata: preparare correzione base URL/endpoint in uno step separato senza API call, poi valutare un eventuale retry singolo solo dopo conferma esplicita.
+
+## D.17-M/N/Z — Conferma sospensione provider
+
+Il tentativo finale del Punto 17 ha eseguito una sola richiesta e ha restituito `403`.
+
+Non sono stati eseguiti:
+
+- retry;
+- standings;
+- seconda richiesta;
+- DB write.
+
+Decisione finale: TheStatsAPI/Stats API resta sospeso.

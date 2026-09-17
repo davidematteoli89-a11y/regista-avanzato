@@ -224,3 +224,13 @@ La probe resta disabled di default:
 - `external_fetch=false`;
 - `token_read=false`;
 - `requests_executed=0`.
+
+## D.17-M/N/Z — Correzione post-call
+
+Il tentativo finale ha mostrato che `THESTATSAPI_BASE_URL` poteva sovrascrivere il fallback v1.
+
+Correzione:
+
+- `competitions_v1` usa sempre `BASE_URL_V1_FALLBACK`;
+- il target legacy `competitions` mantiene la configurazione esistente;
+- nessuna seconda real-call è stata eseguita dopo la correzione.

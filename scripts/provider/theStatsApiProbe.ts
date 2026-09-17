@@ -197,9 +197,8 @@ async function runFutureProbe(): Promise<void> {
   }
 
   const apiKey = getRequiredEnvPresenceOnly("THESTATSAPI_API_KEY");
-  const fallbackBaseUrl = PROBE_TARGET === "competitions_v1" ? BASE_URL_V1_FALLBACK : BASE_URL_FALLBACK;
   const competitionsEndpoint = PROBE_TARGET === "competitions_v1" ? COMPETITIONS_V1_ENDPOINT : COMPETITIONS_ENDPOINT;
-  const baseUrl = readLocalEnvValue("THESTATSAPI_BASE_URL") || fallbackBaseUrl;
+  const baseUrl = PROBE_TARGET === "competitions_v1" ? BASE_URL_V1_FALLBACK : readLocalEnvValue("THESTATSAPI_BASE_URL") || BASE_URL_FALLBACK;
   // D.17-H real-call shape:
   // - max 1 request
   // - read-only

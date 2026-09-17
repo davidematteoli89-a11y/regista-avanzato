@@ -78,3 +78,23 @@ Prossimo step consigliato: D.17-M — eventuale retry singolo su `competitions_v
 - nessuna paginazione;
 - nessun DB write;
 - output sanificato.
+
+## D.17-M/N/Z — Esito finale Punto 17
+
+La real-call finale ha eseguito una sola richiesta, ma ha evidenziato che la configurazione locale `THESTATSAPI_BASE_URL` sovrascriveva la base URL v1.
+
+Esito:
+
+- target: `competitions_v1`;
+- richieste eseguite: `1`;
+- URL effettiva: `https://api.thestatsapi.com/api/football/competitions?limit=10`;
+- HTTP status: `403`;
+- standings non eseguito;
+- nessun retry.
+
+Correzione post-call:
+
+- il target `competitions_v1` ora usa sempre `https://stats-api.com/api/v1`;
+- nessuna seconda real-call è stata eseguita dopo la correzione.
+
+Decisione: Punto 17 chiuso con provider sospeso finché account/key/piano/base URL non vengono chiariti.
