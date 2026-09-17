@@ -1249,6 +1249,34 @@ Non fatto:
 - nessun deploy;
 - Production non toccata.
 
+## Punto 22 — Schema Confirmation Dry-Run
+
+Stato: completato localmente.
+
+Aggiunto:
+
+- `docs/manual_import_schema_confirmation_p22.md`;
+- `docs/manual_import_rls_audit_review_p22.md`;
+- `scripts/provider/manualSchemaConfirmationDryRun.ts`;
+- aggiornamento `scripts/provider/manualImportReadinessDryRun.ts`;
+- sezione admin read-only “Schema confirmation”;
+- `docs/manual_import_point_23_decision_gate_p22.md`;
+- `docs/provider_point_22_closure.md`.
+
+Comando:
+
+- `npm run dry-run:manual-schema-confirmation`.
+
+Conferme:
+
+- schema confirmation read-only;
+- stato schema ancora `needs_review`;
+- `next_write_allowed=false`;
+- nessun SQL eseguibile;
+- nessuna scrittura DB;
+- nessuna migrazione modificata;
+- Production non toccata.
+
 Prossimo step consigliato:
 
 - D.8 — creare un reader admin read-only per `provider_import_runs` in `/admin/imports`, con empty state e senza writer reali.

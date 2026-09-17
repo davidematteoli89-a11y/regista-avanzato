@@ -1174,3 +1174,21 @@ Non cambia lo stato:
 - SQL eseguibile non generato;
 - provider reali sospesi;
 - Production non toccata.
+
+## Punto 22 — Schema confirmation read-only
+
+Punto 22 aggiunge schema confirmation locale:
+
+- tabelle candidate confermate localmente;
+- stato `needs_review` per competitions/teams/standings;
+- RLS/audit review teorica;
+- gate decisionale per Punto 23;
+- comando `npm run dry-run:manual-schema-confirmation`.
+
+Non cambia lo stato operativo:
+
+- write allowed=false;
+- next write allowed=false;
+- nessun import reale;
+- nessuna migration;
+- nessuna Production.

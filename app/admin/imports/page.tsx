@@ -237,6 +237,40 @@ export default async function AdminImportsPage() {
       <section className="admin-section-card">
         <div className="admin-card-head">
           <div>
+            <h2>Schema confirmation</h2>
+            <p className="muted">
+              Conferma schema basata solo su file locali e migrazioni versionate. Nessuna query DB
+              viene eseguita.
+            </p>
+          </div>
+          <div className="admin-badge-row">
+            <span className="admin-safety-badge">Checked locally</span>
+            <span className="admin-safety-badge">Needs review</span>
+            <span className="admin-safety-badge">Write allowed=false</span>
+            <span className="admin-safety-badge">No Production</span>
+          </div>
+        </div>
+        <dl className="admin-metadata">
+          <dt>Comando locale</dt>
+          <dd>
+            <code>npm run dry-run:manual-schema-confirmation</code>
+          </dd>
+          <dt>Competitions status</dt>
+          <dd>needs_review</dd>
+          <dt>Teams status</dt>
+          <dd>needs_review</dd>
+          <dt>Standings status</dt>
+          <dd>needs_review</dd>
+          <dt>Next write allowed</dt>
+          <dd>false</dd>
+          <dt>Punto 23</dt>
+          <dd>richiesto per qualunque write staging, con autorizzazione esplicita</dd>
+        </dl>
+      </section>
+
+      <section className="admin-section-card">
+        <div className="admin-card-head">
+          <div>
             <h2>Staging manual import readiness</h2>
             <p className="muted">
               Readiness simulata per un futuro import manuale staging. Il batch plan è solo

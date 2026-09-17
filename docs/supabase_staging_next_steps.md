@@ -1534,3 +1534,18 @@ Conferme:
 - nessun log import scritto.
 
 Prima di qualsiasi write staging servirà un Punto 22 separato con autorizzazione esplicita.
+
+## Punto 22 — Schema confirmation senza Supabase live
+
+Punto 22 usa solo migrazioni e file locali.
+
+Conferme:
+
+- nessuna query Supabase;
+- nessuna scrittura DB;
+- nessuna migrazione;
+- nessun `db push/reset`;
+- nessun `service_role`;
+- nessun audit log reale.
+
+Il prossimo eventuale step richiede decisione Punto 23 e autorizzazione esplicita.

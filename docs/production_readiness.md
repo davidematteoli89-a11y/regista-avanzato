@@ -1193,3 +1193,18 @@ Production resta esclusa:
 - provider reali sospesi.
 
 Punto 22, se autorizzato, dovrà comunque restare staging prima di qualunque discussione Production.
+
+## Punto 22 — Production esclusa
+
+Punto 22 non avvicina Production.
+
+Confermato:
+
+- schema confirmation solo locale;
+- nessuna write;
+- nessun SQL eseguibile;
+- nessuna migrazione;
+- nessun deploy;
+- provider reali sospesi.
+
+Production resta esclusa finché non esiste un processo staging verificato e approvato.

@@ -345,6 +345,34 @@ pseudo_sql_not_executable=true
 ```
 
 È vietato usarlo come import reale: non contiene SQL eseguibile e non apre client DB.
+
+## Punto 22 — Manual schema confirmation dry-run
+
+Nuovo comando:
+
+```bash
+npm run dry-run:manual-schema-confirmation
+```
+
+Il comando confronta fixture/mapping atteso con una definizione locale statica dello schema target.
+
+Output chiave atteso:
+
+```text
+mode=manual_schema_confirmation_dry_run
+schema_source=local_static_or_local_files
+competitions_schema_status=needs_review
+teams_schema_status=needs_review
+standings_schema_status=needs_review
+requires_migration=false
+migration_generated=false
+sql_generated=false
+pseudo_sql_not_executable=true
+blocked_real_execution=true
+next_write_allowed=false
+```
+
+Resta vietato usarlo come write/import: non interroga il database e non genera query.
 - nessuna deduplica DB effettiva;
 - nessun log persistito.
 
