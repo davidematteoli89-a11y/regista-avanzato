@@ -2045,3 +2045,32 @@ Conferme:
 - nessun `service_role`;
 - nessun deploy;
 - Production non toccata.
+
+## Punto 19 — Manual Data Admin + Fixture Preview
+
+Stato: completato localmente.
+
+Aggiunto:
+
+- `lib/provider/manualFixtures.ts`;
+- preview read-only in `/admin/imports`;
+- documentazione `docs/manual_fixture_preview_p19.md`;
+- chiusura `docs/provider_point_19_closure.md`.
+
+La preview mostra:
+
+- provider reali sospesi/off;
+- manual/mock active/safe;
+- summary fixture;
+- tabelle competitions/teams/standings locali;
+- validazione campi e riferimenti;
+- `mapping_theoretical_possible`.
+
+Conferme:
+
+- nessun provider chiamato;
+- nessuna fetch provider;
+- nessuna scrittura DB;
+- nessuna action di import;
+- nessun bottone import/run/sync/save/delete;
+- Production non toccata.

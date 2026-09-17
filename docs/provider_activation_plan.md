@@ -1115,3 +1115,23 @@ npm run dry-run:manual-fixtures
 ```
 
 Il comando non chiama provider, non legge token e non scrive nel database.
+
+## Punto 19 — Admin preview manual/mock senza import
+
+Punto 19 rende visibile in `/admin/imports` la preview delle fixture locali.
+
+Stato:
+
+- provider reali ancora sospesi/off;
+- import reali ancora disabilitati;
+- DB writes non autorizzate;
+- pagina admin solo read-only.
+
+La preview consente di controllare:
+
+- conteggi fixture;
+- validità riferimenti;
+- mapping teorico;
+- tabelle competitions/teams/standings locali.
+
+Non sono stati aggiunti bottoni run/import/sync/save/delete.

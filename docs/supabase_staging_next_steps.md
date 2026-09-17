@@ -1484,3 +1484,21 @@ Conferme:
 - writer reali restano disabilitati.
 
 La modalità manual/mock usa fixture locali e dry-run senza DB write.
+
+## Punto 19 — Preview admin senza impatto Supabase
+
+Punto 19 non richiede azioni Supabase.
+
+La pagina `/admin/imports` legge fixture locali e mostra una preview read-only.
+
+Conferme:
+
+- nessun insert/update/delete/upsert;
+- nessun provider import run scritto;
+- nessun audit/log provider scritto;
+- nessun `service_role`;
+- nessun client Supabase admin;
+- nessuna migrazione;
+- nessun `db push/reset`.
+
+Un eventuale import manuale staging resta fuori scope e richiede step separato con autorizzazione esplicita.

@@ -1148,3 +1148,18 @@ Production resta non pronta per provider/import perché:
 - la modalità consentita è manual/mock con fixture locali.
 
 Prima di Production serve una checklist dedicata per provider, costi, licenze, mapping, logging, rollback e sicurezza.
+
+## Punto 19 — Production invariata
+
+Punto 19 aggiunge solo una preview admin read-only di fixture locali.
+
+Production resta non pronta e non toccata:
+
+- nessun import reale;
+- nessuna scrittura DB;
+- nessun provider reale attivo;
+- nessuna pipeline dati live;
+- nessun deploy;
+- nessun cambio Production.
+
+La preview admin non è una funzionalità di import: è solo controllo dati manual/mock.

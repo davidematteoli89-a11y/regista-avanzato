@@ -263,6 +263,25 @@ import_enabled=false
 ```
 
 Questo diventa il dry-run consigliato finché non esiste un provider reale verificato.
+
+## Punto 19 — Reader condiviso e admin preview
+
+La logica del dry-run manual fixtures è stata estratta in:
+
+- `lib/provider/manualFixtures.ts`.
+
+Il modulo:
+
+- legge solo fixture locali;
+- valida struttura minima;
+- controlla riferimenti standings verso competizioni/squadre;
+- restituisce summary e preview;
+- non legge env;
+- non chiama provider;
+- non usa Supabase;
+- non scrive DB.
+
+Lo script `npm run dry-run:manual-fixtures` resta compatibile e usa lo stesso modulo della preview admin.
 - nessuna deduplica DB effettiva;
 - nessun log persistito.
 
