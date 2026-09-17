@@ -1211,3 +1211,27 @@ Lo stato operativo resta:
 - DB write disabled;
 - import reali disabilitati;
 - Production non toccata.
+
+## Punto 24 — Local schema deep review no-write
+
+Punto 24 non attiva provider e non autorizza import.
+
+La review locale conferma che il problema non è una tabella/colonna mancante, ma la mancanza di decisioni operative su:
+
+- dedup `competitions` (`internal_key`, `slug`, `season`);
+- lookup FK `teams.competition_id`;
+- lookup FK `standings.competition_id` e `standings.team_id`;
+- default `season`, `stage`, `matchday`;
+- calcolo/documentazione `goal_difference`;
+- mapping editoriale `category/status`.
+
+Stato:
+
+- competitions: `needs_review`;
+- teams: `needs_review`;
+- standings: `needs_review`;
+- migration recommended: `false`;
+- db read-only check recommended: `true`;
+- next write allowed: `false`.
+
+Provider/import restano spenti. Punto 25 consigliato: check DB read-only, non write.

@@ -303,6 +303,52 @@ export default async function AdminImportsPage() {
       <section className="admin-section-card">
         <div className="admin-card-head">
           <div>
+            <h2>Local schema deep review</h2>
+            <p className="muted">
+              Review locale campo-per-campo fixture → schema. Non interroga Supabase e non
+              abilita import: serve solo a decidere il prossimo gate no-write.
+            </p>
+          </div>
+          <div className="admin-badge-row">
+            <span className="admin-safety-badge">Field matrix available</span>
+            <span className="admin-safety-badge">DB read-only check recommended</span>
+            <span className="admin-safety-badge">Next write=false</span>
+            <span className="admin-safety-badge">Point 25 required</span>
+          </div>
+        </div>
+        <dl className="admin-metadata">
+          <dt>Competitions</dt>
+          <dd>needs_review — dedup_key_unclear, type_transform_needed, documentation_only</dd>
+          <dt>Competitions hint</dt>
+          <dd>confirm internal_key/slug/season defaults and status/visibility policy</dd>
+          <dt>Teams</dt>
+          <dd>needs_review — fk_unclear, dedup_key_unclear, documentation_only</dd>
+          <dt>Teams hint</dt>
+          <dd>confirm competition lookup by provider_competition_id and team slug policy</dd>
+          <dt>Standings</dt>
+          <dd>needs_review — fk_unclear, naming_mismatch, type_transform_needed, documentation_only</dd>
+          <dt>Standings hint</dt>
+          <dd>confirm competition/team lookup, season/stage/matchday defaults and goal difference</dd>
+          <dt>Ready fields</dt>
+          <dd>12</dd>
+          <dt>Needs review fields</dt>
+          <dd>6</dd>
+          <dt>Blocked fields</dt>
+          <dd>0</dd>
+          <dt>DB read-only check recommended</dt>
+          <dd>true</dd>
+          <dt>Next write allowed</dt>
+          <dd>false</dd>
+          <dt>Punto 25 required</dt>
+          <dd>true</dd>
+          <dt>Write authorization required</dt>
+          <dd>true</dd>
+        </dl>
+      </section>
+
+      <section className="admin-section-card">
+        <div className="admin-card-head">
+          <div>
             <h2>Staging manual import readiness</h2>
             <p className="muted">
               Readiness simulata per un futuro import manuale staging. Il batch plan è solo

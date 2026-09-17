@@ -1564,3 +1564,29 @@ Restano da decidere prima di qualunque DB touch:
 - backup/rollback/audit.
 
 Consiglio conservativo per Punto 24: ulteriore no-write review oppure DB read-only check autorizzato, non write.
+
+## Punto 24 — Risultato no-write
+
+Punto 24 non ha interrogato Supabase staging.
+
+La review locale indica che non serve migrazione immediata, perché tabelle e colonne core sono presenti nei file locali. Restano però necessari controlli read-only prima di qualsiasi write:
+
+- verificare provider manual/mock presente e inattivo/controllato;
+- verificare competizione Serie A/manual fixture già presente o assente;
+- confermare lookup da `provider_competition_id` a `competitions.id`;
+- confermare lookup da `provider_team_id` a `teams.id`;
+- verificare assenza drift tra schema locale e staging applicato manualmente.
+
+Punto 25 consigliato:
+
+```text
+Punto 25-A — DB read-only schema/data lookup check, ancora no-write.
+```
+
+Non autorizzato:
+
+- insert/update/delete/upsert;
+- import reale;
+- provider reali;
+- Apify;
+- Production.

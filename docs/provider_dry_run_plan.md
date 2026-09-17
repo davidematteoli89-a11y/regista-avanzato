@@ -709,3 +709,25 @@ Il reader:
 Il comportamento atteso in staging è empty state perché `provider_import_runs_count = 0`.
 
 Questo completa la visibilità minima prima di qualunque futuro writer reale.
+
+## Punto 24 — Local schema deep review
+
+Punto 24 approfondisce localmente la review fixture → schema senza DB live.
+
+Aggiornati:
+
+- `npm run dry-run:manual-schema-confirmation`;
+- `npm run dry-run:manual-import-readiness`;
+- sezione read-only `/admin/imports` “Local schema deep review”.
+
+Risultato:
+
+- tabelle e colonne core confermate localmente;
+- nessuna colonna essenziale mancante;
+- competitions/teams/standings restano `needs_review`;
+- ready fields: `12`;
+- needs review fields: `6`;
+- blocked fields: `0`;
+- `next_write_allowed=false`.
+
+Prossimo step consigliato: Punto 25-A, DB read-only check senza write.

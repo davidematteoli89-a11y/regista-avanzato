@@ -1221,3 +1221,19 @@ Production resta esclusa:
 - nessun deploy;
 - nessun provider reale;
 - nessun import reale.
+
+## Punto 24 — Production ancora esclusa
+
+Punto 24 è una review locale no-write e non cambia la readiness Production.
+
+Confermato:
+
+- nessuna query DB;
+- nessuna write;
+- nessun SQL eseguibile;
+- nessuna migrazione;
+- nessun provider reale;
+- nessun deploy;
+- Production non toccata.
+
+Il sistema resta in manual/mock mode. Prima di qualunque discussione Production serve almeno un Punto 25-A read-only su staging, seguito da autorizzazioni esplicite separate per eventuali write staging.

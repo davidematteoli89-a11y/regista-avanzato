@@ -2187,3 +2187,36 @@ Conferme:
 - nessun Apify;
 - nessun deploy;
 - Production non toccata.
+
+## Punto 24 — Local Schema Deep Review
+
+Stato: completato localmente.
+
+Creati:
+
+- `docs/manual_import_local_schema_source_inventory_p24.md`;
+- `docs/manual_import_field_by_field_matrix_p24.md`;
+- `docs/manual_import_needs_review_classifier_p24.md`;
+- `docs/manual_import_point_25_decision_p24.md`;
+- `docs/provider_point_24_closure.md`.
+
+Aggiornati:
+
+- `scripts/provider/manualSchemaConfirmationDryRun.ts`;
+- `scripts/provider/manualImportReadinessDryRun.ts`;
+- `/admin/imports` con sezione read-only “Local schema deep review”.
+
+Risultato:
+
+- competitions/teams/standings restano `needs_review`;
+- `ready_areas_count=0`;
+- `needs_review_areas_count=3`;
+- `blocked_areas_count=0`;
+- `ready_fields_count=12`;
+- `needs_review_fields_count=6`;
+- `blocked_fields_count=0`;
+- `migration_recommended=false`;
+- `db_read_only_check_recommended=true`;
+- `next_write_allowed=false`.
+
+Prossimo step consigliato: Punto 25-A — DB read-only schema/data lookup check, ancora no-write.
