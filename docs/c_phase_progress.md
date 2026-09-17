@@ -2074,3 +2074,30 @@ Conferme:
 - nessuna action di import;
 - nessun bottone import/run/sync/save/delete;
 - Production non toccata.
+
+## Punto 20 — Manual Import Staging Plan
+
+Stato: completato localmente.
+
+Aggiunto:
+
+- `docs/manual_import_approval_definition_p20.md`;
+- `docs/manual_import_mapping_plan_p20.md`;
+- `scripts/provider/manualImportPlanDryRun.ts`;
+- `docs/manual_import_audit_rollback_plan_p20.md`;
+- `docs/manual_import_preflight_checklist_p20.md`;
+- `docs/provider_point_20_closure.md`.
+
+Comando:
+
+- `npm run dry-run:manual-import-plan`.
+
+Conferme:
+
+- nessun import reale;
+- nessuna scrittura DB;
+- nessun SQL eseguibile generato;
+- nessun provider reale;
+- nessun Apify;
+- nessun `service_role`;
+- Production non toccata.

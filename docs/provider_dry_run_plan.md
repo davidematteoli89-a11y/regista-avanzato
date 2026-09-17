@@ -282,6 +282,41 @@ Il modulo:
 - non scrive DB.
 
 Lo script `npm run dry-run:manual-fixtures` resta compatibile e usa lo stesso modulo della preview admin.
+
+## Punto 20 — Manual import plan dry-run
+
+Nuovo comando:
+
+```bash
+npm run dry-run:manual-import-plan
+```
+
+Il comando produce solo un piano import descrittivo.
+
+Non fa:
+
+- SQL eseguibile;
+- fetch provider;
+- lettura env/token;
+- Supabase client;
+- DB write;
+- import reale;
+- provider activation.
+
+Output chiave atteso:
+
+```text
+mode=manual_import_plan_dry_run
+external_fetch=false
+db_write=false
+token_read=false
+token_printed=false
+blocked_real_execution=true
+requires_explicit_approval=true
+requires_staging_environment=true
+requires_backup_plan=true
+requires_rollback_plan=true
+```
 - nessuna deduplica DB effettiva;
 - nessun log persistito.
 

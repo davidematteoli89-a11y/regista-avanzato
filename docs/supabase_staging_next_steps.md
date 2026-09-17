@@ -1502,3 +1502,19 @@ Conferme:
 - nessun `db push/reset`.
 
 Un eventuale import manuale staging resta fuori scope e richiede step separato con autorizzazione esplicita.
+
+## Punto 20 — Piano import senza scritture Supabase
+
+Punto 20 prepara un piano per futuro import manuale staging, ma non modifica Supabase.
+
+Conferme:
+
+- nessun import eseguito;
+- nessuna scrittura DB;
+- nessun provider log scritto;
+- nessun import log scritto;
+- nessun `provider_import_runs` scritto;
+- nessuna migrazione;
+- nessun `db push/reset`.
+
+Prima di qualsiasi step che tocchi Supabase servirà conferma esplicita e checklist preflight completa.

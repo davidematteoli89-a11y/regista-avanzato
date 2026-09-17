@@ -203,6 +203,40 @@ export default async function AdminImportsPage() {
       <section className="admin-section-card">
         <div className="admin-card-head">
           <div>
+            <h2>Manual import plan</h2>
+            <p className="muted">
+              Il piano import manuale è solo una preparazione tecnica. Nessuna scrittura DB è
+              disponibile da questa schermata.
+            </p>
+          </div>
+          <div className="admin-badge-row">
+            <span className="admin-safety-badge">Plan only</span>
+            <span className="admin-safety-badge">No import button</span>
+            <span className="admin-safety-badge">No DB write</span>
+            <span className="admin-safety-badge">Requires future approval</span>
+          </div>
+        </div>
+        <dl className="admin-metadata">
+          <dt>Punto 19</dt>
+          <dd>Preview fixture read-only disponibile</dd>
+          <dt>Punto 20</dt>
+          <dd>Import plan dry-run disponibile solo da CLI locale</dd>
+          <dt>Comando locale</dt>
+          <dd>
+            <code>npm run dry-run:manual-import-plan</code>
+          </dd>
+          <dt>Import reale</dt>
+          <dd>non disponibile</dd>
+          <dt>DB write</dt>
+          <dd>disabled</dd>
+          <dt>Requisiti futuri</dt>
+          <dd>approvazione esplicita, staging confermato, backup, rollback, audit e RLS</dd>
+        </dl>
+      </section>
+
+      <section className="admin-section-card">
+        <div className="admin-card-head">
+          <div>
             <h2>Provider import runs</h2>
             <p className="muted">
               Lettura server-side read-only da <code>provider_import_runs</code>, rispettando RLS.

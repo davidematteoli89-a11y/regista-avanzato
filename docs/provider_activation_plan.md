@@ -1135,3 +1135,23 @@ La preview consente di controllare:
 - tabelle competitions/teams/standings locali.
 
 Non sono stati aggiunti bottoni run/import/sync/save/delete.
+
+## Punto 20 — Piano import manuale staging
+
+Punto 20 non attiva provider e non autorizza import.
+
+È stato preparato solo un piano tecnico per un futuro manual import staging:
+
+- definizione di manual import approvato;
+- mapping fixture → tabelle Supabase candidate;
+- audit/rollback plan;
+- checklist preflight;
+- dry-run testuale `npm run dry-run:manual-import-plan`.
+
+Stato operativo:
+
+- import reale non disponibile;
+- DB write disabled;
+- nessun SQL eseguibile generato;
+- provider reali sospesi;
+- Production non toccata.

@@ -1163,3 +1163,18 @@ Production resta non pronta e non toccata:
 - nessun cambio Production.
 
 La preview admin non è una funzionalità di import: è solo controllo dati manual/mock.
+
+## Punto 20 — Production ancora esclusa
+
+Punto 20 prepara un piano staging, non Production.
+
+Production resta esclusa perché:
+
+- import manuale non autorizzato;
+- DB write non autorizzata;
+- mapping non ancora confermato su staging live;
+- backup/rollback non ancora eseguiti;
+- nessuna checklist Production dedicata;
+- provider reali sospesi.
+
+Ogni eventuale import manuale dovrà nascere come step staging separato.
