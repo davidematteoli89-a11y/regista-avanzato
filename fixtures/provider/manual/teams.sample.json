@@ -1,0 +1,14 @@
+[
+  {
+    "provider_team_id": "manual-team-1",
+    "provider_competition_id": "manual-serie-a",
+    "name": "Manual Team One",
+    "country": "Italy"
+  },
+  {
+    "provider_team_id": "manual-team-2",
+    "provider_competition_id": "manual-serie-a",
+    "name": "Manual Team Two",
+    "country": "Italy"
+  }
+]

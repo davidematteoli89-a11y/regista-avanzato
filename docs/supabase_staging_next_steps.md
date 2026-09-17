@@ -1467,3 +1467,20 @@ Supabase resta invariato:
 - nessun provider log;
 - nessun import run;
 - nessun writer reale.
+
+## Punto 18 — Nessun prossimo step DB per provider
+
+Punto 18 non richiede azioni Supabase.
+
+Conferme:
+
+- nessuna migrazione;
+- nessun `db push/reset`;
+- nessun insert/update/delete/upsert;
+- nessun provider log;
+- nessun import run;
+- nessun `service_role`;
+- `provider_import_runs` non viene popolata da Punto 18;
+- writer reali restano disabilitati.
+
+La modalità manual/mock usa fixture locali e dry-run senza DB write.

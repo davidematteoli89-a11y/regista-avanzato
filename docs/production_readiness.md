@@ -1131,3 +1131,20 @@ Il Punto 17 non abilita Production:
 - nessuna pipeline dati;
 - nessuna garanzia costi/provider;
 - Production non toccata.
+
+## Punto 18 — Production ancora bloccata sui provider
+
+Punto 18 chiude la strategia fallback, ma non abilita Production.
+
+Production resta non pronta per provider/import perché:
+
+- TheStatsAPI / Stats API è sospeso;
+- API-Football è sospeso/no retry;
+- Apify è spento;
+- nessun provider reale è verificato;
+- nessun import reale è attivo;
+- nessun writer reale è abilitato;
+- `realWritesEnabled=false`;
+- la modalità consentita è manual/mock con fixture locali.
+
+Prima di Production serve una checklist dedicata per provider, costi, licenze, mapping, logging, rollback e sicurezza.

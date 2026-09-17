@@ -1082,3 +1082,36 @@ Non procedere con:
 - cron/provider run.
 
 Prossimo passo: chiarire account/key/piano o scegliere provider alternativo.
+
+## Punto 18 — Strategia fallback senza provider reali
+
+Decisione finale Punto 18:
+
+- TheStatsAPI / Stats API resta sospeso;
+- API-Football resta sospeso/no retry;
+- Apify resta spento;
+- `stable_provider` resta off;
+- nessun provider reale è attivo;
+- nessun import reale è autorizzato.
+
+Il percorso operativo consentito è:
+
+- dati manuali;
+- dati mock;
+- fixture locali versionate;
+- dry-run locali senza fetch e senza DB write.
+
+Documenti collegati:
+
+- `docs/provider_status_matrix_p18.md`;
+- `docs/manual_mock_data_mode_p18.md`;
+- `docs/provider_future_readiness_checklist_p18.md`;
+- `docs/provider_point_18_closure.md`.
+
+Nuovo comando sicuro:
+
+```bash
+npm run dry-run:manual-fixtures
+```
+
+Il comando non chiama provider, non legge token e non scrive nel database.

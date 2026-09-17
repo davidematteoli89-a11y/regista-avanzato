@@ -1,0 +1,9 @@
+[
+  {
+    "provider_competition_id": "manual-serie-a",
+    "name": "Serie A Manual Sample",
+    "country": "Italy",
+    "category": "league",
+    "status": "sample"
+  }
+]

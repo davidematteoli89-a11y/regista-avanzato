@@ -70,3 +70,17 @@ Scelte possibili:
 2. mantenere TheStatsAPI sospeso e valutare provider alternativo;
 3. continuare con dati manuali/mock finché un provider non è verificato;
 4. se si autorizza una futura prova, farla come nuovo punto separato, massimo una richiesta, solo dopo nuova conferma esplicita.
+
+## Collegamento Punto 18
+
+Punto 18 applica la decisione di chiusura del Punto 17:
+
+- niente retry immediati;
+- niente provider reale attivo;
+- niente import;
+- fallback operativo su manual/mock data;
+- dry-run solo da fixture locali.
+
+Documento di chiusura successivo:
+
+- `docs/provider_point_18_closure.md`.

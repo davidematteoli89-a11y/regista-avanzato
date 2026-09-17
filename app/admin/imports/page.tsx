@@ -29,7 +29,10 @@ export default async function AdminImportsPage() {
     <main className="admin-page">
       <header>
         <h2>Import</h2>
-        <p>Pipeline dry-run/mock. Nessuna fetch, run o scrittura.</p>
+        <p>
+          Pipeline dry-run/mock. Nessun provider reale è attivo; dati manuali/mock e fixture
+          locali restano l&apos;unico percorso consentito. Nessuna fetch, run o scrittura.
+        </p>
       </header>
 
       <section className="admin-section-card">
@@ -44,6 +47,8 @@ export default async function AdminImportsPage() {
             <span className="admin-safety-badge">Read-only</span>
             <span className="admin-safety-badge">Provider off</span>
             <span className="admin-safety-badge">Apify off</span>
+            <span className="admin-safety-badge">Manual/mock available</span>
+            <span className="admin-safety-badge">Real imports disabled</span>
             <span className="admin-safety-badge">realWritesEnabled=false</span>
           </div>
         </div>
@@ -54,8 +59,9 @@ export default async function AdminImportsPage() {
           <div className="admin-empty">
             <strong>Non ci sono ancora import run registrate.</strong>
             <span>
-              È corretto in staging: i provider reali, Apify e le scritture sono ancora
-              disabilitati.
+              È corretto in staging: i provider reali, Apify, import live e scritture sono
+              ancora disabilitati. Eventuali prove restano limitate a mock/manual data e
+              dry-run locali da fixture.
             </span>
           </div>
         ) : null}

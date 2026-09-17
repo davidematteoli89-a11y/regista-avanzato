@@ -218,6 +218,51 @@ Limiti:
 - payload statico/demo, non proveniente da provider reale;
 - nessun confronto con Supabase live;
 - nessun mapping ID esterno reale;
+
+## Punto 18 — Manual fixtures dry-run
+
+Script aggiunto:
+
+- `scripts/provider/manualFixtureDryRun.ts`.
+
+Comando:
+
+```bash
+npm run dry-run:manual-fixtures
+```
+
+Fixture locali:
+
+- `fixtures/provider/manual/competitions.sample.json`;
+- `fixtures/provider/manual/teams.sample.json`;
+- `fixtures/provider/manual/standings.sample.json`.
+
+Il dry-run:
+
+- usa solo fixture locali versionate;
+- non legge `.env.local`;
+- non stampa env o token;
+- non chiama provider;
+- non chiama Apify/SofaScore;
+- non fa fetch;
+- non apre client Supabase;
+- non scrive DB;
+- non attiva provider/import.
+
+Output atteso:
+
+```text
+mode=manual_fixture_dry_run
+source=local_fixtures
+external_fetch=false
+db_write=false
+token_read=false
+token_printed=false
+provider_activated=false
+import_enabled=false
+```
+
+Questo diventa il dry-run consigliato finché non esiste un provider reale verificato.
 - nessuna deduplica DB effettiva;
 - nessun log persistito.
 

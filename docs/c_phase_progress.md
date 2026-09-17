@@ -2014,3 +2014,34 @@ Risultato finale:
 - Production non toccata.
 
 Decisione finale: TheStatsAPI/Stats API sospeso finché account/key/piano/base URL non vengono chiariti.
+
+## Punto 18 — Provider fallback + manual/mock data mode
+
+Stato: completato localmente.
+
+Decisione:
+
+- TheStatsAPI / Stats API sospeso;
+- API-Football sospeso/no retry;
+- Apify spento;
+- provider/import reali spenti;
+- `realWritesEnabled=false`;
+- dati manuali/mock come fallback operativo.
+
+Aggiunto:
+
+- matrice stato provider;
+- modalità manual/mock esplicita;
+- fixture locali versionate;
+- dry-run locale `npm run dry-run:manual-fixtures`;
+- checklist futura prima di qualunque provider reale;
+- chiusura documentale Punto 18.
+
+Conferme:
+
+- nessuna real-call;
+- nessuna fetch provider;
+- nessuna scrittura DB;
+- nessun `service_role`;
+- nessun deploy;
+- Production non toccata.

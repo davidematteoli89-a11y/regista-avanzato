@@ -218,6 +218,27 @@ Documento aggiunto:
 
 D.16-A non apre la probe reale: prepara solo la verifica manuale aggiornata di provider, prezzo, rate limit, licenza, caching, pubblicazione e copertura.
 
+## Punto 18 — Probe readiness chiusa in fallback manual/mock
+
+Il gate probe provider resta chiuso.
+
+Stato finale:
+
+- TheStatsAPI / Stats API sospeso dopo Punto 17;
+- API-Football sospeso/no retry;
+- Apify spento;
+- provider/import spenti;
+- `realWritesEnabled=false`;
+- nessuna nuova real-call autorizzata.
+
+Punto 18 consente solo:
+
+- manual/mock data;
+- fixture locali;
+- dry-run locali.
+
+Prima di riaprire una probe reale serve una nuova checklist dedicata e conferma esplicita.
+
 Decisione provvisoria:
 
 - provider preferito provvisorio: `api_football`;
