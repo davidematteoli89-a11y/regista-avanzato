@@ -1208,3 +1208,16 @@ Confermato:
 - provider reali sospesi.
 
 Production resta esclusa finché non esiste un processo staging verificato e approvato.
+
+## Punto 23 — Production ancora esclusa
+
+Punto 23 conferma che nessuna area è pronta per write.
+
+Production resta esclusa:
+
+- ready areas: 0;
+- needs_review areas: 3;
+- next write allowed=false;
+- nessun deploy;
+- nessun provider reale;
+- nessun import reale.

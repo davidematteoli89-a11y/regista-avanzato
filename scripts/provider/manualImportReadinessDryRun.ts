@@ -31,10 +31,16 @@ async function main(): Promise<void> {
   console.info("rollback_preview_available=true");
   console.info("planned_create_update_skip=preview_only");
   console.info("schema_confirmation_checked=true");
+  console.info("schema_resolution_checked=true");
   console.info("schema_ready_for_write=false");
   console.info("schema_blockers=competition_lookup_required,team_lookup_required,season_missing_from_fixture,slug_generation_needs_review,stage_matchday_policy_needs_review");
+  console.info("ready_areas_count=0");
+  console.info("needs_review_areas_count=3");
+  console.info("blocked_areas_count=0");
   console.info("next_write_allowed=false");
   console.info("requires_explicit_user_authorization_for_point_23=true");
+  console.info("point_24_write_authorization_required=true");
+  console.info("recommended_next_step=point_24_option_a_or_b_no_write");
   console.info("sql_generated=false");
   console.info("pseudo_sql_not_executable=true");
   console.info("provider_involved=false");

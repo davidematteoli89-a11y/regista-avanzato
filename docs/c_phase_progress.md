@@ -1277,6 +1277,36 @@ Conferme:
 - nessuna migrazione modificata;
 - Production non toccata.
 
+## Punto 23 — Schema Review Resolution
+
+Stato: completato localmente.
+
+Aggiunto:
+
+- `docs/manual_import_schema_needs_review_root_cause_p23.md`;
+- `docs/manual_import_schema_confidence_matrix_p23.md`;
+- aggiornamento `scripts/provider/manualSchemaConfirmationDryRun.ts`;
+- aggiornamento `scripts/provider/manualImportReadinessDryRun.ts`;
+- sezione admin read-only “Schema review resolution”;
+- `docs/manual_import_point_24_decision_p23.md`;
+- `docs/provider_point_23_closure.md`.
+
+Esito:
+
+- ready areas: 0;
+- needs_review areas: 3;
+- blocked areas: 0;
+- `next_write_allowed=false`;
+- Punto 24 richiede autorizzazione esplicita.
+
+Conferme:
+
+- nessuna scrittura DB;
+- nessun SQL eseguibile;
+- nessuna migrazione modificata;
+- nessun provider reale;
+- Production non toccata.
+
 Prossimo step consigliato:
 
 - D.8 — creare un reader admin read-only per `provider_import_runs` in `/admin/imports`, con empty state e senza writer reali.

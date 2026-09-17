@@ -1192,3 +1192,22 @@ Non cambia lo stato operativo:
 - nessun import reale;
 - nessuna migration;
 - nessuna Production.
+
+## Punto 23 — Nessuna attivazione dopo schema review
+
+Punto 23 non abilita import né provider.
+
+Risultato:
+
+- competitions/teams/standings restano `needs_review`;
+- nessuna area `ready`;
+- schema confidence matrix disponibile;
+- Punto 24 richiesto per qualunque step successivo;
+- write authorization ancora assente.
+
+Lo stato operativo resta:
+
+- provider reali sospesi;
+- DB write disabled;
+- import reali disabilitati;
+- Production non toccata.

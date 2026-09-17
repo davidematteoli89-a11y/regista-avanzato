@@ -6,18 +6,21 @@ const targetSchema = {
     requiredColumns: ["internal_key", "slug", "name", "country", "continent", "season", "tracking_level", "update_frequency"],
     fixtureMappedColumns: ["api_competition_id", "name", "country", "status"],
     blockers: ["continent_missing_from_fixture", "season_missing_from_fixture", "tracking_level_mapping_needs_review", "slug_generation_needs_review"],
+    reason: "table_and_columns_confirmed_but_required_defaults_and_enum_mapping_need_review",
   },
   teams: {
     confirmed: true,
     requiredColumns: ["competition_id", "slug", "name"],
     fixtureMappedColumns: ["api_team_id", "competition_id", "name", "country"],
     blockers: ["competition_lookup_required", "slug_generation_needs_review", "manual_provider_id_needs_confirmation"],
+    reason: "table_and_columns_confirmed_but_competition_lookup_slug_and_manual_provider_need_review",
   },
   standings: {
     confirmed: true,
     requiredColumns: ["competition_id", "team_id", "season", "stage", "matchday", "rank", "played", "won", "drawn", "lost", "goals_for", "goals_against", "goal_difference", "points"],
     fixtureMappedColumns: ["competition_id", "team_id", "rank", "played", "won", "drawn", "lost", "goals_for", "goals_against", "points"],
     blockers: ["competition_lookup_required", "team_lookup_required", "season_missing_from_fixture", "stage_matchday_policy_needs_review", "goal_difference_calculation_needs_review"],
+    reason: "table_and_columns_confirmed_but_lookup_season_stage_matchday_and_goal_difference_need_review",
   },
 } as const;
 
@@ -34,6 +37,10 @@ async function main(): Promise<void> {
     teams: statusFor(targetSchema.teams.blockers),
     standings: statusFor(targetSchema.standings.blockers),
   };
+  const statusValues = Object.values(statuses);
+  const readyAreasCount = statusValues.filter((status) => status === "ready").length;
+  const needsReviewAreasCount = statusValues.filter((status) => status === "needs_review").length;
+  const blockedAreasCount = statusValues.filter((status) => status === "blocked").length;
   const allColumns = [
     ...targetSchema.competitions.requiredColumns,
     ...targetSchema.competitions.fixtureMappedColumns,
@@ -58,6 +65,13 @@ async function main(): Promise<void> {
   console.info(`competitions_schema_status=${statuses.competitions}`);
   console.info(`teams_schema_status=${statuses.teams}`);
   console.info(`standings_schema_status=${statuses.standings}`);
+  console.info(`competitions_status_reason=${targetSchema.competitions.reason}`);
+  console.info(`teams_status_reason=${targetSchema.teams.reason}`);
+  console.info(`standings_status_reason=${targetSchema.standings.reason}`);
+  console.info("schema_confidence_matrix_available=true");
+  console.info(`ready_areas_count=${readyAreasCount}`);
+  console.info(`needs_review_areas_count=${needsReviewAreasCount}`);
+  console.info(`blocked_areas_count=${blockedAreasCount}`);
   console.info("confirmed_tables_count=3");
   console.info(`confirmed_columns_count=${new Set(allColumns).size}`);
   console.info("missing_columns_count=0");
@@ -72,6 +86,7 @@ async function main(): Promise<void> {
   console.info(`schema_blockers=${allBlockers.join(",")}`);
   console.info("next_write_allowed=false");
   console.info("requires_explicit_user_authorization_for_point_23=true");
+  console.info("point_24_write_authorization_required=true");
   console.info("confirmation=read_only_schema_confirmation,no_db_client,no_sql_execution,no_db_writes,no_external_provider_calls,no_env_output");
 }
 

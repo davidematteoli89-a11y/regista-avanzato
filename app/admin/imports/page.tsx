@@ -237,6 +237,38 @@ export default async function AdminImportsPage() {
       <section className="admin-section-card">
         <div className="admin-card-head">
           <div>
+            <h2>Schema review resolution</h2>
+            <p className="muted">
+              Lo stato <code>needs_review</code> è motivato: lo schema locale conferma tabelle e
+              colonne, ma restano decisioni operative prima di qualsiasi write staging.
+            </p>
+          </div>
+          <div className="admin-badge-row">
+            <span className="admin-safety-badge">ready areas=0</span>
+            <span className="admin-safety-badge">needs review=3</span>
+            <span className="admin-safety-badge">blocked=0</span>
+            <span className="admin-safety-badge">Point 24 required</span>
+          </div>
+        </div>
+        <dl className="admin-metadata">
+          <dt>Competitions</dt>
+          <dd>needs_review — required defaults and enum mapping need review</dd>
+          <dt>Teams</dt>
+          <dd>needs_review — competition lookup, slug and manual provider need review</dd>
+          <dt>Standings</dt>
+          <dd>needs_review — lookup, season, stage/matchday and goal difference need review</dd>
+          <dt>Next write allowed</dt>
+          <dd>false</dd>
+          <dt>Punto 24 required</dt>
+          <dd>true</dd>
+          <dt>Write authorization required</dt>
+          <dd>true</dd>
+        </dl>
+      </section>
+
+      <section className="admin-section-card">
+        <div className="admin-card-head">
+          <div>
             <h2>Schema confirmation</h2>
             <p className="muted">
               Conferma schema basata solo su file locali e migrazioni versionate. Nessuna query DB

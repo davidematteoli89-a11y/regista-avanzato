@@ -373,6 +373,21 @@ next_write_allowed=false
 ```
 
 Resta vietato usarlo come write/import: non interroga il database e non genera query.
+
+## Punto 23 — Schema review resolution dry-run
+
+Gli script schema/readiness ora espongono motivazioni e conteggi:
+
+- `competitions_status_reason`;
+- `teams_status_reason`;
+- `standings_status_reason`;
+- `schema_confidence_matrix_available=true`;
+- `ready_areas_count=0`;
+- `needs_review_areas_count=3`;
+- `blocked_areas_count=0`;
+- `point_24_write_authorization_required=true`.
+
+`next_write_allowed` resta `false`.
 - nessuna deduplica DB effettiva;
 - nessun log persistito.
 

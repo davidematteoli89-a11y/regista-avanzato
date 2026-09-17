@@ -1549,3 +1549,18 @@ Conferme:
 - nessun audit log reale.
 
 Il prossimo eventuale step richiede decisione Punto 23 e autorizzazione esplicita.
+
+## Punto 23 — Nessun prossimo step Supabase automatico
+
+Punto 23 non usa Supabase live.
+
+Restano da decidere prima di qualunque DB touch:
+
+- policy `season`;
+- regole slug;
+- lookup competition/team;
+- manual provider id;
+- stage/matchday;
+- backup/rollback/audit.
+
+Consiglio conservativo per Punto 24: ulteriore no-write review oppure DB read-only check autorizzato, non write.
