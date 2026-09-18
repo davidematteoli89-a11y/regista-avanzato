@@ -761,3 +761,22 @@ Risultato del primo check:
 - `next_write_allowed=false`.
 
 Il prossimo step resta no-write.
+
+## Punto 26 — Read-only access investigation
+
+Il dry-run DB schema check ora produce diagnosi aggiuntiva:
+
+- `read_only_access_investigation=true`;
+- `anon_client_used=true`;
+- `schema_introspection_supported=false`;
+- `direct_table_lookup_attempted=true`;
+- `public_view_lookup_attempted=true`;
+- `admin_view_lookup_attempted=false`;
+- `direct_table_lookup_result=unknown`;
+- `public_view_lookup_result=unknown`;
+- `admin_view_lookup_result=not_attempted`;
+- `requires_new_read_only_view=true`;
+- `requires_service_role=false`;
+- `next_write_allowed=false`.
+
+Punto 26 non cambia lo stato operativo: nessun import, nessuna write, nessun provider.

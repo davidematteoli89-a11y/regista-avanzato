@@ -397,6 +397,48 @@ export default async function AdminImportsPage() {
       <section className="admin-section-card">
         <div className="admin-card-head">
           <div>
+            <h2>Supabase read-only access investigation</h2>
+            <p className="muted">
+              Diagnosi no-write del blocco read-only: il client anon/pubblico non basta ancora
+              per confermare i lookup import manuale.
+            </p>
+          </div>
+          <div className="admin-badge-row">
+            <span className="admin-safety-badge">Investigation completed</span>
+            <span className="admin-safety-badge">No service role</span>
+            <span className="admin-safety-badge">DB writes=false</span>
+            <span className="admin-safety-badge">Point 27 required</span>
+          </div>
+        </div>
+        <dl className="admin-metadata">
+          <dt>DB read-only check</dt>
+          <dd>completed</dd>
+          <dt>Direct table lookup result</dt>
+          <dd>unknown</dd>
+          <dt>Public view lookup result</dt>
+          <dd>unknown</dd>
+          <dt>Admin view lookup result</dt>
+          <dd>not_attempted</dd>
+          <dt>Likely blocker</dt>
+          <dd>rls_or_missing_view_or_wrong_table_name_or_insufficient_anon_access</dd>
+          <dt>Recommended resolution</dt>
+          <dd>prepare dedicated read-only lookup view proposal or manual dashboard SELECT check</dd>
+          <dt>Requires read-only view</dt>
+          <dd>true</dd>
+          <dt>Requires service role</dt>
+          <dd>false</dd>
+          <dt>DB writes</dt>
+          <dd>false</dd>
+          <dt>Next write allowed</dt>
+          <dd>false</dd>
+          <dt>Punto 27 required</dt>
+          <dd>true</dd>
+        </dl>
+      </section>
+
+      <section className="admin-section-card">
+        <div className="admin-card-head">
+          <div>
             <h2>Staging manual import readiness</h2>
             <p className="muted">
               Readiness simulata per un futuro import manuale staging. Il batch plan è solo

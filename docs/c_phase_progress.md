@@ -2255,3 +2255,34 @@ Interpretazione:
 - il check non ha confermato schema/dati target via client anon/pubblico;
 - non è autorizzata alcuna write staging;
 - Punto 26 consigliato: investigazione read-only accesso/schema Supabase staging.
+
+## Punto 26 — Supabase Read-Only Access Investigation
+
+Stato: completato.
+
+Aggiunti:
+
+- `docs/supabase_read_only_access_root_cause_p26.md`;
+- `docs/supabase_read_only_routes_inventory_p26.md`;
+- `docs/supabase_future_read_only_view_plan_p26.md`;
+- `docs/manual_import_point_27_decision_p26.md`;
+- `docs/provider_point_26_closure.md`;
+- sezione admin read-only “Supabase read-only access investigation”.
+
+Aggiornati:
+
+- `scripts/provider/manualDbReadOnlySchemaCheck.ts`;
+- `scripts/provider/manualSchemaConfirmationDryRun.ts`;
+- `scripts/provider/manualImportReadinessDryRun.ts`.
+
+Risultato:
+
+- direct table lookup result: `unknown`;
+- public view lookup result: `unknown`;
+- admin view lookup result: `not_attempted`;
+- likely blocker: `rls_or_missing_view_or_wrong_table_name_or_insufficient_anon_access`;
+- requires read-only view: `true`;
+- requires service role: `false`;
+- `next_write_allowed=false`.
+
+Prossimo step consigliato: Punto 27-A, proposta no-write di view read-only dedicate, non applicata.

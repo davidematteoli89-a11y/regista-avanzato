@@ -34,6 +34,8 @@ type TableCheck = {
   status: CheckStatus;
 };
 
+type LookupResult = "confirmed" | "blocked" | "not_found" | "unknown" | "not_attempted";
+
 const LOCAL_ENV_ALLOWLIST = new Set(["NEXT_PUBLIC_SUPABASE_URL", "NEXT_PUBLIC_SUPABASE_ANON_KEY"]);
 
 const COMPETITION_COLUMNS = [
@@ -173,6 +175,13 @@ function statusFromConfidence(...statuses: CheckStatus[]): CheckStatus {
   return "ready";
 }
 
+function lookupResult(confirmed: boolean, errorCodes: string[], blockedCount = 0): LookupResult {
+  if (confirmed) return "confirmed";
+  if (blockedCount > 0) return "blocked";
+  if (errorCodes.some((code) => code === "PGRST204" || code === "PGRST205")) return "not_found";
+  return "unknown";
+}
+
 function printUnavailable(): void {
   console.info("Regista Avanzato — Manual DB Read-Only Schema Check");
   console.info("mode=manual_db_read_only_schema_check");
@@ -182,6 +191,20 @@ function printUnavailable(): void {
   console.info("db_write=false");
   console.info("service_role_used=false");
   console.info("token_printed=false");
+  console.info("read_only_access_investigation=true");
+  console.info("anon_client_used=false");
+  console.info("schema_introspection_supported=false");
+  console.info("direct_table_lookup_attempted=false");
+  console.info("public_view_lookup_attempted=false");
+  console.info("admin_view_lookup_attempted=false");
+  console.info("direct_table_lookup_result=not_attempted");
+  console.info("public_view_lookup_result=not_attempted");
+  console.info("admin_view_lookup_result=not_attempted");
+  console.info("likely_blocker=public_supabase_env_missing_or_not_available");
+  console.info("recommended_resolution=confirm_public_supabase_env_or_prepare_manual_select_checks_no_write");
+  console.info("requires_new_read_only_view=true");
+  console.info("requires_schema_local_only=true");
+  console.info("requires_service_role=false");
   console.info("public_env_present=false");
   console.info("tables_checked=competitions,teams,standings");
   console.info("competitions_table_confirmed=false");
@@ -339,6 +362,20 @@ async function main(): Promise<void> {
   const finalCompetitionsStatus = competitions.status === "blocked" && publicCompetitions.confirmed ? "needs_review" : competitions.status;
   const finalTeamsStatus = teams.status === "blocked" && publicTeams.confirmed ? "needs_review" : teams.status;
   const finalStandingsStatus = standings.status === "blocked" && publicStandings.confirmed ? "needs_review" : standings.status;
+  const directTableLookupResult = lookupResult(
+    dbConfirmedTablesCount === 3,
+    allChecks.map((check) => check.errorCode),
+    baseTableReadBlockedCount,
+  );
+  const publicViewLookupResult = lookupResult(publicViewsConfirmedCount === 3, [], 0);
+  const likelyBlocker =
+    directTableLookupResult === "unknown" && publicViewLookupResult === "unknown"
+      ? "rls_or_missing_view_or_wrong_table_name_or_insufficient_anon_access"
+      : "read_only_access_not_sufficient_for_import_lookup";
+  const recommendedResolution =
+    publicViewLookupResult === "confirmed"
+      ? "adapt_script_to_public_views_or_admin_session_no_write"
+      : "prepare_dedicated_read_only_lookup_view_proposal_or_manual_dashboard_select_check_no_write";
 
   console.info("Regista Avanzato — Manual DB Read-Only Schema Check");
   console.info("mode=manual_db_read_only_schema_check");
@@ -348,6 +385,20 @@ async function main(): Promise<void> {
   console.info("db_write=false");
   console.info("service_role_used=false");
   console.info("token_printed=false");
+  console.info("read_only_access_investigation=true");
+  console.info("anon_client_used=true");
+  console.info("schema_introspection_supported=false");
+  console.info("direct_table_lookup_attempted=true");
+  console.info("public_view_lookup_attempted=true");
+  console.info("admin_view_lookup_attempted=false");
+  console.info(`direct_table_lookup_result=${directTableLookupResult}`);
+  console.info(`public_view_lookup_result=${publicViewLookupResult}`);
+  console.info("admin_view_lookup_result=not_attempted");
+  console.info(`likely_blocker=${likelyBlocker}`);
+  console.info(`recommended_resolution=${recommendedResolution}`);
+  console.info("requires_new_read_only_view=true");
+  console.info("requires_schema_local_only=true");
+  console.info("requires_service_role=false");
   console.info("public_env_present=true");
   console.info("tables_checked=competitions,teams,standings");
   console.info(`competitions_table_confirmed=${competitions.confirmed}`);

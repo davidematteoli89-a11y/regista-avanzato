@@ -1257,3 +1257,19 @@ Stato finale:
 - next write allowed: `false`.
 
 Provider/import restano spenti. Punto 26 consigliato: investigazione read-only accesso/schema, senza write.
+
+## Punto 26 — Nessuna attivazione dopo investigazione read-only
+
+Punto 26 conferma che l'accesso anon/pubblico non è sufficiente per validare il lookup import manuale.
+
+Stato:
+
+- direct table lookup: `unknown`;
+- public view lookup: `unknown`;
+- admin view lookup: `not_attempted`;
+- likely blocker: `rls_or_missing_view_or_wrong_table_name_or_insufficient_anon_access`;
+- requires read-only view: `true`;
+- requires service role: `false`;
+- next write allowed: `false`.
+
+Provider/import restano spenti. Punto 27 consigliato: proposta no-write di view read-only dedicate oppure conferma manuale dashboard con sole SELECT.

@@ -1623,3 +1623,26 @@ Possibili verifiche Punto 26, ancora senza write:
 - preparare query manuali SELECT da SQL Editor staging;
 - verificare grants/RLS/public views;
 - verificare eventuale schema drift.
+
+## Punto 26 — Esito investigazione accesso read-only
+
+L'investigazione locale/read-only indica che:
+
+- il client anon/pubblico non è un percorso affidabile per lookup import;
+- le public views esistenti sono orientate al sito pubblico, non all'import lookup;
+- i reader admin richiedono sessione/ruolo e non sono utilizzabili da script anon;
+- una futura view read-only dedicata o una verifica manuale dashboard sono i percorsi più sicuri.
+
+Punto 27 consigliato:
+
+```text
+Punto 27-A — proposta migrazione read-only view, non applicata.
+```
+
+Alternativa:
+
+```text
+Punto 27-C — conferma manuale da Supabase dashboard con sole SELECT.
+```
+
+Non autorizzato: write staging, provider, Apify, Production.

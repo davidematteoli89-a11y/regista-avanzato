@@ -1254,3 +1254,19 @@ Il check DB read-only non abilita alcuna write:
 - nessuna migrazione.
 
 Prima di Production serve risolvere il blocco read-only su staging e completare eventuali write staging controllate in fasi separate.
+
+## Punto 26 — Production ancora esclusa
+
+Punto 26 è solo investigazione read-only.
+
+Confermato:
+
+- nessuna write DB;
+- nessun service role;
+- nessuna migrazione;
+- nessun SQL eseguibile;
+- nessun provider reale;
+- nessun deploy;
+- Production non toccata.
+
+Production resta esclusa finché non esistono read-only lookup affidabili e una sequenza staging verificata con backup/rollback/audit.
