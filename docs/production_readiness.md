@@ -1237,3 +1237,20 @@ Confermato:
 - Production non toccata.
 
 Il sistema resta in manual/mock mode. Prima di qualunque discussione Production serve almeno un Punto 25-A read-only su staging, seguito da autorizzazioni esplicite separate per eventuali write staging.
+
+## Punto 25 — Production ancora esclusa
+
+Punto 25 conferma che Production resta completamente fuori scope.
+
+Il check DB read-only non abilita alcuna write:
+
+- schema target non confermato dal client anon/pubblico;
+- final blocked areas: `3`;
+- write preconditions met: `false`;
+- next write allowed: `false`;
+- nessun deploy;
+- nessun provider reale;
+- nessun import reale;
+- nessuna migrazione.
+
+Prima di Production serve risolvere il blocco read-only su staging e completare eventuali write staging controllate in fasi separate.

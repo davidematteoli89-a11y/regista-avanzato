@@ -1590,3 +1590,36 @@ Non autorizzato:
 - provider reali;
 - Apify;
 - Production.
+
+## Punto 25 — Read-only DB check eseguito
+
+Il primo check read-only ha usato solo client anon/pubblico e non service role.
+
+Risultato:
+
+- DB read eseguito: sì;
+- DB write: no;
+- tabelle target confermate: no;
+- public views confermate: no;
+- lookup fixture confermati: no;
+- payload completo stampato/salvato: no.
+
+Stato per staging:
+
+- competitions: `blocked`;
+- teams: `blocked`;
+- standings: `blocked`;
+- `next_write_allowed=false`.
+
+Prossimo step consigliato:
+
+```text
+Punto 26-A — investigazione read-only schema/accesso Supabase staging.
+```
+
+Possibili verifiche Punto 26, ancora senza write:
+
+- confermare che env pubblica punti allo staging corretto senza stampare valori;
+- preparare query manuali SELECT da SQL Editor staging;
+- verificare grants/RLS/public views;
+- verificare eventuale schema drift.

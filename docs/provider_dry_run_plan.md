@@ -731,3 +731,33 @@ Risultato:
 - `next_write_allowed=false`.
 
 Prossimo step consigliato: Punto 25-A, DB read-only check senza write.
+
+## Punto 25 — DB read-only schema check
+
+Aggiunto comando:
+
+```bash
+npm run dry-run:manual-db-schema-check
+```
+
+Lo script:
+
+- usa solo client Supabase anon/pubblico se configurato;
+- non usa service role;
+- non stampa env/key/token;
+- non scrive DB;
+- non chiama provider;
+- stampa solo count/status sanificati.
+
+Risultato del primo check:
+
+- `db_read=true`;
+- `db_write=false`;
+- `service_role_used=false`;
+- target tables non confermate;
+- public views non confermate;
+- payload non stampato;
+- final blocked areas: `3`;
+- `next_write_allowed=false`.
+
+Il prossimo step resta no-write.

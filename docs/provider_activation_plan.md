@@ -1235,3 +1235,25 @@ Stato:
 - next write allowed: `false`.
 
 Provider/import restano spenti. Punto 25 consigliato: check DB read-only, non write.
+
+## Punto 25 — Nessuna attivazione dopo DB read-only check
+
+Punto 25 non attiva provider e non abilita import.
+
+Il check DB read-only con client anon/pubblico ha raggiunto la fase di lettura ma non ha confermato:
+
+- `competitions`;
+- `teams`;
+- `standings`;
+- public views correlate;
+- lookup fixture.
+
+Stato finale:
+
+- competitions: `blocked`;
+- teams: `blocked`;
+- standings: `blocked`;
+- write preconditions met: `false`;
+- next write allowed: `false`.
+
+Provider/import restano spenti. Punto 26 consigliato: investigazione read-only accesso/schema, senza write.

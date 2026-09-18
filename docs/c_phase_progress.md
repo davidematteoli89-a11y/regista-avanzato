@@ -2220,3 +2220,38 @@ Risultato:
 - `next_write_allowed=false`.
 
 Prossimo step consigliato: Punto 25-A — DB read-only schema/data lookup check, ancora no-write.
+
+## Punto 25 — DB Read-Only Schema/Data Lookup Check
+
+Stato: completato localmente con client Supabase anon/pubblico.
+
+Aggiunti:
+
+- `scripts/provider/manualDbReadOnlySchemaCheck.ts`;
+- script npm `dry-run:manual-db-schema-check`;
+- `docs/manual_import_db_read_only_schema_check_p25.md`;
+- `docs/manual_import_point_26_decision_p25.md`;
+- `docs/provider_point_25_closure.md`;
+- sezione admin read-only “DB read-only schema check”.
+
+Risultato:
+
+- `db_read=true`;
+- `db_write=false`;
+- `service_role_used=false`;
+- `token_printed=false`;
+- `db_confirmed_tables_count=0`;
+- `db_confirmed_columns_count=0`;
+- `missing_columns_count=0`;
+- `fixture_competition_lookup_matches=0`;
+- `fixture_team_lookup_matches=0`;
+- `final_ready_areas_count=0`;
+- `final_needs_review_areas_count=0`;
+- `final_blocked_areas_count=3`;
+- `next_write_allowed=false`.
+
+Interpretazione:
+
+- il check non ha confermato schema/dati target via client anon/pubblico;
+- non è autorizzata alcuna write staging;
+- Punto 26 consigliato: investigazione read-only accesso/schema Supabase staging.

@@ -349,6 +349,54 @@ export default async function AdminImportsPage() {
       <section className="admin-section-card">
         <div className="admin-card-head">
           <div>
+            <h2>DB read-only schema check</h2>
+            <p className="muted">
+              Primo check DB staging con client anon/pubblico: nessuna scrittura, nessun
+              service role e nessun payload completo salvato.
+            </p>
+          </div>
+          <div className="admin-badge-row">
+            <span className="admin-safety-badge">DB read=true</span>
+            <span className="admin-safety-badge">DB write=false</span>
+            <span className="admin-safety-badge">Service role=false</span>
+            <span className="admin-safety-badge">Point 26 required</span>
+          </div>
+        </div>
+        <dl className="admin-metadata">
+          <dt>DB read-only check completed</dt>
+          <dd>true</dd>
+          <dt>Competitions DB status</dt>
+          <dd>blocked — target table non confermata dal client anon/pubblico</dd>
+          <dt>Teams DB status</dt>
+          <dd>blocked — target table non confermata dal client anon/pubblico</dd>
+          <dt>Standings DB status</dt>
+          <dd>blocked — target table non confermata dal client anon/pubblico</dd>
+          <dt>Confirmed tables count</dt>
+          <dd>0</dd>
+          <dt>Confirmed columns count</dt>
+          <dd>0</dd>
+          <dt>Missing columns count</dt>
+          <dd>0 — non dichiarate mancanti; lookup non confermato</dd>
+          <dt>Dedup key confidence</dt>
+          <dd>blocked</dd>
+          <dt>FK/reference confidence</dt>
+          <dd>blocked</dd>
+          <dt>Sample rows read</dt>
+          <dd>0</dd>
+          <dt>Payload printed</dt>
+          <dd>false</dd>
+          <dt>Next write allowed</dt>
+          <dd>false</dd>
+          <dt>Punto 26 required</dt>
+          <dd>true</dd>
+          <dt>Write authorization required</dt>
+          <dd>true</dd>
+        </dl>
+      </section>
+
+      <section className="admin-section-card">
+        <div className="admin-card-head">
+          <div>
             <h2>Staging manual import readiness</h2>
             <p className="muted">
               Readiness simulata per un futuro import manuale staging. Il batch plan è solo

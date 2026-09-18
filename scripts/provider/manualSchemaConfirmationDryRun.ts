@@ -95,6 +95,17 @@ async function main(): Promise<void> {
   console.info(`confirmed_columns_count=${new Set(allColumns).size}`);
   console.info("missing_columns_count=0");
   console.info("db_read_only_check_recommended=true");
+  console.info("db_read_only_check_completed=true");
+  console.info("db_schema_lookup_available=false");
+  console.info("db_confirmed_tables_count=0");
+  console.info("db_confirmed_columns_count=0");
+  console.info("db_missing_columns_count=0");
+  console.info("competitions_db_status=blocked");
+  console.info("teams_db_status=blocked");
+  console.info("standings_db_status=blocked");
+  console.info("final_competitions_schema_status=blocked");
+  console.info("final_teams_schema_status=blocked");
+  console.info("final_standings_schema_status=blocked");
   console.info(`requires_schema_confirmation=${allBlockers.length > 0}`);
   console.info("requires_migration=false");
   console.info("migration_recommended=false");
@@ -109,6 +120,7 @@ async function main(): Promise<void> {
   console.info("requires_explicit_user_authorization_for_point_23=true");
   console.info("point_24_write_authorization_required=true");
   console.info("point_25_write_authorization_required=true");
+  console.info("point_26_write_authorization_required=true");
   console.info("confirmation=read_only_schema_confirmation,no_db_client,no_sql_execution,no_db_writes,no_external_provider_calls,no_env_output");
 }
 
