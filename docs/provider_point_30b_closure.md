@@ -1,19 +1,19 @@
-# Provider Punto 30-A closure
+# Provider Punto 30-B closure
 
 ```text
-Punto 30-A preparato in modalità documentale/no-write.
-La dashboard confirmation reale non è stata eseguita da Codex.
+Punto 30-B registrato in modalità documentale/no-write dopo verifica manuale dichiarata dall'utente.
+La dashboard confirmation reale è stata dichiarata completata manualmente dall'utente; Codex non ha aperto la Dashboard.
 Nessun SQL è stato eseguito.
 Nessuna scrittura DB è stata eseguita.
 Nessun service_role è stato usato.
 Nessuna migration è stata creata o applicata.
 next_write_allowed resta false.
-Il prossimo step consigliato è Punto 30-B: dashboard confirmation manuale no-write.
+Il prossimo step consigliato è Punto 30-C: ripetere/completare dashboard confirmation con valori reali, oppure restare in manual/mock mode.
 ```
 
 ## Stato
 
-- dashboard_confirmation_completed: `false`
+- dashboard_confirmation_completed: `true`
 - dashboard_sql_executed: `false`
 - dashboard_db_write: `false`
 - dashboard_service_role_used: `false`

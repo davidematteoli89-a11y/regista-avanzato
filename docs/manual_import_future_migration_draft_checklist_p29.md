@@ -40,9 +40,9 @@ Questa checklist non autorizza applicazione, non crea migration draft e non auto
 - `db_write=false`
 - `next_write_allowed=false`
 
-## Dashboard confirmation P30-A
+## Dashboard confirmation P30-B
 
-La checklist resta non soddisfatta perché la dashboard confirmation reale non è stata eseguita da Codex.
+La checklist resta non soddisfatta perché la dashboard confirmation dichiarata dall'utente non include valori schema risolutivi.
 
 - placeholders resolved count: `0`
 - placeholders unclear count: `16`

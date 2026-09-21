@@ -2369,17 +2369,17 @@ Risultato:
 - future migration draft allowed: `false`;
 - `next_write_allowed=false`.
 
-Prossimo step consigliato: Punto 30-A dashboard confirmation manuale no-write. Punto 30/write staging non autorizzato.
+Prossimo step consigliato: Punto 30-B dashboard confirmation manuale no-write. Punto 30/write staging non autorizzato.
 
-## Punto 30-A — Dashboard confirmation manuale no-write
+## Punto 30-B — Dashboard confirmation manuale no-write
 
-Stato: preparazione documentale completata; verifica dashboard reale non eseguita da Codex.
+Stato: preparazione documentale completata; verifica dashboard reale dichiarata dall'utente senza valori schema risolutivi.
 
 Aggiunti:
 
-- `docs/manual_import_dashboard_confirmation_p30a.md`;
-- `docs/manual_import_point_30b_or_31_decision_p30a.md`;
-- `docs/provider_point_30a_closure.md`.
+- `docs/manual_import_dashboard_confirmation_p30b.md`;
+- `docs/manual_import_point_30c_or_31_decision_p30b.md`;
+- `docs/provider_point_30b_closure.md`.
 
 Aggiornati:
 
@@ -2400,4 +2400,4 @@ Risultato:
 - ready for migration draft: `false`;
 - `next_write_allowed=false`.
 
-Prossimo step consigliato: Punto 30-B dashboard confirmation manuale no-write. Punto 31 migration draft non è ancora consigliato.
+Prossimo step consigliato: Punto 30-C completare dashboard confirmation con valori reali, oppure restare in manual/mock mode. Punto 31 migration draft non è ancora consigliato.

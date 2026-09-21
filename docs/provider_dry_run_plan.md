@@ -837,13 +837,13 @@ Stato dry-run:
 
 Provider/import restano spenti.
 
-## Punto 30-A — Dashboard confirmation pending
+## Punto 30-B — Dashboard confirmation manuale registrata
 
-Punto 30-A non esegue SQL e non legge DB.
+Punto 30-B registra la verifica manuale dichiarata dall'utente, senza SQL, senza DB write e senza valori schema risolutivi.
 
 Stato dry-run:
 
-- `dashboard_confirmation_completed=false`;
+- `dashboard_confirmation_completed=true`;
 - `dashboard_sql_executed=false`;
 - `dashboard_db_write=false`;
 - `dashboard_service_role_used=false`;

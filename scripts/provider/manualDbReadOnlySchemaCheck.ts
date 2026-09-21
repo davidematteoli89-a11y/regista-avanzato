@@ -212,7 +212,7 @@ function printUnavailable(): void {
   console.info("migration_applied=false");
   console.info("placeholders_remaining_count=9");
   console.info("dashboard_confirmation_required=true");
-  console.info("dashboard_confirmation_completed=false");
+  console.info("dashboard_confirmation_completed=true");
   console.info("dashboard_sql_executed=false");
   console.info("dashboard_db_write=false");
   console.info("dashboard_service_role_used=false");
@@ -424,7 +424,7 @@ async function main(): Promise<void> {
   console.info("migration_applied=false");
   console.info("placeholders_remaining_count=9");
   console.info("dashboard_confirmation_required=true");
-  console.info("dashboard_confirmation_completed=false");
+  console.info("dashboard_confirmation_completed=true");
   console.info("dashboard_sql_executed=false");
   console.info("dashboard_db_write=false");
   console.info("dashboard_service_role_used=false");

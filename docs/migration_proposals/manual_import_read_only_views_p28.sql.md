@@ -208,7 +208,7 @@ Punto 28 does not authorize Punto 29 writes. Before anything executable:
 4. keep the real migration non-applied until explicit approval;
 5. keep `next_write_allowed=false`.
 
-## Dashboard confirmation P30-A
+## Dashboard confirmation P30-B
 
 ```text
 MIGRATION_PROPOSAL_ONLY
@@ -217,7 +217,7 @@ DO NOT RUN
 NOT REVIEWED FOR EXECUTION
 NO DB WRITE AUTHORIZED
 
-dashboard_confirmation_completed=false
+dashboard_confirmation_completed=true
 dashboard_sql_executed=false
 dashboard_db_write=false
 dashboard_service_role_used=false
@@ -231,4 +231,4 @@ ready_for_migration_draft=false
 next_write_allowed=false
 ```
 
-Codex non ha eseguito la verifica visuale nella Supabase Dashboard. La conferma manuale resta pendente e deve essere completata in un punto successivo no-write.
+L'utente ha dichiarato di avere eseguito la verifica visuale Supabase Dashboard senza SQL, senza write, senza service_role e senza Production. I nomi reali di tabelle/colonne non sono stati forniti, quindi i placeholder restano unclear.

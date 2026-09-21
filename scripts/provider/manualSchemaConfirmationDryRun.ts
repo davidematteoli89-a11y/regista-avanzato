@@ -113,7 +113,7 @@ async function main(): Promise<void> {
   console.info("migration_file_created=false");
   console.info("placeholders_remaining_count=9");
   console.info("dashboard_confirmation_required=true");
-  console.info("dashboard_confirmation_completed=false");
+  console.info("dashboard_confirmation_completed=true");
   console.info("dashboard_sql_executed=false");
   console.info("dashboard_db_write=false");
   console.info("dashboard_service_role_used=false");
@@ -161,7 +161,7 @@ async function main(): Promise<void> {
   console.info("point_29_write_authorization_required=true");
   console.info("point_30_authorization_required=true");
   console.info("point_30b_or_31_authorization_required=true");
-  console.info("recommended_next_step=point_29_not_authorized_until_p28_proposal_reviewed_and_explicitly_approved");
+  console.info("recommended_next_step=point_30c_or_repeat_dashboard_confirmation_with_values_no_write");
   console.info("confirmation=read_only_schema_confirmation,no_db_client,no_sql_execution,no_db_writes,no_external_provider_calls,no_env_output");
 }
 

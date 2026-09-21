@@ -603,8 +603,9 @@ export default async function AdminImportsPage() {
           <div>
             <h2>Dashboard confirmation</h2>
             <p className="muted">
-              Punto 30-A prepara la verifica manuale Supabase Dashboard. Codex non ha eseguito
-              la verifica visuale live, quindi i placeholder restano da confermare.
+              Punto 30-B registra la verifica manuale Supabase Dashboard dichiarata dall&apos;utente.
+              L&apos;utente ha dichiarato di aver eseguito la verifica visuale live senza SQL/write;
+              i valori schema non sono stati forniti, quindi i placeholder restano unclear.
             </p>
           </div>
           <div className="admin-badge-row">
@@ -616,7 +617,7 @@ export default async function AdminImportsPage() {
         </div>
         <dl className="admin-metadata">
           <dt>Dashboard confirmation completed</dt>
-          <dd>false</dd>
+          <dd>true</dd>
           <dt>SQL executed</dt>
           <dd>false</dd>
           <dt>DB write</dt>

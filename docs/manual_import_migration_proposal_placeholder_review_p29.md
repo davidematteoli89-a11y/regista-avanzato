@@ -38,9 +38,9 @@ Status ammessi:
 - Future migration draft allowed: `false`.
 - `next_write_allowed=false`.
 
-## Dashboard confirmation P30-A
+## Dashboard confirmation P30-B
 
-La verifica dashboard reale non è stata eseguita da Codex.
+La verifica dashboard reale è stata dichiarata completata manualmente dall'utente, senza SQL e senza write; i campi schema non sono stati forniti.
 
 - dashboard confirmation performed: `false`
 - SQL executed: `false`

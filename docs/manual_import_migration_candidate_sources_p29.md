@@ -143,7 +143,7 @@ Nessuna area è `ready_for_migration_draft` perché manca conferma live dashboar
 
 `next_write_allowed=false`.
 
-## Dashboard confirmation P30-A
+## Dashboard confirmation P30-B
 
 La conferma dashboard non è stata completata da Codex.
 

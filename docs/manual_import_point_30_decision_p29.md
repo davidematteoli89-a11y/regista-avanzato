@@ -29,7 +29,7 @@ Non consigliata e non autorizzata. Richiede un punto futuro separato, review del
 Poiché restano placeholder critici, il prossimo step consigliato è:
 
 ```text
-Punto 30-A — dashboard confirmation manuale no-write.
+Punto 30-B — dashboard confirmation manuale no-write.
 ```
 
 ## Stato
@@ -41,7 +41,7 @@ Punto 30-A — dashboard confirmation manuale no-write.
 - `provider_activated=false`
 - `production_touched=false`
 
-## Dashboard confirmation P30-A
+## Dashboard confirmation P30-B
 
 La verifica dashboard non è stata completata da Codex, quindi l'opzione consigliata resta:
 

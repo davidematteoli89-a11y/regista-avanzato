@@ -1,6 +1,6 @@
-# Punto 30-A — Dashboard confirmation manuale no-write
+# Punto 30-B — Dashboard confirmation manuale no-write
 
-Stato: preparazione documentale completata; conferma dashboard reale non eseguita da Codex.
+Stato: preparazione documentale completata; conferma dashboard manuale reale eseguita dall'utente senza dettagli schema risolutivi.
 
 ## Scope
 
@@ -17,7 +17,7 @@ Conferme operative:
 - Production touched: `false`
 - next_write_allowed: `false`
 
-Nota: Codex non ha aperto o verificato la Dashboard Supabase. I valori sotto restano `unclear` finché l'utente non esegue la verifica visuale/manuale.
+Nota: l'utente ha dichiarato di avere verificato manualmente la Dashboard Supabase senza SQL e senza write. I valori schema non sono stati forniti, quindi restano `unclear`.
 
 ## Tabella conferme
 
@@ -62,26 +62,26 @@ Nota: Codex non ha aperto o verificato la Dashboard Supabase. I valori sotto res
 
 | Placeholder | Status after dashboard check | Resolved value | Notes |
 | --- | --- | --- | --- |
-| `CONFIRM_ACTUAL_COMPETITIONS_TABLE` | unclear | unclear | Dashboard check non eseguito |
-| `CONFIRM_ACTUAL_COMPETITION_ID_COLUMN` | unclear | unclear | Dashboard check non eseguito |
-| `CONFIRM_ACTUAL_PROVIDER_ID_COLUMN` | unclear | unclear | Dashboard check non eseguito |
-| `CONFIRM_ACTUAL_SEASON_COLUMN` | unclear | unclear | Dashboard check non eseguito |
-| `CONFIRM_HELPER_VIEW_CONTEXT` | unclear | unclear | Dashboard check non eseguito |
-| `CONFIRM_ACTUAL_TEAMS_TABLE` | unclear | unclear | Dashboard check non eseguito |
-| `CONFIRM_ACTUAL_TEAM_ID_COLUMN` | unclear | unclear | Dashboard check non eseguito |
-| `CONFIRM_ACTUAL_PROVIDER_TEAM_ID_COLUMN` | unclear | unclear | Dashboard check non eseguito |
-| `CONFIRM_ACTUAL_COMPETITION_FK_COLUMN` | unclear | unclear | Dashboard check non eseguito |
-| `CONFIRM_TEAM_DEDUP_KEY` | unclear | unclear | Dashboard check non eseguito |
-| `CONFIRM_ACTUAL_STANDINGS_TABLE` | unclear | unclear | Dashboard check non eseguito |
-| `CONFIRM_ACTUAL_STANDINGS_POSITION_COLUMN` | unclear | unclear | Dashboard check non eseguito |
-| `CONFIRM_STANDINGS_TEAM_FK` | unclear | unclear | Dashboard check non eseguito |
-| `CONFIRM_STANDINGS_COMPETITION_FK` | unclear | unclear | Dashboard check non eseguito |
-| `CONFIRM_SEASON_STAGE_MATCHDAY_POLICY` | unclear | unclear | Dashboard check non eseguito |
-| `CONFIRM_GOAL_DIFFERENCE_POLICY` | unclear | unclear | Dashboard check non eseguito |
+| `CONFIRM_ACTUAL_COMPETITIONS_TABLE` | unclear | unclear | Verifica manuale dichiarata, valore non fornito |
+| `CONFIRM_ACTUAL_COMPETITION_ID_COLUMN` | unclear | unclear | Verifica manuale dichiarata, valore non fornito |
+| `CONFIRM_ACTUAL_PROVIDER_ID_COLUMN` | unclear | unclear | Verifica manuale dichiarata, valore non fornito |
+| `CONFIRM_ACTUAL_SEASON_COLUMN` | unclear | unclear | Verifica manuale dichiarata, valore non fornito |
+| `CONFIRM_HELPER_VIEW_CONTEXT` | unclear | unclear | Verifica manuale dichiarata, valore non fornito |
+| `CONFIRM_ACTUAL_TEAMS_TABLE` | unclear | unclear | Verifica manuale dichiarata, valore non fornito |
+| `CONFIRM_ACTUAL_TEAM_ID_COLUMN` | unclear | unclear | Verifica manuale dichiarata, valore non fornito |
+| `CONFIRM_ACTUAL_PROVIDER_TEAM_ID_COLUMN` | unclear | unclear | Verifica manuale dichiarata, valore non fornito |
+| `CONFIRM_ACTUAL_COMPETITION_FK_COLUMN` | unclear | unclear | Verifica manuale dichiarata, valore non fornito |
+| `CONFIRM_TEAM_DEDUP_KEY` | unclear | unclear | Verifica manuale dichiarata, valore non fornito |
+| `CONFIRM_ACTUAL_STANDINGS_TABLE` | unclear | unclear | Verifica manuale dichiarata, valore non fornito |
+| `CONFIRM_ACTUAL_STANDINGS_POSITION_COLUMN` | unclear | unclear | Verifica manuale dichiarata, valore non fornito |
+| `CONFIRM_STANDINGS_TEAM_FK` | unclear | unclear | Verifica manuale dichiarata, valore non fornito |
+| `CONFIRM_STANDINGS_COMPETITION_FK` | unclear | unclear | Verifica manuale dichiarata, valore non fornito |
+| `CONFIRM_SEASON_STAGE_MATCHDAY_POLICY` | unclear | unclear | Verifica manuale dichiarata, valore non fornito |
+| `CONFIRM_GOAL_DIFFERENCE_POLICY` | unclear | unclear | Verifica manuale dichiarata, valore non fornito |
 
 ## Summary
 
-- dashboard_confirmation_completed: `false`
+- dashboard_confirmation_completed: `true`
 - dashboard_sql_executed: `false`
 - dashboard_db_write: `false`
 - dashboard_service_role_used: `false`

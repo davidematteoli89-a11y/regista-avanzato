@@ -1316,9 +1316,9 @@ Confermato:
 
 Punto 30 consigliato: dashboard confirmation no-write, non attivazione.
 
-## Punto 30-A — Nessuna attivazione dopo dashboard preparation
+## Punto 30-B — Nessuna attivazione dopo dashboard confirmation manuale
 
-La dashboard confirmation reale non è stata eseguita da Codex e nessun provider viene attivato.
+La dashboard confirmation reale è stata dichiarata dall'utente senza SQL/write e nessun provider viene attivato.
 
 Confermato:
 

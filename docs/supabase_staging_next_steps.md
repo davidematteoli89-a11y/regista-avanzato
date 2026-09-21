@@ -1700,12 +1700,12 @@ Esito:
 Prossimo step consigliato:
 
 ```text
-Punto 30-A — dashboard confirmation manuale no-write.
+Punto 30-B — dashboard confirmation manuale no-write.
 ```
 
-## Punto 30-A — Dashboard confirmation pending
+## Punto 30-B — Dashboard confirmation manuale registrata
 
-È stato preparato il documento di conferma dashboard, ma Codex non ha verificato la Dashboard Supabase live.
+È stata registrata la conferma manuale dichiarata dall'utente, ma i nomi reali di tabelle/colonne non sono stati forniti.
 
 Stato:
 
@@ -1721,5 +1721,5 @@ Stato:
 Prossimo step consigliato:
 
 ```text
-Punto 30-B — dashboard confirmation manuale no-write eseguita dall'utente.
+Punto 30-C — completare dashboard confirmation manuale no-write con valori reali.
 ```

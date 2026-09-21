@@ -1322,9 +1322,9 @@ Confermato:
 
 Production resta esclusa. Punto 30/write staging non è autorizzato.
 
-## Punto 30-A — Production ancora esclusa
+## Punto 30-B — Production ancora esclusa
 
-Punto 30-A non esegue conferme live da Codex e non abilita migration draft.
+Punto 30-B registra una conferma manuale dichiarata dall'utente, senza valori schema risolutivi, e non abilita migration draft.
 
 Confermato:
 
