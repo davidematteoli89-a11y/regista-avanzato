@@ -799,3 +799,22 @@ Stato operativo:
 - `db_write=false`;
 - `provider_activated=false`;
 - `next_write_allowed=false`.
+
+## Punto 28 — Migration proposal no-apply
+
+Punto 28 resta dry-run/no-apply.
+
+È stata creata una proposal documentale:
+
+- `docs/migration_proposals/manual_import_read_only_views_p28.sql.md`
+
+Stato:
+
+- `read_only_view_migration_proposal_prepared=true`;
+- `real_migration_file_created=false`;
+- `migration_applied=false`;
+- `db_write=false`;
+- `provider_activated=false`;
+- `next_write_allowed=false`.
+
+Il file non è in `supabase/migrations` e non deve essere eseguito.

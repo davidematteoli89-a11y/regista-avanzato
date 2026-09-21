@@ -2311,3 +2311,30 @@ Risultato:
 - `next_write_allowed=false`.
 
 Prossimo step consigliato: Punto 28, scelta esplicita tra migrazione non applicata per view read-only oppure controlli manuali `SELECT` da SQL Editor staging.
+
+## Punto 28 — Read-Only View Migration Proposal
+
+Stato: completato in modalità no-apply/no-write.
+
+Aggiunti:
+
+- `docs/migration_proposals/manual_import_read_only_views_p28.sql.md`;
+- `docs/manual_import_point_29_decision_p28.md`;
+- `docs/provider_point_28_closure.md`.
+
+Aggiornati:
+
+- dry-run manual schema/readiness;
+- sezione `/admin/imports` “Read-only view proposal”;
+- documentazione Punto 27 e readiness generale.
+
+Risultato:
+
+- migration proposal documentale creata fuori da `supabase/migrations`;
+- proposta view read-only per competitions, teams e standings;
+- ogni blocco marcato `MIGRATION_PROPOSAL_ONLY / DO NOT APPLY / DO NOT RUN / NOT REVIEWED FOR EXECUTION / NO DB WRITE AUTHORIZED`;
+- nessuna migrazione reale creata o applicata;
+- nessun `db push/reset`;
+- nessuna scrittura DB;
+- `next_write_allowed=false`;
+- Punto 29/write staging non autorizzato.

@@ -43,3 +43,12 @@ Questa matrice descrive quali campi servono alle future view read-only. Non conf
 - `migration_prepared=false`
 - `migration_applied=false`
 - `next_write_allowed=false`
+
+## Punto 28 update
+
+Il mapping è stato usato per preparare una proposal documentale, non una migrazione applicabile:
+
+- `docs/migration_proposals/manual_import_read_only_views_p28.sql.md`
+- `real_migration_file_created=false`
+- `migration_applied=false`
+- `next_write_allowed=false`

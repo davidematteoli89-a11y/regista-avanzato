@@ -1667,3 +1667,19 @@ Stato:
 - `next_write_allowed=false`.
 
 Prossimo step: Punto 28, scegliere tra migrazione non applicata oppure SELECT manuali da SQL Editor staging.
+
+## Punto 28 — Migration proposal documentale
+
+Creato documento:
+
+- `docs/migration_proposals/manual_import_read_only_views_p28.sql.md`
+
+Questo documento descrive una futura migrazione per view lookup read-only, ma:
+
+- non è in `supabase/migrations`;
+- non è auto-applicabile;
+- non è revisionato per esecuzione;
+- non autorizza scritture;
+- non autorizza Punto 29/write staging.
+
+Prossimo step consigliato: review statica o SELECT manuali read-only, ancora senza write.

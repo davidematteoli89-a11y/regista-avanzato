@@ -83,3 +83,11 @@ DEFAULT_DECISION
   migration_prepared=false
   migration_applied=false
 ```
+
+## Punto 28 update
+
+Punto 28 mantiene questo file come pseudo-SQL non eseguibile e aggiunge una migration proposal documentale separata:
+
+- `docs/migration_proposals/manual_import_read_only_views_p28.sql.md`
+
+Anche il nuovo documento è no-apply/no-run e non abilita write staging.

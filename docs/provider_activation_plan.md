@@ -1286,3 +1286,17 @@ Prima di qualsiasi import manuale reale serve Punto 28:
 - mantenere `next_write_allowed=false` finché non esiste nuova autorizzazione.
 
 TheStatsAPI, Stats API v1, API-Football e Apify restano sospesi/spenti.
+
+## Punto 28 — Nessuna attivazione dopo migration proposal
+
+La migration proposal read-only non attiva provider e non abilita import.
+
+Confermato:
+
+- TheStatsAPI / Stats API sospesi;
+- API-Football sospeso/no retry;
+- Apify spento;
+- real import disabilitato;
+- `next_write_allowed=false`.
+
+Punto 29/write staging non è autorizzato.

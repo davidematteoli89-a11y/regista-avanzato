@@ -477,27 +477,36 @@ export default async function AdminImportsPage() {
           <div>
             <h2>Read-only view proposal</h2>
             <p className="muted">
-              Punto 27 prepara solo i requisiti per future view lookup read-only. Nessuna
-              migrazione è stata generata come SQL eseguibile, applicata o autorizzata.
+              Punto 28 trasforma i requisiti in una proposta migrazione documentale. Il file è
+              fuori da <code>supabase/migrations</code>, non è auto-applicabile e non autorizza
+              alcuna scrittura.
             </p>
           </div>
           <div className="admin-badge-row">
             <span className="admin-safety-badge">Read-only view needed</span>
-            <span className="admin-safety-badge">Requirements ready</span>
-            <span className="admin-safety-badge">Pseudo-SQL docs only</span>
-            <span className="admin-safety-badge">Point 28 required</span>
+            <span className="admin-safety-badge">Proposal draft ready</span>
+            <span className="admin-safety-badge">No auto-apply</span>
+            <span className="admin-safety-badge">Point 29 not authorized</span>
           </div>
         </div>
         <dl className="admin-metadata">
           <dt>Views proposed</dt>
-          <dd>competitions lookup, teams lookup, standings lookup</dd>
+          <dd>manual import competitions, teams and standings lookup</dd>
           <dt>Purpose</dt>
           <dd>confermare lookup import manuale senza service role e senza accesso diretto anon alle tabelle</dd>
-          <dt>Pseudo SQL</dt>
-          <dd>documentation only / not executable</dd>
+          <dt>Proposal file</dt>
+          <dd>
+            <code>docs/migration_proposals/manual_import_read_only_views_p28.sql.md</code>
+          </dd>
+          <dt>Proposal status</dt>
+          <dd>MIGRATION_PROPOSAL_ONLY / DO NOT APPLY / DO NOT RUN</dd>
           <dt>Migration prepared</dt>
           <dd>false</dd>
           <dt>Migration applied</dt>
+          <dd>false</dd>
+          <dt>Auto apply</dt>
+          <dd>false</dd>
+          <dt>Reviewed for execution</dt>
           <dd>false</dd>
           <dt>Service role</dt>
           <dd>false</dd>
@@ -507,8 +516,8 @@ export default async function AdminImportsPage() {
           <dd>false</dd>
           <dt>Next write allowed</dt>
           <dd>false</dd>
-          <dt>Punto 28 required</dt>
-          <dd>true — preparare eventuale migrazione non applicata o conferma manuale SELECT</dd>
+          <dt>Punto 29/write staging</dt>
+          <dd>non autorizzato</dd>
         </dl>
       </section>
 

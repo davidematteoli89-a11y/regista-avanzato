@@ -30,3 +30,11 @@ Punto 27 chiude il blocco operativo “Read-Only View Proposal” preparando la 
 ## Prossimo step
 
 Punto 28: scegliere tra migrazione non applicata per view read-only oppure verifiche manuali `SELECT` da SQL Editor staging.
+
+## Punto 28 update
+
+Punto 28 ha prodotto solo una migration proposal documentale:
+
+- `docs/migration_proposals/manual_import_read_only_views_p28.sql.md`
+
+Non è stata creata o applicata una migrazione reale.

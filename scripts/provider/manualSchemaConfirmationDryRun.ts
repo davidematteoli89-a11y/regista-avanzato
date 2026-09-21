@@ -104,6 +104,9 @@ async function main(): Promise<void> {
   console.info("read_only_view_proposal_prepared=true");
   console.info("read_only_view_requirements_available=true");
   console.info("read_only_view_field_mapping_available=true");
+  console.info("read_only_view_migration_proposal_prepared=true");
+  console.info("read_only_view_migration_proposal_path=docs/migration_proposals/manual_import_read_only_views_p28.sql.md");
+  console.info("read_only_view_migration_proposal_auto_apply=false");
   console.info("manual_import_lookup_views_needed=true");
   console.info("manual_import_competitions_lookup_view_needed=true");
   console.info("manual_import_teams_lookup_view_needed=true");
@@ -123,6 +126,8 @@ async function main(): Promise<void> {
   console.info("migration_generated=false");
   console.info("migration_prepared=false");
   console.info("migration_applied=false");
+  console.info("migration_proposal_only=true");
+  console.info("migration_proposal_reviewed_for_execution=false");
   console.info("sql_generated=false");
   console.info("pseudo_sql_documentation_only=true");
   console.info("pseudo_sql_not_executable=true");
@@ -137,7 +142,8 @@ async function main(): Promise<void> {
   console.info("point_26_write_authorization_required=true");
   console.info("point_27_write_authorization_required=true");
   console.info("point_28_write_authorization_required=true");
-  console.info("recommended_next_step=point_28_option_a_prepare_non_applied_read_only_view_migration_or_manual_dashboard_select");
+  console.info("point_29_write_authorization_required=true");
+  console.info("recommended_next_step=point_29_not_authorized_until_p28_proposal_reviewed_and_explicitly_approved");
   console.info("confirmation=read_only_schema_confirmation,no_db_client,no_sql_execution,no_db_writes,no_external_provider_calls,no_env_output");
 }
 

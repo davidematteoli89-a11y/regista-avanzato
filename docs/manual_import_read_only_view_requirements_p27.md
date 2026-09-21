@@ -107,3 +107,11 @@ Punto 28 deve scegliere una sola strada:
 3. restare in manual/mock mode.
 
 Nessuna opzione abilita scritture senza nuova conferma esplicita.
+
+## Punto 28 update
+
+La proposta è stata trasformata in migration proposal documentale:
+
+- `docs/migration_proposals/manual_import_read_only_views_p28.sql.md`
+
+Il file resta fuori da `supabase/migrations`, è marcato `MIGRATION_PROPOSAL_ONLY / DO NOT APPLY / DO NOT RUN` e non autorizza scritture.

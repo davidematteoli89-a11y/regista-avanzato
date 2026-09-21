@@ -42,3 +42,13 @@ Non autorizzata da Punto 27. Qualunque write richiede nuovo gate, backup, rollba
 ## Raccomandazione
 
 Procedere con Opzione A o B. Non procedere con scritture.
+
+## Esito Punto 28
+
+È stata scelta una variante sicura dell'Opzione A:
+
+- proposal documentale creata;
+- nessun file in `supabase/migrations`;
+- nessuna migrazione applicata;
+- `next_write_allowed=false`;
+- Punto 29/write staging non autorizzato.

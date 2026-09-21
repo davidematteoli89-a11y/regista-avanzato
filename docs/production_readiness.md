@@ -1287,3 +1287,20 @@ Confermato:
 - Production non toccata.
 
 Production resta fuori scope finché Punto 28 e le fasi staging successive non confermano view lookup, RLS, backup, rollback e audit.
+
+## Punto 28 — Production ancora esclusa
+
+Punto 28 produce solo una migration proposal documentale.
+
+Confermato:
+
+- nessun file in `supabase/migrations`;
+- nessuna migrazione applicata;
+- nessun `db push/reset`;
+- nessuna scrittura DB;
+- nessun service role;
+- nessun provider reale;
+- nessun deploy;
+- Production non toccata.
+
+Production resta fuori scope. Punto 29/write staging non è autorizzato.
