@@ -780,3 +780,22 @@ Il dry-run DB schema check ora produce diagnosi aggiuntiva:
 - `next_write_allowed=false`.
 
 Punto 26 non cambia lo stato operativo: nessun import, nessuna write, nessun provider.
+
+## Punto 27 — Read-only view proposal
+
+Punto 27 resta dry-run/documentazione.
+
+Sono stati preparati:
+
+- requisiti per view lookup read-only;
+- field mapping fixture → view;
+- pseudo-SQL non eseguibile;
+- decision gate Punto 28.
+
+Stato operativo:
+
+- `migration_prepared=false`;
+- `migration_applied=false`;
+- `db_write=false`;
+- `provider_activated=false`;
+- `next_write_allowed=false`.

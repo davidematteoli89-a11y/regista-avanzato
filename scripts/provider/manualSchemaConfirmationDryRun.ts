@@ -101,6 +101,13 @@ async function main(): Promise<void> {
   console.info("read_only_access_blocker=rls_or_missing_view_or_wrong_table_name_or_insufficient_anon_access");
   console.info("schema_confirmation_source=local_files_plus_read_only_attempt");
   console.info("schema_confirmation_strategy=read_view_needed");
+  console.info("read_only_view_proposal_prepared=true");
+  console.info("read_only_view_requirements_available=true");
+  console.info("read_only_view_field_mapping_available=true");
+  console.info("manual_import_lookup_views_needed=true");
+  console.info("manual_import_competitions_lookup_view_needed=true");
+  console.info("manual_import_teams_lookup_view_needed=true");
+  console.info("manual_import_standings_lookup_view_needed=true");
   console.info("db_confirmed_tables_count=0");
   console.info("db_confirmed_columns_count=0");
   console.info("db_missing_columns_count=0");
@@ -114,7 +121,10 @@ async function main(): Promise<void> {
   console.info("requires_migration=false");
   console.info("migration_recommended=false");
   console.info("migration_generated=false");
+  console.info("migration_prepared=false");
+  console.info("migration_applied=false");
   console.info("sql_generated=false");
+  console.info("pseudo_sql_documentation_only=true");
   console.info("pseudo_sql_not_executable=true");
   console.info("blocked_real_execution=true");
   console.info(`fixture_references_valid=${preview.referencesValid}`);
@@ -126,6 +136,8 @@ async function main(): Promise<void> {
   console.info("point_25_write_authorization_required=true");
   console.info("point_26_write_authorization_required=true");
   console.info("point_27_write_authorization_required=true");
+  console.info("point_28_write_authorization_required=true");
+  console.info("recommended_next_step=point_28_option_a_prepare_non_applied_read_only_view_migration_or_manual_dashboard_select");
   console.info("confirmation=read_only_schema_confirmation,no_db_client,no_sql_execution,no_db_writes,no_external_provider_calls,no_env_output");
 }
 

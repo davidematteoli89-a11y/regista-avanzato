@@ -1270,3 +1270,20 @@ Confermato:
 - Production non toccata.
 
 Production resta esclusa finché non esistono read-only lookup affidabili e una sequenza staging verificata con backup/rollback/audit.
+
+## Punto 27 — Production ancora esclusa
+
+Punto 27 è solo proposta documentale di view read-only.
+
+Confermato:
+
+- nessuna migrazione applicata;
+- nessun SQL eseguibile prodotto;
+- nessuna scrittura DB;
+- nessun service role;
+- nessun provider reale;
+- nessun Apify;
+- nessun deploy;
+- Production non toccata.
+
+Production resta fuori scope finché Punto 28 e le fasi staging successive non confermano view lookup, RLS, backup, rollback e audit.

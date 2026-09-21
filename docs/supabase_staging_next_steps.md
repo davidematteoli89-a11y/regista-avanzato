@@ -1646,3 +1646,24 @@ Punto 27-C — conferma manuale da Supabase dashboard con sole SELECT.
 ```
 
 Non autorizzato: write staging, provider, Apify, Production.
+
+## Punto 27 — Proposta view read-only dedicata
+
+Punto 27 prepara una proposta documentale per sbloccare in futuro i lookup import manuale senza service role.
+
+View future proposte:
+
+- `manual_import_competitions_lookup`;
+- `manual_import_teams_lookup`;
+- `manual_import_standings_lookup`.
+
+Stato:
+
+- requisiti documentati;
+- field mapping documentato;
+- pseudo-SQL marcato non eseguibile;
+- nessuna migrazione applicata;
+- nessuna scrittura DB;
+- `next_write_allowed=false`.
+
+Prossimo step: Punto 28, scegliere tra migrazione non applicata oppure SELECT manuali da SQL Editor staging.

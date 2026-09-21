@@ -1273,3 +1273,16 @@ Stato:
 - next write allowed: `false`.
 
 Provider/import restano spenti. Punto 27 consigliato: proposta no-write di view read-only dedicate oppure conferma manuale dashboard con sole SELECT.
+
+## Punto 27 — Provider/import ancora non attivabili
+
+La proposta di view read-only non attiva provider e non abilita import.
+
+Prima di qualsiasi import manuale reale serve Punto 28:
+
+- confermare struttura view;
+- eventualmente preparare migrazione non applicata;
+- oppure eseguire solo SELECT manuali in SQL Editor staging;
+- mantenere `next_write_allowed=false` finché non esiste nuova autorizzazione.
+
+TheStatsAPI, Stats API v1, API-Football e Apify restano sospesi/spenti.

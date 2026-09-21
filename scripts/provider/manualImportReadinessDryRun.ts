@@ -48,6 +48,11 @@ async function main(): Promise<void> {
   console.info("read_only_access_blocker=rls_or_missing_view_or_wrong_table_name_or_insufficient_anon_access");
   console.info("schema_confirmation_source=local_files_plus_read_only_attempt");
   console.info("schema_confirmation_strategy=read_view_needed");
+  console.info("read_only_view_proposal_prepared=true");
+  console.info("manual_import_lookup_views_needed=true");
+  console.info("manual_import_competitions_lookup_view_needed=true");
+  console.info("manual_import_teams_lookup_view_needed=true");
+  console.info("manual_import_standings_lookup_view_needed=true");
   console.info("final_ready_areas_count=0");
   console.info("final_needs_review_areas_count=0");
   console.info("final_blocked_areas_count=3");
@@ -58,8 +63,12 @@ async function main(): Promise<void> {
   console.info("point_25_write_authorization_required=true");
   console.info("point_26_write_authorization_required=true");
   console.info("point_27_write_authorization_required=true");
-  console.info("recommended_next_step=point_27_option_a_read_only_view_proposal_no_write");
+  console.info("point_28_write_authorization_required=true");
+  console.info("recommended_next_step=point_28_option_a_prepare_non_applied_read_only_view_migration_no_write");
   console.info("sql_generated=false");
+  console.info("migration_prepared=false");
+  console.info("migration_applied=false");
+  console.info("pseudo_sql_documentation_only=true");
   console.info("pseudo_sql_not_executable=true");
   console.info("provider_involved=false");
   console.info("provider_activated=false");

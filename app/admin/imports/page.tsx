@@ -475,6 +475,46 @@ export default async function AdminImportsPage() {
       <section className="admin-section-card">
         <div className="admin-card-head">
           <div>
+            <h2>Read-only view proposal</h2>
+            <p className="muted">
+              Punto 27 prepara solo i requisiti per future view lookup read-only. Nessuna
+              migrazione è stata generata come SQL eseguibile, applicata o autorizzata.
+            </p>
+          </div>
+          <div className="admin-badge-row">
+            <span className="admin-safety-badge">Read-only view needed</span>
+            <span className="admin-safety-badge">Requirements ready</span>
+            <span className="admin-safety-badge">Pseudo-SQL docs only</span>
+            <span className="admin-safety-badge">Point 28 required</span>
+          </div>
+        </div>
+        <dl className="admin-metadata">
+          <dt>Views proposed</dt>
+          <dd>competitions lookup, teams lookup, standings lookup</dd>
+          <dt>Purpose</dt>
+          <dd>confermare lookup import manuale senza service role e senza accesso diretto anon alle tabelle</dd>
+          <dt>Pseudo SQL</dt>
+          <dd>documentation only / not executable</dd>
+          <dt>Migration prepared</dt>
+          <dd>false</dd>
+          <dt>Migration applied</dt>
+          <dd>false</dd>
+          <dt>Service role</dt>
+          <dd>false</dd>
+          <dt>DB writes</dt>
+          <dd>false</dd>
+          <dt>Provider fetch</dt>
+          <dd>false</dd>
+          <dt>Next write allowed</dt>
+          <dd>false</dd>
+          <dt>Punto 28 required</dt>
+          <dd>true — preparare eventuale migrazione non applicata o conferma manuale SELECT</dd>
+        </dl>
+      </section>
+
+      <section className="admin-section-card">
+        <div className="admin-card-head">
+          <div>
             <h2>Provider import runs</h2>
             <p className="muted">
               Lettura server-side read-only da <code>provider_import_runs</code>, rispettando RLS.

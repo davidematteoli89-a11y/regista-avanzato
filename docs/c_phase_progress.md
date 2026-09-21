@@ -2286,3 +2286,28 @@ Risultato:
 - `next_write_allowed=false`.
 
 Prossimo step consigliato: Punto 27-A, proposta no-write di view read-only dedicate, non applicata.
+
+## Punto 27 — Read-Only View Proposal
+
+Stato: completato in modalità documentale/no-write.
+
+Aggiunti:
+
+- `docs/manual_import_read_only_view_requirements_p27.md`;
+- `docs/manual_import_read_only_view_field_mapping_p27.md`;
+- `docs/manual_import_read_only_view_pseudo_sql_p27.md`;
+- `docs/manual_import_point_28_decision_p27.md`;
+- `docs/provider_point_27_closure.md`;
+- sezione `/admin/imports` “Read-only view proposal”.
+
+Risultato:
+
+- proposte tre view lookup future per competitions, teams e standings;
+- pseudo-SQL marcato `PSEUDO_SQL_NOT_EXECUTABLE / DO NOT RUN / DOCUMENTATION ONLY`;
+- nessuna migrazione preparata o applicata;
+- nessuna scrittura DB;
+- nessun service role;
+- provider/import/Apify spenti;
+- `next_write_allowed=false`.
+
+Prossimo step consigliato: Punto 28, scelta esplicita tra migrazione non applicata per view read-only oppure controlli manuali `SELECT` da SQL Editor staging.
