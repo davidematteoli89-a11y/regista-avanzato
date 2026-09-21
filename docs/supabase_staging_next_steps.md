@@ -1702,3 +1702,24 @@ Prossimo step consigliato:
 ```text
 Punto 30-A — dashboard confirmation manuale no-write.
 ```
+
+## Punto 30-A — Dashboard confirmation pending
+
+È stato preparato il documento di conferma dashboard, ma Codex non ha verificato la Dashboard Supabase live.
+
+Stato:
+
+- SQL executed: `false`;
+- DB write: `false`;
+- service_role used: `false`;
+- placeholders resolved count: `0`;
+- placeholders unclear count: `16`;
+- read-only view still required: `true`;
+- ready for migration draft: `false`;
+- `next_write_allowed=false`.
+
+Prossimo step consigliato:
+
+```text
+Punto 30-B — dashboard confirmation manuale no-write eseguita dall'utente.
+```

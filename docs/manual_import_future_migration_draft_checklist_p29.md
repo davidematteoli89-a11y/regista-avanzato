@@ -39,3 +39,13 @@ Questa checklist non autorizza applicazione, non crea migration draft e non auto
 - `migration_applied=false`
 - `db_write=false`
 - `next_write_allowed=false`
+
+## Dashboard confirmation P30-A
+
+La checklist resta non soddisfatta perché la dashboard confirmation reale non è stata eseguita da Codex.
+
+- placeholders resolved count: `0`
+- placeholders unclear count: `16`
+- ready for migration draft: `false`
+
+Prima di creare un migration draft serve Punto 30-B o equivalente verifica manuale no-write.

@@ -836,3 +836,21 @@ Stato dry-run:
 - `next_write_allowed=false`.
 
 Provider/import restano spenti.
+
+## Punto 30-A — Dashboard confirmation pending
+
+Punto 30-A non esegue SQL e non legge DB.
+
+Stato dry-run:
+
+- `dashboard_confirmation_completed=false`;
+- `dashboard_sql_executed=false`;
+- `dashboard_db_write=false`;
+- `dashboard_service_role_used=false`;
+- `placeholders_resolved_count=0`;
+- `placeholders_unclear_count=16`;
+- `new_read_only_view_still_required=true`;
+- `ready_for_migration_draft=false`;
+- `next_write_allowed=false`.
+
+Provider/import restano spenti.

@@ -37,3 +37,20 @@ Status ammessi:
 - Dashboard confirmation required: `true`.
 - Future migration draft allowed: `false`.
 - `next_write_allowed=false`.
+
+## Dashboard confirmation P30-A
+
+La verifica dashboard reale non è stata eseguita da Codex.
+
+- dashboard confirmation performed: `false`
+- SQL executed: `false`
+- DB write: `false`
+- service_role used: `false`
+- placeholders resolved count: `0`
+- placeholders unresolved count: `0`
+- placeholders unclear count: `16`
+- new read-only view still required: `true`
+- ready for migration draft: `false`
+- next_write_allowed: `false`
+
+Tutti i placeholder che richiedono stato live restano `unclear` fino a verifica manuale Dashboard.

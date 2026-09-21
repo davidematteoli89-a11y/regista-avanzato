@@ -601,6 +601,46 @@ export default async function AdminImportsPage() {
       <section className="admin-section-card">
         <div className="admin-card-head">
           <div>
+            <h2>Dashboard confirmation</h2>
+            <p className="muted">
+              Punto 30-A prepara la verifica manuale Supabase Dashboard. Codex non ha eseguito
+              la verifica visuale live, quindi i placeholder restano da confermare.
+            </p>
+          </div>
+          <div className="admin-badge-row">
+            <span className="admin-safety-badge">No SQL</span>
+            <span className="admin-safety-badge">No DB write</span>
+            <span className="admin-safety-badge">No service role</span>
+            <span className="admin-safety-badge">Next write=false</span>
+          </div>
+        </div>
+        <dl className="admin-metadata">
+          <dt>Dashboard confirmation completed</dt>
+          <dd>false</dd>
+          <dt>SQL executed</dt>
+          <dd>false</dd>
+          <dt>DB write</dt>
+          <dd>false</dd>
+          <dt>Service role used</dt>
+          <dd>false</dd>
+          <dt>Placeholders resolved count</dt>
+          <dd>0</dd>
+          <dt>Placeholders unresolved count</dt>
+          <dd>0</dd>
+          <dt>Placeholders unclear count</dt>
+          <dd>16</dd>
+          <dt>Read-only view still required</dt>
+          <dd>true</dd>
+          <dt>Ready for migration draft</dt>
+          <dd>false</dd>
+          <dt>Next write allowed</dt>
+          <dd>false</dd>
+        </dl>
+      </section>
+
+      <section className="admin-section-card">
+        <div className="admin-card-head">
+          <div>
             <h2>Migration proposal review</h2>
             <p className="muted">
               Punto 29 revisiona la proposal read-only senza creare migration <code>.sql</code>,

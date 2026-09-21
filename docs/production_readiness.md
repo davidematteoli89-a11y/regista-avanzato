@@ -1321,3 +1321,20 @@ Confermato:
 - `next_write_allowed=false`.
 
 Production resta esclusa. Punto 30/write staging non è autorizzato.
+
+## Punto 30-A — Production ancora esclusa
+
+Punto 30-A non esegue conferme live da Codex e non abilita migration draft.
+
+Confermato:
+
+- nessuna migration `.sql`;
+- nessuna migration applicata;
+- nessun `db push/reset`;
+- nessuna scrittura DB;
+- nessun provider reale;
+- nessun deploy;
+- Production non toccata;
+- `next_write_allowed=false`.
+
+Production resta esclusa. Punto 31 migration draft e qualunque write staging restano non autorizzati.

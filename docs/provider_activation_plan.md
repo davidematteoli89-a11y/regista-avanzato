@@ -1315,3 +1315,16 @@ Confermato:
 - `next_write_allowed=false`.
 
 Punto 30 consigliato: dashboard confirmation no-write, non attivazione.
+
+## Punto 30-A — Nessuna attivazione dopo dashboard preparation
+
+La dashboard confirmation reale non è stata eseguita da Codex e nessun provider viene attivato.
+
+Confermato:
+
+- nessuna real-call provider;
+- nessun import;
+- nessun Apify;
+- nessuna scrittura DB;
+- `ready_for_migration_draft=false`;
+- `next_write_allowed=false`.

@@ -58,6 +58,15 @@ async function main(): Promise<void> {
   console.info("migration_file_created=false");
   console.info("placeholders_remaining_count=9");
   console.info("dashboard_confirmation_required=true");
+  console.info("dashboard_confirmation_completed=false");
+  console.info("dashboard_sql_executed=false");
+  console.info("dashboard_db_write=false");
+  console.info("dashboard_service_role_used=false");
+  console.info("placeholders_resolved_count=0");
+  console.info("placeholders_unresolved_count=0");
+  console.info("placeholders_unclear_count=16");
+  console.info("new_read_only_view_still_required=true");
+  console.info("ready_for_migration_draft=false");
   console.info("future_migration_draft_allowed=false");
   console.info("manual_import_lookup_views_needed=true");
   console.info("manual_import_competitions_lookup_view_needed=true");
@@ -76,6 +85,7 @@ async function main(): Promise<void> {
   console.info("point_28_write_authorization_required=true");
   console.info("point_29_write_authorization_required=true");
   console.info("point_30_authorization_required=true");
+  console.info("point_30b_or_31_authorization_required=true");
   console.info("recommended_next_step=point_29_not_authorized_until_p28_proposal_reviewed_and_explicitly_approved");
   console.info("sql_generated=false");
   console.info("migration_prepared=false");

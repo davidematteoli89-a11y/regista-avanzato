@@ -41,3 +41,16 @@ Il prossimo step consigliato è Punto 30: dashboard confirmation no-write oppure
 - `dashboard_confirmation_required=true`
 - `future_migration_draft_allowed=false`
 - `next_write_allowed=false`
+
+## Punto 30-A update
+
+La dashboard confirmation reale non è stata eseguita da Codex.
+
+Stato:
+
+- dashboard_confirmation_completed=false;
+- placeholders_unclear_count=16;
+- ready_for_migration_draft=false;
+- next_write_allowed=false.
+
+Il prossimo step consigliato resta una verifica dashboard manuale no-write.

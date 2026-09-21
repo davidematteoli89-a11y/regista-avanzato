@@ -40,3 +40,13 @@ Punto 30-A — dashboard confirmation manuale no-write.
 - `db_write=false`
 - `provider_activated=false`
 - `production_touched=false`
+
+## Dashboard confirmation P30-A
+
+La verifica dashboard non è stata completata da Codex, quindi l'opzione consigliata resta:
+
+```text
+Punto 30-B — ulteriore dashboard confirmation/manual review no-write.
+```
+
+Non procedere a Punto 31 migration draft finché i placeholder critici non sono risolti.

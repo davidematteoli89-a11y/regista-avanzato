@@ -142,3 +142,17 @@ Status finale:
 Nessuna area è `ready_for_migration_draft` perché manca conferma live dashboard/read-only di tabelle, colonne, grants/RLS e helper in contesto view.
 
 `next_write_allowed=false`.
+
+## Dashboard confirmation P30-A
+
+La conferma dashboard non è stata completata da Codex.
+
+Status aggiornato:
+
+- Competitions: `needs_dashboard_confirmation`
+- Teams: `needs_dashboard_confirmation`
+- Standings: `needs_dashboard_confirmation`
+- RLS/policy: `needs_dashboard_confirmation`
+- Views: `needs_dashboard_confirmation`
+
+`ready_for_migration_draft=false`.

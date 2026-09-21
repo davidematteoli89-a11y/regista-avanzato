@@ -2370,3 +2370,34 @@ Risultato:
 - `next_write_allowed=false`.
 
 Prossimo step consigliato: Punto 30-A dashboard confirmation manuale no-write. Punto 30/write staging non autorizzato.
+
+## Punto 30-A — Dashboard confirmation manuale no-write
+
+Stato: preparazione documentale completata; verifica dashboard reale non eseguita da Codex.
+
+Aggiunti:
+
+- `docs/manual_import_dashboard_confirmation_p30a.md`;
+- `docs/manual_import_point_30b_or_31_decision_p30a.md`;
+- `docs/provider_point_30a_closure.md`.
+
+Aggiornati:
+
+- proposal read-only P28;
+- docs P29;
+- dry-run outputs;
+- `/admin/imports` con sezione “Dashboard confirmation”.
+
+Risultato:
+
+- dashboard confirmation completed: `false`;
+- SQL executed: `false`;
+- DB write: `false`;
+- service_role used: `false`;
+- placeholders resolved: `0`;
+- placeholders unclear: `16`;
+- read-only view still required: `true`;
+- ready for migration draft: `false`;
+- `next_write_allowed=false`.
+
+Prossimo step consigliato: Punto 30-B dashboard confirmation manuale no-write. Punto 31 migration draft non è ancora consigliato.
