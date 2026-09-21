@@ -27,7 +27,19 @@ Non autorizzata.
 ## Decisione
 
 ```text
-recommended_next_step=point_30c_or_repeat_dashboard_confirmation_with_values_no_write
+recommended_next_step=point_30d_only_if_user_provides_real_schema_values_else_manual_mock
 ready_for_migration_draft=false
 next_write_allowed=false
 ```
+
+## Manual schema values collection P30-C
+
+- schema values collection prepared: `true`
+- real schema values provided: `false`
+- placeholders resolved count: `0`
+- placeholders uncollected count: `16`
+- ready for migration draft: `false`
+- next_write_allowed: `false`
+- recommended next step: user provides real schema values from dashboard
+
+Decisione aggiornata: Punto 30-D è utile solo se l'utente fornisce valori reali di schema. In assenza dei valori, restare in manual/mock mode. Nessuna migration draft o write staging è autorizzata.

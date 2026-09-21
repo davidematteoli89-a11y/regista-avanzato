@@ -32,3 +32,15 @@ Il prossimo step consigliato è Punto 30-C: ripetere/completare dashboard confir
 - Nessuna migrazione.
 - Nessuna Production.
 - Nessun import attivato.
+
+## Manual schema values collection P30-C
+
+- schema values collection prepared: `true`
+- real schema values provided: `false`
+- placeholders resolved count: `0`
+- placeholders uncollected count: `16`
+- ready for migration draft: `false`
+- next_write_allowed: `false`
+- recommended next step: user provides real schema values from dashboard
+
+Punto 30-C mantiene il blocco: nessun placeholder risolto senza valori reali, nessuna migration e nessuna scrittura DB.

@@ -120,6 +120,9 @@ async function main(): Promise<void> {
   console.info("placeholders_resolved_count=0");
   console.info("placeholders_unresolved_count=0");
   console.info("placeholders_unclear_count=16");
+  console.info("manual_schema_values_collection_prepared=true");
+  console.info("real_schema_values_provided=false");
+  console.info("placeholders_uncollected_count=16");
   console.info("new_read_only_view_still_required=true");
   console.info("ready_for_migration_draft=false");
   console.info("future_migration_draft_allowed=false");
@@ -160,8 +163,9 @@ async function main(): Promise<void> {
   console.info("point_28_write_authorization_required=true");
   console.info("point_29_write_authorization_required=true");
   console.info("point_30_authorization_required=true");
-  console.info("point_30b_or_31_authorization_required=true");
-  console.info("recommended_next_step=point_30c_or_repeat_dashboard_confirmation_with_values_no_write");
+  console.info("point_30b_or_31_authorization_required=false");
+  console.info("point_30d_authorization_required=true");
+  console.info("recommended_next_step=point_30d_only_if_user_provides_real_schema_values_else_manual_mock");
   console.info("confirmation=read_only_schema_confirmation,no_db_client,no_sql_execution,no_db_writes,no_external_provider_calls,no_env_output");
 }
 

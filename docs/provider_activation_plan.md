@@ -1328,3 +1328,20 @@ Confermato:
 - nessuna scrittura DB;
 - `ready_for_migration_draft=false`;
 - `next_write_allowed=false`.
+
+## Punto 30-C — Manual schema values collection
+
+Punto 30-C prepara solo la raccolta manuale dei valori reali di schema.
+
+Confermato:
+
+- schema values collection prepared: `true`;
+- real schema values provided: `false`;
+- placeholders resolved count: `0`;
+- placeholders uncollected count: `16`;
+- ready for migration draft: `false`;
+- `next_write_allowed=false`;
+- nessuna migration;
+- nessuna scrittura DB;
+- nessun provider/fetch;
+- nessuna Production.

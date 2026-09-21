@@ -42,7 +42,7 @@ Status ammessi:
 
 La verifica dashboard reale è stata dichiarata completata manualmente dall'utente, senza SQL e senza write; i campi schema non sono stati forniti.
 
-- dashboard confirmation performed: `false`
+- dashboard confirmation performed: `true`
 - SQL executed: `false`
 - DB write: `false`
 - service_role used: `false`
@@ -54,3 +54,15 @@ La verifica dashboard reale è stata dichiarata completata manualmente dall'uten
 - next_write_allowed: `false`
 
 Tutti i placeholder che richiedono stato live restano `unclear` fino a verifica manuale Dashboard.
+
+## Manual schema values collection P30-C
+
+- schema values collection prepared: `true`
+- real schema values provided: `false`
+- placeholders resolved count: `0`
+- placeholders uncollected count: `16`
+- ready for migration draft: `false`
+- next_write_allowed: `false`
+- recommended next step: user provides real schema values from dashboard
+
+I placeholder restano `uncollected/unclear`; non sono stati promossi a `resolved`.

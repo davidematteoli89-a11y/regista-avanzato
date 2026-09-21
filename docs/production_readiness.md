@@ -1338,3 +1338,21 @@ Confermato:
 - `next_write_allowed=false`.
 
 Production resta esclusa. Punto 31 migration draft e qualunque write staging restano non autorizzati.
+
+## Punto 30-C — Production ancora esclusa
+
+Punto 30-C prepara solo raccolta manuale valori schema e non abilita import o migration.
+
+Confermato:
+
+- valori reali schema non forniti;
+- placeholders resolved count: `0`;
+- placeholders uncollected count: `16`;
+- ready for migration draft: `false`;
+- `next_write_allowed=false`;
+- nessuna migration `.sql`;
+- nessuna scrittura DB;
+- nessun provider/import attivato;
+- Production non toccata.
+
+Prima di Production servono raccolta valori, nuova verifica no-write, migration review separata e checklist Production dedicata.

@@ -1723,3 +1723,18 @@ Prossimo step consigliato:
 ```text
 Punto 30-C — completare dashboard confirmation manuale no-write con valori reali.
 ```
+
+## Punto 30-C — Manual schema values collection
+
+Punto 30-C prepara una checklist per raccogliere manualmente da Supabase Dashboard i valori reali di competitions, teams e standings.
+
+Stato:
+
+- collection prepared: `true`;
+- real schema values provided: `false`;
+- placeholders resolved count: `0`;
+- placeholders uncollected count: `16`;
+- ready for migration draft: `false`;
+- `next_write_allowed=false`.
+
+Non creare migration e non applicare nulla finché i valori reali non vengono forniti.

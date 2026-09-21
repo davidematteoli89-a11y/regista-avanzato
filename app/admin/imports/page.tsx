@@ -642,6 +642,41 @@ export default async function AdminImportsPage() {
       <section className="admin-section-card">
         <div className="admin-card-head">
           <div>
+            <h2>Manual schema values collection</h2>
+            <p className="muted">
+              Punto 30-C prepara la raccolta manuale dei valori reali di schema da Supabase
+              Dashboard. I valori non sono ancora stati forniti, quindi nessun placeholder viene
+              risolto e nessuna migration draft è pronta.
+            </p>
+          </div>
+          <div className="admin-badge-row">
+            <span className="admin-safety-badge">Collection prepared</span>
+            <span className="admin-safety-badge">Values required</span>
+            <span className="admin-safety-badge">No migration</span>
+            <span className="admin-safety-badge">Next write=false</span>
+          </div>
+        </div>
+        <dl className="admin-metadata">
+          <dt>Collection prepared</dt>
+          <dd>true</dd>
+          <dt>Real schema values provided</dt>
+          <dd>false</dd>
+          <dt>Placeholders resolved</dt>
+          <dd>0</dd>
+          <dt>Placeholders uncollected</dt>
+          <dd>16</dd>
+          <dt>Ready for migration draft</dt>
+          <dd>false</dd>
+          <dt>Next write allowed</dt>
+          <dd>false</dd>
+          <dt>Recommended next step</dt>
+          <dd>user dashboard values required before Punto 30-D</dd>
+        </dl>
+      </section>
+
+      <section className="admin-section-card">
+        <div className="admin-card-head">
+          <div>
             <h2>Migration proposal review</h2>
             <p className="muted">
               Punto 29 revisiona la proposal read-only senza creare migration <code>.sql</code>,

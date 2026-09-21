@@ -232,3 +232,23 @@ next_write_allowed=false
 ```
 
 L'utente ha dichiarato di avere eseguito la verifica visuale Supabase Dashboard senza SQL, senza write, senza service_role e senza Production. I nomi reali di tabelle/colonne non sono stati forniti, quindi i placeholder restano unclear.
+
+## Manual schema values collection P30-C
+
+```text
+MIGRATION_PROPOSAL_ONLY
+DO NOT APPLY
+DO NOT RUN
+NOT REVIEWED FOR EXECUTION
+NO DB WRITE AUTHORIZED
+
+schema_values_collection_prepared=true
+real_schema_values_provided=false
+placeholders_resolved_count=0
+placeholders_uncollected_count=16
+ready_for_migration_draft=false
+next_write_allowed=false
+recommended_next_step=user_provides_real_schema_values_from_dashboard
+```
+
+Questa proposta resta documentale. I blocchi pseudo-SQL non devono essere copiati o applicati finché l'utente non fornisce valori reali e una nuova fase no-write non li integra.

@@ -2390,7 +2390,7 @@ Aggiornati:
 
 Risultato:
 
-- dashboard confirmation completed: `false`;
+- dashboard confirmation completed: `true`;
 - SQL executed: `false`;
 - DB write: `false`;
 - service_role used: `false`;
@@ -2401,3 +2401,37 @@ Risultato:
 - `next_write_allowed=false`.
 
 Prossimo step consigliato: Punto 30-C completare dashboard confirmation con valori reali, oppure restare in manual/mock mode. Punto 31 migration draft non è ancora consigliato.
+
+## Punto 30-C — Manual schema values collection
+
+Stato: completato in modalità no-write/no-provider.
+
+Aggiunti:
+
+- `docs/manual_import_schema_values_collection_p30c.md`;
+- `docs/manual_import_dashboard_user_checklist_p30c.md`;
+- `docs/manual_import_placeholder_status_p30c.md`;
+- `docs/manual_import_point_30d_decision_p30c.md`;
+- `docs/provider_point_30c_closure.md`.
+
+Aggiornati:
+
+- docs P28/P29/P30-B;
+- dry-run manual schema/readiness/read-only schema check;
+- `/admin/imports` con sezione “Manual schema values collection”.
+
+Risultato:
+
+- collection prepared: `true`;
+- real schema values provided: `false`;
+- placeholders resolved: `0`;
+- placeholders uncollected: `16`;
+- ready for migration draft: `false`;
+- no migration `.sql` created;
+- no `supabase/migrations` changes;
+- no DB write;
+- no provider/fetch/Apify;
+- Production untouched;
+- `next_write_allowed=false`.
+
+Prossimo step consigliato: Punto 30-D solo se l'utente fornisce valori reali; altrimenti restare in manual/mock mode.

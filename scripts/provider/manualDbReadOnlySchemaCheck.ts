@@ -219,9 +219,13 @@ function printUnavailable(): void {
   console.info("placeholders_resolved_count=0");
   console.info("placeholders_unresolved_count=0");
   console.info("placeholders_unclear_count=16");
+  console.info("manual_schema_values_collection_prepared=true");
+  console.info("real_schema_values_provided=false");
+  console.info("placeholders_uncollected_count=16");
   console.info("new_read_only_view_still_required=true");
   console.info("ready_for_migration_draft=false");
   console.info("future_migration_draft_allowed=false");
+  console.info("point_30d_authorization_required=true");
   console.info("point_30_authorization_required=true");
   console.info("public_env_present=false");
   console.info("tables_checked=competitions,teams,standings");
@@ -431,9 +435,13 @@ async function main(): Promise<void> {
   console.info("placeholders_resolved_count=0");
   console.info("placeholders_unresolved_count=0");
   console.info("placeholders_unclear_count=16");
+  console.info("manual_schema_values_collection_prepared=true");
+  console.info("real_schema_values_provided=false");
+  console.info("placeholders_uncollected_count=16");
   console.info("new_read_only_view_still_required=true");
   console.info("ready_for_migration_draft=false");
   console.info("future_migration_draft_allowed=false");
+  console.info("point_30d_authorization_required=true");
   console.info("point_30_authorization_required=true");
   console.info("public_env_present=true");
   console.info("tables_checked=competitions,teams,standings");

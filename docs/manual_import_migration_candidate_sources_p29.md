@@ -156,3 +156,15 @@ Status aggiornato:
 - Views: `needs_dashboard_confirmation`
 
 `ready_for_migration_draft=false`.
+
+## Manual schema values collection P30-C
+
+- schema values collection prepared: `true`
+- real schema values provided: `false`
+- placeholders resolved count: `0`
+- placeholders uncollected count: `16`
+- ready for migration draft: `false`
+- next_write_allowed: `false`
+- recommended next step: user provides real schema values from dashboard
+
+Le candidate source restano candidate: tabelle, colonne, FK, RLS/policy e view devono essere raccolte dal Dashboard prima di generare qualunque draft eseguibile.

@@ -91,3 +91,15 @@ Nota: l'utente ha dichiarato di avere verificato manualmente la Dashboard Supaba
 - new_read_only_view_still_required: `true`
 - ready_for_migration_draft: `false`
 - next_write_allowed: `false`
+
+## Manual schema values collection P30-C
+
+- schema values collection prepared: `true`
+- real schema values provided: `false`
+- placeholders resolved count: `0`
+- placeholders uncollected count: `16`
+- ready for migration draft: `false`
+- next_write_allowed: `false`
+- recommended next step: user provides real schema values from dashboard
+
+Punto 30-C non risolve placeholder e non crea migration. I valori reali di tabelle, colonne, relazioni, RLS/policy e view devono essere forniti dall'utente prima di qualunque Punto 30-D no-write.

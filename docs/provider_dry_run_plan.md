@@ -837,6 +837,23 @@ Stato dry-run:
 
 Provider/import restano spenti.
 
+## Punto 30-C — Manual schema values collection
+
+Output atteso dai dry-run manuali:
+
+- `manual_schema_values_collection_prepared=true`;
+- `real_schema_values_provided=false`;
+- `placeholders_resolved_count=0`;
+- `placeholders_uncollected_count=16`;
+- `ready_for_migration_draft=false`;
+- `executable_migration_created=false`;
+- `migration_file_created=false`;
+- `migration_applied=false`;
+- `next_write_allowed=false`;
+- `point_30d_authorization_required=true`.
+
+Il dry-run resta no-write/no-provider/no-env-output.
+
 ## Punto 30-B — Dashboard confirmation manuale registrata
 
 Punto 30-B registra la verifica manuale dichiarata dall'utente, senza SQL, senza DB write e senza valori schema risolutivi.

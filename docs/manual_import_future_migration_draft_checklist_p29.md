@@ -49,3 +49,15 @@ La checklist resta non soddisfatta perché la dashboard confirmation dichiarata 
 - ready for migration draft: `false`
 
 Prima di creare un migration draft serve Punto 30-B o equivalente verifica manuale no-write.
+
+## Manual schema values collection P30-C
+
+- schema values collection prepared: `true`
+- real schema values provided: `false`
+- placeholders resolved count: `0`
+- placeholders uncollected count: `16`
+- ready for migration draft: `false`
+- next_write_allowed: `false`
+- recommended next step: user provides real schema values from dashboard
+
+La checklist futura resta bloccata: nessun draft migration può essere preparato senza valori reali forniti dall'utente.
