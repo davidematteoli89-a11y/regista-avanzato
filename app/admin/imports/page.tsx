@@ -598,6 +598,46 @@ export default async function AdminImportsPage() {
         ) : null}
       </section>
 
+      <section className="admin-section-card">
+        <div className="admin-card-head">
+          <div>
+            <h2>Migration proposal review</h2>
+            <p className="muted">
+              Punto 29 revisiona la proposal read-only senza creare migration <code>.sql</code>,
+              senza applicarla e senza autorizzare write staging.
+            </p>
+          </div>
+          <div className="admin-badge-row">
+            <span className="admin-safety-badge">Reviewed</span>
+            <span className="admin-safety-badge">Hardened</span>
+            <span className="admin-safety-badge">No migration file</span>
+            <span className="admin-safety-badge">Point 30 required</span>
+          </div>
+        </div>
+        <dl className="admin-metadata">
+          <dt>Proposal reviewed</dt>
+          <dd>true</dd>
+          <dt>Proposal hardened</dt>
+          <dd>true</dd>
+          <dt>Executable migration created</dt>
+          <dd>false</dd>
+          <dt>Migration file created</dt>
+          <dd>false</dd>
+          <dt>Migration applied</dt>
+          <dd>false</dd>
+          <dt>Placeholders remaining count</dt>
+          <dd>9</dd>
+          <dt>Dashboard confirmation required</dt>
+          <dd>true</dd>
+          <dt>Future migration draft allowed</dt>
+          <dd>false</dd>
+          <dt>Next write allowed</dt>
+          <dd>false</dd>
+          <dt>Punto 30 required</dt>
+          <dd>true — dashboard confirmation no-write consigliata</dd>
+        </dl>
+      </section>
+
       <AdminImportLogList logs={logs} />
     </main>
   );

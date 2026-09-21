@@ -2338,3 +2338,35 @@ Risultato:
 - nessuna scrittura DB;
 - `next_write_allowed=false`;
 - Punto 29/write staging non autorizzato.
+
+## Punto 29 — Manual review migration proposal read-only
+
+Stato: completato in modalità no-apply/no-write.
+
+Aggiunti:
+
+- `docs/manual_import_migration_proposal_placeholder_review_p29.md`;
+- `docs/manual_import_migration_candidate_sources_p29.md`;
+- `docs/manual_import_future_migration_draft_checklist_p29.md`;
+- `docs/manual_import_point_30_decision_p29.md`;
+- `docs/provider_point_29_closure.md`.
+
+Aggiornati:
+
+- `docs/migration_proposals/manual_import_read_only_views_p28.sql.md`;
+- dry-run manual schema/readiness/read-only schema check;
+- `/admin/imports` con sezione “Migration proposal review”.
+
+Risultato:
+
+- proposal reviewed: `true`;
+- proposal hardened: `true`;
+- executable migration created: `false`;
+- migration file created: `false`;
+- migration applied: `false`;
+- placeholders remaining count: `9`;
+- dashboard confirmation required: `true`;
+- future migration draft allowed: `false`;
+- `next_write_allowed=false`.
+
+Prossimo step consigliato: Punto 30-A dashboard confirmation manuale no-write. Punto 30/write staging non autorizzato.

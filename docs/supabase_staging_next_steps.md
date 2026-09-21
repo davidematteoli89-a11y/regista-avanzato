@@ -1683,3 +1683,22 @@ Questo documento descrive una futura migrazione per view lookup read-only, ma:
 - non autorizza Punto 29/write staging.
 
 Prossimo step consigliato: review statica o SELECT manuali read-only, ancora senza write.
+
+## Punto 29 — Review proposal e placeholder
+
+Punto 29 ha revisionato la proposal e classificato i placeholder.
+
+Esito:
+
+- tabelle/colonne candidate supportate da evidenza locale;
+- conferma live dashboard/read-only ancora richiesta;
+- nessuna migration `.sql` creata;
+- nessuna migration applicata;
+- nessuna scrittura DB;
+- `next_write_allowed=false`.
+
+Prossimo step consigliato:
+
+```text
+Punto 30-A — dashboard confirmation manuale no-write.
+```

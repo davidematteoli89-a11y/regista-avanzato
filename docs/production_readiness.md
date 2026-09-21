@@ -1304,3 +1304,20 @@ Confermato:
 - Production non toccata.
 
 Production resta fuori scope. Punto 29/write staging non è autorizzato.
+
+## Punto 29 — Production ancora esclusa
+
+Punto 29 è solo review documentale della proposal read-only.
+
+Confermato:
+
+- nessun file migration `.sql`;
+- nessuna migrazione applicata;
+- nessun `db push/reset`;
+- nessuna scrittura DB;
+- nessun provider reale;
+- nessun deploy;
+- Production non toccata;
+- `next_write_allowed=false`.
+
+Production resta esclusa. Punto 30/write staging non è autorizzato.

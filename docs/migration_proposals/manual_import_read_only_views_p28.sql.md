@@ -10,6 +10,37 @@ NO DB WRITE AUTHORIZED
 
 Questo documento è una proposta tecnica per revisione futura. Non è una migrazione Supabase applicabile automaticamente, non si trova in `supabase/migrations` e non deve essere copiato nel SQL Editor senza un nuovo gate esplicito.
 
+## Review status P29
+
+```text
+MIGRATION_PROPOSAL_ONLY
+DO NOT APPLY
+DO NOT RUN
+NOT REVIEWED FOR EXECUTION
+NO DB WRITE AUTHORIZED
+
+proposal_reviewed=true
+proposal_hardened=true
+executable_migration=false
+migration_file_created=false
+migration_applied=false
+db_write_authorized=false
+service_role_required=false
+placeholders_remaining=9
+dashboard_confirmation_required=true
+future_migration_draft_allowed=false
+next_write_allowed=false
+recommended_next_step=point_30_option_a_dashboard_confirmation_no_write
+```
+
+P29 ha revisionato la proposal in modo conservativo:
+
+- le tabelle e molte colonne candidate sono supportate da migrazioni/documenti locali;
+- la conferma live di tabelle, colonne, grants/RLS e helper in contesto view resta necessaria;
+- nessun blocco sotto è da considerare SQL pronto da eseguire;
+- non esiste autorizzazione a creare una migration `.sql` reale;
+- Punto 30/write staging non è autorizzato.
+
 ## Safety status
 
 ```text
@@ -36,7 +67,7 @@ next_write_allowed=false
 
 ## Draft block 1 — competitions lookup
 
-```sql
+```text
 /*
 MIGRATION_PROPOSAL_ONLY
 DO NOT APPLY
@@ -51,8 +82,9 @@ Intent:
 - keep write operations impossible from this view.
 */
 
--- PROPOSAL ONLY: exact table/column names must be verified in Punto 29 or later.
--- CREATE OR REPLACE VIEW public.manual_import_competitions_lookup AS
+-- PROPOSAL ONLY: exact table/column names must still be confirmed from staging dashboard/read-only checks.
+-- REVIEW P29: public.competitions and listed columns are locally documented, but not live-confirmed.
+-- PROPOSED VIEW NAME: public.manual_import_competitions_lookup
 -- SELECT
 --   c.id AS competition_id,
 --   c.slug AS competition_slug,
@@ -69,7 +101,7 @@ Intent:
 
 ## Draft block 2 — teams lookup
 
-```sql
+```text
 /*
 MIGRATION_PROPOSAL_ONLY
 DO NOT APPLY
@@ -83,8 +115,9 @@ Intent:
 - avoid write actions and raw provider data.
 */
 
--- PROPOSAL ONLY: exact table/column names must be verified in Punto 29 or later.
--- CREATE OR REPLACE VIEW public.manual_import_teams_lookup AS
+-- PROPOSAL ONLY: exact table/column names must still be confirmed from staging dashboard/read-only checks.
+-- REVIEW P29: public.teams, public.competitions and listed columns are locally documented, but not live-confirmed.
+-- PROPOSED VIEW NAME: public.manual_import_teams_lookup
 -- SELECT
 --   t.id AS team_id,
 --   t.slug AS team_slug,
@@ -102,7 +135,7 @@ Intent:
 
 ## Draft block 3 — standings lookup
 
-```sql
+```text
 /*
 MIGRATION_PROPOSAL_ONLY
 DO NOT APPLY
@@ -116,8 +149,9 @@ Intent:
 - keep import/write logic outside the view.
 */
 
--- PROPOSAL ONLY: exact table/column names must be verified in Punto 29 or later.
--- CREATE OR REPLACE VIEW public.manual_import_standings_lookup AS
+-- PROPOSAL ONLY: exact table/column names must still be confirmed from staging dashboard/read-only checks.
+-- REVIEW P29: public.standings, public.competitions, public.teams and listed columns are locally documented, but not live-confirmed.
+-- PROPOSED VIEW NAME: public.manual_import_standings_lookup
 -- SELECT
 --   s.id AS standing_id,
 --   c.id AS competition_id,

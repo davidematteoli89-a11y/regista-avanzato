@@ -1300,3 +1300,18 @@ Confermato:
 - `next_write_allowed=false`.
 
 Punto 29/write staging non è autorizzato.
+
+## Punto 29 — Nessuna attivazione dopo review proposal
+
+La review della migration proposal non cambia lo stato dei provider.
+
+Confermato:
+
+- TheStatsAPI / Stats API sospesi;
+- API-Football sospeso/no retry;
+- Apify spento;
+- real import disabilitato;
+- nessun provider fetch;
+- `next_write_allowed=false`.
+
+Punto 30 consigliato: dashboard confirmation no-write, non attivazione.

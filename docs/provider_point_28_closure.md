@@ -39,3 +39,15 @@ Il file è un documento Markdown, non una migration Supabase in `supabase/migrat
 ## Prossimo step
 
 Punto 29 resta non autorizzato per write. Il prossimo step consigliato è una review statica o SELECT manuali read-only.
+
+## Punto 29 update
+
+Punto 29 ha eseguito la review statica conservativa della proposal.
+
+Esito:
+
+- proposal reviewed/hardened;
+- placeholder critici ancora presenti;
+- dashboard confirmation required;
+- future migration draft allowed=false;
+- next_write_allowed=false.

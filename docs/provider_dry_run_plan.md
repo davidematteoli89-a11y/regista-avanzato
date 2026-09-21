@@ -818,3 +818,21 @@ Stato:
 - `next_write_allowed=false`.
 
 Il file non è in `supabase/migrations` e non deve essere eseguito.
+
+## Punto 29 — Proposal review dry-run status
+
+Punto 29 revisiona e rafforza la proposal senza renderla eseguibile.
+
+Stato dry-run:
+
+- `migration_proposal_reviewed=true`;
+- `migration_proposal_hardened=true`;
+- `executable_migration_created=false`;
+- `migration_file_created=false`;
+- `migration_applied=false`;
+- `placeholders_remaining_count=9`;
+- `dashboard_confirmation_required=true`;
+- `future_migration_draft_allowed=false`;
+- `next_write_allowed=false`.
+
+Provider/import restano spenti.
