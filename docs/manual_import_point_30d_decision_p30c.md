@@ -42,3 +42,15 @@ Finché i valori reali non sono disponibili, la raccomandazione è B: restare in
 
 `next_write_allowed=false`.
 
+## Local migration schema extraction P30-D
+
+P30-D ha risolto i placeholder critici dallo schema locale versionato:
+
+- local schema extraction completed: `true`
+- placeholders resolved from local files count: `16`
+- placeholders unresolved count: `0`
+- placeholders unclear count: `0`
+- ready for migration draft: `true`
+- next_write_allowed: `false`
+
+Decisione aggiornata: Punto 31 può essere proposto come migration draft non applicata/no-apply, ma nessuna scrittura DB o applicazione migration è autorizzata.

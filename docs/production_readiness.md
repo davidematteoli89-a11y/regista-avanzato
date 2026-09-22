@@ -1356,3 +1356,22 @@ Confermato:
 - Production non toccata.
 
 Prima di Production servono raccolta valori, nuova verifica no-write, migration review separata e checklist Production dedicata.
+
+## Punto 30-D — Production ancora esclusa
+
+Punto 30-D risolve i placeholder rispetto allo schema locale versionato, ma non tocca Production.
+
+Confermato:
+
+- local schema extraction completed: `true`;
+- DB query executed: `false`;
+- DB write: `false`;
+- service_role used: `false`;
+- ready for migration draft: `true`;
+- `next_write_allowed=false`;
+- nessuna migration `.sql` creata;
+- nessuna migration applicata;
+- nessun provider/import attivato;
+- Production non toccata.
+
+Production resta esclusa anche se Punto 31 preparasse una draft non applicata.

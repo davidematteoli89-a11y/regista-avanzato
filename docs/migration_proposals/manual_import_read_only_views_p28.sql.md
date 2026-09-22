@@ -252,3 +252,26 @@ recommended_next_step=user_provides_real_schema_values_from_dashboard
 ```
 
 Questa proposta resta documentale. I blocchi pseudo-SQL non devono essere copiati o applicati finché l'utente non fornisce valori reali e una nuova fase no-write non li integra.
+
+## Local migration schema extraction P30-D
+
+```text
+MIGRATION_PROPOSAL_ONLY
+DO NOT APPLY
+DO NOT RUN
+NOT REVIEWED FOR EXECUTION
+NO DB WRITE AUTHORIZED
+
+local_schema_extraction_completed=true
+supabase_dashboard_used=false
+db_query_executed=false
+db_write=false
+service_role_used=false
+placeholders_resolved_from_local_count=16
+placeholders_unresolved_count=0
+placeholders_unclear_count=0
+ready_for_migration_draft=true
+next_write_allowed=false
+```
+
+La proposal può essere usata come base per Punto 31, ma solo per creare una migration draft non applicata/no-apply. Nessuna applicazione o scrittura è autorizzata.

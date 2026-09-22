@@ -2435,3 +2435,40 @@ Risultato:
 - `next_write_allowed=false`.
 
 Prossimo step consigliato: Punto 30-D solo se l'utente fornisce valori reali; altrimenti restare in manual/mock mode.
+
+## Punto 30-D — Local migration schema extraction
+
+Stato: completato in modalità no-write/no-provider.
+
+Aggiunti:
+
+- `docs/manual_import_local_schema_extraction_p30d.md`;
+- `docs/manual_import_placeholder_resolution_p30d.md`;
+- `docs/manual_import_point_31_decision_p30d.md`;
+- `docs/provider_point_30d_closure.md`.
+
+Aggiornati:
+
+- docs P28/P29/P30-C;
+- dry-run manual schema/readiness/read-only schema check;
+- `/admin/imports` con sezione “Local schema extraction”.
+
+Risultato:
+
+- local schema extraction completed: `true`;
+- Supabase Dashboard used: `false`;
+- DB query executed: `false`;
+- DB write: `false`;
+- service_role used: `false`;
+- placeholders resolved from local files: `16`;
+- placeholders unresolved: `0`;
+- placeholders unclear: `0`;
+- ready for migration draft: `true`;
+- no migration `.sql` created;
+- no `supabase/migrations` changes;
+- no DB write;
+- no provider/fetch/Apify;
+- Production untouched;
+- `next_write_allowed=false`.
+
+Prossimo step consigliato: Punto 31 migration draft non applicata/no-apply, solo su conferma utente.

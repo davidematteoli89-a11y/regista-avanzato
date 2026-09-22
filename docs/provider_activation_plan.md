@@ -1345,3 +1345,22 @@ Confermato:
 - nessuna scrittura DB;
 - nessun provider/fetch;
 - nessuna Production.
+
+## Punto 30-D — Local migration schema extraction
+
+Punto 30-D non attiva provider né import. Usa solo file locali versionati.
+
+Confermato:
+
+- local schema extraction completed: `true`;
+- Supabase Dashboard used: `false`;
+- DB query executed: `false`;
+- DB write: `false`;
+- service_role used: `false`;
+- placeholders resolved from local files count: `16`;
+- placeholders unresolved count: `0`;
+- placeholders unclear count: `0`;
+- ready for migration draft: `true`;
+- `next_write_allowed=false`.
+
+Il prossimo step possibile è Punto 31 come migration draft non applicata/no-apply. Nessun write staging è autorizzato.

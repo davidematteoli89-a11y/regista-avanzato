@@ -61,3 +61,18 @@ Prima di creare un migration draft serve Punto 30-B o equivalente verifica manua
 - recommended next step: user provides real schema values from dashboard
 
 La checklist futura resta bloccata: nessun draft migration può essere preparato senza valori reali forniti dall'utente.
+
+## Local migration schema extraction P30-D
+
+- local schema extraction completed: `true`
+- Supabase Dashboard used: `false`
+- DB query executed: `false`
+- DB write: `false`
+- service_role used: `false`
+- placeholders resolved from local files count: `16`
+- placeholders unresolved count: `0`
+- placeholders unclear count: `0`
+- ready for migration draft: `true`
+- next_write_allowed: `false`
+
+La checklist consente ora di valutare Punto 31 come migration draft non applicata/no-apply. Non consente applicazione, db write o Production.

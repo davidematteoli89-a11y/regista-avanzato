@@ -854,6 +854,27 @@ Output atteso dai dry-run manuali:
 
 Il dry-run resta no-write/no-provider/no-env-output.
 
+## Punto 30-D — Local migration schema extraction
+
+Output atteso dai dry-run manuali dopo estrazione locale:
+
+- `local_schema_extraction_completed=true`;
+- `supabase_dashboard_used=false`;
+- `db_query_executed=false`;
+- `db_write=false`;
+- `service_role_used=false`;
+- `placeholders_resolved_from_local_count=16`;
+- `placeholders_unresolved_count=0`;
+- `placeholders_unclear_count=0`;
+- `ready_for_migration_draft=true`;
+- `executable_migration_created=false`;
+- `migration_file_created=false`;
+- `migration_applied=false`;
+- `next_write_allowed=false`;
+- `point_31_authorization_required=true`.
+
+Il dry-run resta no-write/no-provider/no-env-output. `ready_for_migration_draft=true` non autorizza apply o DB write.
+
 ## Punto 30-B — Dashboard confirmation manuale registrata
 
 Punto 30-B registra la verifica manuale dichiarata dall'utente, senza SQL, senza DB write e senza valori schema risolutivi.

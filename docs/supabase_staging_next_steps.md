@@ -1738,3 +1738,22 @@ Stato:
 - `next_write_allowed=false`.
 
 Non creare migration e non applicare nulla finché i valori reali non vengono forniti.
+
+## Punto 30-D — Local migration schema extraction
+
+È stata completata estrazione da file locali versionati senza Dashboard e senza DB query.
+
+Stato:
+
+- local schema extraction completed: `true`;
+- Supabase Dashboard used: `false`;
+- DB query executed: `false`;
+- DB write: `false`;
+- service_role used: `false`;
+- placeholders resolved from local files count: `16`;
+- placeholders unresolved count: `0`;
+- placeholders unclear count: `0`;
+- ready for migration draft: `true`;
+- `next_write_allowed=false`.
+
+Prossimo step possibile: Punto 31 migration draft `.sql` non applicata/no-apply. Non applicare nulla e non usare `db push/reset`.

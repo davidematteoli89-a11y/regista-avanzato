@@ -677,6 +677,47 @@ export default async function AdminImportsPage() {
       <section className="admin-section-card">
         <div className="admin-card-head">
           <div>
+            <h2>Local schema extraction</h2>
+            <p className="muted">
+              Punto 30-D legge solo migration e documenti locali versionati. Non usa Dashboard,
+              non esegue query DB e non crea migration. I placeholder critici risultano risolti
+              per lo schema locale, ma resta vietata qualunque scrittura.
+            </p>
+          </div>
+          <div className="admin-badge-row">
+            <span className="admin-safety-badge">Local files only</span>
+            <span className="admin-safety-badge">DB query=false</span>
+            <span className="admin-safety-badge">No migration</span>
+            <span className="admin-safety-badge">Next write=false</span>
+          </div>
+        </div>
+        <dl className="admin-metadata">
+          <dt>Extraction completed</dt>
+          <dd>true</dd>
+          <dt>Dashboard used</dt>
+          <dd>false</dd>
+          <dt>DB query executed</dt>
+          <dd>false</dd>
+          <dt>DB write</dt>
+          <dd>false</dd>
+          <dt>Service role used</dt>
+          <dd>false</dd>
+          <dt>Placeholders resolved from local files</dt>
+          <dd>16</dd>
+          <dt>Placeholders unresolved</dt>
+          <dd>0</dd>
+          <dt>Placeholders unclear</dt>
+          <dd>0</dd>
+          <dt>Ready for migration draft</dt>
+          <dd>true — solo draft non applicata/no-apply</dd>
+          <dt>Next write allowed</dt>
+          <dd>false</dd>
+        </dl>
+      </section>
+
+      <section className="admin-section-card">
+        <div className="admin-card-head">
+          <div>
             <h2>Migration proposal review</h2>
             <p className="muted">
               Punto 29 revisiona la proposal read-only senza creare migration <code>.sql</code>,

@@ -96,3 +96,17 @@ Stati ammessi per la raccolta:
 - ready_for_migration_draft=false
 - next_write_allowed=false
 
+## Local migration schema extraction P30-D
+
+- local schema extraction completed: `true`
+- Supabase Dashboard used: `false`
+- DB query executed: `false`
+- DB write: `false`
+- service_role used: `false`
+- placeholders resolved from local files count: `16`
+- placeholders unresolved count: `0`
+- placeholders unclear count: `0`
+- ready for migration draft: `true`
+- next_write_allowed: `false`
+
+P30-D risolve i placeholder critici solo rispetto allo schema locale versionato. Non autorizza DB write, migration apply, provider/import o Production.

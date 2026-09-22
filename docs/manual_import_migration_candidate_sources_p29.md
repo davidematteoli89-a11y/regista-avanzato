@@ -168,3 +168,18 @@ Status aggiornato:
 - recommended next step: user provides real schema values from dashboard
 
 Le candidate source restano candidate: tabelle, colonne, FK, RLS/policy e view devono essere raccolte dal Dashboard prima di generare qualunque draft eseguibile.
+
+## Local migration schema extraction P30-D
+
+- local schema extraction completed: `true`
+- Supabase Dashboard used: `false`
+- DB query executed: `false`
+- DB write: `false`
+- service_role used: `false`
+- placeholders resolved from local files count: `16`
+- placeholders unresolved count: `0`
+- placeholders unclear count: `0`
+- ready for migration draft: `true`
+- next_write_allowed: `false`
+
+Le candidate source sono ora confermate come schema locale versionato. Resta separata qualunque conferma live o applicazione DB.

@@ -66,3 +66,18 @@ Tutti i placeholder che richiedono stato live restano `unclear` fino a verifica 
 - recommended next step: user provides real schema values from dashboard
 
 I placeholder restano `uncollected/unclear`; non sono stati promossi a `resolved`.
+
+## Local migration schema extraction P30-D
+
+- local schema extraction completed: `true`
+- Supabase Dashboard used: `false`
+- DB query executed: `false`
+- DB write: `false`
+- service_role used: `false`
+- placeholders resolved from local files count: `16`
+- placeholders unresolved count: `0`
+- placeholders unclear count: `0`
+- ready for migration draft: `true`
+- next_write_allowed: `false`
+
+Aggiornamento: i placeholder critici sono risolti dallo schema locale versionato, non da verifica live Dashboard.
