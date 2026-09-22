@@ -1758,6 +1758,28 @@ Stato:
 
 Prossimo step possibile: Punto 31 migration draft `.sql` non applicata/no-apply. Non applicare nulla e non usare `db push/reset`.
 
+## Punto 33 — Staging apply plan no-apply
+
+Stato aggiornato:
+
+- staging apply plan created: `true`;
+- backup checklist created: `true`;
+- rollback checklist created: `true`;
+- pre-apply checklist created: `true`;
+- post-apply verification plan created: `true`;
+- draft path: `docs/migration_drafts/manual_import_read_only_views_p31.sql.draft`;
+- draft fuori da `supabase/migrations`;
+- migration applied: `false`;
+- db push/reset: `false`;
+- DB write: `false`;
+- service role used: `false`;
+- provider/import/Apify off;
+- Production untouched;
+- ready for apply: `false`;
+- `next_write_allowed=false`.
+
+Prossimo step consigliato: Punto 34 final pre-apply authorization gate no-write. Non applicare nulla prima di autorizzazione esplicita.
+
 ## Punto 31 — Migration draft no-apply
 
 Creata draft:

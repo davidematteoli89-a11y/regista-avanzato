@@ -1387,6 +1387,23 @@ Confermato:
 - db_push_reset: `false`;
 - db_write: `false`;
 - service_role_used: `false`;
+
+## Punto 33 — Production readiness impact
+
+Punto 33 non cambia la readiness Production perché è solo piano documentale no-apply.
+
+Conferme:
+
+- Production non toccata;
+- nessun deploy;
+- nessuna migration applicata;
+- nessun `db push/reset`;
+- nessuna scrittura DB;
+- provider/import/Apify spenti;
+- ready for apply: `false`;
+- `next_write_allowed=false`.
+
+Prima di qualunque apply staging futuro resta richiesto un gate separato no-write.
 - ready_for_apply: `false`;
 - `next_write_allowed=false`;
 - nessun provider/import attivato;

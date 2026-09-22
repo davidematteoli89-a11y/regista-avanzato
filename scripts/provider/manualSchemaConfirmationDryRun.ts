@@ -163,6 +163,12 @@ async function main(): Promise<void> {
   console.info("ready_for_apply=false");
   console.info("point_32_authorization_required=true");
   console.info("point_33_authorization_required=true");
+  console.info("staging_apply_plan_created=true");
+  console.info("backup_checklist_created=true");
+  console.info("rollback_checklist_created=true");
+  console.info("pre_apply_checklist_created=true");
+  console.info("post_apply_verification_plan_created=true");
+  console.info("point_34_authorization_required=true");
   console.info("migration_prepared=false");
   console.info("migration_applied=false");
   console.info("migration_proposal_only=true");

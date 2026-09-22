@@ -1357,6 +1357,21 @@ Confermato:
 - DB query executed: `false`;
 - DB write: `false`;
 - service_role used: `false`;
+
+## Punto 33 — Manual import staging apply plan
+
+Punto 33 aggiunge solo un piano documentale no-apply per future view read-only di manual import.
+
+Conferme:
+
+- nessun provider attivato;
+- nessuna fetch provider;
+- nessun import reale;
+- nessun DB write;
+- nessun `service_role`;
+- migration applied: `false`;
+- ready for apply: `false`;
+- `next_write_allowed=false`.
 - placeholders resolved from local files count: `16`;
 - placeholders unresolved count: `0`;
 - placeholders unclear count: `0`;

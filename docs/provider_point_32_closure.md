@@ -28,3 +28,17 @@ Production non è stata toccata.
 
 Prossimo step consigliato: Punto 33 solo come staging apply plan no-apply, oppure Punto 32-B se si desidera ulteriore hardening.
 
+## Punto 33 follow-up
+
+Punto 33 è stato preparato come piano documentale no-apply:
+
+- staging apply plan created: `true`;
+- backup/rollback/pre-apply/post-apply checklist create;
+- migration applied: `false`;
+- db write: `false`;
+- service role used: `false`;
+- provider/import/Apify off;
+- Production untouched;
+- `next_write_allowed=false`.
+
+Prossimo step consigliato aggiornato: Punto 34 final pre-apply authorization gate no-write.

@@ -71,3 +71,17 @@ Review manuale/statica della migration draft P31:
 
 `ready_for_staging_apply_candidate=true` significa solo che non sono emersi blocker statici nella draft dopo hardening. Non autorizza apply, DB write o Production.
 
+## Punto 33 follow-up
+
+Punto 33 ha creato un piano documentale no-apply per una futura applicazione staging:
+
+- staging apply plan created: `true`;
+- backup checklist created: `true`;
+- rollback checklist created: `true`;
+- pre-apply checklist created: `true`;
+- post-apply verification plan created: `true`;
+- migration applied: `false`;
+- ready for apply: `false`;
+- `next_write_allowed=false`.
+
+La draft resta fuori da `supabase/migrations`; nessuna scrittura DB è autorizzata.

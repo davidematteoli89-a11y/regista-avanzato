@@ -9,6 +9,18 @@
 - db_push_reset=false
 - db_write=false
 - service_role_used=false
+
+## Punto 33 status
+
+Punto 33 completato come piano no-apply per futura applicazione staging.
+
+- backup checklist created: `true`;
+- rollback checklist created: `true`;
+- pre-apply checklist created: `true`;
+- post-apply verification plan created: `true`;
+- migration applied: `false`;
+- ready for apply: `false`;
+- `next_write_allowed=false`.
 - ready_for_apply=false
 - next_write_allowed=false
 

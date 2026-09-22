@@ -225,6 +225,12 @@ function printUnavailable(): void {
   console.info("ready_for_apply=false");
   console.info("point_32_authorization_required=true");
   console.info("point_33_authorization_required=true");
+  console.info("staging_apply_plan_created=true");
+  console.info("backup_checklist_created=true");
+  console.info("rollback_checklist_created=true");
+  console.info("pre_apply_checklist_created=true");
+  console.info("post_apply_verification_plan_created=true");
+  console.info("point_34_authorization_required=true");
   console.info("placeholders_remaining_count=9");
   console.info("dashboard_confirmation_required=true");
   console.info("dashboard_confirmation_completed=true");
@@ -461,6 +467,12 @@ async function main(): Promise<void> {
   console.info("ready_for_apply=false");
   console.info("point_32_authorization_required=true");
   console.info("point_33_authorization_required=true");
+  console.info("staging_apply_plan_created=true");
+  console.info("backup_checklist_created=true");
+  console.info("rollback_checklist_created=true");
+  console.info("pre_apply_checklist_created=true");
+  console.info("post_apply_verification_plan_created=true");
+  console.info("point_34_authorization_required=true");
   console.info("placeholders_remaining_count=9");
   console.info("dashboard_confirmation_required=true");
   console.info("dashboard_confirmation_completed=true");

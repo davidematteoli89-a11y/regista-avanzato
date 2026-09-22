@@ -203,6 +203,48 @@ export default async function AdminImportsPage() {
       <section className="admin-section-card">
         <div className="admin-card-head">
           <div>
+            <h2>Staging apply plan</h2>
+            <p className="muted">
+              Punto 33 prepara solo il piano per un eventuale apply staging futuro. La draft resta
+              fuori da <code>supabase/migrations</code> e nessuna scrittura è autorizzata.
+            </p>
+          </div>
+          <div className="admin-badge-row">
+            <span className="admin-safety-badge">Plan only</span>
+            <span className="admin-safety-badge">No apply</span>
+            <span className="admin-safety-badge">Ready for apply=false</span>
+            <span className="admin-safety-badge">Next write=false</span>
+          </div>
+        </div>
+        <dl className="admin-metadata">
+          <dt>Staging apply plan created</dt>
+          <dd>true</dd>
+          <dt>Backup checklist created</dt>
+          <dd>true</dd>
+          <dt>Rollback checklist created</dt>
+          <dd>true</dd>
+          <dt>Pre-apply checklist created</dt>
+          <dd>true</dd>
+          <dt>Post-apply verification plan created</dt>
+          <dd>true</dd>
+          <dt>Draft still outside supabase/migrations</dt>
+          <dd>true</dd>
+          <dt>Migration applied</dt>
+          <dd>false</dd>
+          <dt>DB write</dt>
+          <dd>false</dd>
+          <dt>Service role used</dt>
+          <dd>false</dd>
+          <dt>Ready for apply</dt>
+          <dd>false</dd>
+          <dt>Next write allowed</dt>
+          <dd>false</dd>
+        </dl>
+      </section>
+
+      <section className="admin-section-card">
+        <div className="admin-card-head">
+          <div>
             <h2>Manual import plan</h2>
             <p className="muted">
               Il piano import manuale è solo una preparazione tecnica. Nessuna scrittura DB è

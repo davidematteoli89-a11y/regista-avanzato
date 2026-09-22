@@ -2542,3 +2542,44 @@ Risultato:
 - `next_write_allowed=false`.
 
 Prossimo step consigliato: Punto 33 staging apply plan no-apply, non apply diretto.
+
+## Punto 33 — Staging apply plan no-apply
+
+Stato: completato in modalità piano/no-apply/no-write.
+
+Aggiunti:
+
+- `docs/manual_import_staging_apply_plan_p33.md`;
+- `docs/manual_import_staging_backup_checklist_p33.md`;
+- `docs/manual_import_staging_rollback_checklist_p33.md`;
+- `docs/manual_import_staging_pre_apply_checklist_p33.md`;
+- `docs/manual_import_staging_post_apply_verification_p33.md`;
+- `docs/manual_import_point_34_decision_p33.md`;
+- `docs/provider_point_33_closure.md`.
+
+Aggiornati:
+
+- dry-run manual schema/readiness/read-only schema check;
+- `/admin/imports` con sezione read-only “Staging apply plan”;
+- documentazione provider/manual import/readiness.
+
+Risultato:
+
+- staging apply plan created: `true`;
+- backup checklist created: `true`;
+- rollback checklist created: `true`;
+- pre-apply checklist created: `true`;
+- post-apply verification plan created: `true`;
+- migration draft path: `docs/migration_drafts/manual_import_read_only_views_p31.sql.draft`;
+- draft fuori da `supabase/migrations`;
+- nessuna modifica in `supabase/migrations`;
+- migration applied: `false`;
+- db push/reset: `false`;
+- DB write: `false`;
+- service role used: `false`;
+- ready for apply: `false`;
+- provider/fetch/Apify: off;
+- Production untouched;
+- `next_write_allowed=false`.
+
+Prossimo step consigliato: Punto 34 final pre-apply authorization gate no-write.

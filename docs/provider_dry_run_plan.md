@@ -754,6 +754,21 @@ Risultato del primo check:
 - `db_read=true`;
 - `db_write=false`;
 - `service_role_used=false`;
+
+## Punto 33 — Dry-run output updates
+
+I dry-run manual import ora espongono anche:
+
+- `staging_apply_plan_created=true`;
+- `backup_checklist_created=true`;
+- `rollback_checklist_created=true`;
+- `pre_apply_checklist_created=true`;
+- `post_apply_verification_plan_created=true`;
+- `point_34_authorization_required=true`;
+- `ready_for_apply=false`;
+- `next_write_allowed=false`.
+
+Tutti gli output restano no-fetch/no-write/no-apply.
 - target tables non confermate;
 - public views non confermate;
 - payload non stampato;

@@ -134,6 +134,19 @@ The draft is outside `supabase/migrations` and has not been applied.
 - migration_applied=false
 - db_write=false
 - service_role_used=false
+
+## Punto 33 status
+
+Punto 33 ha trasformato la review P32 in un piano staging apply no-apply, senza applicare la draft e senza spostarla in `supabase/migrations`.
+
+Stato corrente:
+
+- staging apply plan created: `true`;
+- migration applied: `false`;
+- db push/reset: `false`;
+- DB write: `false`;
+- ready for apply: `false`;
+- `next_write_allowed=false`.
 - executable_for_apply=false
 - requires_manual_review=true
 - requires_explicit_authorization=true
