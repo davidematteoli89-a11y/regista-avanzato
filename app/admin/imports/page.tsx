@@ -203,6 +203,50 @@ export default async function AdminImportsPage() {
       <section className="admin-section-card">
         <div className="admin-card-head">
           <div>
+            <h2>Staging apply result</h2>
+            <p className="muted">
+              Punto 35 ha creato la migration reale, ma non l’ha applicata perché il canale apply
+              remoto sicuro resta bloccato dal divieto di db push/reset.
+            </p>
+          </div>
+          <div className="admin-badge-row">
+            <span className="admin-safety-badge">Authorization received</span>
+            <span className="admin-safety-badge">Migration created</span>
+            <span className="admin-safety-badge">Apply blocked</span>
+            <span className="admin-safety-badge">Next write=false</span>
+          </div>
+        </div>
+        <dl className="admin-metadata">
+          <dt>Explicit authorization received</dt>
+          <dd>true</dd>
+          <dt>Real migration created</dt>
+          <dd>true</dd>
+          <dt>Real migration path</dt>
+          <dd>
+            <code>supabase/migrations/20260922120000_manual_import_read_only_views.sql</code>
+          </dd>
+          <dt>Staging target confirmed</dt>
+          <dd>true</dd>
+          <dt>Production excluded</dt>
+          <dd>true</dd>
+          <dt>Migration applied</dt>
+          <dd>false</dd>
+          <dt>DB write scope</dt>
+          <dd>none</dd>
+          <dt>Provider/import off</dt>
+          <dd>true</dd>
+          <dt>Views verified count</dt>
+          <dd>0</dd>
+          <dt>Post-apply verification passed</dt>
+          <dd>false</dd>
+          <dt>Next write allowed</dt>
+          <dd>false</dd>
+        </dl>
+      </section>
+
+      <section className="admin-section-card">
+        <div className="admin-card-head">
+          <div>
             <h2>Final pre-apply gate</h2>
             <p className="muted">
               Punto 34 crea il gate finale documentale prima di qualunque futuro apply. Punto 35

@@ -784,6 +784,25 @@ I dry-run manual import ora espongono anche:
 - `next_write_allowed=false`.
 
 Gli output restano no-fetch/no-write/no-apply.
+
+## Punto 35 — Dry-run output updates
+
+I dry-run manual import ora espongono anche:
+
+- `point_35_explicit_authorization_received=true`;
+- `real_migration_created=true`;
+- `real_migration_path=supabase/migrations/20260922120000_manual_import_read_only_views.sql`;
+- `staging_target_confirmed=true`;
+- `production_excluded=true`;
+- `migration_applied=false`;
+- `db_write=false`;
+- `db_write_scope=none`;
+- `provider_import_enabled=false`;
+- `apify_enabled=false`;
+- `views_expected_count=3`;
+- `views_verified_count=0`;
+- `post_apply_verification_passed=false`;
+- `next_write_allowed=false`.
 - target tables non confermate;
 - public views non confermate;
 - payload non stampato;

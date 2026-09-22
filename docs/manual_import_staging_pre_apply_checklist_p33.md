@@ -45,3 +45,14 @@ Punto 34 ha formalizzato che:
 - `next_write_allowed=false`.
 
 Frasi generiche come “procedi”, “ok” o “continua” non autorizzano apply.
+
+## Punto 35 follow-up
+
+Autorizzazione esplicita ricevuta e checklist rivista.
+
+Esito:
+
+- real migration created: `true`;
+- apply not executed: `true`;
+- reason: `db push/reset vietato`;
+- `next_write_allowed=false`.

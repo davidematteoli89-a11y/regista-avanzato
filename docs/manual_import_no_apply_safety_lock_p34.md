@@ -29,3 +29,14 @@ Stato corrente:
 
 Il lock resta attivo. Nessuna frase generica sblocca il Punto 35.
 
+## Punto 35 follow-up
+
+Il lock è stato parzialmente aperto solo perché è arrivata la frase esplicita richiesta.
+
+La creazione del file migration reale è avvenuta, ma l’apply DB resta bloccato:
+
+- migration applied: `false`;
+- db write: `false`;
+- provider/import off;
+- Production untouched;
+- `next_write_allowed=false`.

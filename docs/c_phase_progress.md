@@ -2624,3 +2624,34 @@ Risultato:
 - `next_write_allowed=false`.
 
 Decisione: default no-apply mode. Punto 35 può partire solo con autorizzazione esplicita secondo frase definita; conferme generiche non bastano.
+
+## Punto 35 — Staging apply reale controllato delle view read-only
+
+Stato: completato con apply bloccato in sicurezza.
+
+Autorizzazione esplicita ricevuta:
+
+- `point_35_explicit_authorization_received=true`.
+
+Risultato:
+
+- staging target confirmed: `true`;
+- production excluded: `true`;
+- real migration created: `true`;
+- real migration path: `supabase/migrations/20260922120000_manual_import_read_only_views.sql`;
+- migration applied: `false`;
+- db write: `false`;
+- db write scope: `none`;
+- db push/reset: `false`;
+- service role used: `false`;
+- provider/import enabled: `false`;
+- Apify enabled: `false`;
+- views expected count: `3`;
+- views verified count: `0`;
+- post-apply verification passed: `false`;
+- Production touched: `false`;
+- `next_write_allowed=false`.
+
+Motivo blocco: le regole del Punto 35 vietano `db push/reset` e non è disponibile un canale alternativo sicuro senza credenziali/prompt ambigui. Nessuna scrittura DB è stata eseguita.
+
+Prossimo step consigliato: Punto 36-Fix/canale apply controllato oppure apply manuale staging separato, senza provider/import e senza Production.

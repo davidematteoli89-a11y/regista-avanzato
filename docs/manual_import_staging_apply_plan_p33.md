@@ -75,3 +75,16 @@ Punto 34 ha aggiunto il final pre-apply authorization gate:
 - `next_write_allowed=false`.
 
 Il piano P33 resta documentale e non autorizza apply.
+
+## Punto 35 follow-up
+
+Il piano è stato usato come base per Punto 35.
+
+Esito:
+
+- target staging confirmed: `true`;
+- real migration created: `true`;
+- migration applied: `false`;
+- db write: `false`;
+- apply blocked reason: `db push/reset vietato; nessun canale sicuro alternativo`;
+- `next_write_allowed=false`.

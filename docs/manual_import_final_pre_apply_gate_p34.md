@@ -50,3 +50,16 @@ Stato:
 
 Il gate è documentato ma non sbloccato. Punto 35 resta bloccato finché non viene fornita l’autorizzazione esplicita definita nel documento di authorization language.
 
+## Punto 35 follow-up
+
+Autorizzazione esplicita ricevuta per Punto 35.
+
+Esito:
+
+- real migration created: `true`;
+- migration applied: `false`;
+- db write: `false`;
+- reason: `db push/reset vietato e nessun canale alternativo sicuro disponibile`;
+- `next_write_allowed=false`.
+
+Il gate è stato attraversato solo fino alla creazione del file migration reale; l’apply DB è rimasto bloccato.

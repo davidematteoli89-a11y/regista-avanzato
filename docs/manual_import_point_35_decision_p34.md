@@ -24,3 +24,15 @@ Consigliato: A, restare in no-apply mode.
 
 Non autorizzo apply, non consiglio DB write e mantengo `next_write_allowed=false`.
 
+## Punto 35 follow-up
+
+Punto 35 avviato con autorizzazione esplicita.
+
+Esito:
+
+- real migration created: `true`;
+- migration applied: `false`;
+- db write: `false`;
+- post-apply verification passed: `false`.
+
+Nuova decisione consigliata: Punto 36-Fix/canale apply controllato, senza provider/import e senza Production.

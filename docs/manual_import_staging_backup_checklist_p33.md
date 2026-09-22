@@ -32,3 +32,11 @@ Questa checklist non contiene comandi operativi da lanciare. Eventuali comandi o
 ## Punto 34 gate
 
 La checklist resta preparatoria. Punto 35 è bloccato finché non viene fornita la frase esplicita definita in `docs/manual_import_apply_authorization_language_p34.md`.
+
+## Punto 35 follow-up
+
+Checklist rivista in Punto 35. Nessun backup export automatico è stato eseguito e nessun dump è stato committato.
+
+- backup export performed: `false`;
+- sensitive data committed: `false`;
+- migration applied: `false`.

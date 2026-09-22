@@ -57,3 +57,11 @@ Eventuali `DROP`/`CREATE OR REPLACE` devono restare `DOCUMENTATION_ONLY / DO NOT
 ## Punto 34 gate
 
 Nessun rollback operativo è autorizzato. Il rollback resta documentale finché Punto 35 non riceve autorizzazione esplicita e nuovo check finale.
+
+## Punto 35 follow-up
+
+Nessun rollback necessario perché nessuna scrittura DB è stata eseguita.
+
+- rollback needed: `false`;
+- migration applied: `false`;
+- db write: `false`.

@@ -1299,6 +1299,20 @@ Confermato:
 - real import disabilitato;
 - `next_write_allowed=false`.
 
+## Punto 35 — Provider/import still off
+
+Punto 35 non attiva provider/import.
+
+Conferme:
+
+- real migration created: `true`;
+- migration applied: `false`;
+- db write: `false`;
+- provider import enabled: `false`;
+- Apify enabled: `false`;
+- no provider fetch;
+- Production untouched.
+
 ## Punto 34 — Final pre-apply gate
 
 Punto 34 non attiva provider/import e non autorizza DB write.

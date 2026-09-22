@@ -1,0 +1,25 @@
+# Punto 35 — Post-apply verification result
+
+## Result
+
+- views_created_count: `0`
+- expected_views_count: `3`
+- competitions_view_status: `not_verified_not_applied`
+- teams_view_status: `not_verified_not_applied`
+- standings_view_status: `not_verified_not_applied`
+- column_check_status: `not_verified_not_applied`
+- sensitive_fields_exposed: `unknown`
+- provider_import_off: `true`
+- production_touched: `false`
+- verification_passed: `false`
+
+## Notes
+
+La verifica post-apply non è stata eseguita perché la migration non è stata applicata.
+
+Non sono state eseguite query DB, non sono stati stampati dati e non sono state attivate integrazioni provider/import.
+
+## Next
+
+Serve un Punto 35-B o Punto 36-Rollback/Fix plan per definire un canale di apply sicuro alternativo, oppure apply manuale da SQL Editor staging con conferma separata.
+

@@ -42,3 +42,12 @@ Punto 33 non esegue query e non prepara SQL operativo pronto da lanciare.
 ## Punto 34 gate
 
 Il piano post-apply resta futuro e non eseguito. Punto 35 è bloccato senza autorizzazione esplicita; nessuna verifica post-apply può essere richiesta perché nessun apply è stato fatto.
+
+## Punto 35 follow-up
+
+La verifica post-apply resta non eseguita perché il database non è stato modificato.
+
+- views verified count: `0`;
+- post-apply verification passed: `false`;
+- provider/import off: `true`;
+- Production touched: `false`.

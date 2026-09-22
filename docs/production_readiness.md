@@ -1422,6 +1422,22 @@ Conferme:
 - `next_write_allowed=false`.
 
 Production non deve essere toccata in Punto 35.
+
+## Punto 35 — Production non toccata
+
+Punto 35 ha creato una migration reale locale per view read-only, ma non l’ha applicata.
+
+Conferme:
+
+- Production untouched: `true`;
+- migration applied: `false`;
+- db write: `false`;
+- provider/import off;
+- Apify off;
+- no deploy;
+- ready for Production: `false`.
+
+Production resta esclusa. Serve un canale apply staging controllato prima di qualunque verifica applicativa successiva.
 - ready_for_apply: `false`;
 - `next_write_allowed=false`;
 - nessun provider/import attivato;

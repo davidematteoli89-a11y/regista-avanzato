@@ -26,3 +26,15 @@ Conferme:
 
 Il default resta no-apply mode. Punto 35 potrà partire solo con autorizzazione esplicita dell’utente secondo la frase definita.
 
+## Punto 35 follow-up
+
+Autorizzazione esplicita ricevuta.
+
+Punto 35 ha creato la migration reale, ma non l’ha applicata:
+
+- real migration path: `supabase/migrations/20260922120000_manual_import_read_only_views.sql`;
+- migration applied: `false`;
+- db write: `false`;
+- Production touched: `false`;
+- provider/import off;
+- `next_write_allowed=false`.

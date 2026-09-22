@@ -34,3 +34,15 @@ Anche con una frase esplicita:
 - se c’è dubbio, fermarsi;
 - `next_write_allowed` resta `false` fino allo step autorizzato.
 
+## Punto 35 follow-up
+
+La frase esplicita è stata ricevuta per Punto 35.
+
+Il sistema ha comunque eseguito il check finale e ha bloccato l’apply DB perché il canale disponibile avrebbe richiesto `db push/reset` o credenziali/prompt non sicuri.
+
+Stato finale:
+
+- authorization accepted for file creation: `true`;
+- migration applied: `false`;
+- db write: `false`;
+- `next_write_allowed=false`.

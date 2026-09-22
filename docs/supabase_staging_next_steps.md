@@ -1802,6 +1802,28 @@ Stato aggiornato:
 
 Punto 35 richiede frase esplicita; conferme generiche non autorizzano apply.
 
+## Punto 35 — Migration reale creata, apply bloccato
+
+Stato:
+
+- explicit authorization received: `true`;
+- staging target confirmed: `true`;
+- production excluded: `true`;
+- real migration created: `true`;
+- real migration path: `supabase/migrations/20260922120000_manual_import_read_only_views.sql`;
+- migration applied: `false`;
+- db write: `false`;
+- db push/reset: `false`;
+- service role used: `false`;
+- provider/import off;
+- Apify off;
+- Production untouched;
+- next write allowed: `false`.
+
+Motivo blocco: apply remoto non eseguito perché le regole vietano `db push/reset` e non è stato usato un canale alternativo con credenziali/prompt ambigui.
+
+Prossimo step: definire Punto 36-Fix/canale apply controllato o apply manuale da SQL Editor staging con conferma separata.
+
 ## Punto 31 — Migration draft no-apply
 
 Creata draft:

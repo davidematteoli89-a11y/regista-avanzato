@@ -32,8 +32,19 @@ Punto 35 non deve:
 
 Stato attuale:
 
-- `explicit_user_authorization_received=false`;
-- `point_35_blocked_without_explicit_authorization=true`;
+- `explicit_user_authorization_received=true`;
+- `point_35_blocked_without_explicit_authorization=false`;
 - `ready_for_apply=false`;
 - `next_write_allowed=false`.
 
+## Punto 35 follow-up
+
+Readiness parziale:
+
+- branch `preview` confermato;
+- target staging confermato;
+- migration reale creata;
+- apply DB non eseguito;
+- post-apply verification non eseguita.
+
+Il criterio “canale apply sicuro” resta non soddisfatto.
