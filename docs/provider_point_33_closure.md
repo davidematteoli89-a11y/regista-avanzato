@@ -25,3 +25,16 @@ Conferme:
 
 Prossimo step consigliato: Punto 34 — final pre-apply authorization gate no-write.
 
+## Punto 34 follow-up
+
+Punto 34 completato come final authorization gate no-write.
+
+- final pre-apply gate created: `true`;
+- authorization language defined: `true`;
+- no-apply safety lock created: `true`;
+- explicit user authorization received: `false`;
+- point 35 blocked without explicit authorization: `true`;
+- ready for apply: `false`;
+- `next_write_allowed=false`.
+
+Punto 35 non parte con conferme generiche.

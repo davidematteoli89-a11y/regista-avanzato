@@ -1299,6 +1299,20 @@ Confermato:
 - real import disabilitato;
 - `next_write_allowed=false`.
 
+## Punto 34 — Final pre-apply gate
+
+Punto 34 non attiva provider/import e non autorizza DB write.
+
+Conferme:
+
+- final pre-apply gate created: `true`;
+- authorization language defined: `true`;
+- explicit user authorization received: `false`;
+- point 35 blocked without explicit authorization: `true`;
+- provider/import/Apify off;
+- ready for apply: `false`;
+- `next_write_allowed=false`.
+
 Punto 29/write staging non è autorizzato.
 
 ## Punto 29 — Nessuna attivazione dopo review proposal

@@ -40,3 +40,17 @@ Non consigliato ora. Ammissibile solo più avanti, con:
 
 Consiglio Punto 34 come final pre-apply authorization gate no-write. Non autorizzo apply e mantengo `next_write_allowed=false`.
 
+## Esito Punto 34
+
+La raccomandazione è stata completata come gate documentale no-write:
+
+- final pre-apply gate created: `true`;
+- authorization language defined: `true`;
+- no-apply safety lock created: `true`;
+- point 35 readiness criteria created: `true`;
+- explicit user authorization received: `false`;
+- point 35 blocked without explicit authorization: `true`;
+- ready for apply: `false`;
+- `next_write_allowed=false`.
+
+Decisione aggiornata: restare in no-apply mode come default.

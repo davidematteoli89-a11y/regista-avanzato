@@ -1780,6 +1780,28 @@ Stato aggiornato:
 
 Prossimo step consigliato: Punto 34 final pre-apply authorization gate no-write. Non applicare nulla prima di autorizzazione esplicita.
 
+## Punto 34 — Final pre-apply gate
+
+Stato aggiornato:
+
+- final pre-apply gate created: `true`;
+- authorization language defined: `true`;
+- no-apply safety lock created: `true`;
+- point 35 readiness criteria created: `true`;
+- explicit user authorization received: `false`;
+- point 35 blocked without explicit authorization: `true`;
+- draft fuori da `supabase/migrations`;
+- migration applied: `false`;
+- db push/reset: `false`;
+- DB write: `false`;
+- service role used: `false`;
+- provider/import/Apify off;
+- Production untouched;
+- ready for apply: `false`;
+- `next_write_allowed=false`.
+
+Punto 35 richiede frase esplicita; conferme generiche non autorizzano apply.
+
 ## Punto 31 — Migration draft no-apply
 
 Creata draft:

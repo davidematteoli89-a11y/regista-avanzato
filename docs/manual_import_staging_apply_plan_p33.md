@@ -62,3 +62,16 @@ Un futuro apply potrà essere valutato solo se:
 
 Punto 33 resta no-apply. La draft resta fuori da `supabase/migrations`; nessun file migration reale viene creato.
 
+## Punto 34 follow-up
+
+Punto 34 ha aggiunto il final pre-apply authorization gate:
+
+- final pre-apply gate created: `true`;
+- authorization language defined: `true`;
+- no-apply safety lock created: `true`;
+- explicit user authorization received: `false`;
+- point 35 blocked without explicit authorization: `true`;
+- ready for apply: `false`;
+- `next_write_allowed=false`.
+
+Il piano P33 resta documentale e non autorizza apply.

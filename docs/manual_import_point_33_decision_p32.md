@@ -57,3 +57,14 @@ La raccomandazione A è stata seguita solo come piano no-apply:
 - `next_write_allowed=false`.
 
 Nuovo step consigliato: Punto 34 final pre-apply authorization gate no-write.
+
+## Esito Punto 34
+
+Punto 34 completato come gate documentale no-write.
+
+- no-apply safety lock created: `true`;
+- authorization language defined: `true`;
+- explicit user authorization received: `false`;
+- point 35 blocked without explicit authorization: `true`;
+- ready for apply: `false`;
+- `next_write_allowed=false`.

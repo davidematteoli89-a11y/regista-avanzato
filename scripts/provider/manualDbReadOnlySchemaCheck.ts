@@ -231,6 +231,12 @@ function printUnavailable(): void {
   console.info("pre_apply_checklist_created=true");
   console.info("post_apply_verification_plan_created=true");
   console.info("point_34_authorization_required=true");
+  console.info("final_pre_apply_gate_created=true");
+  console.info("authorization_language_defined=true");
+  console.info("no_apply_safety_lock_created=true");
+  console.info("point_35_readiness_criteria_created=true");
+  console.info("explicit_user_authorization_received=false");
+  console.info("point_35_blocked_without_explicit_authorization=true");
   console.info("placeholders_remaining_count=9");
   console.info("dashboard_confirmation_required=true");
   console.info("dashboard_confirmation_completed=true");
@@ -473,6 +479,12 @@ async function main(): Promise<void> {
   console.info("pre_apply_checklist_created=true");
   console.info("post_apply_verification_plan_created=true");
   console.info("point_34_authorization_required=true");
+  console.info("final_pre_apply_gate_created=true");
+  console.info("authorization_language_defined=true");
+  console.info("no_apply_safety_lock_created=true");
+  console.info("point_35_readiness_criteria_created=true");
+  console.info("explicit_user_authorization_received=false");
+  console.info("point_35_blocked_without_explicit_authorization=true");
   console.info("placeholders_remaining_count=9");
   console.info("dashboard_confirmation_required=true");
   console.info("dashboard_confirmation_completed=true");

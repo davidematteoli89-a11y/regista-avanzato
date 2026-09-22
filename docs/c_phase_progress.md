@@ -2583,3 +2583,44 @@ Risultato:
 - `next_write_allowed=false`.
 
 Prossimo step consigliato: Punto 34 final pre-apply authorization gate no-write.
+
+## Punto 34 — Final pre-apply authorization gate no-write
+
+Stato: completato in modalità gate documentale/no-write.
+
+Aggiunti:
+
+- `docs/manual_import_final_pre_apply_gate_p34.md`;
+- `docs/manual_import_apply_authorization_language_p34.md`;
+- `docs/manual_import_no_apply_safety_lock_p34.md`;
+- `docs/manual_import_point_35_readiness_criteria_p34.md`;
+- `docs/manual_import_point_35_decision_p34.md`;
+- `docs/provider_point_34_closure.md`.
+
+Aggiornati:
+
+- dry-run manual schema/readiness/read-only schema check;
+- `/admin/imports` con sezione read-only “Final pre-apply gate”;
+- documentazione P33/P32/provider/readiness.
+
+Risultato:
+
+- final pre-apply gate created: `true`;
+- authorization language defined: `true`;
+- no-apply safety lock created: `true`;
+- point 35 readiness criteria created: `true`;
+- explicit user authorization received: `false`;
+- point 35 blocked without explicit authorization: `true`;
+- migration draft path: `docs/migration_drafts/manual_import_read_only_views_p31.sql.draft`;
+- draft fuori da `supabase/migrations`;
+- nessuna modifica in `supabase/migrations`;
+- migration applied: `false`;
+- db push/reset: `false`;
+- DB write: `false`;
+- service role used: `false`;
+- ready for apply: `false`;
+- provider/fetch/Apify: off;
+- Production untouched;
+- `next_write_allowed=false`.
+
+Decisione: default no-apply mode. Punto 35 può partire solo con autorizzazione esplicita secondo frase definita; conferme generiche non bastano.

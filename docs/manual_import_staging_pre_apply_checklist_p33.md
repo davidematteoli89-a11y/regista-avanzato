@@ -35,3 +35,13 @@ Stato attuale:
 
 La checklist non è un’autorizzazione. Punto 33 prepara il gate, non lo attraversa.
 
+## Punto 34 gate
+
+Punto 34 ha formalizzato che:
+
+- `explicit_user_authorization_received=false`;
+- `point_35_blocked_without_explicit_authorization=true`;
+- `ready_for_apply=false`;
+- `next_write_allowed=false`.
+
+Frasi generiche come “procedi”, “ok” o “continua” non autorizzano apply.

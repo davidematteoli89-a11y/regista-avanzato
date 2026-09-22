@@ -203,6 +203,48 @@ export default async function AdminImportsPage() {
       <section className="admin-section-card">
         <div className="admin-card-head">
           <div>
+            <h2>Final pre-apply gate</h2>
+            <p className="muted">
+              Punto 34 crea il gate finale documentale prima di qualunque futuro apply. Punto 35
+              resta bloccato senza autorizzazione esplicita.
+            </p>
+          </div>
+          <div className="admin-badge-row">
+            <span className="admin-safety-badge">No-apply lock</span>
+            <span className="admin-safety-badge">Authorization missing</span>
+            <span className="admin-safety-badge">Ready for apply=false</span>
+            <span className="admin-safety-badge">Next write=false</span>
+          </div>
+        </div>
+        <dl className="admin-metadata">
+          <dt>Final gate created</dt>
+          <dd>true</dd>
+          <dt>Authorization language defined</dt>
+          <dd>true</dd>
+          <dt>No-apply safety lock created</dt>
+          <dd>true</dd>
+          <dt>Explicit user authorization received</dt>
+          <dd>false</dd>
+          <dt>Point 35 blocked without explicit authorization</dt>
+          <dd>true</dd>
+          <dt>Migration draft outside supabase/migrations</dt>
+          <dd>true</dd>
+          <dt>Migration applied</dt>
+          <dd>false</dd>
+          <dt>DB write</dt>
+          <dd>false</dd>
+          <dt>Service role used</dt>
+          <dd>false</dd>
+          <dt>Ready for apply</dt>
+          <dd>false</dd>
+          <dt>Next write allowed</dt>
+          <dd>false</dd>
+        </dl>
+      </section>
+
+      <section className="admin-section-card">
+        <div className="admin-card-head">
+          <div>
             <h2>Staging apply plan</h2>
             <p className="muted">
               Punto 33 prepara solo il piano per un eventuale apply staging futuro. La draft resta

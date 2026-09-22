@@ -769,6 +769,21 @@ I dry-run manual import ora espongono anche:
 - `next_write_allowed=false`.
 
 Tutti gli output restano no-fetch/no-write/no-apply.
+
+## Punto 34 — Dry-run output updates
+
+I dry-run manual import ora espongono anche:
+
+- `final_pre_apply_gate_created=true`;
+- `authorization_language_defined=true`;
+- `no_apply_safety_lock_created=true`;
+- `point_35_readiness_criteria_created=true`;
+- `explicit_user_authorization_received=false`;
+- `point_35_blocked_without_explicit_authorization=true`;
+- `ready_for_apply=false`;
+- `next_write_allowed=false`.
+
+Gli output restano no-fetch/no-write/no-apply.
 - target tables non confermate;
 - public views non confermate;
 - payload non stampato;

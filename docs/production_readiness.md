@@ -1404,6 +1404,24 @@ Conferme:
 - `next_write_allowed=false`.
 
 Prima di qualunque apply staging futuro resta richiesto un gate separato no-write.
+
+## Punto 34 — Production readiness impact
+
+Punto 34 mantiene Production esclusa.
+
+Conferme:
+
+- nessun deploy;
+- nessuna migration applicata;
+- nessuna modifica in `supabase/migrations`;
+- nessuna scrittura DB;
+- provider/import/Apify spenti;
+- explicit user authorization received: `false`;
+- point 35 blocked without explicit authorization: `true`;
+- ready for apply: `false`;
+- `next_write_allowed=false`.
+
+Production non deve essere toccata in Punto 35.
 - ready_for_apply: `false`;
 - `next_write_allowed=false`;
 - nessun provider/import attivato;

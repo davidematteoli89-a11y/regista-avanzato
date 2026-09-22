@@ -85,3 +85,14 @@ Punto 33 ha creato un piano documentale no-apply per una futura applicazione sta
 - `next_write_allowed=false`.
 
 La draft resta fuori da `supabase/migrations`; nessuna scrittura DB è autorizzata.
+
+## Punto 34 follow-up
+
+Punto 34 ha aggiunto il final pre-apply gate e la lingua di autorizzazione esplicita.
+
+Stato:
+
+- explicit user authorization received: `false`;
+- point 35 blocked without explicit authorization: `true`;
+- ready for apply: `false`;
+- `next_write_allowed=false`.

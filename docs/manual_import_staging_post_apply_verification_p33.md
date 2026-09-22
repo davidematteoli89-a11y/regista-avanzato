@@ -39,3 +39,6 @@ NO DB WRITE AUTHORIZED
 
 Punto 33 non esegue query e non prepara SQL operativo pronto da lanciare.
 
+## Punto 34 gate
+
+Il piano post-apply resta futuro e non eseguito. Punto 35 è bloccato senza autorizzazione esplicita; nessuna verifica post-apply può essere richiesta perché nessun apply è stato fatto.

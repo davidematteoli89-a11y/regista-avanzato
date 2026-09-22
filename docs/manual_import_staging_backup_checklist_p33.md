@@ -29,3 +29,6 @@ Stato:
 
 Questa checklist non contiene comandi operativi da lanciare. Eventuali comandi o query dovranno essere preparati in uno step successivo, marcati e autorizzati separatamente.
 
+## Punto 34 gate
+
+La checklist resta preparatoria. Punto 35 è bloccato finché non viene fornita la frase esplicita definita in `docs/manual_import_apply_authorization_language_p34.md`.

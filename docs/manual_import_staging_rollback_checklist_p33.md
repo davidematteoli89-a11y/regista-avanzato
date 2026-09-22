@@ -54,3 +54,6 @@ Qualunque rollback futuro dovrà essere preparato come piano separato, con:
 
 Eventuali `DROP`/`CREATE OR REPLACE` devono restare `DOCUMENTATION_ONLY / DO NOT RUN` finché non autorizzati in uno step dedicato.
 
+## Punto 34 gate
+
+Nessun rollback operativo è autorizzato. Il rollback resta documentale finché Punto 35 non riceve autorizzazione esplicita e nuovo check finale.
