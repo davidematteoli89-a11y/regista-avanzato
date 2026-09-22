@@ -188,6 +188,11 @@ async function main(): Promise<void> {
   console.info("views_verified_count=0");
   console.info("post_apply_verification_passed=false");
   console.info("point_36_authorization_required=true");
+  console.info("point_36a_explicit_authorization_received=true");
+  console.info("sql_editor_apply_channel=true");
+  console.info("point_36a_apply_executed_by_agent=false");
+  console.info("point_36a_blocked_reason=manual_sql_editor_dashboard_access_required");
+  console.info("point_37_authorization_required=true");
   console.info("migration_prepared=false");
   console.info("migration_applied=false");
   console.info("migration_proposal_only=true");

@@ -203,6 +203,50 @@ export default async function AdminImportsPage() {
       <section className="admin-section-card">
         <div className="admin-card-head">
           <div>
+            <h2>Manual SQL Editor apply</h2>
+            <p className="muted">
+              Punto 36-A prepara il canale SQL Editor manuale. L’agente non ha eseguito l’apply:
+              serve conferma visiva ed esecuzione manuale nello staging Supabase.
+            </p>
+          </div>
+          <div className="admin-badge-row">
+            <span className="admin-safety-badge">Manual channel</span>
+            <span className="admin-safety-badge">Agent apply=false</span>
+            <span className="admin-safety-badge">Provider off</span>
+            <span className="admin-safety-badge">Next write=false</span>
+          </div>
+        </div>
+        <dl className="admin-metadata">
+          <dt>Explicit authorization received</dt>
+          <dd>true</dd>
+          <dt>Apply channel</dt>
+          <dd>manual_sql_editor</dd>
+          <dt>Migration file</dt>
+          <dd>
+            <code>supabase/migrations/20260922120000_manual_import_read_only_views.sql</code>
+          </dd>
+          <dt>Staging target confirmed in dashboard</dt>
+          <dd>false</dd>
+          <dt>Production excluded</dt>
+          <dd>true</dd>
+          <dt>Migration applied</dt>
+          <dd>false</dd>
+          <dt>DB write scope</dt>
+          <dd>none</dd>
+          <dt>Provider/import off</dt>
+          <dd>true</dd>
+          <dt>Views verified count</dt>
+          <dd>0</dd>
+          <dt>Post-apply verification passed</dt>
+          <dd>false</dd>
+          <dt>Next write allowed</dt>
+          <dd>false</dd>
+        </dl>
+      </section>
+
+      <section className="admin-section-card">
+        <div className="admin-card-head">
+          <div>
             <h2>Staging apply result</h2>
             <p className="muted">
               Punto 35 ha creato la migration reale, ma non l’ha applicata perché il canale apply

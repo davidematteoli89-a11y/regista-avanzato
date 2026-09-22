@@ -33,3 +33,13 @@ Motivo:
 - provider_import_still_off: `true`
 - next_write_allowed: `false`
 
+## Punto 36-A follow-up
+
+Punto 36-A ha preparato il canale `manual_sql_editor`, ma l’agente non ha eseguito SQL nella dashboard.
+
+- explicit authorization received: `true`;
+- apply channel: `manual_sql_editor`;
+- migration applied: `false`;
+- db write: `false`;
+- reason: `manual_sql_editor_dashboard_access_required`;
+- `next_write_allowed=false`.

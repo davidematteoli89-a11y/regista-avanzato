@@ -2655,3 +2655,30 @@ Risultato:
 Motivo blocco: le regole del Punto 35 vietano `db push/reset` e non è disponibile un canale alternativo sicuro senza credenziali/prompt ambigui. Nessuna scrittura DB è stata eseguita.
 
 Prossimo step consigliato: Punto 36-Fix/canale apply controllato oppure apply manuale staging separato, senza provider/import e senza Production.
+
+## Punto 36-A — Manual SQL Editor staging apply controllato
+
+Stato: completato con apply non eseguito dall’agente.
+
+Risultato:
+
+- explicit authorization received: `true`;
+- apply channel: `manual_sql_editor`;
+- migration file: `supabase/migrations/20260922120000_manual_import_read_only_views.sql`;
+- staging target confirmed in dashboard: `false`;
+- production excluded: `true`;
+- migration applied: `false`;
+- db write: `false`;
+- db write scope: `none`;
+- db push/reset: `false`;
+- service role used: `false`;
+- provider/import enabled: `false`;
+- Apify enabled: `false`;
+- views expected count: `3`;
+- views verified count: `0`;
+- post apply verification passed: `false`;
+- rollback needed: `false`;
+- Production touched: `false`;
+- `next_write_allowed=false`.
+
+Motivo blocco: l’agente non può confermare visivamente il progetto Supabase aperto né eseguire SQL nella dashboard utente. Serve esecuzione manuale da parte dell’utente nel SQL Editor staging.

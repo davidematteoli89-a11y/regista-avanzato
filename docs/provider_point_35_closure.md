@@ -36,3 +36,17 @@ Conferme:
 
 Prossimo step consigliato: Punto 36-Fix/canale apply controllato, oppure apply manuale staging separato e confermato, senza provider/import e senza Production.
 
+## Punto 36-A follow-up
+
+Punto 36-A ha preparato apply manuale via SQL Editor.
+
+Stato:
+
+- apply channel: `manual_sql_editor`;
+- apply executed by agent: `false`;
+- migration applied: `false`;
+- db write: `false`;
+- rollback needed: `false`;
+- next write allowed: `false`.
+
+Serve esecuzione manuale utente su Supabase SQL Editor staging e comunicazione del risultato.
