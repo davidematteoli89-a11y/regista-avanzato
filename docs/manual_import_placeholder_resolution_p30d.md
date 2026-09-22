@@ -40,3 +40,15 @@
 - next_write_allowed=false
 
 I placeholder risolti da file locali sono stati usati per creare una draft revisionabile, non applicata.
+
+## Punto 32 — Review no-apply
+
+- migration_draft_reviewed=true
+- draft_hardened=true
+- blocking_issues_count=0
+- needs_review_count=3
+- ready_for_staging_apply_candidate=true
+- ready_for_apply=false
+- next_write_allowed=false
+
+La review non modifica lo stato dei placeholder P30-D; conferma solo che la draft P31 è revisionabile e hardenata.

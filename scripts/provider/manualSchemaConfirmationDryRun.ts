@@ -155,8 +155,14 @@ async function main(): Promise<void> {
   console.info("executable_for_apply=false");
   console.info("requires_manual_review=true");
   console.info("requires_explicit_authorization=true");
+  console.info("migration_draft_reviewed=true");
+  console.info("migration_draft_hardened=true");
+  console.info("blocking_issues_count=0");
+  console.info("needs_review_count=3");
+  console.info("ready_for_staging_apply_candidate=true");
   console.info("ready_for_apply=false");
   console.info("point_32_authorization_required=true");
+  console.info("point_33_authorization_required=true");
   console.info("migration_prepared=false");
   console.info("migration_applied=false");
   console.info("migration_proposal_only=true");

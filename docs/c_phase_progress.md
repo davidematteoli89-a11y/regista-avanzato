@@ -2507,3 +2507,38 @@ Risultato:
 - `next_write_allowed=false`.
 
 Prossimo step consigliato: Punto 32 review manuale no-apply della draft.
+
+## Punto 32 — Review manuale no-apply della migration draft
+
+Stato: completato in modalità no-apply/no-write.
+
+Aggiunti:
+
+- `docs/manual_import_migration_draft_review_p32.md`;
+- `docs/manual_import_point_33_decision_p32.md`;
+- `docs/provider_point_32_closure.md`.
+
+Aggiornati:
+
+- draft P31 hardenata;
+- docs P31/P30-D;
+- dry-run manual schema/readiness/read-only schema check;
+- `/admin/imports` con sezione “Migration draft review”.
+
+Risultato:
+
+- migration draft reviewed: `true`;
+- draft hardened: `true`;
+- blocking issues: `0`;
+- needs review: `3`;
+- ready for staging apply candidate: `true`;
+- ready for apply: `false`;
+- migration applied: `false`;
+- db push/reset: `false`;
+- DB write: `false`;
+- service role used: `false`;
+- provider/fetch/Apify: off;
+- Production untouched;
+- `next_write_allowed=false`.
+
+Prossimo step consigliato: Punto 33 staging apply plan no-apply, non apply diretto.

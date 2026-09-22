@@ -760,6 +760,46 @@ export default async function AdminImportsPage() {
       <section className="admin-section-card">
         <div className="admin-card-head">
           <div>
+            <h2>Migration draft review</h2>
+            <p className="muted">
+              Punto 32 revisiona staticamente la draft P31 e la hardena. La review non applica
+              nulla e non abilita scritture.
+            </p>
+          </div>
+          <div className="admin-badge-row">
+            <span className="admin-safety-badge">Reviewed</span>
+            <span className="admin-safety-badge">Hardened</span>
+            <span className="admin-safety-badge">Ready for apply=false</span>
+            <span className="admin-safety-badge">Next write=false</span>
+          </div>
+        </div>
+        <dl className="admin-metadata">
+          <dt>Migration draft reviewed</dt>
+          <dd>true</dd>
+          <dt>Draft hardened</dt>
+          <dd>true</dd>
+          <dt>Blocking issues count</dt>
+          <dd>0</dd>
+          <dt>Needs review count</dt>
+          <dd>3</dd>
+          <dt>Ready for staging apply candidate</dt>
+          <dd>true — solo candidato per piano no-apply</dd>
+          <dt>Ready for apply</dt>
+          <dd>false</dd>
+          <dt>Migration applied</dt>
+          <dd>false</dd>
+          <dt>DB write</dt>
+          <dd>false</dd>
+          <dt>Service role used</dt>
+          <dd>false</dd>
+          <dt>Next write allowed</dt>
+          <dd>false</dd>
+        </dl>
+      </section>
+
+      <section className="admin-section-card">
+        <div className="admin-card-head">
+          <div>
             <h2>Migration proposal review</h2>
             <p className="muted">
               Punto 29 revisiona la proposal read-only senza creare migration <code>.sql</code>,

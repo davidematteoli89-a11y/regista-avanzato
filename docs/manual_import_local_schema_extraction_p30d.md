@@ -100,3 +100,15 @@ Questa estrazione conferma lo schema versionato nel repository. Non conferma lo 
 - next_write_allowed=false
 
 La draft usa l'estrazione locale P30-D ma non è stata applicata e non autorizza write staging.
+
+## Punto 32 — Review no-apply
+
+- migration_draft_reviewed=true
+- draft_hardened=true
+- blocking_issues_count=0
+- needs_review_count=3
+- ready_for_staging_apply_candidate=true
+- ready_for_apply=false
+- next_write_allowed=false
+
+La review resta statica: nessuna Dashboard, nessuna query DB, nessuna applicazione.

@@ -38,3 +38,14 @@ Consigliato: A, Punto 32 review manuale no-apply della migration draft.
 
 `next_write_allowed=false`.
 
+## Punto 32 eseguito
+
+- migration_draft_reviewed=true
+- draft_hardened=true
+- blocking_issues_count=0
+- needs_review_count=3
+- ready_for_staging_apply_candidate=true
+- ready_for_apply=false
+- next_write_allowed=false
+
+Prossimo step consigliato: Punto 33 staging apply plan no-apply, non apply diretto.

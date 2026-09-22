@@ -895,6 +895,25 @@ Output atteso dai dry-run manuali:
 
 Il draft resta fuori da `supabase/migrations` e non deve essere eseguito.
 
+## Punto 32 — Review no-apply della migration draft
+
+Output atteso dai dry-run manuali:
+
+- `migration_draft_reviewed=true`;
+- `migration_draft_hardened=true`;
+- `blocking_issues_count=0`;
+- `needs_review_count=3`;
+- `ready_for_staging_apply_candidate=true`;
+- `ready_for_apply=false`;
+- `migration_applied=false`;
+- `db_push_reset=false`;
+- `db_write=false`;
+- `service_role_used=false`;
+- `next_write_allowed=false`;
+- `point_33_authorization_required=true`.
+
+La review non applica nulla e non abilita import/provider.
+
 ## Punto 30-B — Dashboard confirmation manuale registrata
 
 Punto 30-B registra la verifica manuale dichiarata dall'utente, senza SQL, senza DB write e senza valori schema risolutivi.

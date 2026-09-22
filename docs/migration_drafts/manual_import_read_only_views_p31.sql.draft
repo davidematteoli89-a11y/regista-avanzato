@@ -13,6 +13,9 @@ NEXT_WRITE_ALLOWED=false
 -- It must not be copied into SQL Editor or run without a separate review and
 -- explicit authorization.
 -- No DB write is authorized by this draft.
+-- SQL DDL is present for review only. This draft is not ready for apply and
+-- must remain outside supabase/migrations until a separate apply phase is
+-- explicitly authorized.
 
 -- REVIEW_REQUIRED:
 -- - confirm live staging schema still matches local versioned migrations;
@@ -44,8 +47,6 @@ select
   competition.tracking_level,
   competition.status,
   competition.visibility,
-  competition.public_stats_enabled,
-  competition.login_required_for_full_stats,
   competition.created_at,
   competition.updated_at
 from public.competitions competition;
@@ -70,13 +71,11 @@ as
 select
   team.id,
   team.competition_id,
-  team.source_provider_id,
   team.api_team_id,
   team.slug,
   team.name,
   team.short_name,
   team.country,
-  team.city,
   team.status,
   team.visibility,
   team.created_at,
@@ -104,7 +103,6 @@ select
   standing.id,
   standing.competition_id,
   standing.team_id,
-  standing.source_provider_id,
   standing.season,
   standing.stage,
   standing.matchday,
@@ -117,8 +115,6 @@ select
   standing.goals_against,
   standing.goal_difference,
   standing.points,
-  standing.form,
-  standing.qualification_note,
   standing.status,
   standing.visibility,
   standing.created_at,
@@ -147,4 +143,3 @@ comment on view public.manual_import_standings_lookup is
 -- No provider/import activation.
 -- No service_role.
 -- No Production.
-

@@ -58,3 +58,15 @@ Consigliato: Punto 31 come migration draft `.sql` non applicata/no-apply, se l'u
 - next_write_allowed=false
 
 Prossimo step: Punto 32 review manuale no-apply della draft.
+
+## Punto 32 eseguito
+
+- migration_draft_reviewed=true
+- draft_hardened=true
+- blocking_issues_count=0
+- needs_review_count=3
+- ready_for_staging_apply_candidate=true
+- ready_for_apply=false
+- next_write_allowed=false
+
+Decisione aggiornata: prossimo step consigliato Punto 33 come piano no-apply, non applicazione.

@@ -140,3 +140,14 @@ The draft is outside `supabase/migrations` and has not been applied.
 - ready_for_apply=false
 - next_write_allowed=false
 
+## Punto 32 — Review no-apply completata
+
+- migration_draft_reviewed=true
+- draft_hardened=true
+- blocking_issues_count=0
+- needs_review_count=3
+- ready_for_staging_apply_candidate=true
+- ready_for_apply=false
+- next_write_allowed=false
+
+La draft P31 è stata hardenata rimuovendo colonne non essenziali. Resta fuori da `supabase/migrations` e non è applicata.

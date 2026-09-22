@@ -1393,3 +1393,22 @@ Confermato:
 - Production non toccata.
 
 Production resta esclusa. Punto 32 deve essere solo review manuale no-apply.
+
+## Punto 32 — Production ancora esclusa
+
+Punto 32 è solo review/hardening statico della draft.
+
+Confermato:
+
+- migration_draft_reviewed: `true`;
+- draft_hardened: `true`;
+- blocking issues: `0`;
+- ready_for_staging_apply_candidate: `true`;
+- ready_for_apply: `false`;
+- migration_applied: `false`;
+- db_write: `false`;
+- service_role_used: `false`;
+- Production non toccata;
+- `next_write_allowed=false`.
+
+Production resta esclusa anche in qualunque Punto 33 no-apply.

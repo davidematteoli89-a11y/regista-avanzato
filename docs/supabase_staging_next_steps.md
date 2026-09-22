@@ -1775,3 +1775,20 @@ Stato:
 - `next_write_allowed=false`.
 
 Prossimo step consigliato: Punto 32 review manuale no-apply.
+
+## Punto 32 — Review no-apply della migration draft
+
+Review completata e draft hardenata.
+
+Stato:
+
+- blocking issues: `0`;
+- needs review: `3`;
+- ready for staging apply candidate: `true`;
+- ready for apply: `false`;
+- migration applied: `false`;
+- DB write: `false`;
+- service_role used: `false`;
+- `next_write_allowed=false`.
+
+Prossimo step consigliato: Punto 33 staging apply plan no-apply, senza applicare nulla.

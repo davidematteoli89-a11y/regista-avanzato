@@ -1382,3 +1382,21 @@ Confermato:
 - `next_write_allowed=false`.
 
 Provider/import restano spenti. Prossimo step consigliato: Punto 32 review manuale no-apply.
+
+## Punto 32 — Review no-apply della migration draft
+
+Punto 32 revisiona e hardena la draft P31 senza applicarla.
+
+Confermato:
+
+- migration_draft_reviewed: `true`;
+- draft_hardened: `true`;
+- blocking_issues_count: `0`;
+- needs_review_count: `3`;
+- ready_for_staging_apply_candidate: `true`;
+- ready_for_apply: `false`;
+- db_write: `false`;
+- service_role_used: `false`;
+- `next_write_allowed=false`.
+
+Provider/import restano spenti. Prossimo step consigliato: Punto 33 come staging apply plan no-apply.

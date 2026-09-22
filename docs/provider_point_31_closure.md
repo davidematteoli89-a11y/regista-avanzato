@@ -33,3 +33,14 @@ Production non è stata toccata.
 
 Prossimo step consigliato: Punto 32 — review manuale no-apply della migration draft.
 
+## Punto 32 — Review no-apply completata
+
+- migration_draft_reviewed=true
+- draft_hardened=true
+- blocking_issues_count=0
+- needs_review_count=3
+- ready_for_staging_apply_candidate=true
+- ready_for_apply=false
+- next_write_allowed=false
+
+Nessuna migration è stata applicata e nessuna scrittura DB è stata eseguita.
