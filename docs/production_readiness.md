@@ -1375,3 +1375,21 @@ Confermato:
 - Production non toccata.
 
 Production resta esclusa anche se Punto 31 preparasse una draft non applicata.
+
+## Punto 31 — Production ancora esclusa
+
+Punto 31 crea una migration draft SQL fuori da `supabase/migrations`, non applicata.
+
+Confermato:
+
+- migration_draft_created: `true`;
+- migration_applied: `false`;
+- db_push_reset: `false`;
+- db_write: `false`;
+- service_role_used: `false`;
+- ready_for_apply: `false`;
+- `next_write_allowed=false`;
+- nessun provider/import attivato;
+- Production non toccata.
+
+Production resta esclusa. Punto 32 deve essere solo review manuale no-apply.

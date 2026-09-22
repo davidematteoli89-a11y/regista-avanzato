@@ -29,3 +29,14 @@
 
 `ready_for_migration_draft=true` is limited to a future migration draft `.sql` that remains non-applied. It does not authorize DB write or apply.
 
+## Punto 31 — Migration draft no-apply
+
+- migration_draft_created=true
+- migration_draft_path=`docs/migration_drafts/manual_import_read_only_views_p31.sql.draft`
+- migration_draft_in_supabase_migrations=false
+- migration_applied=false
+- db_write=false
+- ready_for_apply=false
+- next_write_allowed=false
+
+I placeholder risolti da file locali sono stati usati per creare una draft revisionabile, non applicata.

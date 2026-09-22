@@ -1364,3 +1364,21 @@ Confermato:
 - `next_write_allowed=false`.
 
 Il prossimo step possibile è Punto 31 come migration draft non applicata/no-apply. Nessun write staging è autorizzato.
+
+## Punto 31 — Migration draft no-apply
+
+Punto 31 crea solo una draft SQL revisionabile per view read-only manual import.
+
+Confermato:
+
+- migration_draft_created: `true`;
+- migration_draft_path: `docs/migration_drafts/manual_import_read_only_views_p31.sql.draft`;
+- migration_draft_in_supabase_migrations: `false`;
+- migration_applied: `false`;
+- db_push_reset: `false`;
+- db_write: `false`;
+- service_role_used: `false`;
+- ready_for_apply: `false`;
+- `next_write_allowed=false`.
+
+Provider/import restano spenti. Prossimo step consigliato: Punto 32 review manuale no-apply.

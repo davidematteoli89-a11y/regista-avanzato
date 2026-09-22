@@ -183,3 +183,14 @@ Le candidate source restano candidate: tabelle, colonne, FK, RLS/policy e view d
 - next_write_allowed: `false`
 
 Le candidate source sono ora confermate come schema locale versionato. Resta separata qualunque conferma live o applicazione DB.
+
+## Punto 31 — Migration draft no-apply
+
+- migration_draft_created=true
+- migration_draft_path=`docs/migration_drafts/manual_import_read_only_views_p31.sql.draft`
+- migration_draft_in_supabase_migrations=false
+- migration_applied=false
+- ready_for_apply=false
+- next_write_allowed=false
+
+Le candidate source alimentano solo una draft revisionabile. Nessuna applicazione è autorizzata.

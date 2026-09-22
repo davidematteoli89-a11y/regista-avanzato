@@ -48,3 +48,13 @@ Provider reali, Apify e import restano spenti.
 
 Consigliato: Punto 31 come migration draft `.sql` non applicata/no-apply, se l'utente conferma. `next_write_allowed=false`.
 
+## Punto 31 eseguito
+
+- migration_draft_created=true
+- migration_draft_path=`docs/migration_drafts/manual_import_read_only_views_p31.sql.draft`
+- migration_draft_in_supabase_migrations=false
+- migration_applied=false
+- ready_for_apply=false
+- next_write_allowed=false
+
+Prossimo step: Punto 32 review manuale no-apply della draft.

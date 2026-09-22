@@ -2472,3 +2472,38 @@ Risultato:
 - `next_write_allowed=false`.
 
 Prossimo step consigliato: Punto 31 migration draft non applicata/no-apply, solo su conferma utente.
+
+## Punto 31 — Migration draft no-apply
+
+Stato: completato in modalità no-apply/no-write.
+
+Aggiunti:
+
+- `docs/migration_drafts/manual_import_read_only_views_p31.sql.draft`;
+- `docs/manual_import_migration_draft_review_p31.md`;
+- `docs/manual_import_point_32_decision_p31.md`;
+- `docs/provider_point_31_closure.md`.
+
+Aggiornati:
+
+- docs P28/P29/P30/P31;
+- dry-run manual schema/readiness/read-only schema check;
+- `/admin/imports` con sezione “Migration draft”.
+
+Risultato:
+
+- migration draft created: `true`;
+- draft fuori da `supabase/migrations`;
+- migration applied: `false`;
+- db push/reset: `false`;
+- DB write: `false`;
+- service role used: `false`;
+- executable for apply: `false`;
+- requires manual review: `true`;
+- requires explicit authorization: `true`;
+- ready for apply: `false`;
+- provider/fetch/Apify: off;
+- Production untouched;
+- `next_write_allowed=false`.
+
+Prossimo step consigliato: Punto 32 review manuale no-apply della draft.

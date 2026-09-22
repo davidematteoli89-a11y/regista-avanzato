@@ -875,6 +875,26 @@ Output atteso dai dry-run manuali dopo estrazione locale:
 
 Il dry-run resta no-write/no-provider/no-env-output. `ready_for_migration_draft=true` non autorizza apply o DB write.
 
+## Punto 31 — Migration draft no-apply
+
+Output atteso dai dry-run manuali:
+
+- `migration_draft_created=true`;
+- `migration_draft_path=docs/migration_drafts/manual_import_read_only_views_p31.sql.draft`;
+- `migration_draft_in_supabase_migrations=false`;
+- `migration_applied=false`;
+- `db_push_reset=false`;
+- `db_write=false`;
+- `service_role_used=false`;
+- `executable_for_apply=false`;
+- `requires_manual_review=true`;
+- `requires_explicit_authorization=true`;
+- `ready_for_apply=false`;
+- `next_write_allowed=false`;
+- `point_32_authorization_required=true`.
+
+Il draft resta fuori da `supabase/migrations` e non deve essere eseguito.
+
 ## Punto 30-B — Dashboard confirmation manuale registrata
 
 Punto 30-B registra la verifica manuale dichiarata dall'utente, senza SQL, senza DB write e senza valori schema risolutivi.

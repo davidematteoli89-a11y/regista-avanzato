@@ -98,6 +98,15 @@ async function main(): Promise<void> {
   console.info("point_31_authorization_required=true");
   console.info("recommended_next_step=point_31_migration_draft_no_apply_or_remain_manual_mock");
   console.info("sql_generated=false");
+  console.info("migration_draft_created=true");
+  console.info("migration_draft_path=docs/migration_drafts/manual_import_read_only_views_p31.sql.draft");
+  console.info("migration_draft_in_supabase_migrations=false");
+  console.info("db_push_reset=false");
+  console.info("executable_for_apply=false");
+  console.info("requires_manual_review=true");
+  console.info("requires_explicit_authorization=true");
+  console.info("ready_for_apply=false");
+  console.info("point_32_authorization_required=true");
   console.info("migration_prepared=false");
   console.info("migration_applied=false");
   console.info("migration_proposal_only=true");

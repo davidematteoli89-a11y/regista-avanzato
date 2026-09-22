@@ -110,3 +110,16 @@ Stati ammessi per la raccolta:
 - next_write_allowed: `false`
 
 P30-D risolve i placeholder critici solo rispetto allo schema locale versionato. Non autorizza DB write, migration apply, provider/import o Production.
+
+## Punto 31 — Migration draft no-apply
+
+- migration_draft_created=true
+- migration_draft_path=`docs/migration_drafts/manual_import_read_only_views_p31.sql.draft`
+- migration_draft_in_supabase_migrations=false
+- migration_applied=false
+- db_write=false
+- service_role_used=false
+- ready_for_apply=false
+- next_write_allowed=false
+
+La raccolta valori P30-C resta utile per eventuale confronto live, ma Punto 31 usa solo schema locale versionato.

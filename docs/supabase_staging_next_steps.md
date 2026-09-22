@@ -1757,3 +1757,21 @@ Stato:
 - `next_write_allowed=false`.
 
 Prossimo step possibile: Punto 31 migration draft `.sql` non applicata/no-apply. Non applicare nulla e non usare `db push/reset`.
+
+## Punto 31 — Migration draft no-apply
+
+Creata draft:
+
+- `docs/migration_drafts/manual_import_read_only_views_p31.sql.draft`
+
+Stato:
+
+- fuori da `supabase/migrations`;
+- non applicata;
+- nessun `db push/reset`;
+- nessuna scrittura DB;
+- nessun `service_role`;
+- `ready_for_apply=false`;
+- `next_write_allowed=false`.
+
+Prossimo step consigliato: Punto 32 review manuale no-apply.

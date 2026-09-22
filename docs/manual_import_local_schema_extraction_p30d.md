@@ -84,3 +84,19 @@ Questa estrazione conferma lo schema versionato nel repository. Non conferma lo 
 
 `ready_for_migration_draft=true` means only that a future no-apply migration draft can be prepared from local versioned schema. It does not authorize DB write, migration apply, provider activation, import activation or Production.
 
+## Punto 31 — Migration draft no-apply
+
+- migration_draft_created=true
+- migration_draft_path=`docs/migration_drafts/manual_import_read_only_views_p31.sql.draft`
+- migration_draft_in_supabase_migrations=false
+- migration_applied=false
+- db_push_reset=false
+- db_write=false
+- service_role_used=false
+- executable_for_apply=false
+- requires_manual_review=true
+- requires_explicit_authorization=true
+- ready_for_apply=false
+- next_write_allowed=false
+
+La draft usa l'estrazione locale P30-D ma non è stata applicata e non autorizza write staging.

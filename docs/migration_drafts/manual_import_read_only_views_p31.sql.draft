@@ -1,0 +1,150 @@
+MIGRATION_DRAFT_ONLY
+DO NOT APPLY
+DO NOT RUN
+NOT IN SUPABASE/MIGRATIONS
+NO DB WRITE AUTHORIZED
+REQUIRES MANUAL REVIEW
+REQUIRES EXPLICIT USER AUTHORIZATION
+NEXT_WRITE_ALLOWED=false
+
+-- Punto 31 — Draft migration for manual import read-only lookup views.
+-- This file is intentionally outside supabase/migrations.
+-- It is not executable for apply in the current phase.
+-- It must not be copied into SQL Editor or run without a separate review and
+-- explicit authorization.
+-- No DB write is authorized by this draft.
+
+-- REVIEW_REQUIRED:
+-- - confirm live staging schema still matches local versioned migrations;
+-- - confirm view names and grants with admin/editor/free_user role tests;
+-- - confirm RLS behavior before any apply;
+-- - confirm backup/rollback plan before any apply;
+-- - keep next_write_allowed=false until a separate apply phase is authorized.
+
+-- ---------------------------------------------------------------------------
+-- Draft view: public.manual_import_competitions_lookup
+-- ---------------------------------------------------------------------------
+-- Purpose: allow read-only lookup of competition identifiers and public fields
+-- needed by manual/mock import planning.
+-- Source table/columns confirmed locally from supabase/migrations/0001_base_schema.sql.
+-- Public view shape confirmed locally from supabase/migrations/0004_public_views.sql.
+
+create or replace view public.manual_import_competitions_lookup
+with (security_barrier = true)
+as
+select
+  competition.id,
+  competition.internal_key,
+  competition.api_competition_id,
+  competition.slug,
+  competition.name,
+  competition.country,
+  competition.continent,
+  competition.season,
+  competition.tracking_level,
+  competition.status,
+  competition.visibility,
+  competition.public_stats_enabled,
+  competition.login_required_for_full_stats,
+  competition.created_at,
+  competition.updated_at
+from public.competitions competition;
+
+comment on view public.manual_import_competitions_lookup is
+  'MIGRATION_DRAFT_ONLY P31: read-only lookup proposal for manual import competitions. DO NOT APPLY without review.';
+
+-- REVIEW_REQUIRED: grants are intentionally not included in this draft.
+-- REVIEW_REQUIRED: evaluate SELECT scope for anon/authenticated/admin/editor.
+-- REVIEW_REQUIRED: evaluate whether filtering by is_editor_or_admin() is needed.
+
+-- ---------------------------------------------------------------------------
+-- Draft view: public.manual_import_teams_lookup
+-- ---------------------------------------------------------------------------
+-- Purpose: allow read-only lookup of team identifiers and competition relation
+-- needed by manual/mock import planning.
+-- Source table/columns confirmed locally from supabase/migrations/0001_base_schema.sql.
+
+create or replace view public.manual_import_teams_lookup
+with (security_barrier = true)
+as
+select
+  team.id,
+  team.competition_id,
+  team.source_provider_id,
+  team.api_team_id,
+  team.slug,
+  team.name,
+  team.short_name,
+  team.country,
+  team.city,
+  team.status,
+  team.visibility,
+  team.created_at,
+  team.updated_at
+from public.teams team;
+
+comment on view public.manual_import_teams_lookup is
+  'MIGRATION_DRAFT_ONLY P31: read-only lookup proposal for manual import teams. DO NOT APPLY without review.';
+
+-- REVIEW_REQUIRED: grants are intentionally not included in this draft.
+-- REVIEW_REQUIRED: evaluate SELECT scope for anon/authenticated/admin/editor.
+-- REVIEW_REQUIRED: evaluate whether filtering by is_editor_or_admin() is needed.
+
+-- ---------------------------------------------------------------------------
+-- Draft view: public.manual_import_standings_lookup
+-- ---------------------------------------------------------------------------
+-- Purpose: allow read-only lookup of standings identifiers and metrics needed
+-- by manual/mock import planning.
+-- Source table/columns confirmed locally from supabase/migrations/0001_base_schema.sql.
+
+create or replace view public.manual_import_standings_lookup
+with (security_barrier = true)
+as
+select
+  standing.id,
+  standing.competition_id,
+  standing.team_id,
+  standing.source_provider_id,
+  standing.season,
+  standing.stage,
+  standing.matchday,
+  standing.rank,
+  standing.played,
+  standing.won,
+  standing.drawn,
+  standing.lost,
+  standing.goals_for,
+  standing.goals_against,
+  standing.goal_difference,
+  standing.points,
+  standing.form,
+  standing.qualification_note,
+  standing.status,
+  standing.visibility,
+  standing.created_at,
+  standing.updated_at
+from public.standings standing;
+
+comment on view public.manual_import_standings_lookup is
+  'MIGRATION_DRAFT_ONLY P31: read-only lookup proposal for manual import standings. DO NOT APPLY without review.';
+
+-- REVIEW_REQUIRED: grants are intentionally not included in this draft.
+-- REVIEW_REQUIRED: evaluate SELECT scope for anon/authenticated/admin/editor.
+-- REVIEW_REQUIRED: evaluate whether filtering by is_editor_or_admin() is needed.
+
+-- ---------------------------------------------------------------------------
+-- Explicitly not included in this draft
+-- ---------------------------------------------------------------------------
+-- No INSERT.
+-- No UPDATE.
+-- No DELETE.
+-- No UPSERT.
+-- No TRUNCATE.
+-- No RPC write.
+-- No trigger.
+-- No policy changes.
+-- No grants applied automatically.
+-- No provider/import activation.
+-- No service_role.
+-- No Production.
+

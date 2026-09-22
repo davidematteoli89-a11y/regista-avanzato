@@ -275,3 +275,22 @@ next_write_allowed=false
 ```
 
 La proposal può essere usata come base per Punto 31, ma solo per creare una migration draft non applicata/no-apply. Nessuna applicazione o scrittura è autorizzata.
+
+## Punto 31 — Migration draft no-apply
+
+```text
+MIGRATION_DRAFT_ONLY
+DO NOT APPLY
+DO NOT RUN
+NOT IN SUPABASE/MIGRATIONS
+NO DB WRITE AUTHORIZED
+
+migration_draft_created=true
+migration_draft_path=docs/migration_drafts/manual_import_read_only_views_p31.sql.draft
+migration_draft_in_supabase_migrations=false
+migration_applied=false
+ready_for_apply=false
+next_write_allowed=false
+```
+
+La draft P31 è separata dalla proposal P28 e resta fuori da `supabase/migrations`.

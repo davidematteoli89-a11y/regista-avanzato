@@ -81,3 +81,15 @@ I placeholder restano `uncollected/unclear`; non sono stati promossi a `resolved
 - next_write_allowed: `false`
 
 Aggiornamento: i placeholder critici sono risolti dallo schema locale versionato, non da verifica live Dashboard.
+
+## Punto 31 — Migration draft no-apply
+
+- migration_draft_created=true
+- migration_draft_path=`docs/migration_drafts/manual_import_read_only_views_p31.sql.draft`
+- migration_draft_in_supabase_migrations=false
+- migration_applied=false
+- db_write=false
+- ready_for_apply=false
+- next_write_allowed=false
+
+La draft richiede review manuale Punto 32 prima di qualunque fase successiva.
