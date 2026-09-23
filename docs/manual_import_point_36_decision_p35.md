@@ -41,11 +41,11 @@ Consiglio Punto 36-Fix/canale apply controllato. Non autorizzo provider/import, 
 
 ## Punto 36-A follow-up
 
-Il canale scelto è `manual_sql_editor`, ma l’agente non può eseguire il Run nella dashboard Supabase.
+Il canale scelto è `manual_sql_editor`; l’utente ha eseguito manualmente il Run nella dashboard Supabase staging.
 
 Decisione aggiornata:
 
-- l’utente deve eseguire manualmente la migration nello staging SQL Editor;
-- se comunica success, documentare verifica post-apply;
+- apply manuale riuscito con `Success. No rows returned`;
+- documentare verifica post-apply metadata/colonne;
 - se comunica errore, aprire Punto 37-Blocked;
 - provider/import/Production restano esclusi.

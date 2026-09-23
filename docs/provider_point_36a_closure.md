@@ -1,17 +1,17 @@
 # Punto 36-A — Closure
 
-Punto 36-A completato con apply manuale bloccato in sicurezza.
+Punto 36-A aggiornato con apply manuale riuscito.
 
 Autorizzazione esplicita ricevuta.
 
-La migration `20260922120000_manual_import_read_only_views.sql` è pronta per essere incollata manualmente nel Supabase SQL Editor del progetto staging `Regista Avanzato`, ma non è stata eseguita dall’agente.
+La migration `20260922120000_manual_import_read_only_views.sql` è stata applicata manualmente dall’utente nel Supabase SQL Editor del progetto staging `Regista Avanzato`.
 
 Conferme:
 
 - apply channel: `manual_sql_editor`
-- migration applied: `false`
-- db write: `false`
-- db write scope: `none`
+- migration applied: `true`
+- db write: `true`
+- db write scope: `schema_read_only_views_only`
 - db push/reset: `false`
 - service role used: `false`
 - provider/import spenti;
@@ -22,5 +22,4 @@ Conferme:
 - rollback needed: `false`;
 - `next_write_allowed=false`.
 
-Prossimo step consigliato: esecuzione manuale da parte dell’utente nel SQL Editor staging, poi registrazione del risultato success/error. Nessun provider/import/deploy/Production.
-
+Prossimo step consigliato: verifica read-only metadata/colonne delle 3 view, poi Punto 37 app/admin read-only se la verifica passa. Nessun provider/import/deploy/Production.

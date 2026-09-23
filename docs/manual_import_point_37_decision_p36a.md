@@ -4,8 +4,8 @@
 
 - explicit authorization received: `true`
 - apply channel prepared: `manual_sql_editor`
-- migration applied: `false`
-- db write: `false`
+- migration applied: `true`
+- db write: `true`
 - views verified count: `0`
 - post apply verification passed: `false`
 - provider/import off: `true`
@@ -16,11 +16,11 @@
 
 ### A. Punto 37 — app/admin read-only verification
 
-Non consigliato ora perché l’apply non è stato eseguito.
+Non consigliato ancora perché manca la verifica post-apply metadata/colonne.
 
 ### B. Punto 37-Fix — esecuzione manuale SQL Editor da parte utente
 
-Consigliato. L’utente deve eseguire manualmente nel SQL Editor staging la migration già preparata e comunicare risultato success/error.
+Consigliato. Completare verifica read-only delle 3 view e delle colonne attese, senza provider/import.
 
 ### C. Punto 37-Blocked — diagnosticare errore
 
@@ -40,5 +40,4 @@ Obbligatorio.
 
 ## Decisione
 
-Consiglio Punto 37-Fix/manual execution result: eseguire manualmente la migration in SQL Editor staging e poi documentare il risultato. `next_write_allowed=false`.
-
+Consiglio Punto 37-Fix/read-only verification: verificare le view create e poi procedere alla verifica app/admin read-only se tutto passa. `next_write_allowed=false`.

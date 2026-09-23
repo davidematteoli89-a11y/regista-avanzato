@@ -1824,21 +1824,23 @@ Motivo blocco: apply remoto non eseguito perché le regole vietano `db push/rese
 
 Prossimo step: definire Punto 36-Fix/canale apply controllato o apply manuale da SQL Editor staging con conferma separata.
 
-## Punto 36-A — Manual SQL Editor apply preparato
+## Punto 36-B — Manual SQL Editor apply riuscito
 
 Stato:
 
 - apply channel: `manual_sql_editor`;
 - migration file: `supabase/migrations/20260922120000_manual_import_read_only_views.sql`;
-- apply executed by agent: `false`;
-- migration applied: `false`;
-- db write: `false`;
+- apply executed manually by user: `true`;
+- apply result: `Success. No rows returned`;
+- migration applied: `true`;
+- db write: `true`;
+- db write scope: `schema_read_only_views_only`;
 - provider/import off;
 - Apify off;
 - Production untouched;
 - next write allowed: `false`.
 
-Prossimo step: utente esegue manualmente la migration nel SQL Editor del progetto staging `Regista Avanzato` e comunica success/error.
+Prossimo step: verifica read-only metadata/colonne delle 3 view, poi verifica app/admin read-only.
 
 ## Punto 31 — Migration draft no-apply
 

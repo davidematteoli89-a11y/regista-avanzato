@@ -2656,20 +2656,20 @@ Motivo blocco: le regole del Punto 35 vietano `db push/reset` e non è disponibi
 
 Prossimo step consigliato: Punto 36-Fix/canale apply controllato oppure apply manuale staging separato, senza provider/import e senza Production.
 
-## Punto 36-A — Manual SQL Editor staging apply controllato
+## Punto 36-B — Manual apply result documentation
 
-Stato: completato con apply non eseguito dall’agente.
+Stato: apply manuale SQL Editor documentato come riuscito; verifica metadata/colonne ancora da completare.
 
 Risultato:
 
 - explicit authorization received: `true`;
 - apply channel: `manual_sql_editor`;
 - migration file: `supabase/migrations/20260922120000_manual_import_read_only_views.sql`;
-- staging target confirmed in dashboard: `false`;
+- staging target confirmed in dashboard: `true`;
 - production excluded: `true`;
-- migration applied: `false`;
-- db write: `false`;
-- db write scope: `none`;
+- migration applied: `true`;
+- db write: `true`;
+- db write scope: `schema_read_only_views_only`;
 - db push/reset: `false`;
 - service role used: `false`;
 - provider/import enabled: `false`;
@@ -2681,4 +2681,6 @@ Risultato:
 - Production touched: `false`;
 - `next_write_allowed=false`.
 
-Motivo blocco: l’agente non può confermare visivamente il progetto Supabase aperto né eseguire SQL nella dashboard utente. Serve esecuzione manuale da parte dell’utente nel SQL Editor staging.
+Risultato SQL Editor: `Success. No rows returned`.
+
+Resta da completare: verifica read-only metadata/colonne delle 3 view.

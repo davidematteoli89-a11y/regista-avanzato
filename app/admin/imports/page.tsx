@@ -211,7 +211,7 @@ export default async function AdminImportsPage() {
           </div>
           <div className="admin-badge-row">
             <span className="admin-safety-badge">Manual channel</span>
-            <span className="admin-safety-badge">Agent apply=false</span>
+            <span className="admin-safety-badge">Apply succeeded</span>
             <span className="admin-safety-badge">Provider off</span>
             <span className="admin-safety-badge">Next write=false</span>
           </div>
@@ -226,13 +226,13 @@ export default async function AdminImportsPage() {
             <code>supabase/migrations/20260922120000_manual_import_read_only_views.sql</code>
           </dd>
           <dt>Staging target confirmed in dashboard</dt>
-          <dd>false</dd>
+          <dd>true</dd>
           <dt>Production excluded</dt>
           <dd>true</dd>
           <dt>Migration applied</dt>
-          <dd>false</dd>
+          <dd>true</dd>
           <dt>DB write scope</dt>
-          <dd>none</dd>
+          <dd>schema_read_only_views_only</dd>
           <dt>Provider/import off</dt>
           <dd>true</dd>
           <dt>Views verified count</dt>

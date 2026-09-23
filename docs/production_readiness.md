@@ -1439,13 +1439,14 @@ Conferme:
 
 Production resta esclusa. Serve un canale apply staging controllato prima di qualunque verifica applicativa successiva.
 
-## Punto 36-A — Production ancora esclusa
+## Punto 36-B — Production ancora esclusa
 
-Punto 36-A non tocca Production:
+Punto 36-B non tocca Production:
 
-- apply manuale SQL Editor non eseguito dall’agente;
-- migration applied: `false`;
-- db write: `false`;
+- apply manuale SQL Editor staging riuscito;
+- migration applied: `true`;
+- db write: `true`;
+- db write scope: `schema_read_only_views_only`;
 - provider/import off;
 - Apify off;
 - no deploy.

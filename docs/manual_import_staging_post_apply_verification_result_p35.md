@@ -4,10 +4,10 @@
 
 - views_created_count: `0`
 - expected_views_count: `3`
-- competitions_view_status: `not_verified_not_applied`
-- teams_view_status: `not_verified_not_applied`
-- standings_view_status: `not_verified_not_applied`
-- column_check_status: `not_verified_not_applied`
+- competitions_view_status: `not_verified`
+- teams_view_status: `not_verified`
+- standings_view_status: `not_verified`
+- column_check_status: `not_checked`
 - sensitive_fields_exposed: `unknown`
 - provider_import_off: `true`
 - production_touched: `false`
@@ -25,9 +25,11 @@ Serve un Punto 35-B o Punto 36-Rollback/Fix plan per definire un canale di apply
 
 ## Punto 36-A follow-up
 
-Il canale SQL Editor manuale è stato documentato, ma l’apply non è stato eseguito dall’agente.
+Il canale SQL Editor manuale è stato eseguito dall’utente con esito `Success. No rows returned`.
 
 - views verified count: `0`;
 - post apply verification passed: `false`;
 - provider/import off: `true`;
 - Production untouched: `true`.
+
+La verifica metadata/colonne resta da completare con query read-only o dashboard visuale.

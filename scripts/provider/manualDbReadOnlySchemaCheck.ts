@@ -212,7 +212,7 @@ function printUnavailable(): void {
   console.info("migration_draft_in_supabase_migrations=false");
   console.info("executable_migration_created=false");
   console.info("migration_file_created=false");
-  console.info("migration_applied=false");
+  console.info("migration_applied=true");
   console.info("db_push_reset=false");
   console.info("executable_for_apply=false");
   console.info("requires_manual_review=true");
@@ -242,7 +242,7 @@ function printUnavailable(): void {
   console.info("real_migration_path=supabase/migrations/20260922120000_manual_import_read_only_views.sql");
   console.info("staging_target_confirmed=true");
   console.info("production_excluded=true");
-  console.info("db_write_scope=none");
+  console.info("db_write_scope=schema_read_only_views_only");
   console.info("provider_fetch=false");
   console.info("provider_import_enabled=false");
   console.info("apify_enabled=false");
@@ -252,8 +252,10 @@ function printUnavailable(): void {
   console.info("point_36_authorization_required=true");
   console.info("point_36a_explicit_authorization_received=true");
   console.info("sql_editor_apply_channel=true");
-  console.info("point_36a_apply_executed_by_agent=false");
-  console.info("point_36a_blocked_reason=manual_sql_editor_dashboard_access_required");
+  console.info("migration_applied=true");
+  console.info("db_write=true");
+  console.info("production_touched=false");
+  console.info("point_36b_apply_result_message=Success. No rows returned");
   console.info("point_37_authorization_required=true");
   console.info("placeholders_remaining_count=9");
   console.info("dashboard_confirmation_required=true");
@@ -478,7 +480,7 @@ async function main(): Promise<void> {
   console.info("migration_draft_in_supabase_migrations=false");
   console.info("executable_migration_created=false");
   console.info("migration_file_created=false");
-  console.info("migration_applied=false");
+  console.info("migration_applied=true");
   console.info("db_push_reset=false");
   console.info("executable_for_apply=false");
   console.info("requires_manual_review=true");
@@ -508,7 +510,7 @@ async function main(): Promise<void> {
   console.info("real_migration_path=supabase/migrations/20260922120000_manual_import_read_only_views.sql");
   console.info("staging_target_confirmed=true");
   console.info("production_excluded=true");
-  console.info("db_write_scope=none");
+  console.info("db_write_scope=schema_read_only_views_only");
   console.info("provider_fetch=false");
   console.info("provider_import_enabled=false");
   console.info("apify_enabled=false");
@@ -518,8 +520,10 @@ async function main(): Promise<void> {
   console.info("point_36_authorization_required=true");
   console.info("point_36a_explicit_authorization_received=true");
   console.info("sql_editor_apply_channel=true");
-  console.info("point_36a_apply_executed_by_agent=false");
-  console.info("point_36a_blocked_reason=manual_sql_editor_dashboard_access_required");
+  console.info("migration_applied=true");
+  console.info("db_write=true");
+  console.info("production_touched=false");
+  console.info("point_36b_apply_result_message=Success. No rows returned");
   console.info("point_37_authorization_required=true");
   console.info("placeholders_remaining_count=9");
   console.info("dashboard_confirmation_required=true");

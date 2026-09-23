@@ -26,9 +26,9 @@ Motivo:
 
 ## Stato sicurezza
 
-- migration_applied: `false`
-- db_write: `false`
-- db_write_scope: `none`
+- migration_applied: `true`
+- db_write: `true`
+- db_write_scope: `schema_read_only_views_only`
 - production_touched: `false`
 - provider_import_still_off: `true`
 - next_write_allowed: `false`
@@ -39,7 +39,8 @@ Punto 36-A ha preparato il canale `manual_sql_editor`, ma l’agente non ha eseg
 
 - explicit authorization received: `true`;
 - apply channel: `manual_sql_editor`;
-- migration applied: `false`;
-- db write: `false`;
-- reason: `manual_sql_editor_dashboard_access_required`;
+- migration applied: `true`;
+- db write: `true`;
+- db write scope: `schema_read_only_views_only`;
+- apply result message: `Success. No rows returned`;
 - `next_write_allowed=false`.
