@@ -185,8 +185,12 @@ async function main(): Promise<void> {
   console.info("provider_import_enabled=false");
   console.info("apify_enabled=false");
   console.info("views_expected_count=3");
-  console.info("views_verified_count=0");
-  console.info("post_apply_verification_passed=false");
+  console.info("views_verified_count=3");
+  console.info("competitions_view_status=verified");
+  console.info("teams_view_status=verified");
+  console.info("standings_view_status=verified");
+  console.info("column_check_status=pass");
+  console.info("post_apply_verification_passed=true");
   console.info("point_36_authorization_required=true");
   console.info("point_36a_explicit_authorization_received=true");
   console.info("sql_editor_apply_channel=true");
@@ -194,6 +198,11 @@ async function main(): Promise<void> {
   console.info("db_write=true");
   console.info("production_touched=false");
   console.info("point_36b_apply_result_message=Success. No rows returned");
+  console.info("point_37_view_metadata_verification_completed=true");
+  console.info("metadata_query_read_only=true");
+  console.info("point_37_db_write=false");
+  console.info("point_37_service_role_used=false");
+  console.info("point_38_authorization_required=true");
   console.info("point_37_authorization_required=true");
   console.info("migration_prepared=false");
   console.info("migration_applied=true");

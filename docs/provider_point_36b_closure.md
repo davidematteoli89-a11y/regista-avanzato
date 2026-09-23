@@ -22,9 +22,12 @@ Conferme:
 Post-apply verification:
 
 - views expected count: `3`
-- views verified count: `0`
-- post apply verification passed: `false`
-- reason: metadata/colonne non ancora verificate in modo indipendente.
+- views verified count: `3`
+- competitions view status: `verified`
+- teams view status: `verified`
+- standings view status: `verified`
+- column check status: `pass`
+- post apply verification passed: `true`
+- reason: metadata/colonne verificate nel Punto 37 con query read-only su `information_schema`.
 
-Prossimo step consigliato: Punto 37-Fix/read-only view verification, senza provider/import e senza Production.
-
+Prossimo step consigliato: Punto 38/app-admin read-only integration check, senza provider/import e senza Production.

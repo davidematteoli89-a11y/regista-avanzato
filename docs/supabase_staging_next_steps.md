@@ -1842,6 +1842,32 @@ Stato:
 
 Prossimo step: verifica read-only metadata/colonne delle 3 view, poi verifica app/admin read-only.
 
+## Punto 37 — View metadata verification completata
+
+La verifica manuale read-only su metadata Supabase staging è completata.
+
+Risultato:
+
+- metadata_verification_completed: `true`;
+- query_read_only: `true`;
+- source: `information_schema.columns`;
+- app_data_read: `false`;
+- db_write: `false`;
+- service_role_used: `false`;
+- provider_import_enabled: `false`;
+- apify_enabled: `false`;
+- production_touched: `false`;
+- views_expected_count: `3`;
+- views_verified_count: `3`;
+- competitions_view_status: `verified`;
+- teams_view_status: `verified`;
+- standings_view_status: `verified`;
+- column_check_status: `pass`;
+- post_apply_verification_passed: `true`;
+- `next_write_allowed=false`.
+
+Prossimo step: Punto 38/app-admin read-only integration check. Non attivare provider/import e non aggiungere azioni di scrittura.
+
 ## Punto 31 — Migration draft no-apply
 
 Creata draft:

@@ -1452,6 +1452,26 @@ Punto 36-B non tocca Production:
 - no deploy.
 
 Production resta non pronta e fuori scope.
+
+## Punto 37 — Production impact
+
+Punto 37 è stato solo una verifica read-only metadata su Supabase staging.
+
+Conferme:
+
+- metadata_verification_completed: `true`;
+- query_read_only: `true`;
+- db_write: `false`;
+- service_role_used: `false`;
+- provider/import off;
+- Apify off;
+- no deploy;
+- Production touched: `false`;
+- views_verified_count: `3`;
+- post_apply_verification_passed: `true`;
+- next_write_allowed: `false`.
+
+Production resta esclusa. Punto 38 deve rimanere una verifica app/admin read-only prima di qualunque decisione successiva.
 - ready_for_apply: `false`;
 - `next_write_allowed=false`;
 - nessun provider/import attivato;

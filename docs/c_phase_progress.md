@@ -2658,7 +2658,7 @@ Prossimo step consigliato: Punto 36-Fix/canale apply controllato oppure apply ma
 
 ## Punto 36-B — Manual apply result documentation
 
-Stato: apply manuale SQL Editor documentato come riuscito; verifica metadata/colonne ancora da completare.
+Stato: apply manuale SQL Editor documentato come riuscito; verifica metadata/colonne completata nel Punto 37.
 
 Risultato:
 
@@ -2675,12 +2675,44 @@ Risultato:
 - provider/import enabled: `false`;
 - Apify enabled: `false`;
 - views expected count: `3`;
-- views verified count: `0`;
-- post apply verification passed: `false`;
+- views verified count: `3`;
+- competitions view status: `verified`;
+- teams view status: `verified`;
+- standings view status: `verified`;
+- column check status: `pass`;
+- post apply verification passed: `true`;
 - rollback needed: `false`;
 - Production touched: `false`;
 - `next_write_allowed=false`.
 
 Risultato SQL Editor: `Success. No rows returned`.
 
-Resta da completare: verifica read-only metadata/colonne delle 3 view.
+Follow-up completato nel Punto 37: verifica read-only metadata/colonne delle 3 view passata.
+
+## Punto 37 — Read-only view/column verification
+
+Stato: completato.
+
+La query read-only su `information_schema.columns`, eseguita manualmente nel Supabase SQL Editor staging “Regista Avanzato”, ha confermato le colonne delle 3 view manual import.
+
+Risultato:
+
+- metadata_verification_completed: `true`;
+- query_read_only: `true`;
+- db_write: `false`;
+- service_role_used: `false`;
+- provider_import_enabled: `false`;
+- apify_enabled: `false`;
+- production_touched: `false`;
+- views_expected_count: `3`;
+- views_verified_count: `3`;
+- competitions_view_status: `verified`;
+- teams_view_status: `verified`;
+- standings_view_status: `verified`;
+- column_check_status: `pass`;
+- post_apply_verification_passed: `true`;
+- `next_write_allowed=false`.
+
+Non sono stati letti dati applicativi, non sono stati attivati provider/import e Production non è stata toccata.
+
+Prossimo step consigliato: Punto 38 — verifica integrazione app/admin read-only, senza provider/import e senza abilitare scritture.

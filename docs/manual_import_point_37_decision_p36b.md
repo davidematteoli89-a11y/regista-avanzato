@@ -8,8 +8,12 @@
 - db write: `true`
 - db write scope: `schema_read_only_views_only`
 - views expected count: `3`
-- views verified count: `0`
-- post apply verification passed: `false`
+- views verified count: `3`
+- competitions view status: `verified`
+- teams view status: `verified`
+- standings view status: `verified`
+- column check status: `pass`
+- post apply verification passed: `true`
 - provider/import off: `true`
 - Apify off: `true`
 - Production touched: `false`
@@ -19,11 +23,11 @@
 
 ### A. Punto 37 — app/admin read-only integration verification
 
-Non consigliato finché la verifica metadata/colonne delle view non è completata.
+Consigliato dopo il Punto 37, perché la verifica metadata/colonne delle view è stata completata.
 
 ### B. Punto 37-Fix — verifica aggiuntiva read-only
 
-Consigliato. Verificare in modo read-only che le 3 view esistano e abbiano colonne attese, senza dump dati completi.
+Completato nel Punto 37. Le 3 view risultano presenti e con colonne attese, senza dump dati applicativi.
 
 ### C. Non attivare provider
 
@@ -39,5 +43,4 @@ Obbligatorio.
 
 ## Decisione
 
-Consiglio Punto 37-Fix/read-only view verification. `next_write_allowed=false`.
-
+Consiglio Punto 38/app-admin read-only integration check. `next_write_allowed=false`.

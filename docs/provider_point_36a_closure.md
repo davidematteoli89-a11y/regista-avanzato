@@ -17,9 +17,13 @@ Conferme:
 - provider/import spenti;
 - Apify spento;
 - Production non toccata;
-- views verified count: `0`;
-- post apply verification passed: `false`;
+- views verified count: `3`;
+- competitions view status: `verified`;
+- teams view status: `verified`;
+- standings view status: `verified`;
+- column check status: `pass`;
+- post apply verification passed: `true`;
 - rollback needed: `false`;
 - `next_write_allowed=false`.
 
-Prossimo step consigliato: verifica read-only metadata/colonne delle 3 view, poi Punto 37 app/admin read-only se la verifica passa. Nessun provider/import/deploy/Production.
+Follow-up Punto 37 completato: verifica read-only metadata/colonne delle 3 view passata. Prossimo step consigliato: Punto 38 app/admin read-only integration check. Nessun provider/import/deploy/Production.

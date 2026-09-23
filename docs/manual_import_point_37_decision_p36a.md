@@ -6,8 +6,12 @@
 - apply channel prepared: `manual_sql_editor`
 - migration applied: `true`
 - db write: `true`
-- views verified count: `0`
-- post apply verification passed: `false`
+- views verified count: `3`
+- competitions view status: `verified`
+- teams view status: `verified`
+- standings view status: `verified`
+- column check status: `pass`
+- post apply verification passed: `true`
 - provider/import off: `true`
 - Production untouched: `true`
 - next write allowed: `false`
@@ -16,11 +20,11 @@
 
 ### A. Punto 37 — app/admin read-only verification
 
-Non consigliato ancora perché manca la verifica post-apply metadata/colonne.
+Completato nel Punto 37: la verifica post-apply metadata/colonne è passata.
 
 ### B. Punto 37-Fix — esecuzione manuale SQL Editor da parte utente
 
-Consigliato. Completare verifica read-only delle 3 view e delle colonne attese, senza provider/import.
+Completato. Le 3 view e le colonne attese sono state verificate senza provider/import.
 
 ### C. Punto 37-Blocked — diagnosticare errore
 
@@ -40,4 +44,4 @@ Obbligatorio.
 
 ## Decisione
 
-Consiglio Punto 37-Fix/read-only verification: verificare le view create e poi procedere alla verifica app/admin read-only se tutto passa. `next_write_allowed=false`.
+Consiglio Punto 38/app-admin read-only integration check. `next_write_allowed=false`.

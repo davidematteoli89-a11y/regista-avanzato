@@ -2,34 +2,34 @@
 
 ## Result
 
-- views_created_count: `0`
+- views_created_count: `3`
 - expected_views_count: `3`
-- competitions_view_status: `not_verified`
-- teams_view_status: `not_verified`
-- standings_view_status: `not_verified`
-- column_check_status: `not_checked`
-- sensitive_fields_exposed: `unknown`
+- competitions_view_status: `verified`
+- teams_view_status: `verified`
+- standings_view_status: `verified`
+- column_check_status: `pass`
+- sensitive_fields_exposed: `not_checked`
 - provider_import_off: `true`
 - production_touched: `false`
-- verification_passed: `false`
+- verification_passed: `true`
 
 ## Notes
 
-La verifica post-apply non è stata eseguita perché la migration non è stata applicata.
+La verifica post-apply è stata completata nel Punto 37 con query read-only su metadata `information_schema`.
 
-Non sono state eseguite query DB, non sono stati stampati dati e non sono state attivate integrazioni provider/import.
+Non sono stati letti dati applicativi, non sono stati stampati dati e non sono state attivate integrazioni provider/import.
 
 ## Next
 
-Serve un Punto 35-B o Punto 36-Rollback/Fix plan per definire un canale di apply sicuro alternativo, oppure apply manuale da SQL Editor staging con conferma separata.
+Il prossimo passaggio consigliato è Punto 38: verifica integrazione app/admin read-only, senza provider/import e senza abilitare scritture.
 
 ## Punto 36-A follow-up
 
 Il canale SQL Editor manuale è stato eseguito dall’utente con esito `Success. No rows returned`.
 
-- views verified count: `0`;
-- post apply verification passed: `false`;
+- views verified count: `3`;
+- post apply verification passed: `true`;
 - provider/import off: `true`;
 - Production untouched: `true`.
 
-La verifica metadata/colonne resta da completare con query read-only o dashboard visuale.
+La verifica metadata/colonne è stata completata nel Punto 37 con query read-only.

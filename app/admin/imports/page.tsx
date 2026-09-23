@@ -236,8 +236,59 @@ export default async function AdminImportsPage() {
           <dt>Provider/import off</dt>
           <dd>true</dd>
           <dt>Views verified count</dt>
-          <dd>0</dd>
+          <dd>3</dd>
           <dt>Post-apply verification passed</dt>
+          <dd>true</dd>
+          <dt>Next write allowed</dt>
+          <dd>false</dd>
+        </dl>
+      </section>
+
+      <section className="admin-section-card">
+        <div className="admin-card-head">
+          <div>
+            <h2>View metadata verification</h2>
+            <p className="muted">
+              Punto 37 ha verificato solo metadata delle view manual import tramite
+              <code> information_schema</code>. Nessun dato applicativo è stato letto e nessuna
+              scrittura DB è disponibile da questa pagina.
+            </p>
+          </div>
+          <div className="admin-badge-row">
+            <span className="admin-safety-badge">Read-only metadata</span>
+            <span className="admin-safety-badge">Views verified</span>
+            <span className="admin-safety-badge">Provider off</span>
+            <span className="admin-safety-badge">Next write=false</span>
+          </div>
+        </div>
+        <dl className="admin-metadata">
+          <dt>Metadata verification completed</dt>
+          <dd>true</dd>
+          <dt>Query read-only</dt>
+          <dd>true</dd>
+          <dt>DB write</dt>
+          <dd>false</dd>
+          <dt>Service role used</dt>
+          <dd>false</dd>
+          <dt>Views expected count</dt>
+          <dd>3</dd>
+          <dt>Views verified count</dt>
+          <dd>3</dd>
+          <dt>Competitions view</dt>
+          <dd>manual_import_competitions_lookup — verified</dd>
+          <dt>Teams view</dt>
+          <dd>manual_import_teams_lookup — verified</dd>
+          <dt>Standings view</dt>
+          <dd>manual_import_standings_lookup — verified</dd>
+          <dt>Column check status</dt>
+          <dd>pass</dd>
+          <dt>Post-apply verification passed</dt>
+          <dd>true</dd>
+          <dt>Provider/import off</dt>
+          <dd>true</dd>
+          <dt>Apify off</dt>
+          <dd>true</dd>
+          <dt>Production touched</dt>
           <dd>false</dd>
           <dt>Next write allowed</dt>
           <dd>false</dd>
@@ -274,15 +325,15 @@ export default async function AdminImportsPage() {
           <dt>Production excluded</dt>
           <dd>true</dd>
           <dt>Migration applied</dt>
-          <dd>false</dd>
+          <dd>true</dd>
           <dt>DB write scope</dt>
-          <dd>none</dd>
+          <dd>schema_read_only_views_only</dd>
           <dt>Provider/import off</dt>
           <dd>true</dd>
           <dt>Views verified count</dt>
-          <dd>0</dd>
+          <dd>3</dd>
           <dt>Post-apply verification passed</dt>
-          <dd>false</dd>
+          <dd>true</dd>
           <dt>Next write allowed</dt>
           <dd>false</dd>
         </dl>
