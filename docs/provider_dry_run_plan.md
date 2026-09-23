@@ -886,6 +886,30 @@ Stato dry-run:
 
 Provider/import restano spenti.
 
+## Punto 38 — Dry-run output alignment
+
+Gli output dry-run manuali includono lo stato Punto 38:
+
+- `point_38_admin_read_only_integration_checked=true`;
+- `admin_imports_read_only=true`;
+- `metadata_verification_completed=true`;
+- `views_expected_count=3`;
+- `views_verified_count=3`;
+- `competitions_view_status=verified`;
+- `teams_view_status=verified`;
+- `standings_view_status=verified`;
+- `post_apply_verification_passed=true`;
+- `provider_fetch=false`;
+- `provider_import_enabled=false`;
+- `apify_enabled=false`;
+- `production_touched=false`;
+- `point_38_db_write=false`;
+- `point_38_service_role_used=false`;
+- `next_write_allowed=false`;
+- `point_39_authorization_required=true`.
+
+Questi output non eseguono provider fetch, DB write o deploy.
+
 ## Punto 30-C — Manual schema values collection
 
 Output atteso dai dry-run manuali:

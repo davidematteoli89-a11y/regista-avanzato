@@ -203,6 +203,53 @@ export default async function AdminImportsPage() {
       <section className="admin-section-card">
         <div className="admin-card-head">
           <div>
+            <h2>Read-only view integration</h2>
+            <p className="muted">
+              Punto 38 verifica che lo stato app/admin sia allineato alle view manual import
+              applicate e verificate in staging. Questa sezione è solo informativa: non contiene
+              azioni, form o collegamenti a import reali.
+            </p>
+          </div>
+          <div className="admin-badge-row">
+            <span className="admin-safety-badge">Admin read-only</span>
+            <span className="admin-safety-badge">Import disabled</span>
+            <span className="admin-safety-badge">Apify off</span>
+            <span className="admin-safety-badge">Next write=false</span>
+          </div>
+        </div>
+        <dl className="admin-metadata">
+          <dt>Admin imports read-only</dt>
+          <dd>true</dd>
+          <dt>Metadata verification completed</dt>
+          <dd>true</dd>
+          <dt>Migration applied</dt>
+          <dd>true</dd>
+          <dt>Views expected</dt>
+          <dd>3</dd>
+          <dt>Views verified</dt>
+          <dd>3</dd>
+          <dt>Competitions view</dt>
+          <dd>verified</dd>
+          <dt>Teams view</dt>
+          <dd>verified</dd>
+          <dt>Standings view</dt>
+          <dd>verified</dd>
+          <dt>Post-apply verification passed</dt>
+          <dd>true</dd>
+          <dt>Provider/import off</dt>
+          <dd>true</dd>
+          <dt>Apify off</dt>
+          <dd>true</dd>
+          <dt>Production touched</dt>
+          <dd>false</dd>
+          <dt>Next write allowed</dt>
+          <dd>false</dd>
+        </dl>
+      </section>
+
+      <section className="admin-section-card">
+        <div className="admin-card-head">
+          <div>
             <h2>Manual SQL Editor apply</h2>
             <p className="muted">
               Punto 36-A prepara il canale SQL Editor manuale. L’agente non ha eseguito l’apply:

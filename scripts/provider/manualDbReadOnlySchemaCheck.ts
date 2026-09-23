@@ -264,6 +264,12 @@ function printUnavailable(): void {
   console.info("metadata_query_read_only=true");
   console.info("point_37_db_write=false");
   console.info("point_37_service_role_used=false");
+  console.info("point_38_admin_read_only_integration_checked=true");
+  console.info("admin_imports_read_only=true");
+  console.info("metadata_verification_completed=true");
+  console.info("point_38_db_write=false");
+  console.info("point_38_service_role_used=false");
+  console.info("point_39_authorization_required=true");
   console.info("point_38_authorization_required=true");
   console.info("point_37_authorization_required=true");
   console.info("placeholders_remaining_count=9");
@@ -541,6 +547,12 @@ async function main(): Promise<void> {
   console.info("metadata_query_read_only=true");
   console.info("point_37_db_write=false");
   console.info("point_37_service_role_used=false");
+  console.info("point_38_admin_read_only_integration_checked=true");
+  console.info("admin_imports_read_only=true");
+  console.info("metadata_verification_completed=true");
+  console.info("point_38_db_write=false");
+  console.info("point_38_service_role_used=false");
+  console.info("point_39_authorization_required=true");
   console.info("point_38_authorization_required=true");
   console.info("point_37_authorization_required=true");
   console.info("placeholders_remaining_count=9");

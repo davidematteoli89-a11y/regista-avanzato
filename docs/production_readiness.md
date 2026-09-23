@@ -1472,6 +1472,23 @@ Conferme:
 - next_write_allowed: `false`.
 
 Production resta esclusa. Punto 38 deve rimanere una verifica app/admin read-only prima di qualunque decisione successiva.
+
+## Punto 38 — Production impact
+
+Punto 38 è stato solo una verifica app/admin read-only.
+
+Conferme:
+
+- admin_read_only_integration_checked: `true`;
+- db_write: `false`;
+- service_role_used: `false`;
+- provider/import off;
+- Apify off;
+- no deploy;
+- Production touched: `false`;
+- next_write_allowed: `false`.
+
+Production resta esclusa. Punto 39 deve restare read-only prima di qualunque decisione su scritture reali.
 - ready_for_apply: `false`;
 - `next_write_allowed=false`;
 - nessun provider/import attivato;

@@ -1426,6 +1426,23 @@ Confermato:
 
 Provider/import restano spenti. Prossimo step consigliato: Punto 32 review manuale no-apply.
 
+## Punto 38 — Provider activation status
+
+Punto 38 non attiva provider e non autorizza import.
+
+Stato:
+
+- admin_read_only_integration_checked: `true`;
+- provider_import_enabled: `false`;
+- provider_fetch: `false`;
+- apify_enabled: `false`;
+- db_write: `false`;
+- service_role_used: `false`;
+- production_touched: `false`;
+- next_write_allowed: `false`.
+
+Il prossimo step Punto 39 deve restare preview read-only/manual fixture. Nessun provider reale può essere attivato da questa fase.
+
 ## Punto 32 — Review no-apply della migration draft
 
 Punto 32 revisiona e hardena la draft P31 senza applicarla.

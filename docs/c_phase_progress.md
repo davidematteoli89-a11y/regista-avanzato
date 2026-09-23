@@ -2716,3 +2716,32 @@ Risultato:
 Non sono stati letti dati applicativi, non sono stati attivati provider/import e Production non è stata toccata.
 
 Prossimo step consigliato: Punto 38 — verifica integrazione app/admin read-only, senza provider/import e senza abilitare scritture.
+
+## Punto 38 — App/Admin read-only integration check
+
+Stato: completato.
+
+`/admin/imports` è stato verificato come dashboard read-only coerente con le view manual import applicate e verificate.
+
+Risultato:
+
+- admin_read_only_integration_checked: `true`;
+- admin_imports_read_only: `true`;
+- migration_applied: `true`;
+- metadata_verification_completed: `true`;
+- views_expected_count: `3`;
+- views_verified_count: `3`;
+- competitions_view_status: `verified`;
+- teams_view_status: `verified`;
+- standings_view_status: `verified`;
+- post_apply_verification_passed: `true`;
+- db_write: `false`;
+- service_role_used: `false`;
+- provider_import_enabled: `false`;
+- apify_enabled: `false`;
+- production_touched: `false`;
+- `next_write_allowed=false`.
+
+Nessun bottone Run/Import/Execute/Sync/Save to DB è stato aggiunto. Nessuna Server Action write, fetch provider, deploy o Production.
+
+Prossimo step consigliato: Punto 39 — manual fixture/read-only import preview contro le view verificate, senza provider/import e senza DB write.
