@@ -48,6 +48,21 @@ Obbligatorio.
 
 Obbligatorio senza nuova autorizzazione esplicita.
 
+## Follow-up Punto 40-Fix
+
+È stata preparata la query read-only live lookup:
+
+- `supabase/manual/manual_import_preview_lookup_p40fix.sql`
+
+Stato:
+
+- manual_sql_execution_required: `true`;
+- query_executed: `pending`;
+- preview_mode: `read_only_lookup_pending`;
+- view_lookup_executed: `false`;
+- unresolved_count: `5`;
+- next_write_allowed: `false`.
+
 ## Decisione finale
 
-Consiglio Punto 40-Fix: risolvere lookup/mapping preview in modalità read-only prima di qualsiasi manual import write plan no-apply. `next_write_allowed=false`.
+Restare in Punto 40-Fix pending: eseguire manualmente la query read-only e fornire il risultato minimo prima di qualsiasi manual import write plan no-apply. `next_write_allowed=false`.

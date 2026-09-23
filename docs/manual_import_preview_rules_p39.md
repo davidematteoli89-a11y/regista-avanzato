@@ -64,6 +64,8 @@ Preview result:
 
 Per Punto 39 è stata scelta modalità `local_only_unresolved` perché non è stato usato un canale DB read-only aggiuntivo e non è stata letta `.env.local`.
 
+Per Punto 40-Fix è stata preparata una query manuale read-only contro le view verificate. Fino all’esecuzione manuale e al caricamento di un risultato locale non committato, lo script usa modalità `read_only_lookup_pending`.
+
 Di conseguenza:
 
 - `view_lookup_executed=false`;

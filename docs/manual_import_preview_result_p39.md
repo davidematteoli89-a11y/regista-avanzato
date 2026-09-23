@@ -10,7 +10,9 @@
 - No Production: `true`
 - next_write_allowed: `false`
 
-La preview è stata eseguita in modalità `local_only_unresolved`: fixture locali caricate, view read-only considerate disponibili perché verificate nel Punto 37, ma nessun lookup DB aggiuntivo eseguito nel Punto 39.
+La preview del Punto 39 è stata eseguita in modalità `local_only_unresolved`: fixture locali caricate, view read-only considerate disponibili perché verificate nel Punto 37, ma nessun lookup DB aggiuntivo eseguito nel Punto 39.
+
+Follow-up Punto 40-Fix: preparata query read-only per lookup live manuale. Finché la query non viene eseguita dall’utente e il risultato minimo non viene fornito localmente, la preview resta `read_only_lookup_pending`.
 
 ## Inputs
 
@@ -19,9 +21,9 @@ La preview è stata eseguita in modalità `local_only_unresolved`: fixture local
 - Fixture standings: `fixtures/provider/manual/standings.sample.json`
 - View availability: `true`
 - Views verified count: `3`
-- Lookup mode: `local-only`
+- Lookup mode: `read-only lookup pending`
 - View lookup executed: `false`
-- Reason: `read_only_db_access_not_used_in_p39`
+- Reason: `pending_manual_sql_editor_execution`
 
 ## Preview summary
 
@@ -43,7 +45,7 @@ La preview è stata eseguita in modalità `local_only_unresolved`: fixture local
 ## Output
 
 - manual_import_preview_completed: `true`
-- preview_mode: `local_only_unresolved`
+- preview_mode: `read_only_lookup_pending`
 - provider_fetch: `false`
 - external_fetch: `false`
 - db_write: `false`

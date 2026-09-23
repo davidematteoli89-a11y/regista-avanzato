@@ -203,6 +203,47 @@ export default async function AdminImportsPage() {
       <section className="admin-section-card">
         <div className="admin-card-head">
           <div>
+            <h2>Read-only live view lookup</h2>
+            <p className="muted">
+              Punto 40-Fix prepara una query manuale solo-SELECT contro le view verificate.
+              L’esecuzione resta manuale in Supabase SQL Editor staging; nessuna query viene
+              lanciata da questa interfaccia.
+            </p>
+          </div>
+          <div className="admin-badge-row">
+            <span className="admin-safety-badge">Lookup pending</span>
+            <span className="admin-safety-badge">SQL Editor manual</span>
+            <span className="admin-safety-badge">No DB write</span>
+            <span className="admin-safety-badge">Next write=false</span>
+          </div>
+        </div>
+        <dl className="admin-metadata">
+          <dt>Lookup query prepared</dt>
+          <dd>true</dd>
+          <dt>Manual execution required</dt>
+          <dd>true</dd>
+          <dt>Query read-only</dt>
+          <dd>true</dd>
+          <dt>DB write</dt>
+          <dd>false</dd>
+          <dt>Provider fetch</dt>
+          <dd>false</dd>
+          <dt>View lookup executed</dt>
+          <dd>false</dd>
+          <dt>Preview mode</dt>
+          <dd>read_only_lookup_pending</dd>
+          <dt>Create / update / skip / conflict</dt>
+          <dd>0 / 0 / 0 / 0</dd>
+          <dt>Unresolved count</dt>
+          <dd>5</dd>
+          <dt>Next write allowed</dt>
+          <dd>false</dd>
+        </dl>
+      </section>
+
+      <section className="admin-section-card">
+        <div className="admin-card-head">
+          <div>
             <h2>Manual fixture import preview</h2>
             <p className="muted">
               Punto 39 simula solo una preview locale delle fixture manuali. Nessun lookup DB live

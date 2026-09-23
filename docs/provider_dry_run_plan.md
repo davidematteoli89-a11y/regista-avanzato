@@ -937,6 +937,29 @@ Output atteso:
 
 La preview non esegue insert/update/delete/upsert e non autorizza import reali.
 
+## Punto 40-Fix — Read-only lookup pending
+
+Il comando `npm run dry-run:manual-import-preview` supporta ora un risultato lookup manuale opzionale non committato:
+
+- `fixtures/provider/manual/live-view-lookup-result.local.json`
+
+Senza quel file, output atteso:
+
+- `preview_mode=read_only_lookup_pending`;
+- `view_lookup_executed=false`;
+- `view_lookup_reason=pending_manual_sql_editor_execution`;
+- `create_count=0`;
+- `update_count=0`;
+- `skip_count=0`;
+- `conflict_count=0`;
+- `unresolved_count=5`;
+- `db_write=false`;
+- `provider_fetch=false`;
+- `service_role_used=false`;
+- `next_write_allowed=false`.
+
+Il file `.local.json` è ignorato da Git e non deve contenere segreti.
+
 ## Punto 30-C — Manual schema values collection
 
 Output atteso dai dry-run manuali:

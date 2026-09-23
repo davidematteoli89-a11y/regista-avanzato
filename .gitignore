@@ -11,5 +11,6 @@ supabase/.temp/
 .DS_Store
 coverage/
 *.tsbuildinfo
+fixtures/provider/manual/live-view-lookup-result.local.json
 AGENTS.md
 CLAUDE.md

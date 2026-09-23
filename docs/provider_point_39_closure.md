@@ -31,4 +31,12 @@ Conferme sicurezza:
 - Apify resta off;
 - Production non è stata toccata.
 
-Decisione finale: poiché `unresolved_count=5`, il prossimo step consigliato è Punto 40-Fix: risolvere fixture/mapping preview in modalità read-only, senza DB write/provider/import.
+## Follow-up Punto 40-Fix
+
+Preparata query read-only per lookup live:
+
+- `supabase/manual/manual_import_preview_lookup_p40fix.sql`
+
+La query richiede esecuzione manuale in Supabase SQL Editor staging. Finché non viene fornito il risultato minimo, la preview resta `read_only_lookup_pending` con `unresolved_count=5`.
+
+Decisione finale: restare pending, senza DB write/provider/import.

@@ -2778,3 +2778,38 @@ Risultato:
 - `next_write_allowed=false`.
 
 Decisione: non procedere a write plan. Prossimo step consigliato: Punto 40-Fix per risolvere fixture/mapping preview in modalità read-only.
+
+## Punto 40-Fix — Read-only live view lookup
+
+Stato: preparato, pending esecuzione manuale.
+
+È stata preparata una query read-only per lookup live contro le view manual import verificate:
+
+- `supabase/manual/manual_import_preview_lookup_p40fix.sql`
+
+Risultato attuale:
+
+- read_only_live_view_lookup_prepared: `true`;
+- manual_sql_execution_required: `true`;
+- query_read_only: `true`;
+- query_executed: `pending`;
+- provider_fetch: `false`;
+- external_fetch: `false`;
+- db_write: `false`;
+- service_role_used: `false`;
+- import_real_execution: `false`;
+- provider_import_enabled: `false`;
+- apify_enabled: `false`;
+- production_touched: `false`;
+- fixtures_loaded: `true`;
+- views_verified_count: `3`;
+- view_lookup_executed: `false`;
+- preview_mode: `read_only_lookup_pending`;
+- create_count: `0`;
+- update_count: `0`;
+- skip_count: `0`;
+- conflict_count: `0`;
+- unresolved_count: `5`;
+- `next_write_allowed=false`.
+
+Prossimo step: esecuzione manuale SQL Editor staging e fornitura risultato minimo. Nessun write plan finché `unresolved_count > 0`.

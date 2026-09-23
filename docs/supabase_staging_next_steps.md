@@ -1915,6 +1915,28 @@ Preview completata senza letture DB aggiuntive e senza scritture.
 
 Prossimo step: Punto 40-Fix per risolvere mapping/lookup preview read-only prima di qualunque write plan.
 
+## Punto 40-Fix — Query lookup live preparata
+
+File:
+
+- `supabase/manual/manual_import_preview_lookup_p40fix.sql`
+
+Stato:
+
+- manual_sql_execution_required: `true`;
+- staging_target_confirmed_by_user: `pending`;
+- query_executed: `pending`;
+- query_read_only: `true`;
+- db_write: `false`;
+- provider_fetch: `false`;
+- production_touched: `false`;
+- view_lookup_executed: `false`;
+- preview_mode: `read_only_lookup_pending`;
+- unresolved_count: `5`;
+- next_write_allowed: `false`.
+
+Eseguire solo manualmente in Supabase SQL Editor staging “Regista Avanzato”.
+
 ## Punto 31 — Migration draft no-apply
 
 Creata draft:

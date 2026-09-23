@@ -1506,6 +1506,22 @@ Conferme:
 - next_write_allowed: `false`.
 
 Production resta esclusa. Punto 40 deve essere un fix/mapping read-only se si vuole risolvere la preview.
+
+## Punto 40-Fix — Production impact
+
+Punto 40-Fix prepara solo una query read-only per Supabase staging.
+
+Conferme:
+
+- deploy: `false`;
+- Production touched: `false`;
+- db_write: `false`;
+- provider/import off;
+- Apify off;
+- service_role_used: `false`;
+- next_write_allowed: `false`.
+
+Production resta esclusa.
 - ready_for_apply: `false`;
 - `next_write_allowed=false`;
 - nessun provider/import attivato;
