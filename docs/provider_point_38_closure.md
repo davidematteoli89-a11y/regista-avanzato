@@ -26,3 +26,11 @@ Conferme:
 Nessun provider/import è stato attivato. Nessuna scrittura DB è stata eseguita nel Punto 38. Production non è stata toccata.
 
 Il prossimo step consigliato è Punto 39: manual fixture/import preview read-only contro le view verificate, senza provider/import e senza DB write.
+
+## Follow-up Punto 39
+
+Punto 39 completato in modalità `local_only_unresolved`.
+
+La preview non ha eseguito lookup DB e non ha scritto dati. Tutte le 5 righe fixture restano `unresolved` finché non sarà definito un lookup read-only sicuro contro le view verificate.
+
+Prossimo step consigliato: Punto 40-Fix.

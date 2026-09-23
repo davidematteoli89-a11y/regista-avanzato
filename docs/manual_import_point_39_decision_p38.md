@@ -50,3 +50,19 @@ Obbligatorio.
 ## Decisione finale
 
 Procedere con Punto 39 solo come manual fixture/read-only import preview contro le view verificate. `next_write_allowed=false`.
+
+## Follow-up Punto 39
+
+Punto 39 è stato eseguito come preview local-only.
+
+- preview_mode: `local_only_unresolved`
+- fixtures_loaded: `true`
+- views_verified_count: `3`
+- view_lookup_executed: `false`
+- create_count: `0`
+- update_count: `0`
+- skip_count: `0`
+- conflict_count: `0`
+- unresolved_count: `5`
+
+Poiché `unresolved_count > 0`, il prossimo step consigliato diventa Punto 40-Fix: risolvere fixture/mapping preview in modalità read-only.

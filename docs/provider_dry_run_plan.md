@@ -910,6 +910,33 @@ Gli output dry-run manuali includono lo stato Punto 38:
 
 Questi output non eseguono provider fetch, DB write o deploy.
 
+## Punto 39 — Manual import preview dry-run
+
+Nuovo comando:
+
+- `npm run dry-run:manual-import-preview`
+
+Output atteso:
+
+- `mode=manual_import_preview_dry_run`;
+- `preview_mode=local_only_unresolved`;
+- `external_fetch=false`;
+- `provider_fetch=false`;
+- `db_write=false`;
+- `service_role_used=false`;
+- `import_real_execution=false`;
+- `fixtures_loaded=true`;
+- `views_verified_count=3`;
+- `view_lookup_executed=false`;
+- `create_count=0`;
+- `update_count=0`;
+- `skip_count=0`;
+- `conflict_count=0`;
+- `unresolved_count=5`;
+- `next_write_allowed=false`.
+
+La preview non esegue insert/update/delete/upsert e non autorizza import reali.
+
 ## Punto 30-C — Manual schema values collection
 
 Output atteso dai dry-run manuali:

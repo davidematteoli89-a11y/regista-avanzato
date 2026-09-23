@@ -1893,6 +1893,28 @@ Conferme:
 
 Prossimo step: Punto 39 manual fixture/read-only import preview contro le view verificate. Nessun provider/import e nessuna DB write.
 
+## Punto 39 — Manual import preview local-only
+
+Preview completata senza letture DB aggiuntive e senza scritture.
+
+- preview_mode: `local_only_unresolved`;
+- fixtures_loaded: `true`;
+- competitions_fixture_count: `1`;
+- teams_fixture_count: `2`;
+- standings_fixture_count: `2`;
+- views_verified_count: `3`;
+- view_lookup_executed: `false`;
+- create_count: `0`;
+- update_count: `0`;
+- skip_count: `0`;
+- conflict_count: `0`;
+- unresolved_count: `5`;
+- db_write: `false`;
+- provider_fetch: `false`;
+- next_write_allowed: `false`.
+
+Prossimo step: Punto 40-Fix per risolvere mapping/lookup preview read-only prima di qualunque write plan.
+
 ## Punto 31 — Migration draft no-apply
 
 Creata draft:

@@ -58,3 +58,20 @@ Conferme:
 Punto 38 passa: l’integrazione app/admin read-only è coerente con le 3 view manual import verificate.
 
 Prossimo step consigliato: Punto 39 — manual fixture/read-only import preview contro le view verificate, ancora senza DB write, provider/import o deploy.
+
+## Punto 39 follow-up
+
+Punto 39 è stato completato in modalità `local_only_unresolved`.
+
+- manual_import_preview_completed: `true`
+- view_lookup_executed: `false`
+- create_count: `0`
+- update_count: `0`
+- skip_count: `0`
+- conflict_count: `0`
+- unresolved_count: `5`
+- db_write: `false`
+- provider_fetch: `false`
+- next_write_allowed: `false`
+
+La decisione successiva consigliata è Punto 40-Fix, non un write plan, perché restano unresolved.

@@ -17,6 +17,7 @@
     "dry-run:manual-import-readiness": "node --no-warnings --experimental-strip-types scripts/provider/manualImportReadinessDryRun.ts",
     "dry-run:manual-schema-confirmation": "node --no-warnings --experimental-strip-types scripts/provider/manualSchemaConfirmationDryRun.ts",
     "dry-run:manual-db-schema-check": "node --no-warnings --experimental-strip-types scripts/provider/manualDbReadOnlySchemaCheck.ts",
+    "dry-run:manual-import-preview": "node --no-warnings --experimental-strip-types scripts/provider/manualImportPreviewDryRun.ts",
     "probe:stable-provider:disabled": "node --no-warnings --experimental-strip-types scripts/provider/disabledStableProviderProbe.ts",
     "probe:api-football:gated": "node --no-warnings --experimental-strip-types scripts/provider/apiFootballProbe.ts",
     "probe:thestatsapi:gated": "node --no-warnings --experimental-strip-types scripts/provider/theStatsApiProbe.ts"

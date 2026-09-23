@@ -1443,6 +1443,22 @@ Stato:
 
 Il prossimo step Punto 39 deve restare preview read-only/manual fixture. Nessun provider reale può essere attivato da questa fase.
 
+## Punto 39 — Provider activation status
+
+Punto 39 non attiva provider e non autorizza import.
+
+- preview_mode: `local_only_unresolved`;
+- provider_fetch: `false`;
+- external_fetch: `false`;
+- provider_import_enabled: `false`;
+- apify_enabled: `false`;
+- import_real_execution: `false`;
+- db_write: `false`;
+- unresolved_count: `5`;
+- next_write_allowed: `false`.
+
+Il prossimo step consigliato è Punto 40-Fix, ancora senza provider/import.
+
 ## Punto 32 — Review no-apply della migration draft
 
 Punto 32 revisiona e hardena la draft P31 senza applicarla.

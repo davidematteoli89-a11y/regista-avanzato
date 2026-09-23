@@ -203,6 +203,55 @@ export default async function AdminImportsPage() {
       <section className="admin-section-card">
         <div className="admin-card-head">
           <div>
+            <h2>Manual fixture import preview</h2>
+            <p className="muted">
+              Punto 39 simula solo una preview locale delle fixture manuali. Nessun lookup DB live
+              è stato eseguito in questa fase, quindi i risultati restano unresolved e non
+              autorizzano scritture.
+            </p>
+          </div>
+          <div className="admin-badge-row">
+            <span className="admin-safety-badge">Preview only</span>
+            <span className="admin-safety-badge">Local-only</span>
+            <span className="admin-safety-badge">No DB write</span>
+            <span className="admin-safety-badge">Next write=false</span>
+          </div>
+        </div>
+        <dl className="admin-metadata">
+          <dt>Preview dry-run completed</dt>
+          <dd>true</dd>
+          <dt>Preview mode</dt>
+          <dd>local_only_unresolved</dd>
+          <dt>Provider fetch</dt>
+          <dd>false</dd>
+          <dt>DB write</dt>
+          <dd>false</dd>
+          <dt>Import real execution</dt>
+          <dd>false</dd>
+          <dt>Fixtures loaded</dt>
+          <dd>true</dd>
+          <dt>Competitions fixture count</dt>
+          <dd>1</dd>
+          <dt>Teams fixture count</dt>
+          <dd>2</dd>
+          <dt>Standings fixture count</dt>
+          <dd>2</dd>
+          <dt>Views verified count</dt>
+          <dd>3</dd>
+          <dt>View lookup executed</dt>
+          <dd>false</dd>
+          <dt>Create / update / skip / conflict</dt>
+          <dd>0 / 0 / 0 / 0</dd>
+          <dt>Unresolved count</dt>
+          <dd>5</dd>
+          <dt>Next write allowed</dt>
+          <dd>false</dd>
+        </dl>
+      </section>
+
+      <section className="admin-section-card">
+        <div className="admin-card-head">
+          <div>
             <h2>Read-only view integration</h2>
             <p className="muted">
               Punto 38 verifica che lo stato app/admin sia allineato alle view manual import

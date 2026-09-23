@@ -1489,6 +1489,23 @@ Conferme:
 - next_write_allowed: `false`.
 
 Production resta esclusa. Punto 39 deve restare read-only prima di qualunque decisione su scritture reali.
+
+## Punto 39 — Production impact
+
+Punto 39 è stato solo preview local-only.
+
+Conferme:
+
+- db_write: `false`;
+- service_role_used: `false`;
+- provider/import off;
+- Apify off;
+- no deploy;
+- Production touched: `false`;
+- unresolved_count: `5`;
+- next_write_allowed: `false`.
+
+Production resta esclusa. Punto 40 deve essere un fix/mapping read-only se si vuole risolvere la preview.
 - ready_for_apply: `false`;
 - `next_write_allowed=false`;
 - nessun provider/import attivato;

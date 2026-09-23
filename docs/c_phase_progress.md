@@ -2745,3 +2745,36 @@ Risultato:
 Nessun bottone Run/Import/Execute/Sync/Save to DB è stato aggiunto. Nessuna Server Action write, fetch provider, deploy o Production.
 
 Prossimo step consigliato: Punto 39 — manual fixture/read-only import preview contro le view verificate, senza provider/import e senza DB write.
+
+## Punto 39 — Manual fixture/read-only import preview
+
+Stato: completato.
+
+La preview è stata eseguita in modalità `local_only_unresolved`: fixture locali caricate, view verificate disponibili, nessun lookup DB live eseguito nel Punto 39.
+
+Risultato:
+
+- manual_import_preview_completed: `true`;
+- preview_mode: `local_only_unresolved`;
+- provider_fetch: `false`;
+- external_fetch: `false`;
+- db_write: `false`;
+- service_role_used: `false`;
+- import_real_execution: `false`;
+- provider_import_enabled: `false`;
+- apify_enabled: `false`;
+- production_touched: `false`;
+- fixtures_loaded: `true`;
+- competitions_fixture_count: `1`;
+- teams_fixture_count: `2`;
+- standings_fixture_count: `2`;
+- views_verified_count: `3`;
+- view_lookup_executed: `false`;
+- create_count: `0`;
+- update_count: `0`;
+- skip_count: `0`;
+- conflict_count: `0`;
+- unresolved_count: `5`;
+- `next_write_allowed=false`.
+
+Decisione: non procedere a write plan. Prossimo step consigliato: Punto 40-Fix per risolvere fixture/mapping preview in modalità read-only.
