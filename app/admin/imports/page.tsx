@@ -203,6 +203,49 @@ export default async function AdminImportsPage() {
       <section className="admin-section-card">
         <div className="admin-card-head">
           <div>
+            <h2>Point 42 manual fixture write</h2>
+            <p className="muted">
+              Punto 42 è autorizzato per staging, ma da questa interfaccia resta solo read-only.
+              Il SQL manuale è preparato per SQL Editor staging; nessuna scrittura viene eseguita
+              dall’app.
+            </p>
+          </div>
+          <div className="admin-badge-row">
+            <span className="admin-safety-badge">Authorized</span>
+            <span className="admin-safety-badge">Manual SQL only</span>
+            <span className="admin-safety-badge">Provider off</span>
+            <span className="admin-safety-badge">Production untouched</span>
+          </div>
+        </div>
+        <dl className="admin-metadata">
+          <dt>Point 42 authorized</dt>
+          <dd>true</dd>
+          <dt>Write SQL prepared</dt>
+          <dd>true</dd>
+          <dt>Rollback SQL prepared</dt>
+          <dd>true</dd>
+          <dt>Post-verify SQL prepared</dt>
+          <dd>true</dd>
+          <dt>Manual execution status</dt>
+          <dd>manual_execution_required</dd>
+          <dt>Written rows</dt>
+          <dd>0</dd>
+          <dt>Post-write verification</dt>
+          <dd>not_executed</dd>
+          <dt>Rollback executed</dt>
+          <dd>false</dd>
+          <dt>Provider / Apify</dt>
+          <dd>off / off</dd>
+          <dt>Production touched</dt>
+          <dd>false</dd>
+          <dt>Deploy executed</dt>
+          <dd>false</dd>
+        </dl>
+      </section>
+
+      <section className="admin-section-card">
+        <div className="admin-card-head">
+          <div>
             <h2>Manual import write plan</h2>
             <p className="muted">
               Punto 40-B documenta solo il piano no-apply per una futura scrittura manuale delle

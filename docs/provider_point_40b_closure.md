@@ -27,3 +27,19 @@ Conferme:
 - next_write_allowed resta `false`.
 
 Il prossimo step consigliato è Punto 41: final authorization gate for manual fixture write, ancora no-write.
+
+## Follow-up Punto 42
+
+Punto 42 è stato autorizzato per staging e sono stati preparati:
+
+- write SQL manuale;
+- rollback SQL manuale;
+- post-write verification SQL read-only.
+
+Da questa sessione:
+
+- manual_fixture_write_executed: `false`;
+- manual_execution_required: `true`;
+- db_write: `false`;
+- provider/import attivati: `false`;
+- Production touched: `false`.

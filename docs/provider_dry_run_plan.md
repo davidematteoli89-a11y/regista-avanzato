@@ -911,6 +911,29 @@ Output atteso dopo lookup manuale read-only completato:
 
 Il dry-run resta no-write/no-provider/no-env-output.
 
+## Punto 42 — Dry-run output atteso
+
+Output atteso dopo preparazione SQL manuale:
+
+- `point_42_authorized=true`;
+- `point_42_write_sql_prepared=true`;
+- `point_42_rollback_sql_prepared=true`;
+- `point_42_post_verify_sql_prepared=true`;
+- `manual_fixture_write_executed=false`;
+- `manual_execution_required=true`;
+- `written_competitions_count=0`;
+- `written_teams_count=0`;
+- `written_standings_count=0`;
+- `total_written_rows=0`;
+- `post_write_verification_executed=false`;
+- `post_write_verification_passed=false`;
+- `rollback_executed=false`;
+- `provider_fetch=false`;
+- `external_fetch=false`;
+- `service_role_used=false`.
+
+Il dry-run resta no-write/no-provider/no-env-output finché l’utente non esegue manualmente il SQL in staging.
+
 ## Punto 40-B — Dry-run output atteso
 
 Output atteso dopo creazione write plan no-apply:

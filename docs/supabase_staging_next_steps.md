@@ -1987,6 +1987,40 @@ Piano creato senza scritture:
 
 Prossimo step consigliato: Punto 41 final authorization gate for manual fixture write, ancora no-write.
 
+## Punto 42 — Manual fixture write staging preparato
+
+Autorizzazione utente ricevuta per Punto 42, limitata a staging e alle 5 fixture manuali.
+
+File preparati:
+
+- `supabase/manual/manual_import_fixture_write_p42.sql`;
+- `supabase/manual/manual_import_fixture_rollback_p42.sql`;
+- `supabase/manual/manual_import_fixture_post_verify_p42.sql`.
+
+Stato da questa sessione:
+
+- point_42_authorized: `true`;
+- write_sql_prepared: `true`;
+- rollback_sql_prepared: `true`;
+- post_verify_sql_prepared: `true`;
+- manual_fixture_write_executed: `false`;
+- manual_execution_required: `true`;
+- db_write: `false`;
+- written_competitions_count: `0`;
+- written_teams_count: `0`;
+- written_standings_count: `0`;
+- total_written_rows: `0`;
+- post_write_verification_executed: `false`;
+- rollback_executed: `false`;
+- provider_fetch: `false`;
+- provider_import_enabled: `false`;
+- apify_enabled: `false`;
+- production_touched: `false`;
+- deploy_executed: `false`;
+- service_role_used: `false`.
+
+Eseguire manualmente solo in Supabase SQL Editor staging “Regista Avanzato”.
+
 ## Punto 31 — Migration draft no-apply
 
 Creata draft:

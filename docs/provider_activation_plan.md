@@ -1516,6 +1516,23 @@ Punto 40-B non attiva provider e non autorizza import.
 
 Provider/import restano spenti. Prossimo step consigliato: Punto 41 no-write gate.
 
+## Punto 42 — Provider activation status
+
+Punto 42 non attiva provider/import.
+
+- point_42_authorized: `true`;
+- write_sql_prepared: `true`;
+- manual_fixture_write_executed: `false`;
+- provider_fetch: `false`;
+- external_fetch: `false`;
+- provider_import_enabled: `false`;
+- import_real_execution: `false`;
+- apify_enabled: `false`;
+- service_role_used: `false`;
+- production_touched: `false`.
+
+I file SQL sono manuali e limitati alle 5 fixture staging.
+
 ## Punto 32 — Review no-apply della migration draft
 
 Punto 32 revisiona e hardena la draft P31 senza applicarla.

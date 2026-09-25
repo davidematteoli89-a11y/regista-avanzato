@@ -2886,3 +2886,42 @@ Risultato:
 - `next_write_allowed=false`.
 
 Prossimo step consigliato: Punto 41 — final authorization gate for manual fixture write, ancora no-write.
+
+## Punto 42 — Apply manual fixture write in staging
+
+Stato: preparato, non eseguito da questa sessione.
+
+Autorizzazione utente ricevuta per scrittura manuale delle 5 fixture solo in Supabase staging.
+
+File creati:
+
+- `supabase/manual/manual_import_fixture_write_p42.sql`;
+- `supabase/manual/manual_import_fixture_rollback_p42.sql`;
+- `supabase/manual/manual_import_fixture_post_verify_p42.sql`;
+- `docs/manual_import_fixture_write_apply_result_p42.md`.
+
+Risultato operativo:
+
+- point_42_authorized: `true`;
+- write_sql_prepared: `true`;
+- rollback_sql_prepared: `true`;
+- post_verify_sql_prepared: `true`;
+- manual_fixture_write_executed: `false`;
+- execution_channel: `manual_sql_editor_staging_required`;
+- db_write: `false`;
+- written_competitions_count: `0`;
+- written_teams_count: `0`;
+- written_standings_count: `0`;
+- total_written_rows: `0`;
+- post_write_verification_executed: `false`;
+- post_write_verification_passed: `false`;
+- rollback_executed: `false`;
+- provider_fetch: `false`;
+- external_fetch: `false`;
+- provider_import_enabled: `false`;
+- apify_enabled: `false`;
+- production_touched: `false`;
+- deploy_executed: `false`;
+- service_role_used: `false`.
+
+Motivo: l’esecuzione richiede SQL Editor Supabase staging manuale e conferma visiva del progetto.
