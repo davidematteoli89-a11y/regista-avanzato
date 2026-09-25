@@ -1498,6 +1498,24 @@ Punto 40-Fix-B non attiva provider e non autorizza import.
 
 Nessun provider reale può essere attivato da questa fase. Prossimo step ammesso: Punto 40-B no-apply.
 
+## Punto 40-B — Provider activation status
+
+Punto 40-B non attiva provider e non autorizza import.
+
+- write_plan_created: `true`;
+- write_plan_mode: `no_apply`;
+- provider_fetch: `false`;
+- external_fetch: `false`;
+- provider_import_enabled: `false`;
+- import_real_execution: `false`;
+- apify_enabled: `false`;
+- db_write: `false`;
+- service_role_used: `false`;
+- production_touched: `false`;
+- next_write_allowed: `false`.
+
+Provider/import restano spenti. Prossimo step consigliato: Punto 41 no-write gate.
+
 ## Punto 32 — Review no-apply della migration draft
 
 Punto 32 revisiona e hardena la draft P31 senza applicarla.

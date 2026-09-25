@@ -94,3 +94,19 @@ Il file `.local.json` è ignorato da Git.
 Punto 40-Fix-B è completato. La preview è risolta con `create_count=5`, `conflict_count=0` e `unresolved_count=0`.
 
 Il prossimo step consigliato è Punto 40-B — manual import write plan no-apply, ancora senza DB write e senza autorizzare import reali.
+
+## Punto 40-B follow-up
+
+Punto 40-B ha creato il piano no-apply per una futura scrittura manuale staging:
+
+- write_plan_created: `true`;
+- write_plan_mode: `no_apply`;
+- create_candidates_count: `5`;
+- update_candidates_count: `0`;
+- skip_candidates_count: `0`;
+- conflict_count: `0`;
+- unresolved_count: `0`;
+- proposed_write_order: `competitions,teams,standings`;
+- rollback_plan_created: `true`;
+- post_write_verification_plan_created: `true`;
+- next_write_allowed: `false`.

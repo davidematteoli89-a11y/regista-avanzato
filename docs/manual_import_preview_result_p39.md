@@ -70,4 +70,12 @@ Il Punto 39 aveva prodotto una preview `local_only_unresolved`. Il Punto 40-Fix-
 
 ## Decisione
 
-La preview è risolta ma non autorizza scritture. Il prossimo step può essere Punto 40-B — manual import write plan no-apply, ancora senza DB write.
+La preview è risolta ma non autorizza scritture. Punto 40-B ha preparato solo il manual import write plan no-apply:
+
+- write_plan_created: `true`;
+- write_plan_mode: `no_apply`;
+- proposed_write_order: `competitions,teams,standings`;
+- rollback_plan_created: `true`;
+- post_write_verification_plan_created: `true`;
+- point_41_authorization_required: `true`;
+- next_write_allowed: `false`.

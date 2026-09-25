@@ -28,3 +28,15 @@ Punto 40-Fix-B chiude il lookup live read-only per la preview manual import.
 ## Decisione
 
 I provider restano sospesi/spenti. Il prossimo step ammesso è un piano Punto 40-B no-apply; nessuna scrittura reale è autorizzata.
+
+## Punto 40-B
+
+Punto 40-B ha creato solo documentazione no-apply:
+
+- write_plan_created: `true`;
+- write_plan_mode: `no_apply`;
+- rollback_plan_created: `true`;
+- post_write_verification_plan_created: `true`;
+- db_write: `false`;
+- provider/import attivati: `false`;
+- next_write_allowed: `false`.

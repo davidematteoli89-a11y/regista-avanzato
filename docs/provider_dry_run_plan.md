@@ -911,6 +911,31 @@ Output atteso dopo lookup manuale read-only completato:
 
 Il dry-run resta no-write/no-provider/no-env-output.
 
+## Punto 40-B — Dry-run output atteso
+
+Output atteso dopo creazione write plan no-apply:
+
+- `point_40b_write_plan_created=true`;
+- `write_plan_mode=no_apply`;
+- `create_candidates_count=5`;
+- `update_candidates_count=0`;
+- `skip_candidates_count=0`;
+- `conflict_count=0`;
+- `unresolved_count=0`;
+- `proposed_write_order=competitions,teams,standings`;
+- `rollback_plan_created=true`;
+- `post_write_verification_plan_created=true`;
+- `db_write=false`;
+- `service_role_used=false`;
+- `provider_fetch=false`;
+- `provider_import_enabled=false`;
+- `apify_enabled=false`;
+- `production_touched=false`;
+- `next_write_allowed=false`;
+- `point_41_authorization_required=true`.
+
+Il dry-run resta no-write/no-provider/no-env-output.
+
 ## Punto 38 — Dry-run output alignment
 
 Gli output dry-run manuali includono lo stato Punto 38:

@@ -1963,6 +1963,30 @@ Risultato manuale SQL Editor staging:
 
 Prossimo step consigliato: Punto 40-B manual import write plan no-apply. Nessun DB write autorizzato in questo step.
 
+## Punto 40-B — Manual import write plan no-apply
+
+Piano creato senza scritture:
+
+- write_plan_created: `true`;
+- write_plan_mode: `no_apply`;
+- create_candidates_count: `5`;
+- update_candidates_count: `0`;
+- skip_candidates_count: `0`;
+- conflict_count: `0`;
+- unresolved_count: `0`;
+- proposed_write_order: `competitions,teams,standings`;
+- rollback_plan_created: `true`;
+- post_write_verification_plan_created: `true`;
+- db_write: `false`;
+- service_role_used: `false`;
+- provider_fetch: `false`;
+- provider_import_enabled: `false`;
+- apify_enabled: `false`;
+- production_touched: `false`;
+- next_write_allowed: `false`.
+
+Prossimo step consigliato: Punto 41 final authorization gate for manual fixture write, ancora no-write.
+
 ## Punto 31 — Migration draft no-apply
 
 Creata draft:

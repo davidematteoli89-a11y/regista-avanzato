@@ -1544,6 +1544,24 @@ Conferme:
 - next_write_allowed: `false`.
 
 Production resta esclusa. Punto 40-B, se aperto, deve restare un write plan no-apply.
+
+## Punto 40-B — Production impact
+
+Punto 40-B crea solo un manual import write plan no-apply.
+
+Conferme:
+
+- deploy: `false`;
+- Production touched: `false`;
+- db_write: `false`;
+- service_role_used: `false`;
+- provider/import off;
+- Apify off;
+- write_plan_mode: `no_apply`;
+- proposed_write_order: `competitions,teams,standings`;
+- next_write_allowed: `false`.
+
+Production resta esclusa. Punto 41 deve restare gate no-write prima di qualunque autorizzazione futura.
 - ready_for_apply: `false`;
 - `next_write_allowed=false`;
 - nessun provider/import attivato;

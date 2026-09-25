@@ -33,3 +33,20 @@ Questa decisione non autorizza DB write. Autorizza solo la preparazione del pian
 ## Prossimo step
 
 Punto 40-B — manual import write plan no-apply, ancora senza provider/import e senza scritture DB.
+
+## Punto 40-B completato
+
+Il piano è stato creato:
+
+- `docs/manual_import_write_plan_p40b.md`
+- `docs/manual_import_fixture_mapping_p40b.md`
+- `docs/manual_import_write_sql_plan_p40b.md`
+- `docs/manual_import_write_rollback_plan_p40b.md`
+- `docs/manual_import_write_post_verification_plan_p40b.md`
+- `docs/manual_import_point_41_decision_p40b.md`
+
+Resta no-apply:
+
+- db_write: `false`;
+- next_write_allowed: `false`;
+- point_41_authorization_required: `true`.

@@ -203,6 +203,51 @@ export default async function AdminImportsPage() {
       <section className="admin-section-card">
         <div className="admin-card-head">
           <div>
+            <h2>Manual import write plan</h2>
+            <p className="muted">
+              Punto 40-B documenta solo il piano no-apply per una futura scrittura manuale delle
+              fixture candidate create. Questa sezione non contiene azioni, form, SQL operativo o
+              bottoni di import.
+            </p>
+          </div>
+          <div className="admin-badge-row">
+            <span className="admin-safety-badge">No-apply</span>
+            <span className="admin-safety-badge">No DB write</span>
+            <span className="admin-safety-badge">Provider off</span>
+            <span className="admin-safety-badge">Next write=false</span>
+          </div>
+        </div>
+        <dl className="admin-metadata">
+          <dt>Write plan created</dt>
+          <dd>true</dd>
+          <dt>Mode</dt>
+          <dd>no_apply</dd>
+          <dt>Create candidates</dt>
+          <dd>5</dd>
+          <dt>Update candidates</dt>
+          <dd>0</dd>
+          <dt>Skip candidates</dt>
+          <dd>0</dd>
+          <dt>Conflict count</dt>
+          <dd>0</dd>
+          <dt>Unresolved count</dt>
+          <dd>0</dd>
+          <dt>Proposed write order</dt>
+          <dd>competitions → teams → standings</dd>
+          <dt>Rollback plan created</dt>
+          <dd>true</dd>
+          <dt>Post-write verification plan created</dt>
+          <dd>true</dd>
+          <dt>DB write</dt>
+          <dd>false</dd>
+          <dt>Next write allowed</dt>
+          <dd>false</dd>
+        </dl>
+      </section>
+
+      <section className="admin-section-card">
+        <div className="admin-card-head">
+          <div>
             <h2>Read-only live view lookup</h2>
             <p className="muted">
               Punto 40-Fix-B registra il risultato manuale della query solo-SELECT contro le

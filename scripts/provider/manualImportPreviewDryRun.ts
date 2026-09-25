@@ -318,8 +318,17 @@ async function main(): Promise<void> {
   console.info(`skip_count=${counts.skip}`);
   console.info(`conflict_count=${counts.conflict}`);
   console.info(`unresolved_count=${counts.unresolved}`);
+  console.info("point_40b_write_plan_created=true");
+  console.info("write_plan_mode=no_apply");
+  console.info(`create_candidates_count=${counts.create}`);
+  console.info(`update_candidates_count=${counts.update}`);
+  console.info(`skip_candidates_count=${counts.skip}`);
+  console.info("proposed_write_order=competitions,teams,standings");
+  console.info("rollback_plan_created=true");
+  console.info("post_write_verification_plan_created=true");
   console.info("blocked_real_execution=true");
   console.info("next_write_allowed=false");
+  console.info("point_41_authorization_required=true");
   console.info(
     `recommended_next_step=${
       counts.unresolved === 0 && counts.conflict === 0
