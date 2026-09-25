@@ -886,6 +886,31 @@ Stato dry-run:
 
 Provider/import restano spenti.
 
+## Punto 40-Fix-B — Dry-run output aggiornato
+
+Output atteso dopo lookup manuale read-only completato:
+
+- `read_only_live_view_lookup_executed=true`;
+- `query_result=success_no_rows_returned`;
+- `view_lookup_executed=true`;
+- `live_lookup_rows_count=0`;
+- `existing_competitions_rows=0`;
+- `existing_teams_rows=0`;
+- `existing_standings_rows=0`;
+- `preview_resolution=read_only_lookup_completed`;
+- `create_count=5`;
+- `update_count=0`;
+- `skip_count=0`;
+- `conflict_count=0`;
+- `unresolved_count=0`;
+- `db_write=false`;
+- `provider_fetch=false`;
+- `external_fetch=false`;
+- `service_role_used=false`;
+- `next_write_allowed=false`.
+
+Il dry-run resta no-write/no-provider/no-env-output.
+
 ## Punto 38 — Dry-run output alignment
 
 Gli output dry-run manuali includono lo stato Punto 38:

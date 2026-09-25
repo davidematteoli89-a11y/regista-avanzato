@@ -2813,3 +2813,40 @@ Risultato attuale:
 - `next_write_allowed=false`.
 
 Prossimo step: esecuzione manuale SQL Editor staging e fornitura risultato minimo. Nessun write plan finché `unresolved_count > 0`.
+
+## Punto 40-Fix-B — Read-only live lookup resolved
+
+Stato: completato.
+
+L’utente ha eseguito manualmente in Supabase SQL Editor staging la query read-only:
+
+- `supabase/manual/manual_import_preview_lookup_p40fix.sql`
+
+Risultato:
+
+- query_result: `success_no_rows_returned`;
+- read_only_live_view_lookup_executed: `true`;
+- query_read_only: `true`;
+- db_write: `false`;
+- service_role_used: `false`;
+- provider_fetch: `false`;
+- external_fetch: `false`;
+- import_real_execution: `false`;
+- provider_import_enabled: `false`;
+- apify_enabled: `false`;
+- production_touched: `false`;
+- views_verified_count: `3`;
+- view_lookup_executed: `true`;
+- live_lookup_rows_count: `0`;
+- existing_competitions_rows: `0`;
+- existing_teams_rows: `0`;
+- existing_standings_rows: `0`;
+- preview_mode: `read_only_lookup_completed`;
+- create_count: `5`;
+- update_count: `0`;
+- skip_count: `0`;
+- conflict_count: `0`;
+- unresolved_count: `0`;
+- `next_write_allowed=false`.
+
+Decisione: Punto 40-B può essere preparato come manual import write plan no-apply, ancora senza DB write/provider/import.

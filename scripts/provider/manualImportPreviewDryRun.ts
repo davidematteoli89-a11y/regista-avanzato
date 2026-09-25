@@ -48,6 +48,8 @@ type LookupStanding = {
 };
 
 type LookupResult = {
+  source: "local" | "empty_example";
+  queryResult: string;
   competitions: LookupCompetition[];
   teams: LookupTeam[];
   standings: LookupStanding[];
@@ -69,6 +71,16 @@ const LOOKUP_RESULT_PATH = join(
   "live-view-lookup-result.local.json",
 );
 
+const EMPTY_LOOKUP_RESULT_PATH = join(
+  process.cwd(),
+  "fixtures",
+  "provider",
+  "manual",
+  "live-view-lookup-result.empty.example.json",
+);
+
+const CANDIDATE_CREATE_PREFIX = "__candidate_create__:";
+
 function asRecordArray(value: unknown): JsonRecord[] {
   return Array.isArray(value)
     ? value.filter((item): item is JsonRecord => Boolean(item && typeof item === "object" && !Array.isArray(item)))
@@ -87,14 +99,16 @@ function asNullableNumber(value: unknown): number | null {
   return typeof value === "number" && Number.isFinite(value) ? value : null;
 }
 
-function loadLookupResult(): LookupResult | null {
-  if (!existsSync(LOOKUP_RESULT_PATH)) return null;
+function readLookupResult(path: string, source: LookupResult["source"]): LookupResult | null {
+  if (!existsSync(path)) return null;
 
-  const parsed = JSON.parse(readFileSync(LOOKUP_RESULT_PATH, "utf8")) as unknown;
+  const parsed = JSON.parse(readFileSync(path, "utf8")) as unknown;
   if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) return null;
   const record = parsed as JsonRecord;
 
   return {
+    source,
+    queryResult: asString(record.result) || (source === "empty_example" ? "success_no_rows_returned" : "unknown"),
     competitions: asRecordArray(record.competitions).map((row) => ({
       id: asString(row.id),
       internal_key: asString(row.internal_key),
@@ -139,8 +153,20 @@ function loadLookupResult(): LookupResult | null {
   };
 }
 
+function loadLookupResult(): LookupResult | null {
+  return readLookupResult(LOOKUP_RESULT_PATH, "local") ?? readLookupResult(EMPTY_LOOKUP_RESULT_PATH, "empty_example");
+}
+
 function sameText(left: string, right: string): boolean {
   return left.trim().toLowerCase() === right.trim().toLowerCase();
+}
+
+function candidateCreateId(providerId: string): string {
+  return `${CANDIDATE_CREATE_PREFIX}${providerId}`;
+}
+
+function isCandidateCreateId(value: string): boolean {
+  return value.startsWith(CANDIDATE_CREATE_PREFIX);
 }
 
 async function main(): Promise<void> {
@@ -166,6 +192,7 @@ async function main(): Promise<void> {
 
       if (matches.length === 0) {
         counts.create += 1;
+        competitionIdByProviderId.set(fixture.provider_competition_id, candidateCreateId(fixture.provider_competition_id));
         continue;
       }
       if (matches.length > 1) {
@@ -194,6 +221,7 @@ async function main(): Promise<void> {
       }
       if (matches.length === 0) {
         counts.create += 1;
+        teamIdByProviderId.set(fixture.provider_team_id, candidateCreateId(fixture.provider_team_id));
         continue;
       }
       if (matches.length > 1) {
@@ -203,7 +231,7 @@ async function main(): Promise<void> {
 
       const match = matches[0];
       teamIdByProviderId.set(fixture.provider_team_id, match.id);
-      if (match.competition_id !== competitionId) {
+      if (!isCandidateCreateId(competitionId) && match.competition_id !== competitionId) {
         counts.conflict += 1;
         continue;
       }
@@ -254,6 +282,8 @@ async function main(): Promise<void> {
   console.info("Regista Avanzato — Manual Import Preview Dry Run");
   console.info("mode=manual_import_preview_dry_run");
   console.info(`preview_mode=${lookupLoaded ? "read_only_lookup_completed" : "read_only_lookup_pending"}`);
+  console.info(`query_result=${lookupResult?.queryResult ?? "pending_manual_sql_editor_execution"}`);
+  console.info(`lookup_result_source=${lookupResult?.source ?? "none"}`);
   console.info("source=local_fixtures");
   console.info("external_fetch=false");
   console.info("provider_fetch=false");
@@ -277,7 +307,11 @@ async function main(): Promise<void> {
   console.info("teams_view_status=verified");
   console.info("standings_view_status=verified");
   console.info(`view_lookup_executed=${lookupLoaded}`);
-  console.info(`view_lookup_reason=${lookupLoaded ? "manual_lookup_result_file_loaded" : "pending_manual_sql_editor_execution"}`);
+  console.info(`view_lookup_reason=${lookupResult ? lookupResult.queryResult : "pending_manual_sql_editor_execution"}`);
+  console.info(`live_lookup_rows_count=${lookupResult ? lookupResult.competitions.length + lookupResult.teams.length + lookupResult.standings.length : 0}`);
+  console.info(`existing_competitions_rows=${lookupResult?.competitions.length ?? 0}`);
+  console.info(`existing_teams_rows=${lookupResult?.teams.length ?? 0}`);
+  console.info(`existing_standings_rows=${lookupResult?.standings.length ?? 0}`);
   console.info(`preview_resolution=${lookupLoaded ? "read_only_lookup_completed" : "read_only_lookup_pending"}`);
   console.info(`create_count=${counts.create}`);
   console.info(`update_count=${counts.update}`);

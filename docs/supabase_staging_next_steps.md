@@ -1937,6 +1937,32 @@ Stato:
 
 Eseguire solo manualmente in Supabase SQL Editor staging “Regista Avanzato”.
 
+## Punto 40-Fix-B — Lookup live read-only completato
+
+Risultato manuale SQL Editor staging:
+
+- query_result: `success_no_rows_returned`;
+- query_executed: `true`;
+- query_read_only: `true`;
+- db_write: `false`;
+- service_role_used: `false`;
+- provider_fetch: `false`;
+- production_touched: `false`;
+- views_verified_count: `3`;
+- live_lookup_rows_count: `0`;
+- existing_competitions_rows: `0`;
+- existing_teams_rows: `0`;
+- existing_standings_rows: `0`;
+- preview_mode: `read_only_lookup_completed`;
+- create_count: `5`;
+- update_count: `0`;
+- skip_count: `0`;
+- conflict_count: `0`;
+- unresolved_count: `0`;
+- next_write_allowed: `false`.
+
+Prossimo step consigliato: Punto 40-B manual import write plan no-apply. Nessun DB write autorizzato in questo step.
+
 ## Punto 31 — Migration draft no-apply
 
 Creata draft:

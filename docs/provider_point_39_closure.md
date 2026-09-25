@@ -1,27 +1,29 @@
-# Punto 39 — Closure
+# Punto 39 / 40-Fix-B — Closure
 
-Punto 39 completato.
+Punto 39 è completato e il follow-up Punto 40-Fix-B ha risolto la preview.
 
-È stata eseguita una preview manuale/dry-run delle fixture contro il contesto delle view read-only verificate.
-
-Risultato:
+## Risultato aggiornato
 
 - manual_import_preview_completed: `true`;
-- preview_mode: `local_only_unresolved`;
+- read_only_live_view_lookup_executed: `true`;
+- query_result: `success_no_rows_returned`;
+- preview_mode: `read_only_lookup_completed`;
 - fixtures_loaded: `true`;
 - competitions_fixture_count: `1`;
 - teams_fixture_count: `2`;
 - standings_fixture_count: `2`;
+- total_fixture_count: `5`;
 - views_verified_count: `3`;
-- view_lookup_executed: `false`;
-- create_count: `0`;
+- view_lookup_executed: `true`;
+- live_lookup_rows_count: `0`;
+- create_count: `5`;
 - update_count: `0`;
 - skip_count: `0`;
 - conflict_count: `0`;
-- unresolved_count: `5`;
+- unresolved_count: `0`;
 - next_write_allowed: `false`.
 
-Conferme sicurezza:
+## Conferme sicurezza
 
 - nessun provider è stato chiamato;
 - nessuna fetch provider;
@@ -31,12 +33,8 @@ Conferme sicurezza:
 - Apify resta off;
 - Production non è stata toccata.
 
-## Follow-up Punto 40-Fix
+## Decisione
 
-Preparata query read-only per lookup live:
+Le fixture manuali sono tutte candidate create perché le view live hanno restituito zero righe.
 
-- `supabase/manual/manual_import_preview_lookup_p40fix.sql`
-
-La query richiede esecuzione manuale in Supabase SQL Editor staging. Finché non viene fornito il risultato minimo, la preview resta `read_only_lookup_pending` con `unresolved_count=5`.
-
-Decisione finale: restare pending, senza DB write/provider/import.
+Prossimo step consigliato: Punto 40-B — manual import write plan no-apply, ancora senza DB write/provider/import.

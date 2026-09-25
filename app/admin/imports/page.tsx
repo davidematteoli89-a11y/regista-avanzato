@@ -205,13 +205,13 @@ export default async function AdminImportsPage() {
           <div>
             <h2>Read-only live view lookup</h2>
             <p className="muted">
-              Punto 40-Fix prepara una query manuale solo-SELECT contro le view verificate.
-              L’esecuzione resta manuale in Supabase SQL Editor staging; nessuna query viene
-              lanciata da questa interfaccia.
+              Punto 40-Fix-B registra il risultato manuale della query solo-SELECT contro le
+              view verificate. Supabase SQL Editor staging ha risposto con successo e zero righe;
+              nessuna query viene lanciata da questa interfaccia.
             </p>
           </div>
           <div className="admin-badge-row">
-            <span className="admin-safety-badge">Lookup pending</span>
+            <span className="admin-safety-badge">Lookup completed</span>
             <span className="admin-safety-badge">SQL Editor manual</span>
             <span className="admin-safety-badge">No DB write</span>
             <span className="admin-safety-badge">Next write=false</span>
@@ -221,7 +221,9 @@ export default async function AdminImportsPage() {
           <dt>Lookup query prepared</dt>
           <dd>true</dd>
           <dt>Manual execution required</dt>
-          <dd>true</dd>
+          <dd>false</dd>
+          <dt>Query result</dt>
+          <dd>success_no_rows_returned</dd>
           <dt>Query read-only</dt>
           <dd>true</dd>
           <dt>DB write</dt>
@@ -229,13 +231,17 @@ export default async function AdminImportsPage() {
           <dt>Provider fetch</dt>
           <dd>false</dd>
           <dt>View lookup executed</dt>
-          <dd>false</dd>
+          <dd>true</dd>
+          <dt>Live lookup rows</dt>
+          <dd>0</dd>
+          <dt>Existing competitions / teams / standings</dt>
+          <dd>0 / 0 / 0</dd>
           <dt>Preview mode</dt>
-          <dd>read_only_lookup_pending</dd>
+          <dd>read_only_lookup_completed</dd>
           <dt>Create / update / skip / conflict</dt>
-          <dd>0 / 0 / 0 / 0</dd>
+          <dd>5 / 0 / 0 / 0</dd>
           <dt>Unresolved count</dt>
-          <dd>5</dd>
+          <dd>0</dd>
           <dt>Next write allowed</dt>
           <dd>false</dd>
         </dl>
@@ -246,9 +252,9 @@ export default async function AdminImportsPage() {
           <div>
             <h2>Manual fixture import preview</h2>
             <p className="muted">
-              Punto 39 simula solo una preview locale delle fixture manuali. Nessun lookup DB live
-              è stato eseguito in questa fase, quindi i risultati restano unresolved e non
-              autorizzano scritture.
+              Punto 40-Fix-B ha risolto la preview locale delle fixture manuali usando il
+              risultato manuale read-only delle view live. Tutte le fixture restano candidate
+              create; nessuna scrittura è autorizzata.
             </p>
           </div>
           <div className="admin-badge-row">
@@ -262,7 +268,7 @@ export default async function AdminImportsPage() {
           <dt>Preview dry-run completed</dt>
           <dd>true</dd>
           <dt>Preview mode</dt>
-          <dd>local_only_unresolved</dd>
+          <dd>read_only_lookup_completed</dd>
           <dt>Provider fetch</dt>
           <dd>false</dd>
           <dt>DB write</dt>
@@ -280,11 +286,13 @@ export default async function AdminImportsPage() {
           <dt>Views verified count</dt>
           <dd>3</dd>
           <dt>View lookup executed</dt>
-          <dd>false</dd>
+          <dd>true</dd>
+          <dt>Live lookup rows</dt>
+          <dd>0</dd>
           <dt>Create / update / skip / conflict</dt>
-          <dd>0 / 0 / 0 / 0</dd>
+          <dd>5 / 0 / 0 / 0</dd>
           <dt>Unresolved count</dt>
-          <dd>5</dd>
+          <dd>0</dd>
           <dt>Next write allowed</dt>
           <dd>false</dd>
         </dl>

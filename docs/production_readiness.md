@@ -1522,6 +1522,28 @@ Conferme:
 - next_write_allowed: `false`.
 
 Production resta esclusa.
+
+## Punto 40-Fix-B — Production impact
+
+Punto 40-Fix-B registra solo il risultato di una query read-only manuale su Supabase staging.
+
+Conferme:
+
+- deploy: `false`;
+- Production touched: `false`;
+- db_write: `false`;
+- service_role_used: `false`;
+- provider/import off;
+- Apify off;
+- query_result: `success_no_rows_returned`;
+- live_lookup_rows_count: `0`;
+- preview_mode: `read_only_lookup_completed`;
+- create_count: `5`;
+- conflict_count: `0`;
+- unresolved_count: `0`;
+- next_write_allowed: `false`.
+
+Production resta esclusa. Punto 40-B, se aperto, deve restare un write plan no-apply.
 - ready_for_apply: `false`;
 - `next_write_allowed=false`;
 - nessun provider/import attivato;

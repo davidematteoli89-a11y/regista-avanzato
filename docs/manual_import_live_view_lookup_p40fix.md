@@ -1,9 +1,11 @@
-# Punto 40-Fix — Read-only live view lookup
+# Punto 40-Fix-B — Read-only live view lookup result
 
 ## Scope
 
-- read-only live view lookup: `prepared`
+- read-only live view lookup: `executed_manually`
 - Supabase target: staging “Regista Avanzato”
+- SQL Editor result: `Success. No rows returned`
+- query_result: `success_no_rows_returned`
 - no DB write: `true`
 - no provider: `true`
 - no import reale: `true`
@@ -21,46 +23,58 @@ Il file contiene solo `SELECT` sulle view verificate:
 - `public.manual_import_teams_lookup`
 - `public.manual_import_standings_lookup`
 
-## Manual execution instructions
-
-1. Aprire Supabase Dashboard.
-2. Selezionare solo il progetto staging “Regista Avanzato”.
-3. Confermare che non sia Production, OS-Business, Fantacalcio o Quiz Live.
-4. Aprire SQL Editor.
-5. Incollare solo il contenuto di `supabase/manual/manual_import_preview_lookup_p40fix.sql`.
-6. Eseguire manualmente.
-7. Copiare solo il risultato minimo necessario per dedup/mapping.
-
-Se il target staging non è confermato, non eseguire la query.
+La query è stata eseguita manualmente dall’utente in Supabase SQL Editor staging. Non è stata eseguita dall’app, da script, da provider o da automazioni.
 
 ## Execution status
 
-- manual_sql_editor_execution_required: `true`
-- staging_target_confirmed_by_user: `pending`
-- query_executed: `pending`
+- manual_sql_editor_execution_required: `false`
+- staging_target_confirmed_by_user: `true`
+- query_executed: `true`
 - query_read_only: `true`
+- read_only_live_view_lookup_executed: `true`
 - db_write: `false`
+- service_role_used: `false`
 - provider_fetch: `false`
+- external_fetch: `false`
 - production_touched: `false`
 
 ## Lookup result
 
-- lookup_result_status: `pending`
-- preview_mode: `read_only_lookup_pending`
-- view_lookup_executed: `false`
-- create_count: `0`
+- lookup_result_status: `completed_empty`
+- query_result: `success_no_rows_returned`
+- preview_mode: `read_only_lookup_completed`
+- view_lookup_executed: `true`
+- live_lookup_rows_count: `0`
+- existing_competitions_rows: `0`
+- existing_teams_rows: `0`
+- existing_standings_rows: `0`
+- views_verified_count: `3`
+
+Poiché le view non contengono righe live, la preview manuale risolve tutte le fixture locali come candidate create.
+
+## Preview result
+
+- fixtures_loaded: `true`
+- competitions_fixture_count: `1`
+- teams_fixture_count: `2`
+- standings_fixture_count: `2`
+- total_fixture_count: `5`
+- create_count: `5`
 - update_count: `0`
 - skip_count: `0`
 - conflict_count: `0`
-- unresolved_count: `5`
+- unresolved_count: `0`
+- next_write_allowed: `false`
 
-Il risultato manuale può essere inserito localmente, senza committarlo, in:
+## Fixture lookup result file
+
+È stato creato un esempio committabile e non sensibile:
+
+- `fixtures/provider/manual/live-view-lookup-result.empty.example.json`
+
+Il file rappresenta il risultato manuale “successo, zero righe” senza salvare dati reali o credenziali. Il file locale non committabile resta:
 
 - `fixtures/provider/manual/live-view-lookup-result.local.json`
-
-Il template non sensibile è:
-
-- `fixtures/provider/manual/live-view-lookup-result.example.json`
 
 Il file `.local.json` è ignorato da Git.
 
@@ -74,3 +88,9 @@ Il file `.local.json` è ignorato da Git.
 - nessun deploy;
 - Production non toccata;
 - `next_write_allowed=false`.
+
+## Decisione
+
+Punto 40-Fix-B è completato. La preview è risolta con `create_count=5`, `conflict_count=0` e `unresolved_count=0`.
+
+Il prossimo step consigliato è Punto 40-B — manual import write plan no-apply, ancora senza DB write e senza autorizzare import reali.

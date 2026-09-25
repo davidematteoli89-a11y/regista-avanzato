@@ -1,9 +1,11 @@
-# Punto 39 — Decisione Punto 40
+# Punto 39 / 40-Fix-B — Decisione Punto 40
 
-## Stato
+## Stato aggiornato
 
 - manual_import_preview_completed: `true`
-- preview_mode: `local_only_unresolved`
+- read_only_live_view_lookup_executed: `true`
+- query_result: `success_no_rows_returned`
+- preview_mode: `read_only_lookup_completed`
 - provider_fetch: `false`
 - external_fetch: `false`
 - db_write: `false`
@@ -14,23 +16,24 @@
 - production_touched: `false`
 - fixtures_loaded: `true`
 - views_verified_count: `3`
-- view_lookup_executed: `false`
-- create_count: `0`
+- view_lookup_executed: `true`
+- live_lookup_rows_count: `0`
+- create_count: `5`
 - update_count: `0`
 - skip_count: `0`
 - conflict_count: `0`
-- unresolved_count: `5`
+- unresolved_count: `0`
 - next_write_allowed: `false`
 
 ## Decisioni
 
-### A. Punto 40 — manual import write plan no-apply
+### A. Punto 40-B — manual import write plan no-apply
 
-Non consigliato ora, perché `unresolved_count=5`.
+Consigliato come prossimo step, ma solo come piano no-apply. Il lookup read-only è completato e non ci sono conflict/unresolved.
 
-### B. Punto 40-Fix — sistemare fixture/mapping preview
+### B. Nessuna scrittura autorizzata
 
-Consigliato. Prima di qualunque write plan no-apply serve risolvere il mapping preview contro le view verificate, ancora senza DB write.
+Obbligatorio. Anche con `unresolved_count=0`, `next_write_allowed=false`.
 
 ### C. Non attivare provider
 
@@ -44,25 +47,24 @@ Obbligatorio.
 
 Obbligatorio.
 
-### F. Non scrivere dati applicativi
+## Follow-up Punto 40-Fix-B
 
-Obbligatorio senza nuova autorizzazione esplicita.
-
-## Follow-up Punto 40-Fix
-
-È stata preparata la query read-only live lookup:
+La query read-only live lookup:
 
 - `supabase/manual/manual_import_preview_lookup_p40fix.sql`
 
-Stato:
+è stata eseguita manualmente in SQL Editor staging con esito:
 
-- manual_sql_execution_required: `true`;
-- query_executed: `pending`;
-- preview_mode: `read_only_lookup_pending`;
-- view_lookup_executed: `false`;
-- unresolved_count: `5`;
-- next_write_allowed: `false`.
+- `Success. No rows returned`
+
+La preview risultante è:
+
+- create_count: `5`;
+- update_count: `0`;
+- skip_count: `0`;
+- conflict_count: `0`;
+- unresolved_count: `0`.
 
 ## Decisione finale
 
-Restare in Punto 40-Fix pending: eseguire manualmente la query read-only e fornire il risultato minimo prima di qualsiasi manual import write plan no-apply. `next_write_allowed=false`.
+Punto 40-Fix-B risolve la preview. Prossimo step: Punto 40-B — manual import write plan no-apply, ancora senza DB write, provider/import, Apify, deploy o Production.

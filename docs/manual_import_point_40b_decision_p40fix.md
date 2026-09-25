@@ -1,10 +1,12 @@
-# Punto 40-Fix — Decisione Punto 40-B
+# Punto 40-Fix-B — Decisione Punto 40-B
 
 ## Stato
 
 - read_only_live_view_lookup_prepared: `true`
-- manual_sql_execution_required: `true`
+- read_only_live_view_lookup_executed: `true`
+- manual_sql_execution_required: `false`
 - query_file: `supabase/manual/manual_import_preview_lookup_p40fix.sql`
+- query_result: `success_no_rows_returned`
 - query_read_only: `true`
 - provider_fetch: `false`
 - external_fetch: `false`
@@ -16,41 +18,37 @@
 - production_touched: `false`
 - fixtures_loaded: `true`
 - views_verified_count: `3`
-- view_lookup_executed: `false`
-- preview_mode: `read_only_lookup_pending`
-- create_count: `0`
+- view_lookup_executed: `true`
+- live_lookup_rows_count: `0`
+- existing_competitions_rows: `0`
+- existing_teams_rows: `0`
+- existing_standings_rows: `0`
+- preview_mode: `read_only_lookup_completed`
+- create_count: `5`
 - update_count: `0`
 - skip_count: `0`
 - conflict_count: `0`
-- unresolved_count: `5`
+- unresolved_count: `0`
 - next_write_allowed: `false`
 
 ## Decisioni
 
 ### A. Punto 40-B — manual import write plan no-apply
 
-Non autorizzato ora. Può essere valutato solo dopo lookup manuale eseguito e `unresolved_count=0`.
+Consigliato come prossimo step documentale/operativo, ancora senza DB write. Il piano dovrà descrivere cosa verrebbe scritto in staging solo dopo una futura autorizzazione esplicita.
 
-### B. Lookup manuale non ancora eseguito
+### B. Nessun write in Punto 40-Fix-B
 
-Stato corrente. Eseguire manualmente la query read-only in SQL Editor staging e fornire il risultato minimo.
+Confermato. Il lookup live è stato solo `SELECT` manuale e ha restituito zero righe.
 
-### C. Punto 40-Fix-B
+### C. Non attivare provider/import
 
-Se il lookup produce conflict/unresolved, correggere fixture/mapping senza DB write.
+Obbligatorio. Provider reali, import reali e Apify restano spenti.
 
-### D. Non attivare provider
-
-Obbligatorio.
-
-### E. Non attivare import reali
-
-Obbligatorio.
-
-### F. Non fare deploy Production
+### D. Non fare deploy Production
 
 Obbligatorio.
 
 ## Decisione finale
 
-Restare pending. Non proporre write plan finché `unresolved_count > 0`. `next_write_allowed=false`.
+Punto 40-Fix-B chiude il blocco lookup/preview. Tutte le fixture sono candidate create e non restano conflict/unresolved. `next_write_allowed=false`.

@@ -1476,6 +1476,28 @@ Punto 40-Fix prepara solo lookup live read-only manuale.
 
 Nessun provider reale può essere attivato da questa fase.
 
+## Punto 40-Fix-B — Provider activation status
+
+Punto 40-Fix-B non attiva provider e non autorizza import.
+
+- read_only_live_view_lookup_executed: `true`;
+- query_result: `success_no_rows_returned`;
+- provider_fetch: `false`;
+- external_fetch: `false`;
+- provider_import_enabled: `false`;
+- import_real_execution: `false`;
+- apify_enabled: `false`;
+- db_write: `false`;
+- preview_mode: `read_only_lookup_completed`;
+- create_count: `5`;
+- update_count: `0`;
+- skip_count: `0`;
+- conflict_count: `0`;
+- unresolved_count: `0`;
+- next_write_allowed: `false`.
+
+Nessun provider reale può essere attivato da questa fase. Prossimo step ammesso: Punto 40-B no-apply.
+
 ## Punto 32 — Review no-apply della migration draft
 
 Punto 32 revisiona e hardena la draft P31 senza applicarla.
