@@ -911,28 +911,30 @@ Output atteso dopo lookup manuale read-only completato:
 
 Il dry-run resta no-write/no-provider/no-env-output.
 
-## Punto 42 — Dry-run output atteso
+## Punto 42-B — Dry-run output aggiornato
 
-Output atteso dopo preparazione SQL manuale:
+Output atteso dopo esecuzione manuale staging e verifica positiva:
 
 - `point_42_authorized=true`;
 - `point_42_write_sql_prepared=true`;
 - `point_42_rollback_sql_prepared=true`;
 - `point_42_post_verify_sql_prepared=true`;
-- `manual_fixture_write_executed=false`;
-- `manual_execution_required=true`;
-- `written_competitions_count=0`;
-- `written_teams_count=0`;
-- `written_standings_count=0`;
-- `total_written_rows=0`;
-- `post_write_verification_executed=false`;
-- `post_write_verification_passed=false`;
+- `point_42_manual_fixture_write_completed=true`;
+- `manual_fixture_write_executed=true`;
+- `execution_channel=manual_sql_editor_staging`;
+- `manual_execution_required=false`;
+- `written_competitions_count=1`;
+- `written_teams_count=2`;
+- `written_standings_count=2`;
+- `total_written_rows=5`;
+- `post_write_verification_executed=true`;
+- `post_write_verification_passed=true`;
 - `rollback_executed=false`;
 - `provider_fetch=false`;
 - `external_fetch=false`;
 - `service_role_used=false`.
 
-Il dry-run resta no-write/no-provider/no-env-output finché l’utente non esegue manualmente il SQL in staging.
+Provider/import restano spenti; le probe provider restano disabled.
 
 ## Punto 40-B — Dry-run output atteso
 

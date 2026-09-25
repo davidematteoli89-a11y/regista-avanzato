@@ -1987,9 +1987,9 @@ Piano creato senza scritture:
 
 Prossimo step consigliato: Punto 41 final authorization gate for manual fixture write, ancora no-write.
 
-## Punto 42 — Manual fixture write staging preparato
+## Punto 42-B — Manual fixture write staging completato
 
-Autorizzazione utente ricevuta per Punto 42, limitata a staging e alle 5 fixture manuali.
+Autorizzazione utente ricevuta per Punto 42, limitata a staging e alle 5 fixture manuali. Il write è stato eseguito manualmente in Supabase SQL Editor staging.
 
 File preparati:
 
@@ -1997,20 +1997,21 @@ File preparati:
 - `supabase/manual/manual_import_fixture_rollback_p42.sql`;
 - `supabase/manual/manual_import_fixture_post_verify_p42.sql`.
 
-Stato da questa sessione:
+Stato finale:
 
 - point_42_authorized: `true`;
 - write_sql_prepared: `true`;
 - rollback_sql_prepared: `true`;
 - post_verify_sql_prepared: `true`;
-- manual_fixture_write_executed: `false`;
-- manual_execution_required: `true`;
-- db_write: `false`;
-- written_competitions_count: `0`;
-- written_teams_count: `0`;
-- written_standings_count: `0`;
-- total_written_rows: `0`;
-- post_write_verification_executed: `false`;
+- manual_fixture_write_executed: `true`;
+- execution_channel: `manual_sql_editor_staging`;
+- db_write: `true`;
+- written_competitions_count: `1`;
+- written_teams_count: `2`;
+- written_standings_count: `2`;
+- total_written_rows: `5`;
+- post_write_verification_executed: `true`;
+- post_write_verification_passed: `true`;
 - rollback_executed: `false`;
 - provider_fetch: `false`;
 - provider_import_enabled: `false`;
@@ -2019,7 +2020,7 @@ Stato da questa sessione:
 - deploy_executed: `false`;
 - service_role_used: `false`.
 
-Eseguire manualmente solo in Supabase SQL Editor staging “Regista Avanzato”.
+La competition è stata verificata con `api_competition_id=manual-serie-a`. Il primo count competition a zero era dovuto a una query non allineata che cercava `manual-competition-1`.
 
 ## Punto 31 — Migration draft no-apply
 

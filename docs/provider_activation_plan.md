@@ -1518,11 +1518,15 @@ Provider/import restano spenti. Prossimo step consigliato: Punto 41 no-write gat
 
 ## Punto 42 — Provider activation status
 
-Punto 42 non attiva provider/import.
+Punto 42 non attiva provider/import. Il write manuale delle fixture è stato eseguito solo in staging tramite SQL Editor.
 
 - point_42_authorized: `true`;
 - write_sql_prepared: `true`;
-- manual_fixture_write_executed: `false`;
+- manual_fixture_write_executed: `true`;
+- execution_channel: `manual_sql_editor_staging`;
+- db_write: `true`;
+- total_written_rows: `5`;
+- post_write_verification_passed: `true`;
 - provider_fetch: `false`;
 - external_fetch: `false`;
 - provider_import_enabled: `false`;
@@ -1531,7 +1535,7 @@ Punto 42 non attiva provider/import.
 - service_role_used: `false`;
 - production_touched: `false`.
 
-I file SQL sono manuali e limitati alle 5 fixture staging.
+I file SQL sono manuali e limitati alle 5 fixture staging. Nessun provider/import è stato attivato.
 
 ## Punto 32 — Review no-apply della migration draft
 

@@ -2887,11 +2887,11 @@ Risultato:
 
 Prossimo step consigliato: Punto 41 — final authorization gate for manual fixture write, ancora no-write.
 
-## Punto 42 — Apply manual fixture write in staging
+## Punto 42-B — Apply manual fixture write in staging completato
 
-Stato: preparato, non eseguito da questa sessione.
+Stato: completato.
 
-Autorizzazione utente ricevuta per scrittura manuale delle 5 fixture solo in Supabase staging.
+Autorizzazione utente ricevuta per scrittura manuale delle 5 fixture solo in Supabase staging. L’utente ha eseguito manualmente `supabase/manual/manual_import_fixture_write_p42.sql` in Supabase SQL Editor staging con esito `Success. No rows returned`.
 
 File creati:
 
@@ -2906,15 +2906,15 @@ Risultato operativo:
 - write_sql_prepared: `true`;
 - rollback_sql_prepared: `true`;
 - post_verify_sql_prepared: `true`;
-- manual_fixture_write_executed: `false`;
-- execution_channel: `manual_sql_editor_staging_required`;
-- db_write: `false`;
-- written_competitions_count: `0`;
-- written_teams_count: `0`;
-- written_standings_count: `0`;
-- total_written_rows: `0`;
-- post_write_verification_executed: `false`;
-- post_write_verification_passed: `false`;
+- manual_fixture_write_executed: `true`;
+- execution_channel: `manual_sql_editor_staging`;
+- db_write: `true`;
+- written_competitions_count: `1`;
+- written_teams_count: `2`;
+- written_standings_count: `2`;
+- total_written_rows: `5`;
+- post_write_verification_executed: `true`;
+- post_write_verification_passed: `true`;
 - rollback_executed: `false`;
 - provider_fetch: `false`;
 - external_fetch: `false`;
@@ -2924,4 +2924,4 @@ Risultato operativo:
 - deploy_executed: `false`;
 - service_role_used: `false`.
 
-Motivo: l’esecuzione richiede SQL Editor Supabase staging manuale e conferma visiva del progetto.
+Rollback non eseguito perché la verifica è passata. Prossimo step consigliato: Punto 43 — read-only UI/admin verification after manual fixture write.

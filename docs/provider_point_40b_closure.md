@@ -28,18 +28,22 @@ Conferme:
 
 Il prossimo step consigliato è Punto 41: final authorization gate for manual fixture write, ancora no-write.
 
-## Follow-up Punto 42
+## Follow-up Punto 42-B
 
-Punto 42 è stato autorizzato per staging e sono stati preparati:
+Punto 42 è stato eseguito manualmente in Supabase SQL Editor staging e chiuso con verifica positiva.
 
-- write SQL manuale;
-- rollback SQL manuale;
-- post-write verification SQL read-only.
+Risultato:
 
-Da questa sessione:
-
-- manual_fixture_write_executed: `false`;
-- manual_execution_required: `true`;
-- db_write: `false`;
+- manual_fixture_write_executed: `true`;
+- execution_channel: `manual_sql_editor_staging`;
+- db_write: `true`;
+- written_competitions_count: `1`;
+- written_teams_count: `2`;
+- written_standings_count: `2`;
+- total_written_rows: `5`;
+- post_write_verification_passed: `true`;
+- rollback_executed: `false`;
 - provider/import attivati: `false`;
-- Production touched: `false`.
+- Apify: `off`;
+- Production touched: `false`;
+- deploy_executed: `false`.

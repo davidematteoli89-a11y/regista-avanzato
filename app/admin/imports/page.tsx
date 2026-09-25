@@ -205,9 +205,8 @@ export default async function AdminImportsPage() {
           <div>
             <h2>Point 42 manual fixture write</h2>
             <p className="muted">
-              Punto 42 è autorizzato per staging, ma da questa interfaccia resta solo read-only.
-              Il SQL manuale è preparato per SQL Editor staging; nessuna scrittura viene eseguita
-              dall’app.
+              Punto 42 è stato eseguito manualmente in Supabase SQL Editor staging. Questa
+              interfaccia resta solo read-only: nessuna scrittura viene eseguita dall’app.
             </p>
           </div>
           <div className="admin-badge-row">
@@ -226,12 +225,22 @@ export default async function AdminImportsPage() {
           <dd>true</dd>
           <dt>Post-verify SQL prepared</dt>
           <dd>true</dd>
-          <dt>Manual execution status</dt>
-          <dd>manual_execution_required</dd>
-          <dt>Written rows</dt>
-          <dd>0</dd>
+          <dt>Manual fixture write executed</dt>
+          <dd>true</dd>
+          <dt>Execution channel</dt>
+          <dd>manual_sql_editor_staging</dd>
+          <dt>DB write</dt>
+          <dd>true</dd>
+          <dt>Written competitions</dt>
+          <dd>1</dd>
+          <dt>Written teams</dt>
+          <dd>2</dd>
+          <dt>Written standings</dt>
+          <dd>2</dd>
+          <dt>Total written rows</dt>
+          <dd>5</dd>
           <dt>Post-write verification</dt>
-          <dd>not_executed</dd>
+          <dd>passed</dd>
           <dt>Rollback executed</dt>
           <dd>false</dd>
           <dt>Provider / Apify</dt>

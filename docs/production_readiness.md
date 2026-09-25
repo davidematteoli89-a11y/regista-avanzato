@@ -1565,7 +1565,7 @@ Production resta esclusa. Punto 41 deve restare gate no-write prima di qualunque
 
 ## Punto 42 — Production impact
 
-Punto 42 è stato autorizzato solo per Supabase staging, ma da questa sessione sono stati preparati solo i file SQL manuali.
+Punto 42 è stato autorizzato ed eseguito solo su Supabase staging tramite SQL Editor manuale.
 
 Conferme:
 
@@ -1574,11 +1574,13 @@ Conferme:
 - provider/import off;
 - Apify off;
 - service_role_used: `false`;
-- manual_fixture_write_executed: `false`;
-- db_write: `false`;
-- manual_execution_required: `true`.
+- manual_fixture_write_executed: `true`;
+- db_write: `true`;
+- written rows: `5`;
+- post_write_verification_passed: `true`;
+- rollback_executed: `false`.
 
-Production resta esclusa. Qualunque esecuzione manuale deve avvenire solo nel progetto staging “Regista Avanzato”.
+Production resta esclusa.
 - ready_for_apply: `false`;
 - `next_write_allowed=false`;
 - nessun provider/import attivato;

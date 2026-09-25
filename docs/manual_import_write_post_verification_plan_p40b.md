@@ -38,3 +38,22 @@ Dopo un eventuale futuro write autorizzato, verificare solo con controlli read-o
 - unresolved_count: `0`;
 - provider_fetch: `false`;
 - production_touched: `false`.
+
+## Punto 42-B — Verifica eseguita
+
+La verifica post-write è stata eseguita manualmente dopo il write staging Punto 42.
+
+Risultato:
+
+- post_write_verification_executed: `true`;
+- post_write_verification_passed: `true`;
+- written_competitions_count: `1`;
+- written_teams_count: `2`;
+- written_standings_count: `2`;
+- total_written_rows: `5`;
+- rollback_executed: `false`;
+- provider_fetch: `false`;
+- provider_import_enabled: `false`;
+- apify_enabled: `false`;
+- production_touched: `false`;
+- deploy_executed: `false`.
