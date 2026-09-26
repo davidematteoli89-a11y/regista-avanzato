@@ -2108,3 +2108,29 @@ Punto 44 completato.
 - deploy_executed: `false`.
 
 Prossimo step consigliato: Punto 45 — superficie admin read-only per competizioni manuali.
+
+## Punto 45 — Superficie admin read-only per dati manuali
+
+Punto 45 completato.
+
+- route create:
+  - `/admin/data`;
+  - `/admin/data/competitions`;
+  - `/admin/data/competitions/[slug]`;
+- reader creati in `lib/manual-data/readers.ts`;
+- link read-only aggiunto in `/admin/imports`;
+- point_45_admin_read_only_surface_implemented: `true`;
+- admin_manual_competitions_route_created: `true`;
+- admin_manual_competition_detail_route_created: `true`;
+- admin_imports_link_created: `true`;
+- public_exposure_enabled: `false`;
+- current_visibility: `private_admin`;
+- point_45_db_write: `false`;
+- provider_fetch: `false`;
+- provider_import_enabled: `false`;
+- apify_enabled: `false`;
+- production_touched: `false`;
+- deploy_executed: `false`;
+- service_role_used: `false`.
+
+Prossimo step consigliato: Punto 46 — verifica read-only della superficie admin con dati manuali.

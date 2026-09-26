@@ -2993,3 +2993,41 @@ Risultato:
 - service_role_used: `false`.
 
 Prossimo step consigliato: Punto 45 — implement admin read-only data surface for manual competitions.
+
+## Punto 45 — Implement admin read-only data surface for manual competitions
+
+Stato: completato.
+
+File principali:
+
+- `lib/manual-data/readers.ts`;
+- `app/admin/data/page.tsx`;
+- `app/admin/data/competitions/page.tsx`;
+- `app/admin/data/competitions/[slug]/page.tsx`;
+- `app/admin/imports/page.tsx`;
+- `docs/manual_data_admin_surface_p45.md`;
+- `docs/manual_import_point_46_decision_p45.md`;
+- `docs/provider_point_45_closure.md`.
+
+Risultato:
+
+- point_45_admin_read_only_surface_implemented: `true`;
+- admin_manual_competitions_route_created: `true`;
+- admin_manual_competition_detail_route_created: `true`;
+- admin_imports_link_created: `true`;
+- readers_created_or_updated: `true`;
+- displayed_competitions_count_expected: `1`;
+- displayed_teams_count_expected: `2`;
+- displayed_standings_count_expected: `2`;
+- public_exposure_enabled: `false`;
+- current_visibility: `private_admin`;
+- point_45_db_write: `false`;
+- provider_fetch: `false`;
+- external_fetch: `false`;
+- provider_import_enabled: `false`;
+- apify_enabled: `false`;
+- production_touched: `false`;
+- deploy_executed: `false`;
+- service_role_used: `false`.
+
+Prossimo step consigliato: Punto 46 — read-only admin surface verification with manual fixture data.

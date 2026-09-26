@@ -50,3 +50,23 @@ Non consigliato prima di admin perché i dati correnti sono `private_admin`.
 - no Production;
 - no deploy;
 - no DB write senza nuova autorizzazione esplicita.
+
+## Esito Punto 45
+
+Punto 45 completato.
+
+- point_45_admin_read_only_surface_implemented: `true`;
+- admin_manual_competitions_route_created: `true`;
+- admin_manual_competition_detail_route_created: `true`;
+- admin_imports_link_created: `true`;
+- readers_created_or_updated: `true`;
+- public_exposure_enabled: `false`;
+- current_visibility: `private_admin`;
+- point_45_db_write: `false`;
+- provider_fetch: `false`;
+- provider_import_enabled: `false`;
+- apify_enabled: `false`;
+- production_touched: `false`;
+- deploy_executed: `false`.
+
+Decisione successiva: Punto 46 — verifica read-only della superficie admin con dati manuali.

@@ -352,6 +352,11 @@ async function main(): Promise<void> {
   console.info("public_exposure_enabled=false");
   console.info("current_visibility=private_admin");
   console.info("point_44_db_write=false");
+  console.info("point_45_admin_read_only_surface_implemented=true");
+  console.info("admin_manual_competitions_route_created=true");
+  console.info("admin_manual_competition_detail_route_created=true");
+  console.info("admin_imports_link_created=true");
+  console.info("point_45_db_write=false");
   console.info("blocked_real_execution=true");
   console.info("next_write_allowed=false");
   console.info("point_41_authorization_required=true");

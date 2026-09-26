@@ -1639,3 +1639,20 @@ Punto 44 crea solo un piano read-only di consumo dati manuali.
 - service_role_used: `false`.
 
 I dati manuali non devono essere esposti pubblicamente finché `visibility=private_admin` e finché non esiste una decisione esplicita di policy.
+
+## Punto 45 — Production ancora esclusa
+
+Punto 45 implementa solo superfici admin read-only.
+
+- public_exposure_enabled: `false`;
+- current_visibility: `private_admin`;
+- point_45_db_write: `false`;
+- provider_fetch: `false`;
+- external_fetch: `false`;
+- provider_import_enabled: `false`;
+- apify_enabled: `false`;
+- deploy_executed: `false`;
+- production_touched: `false`;
+- service_role_used: `false`.
+
+Nessuna route pubblica è stata aggiunta. Production resta esclusa.

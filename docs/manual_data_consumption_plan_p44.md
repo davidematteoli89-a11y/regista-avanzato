@@ -75,3 +75,14 @@ Sequenza consigliata no-write:
 ## Decision
 
 Punto 44 crea solo piano e documentazione. Non implementa writer, non crea bottoni di import/run/sync/save e non abilita provider.
+
+## Follow-up Punto 45
+
+Punto 45 ha implementato la prima superficie admin read-only per consumare i dati manuali:
+
+- `/admin/data`;
+- `/admin/data/competitions`;
+- `/admin/data/competitions/[slug]`;
+- link read-only da `/admin/imports`.
+
+I dati restano `private_admin` e `public_exposure_enabled=false`.

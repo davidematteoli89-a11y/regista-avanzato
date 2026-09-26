@@ -1590,3 +1590,20 @@ Punto 44 è solo piano read-only e non attiva provider/import.
 - deploy_executed: `false`.
 
 Provider/import restano spenti. La prossima fase consigliata è admin read-only, non provider activation.
+
+## Punto 45 — Provider activation status
+
+Punto 45 implementa superfici admin read-only e non attiva provider/import.
+
+- point_45_admin_read_only_surface_implemented: `true`;
+- provider_fetch: `false`;
+- external_fetch: `false`;
+- provider_import_enabled: `false`;
+- import_real_execution: `false`;
+- apify_enabled: `false`;
+- point_45_db_write: `false`;
+- service_role_used: `false`;
+- production_touched: `false`;
+- deploy_executed: `false`.
+
+Provider/import restano spenti. La prossima fase consigliata è verifica UI/read-only, non provider activation.

@@ -39,3 +39,15 @@ Punto 45 dovrebbe partire da una superficie admin read-only:
 
 - `/admin/data/competitions`, oppure
 - integrare provvisoriamente una sezione admin read-only dedicata in `/admin/imports`.
+
+## Follow-up Punto 45
+
+Route implementate:
+
+- `/admin/data`;
+- `/admin/data/competitions`;
+- `/admin/data/competitions/[slug]`.
+
+`/admin/imports` contiene un link read-only verso `/admin/data/competitions`.
+
+Nessuna route pubblica è stata implementata.

@@ -32,3 +32,17 @@ Nessuna nuova scrittura DB è stata eseguita. Nessun provider è stato chiamato.
 ## Prossimo step consigliato
 
 Punto 45 — implement admin read-only data surface for manual competitions.
+
+## Follow-up Punto 45
+
+Punto 45 completato: superficie admin read-only implementata.
+
+- admin_manual_competitions_route_created: `true`;
+- admin_manual_competition_detail_route_created: `true`;
+- admin_imports_link_created: `true`;
+- readers_created_or_updated: `true`;
+- public_exposure_enabled: `false`;
+- point_45_db_write: `false`;
+- provider/import restano spenti;
+- Apify resta off;
+- Production non toccata.

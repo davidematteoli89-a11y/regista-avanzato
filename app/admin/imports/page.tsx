@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { AdminImportLogList } from "@/components/admin/AdminImportLogList";
 import { getAdminImports } from "@/lib/admin/getAdminImports";
 import { getAdminProviderImportRuns } from "@/lib/admin/adminProviderImportRuns";
@@ -328,6 +329,14 @@ export default async function AdminImportsPage() {
           <dt>Provider / import</dt>
           <dd>off / disabled</dd>
           <dt>Point 44 DB write</dt>
+          <dd>false</dd>
+          <dt>Admin data surface implemented</dt>
+          <dd>true</dd>
+          <dt>View manual competitions</dt>
+          <dd>
+            <Link href="/admin/data/competitions">Open read-only admin surface</Link>
+          </dd>
+          <dt>Point 45 DB write</dt>
           <dd>false</dd>
           <dt>Next write allowed</dt>
           <dd>false</dd>

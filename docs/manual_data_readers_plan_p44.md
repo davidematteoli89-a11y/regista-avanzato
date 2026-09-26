@@ -88,3 +88,14 @@ Prima di implementare i reader:
 - confermare che le view staging esistano;
 - confermare che il fallback UI sia empty/error safe;
 - rieseguire lint/typecheck/build.
+
+## Follow-up Punto 45
+
+Reader implementati:
+
+- `getManualCompetitionsReadOnly`;
+- `getManualCompetitionBySlugReadOnly`;
+- `getManualTeamsByCompetitionReadOnly`;
+- `getManualStandingsByCompetitionReadOnly`.
+
+I reader usano il client server Supabase associato alla sessione/RLS, non usano `service_role`, non scrivono dati e non chiamano provider.

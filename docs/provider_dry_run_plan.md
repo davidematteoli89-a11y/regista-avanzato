@@ -906,6 +906,26 @@ I dry-run manual/import devono includere il checkpoint Punto 44:
 
 Nessun provider reale, import provider, Apify o public exposure è autorizzato dal Punto 44.
 
+## Punto 45 — Dry-run output atteso
+
+I dry-run manual/import devono includere il checkpoint Punto 45:
+
+- `point_45_admin_read_only_surface_implemented=true`;
+- `admin_manual_competitions_route_created=true`;
+- `admin_manual_competition_detail_route_created=true`;
+- `admin_imports_link_created=true`;
+- `public_exposure_enabled=false`;
+- `current_visibility=private_admin`;
+- `point_45_db_write=false`;
+- `provider_fetch=false`;
+- `provider_import_enabled=false`;
+- `apify_enabled=false`;
+- `production_touched=false`;
+- `deploy_executed=false`;
+- `service_role_used=false`.
+
+Nessuna scrittura DB, provider reale, import provider, Apify o esposizione pubblica è autorizzata dal Punto 45.
+
 ## Punto 43 — Dry-run output atteso
 
 I dry-run manual/import devono includere il checkpoint read-only Punto 43:
