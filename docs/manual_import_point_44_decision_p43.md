@@ -47,3 +47,25 @@ Usare se prima servono fix read-only ai reader o alle query di lookup, senza scr
 ## Decisione finale
 
 Procedere con Punto 44 come piano read-only di consumo dati manuali. Nessun provider/import reale e nessuna nuova scrittura sono autorizzati.
+
+## Esito Punto 44
+
+Punto 44 completato.
+
+- point_44_manual_data_consumption_plan_created: `true`
+- data_consumption_mode: `read_only_plan`
+- available_competitions_count: `1`
+- available_teams_count: `2`
+- available_standings_count: `2`
+- admin_consumption_planned: `true`
+- public_consumption_planned: `true`
+- public_exposure_enabled: `false`
+- current_visibility: `private_admin`
+- point_44_db_write: `false`
+- provider_fetch: `false`
+- provider_import_enabled: `false`
+- apify_enabled: `false`
+- production_touched: `false`
+- deploy_executed: `false`
+
+Decisione successiva: Punto 45 come implementazione admin read-only per dati manuali.

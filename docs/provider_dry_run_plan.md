@@ -886,6 +886,26 @@ Stato dry-run:
 
 Provider/import restano spenti.
 
+## Punto 44 — Dry-run output atteso
+
+I dry-run manual/import devono includere il checkpoint Punto 44:
+
+- `point_44_manual_data_consumption_plan_created=true`;
+- `data_consumption_mode=read_only_plan`;
+- `admin_consumption_planned=true`;
+- `public_consumption_planned=true`;
+- `public_exposure_enabled=false`;
+- `current_visibility=private_admin`;
+- `point_44_db_write=false`;
+- `provider_fetch=false`;
+- `provider_import_enabled=false`;
+- `apify_enabled=false`;
+- `production_touched=false`;
+- `deploy_executed=false`;
+- `service_role_used=false`.
+
+Nessun provider reale, import provider, Apify o public exposure è autorizzato dal Punto 44.
+
 ## Punto 43 — Dry-run output atteso
 
 I dry-run manual/import devono includere il checkpoint read-only Punto 43:

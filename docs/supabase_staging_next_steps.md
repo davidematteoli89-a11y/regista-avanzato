@@ -2080,3 +2080,31 @@ Stato:
 - `next_write_allowed=false`.
 
 Prossimo step consigliato: Punto 33 staging apply plan no-apply, senza applicare nulla.
+
+## Punto 44 — Piano consumo dati manuali read-only
+
+Punto 44 completato.
+
+- docs creati:
+  - `docs/manual_data_consumption_plan_p44.md`;
+  - `docs/manual_data_readers_plan_p44.md`;
+  - `docs/manual_data_routes_plan_p44.md`;
+  - `docs/manual_import_point_45_decision_p44.md`;
+  - `docs/provider_point_44_closure.md`;
+- point_44_manual_data_consumption_plan_created: `true`;
+- data_consumption_mode: `read_only_plan`;
+- available_competitions_count: `1`;
+- available_teams_count: `2`;
+- available_standings_count: `2`;
+- admin_consumption_planned: `true`;
+- public_consumption_planned: `true`;
+- public_exposure_enabled: `false`;
+- current_visibility: `private_admin`;
+- point_44_db_write: `false`;
+- provider_fetch: `false`;
+- provider_import_enabled: `false`;
+- apify_enabled: `false`;
+- production_touched: `false`;
+- deploy_executed: `false`.
+
+Prossimo step consigliato: Punto 45 — superficie admin read-only per competizioni manuali.

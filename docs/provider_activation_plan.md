@@ -1572,3 +1572,21 @@ Confermato:
 - `next_write_allowed=false`.
 
 Provider/import restano spenti. Prossimo step consigliato: Punto 33 come staging apply plan no-apply.
+
+## Punto 44 — Provider activation status
+
+Punto 44 è solo piano read-only e non attiva provider/import.
+
+- point_44_manual_data_consumption_plan_created: `true`;
+- data_consumption_mode: `read_only_plan`;
+- provider_fetch: `false`;
+- external_fetch: `false`;
+- provider_import_enabled: `false`;
+- import_real_execution: `false`;
+- apify_enabled: `false`;
+- point_44_db_write: `false`;
+- service_role_used: `false`;
+- production_touched: `false`;
+- deploy_executed: `false`.
+
+Provider/import restano spenti. La prossima fase consigliata è admin read-only, non provider activation.

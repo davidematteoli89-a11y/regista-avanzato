@@ -43,3 +43,20 @@ Nessun provider è stato chiamato. Nessun import provider è stato attivato. Api
 ## Prossimo step consigliato
 
 Punto 44 — read-only public/admin data consumption plan.
+
+## Follow-up Punto 44
+
+Punto 44 completato come piano read-only di consumo dati manuali.
+
+- dati disponibili: 1 competition, 2 teams, 2 standings;
+- admin_consumption_planned: `true`;
+- public_consumption_planned: `true`;
+- public_exposure_enabled: `false`;
+- current_visibility: `private_admin`;
+- point_44_db_write: `false`;
+- provider/import restano spenti;
+- Apify resta off;
+- Production non toccata;
+- deploy non eseguito.
+
+Prossimo step consigliato: Punto 45 — implement admin read-only data surface for manual competitions.

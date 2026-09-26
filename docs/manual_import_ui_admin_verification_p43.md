@@ -86,3 +86,22 @@ Punto 43 è completato come verifica UI/admin read-only.
 La fase non autorizza nuovi write, import provider, fetch provider, Apify, deploy o Production.
 
 Prossimo step consigliato: Punto 44 — read-only public/admin data consumption plan.
+
+## Follow-up Punto 44
+
+Punto 44 ha creato il piano read-only per consumare i dati manuali in admin/pubblico.
+
+- point_44_manual_data_consumption_plan_created: `true`
+- data_consumption_mode: `read_only_plan`
+- admin_consumption_planned: `true`
+- public_consumption_planned: `true`
+- public_exposure_enabled: `false`
+- current_visibility: `private_admin`
+- point_44_db_write: `false`
+- provider_fetch: `false`
+- provider_import_enabled: `false`
+- apify_enabled: `false`
+- production_touched: `false`
+- deploy_executed: `false`
+
+I dati manuali possono alimentare prima superfici admin. L’esposizione pubblica resta disabilitata finché non viene decisa una policy di visibilità.

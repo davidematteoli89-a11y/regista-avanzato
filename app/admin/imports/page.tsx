@@ -298,6 +298,45 @@ export default async function AdminImportsPage() {
       <section className="admin-section-card">
         <div className="admin-card-head">
           <div>
+            <h2>Point 44 manual data consumption plan</h2>
+            <p className="muted">
+              Punto 44 pianifica come consumare i dati manuali in superfici admin e, solo in
+              futuro, pubbliche. I dati correnti restano private_admin e non vengono esposti al
+              pubblico da questa pagina.
+            </p>
+          </div>
+          <div className="admin-badge-row">
+            <span className="admin-safety-badge">Plan only</span>
+            <span className="admin-safety-badge">Admin first</span>
+            <span className="admin-safety-badge">Public disabled</span>
+            <span className="admin-safety-badge">No DB write</span>
+          </div>
+        </div>
+        <dl className="admin-metadata">
+          <dt>Manual data consumption plan created</dt>
+          <dd>true</dd>
+          <dt>Data consumption mode</dt>
+          <dd>read_only_plan</dd>
+          <dt>Suggested next surfaces</dt>
+          <dd>admin competitions list, admin competition detail, admin standings table</dd>
+          <dt>Available competitions / teams / standings</dt>
+          <dd>1 / 2 / 2</dd>
+          <dt>Current visibility</dt>
+          <dd>private_admin</dd>
+          <dt>Public exposure</dt>
+          <dd>not_enabled</dd>
+          <dt>Provider / import</dt>
+          <dd>off / disabled</dd>
+          <dt>Point 44 DB write</dt>
+          <dd>false</dd>
+          <dt>Next write allowed</dt>
+          <dd>false</dd>
+        </dl>
+      </section>
+
+      <section className="admin-section-card">
+        <div className="admin-card-head">
+          <div>
             <h2>Manual import write plan</h2>
             <p className="muted">
               Punto 40-B documenta solo il piano no-apply per una futura scrittura manuale delle

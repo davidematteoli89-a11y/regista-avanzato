@@ -345,6 +345,13 @@ async function main(): Promise<void> {
   console.info("ui_admin_verification_mode=read_only");
   console.info("point_43_db_write=false");
   console.info("deploy_executed=false");
+  console.info("point_44_manual_data_consumption_plan_created=true");
+  console.info("data_consumption_mode=read_only_plan");
+  console.info("admin_consumption_planned=true");
+  console.info("public_consumption_planned=true");
+  console.info("public_exposure_enabled=false");
+  console.info("current_visibility=private_admin");
+  console.info("point_44_db_write=false");
   console.info("blocked_real_execution=true");
   console.info("next_write_allowed=false");
   console.info("point_41_authorization_required=true");

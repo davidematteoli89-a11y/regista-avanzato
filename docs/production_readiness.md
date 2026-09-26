@@ -1622,3 +1622,20 @@ Confermato:
 - `next_write_allowed=false`.
 
 Production resta esclusa anche in qualunque Punto 33 no-apply.
+
+## Punto 44 — Production ancora esclusa
+
+Punto 44 crea solo un piano read-only di consumo dati manuali.
+
+- point_44_db_write: `false`;
+- provider_fetch: `false`;
+- external_fetch: `false`;
+- provider_import_enabled: `false`;
+- apify_enabled: `false`;
+- public_exposure_enabled: `false`;
+- current_visibility: `private_admin`;
+- deploy_executed: `false`;
+- production_touched: `false`;
+- service_role_used: `false`.
+
+I dati manuali non devono essere esposti pubblicamente finché `visibility=private_admin` e finché non esiste una decisione esplicita di policy.
