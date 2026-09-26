@@ -1537,6 +1537,24 @@ Punto 42 non attiva provider/import. Il write manuale delle fixture è stato ese
 
 I file SQL sono manuali e limitati alle 5 fixture staging. Nessun provider/import è stato attivato.
 
+## Punto 43 — Provider activation status
+
+Punto 43 non attiva provider/import e non esegue nuove scritture DB.
+
+- point_43_ui_admin_read_only_verification_completed: `true`;
+- ui_admin_verification_mode: `read_only`;
+- point_43_db_write: `false`;
+- provider_fetch: `false`;
+- external_fetch: `false`;
+- provider_import_enabled: `false`;
+- import_real_execution: `false`;
+- apify_enabled: `false`;
+- service_role_used: `false`;
+- production_touched: `false`;
+- deploy_executed: `false`.
+
+Provider/import restano spenti. Prossimo step consigliato: Punto 44 read-only data consumption plan.
+
 ## Punto 32 — Review no-apply della migration draft
 
 Punto 32 revisiona e hardena la draft P31 senza applicarla.

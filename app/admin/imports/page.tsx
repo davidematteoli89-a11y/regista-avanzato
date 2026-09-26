@@ -255,6 +255,49 @@ export default async function AdminImportsPage() {
       <section className="admin-section-card">
         <div className="admin-card-head">
           <div>
+            <h2>Point 43 read-only UI/admin verification</h2>
+            <p className="muted">
+              Punto 43 verifica che lo stato post-write manuale sia visibile in admin solo come
+              riepilogo read-only. Non aggiunge azioni, non legge provider e non esegue nuove
+              scritture DB.
+            </p>
+          </div>
+          <div className="admin-badge-row">
+            <span className="admin-safety-badge">UI read-only</span>
+            <span className="admin-safety-badge">No new DB write</span>
+            <span className="admin-safety-badge">Provider off</span>
+            <span className="admin-safety-badge">No deploy</span>
+          </div>
+        </div>
+        <dl className="admin-metadata">
+          <dt>Point 43 verification completed</dt>
+          <dd>true</dd>
+          <dt>Verification mode</dt>
+          <dd>read_only</dd>
+          <dt>Manual fixture write executed</dt>
+          <dd>true</dd>
+          <dt>Written competitions / teams / standings</dt>
+          <dd>1 / 2 / 2</dd>
+          <dt>Total written rows</dt>
+          <dd>5</dd>
+          <dt>Post-write verification passed</dt>
+          <dd>true</dd>
+          <dt>Rollback executed</dt>
+          <dd>false</dd>
+          <dt>Point 43 DB write</dt>
+          <dd>false</dd>
+          <dt>Provider fetch / provider import</dt>
+          <dd>false / false</dd>
+          <dt>Apify / Production / deploy</dt>
+          <dd>false / false / false</dd>
+          <dt>Next write allowed</dt>
+          <dd>false</dd>
+        </dl>
+      </section>
+
+      <section className="admin-section-card">
+        <div className="admin-card-head">
+          <div>
             <h2>Manual import write plan</h2>
             <p className="muted">
               Punto 40-B documenta solo il piano no-apply per una futura scrittura manuale delle

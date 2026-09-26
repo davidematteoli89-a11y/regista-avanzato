@@ -886,6 +886,30 @@ Stato dry-run:
 
 Provider/import restano spenti.
 
+## Punto 43 — Dry-run output atteso
+
+I dry-run manual/import devono includere il checkpoint read-only Punto 43:
+
+- `point_43_ui_admin_read_only_verification_completed=true`;
+- `ui_admin_verification_mode=read_only`;
+- `manual_fixture_write_executed=true`;
+- `written_competitions_count=1`;
+- `written_teams_count=2`;
+- `written_standings_count=2`;
+- `total_written_rows=5`;
+- `post_write_verification_passed=true`;
+- `rollback_executed=false`;
+- `point_43_db_write=false`;
+- `provider_fetch=false`;
+- `provider_import_enabled=false`;
+- `apify_enabled=false`;
+- `production_touched=false`;
+- `deploy_executed=false`;
+- `service_role_used=false`;
+- `next_write_allowed=false`.
+
+Nessun provider reale, import provider o Apify è autorizzato dal Punto 43.
+
 ## Punto 40-Fix-B — Dry-run output aggiornato
 
 Output atteso dopo lookup manuale read-only completato:

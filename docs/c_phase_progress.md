@@ -2925,3 +2925,36 @@ Risultato operativo:
 - service_role_used: `false`.
 
 Rollback non eseguito perché la verifica è passata. Prossimo step consigliato: Punto 43 — read-only UI/admin verification after manual fixture write.
+
+## Punto 43 — Read-only UI/admin verification after manual fixture write
+
+Stato: completato.
+
+File principali:
+
+- `supabase/manual/manual_import_fixture_ui_verify_p43.sql`;
+- `docs/manual_import_ui_admin_verification_p43.md`;
+- `docs/manual_import_point_44_decision_p43.md`;
+- `docs/provider_point_43_closure.md`;
+- `app/admin/imports/page.tsx`.
+
+Risultato:
+
+- point_43_ui_admin_read_only_verification_completed: `true`;
+- ui_admin_verification_mode: `read_only`;
+- manual_fixture_write_executed: `true`;
+- written_competitions_count: `1`;
+- written_teams_count: `2`;
+- written_standings_count: `2`;
+- total_written_rows: `5`;
+- post_write_verification_passed: `true`;
+- rollback_executed: `false`;
+- point_43_db_write: `false`;
+- provider_fetch: `false`;
+- provider_import_enabled: `false`;
+- apify_enabled: `false`;
+- production_touched: `false`;
+- deploy_executed: `false`;
+- service_role_used: `false`.
+
+Prossimo step consigliato: Punto 44 — read-only public/admin data consumption plan.

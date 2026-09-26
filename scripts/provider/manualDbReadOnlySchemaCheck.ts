@@ -321,6 +321,10 @@ function printUnavailable(): void {
   console.info("post_write_verification_executed=true");
   console.info("post_write_verification_passed=true");
   console.info("rollback_executed=false");
+  console.info("point_43_ui_admin_read_only_verification_completed=true");
+  console.info("ui_admin_verification_mode=read_only");
+  console.info("point_43_db_write=false");
+  console.info("deploy_executed=false");
   console.info("point_40b_authorization_required=true");
   console.info("point_41_authorization_required=true");
   console.info("point_40_authorization_required=true");

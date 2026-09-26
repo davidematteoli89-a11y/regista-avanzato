@@ -81,3 +81,25 @@ La successiva verifica join teams → competition ha confermato la competition c
 - nessun deploy;
 - nessun `service_role`;
 - rollback non eseguito perché la verifica è passata.
+
+## Punto 43 — Verifica UI/admin read-only
+
+Punto 43 ha verificato lo stato post-write in modalità read-only.
+
+- point_43_ui_admin_read_only_verification_completed: `true`
+- ui_admin_verification_mode: `read_only`
+- point_43_db_write: `false`
+- manual_fixture_write_executed: `true`
+- written_competitions_count: `1`
+- written_teams_count: `2`
+- written_standings_count: `2`
+- total_written_rows: `5`
+- post_write_verification_passed: `true`
+- rollback_executed: `false`
+- provider_fetch: `false`
+- provider_import_enabled: `false`
+- apify_enabled: `false`
+- production_touched: `false`
+- deploy_executed: `false`
+
+La verifica Punto 43 non ha eseguito nuove scritture DB e non ha attivato provider/import.

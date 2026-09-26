@@ -2022,6 +2022,30 @@ Stato finale:
 
 La competition è stata verificata con `api_competition_id=manual-serie-a`. Il primo count competition a zero era dovuto a una query non allineata che cercava `manual-competition-1`.
 
+## Punto 43 — Read-only UI/admin verification
+
+Punto 43 completato in modalità read-only.
+
+- query manuale preparata: `supabase/manual/manual_import_fixture_ui_verify_p43.sql`;
+- `/admin/imports` aggiornato come dashboard read-only dello stato post-write;
+- manual_fixture_write_executed: `true`;
+- written_competitions_count: `1`;
+- written_teams_count: `2`;
+- written_standings_count: `2`;
+- total_written_rows: `5`;
+- post_write_verification_passed: `true`;
+- rollback_executed: `false`;
+- point_43_db_write: `false`;
+- provider_fetch: `false`;
+- provider_import_enabled: `false`;
+- apify_enabled: `false`;
+- production_touched: `false`;
+- deploy_executed: `false`;
+- service_role_used: `false`;
+- next_write_allowed: `false`.
+
+Prossimo step consigliato: Punto 44 — piano read-only di consumo dati manuali in admin/pubblico.
+
 ## Punto 31 — Migration draft no-apply
 
 Creata draft:

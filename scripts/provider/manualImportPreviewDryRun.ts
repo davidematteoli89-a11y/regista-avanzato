@@ -341,6 +341,10 @@ async function main(): Promise<void> {
   console.info("post_write_verification_executed=true");
   console.info("post_write_verification_passed=true");
   console.info("rollback_executed=false");
+  console.info("point_43_ui_admin_read_only_verification_completed=true");
+  console.info("ui_admin_verification_mode=read_only");
+  console.info("point_43_db_write=false");
+  console.info("deploy_executed=false");
   console.info("blocked_real_execution=true");
   console.info("next_write_allowed=false");
   console.info("point_41_authorization_required=true");

@@ -53,3 +53,25 @@ Obbligatorio.
 ## Decisione finale
 
 Procedere con Punto 43 come verifica UI/admin read-only. Nessuna nuova scrittura è autorizzata.
+
+## Esito Punto 43
+
+Punto 43 completato.
+
+- point_43_ui_admin_read_only_verification_completed: `true`
+- ui_admin_verification_mode: `read_only`
+- manual_fixture_write_executed: `true`
+- written_competitions_count: `1`
+- written_teams_count: `2`
+- written_standings_count: `2`
+- total_written_rows: `5`
+- post_write_verification_passed: `true`
+- rollback_executed: `false`
+- point_43_db_write: `false`
+- provider_fetch: `false`
+- provider_import_enabled: `false`
+- apify_enabled: `false`
+- production_touched: `false`
+- deploy_executed: `false`
+
+Decisione successiva: Punto 44 come piano read-only per consumo dati manuali.

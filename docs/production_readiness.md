@@ -1523,6 +1523,22 @@ Conferme:
 
 Production resta esclusa.
 
+## Punto 43 — Production ancora esclusa
+
+Punto 43 è solo verifica UI/admin read-only dopo il write manuale staging del Punto 42.
+
+- point_43_db_write: `false`;
+- deploy_executed: `false`;
+- production_touched: `false`;
+- provider_fetch: `false`;
+- provider_import_enabled: `false`;
+- apify_enabled: `false`;
+- service_role_used: `false`;
+- rollback_executed: `false`;
+- next_write_allowed: `false`.
+
+Production resta esclusa. Nessuna autorizzazione a provider/import o deploy deriva dal Punto 43.
+
 ## Punto 40-Fix-B — Production impact
 
 Punto 40-Fix-B registra solo il risultato di una query read-only manuale su Supabase staging.
