@@ -57,3 +57,27 @@ Usare se emerge un bug statico o build-time.
 - non toccare Production;
 - non scrivere DB senza nuova autorizzazione esplicita;
 - dati `private_admin` non pubblici.
+
+## Aggiornamento Punto 46-C
+
+Punto 46-C ha ripetuto il tentativo di verifica browser/admin real session, ma il risultato resta:
+
+- point_46c_real_admin_session_verification_completed: `false`;
+- browser_admin_verification_result: `pending_no_admin_session`;
+- verification_channel: `unavailable`;
+- admin_session_available: `false`;
+- admin_data_route_browser_verified: `false`;
+- admin_competitions_route_browser_verified: `false`;
+- admin_competition_detail_route_browser_verified: `false`;
+- admin_imports_link_browser_verified: `false`;
+- browser_displayed_competitions_count: `0`;
+- browser_displayed_teams_count: `0`;
+- browser_displayed_standings_count: `0`;
+- point_46c_db_write: `false`;
+- provider_fetch: `false`;
+- provider_import_enabled: `false`;
+- apify_enabled: `false`;
+- production_touched: `false`;
+- deploy_executed: `false`.
+
+Decisione aggiornata: Punto 47 non è ancora consigliato. Il prossimo step resta Punto 46-Fix / 46-D per predisporre un canale browser/admin session verificabile, senza esporre cookie/token/header auth e senza scritture DB.

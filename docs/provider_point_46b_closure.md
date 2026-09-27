@@ -40,3 +40,21 @@ Nessuna nuova scrittura DB è stata eseguita. Nessun provider è stato chiamato.
 ## Prossimo step consigliato
 
 Punto 46-C — ottenere una sessione admin/browser reale e ripetere la verifica browser.
+
+## Follow-up Punto 46-C
+
+Punto 46-C ha ritentato la verifica browser/admin real session.
+
+Risultato:
+
+- browser_admin_verification_result: `pending_no_admin_session`;
+- verification_channel: `unavailable`;
+- admin_session_available: `false`;
+- point_46c_db_write: `false`;
+- provider_fetch: `false`;
+- provider_import_enabled: `false`;
+- apify_enabled: `false`;
+- production_touched: `false`;
+- deploy_executed: `false`.
+
+La chiusura dedicata è `docs/provider_point_46c_closure.md`.

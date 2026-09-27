@@ -82,3 +82,19 @@ This confirms unauthenticated access is blocked, but it does not verify an admin
 ## Next step
 
 Punto 46-C — ottenere una sessione admin/browser reale e ripetere la verifica browser.
+
+## Follow-up Punto 46-C
+
+Il Punto 46-C ha tentato di completare la verifica con sessione admin reale, ma il canale browser/sessione admin resta non disponibile:
+
+- point_46c_real_admin_session_verification_completed: `false`;
+- browser_admin_verification_result: `pending_no_admin_session`;
+- verification_channel: `unavailable`;
+- admin_session_available: `false`;
+- nessuna nuova scrittura DB;
+- nessun provider/import;
+- Apify off;
+- nessun deploy;
+- Production non toccata.
+
+Il documento dedicato è `docs/manual_data_admin_real_session_verification_p46c.md`.

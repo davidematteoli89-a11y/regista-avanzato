@@ -2154,3 +2154,23 @@ Punto 46-B tentato, ma la verifica browser/admin real session resta pending.
 - public_exposure_enabled: `false`.
 
 Prossimo step consigliato: Punto 46-C — ottenere sessione admin/browser reale e ripetere la verifica.
+## Punto 46-C — Real admin session browser verification pending
+
+Punto 46-C ha ripetuto la verifica browser/admin real session per la superficie admin read-only:
+
+- `/admin/data`;
+- `/admin/data/competitions`;
+- `/admin/data/competitions/manual-serie-a`;
+- `/admin/imports`.
+
+Risultato:
+
+- point_46c_real_admin_session_verification_completed: `false`;
+- browser_admin_verification_result: `pending_no_admin_session`;
+- verification_channel: `unavailable`;
+- admin_session_available: `false`;
+- browser displayed competitions/teams/standings: `0/0/0`.
+
+Nessuna nuova scrittura DB è stata eseguita nel Punto 46-C. Nessun provider è stato chiamato, nessun import provider è stato attivato, Apify resta off, nessun deploy è stato eseguito e Production non è stata toccata. I dati `private_admin` restano non pubblici.
+
+Prossimo step consigliato: Punto 46-Fix / 46-D per predisporre un canale browser/admin session verificabile e ripetere la verifica read-only.

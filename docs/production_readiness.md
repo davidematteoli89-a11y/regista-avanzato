@@ -1674,3 +1674,31 @@ Punto 46-B è stato solo un tentativo di verifica browser/admin real session.
 - service_role_used: `false`.
 
 Production resta esclusa.
+## Punto 46-C — Admin read-only browser verification still pending
+
+La verifica browser/admin real session della superficie admin read-only è stata ritentata nel Punto 46-C.
+
+Risultato:
+
+- browser_admin_verification_result: `pending_no_admin_session`;
+- verification_channel: `unavailable`;
+- admin_session_available: `false`;
+- admin data routes browser verified: `false`;
+- displayed competitions/teams/standings: `0/0/0`;
+- public_exposure_enabled: `false`;
+- current_visibility: `private_admin`;
+- point_46c_db_write: `false`;
+- provider_fetch: `false`;
+- provider_import_enabled: `false`;
+- apify_enabled: `false`;
+- deploy_executed: `false`;
+- production_touched: `false`.
+
+Production readiness resta bloccata per questa parte finché una sessione admin reale non verifica:
+
+- `/admin/data`;
+- `/admin/data/competitions`;
+- `/admin/data/competitions/manual-serie-a`;
+- `/admin/imports`.
+
+Nessun dato `private_admin` deve essere esposto pubblicamente prima di una decisione dedicata.

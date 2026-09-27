@@ -3065,3 +3065,37 @@ Risultato:
 - public_exposure_enabled: `false`.
 
 Prossimo step consigliato: Punto 46-C — ottenere sessione admin reale e ripetere la verifica browser.
+## Punto 46-C — Real admin session browser verification
+
+Punto 46-C ha ritentato la verifica browser/admin real session della superficie admin read-only introdotta nel Punto 45.
+
+Esito reale:
+
+- point_46c_real_admin_session_verification_completed: `false`;
+- browser_admin_verification_result: `pending_no_admin_session`;
+- verification_channel: `unavailable`;
+- admin_session_available: `false`;
+- admin_data_route_browser_verified: `false`;
+- admin_competitions_route_browser_verified: `false`;
+- admin_competition_detail_route_browser_verified: `false`;
+- admin_imports_link_browser_verified: `false`;
+- browser_displayed_competitions_count: `0`;
+- browser_displayed_teams_count: `0`;
+- browser_displayed_standings_count: `0`.
+
+Non è stata inventata una verifica positiva. Il canale browser `agent-browser` non è disponibile nel PATH locale e non è disponibile una sessione admin reale da riusare.
+
+Sicurezza:
+
+- db_write nel Punto 46-C: `false`;
+- provider_fetch: `false`;
+- external_fetch: `false`;
+- provider_import_enabled: `false`;
+- apify_enabled: `false`;
+- deploy_executed: `false`;
+- production_touched: `false`;
+- service_role_used: `false`;
+- public_exposure_enabled: `false`;
+- current_visibility: `private_admin`.
+
+Prossimo step consigliato: Punto 46-Fix / 46-D per predisporre un canale browser/admin session verificabile e ripetere la verifica read-only.
