@@ -36,3 +36,15 @@ Punto 48 completato.
 ## Prossimo step consigliato
 
 Punto 49 — repeat browser admin verification after UX polish.
+
+## Aggiornamento Punto 49
+
+Punto 49 è stato tentato dopo il polish:
+
+- sessione admin reale disponibile: `false`;
+- browser admin pass: `false`;
+- risultato: `pending_no_admin_session`;
+- verifica non autenticata Preview: `redirect_login_vercel`;
+- dati `private_admin` pubblici: `false`.
+
+Prossimo step: ripetere la verifica con sessione admin reale disponibile.

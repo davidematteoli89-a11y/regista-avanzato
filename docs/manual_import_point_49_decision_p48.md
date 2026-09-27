@@ -41,3 +41,16 @@ Punto 48 chiude il polish minimo richiesto:
 - nessuna DB write;
 - provider/import/Apify spenti;
 - Production non toccata.
+
+## Esito Punto 49
+
+Punto 49 è stato eseguito come tentativo di verifica post-polish, ma non può essere chiuso come pass admin:
+
+- `admin_session_available=false`;
+- `browser_admin_verification_result=pending_no_admin_session`;
+- `admin_imports_data_hub_link_verified=false` perché non osservato con sessione admin;
+- `admin_sidebar_manual_data_verified=false` perché non osservato con sessione admin;
+- `incognito_result=redirect_login_vercel`;
+- `public_exposure_enabled=false`.
+
+La verifica non autenticata su Preview ha mostrato `Login – Vercel`, quindi non sono stati osservati dati `private_admin` pubblici.

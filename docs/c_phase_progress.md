@@ -3248,3 +3248,37 @@ Safety:
 Nessun bottone Run/Import/Execute/Sync/Save/Apply è stato aggiunto. Nessuna Server Action write, fetch provider, deploy o Production.
 
 Prossimo step consigliato: Punto 49 — repeat browser admin verification after UX polish.
+
+## Punto 49 — Repeat browser admin verification after UX polish
+
+Tentato.
+
+Esito:
+
+- `point_49_browser_admin_verification_after_polish_completed=false`;
+- `browser_admin_verification_result=pending_no_admin_session`;
+- `environment=preview-url`;
+- `admin_session_available=false`;
+- `admin_data_route_verified=false`;
+- `admin_competitions_route_verified=false`;
+- `admin_competition_detail_route_verified=false`;
+- `admin_imports_route_verified=false`;
+- `admin_imports_data_hub_link_verified=false`;
+- `admin_imports_competitions_link_verified=false`;
+- `admin_sidebar_manual_data_verified=false`;
+- `browser_displayed_competitions_count=0`;
+- `browser_displayed_teams_count=0`;
+- `browser_displayed_standings_count=0`;
+- `incognito_result=redirect_login_vercel`;
+- `public_exposure_enabled=false`;
+- `current_visibility=private_admin`;
+- `point_49_db_write=false`;
+- `provider_fetch=false`;
+- `external_fetch=false`;
+- `provider_import_enabled=false`;
+- `apify_enabled=false`;
+- `production_touched=false`;
+- `deploy_executed=false`;
+- `service_role_used=false`.
+
+La Preview non autenticata ha mostrato `Login – Vercel`; nessun dato `private_admin` è stato osservato pubblicamente. La verifica admin reale resta da ripetere con sessione admin disponibile.

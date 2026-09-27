@@ -57,3 +57,21 @@ Punto 48 è stato implementato come polish UI/read-only.
 - `service_role_used=false`
 
 La verifica browser admin può essere ripetuta dopo questa modifica per controllare che il punto D passi anche per il link diretto `/admin/data`.
+
+## Aggiornamento Punto 49
+
+La verifica browser/admin post-polish è stata riprovata, ma resta `pending_no_admin_session` perché non era disponibile una sessione admin reale osservabile dall’agente.
+
+È stata verificata via internet la Preview da non autenticato:
+
+- `/admin/data`: `Login – Vercel`;
+- `/admin/data/competitions`: `Login – Vercel`;
+- `/admin/imports`: `Login – Vercel`;
+- `/admin/data/competitions/manual-serie-a`: redirect/login Vercel.
+
+Esito:
+
+- `browser_admin_verification_result=pending_no_admin_session`;
+- `incognito_result=redirect_login_vercel`;
+- `public_exposure_enabled=false`;
+- dati `private_admin` non osservati pubblicamente.

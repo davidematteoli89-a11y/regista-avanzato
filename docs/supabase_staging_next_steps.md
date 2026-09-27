@@ -2260,3 +2260,22 @@ Safety:
 - `service_role_used=false`.
 
 Prossimo step consigliato: Punto 49 — repeat browser admin verification after UX polish.
+
+## Punto 49 — Browser admin verification after polish
+
+Punto 49 tentato.
+
+Risultato:
+
+- `browser_admin_verification_result=pending_no_admin_session`;
+- `admin_session_available=false`;
+- `environment=preview-url`;
+- `incognito_result=redirect_login_vercel`;
+- `public_exposure_enabled=false`;
+- nessuna nuova DB write;
+- nessun provider/import;
+- Apify off;
+- Production non toccata;
+- nessun deploy.
+
+La Preview non autenticata ha mostrato `Login – Vercel` sulle route admin controllate. La verifica admin reale va ripetuta quando sarà disponibile una sessione admin osservabile.

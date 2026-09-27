@@ -1774,3 +1774,16 @@ Modifiche:
 - dati `private_admin` non esposti pubblicamente.
 
 Production resta non pronta per pubblicazione live finché non saranno completate le checklist dedicate e la verifica browser admin reale post-polish.
+
+## Punto 49 — Browser/admin verification after polish
+
+La verifica admin reale resta non conclusa:
+
+- risultato: `pending_no_admin_session`;
+- admin session disponibile: `false`;
+- Production: non toccata;
+- deploy: non eseguito;
+- provider/import: spenti;
+- DB write Punto 49: `false`.
+
+La verifica non autenticata della Preview ha mostrato login Vercel e non ha esposto dati `private_admin`.
