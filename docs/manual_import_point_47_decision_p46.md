@@ -81,3 +81,17 @@ Punto 46-C ha ripetuto il tentativo di verifica browser/admin real session, ma i
 - deploy_executed: `false`.
 
 Decisione aggiornata: Punto 47 non è ancora consigliato. Il prossimo step resta Punto 46-Fix / 46-D per predisporre un canale browser/admin session verificabile, senza esporre cookie/token/header auth e senza scritture DB.
+
+## Aggiornamento Punto 46-D
+
+Punto 46-D ha predisposto il canale:
+
+- admin_session_channel_status: `manual_user_browser_session`;
+- recommended_verification_channel: `manual_user_browser_session`;
+- browser_admin_verification_result: `pending_admin_session_channel`;
+- user_created: `false`;
+- role_modified: `false`;
+- rls_modified: `false`;
+- point_46d_db_write: `false`.
+
+Decisione aggiornata: Punto 47 resta non consigliato finché il Punto 46-E non conferma la verifica browser admin con dati reali.

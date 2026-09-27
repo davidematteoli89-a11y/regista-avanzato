@@ -38,3 +38,17 @@ Nessuna nuova scrittura DB è stata eseguita. Nessun provider è stato chiamato.
 ## Prossimo step consigliato
 
 Punto 46-Fix / 46-D — predisporre un canale browser/admin session verificabile e ripetere la verifica read-only con sessione admin reale.
+
+## Follow-up Punto 46-D
+
+Punto 46-D ha predisposto il canale manuale verificabile:
+
+- admin_session_channel_status: `manual_user_browser_session`;
+- recommended_verification_channel: `manual_user_browser_session`;
+- browser_admin_verification_result: `pending_admin_session_channel`;
+- user_created: `false`;
+- role_modified: `false`;
+- rls_modified: `false`;
+- point_46d_db_write: `false`.
+
+Prossimo step: Punto 46-E — user-guided admin browser verification.

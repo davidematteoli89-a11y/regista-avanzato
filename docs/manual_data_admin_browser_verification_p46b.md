@@ -98,3 +98,16 @@ Il Punto 46-C ha tentato di completare la verifica con sessione admin reale, ma 
 - Production non toccata.
 
 Il documento dedicato è `docs/manual_data_admin_real_session_verification_p46c.md`.
+
+## Follow-up Punto 46-D
+
+Punto 46-D ha predisposto un canale manuale sicuro per completare la verifica:
+
+- admin_session_channel_status: `manual_user_browser_session`;
+- recommended_verification_channel: `manual_user_browser_session`;
+- browser_admin_verification_result: `pending_admin_session_channel`;
+- user_created: `false`;
+- role_modified: `false`;
+- rls_modified: `false`.
+
+Checklist utente: `docs/admin_browser_verification_checklist_p46d.md`.

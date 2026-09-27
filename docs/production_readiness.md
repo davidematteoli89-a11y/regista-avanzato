@@ -1702,3 +1702,22 @@ Production readiness resta bloccata per questa parte finché una sessione admin 
 - `/admin/imports`.
 
 Nessun dato `private_admin` deve essere esposto pubblicamente prima di una decisione dedicata.
+
+## Punto 46-D — Verification channel prepared, Production unchanged
+
+Punto 46-D non cambia lo stato Production.
+
+- admin_session_channel_status: `manual_user_browser_session`;
+- recommended_verification_channel: `manual_user_browser_session`;
+- browser_admin_verification_result: `pending_admin_session_channel`;
+- user_created: `false`;
+- role_modified: `false`;
+- rls_modified: `false`;
+- db_write: `false`;
+- provider_fetch: `false`;
+- provider_import_enabled: `false`;
+- apify_enabled: `false`;
+- deploy_executed: `false`;
+- production_touched: `false`.
+
+La verifica admin browser resta necessaria prima di considerare qualunque passo di UX/public exposure.

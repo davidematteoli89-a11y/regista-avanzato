@@ -3099,3 +3099,40 @@ Sicurezza:
 - current_visibility: `private_admin`.
 
 Prossimo step consigliato: Punto 46-Fix / 46-D per predisporre un canale browser/admin session verificabile e ripetere la verifica read-only.
+
+## Punto 46-D — Prepare verifiable real admin session channel
+
+Punto 46-D ha risolto il blocco operativo preparando un canale verificabile, senza eseguire login o acquisire segreti.
+
+Audit auth/admin:
+
+- `/login` usa `loginAction` con Supabase Auth server-side;
+- `/admin/*` passa da `requireAdmin()` nel layout admin;
+- `requireAdmin()` richiede utente Supabase autenticato;
+- profilo `users_profile` deve avere `status=approved`;
+- ruoli ammessi: `editor`, `admin`, `super_admin`;
+- il client server usa anon key pubblica e cookie di sessione utente, non service role.
+
+Decisione:
+
+- point_46d_admin_session_channel_prepared: `true`;
+- admin_session_channel_status: `manual_user_browser_session`;
+- recommended_verification_channel: `manual_user_browser_session`;
+- browser_admin_verification_result: `pending_admin_session_channel`;
+- admin_session_available: `false`.
+
+Sicurezza:
+
+- user_created: `false`;
+- role_modified: `false`;
+- rls_modified: `false`;
+- db_write: `false`;
+- provider_fetch: `false`;
+- provider_import_enabled: `false`;
+- apify_enabled: `false`;
+- deploy_executed: `false`;
+- production_touched: `false`;
+- public_exposure_enabled: `false`;
+- current_visibility: `private_admin`.
+
+Prossimo step consigliato: Punto 46-E — user-guided admin browser verification.

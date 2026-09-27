@@ -2174,3 +2174,23 @@ Risultato:
 Nessuna nuova scrittura DB è stata eseguita nel Punto 46-C. Nessun provider è stato chiamato, nessun import provider è stato attivato, Apify resta off, nessun deploy è stato eseguito e Production non è stata toccata. I dati `private_admin` restano non pubblici.
 
 Prossimo step consigliato: Punto 46-Fix / 46-D per predisporre un canale browser/admin session verificabile e ripetere la verifica read-only.
+
+## Punto 46-D — Admin session channel prepared
+
+Punto 46-D ha predisposto il canale sicuro per completare la verifica browser/admin reale:
+
+- point_46d_admin_session_channel_prepared: `true`;
+- admin_session_channel_status: `manual_user_browser_session`;
+- recommended_verification_channel: `manual_user_browser_session`;
+- browser_admin_verification_result: `pending_admin_session_channel`;
+- admin_session_available: `false`.
+
+Nessuna modifica a Supabase staging:
+
+- db_write: `false`;
+- user_created: `false`;
+- role_modified: `false`;
+- rls_modified: `false`;
+- service_role_used: `false`.
+
+Prossimo step consigliato: Punto 46-E — user-guided admin browser verification usando `docs/admin_browser_verification_checklist_p46d.md`.

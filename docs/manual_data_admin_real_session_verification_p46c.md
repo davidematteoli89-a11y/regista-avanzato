@@ -94,3 +94,15 @@ Non è stata inventata una verifica positiva. La verifica reale richiede un cana
 ## Next step
 
 Punto 46-Fix oppure Punto 46-D: predisporre un canale browser/admin session verificabile senza esporre cookie, token o header auth, quindi ripetere la verifica read-only.
+
+## Follow-up Punto 46-D
+
+Punto 46-D ha predisposto il canale sicuro:
+
+- point_46d_admin_session_channel_prepared: `true`;
+- admin_session_channel_status: `manual_user_browser_session`;
+- recommended_verification_channel: `manual_user_browser_session`;
+- admin_session_available: `false`;
+- browser_admin_verification_result: `pending_admin_session_channel`.
+
+La verifica browser resta da eseguire nel Punto 46-E con account admin esistente e senza condividere credenziali, cookie, token o header auth.
