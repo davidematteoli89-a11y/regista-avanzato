@@ -2194,3 +2194,20 @@ Nessuna modifica a Supabase staging:
 - service_role_used: `false`.
 
 Prossimo step consigliato: Punto 46-E — user-guided admin browser verification usando `docs/admin_browser_verification_checklist_p46d.md`.
+
+## Punto 46-E — Direct admin browser verification still blocked
+
+Punto 46-E ha tentato la verifica diretta dall’assistente, ma non c’è sessione admin reale disponibile.
+
+- point_46e_user_guided_admin_browser_verification_completed: `false`;
+- browser_admin_verification_result: `pending_no_admin_session`;
+- admin_session_available: `false`;
+- db_write: `false`;
+- user_created: `false`;
+- role_modified: `false`;
+- rls_modified: `false`;
+- provider_fetch: `false`;
+- provider_import_enabled: `false`;
+- apify_enabled: `false`.
+
+Nessuna modifica a Supabase staging. Prossimo step: Punto 46-E2 / 46-Fix per ottenere un canale browser admin verificabile senza segreti.

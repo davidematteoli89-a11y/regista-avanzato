@@ -3136,3 +3136,41 @@ Sicurezza:
 - current_visibility: `private_admin`.
 
 Prossimo step consigliato: Punto 46-E — user-guided admin browser verification.
+
+## Punto 46-E — Direct assistant admin browser verification attempt
+
+Punto 46-E ha tentato la verifica diretta dall’assistente della superficie admin read-only.
+
+Esito reale:
+
+- point_46e_user_guided_admin_browser_verification_completed: `false`;
+- browser_admin_verification_result: `pending_no_admin_session`;
+- admin_session_available: `false`;
+- admin_data_route_browser_verified: `false`;
+- admin_competitions_route_browser_verified: `false`;
+- admin_competition_detail_route_browser_verified: `false`;
+- admin_imports_link_browser_verified: `false`;
+- browser_displayed_competitions_count: `0`;
+- browser_displayed_teams_count: `0`;
+- browser_displayed_standings_count: `0`.
+
+Motivo:
+
+- tool browser `agent-browser` non disponibile nel PATH locale;
+- nessuna sessione admin reale disponibile all’assistente;
+- nessuna password/cookie/token/header auth richiesta o letta.
+
+Sicurezza:
+
+- db_write nel Punto 46-E: `false`;
+- provider_fetch: `false`;
+- external_fetch: `false`;
+- provider_import_enabled: `false`;
+- apify_enabled: `false`;
+- deploy_executed: `false`;
+- production_touched: `false`;
+- service_role_used: `false`;
+- public_exposure_enabled: `false`;
+- current_visibility: `private_admin`.
+
+Prossimo step consigliato: Punto 46-E2 / 46-Fix per rendere disponibile un canale browser autenticato verificabile senza condividere segreti.

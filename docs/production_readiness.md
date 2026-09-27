@@ -1721,3 +1721,22 @@ Punto 46-D non cambia lo stato Production.
 - production_touched: `false`.
 
 La verifica admin browser resta necessaria prima di considerare qualunque passo di UX/public exposure.
+
+## Punto 46-E — Admin browser verification still pending
+
+Punto 46-E non cambia la readiness Production.
+
+- browser_admin_verification_result: `pending_no_admin_session`;
+- admin_session_available: `false`;
+- route browser verified: `false`;
+- displayed competitions/teams/standings: `0/0/0`;
+- public_exposure_enabled: `false`;
+- current_visibility: `private_admin`;
+- db_write: `false`;
+- provider_fetch: `false`;
+- provider_import_enabled: `false`;
+- apify_enabled: `false`;
+- deploy_executed: `false`;
+- production_touched: `false`.
+
+Prima di qualsiasi passo successivo di esposizione pubblica o UX polish finale, serve ancora verifica browser admin reale con dati manuali visibili.

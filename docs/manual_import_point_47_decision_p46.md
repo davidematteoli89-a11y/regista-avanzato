@@ -95,3 +95,26 @@ Punto 46-D ha predisposto il canale:
 - point_46d_db_write: `false`.
 
 Decisione aggiornata: Punto 47 resta non consigliato finché il Punto 46-E non conferma la verifica browser admin con dati reali.
+
+## Aggiornamento Punto 46-E
+
+Punto 46-E ha tentato il controllo diretto dall’assistente, ma il risultato resta:
+
+- point_46e_user_guided_admin_browser_verification_completed: `false`;
+- browser_admin_verification_result: `pending_no_admin_session`;
+- admin_session_available: `false`;
+- admin_data_route_browser_verified: `false`;
+- admin_competitions_route_browser_verified: `false`;
+- admin_competition_detail_route_browser_verified: `false`;
+- admin_imports_link_browser_verified: `false`;
+- browser_displayed_competitions_count: `0`;
+- browser_displayed_teams_count: `0`;
+- browser_displayed_standings_count: `0`;
+- point_46e_db_write: `false`;
+- provider_fetch: `false`;
+- provider_import_enabled: `false`;
+- apify_enabled: `false`;
+- production_touched: `false`;
+- deploy_executed: `false`.
+
+Decisione aggiornata: Punto 47 non è ancora consigliato. Prossimo step: Punto 46-E2 / 46-Fix per ottenere un canale browser admin verificabile senza condividere segreti.
