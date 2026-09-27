@@ -53,3 +53,24 @@ Non consigliato ancora perché i dati sono `private_admin`.
 - nessun deploy;
 - nessuna Production;
 - pubblico ancora disabilitato.
+
+## Esito Punto 46-B
+
+Verifica browser/admin real session non completata.
+
+- point_46b_browser_admin_verification_completed: `false`;
+- browser_admin_verification_result: `pending_no_admin_session`;
+- verification_channel: `unavailable`;
+- admin_session_available: `false`;
+- admin_data_route_browser_verified: `false`;
+- admin_competitions_route_browser_verified: `false`;
+- admin_competition_detail_route_browser_verified: `false`;
+- admin_imports_link_browser_verified: `false`;
+- point_46b_db_write: `false`;
+- provider_fetch: `false`;
+- provider_import_enabled: `false`;
+- apify_enabled: `false`;
+- production_touched: `false`;
+- deploy_executed: `false`.
+
+Decisione successiva: Punto 46-C — ottenere sessione admin reale e ripetere la verifica browser.

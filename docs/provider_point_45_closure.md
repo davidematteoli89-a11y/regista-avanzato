@@ -34,3 +34,17 @@ Nessuna nuova scrittura DB è stata eseguita nel Punto 45. Nessun provider è st
 ## Prossimo step consigliato
 
 Punto 46 — read-only admin surface verification with manual fixture data.
+
+## Follow-up Punto 46-B
+
+Punto 46-B ha tentato la verifica browser/admin real session, ma resta pending per assenza di sessione admin/browser automation.
+
+- browser_admin_verification_result: `pending_no_admin_session`;
+- admin_session_available: `false`;
+- point_46b_db_write: `false`;
+- provider/import restano spenti;
+- Apify resta off;
+- Production non toccata;
+- dati `private_admin` non pubblici.
+
+Prossimo step consigliato: Punto 46-C — ripetere con sessione admin reale.

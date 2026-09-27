@@ -1656,3 +1656,21 @@ Punto 45 implementa solo superfici admin read-only.
 - service_role_used: `false`.
 
 Nessuna route pubblica è stata aggiunta. Production resta esclusa.
+
+## Punto 46-B — Production ancora esclusa
+
+Punto 46-B è stato solo un tentativo di verifica browser/admin real session.
+
+- browser_admin_verification_result: `pending_no_admin_session`;
+- point_46b_db_write: `false`;
+- provider_fetch: `false`;
+- external_fetch: `false`;
+- provider_import_enabled: `false`;
+- apify_enabled: `false`;
+- public_exposure_enabled: `false`;
+- current_visibility: `private_admin`;
+- deploy_executed: `false`;
+- production_touched: `false`;
+- service_role_used: `false`.
+
+Production resta esclusa.

@@ -275,6 +275,16 @@ async function main(): Promise<void> {
   console.info("admin_manual_competition_detail_route_created=true");
   console.info("admin_imports_link_created=true");
   console.info("point_45_db_write=false");
+  console.info("point_46b_browser_admin_verification_completed=false");
+  console.info("browser_admin_verification_result=pending_no_admin_session");
+  console.info("admin_data_route_browser_verified=false");
+  console.info("admin_competitions_route_browser_verified=false");
+  console.info("admin_competition_detail_route_browser_verified=false");
+  console.info("admin_imports_link_browser_verified=false");
+  console.info("browser_displayed_competitions_count=0");
+  console.info("browser_displayed_teams_count=0");
+  console.info("browser_displayed_standings_count=0");
+  console.info("point_46b_db_write=false");
   console.info("point_40b_authorization_required=true");
   console.info("point_41_authorization_required=true");
   console.info("point_40_authorization_required=true");

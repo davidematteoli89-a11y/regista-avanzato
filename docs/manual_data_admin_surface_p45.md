@@ -57,3 +57,15 @@ Regole confermate:
 ## Notes
 
 The reader uses the existing server Supabase client tied to the user session and RLS. If Supabase is not configured or RLS blocks access, the UI shows a safe read-only warning/empty state without exposing secrets.
+
+## Follow-up Punto 46-B
+
+La verifica browser/admin real session è stata tentata ma resta pending:
+
+- browser_automation_available: `false`;
+- admin_session_available: `false`;
+- browser_admin_verification_result: `pending_no_admin_session`;
+- controllo HTTP locale: route admin redirectano a login per utente non autenticato;
+- nessuna nuova scrittura DB;
+- nessun provider/import;
+- nessuna esposizione pubblica.

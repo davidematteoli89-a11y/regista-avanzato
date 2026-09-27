@@ -3031,3 +3031,37 @@ Risultato:
 - service_role_used: `false`.
 
 Prossimo step consigliato: Punto 46 — read-only admin surface verification with manual fixture data.
+
+## Punto 46-B — Browser/admin real session verification
+
+Stato: pending.
+
+File principali:
+
+- `docs/manual_data_admin_browser_verification_p46b.md`;
+- `docs/manual_import_point_47_decision_p46.md`;
+- `docs/provider_point_46b_closure.md`.
+
+Risultato:
+
+- point_46b_browser_admin_verification_completed: `false`;
+- browser_admin_verification_result: `pending_no_admin_session`;
+- verification_channel: `unavailable`;
+- browser_automation_available: `false`;
+- admin_session_available: `false`;
+- local_http_auth_redirect_checked: `true`;
+- admin_data_route_browser_verified: `false`;
+- admin_competitions_route_browser_verified: `false`;
+- admin_competition_detail_route_browser_verified: `false`;
+- admin_imports_link_browser_verified: `false`;
+- point_46b_db_write: `false`;
+- provider_fetch: `false`;
+- external_fetch: `false`;
+- provider_import_enabled: `false`;
+- apify_enabled: `false`;
+- production_touched: `false`;
+- deploy_executed: `false`;
+- service_role_used: `false`;
+- public_exposure_enabled: `false`.
+
+Prossimo step consigliato: Punto 46-C — ottenere sessione admin reale e ripetere la verifica browser.

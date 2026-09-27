@@ -2134,3 +2134,23 @@ Punto 45 completato.
 - service_role_used: `false`.
 
 Prossimo step consigliato: Punto 46 — verifica read-only della superficie admin con dati manuali.
+
+## Punto 46-B — Browser/admin real session verification
+
+Punto 46-B tentato, ma la verifica browser/admin real session resta pending.
+
+- verification_channel: `unavailable`;
+- browser_automation_available: `false`;
+- admin_session_available: `false`;
+- browser_admin_verification_result: `pending_no_admin_session`;
+- controllo HTTP locale: route admin redirectano a `/login?next=/admin` per utente non autenticato;
+- point_46b_db_write: `false`;
+- provider_fetch: `false`;
+- provider_import_enabled: `false`;
+- apify_enabled: `false`;
+- production_touched: `false`;
+- deploy_executed: `false`;
+- service_role_used: `false`;
+- public_exposure_enabled: `false`.
+
+Prossimo step consigliato: Punto 46-C — ottenere sessione admin/browser reale e ripetere la verifica.
