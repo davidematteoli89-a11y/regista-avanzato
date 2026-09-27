@@ -907,6 +907,28 @@ I dry-run manual import/schema sono stati aggiornati con marker Punto 48:
 
 I dry-run restano local-only/read-only e non eseguono provider fetch o DB write.
 
+## Punto 50 — Dry-run output alignment
+
+I dry-run manual import/schema sono stati aggiornati con marker Punto 50:
+
+- `point_50_public_exposure_policy_plan_created=true`;
+- `public_exposure_policy_mode=plan_only`;
+- `public_exposure_enabled=false`;
+- `private_admin_publicly_exposed=false`;
+- `visibility_changed=false`;
+- `public_routes_enabled=false`;
+- `public_readers_implemented=false`;
+- `point_50_db_write=false`;
+- `provider_fetch=false`;
+- `external_fetch=false`;
+- `provider_import_enabled=false`;
+- `apify_enabled=false`;
+- `production_touched=false`;
+- `deploy_executed=false`;
+- `service_role_used=false`.
+
+I dry-run restano local-only/read-only e non eseguono provider fetch, public reader o DB write.
+
 ## Punto 47 — Dry-run status
 
 Punto 47 aggiorna i dry-run manuali con lo stato del piano UX/read-only:

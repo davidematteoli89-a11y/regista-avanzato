@@ -1787,3 +1787,21 @@ La verifica admin reale resta non conclusa:
 - DB write Punto 49: `false`.
 
 La verifica non autenticata della Preview ha mostrato login Vercel e non ha esposto dati `private_admin`.
+
+## Punto 50 — Public exposure policy plan
+
+Punto 50 non cambia la readiness Production: nessun deploy e nessuna Production touch.
+
+Stato:
+
+- policy futura di esposizione pubblica documentata;
+- public exposure ancora `false`;
+- dati `private_admin` non pubblici;
+- visibility invariata;
+- nessuna DB write;
+- nessun provider/import;
+- Apify off;
+- nessuna route pubblica operativa nuova;
+- nessun public reader implementato.
+
+Production resta bloccata finché non esistono public reader separati, filtro `visibility='public'`, test incognito, checklist sicurezza e autorizzazione deploy dedicata.

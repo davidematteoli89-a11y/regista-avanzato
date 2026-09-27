@@ -1641,3 +1641,18 @@ Punto 48 non attiva provider e non modifica il piano di activation:
 - deploy non eseguito.
 
 Prossimo step consigliato: Punto 49 — repeat browser admin verification after UX polish.
+
+## Punto 50 — Public exposure policy plan
+
+Punto 50 non attiva provider:
+
+- provider fetch: `false`;
+- provider import enabled: `false`;
+- Apify: `off`;
+- public exposure: `false`;
+- visibility changed: `false`;
+- DB write: `false`;
+- Production touched: `false`;
+- deploy executed: `false`.
+
+La futura esposizione pubblica dovrà avvenire solo tramite reader pubblici separati e filtro `visibility='public'`.

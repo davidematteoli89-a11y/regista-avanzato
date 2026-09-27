@@ -2279,3 +2279,27 @@ Risultato:
 - nessun deploy.
 
 La Preview non autenticata ha mostrato `Login – Vercel` sulle route admin controllate. La verifica admin reale va ripetuta quando sarà disponibile una sessione admin osservabile.
+
+## Punto 50 — Public exposure policy plan
+
+Punto 50 completato come policy/plan only.
+
+- nessuna exposure pubblica;
+- dati `private_admin` non pubblici;
+- nessun cambio visibility;
+- nessuna DB write;
+- nessun provider/import;
+- Apify off;
+- Production non toccata;
+- deploy non eseguito;
+- nessuna route pubblica operativa nuova;
+- nessun public reader implementato.
+
+Documenti creati:
+
+- `docs/public_exposure_policy_plan_p50.md`;
+- `docs/public_exposure_safety_checklist_p50.md`;
+- `docs/manual_import_point_51_decision_p50.md`;
+- `docs/provider_point_50_closure.md`.
+
+Prossimo step consigliato: Punto 51 — public reader design dry-run, oppure ripetere verifica admin con sessione reale.

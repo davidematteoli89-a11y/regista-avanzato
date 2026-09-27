@@ -3282,3 +3282,34 @@ Esito:
 - `service_role_used=false`.
 
 La Preview non autenticata ha mostrato `Login – Vercel`; nessun dato `private_admin` è stato osservato pubblicamente. La verifica admin reale resta da ripetere con sessione admin disponibile.
+
+## Punto 50 — Public exposure policy plan
+
+Completato.
+
+Punto 50 è solo policy/plan:
+
+- `point_50_public_exposure_policy_plan_created=true`;
+- `public_exposure_policy_mode=plan_only`;
+- `public_exposure_enabled=false`;
+- `private_admin_publicly_exposed=false`;
+- `visibility_changed=false`;
+- `public_routes_enabled=false`;
+- `public_readers_implemented=false`;
+- `point_50_db_write=false`;
+- `provider_fetch=false`;
+- `external_fetch=false`;
+- `provider_import_enabled=false`;
+- `apify_enabled=false`;
+- `production_touched=false`;
+- `deploy_executed=false`;
+- `service_role_used=false`.
+
+Documenti creati:
+
+- `docs/public_exposure_policy_plan_p50.md`;
+- `docs/public_exposure_safety_checklist_p50.md`;
+- `docs/manual_import_point_51_decision_p50.md`;
+- `docs/provider_point_50_closure.md`.
+
+Nessuna route pubblica operativa è stata aggiunta. Nessun dato `private_admin` è stato esposto pubblicamente.
