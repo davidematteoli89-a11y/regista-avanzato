@@ -1607,3 +1607,21 @@ Punto 45 implementa superfici admin read-only e non attiva provider/import.
 - deploy_executed: `false`.
 
 Provider/import restano spenti. La prossima fase consigliata è verifica UI/read-only, non provider activation.
+
+## Punto 47 — Provider activation status
+
+Punto 47 crea solo un piano UX/read-only per superfici admin manual data e non attiva provider/import.
+
+- point_47_admin_read_only_ux_polish_plan_created: `true`;
+- admin_ux_polish_mode: `read_only_plan`;
+- provider_fetch: `false`;
+- external_fetch: `false`;
+- provider_import_enabled: `false`;
+- import_real_execution: `false`;
+- apify_enabled: `false`;
+- point_47_db_write: `false`;
+- service_role_used: `false`;
+- production_touched: `false`;
+- deploy_executed: `false`.
+
+Provider/import restano spenti. La prossima fase consigliata è Punto 48 admin read-only UX polish oppure browser verification se diventa disponibile una sessione admin reale.

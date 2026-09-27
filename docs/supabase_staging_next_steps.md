@@ -2211,3 +2211,18 @@ Punto 46-E ha tentato la verifica diretta dall’assistente, ma non c’è sessi
 - apify_enabled: `false`.
 
 Nessuna modifica a Supabase staging. Prossimo step: Punto 46-E2 / 46-Fix per ottenere un canale browser admin verificabile senza segreti.
+
+## Punto 47 — Admin read-only UX polish plan
+
+Punto 47 non modifica Supabase staging.
+
+- point_47_admin_read_only_ux_polish_plan_created: `true`;
+- admin_ux_polish_mode: `read_only_plan`;
+- browser_admin_verification_result: `pending_no_admin_session`;
+- db_write: `false`;
+- provider_fetch: `false`;
+- provider_import_enabled: `false`;
+- apify_enabled: `false`;
+- service_role_used: `false`.
+
+Il piano raccomanda polish UI read-only futuro, senza modificare reader, dati, RLS, auth o visibility. I dati `private_admin` restano non pubblici.

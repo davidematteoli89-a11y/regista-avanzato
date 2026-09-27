@@ -42,3 +42,19 @@ Punto 46-E2 / 46-Fix:
 
 - rendere disponibile un canale browser autenticato verificabile senza condividere segreti; oppure
 - far eseguire all’utente la checklist `docs/admin_browser_verification_checklist_p46d.md` e riportare solo risultati testuali sicuri.
+
+## Follow-up Punto 47
+
+Punto 47 ha creato solo un piano UX/read-only:
+
+- point_47_admin_read_only_ux_polish_plan_created: `true`;
+- admin_ux_polish_mode: `read_only_plan`;
+- browser_admin_verification_result: `pending_no_admin_session`;
+- point_47_db_write: `false`;
+- provider_fetch: `false`;
+- provider_import_enabled: `false`;
+- apify_enabled: `false`;
+- production_touched: `false`;
+- deploy_executed: `false`.
+
+La verifica browser admin reale resta pending.

@@ -118,3 +118,21 @@ Punto 46-E ha tentato il controllo diretto dall’assistente, ma il risultato re
 - deploy_executed: `false`.
 
 Decisione aggiornata: Punto 47 non è ancora consigliato. Prossimo step: Punto 46-E2 / 46-Fix per ottenere un canale browser admin verificabile senza condividere segreti.
+
+## Aggiornamento Punto 47
+
+Punto 47 è stato eseguito solo come piano UX/read-only, senza fingere che la verifica browser reale admin sia passata.
+
+- point_47_admin_read_only_ux_polish_plan_created: `true`;
+- admin_ux_polish_mode: `read_only_plan`;
+- browser_admin_verification_result: `pending_no_admin_session`;
+- public_exposure_enabled: `false`;
+- current_visibility: `private_admin`;
+- point_47_db_write: `false`;
+- provider_fetch: `false`;
+- provider_import_enabled: `false`;
+- apify_enabled: `false`;
+- production_touched: `false`;
+- deploy_executed: `false`.
+
+La decisione per il passo successivo è spostata in `docs/manual_import_point_48_decision_p47.md`.

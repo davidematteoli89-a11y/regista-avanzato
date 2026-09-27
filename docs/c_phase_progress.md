@@ -3174,3 +3174,44 @@ Sicurezza:
 - current_visibility: `private_admin`.
 
 Prossimo step consigliato: Punto 46-E2 / 46-Fix per rendere disponibile un canale browser autenticato verificabile senza condividere segreti.
+
+## Punto 47 — Admin read-only UX polish plan
+
+Punto 47 ha creato il piano di polish UX per la superficie admin read-only, senza implementare nuove azioni.
+
+Superfici analizzate:
+
+- `/admin/data`;
+- `/admin/data/competitions`;
+- `/admin/data/competitions/[slug]`;
+- link da `/admin/imports`;
+- reader `lib/manual-data/readers.ts`.
+
+Esito:
+
+- point_47_admin_read_only_ux_polish_plan_created: `true`;
+- admin_ux_polish_mode: `read_only_plan`;
+- browser_admin_verification_result: `pending_no_admin_session`;
+- public_exposure_enabled: `false`;
+- current_visibility: `private_admin`;
+- point_47_db_write: `false`;
+- provider_fetch: `false`;
+- external_fetch: `false`;
+- provider_import_enabled: `false`;
+- apify_enabled: `false`;
+- production_touched: `false`;
+- deploy_executed: `false`;
+- service_role_used: `false`.
+
+Migliorie raccomandate per Punto 48:
+
+- breadcrumb admin;
+- badge read-only/private_admin più evidenti;
+- box provider/import off;
+- warning public exposure disabled;
+- warning browser verification pending;
+- summary cards/counts;
+- empty/error state più chiari;
+- standings table più leggibile.
+
+Nessuna nuova scrittura DB, nessun provider/import, nessun deploy e nessuna Production.

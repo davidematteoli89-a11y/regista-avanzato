@@ -1740,3 +1740,20 @@ Punto 46-E non cambia la readiness Production.
 - production_touched: `false`.
 
 Prima di qualsiasi passo successivo di esposizione pubblica o UX polish finale, serve ancora verifica browser admin reale con dati manuali visibili.
+
+## Punto 47 — UX polish plan does not change readiness
+
+Punto 47 ha creato un piano UX/read-only, non una verifica browser passata.
+
+- admin_ux_polish_mode: `read_only_plan`;
+- browser_admin_verification_result: `pending_no_admin_session`;
+- public_exposure_enabled: `false`;
+- current_visibility: `private_admin`;
+- point_47_db_write: `false`;
+- provider_fetch: `false`;
+- provider_import_enabled: `false`;
+- apify_enabled: `false`;
+- deploy_executed: `false`;
+- production_touched: `false`.
+
+Production readiness resta invariata: nessun dato `private_admin` deve diventare pubblico senza policy dedicata e nuova autorizzazione.

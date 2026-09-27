@@ -886,6 +886,25 @@ Stato dry-run:
 
 Provider/import restano spenti.
 
+## Punto 47 — Dry-run status
+
+Punto 47 aggiorna i dry-run manuali con lo stato del piano UX/read-only:
+
+- `point_47_admin_read_only_ux_polish_plan_created=true`;
+- `admin_ux_polish_mode=read_only_plan`;
+- `browser_admin_verification_result=pending_no_admin_session`;
+- `public_exposure_enabled=false`;
+- `current_visibility=private_admin`;
+- `point_47_db_write=false`;
+- `provider_fetch=false`;
+- `provider_import_enabled=false`;
+- `apify_enabled=false`;
+- `production_touched=false`;
+- `deploy_executed=false`;
+- `service_role_used=false`.
+
+Le probe provider restano gated/disabled e non eseguono fetch.
+
 ## Punto 44 — Dry-run output atteso
 
 I dry-run manual/import devono includere il checkpoint Punto 44:
