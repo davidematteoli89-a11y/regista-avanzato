@@ -77,3 +77,20 @@ Non aggiungere:
 ## Recommended next step
 
 Punto 48 — implement admin read-only UX polish, limitato a UI/testi/badge/empty state e senza cambiare reader, auth, RLS, DB o provider.
+
+## Aggiornamento Punto 48
+
+Punto 48 ha implementato il polish minimo richiesto:
+
+- link diretto `/admin/data` aggiunto in `/admin/imports`;
+- link `/admin/data/competitions` confermato in `/admin/imports`;
+- voce `Manual Data` aggiunta alla navigazione admin centralizzata;
+- modifica solo UI/read-only;
+- nessuna DB write;
+- nessun provider/import;
+- Apify off;
+- Production non toccata;
+- nessun deploy;
+- dati `private_admin` non esposti pubblicamente.
+
+Prossimo step consigliato: Punto 49 — repeat browser admin verification after UX polish.

@@ -118,3 +118,22 @@ Ogni futura implementazione UI deve passare:
 - `npm run lint`;
 - `npm run typecheck`;
 - `npm run build`.
+
+## Aggiornamento Punto 48
+
+Implementazione minima eseguita:
+
+- `/admin/imports`: aggiunto link `View admin data hub` verso `/admin/data`;
+- `/admin/imports`: mantenuto link verso `/admin/data/competitions`;
+- `lib/admin/adminRoutes.ts`: aggiunta voce `Manual Data` nel gruppo data;
+- dry-run output aggiornati con marker Punto 48;
+- documentazione Punto 48 creata.
+
+La modifica resta solo UI/read-only:
+
+- nessuna DB write;
+- nessuna Server Action write;
+- nessun provider/import;
+- Apify off;
+- Production non toccata;
+- dati `private_admin` non pubblici.

@@ -886,6 +886,27 @@ Stato dry-run:
 
 Provider/import restano spenti.
 
+## Punto 48 — Dry-run output alignment
+
+I dry-run manual import/schema sono stati aggiornati con marker Punto 48:
+
+- `point_48_admin_read_only_ux_polish_implemented=true`;
+- `admin_imports_data_hub_link_added=true`;
+- `admin_imports_competitions_link_present=true`;
+- `admin_ux_polish_mode=read_only_ui`;
+- `public_exposure_enabled=false`;
+- `current_visibility=private_admin`;
+- `db_write=false`;
+- `provider_fetch=false`;
+- `external_fetch=false`;
+- `provider_import_enabled=false`;
+- `apify_enabled=false`;
+- `production_touched=false`;
+- `deploy_executed=false`;
+- `service_role_used=false`.
+
+I dry-run restano local-only/read-only e non eseguono provider fetch o DB write.
+
 ## Punto 47 — Dry-run status
 
 Punto 47 aggiorna i dry-run manuali con lo stato del piano UX/read-only:

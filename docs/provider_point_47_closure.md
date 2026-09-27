@@ -31,3 +31,19 @@ Nessuna nuova scrittura DB è stata eseguita. Nessun provider è stato chiamato.
 ## Prossimo step consigliato
 
 Punto 48 — implement admin read-only UX polish, oppure ripetere browser verification se diventa disponibile una sessione admin reale.
+
+## Aggiornamento Punto 48
+
+Punto 48 implementato:
+
+- link diretto `/admin/data` aggiunto in `/admin/imports`;
+- link `/admin/data/competitions` confermato;
+- navigazione admin aggiornata con voce `Manual Data`;
+- nessuna DB write;
+- nessun provider/import;
+- Apify off;
+- Production non toccata;
+- nessun deploy;
+- dati `private_admin` non esposti pubblicamente.
+
+Prossimo step consigliato: Punto 49 — repeat browser admin verification after UX polish.

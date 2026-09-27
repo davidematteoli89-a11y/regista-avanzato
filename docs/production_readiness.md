@@ -1757,3 +1757,20 @@ Punto 47 ha creato un piano UX/read-only, non una verifica browser passata.
 - production_touched: `false`.
 
 Production readiness resta invariata: nessun dato `private_admin` deve diventare pubblico senza policy dedicata e nuova autorizzazione.
+
+## Punto 48 — Admin read-only UX polish
+
+Punto 48 non cambia la readiness Production: nessun deploy e nessuna Production touch.
+
+Modifiche:
+
+- link diretto `/admin/data` aggiunto in `/admin/imports`;
+- link `/admin/data/competitions` confermato;
+- voce `Manual Data` aggiunta alla navigazione admin;
+- modifica solo UI/read-only;
+- nessuna DB write nel Punto 48;
+- nessun provider/import;
+- Apify off;
+- dati `private_admin` non esposti pubblicamente.
+
+Production resta non pronta per pubblicazione live finché non saranno completate le checklist dedicate e la verifica browser admin reale post-polish.

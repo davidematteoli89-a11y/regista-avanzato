@@ -1625,3 +1625,19 @@ Punto 47 crea solo un piano UX/read-only per superfici admin manual data e non a
 - deploy_executed: `false`.
 
 Provider/import restano spenti. La prossima fase consigliata è Punto 48 admin read-only UX polish oppure browser verification se diventa disponibile una sessione admin reale.
+
+## Punto 48 — Admin read-only UX polish
+
+Punto 48 non attiva provider e non modifica il piano di activation:
+
+- provider reali sospesi;
+- provider fetch: `false`;
+- provider import enabled: `false`;
+- Apify: `off`;
+- link `/admin/data` aggiunto in `/admin/imports` come navigazione read-only;
+- nessuna azione Run/Import/Execute/Sync/Save/Apply;
+- nessuna DB write;
+- Production non toccata;
+- deploy non eseguito.
+
+Prossimo step consigliato: Punto 49 — repeat browser admin verification after UX polish.

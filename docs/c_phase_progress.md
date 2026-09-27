@@ -3215,3 +3215,36 @@ Migliorie raccomandate per Punto 48:
 - standings table più leggibile.
 
 Nessuna nuova scrittura DB, nessun provider/import, nessun deploy e nessuna Production.
+
+## Punto 48 — Implement admin read-only UX polish
+
+Completato.
+
+Modifiche implementate:
+
+- `/admin/imports`: aggiunto link diretto `View admin data hub` verso `/admin/data`;
+- `/admin/imports`: mantenuto link verso `/admin/data/competitions`;
+- `lib/admin/adminRoutes.ts`: aggiunta voce `Manual Data` nel gruppo data;
+- documentazione Punto 48 creata;
+- dry-run output aggiornati con marker Punto 48.
+
+Safety:
+
+- `point_48_admin_read_only_ux_polish_implemented=true`;
+- `admin_imports_data_hub_link_added=true`;
+- `admin_imports_competitions_link_present=true`;
+- `admin_ux_polish_mode=read_only_ui`;
+- `public_exposure_enabled=false`;
+- `current_visibility=private_admin`;
+- `db_write=false`;
+- `provider_fetch=false`;
+- `external_fetch=false`;
+- `provider_import_enabled=false`;
+- `apify_enabled=false`;
+- `production_touched=false`;
+- `deploy_executed=false`;
+- `service_role_used=false`.
+
+Nessun bottone Run/Import/Execute/Sync/Save/Apply è stato aggiunto. Nessuna Server Action write, fetch provider, deploy o Production.
+
+Prossimo step consigliato: Punto 49 — repeat browser admin verification after UX polish.

@@ -2226,3 +2226,37 @@ Punto 47 non modifica Supabase staging.
 - service_role_used: `false`.
 
 Il piano raccomanda polish UI read-only futuro, senza modificare reader, dati, RLS, auth o visibility. I dati `private_admin` restano non pubblici.
+
+## Punto 48 — Admin read-only UX polish
+
+Punto 48 implementato come modifica UI/read-only:
+
+- link diretto `/admin/data` aggiunto in `/admin/imports`;
+- link `/admin/data/competitions` confermato in `/admin/imports`;
+- voce `Manual Data` aggiunta alla navigazione admin;
+- nessuna modifica Supabase;
+- nessuna DB write nel Punto 48;
+- nessun provider/import;
+- Apify off;
+- Production non toccata;
+- nessun deploy;
+- dati `private_admin` non esposti pubblicamente.
+
+Safety:
+
+- `point_48_admin_read_only_ux_polish_implemented=true`;
+- `admin_imports_data_hub_link_added=true`;
+- `admin_imports_competitions_link_present=true`;
+- `admin_ux_polish_mode=read_only_ui`;
+- `public_exposure_enabled=false`;
+- `current_visibility=private_admin`;
+- `db_write=false`;
+- `provider_fetch=false`;
+- `external_fetch=false`;
+- `provider_import_enabled=false`;
+- `apify_enabled=false`;
+- `production_touched=false`;
+- `deploy_executed=false`;
+- `service_role_used=false`.
+
+Prossimo step consigliato: Punto 49 — repeat browser admin verification after UX polish.

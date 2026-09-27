@@ -50,3 +50,21 @@ Solo piano policy per futura esposizione pubblica, senza cambiare visibility e s
 - no Production;
 - no DB write senza autorizzazione esplicita;
 - no bottoni write/import/run/sync/save/apply.
+
+## Esito Punto 48
+
+Punto 48 è stato scelto e implementato come polish UI/read-only:
+
+- `point_48_admin_read_only_ux_polish_implemented=true`;
+- `admin_imports_data_hub_link_added=true`;
+- `admin_imports_competitions_link_present=true`;
+- `admin_ux_polish_mode=read_only_ui`;
+- `db_write=false`;
+- `provider_fetch=false`;
+- `provider_import_enabled=false`;
+- `apify_enabled=false`;
+- `production_touched=false`;
+- `deploy_executed=false`;
+- `service_role_used=false`.
+
+Decisione successiva consigliata: Punto 49 — repeat browser admin verification after UX polish.

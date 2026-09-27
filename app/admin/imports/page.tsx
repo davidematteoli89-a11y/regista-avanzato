@@ -332,10 +332,16 @@ export default async function AdminImportsPage() {
           <dd>false</dd>
           <dt>Admin data surface implemented</dt>
           <dd>true</dd>
+          <dt>Admin data hub</dt>
+          <dd>
+            <Link href="/admin/data">View admin data hub</Link>
+          </dd>
           <dt>View manual competitions</dt>
           <dd>
             <Link href="/admin/data/competitions">Open read-only admin surface</Link>
           </dd>
+          <dt>Admin data safety</dt>
+          <dd>read-only, private_admin, public exposure disabled, provider/import off</dd>
           <dt>Point 45 DB write</dt>
           <dd>false</dd>
           <dt>Next write allowed</dt>
