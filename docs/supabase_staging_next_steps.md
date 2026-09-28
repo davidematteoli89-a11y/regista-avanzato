@@ -2303,3 +2303,20 @@ Documenti creati:
 - `docs/provider_point_50_closure.md`.
 
 Prossimo step consigliato: Punto 51 — public reader design dry-run, oppure ripetere verifica admin con sessione reale.
+- Punto 51 completato come public reader design dry-run:
+  - `point_51_public_reader_design_dry_run_created=true`;
+  - `public_reader_design_mode=dry_run_only`;
+  - `public_readers_implemented=false`;
+  - `public_reader_skeleton_operational=false`;
+  - `public_routes_enabled=false`;
+  - `public_routes_created=false`;
+  - `public_reader_connected_to_routes=false`;
+  - `private_admin_publicly_exposed=false`;
+  - `visibility_changed=false`;
+  - `point_51_db_write=false`;
+  - provider/import spenti;
+  - Apify off;
+  - Production non toccata;
+  - nessun deploy.
+
+Nota: i futuri public reader dovranno vivere separati dagli admin reader, filtrare sempre `visibility='public'` e non importare `lib/manual-data/readers.ts`. Nessun reader pubblico è stato reso operativo nel Punto 51.

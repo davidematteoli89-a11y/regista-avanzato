@@ -1656,3 +1656,16 @@ Punto 50 non attiva provider:
 - deploy executed: `false`.
 
 La futura esposizione pubblica dovrà avvenire solo tramite reader pubblici separati e filtro `visibility='public'`.
+- Punto 51 non modifica lo stato provider.
+
+La progettazione dei futuri public reader resta separata dai provider:
+
+- nessuna chiamata TheStatsAPI / Stats API;
+- nessuna chiamata API-Football;
+- nessuna chiamata Apify/SofaScore;
+- nessun provider fetch;
+- nessun import provider;
+- nessun writer;
+- nessun deploy.
+
+I futuri public reader dovranno leggere solo dati già pubblicabili con `visibility='public'`; non devono attivare provider, import o fallback verso dati admin.

@@ -49,3 +49,23 @@
 - `production_touched=false`
 - `deploy_executed=false`
 - `service_role_used=false`
+
+## Punto 51 status
+
+- `point_51_public_reader_design_dry_run_created=true`
+- `public_reader_design_mode=dry_run_only`
+- `public_readers_implemented=false`
+- `public_reader_skeleton_operational=false`
+- `public_routes_enabled=false`
+- `public_routes_created=false`
+- `public_reader_connected_to_routes=false`
+- `private_admin_publicly_exposed=false`
+- `visibility_changed=false`
+- `point_51_db_write=false`
+- `provider_fetch=false`
+- `external_fetch=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `production_touched=false`
+- `deploy_executed=false`
+- `service_role_used=false`

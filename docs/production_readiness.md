@@ -1805,3 +1805,17 @@ Stato:
 - nessun public reader implementato.
 
 Production resta bloccata finché non esistono public reader separati, filtro `visibility='public'`, test incognito, checklist sicurezza e autorizzazione deploy dedicata.
+- Punto 51 — public reader design dry-run:
+  - readiness Production invariata;
+  - nessuna route pubblica nuova;
+  - nessun public reader operativo;
+  - nessun collegamento da pagine pubbliche reali;
+  - nessun dato `private_admin` esposto;
+  - nessun cambio visibility;
+  - nessuna DB write;
+  - nessun provider/import;
+  - Apify off;
+  - deploy non eseguito;
+  - Production non toccata.
+
+Prima di qualunque esposizione pubblica reale resta obbligatoria una fase separata con public reader implementato in namespace dedicato, filtro `visibility='public'`, test incognito e verifica che non importi admin reader.

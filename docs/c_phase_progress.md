@@ -3313,3 +3313,38 @@ Documenti creati:
 - `docs/provider_point_50_closure.md`.
 
 Nessuna route pubblica operativa è stata aggiunta. Nessun dato `private_admin` è stato esposto pubblicamente.
+- Punto 51 completato: Public reader design dry-run.
+
+Output:
+
+- creato `docs/public_reader_design_dry_run_p51.md`;
+- definita separazione futura fra admin reader e public reader;
+- namespace futuro consigliato: `lib/public-data/readers.ts`;
+- API proposta:
+  - `getPublicCompetitions()`;
+  - `getPublicCompetitionBySlug(slug)`;
+  - `getPublicTeamsByCompetitionSlug(slug)`;
+  - `getPublicStandingsByCompetitionSlug(slug)`;
+- nessun reader pubblico operativo;
+- nessuna route pubblica creata o collegata;
+- nessun dato `private_admin` esposto;
+- nessun cambio visibility;
+- nessuna DB write;
+- provider/import spenti;
+- Apify off;
+- Production non toccata;
+- deploy non eseguito.
+
+Marker:
+
+- `point_51_public_reader_design_dry_run_created=true`;
+- `public_reader_design_mode=dry_run_only`;
+- `public_readers_implemented=false`;
+- `public_reader_skeleton_operational=false`;
+- `public_routes_enabled=false`;
+- `public_routes_created=false`;
+- `public_reader_connected_to_routes=false`;
+- `private_admin_publicly_exposed=false`;
+- `visibility_changed=false`;
+- `point_51_db_write=false`;
+- `service_role_used=false`.

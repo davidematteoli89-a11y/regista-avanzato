@@ -35,3 +35,16 @@ Punto 50 completato.
 ## Prossimo step consigliato
 
 Punto 51 — Public reader design dry-run, oppure repeat admin browser verification con sessione admin reale.
+
+## Punto 51 follow-up
+
+Punto 51 ha scelto il ramo “Public reader design dry-run”.
+
+Risultato atteso:
+
+- design tecnico documentato;
+- nessun public reader operativo;
+- nessuna route pubblica reale;
+- nessun collegamento a pagine pubbliche;
+- `private_admin` non esposto;
+- provider/import ancora spenti.

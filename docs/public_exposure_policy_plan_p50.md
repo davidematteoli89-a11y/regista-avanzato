@@ -145,3 +145,17 @@ Opzione consigliata:
 Alternativa:
 
 - P51 — repeat admin browser verification with real session, se una sessione admin reale è disponibile.
+
+## P51 result
+
+Punto 51 ha eseguito il ramo “public reader design dry-run”.
+
+Esito:
+
+- design documentato in `docs/public_reader_design_dry_run_p51.md`;
+- nessun public reader operativo;
+- nessuna route pubblica creata;
+- nessun collegamento a pagine pubbliche reali;
+- `private_admin` non esposto;
+- `visibility_changed=false`;
+- `public_exposure_enabled=false`.
