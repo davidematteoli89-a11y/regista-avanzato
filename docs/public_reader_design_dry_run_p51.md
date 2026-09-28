@@ -213,3 +213,14 @@ Punto 52 ha creato solo il contract skeleton:
 - `private_admin` non esposto;
 - `visibility_changed=false`;
 - `point_52_db_write=false`.
+
+## P53 result
+
+Punto 53 ha creato i public reader no-route:
+
+- `lib/public-data/readers.ts`;
+- funzioni pubbliche filtrate su `visibility='public'`;
+- nessun collegamento a route pubbliche;
+- nessun fallback verso admin reader;
+- nessun cambio visibility;
+- nessuna DB write.

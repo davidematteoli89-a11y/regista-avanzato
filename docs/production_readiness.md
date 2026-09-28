@@ -1834,3 +1834,18 @@ Prima di qualunque esposizione pubblica reale resta obbligatoria una fase separa
   - Production non toccata.
 
 Il file `lib/public-data/contracts.ts` è solo un contratto di tipi/costanti. Non deve essere interpretato come autorizzazione a creare route pubbliche o query operative.
+
+- Punto 53 — public reader implementation no-route:
+  - readiness Production invariata;
+  - reader pubblici implementati ma non collegati a route;
+  - query filtrate su `visibility='public'`;
+  - nessuna route pubblica creata;
+  - nessun dato `private_admin` esposto;
+  - nessun cambio visibility;
+  - nessuna DB write;
+  - nessun provider/import;
+  - Apify off;
+  - deploy non eseguito;
+  - Production non toccata.
+
+Prima di qualsiasi route pubblica resta obbligatoria una fase dedicata con test incognito e conferma che il dataset `private_admin` produca empty state pubblico.

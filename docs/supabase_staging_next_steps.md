@@ -2336,3 +2336,17 @@ Nota: i futuri public reader dovranno vivere separati dagli admin reader, filtra
   - `private_admin_publicly_exposed=false`;
   - `visibility_changed=false`;
   - `point_52_db_write=false`.
+
+- Punto 53 completato come public reader implementation no-route:
+  - creato `lib/public-data/readers.ts`;
+  - public reader reali implementati ma non collegati a route;
+  - ogni query usa filtro `visibility='public'`;
+  - nessun import da `lib/manual-data/readers.ts`;
+  - nessuna route pubblica creata;
+  - nessun public reader collegato a pagine reali;
+  - nessun cambio visibility;
+  - nessuna DB write;
+  - provider/import spenti;
+  - Apify off;
+  - Production non toccata;
+  - deploy non eseguito.

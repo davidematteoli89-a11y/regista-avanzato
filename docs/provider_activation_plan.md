@@ -1682,3 +1682,16 @@ I futuri public reader dovranno leggere solo dati già pubblicabili con `visibil
   - nessun deploy.
 
 Il nuovo audit `npm run audit:public-reader-contracts` è locale/statico e non legge token, non fa fetch e non scrive DB.
+
+- Punto 53 non attiva provider:
+  - public reader creati solo per dati già presenti e pubblicabili;
+  - nessuna chiamata TheStatsAPI / Stats API;
+  - nessuna chiamata API-Football;
+  - nessuna chiamata Apify/SofaScore;
+  - nessun provider fetch;
+  - nessun import provider;
+  - nessun writer provider;
+  - nessuna route pubblica;
+  - nessun deploy.
+
+Le query pubbliche P53 sono filtrate su `visibility='public'` e non avviano import o refresh provider.

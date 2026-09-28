@@ -3385,3 +3385,43 @@ Marker:
 - `visibility_changed=false`;
 - `point_52_db_write=false`;
 - `service_role_used=false`.
+
+- Punto 53 completato: Public reader implementation no-route.
+
+Output:
+
+- creato `lib/public-data/readers.ts`;
+- aggiornato `scripts/provider/auditPublicReaderContracts.ts`;
+- public reader reali implementati ma non collegati a route;
+- funzioni:
+  - `getPublicCompetitions()`;
+  - `getPublicCompetitionBySlug(slug)`;
+  - `getPublicTeamsByCompetitionSlug(slug)`;
+  - `getPublicStandingsByCompetitionSlug(slug)`;
+  - `getPublicCompetitionBundleBySlug(slug)`;
+- filtro obbligatorio `visibility='public'`;
+- nessun import admin reader;
+- nessuna route pubblica creata;
+- nessun cambio visibility;
+- nessuna DB write;
+- provider/import spenti;
+- Apify off;
+- Production non toccata;
+- deploy non eseguito.
+
+Marker:
+
+- `point_53_public_readers_no_route_implemented=true`;
+- `public_reader_mode=no_route`;
+- `public_readers_implemented=true`;
+- `public_reader_operational=true`;
+- `public_routes_enabled=false`;
+- `public_routes_created=false`;
+- `public_reader_connected_to_routes=false`;
+- `supabase_queries_implemented=true`;
+- `supabase_queries_visibility_filtered=true`;
+- `admin_reader_imported=false`;
+- `private_admin_publicly_exposed=false`;
+- `visibility_changed=false`;
+- `point_53_db_write=false`;
+- `service_role_used=false`.

@@ -92,3 +92,26 @@
 - `production_touched=false`
 - `deploy_executed=false`
 - `service_role_used=false`
+
+## Punto 53 status
+
+- `point_53_public_readers_no_route_implemented=true`
+- `public_reader_mode=no_route`
+- `public_readers_implemented=true`
+- `public_reader_operational=true`
+- `public_routes_enabled=false`
+- `public_routes_created=false`
+- `public_reader_connected_to_routes=false`
+- `supabase_queries_implemented=true`
+- `supabase_queries_visibility_filtered=true`
+- `admin_reader_imported=false`
+- `private_admin_publicly_exposed=false`
+- `visibility_changed=false`
+- `point_53_db_write=false`
+- `provider_fetch=false`
+- `external_fetch=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `production_touched=false`
+- `deploy_executed=false`
+- `service_role_used=false`
