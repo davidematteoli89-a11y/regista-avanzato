@@ -1706,3 +1706,14 @@ Le query pubbliche P53 sono filtrate su `visibility='public'` e non avviano impo
   - audit/dry-run solo locali;
   - nessuna route pubblica;
   - nessun deploy.
+
+- Punto 55 non modifica lo stato provider:
+  - create route pubbliche empty-state `/competitions` e `/competitions/[slug]`;
+  - le route leggono solo dati già presenti tramite public reader filtrati `visibility='public'`;
+  - nessuna chiamata TheStatsAPI / Stats API;
+  - nessuna chiamata API-Football;
+  - nessuna chiamata Apify/SofaScore;
+  - nessun provider fetch;
+  - nessun import provider;
+  - nessun writer provider;
+  - nessun deploy.

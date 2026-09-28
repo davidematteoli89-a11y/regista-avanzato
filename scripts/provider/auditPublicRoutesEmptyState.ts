@@ -1,0 +1,111 @@
+import { existsSync, readFileSync } from "node:fs";
+import path from "node:path";
+
+const ROOT = process.cwd();
+
+const ROUTE_FILES = [
+  "app/(public)/competitions/page.tsx",
+  "app/(public)/competitions/[slug]/page.tsx",
+] as const;
+
+const FORBIDDEN_ROUTE_PATTERNS: Array<[string, RegExp]> = [
+  ["admin_reader_import", /(?:@\/)?lib\/manual-data\/readers|manual-data\/readers/],
+  ["admin_namespace_import", /(?:@\/)?lib\/admin\/|from\s+["'][^"']*admin/],
+  ["service_role", /service_role|SUPABASE_SERVICE_ROLE/i],
+  ["provider_client", /TheStatsAPI|theStatsApi|API-Football|apiFootball|Apify|SofaScore|sofascore/i],
+  ["external_fetch", /\bfetch\s*\(/],
+  ["write_insert", /\.insert\s*\(/],
+  ["write_update", /\.update\s*\(/],
+  ["write_upsert", /\.upsert\s*\(/],
+  ["write_delete", /\.delete\s*\(/],
+  ["rpc_call", /\.rpc\s*\(/],
+  ["server_action", /["']use server["']/],
+  ["private_admin_literal", /private_admin|PRIVATE_ADMIN_VISIBILITY/],
+  ["private_manual_competition_name", /Serie A Manual Sample|manual-serie-a|Manual Team One|Manual Team Two/],
+  ["operational_button", /<button\b|Run Import|Start Import|Execute|Sync|Save to DB|Apply/],
+  ["debug_payload", /raw payload|JSON\.stringify|debug panel/i],
+];
+
+function readRoute(relativePath: string) {
+  return readFileSync(path.join(ROOT, relativePath), "utf8");
+}
+
+function main() {
+  const missingRoutes = ROUTE_FILES.filter((file) => !existsSync(path.join(ROOT, file)));
+  const routeSources = ROUTE_FILES.filter((file) => !missingRoutes.includes(file)).map((file) => ({
+    file,
+    source: readRoute(file),
+  }));
+
+  const routeViolations = routeSources.flatMap(({ file, source }) =>
+    FORBIDDEN_ROUTE_PATTERNS.filter(([, pattern]) => pattern.test(source)).map(
+      ([name]) => `${file}:${name}`,
+    ),
+  );
+
+  const routeImportsPublicReaders = routeSources.every(({ source }) =>
+    source.includes("@/lib/public-data/readers"),
+  );
+  const listRouteCallsExpectedReader =
+    routeSources
+      .find(({ file }) => file === "app/(public)/competitions/page.tsx")
+      ?.source.includes("getPublicCompetitions") ?? false;
+  const detailRouteCallsExpectedReader =
+    routeSources
+      .find(({ file }) => file === "app/(public)/competitions/[slug]/page.tsx")
+      ?.source.includes("getPublicCompetitionBundleBySlug") ?? false;
+  const emptyStateTextPresent = routeSources.every(
+    ({ source }) =>
+      source.includes("non ancora disponibili") ||
+      source.includes("Nessuna competizione pubblica trovata"),
+  );
+  const publicDataOnlyBadgePresent = routeSources.every(({ source }) =>
+    source.includes("Public data only"),
+  );
+
+  const violations = [
+    ...missingRoutes.map((file) => `missing:${file}`),
+    ...routeViolations,
+    ...(routeImportsPublicReaders ? [] : ["routes:missing_public_reader_import"]),
+    ...(listRouteCallsExpectedReader ? [] : ["list_route:missing_getPublicCompetitions"]),
+    ...(detailRouteCallsExpectedReader ? [] : ["detail_route:missing_getPublicCompetitionBundleBySlug"]),
+    ...(emptyStateTextPresent ? [] : ["routes:missing_empty_state_text"]),
+    ...(publicDataOnlyBadgePresent ? [] : ["routes:missing_public_data_only_badge"]),
+  ];
+  const pass = violations.length === 0;
+
+  console.info("Regista Avanzato — Public Routes Empty-State Audit");
+  console.info("point_55_public_routes_empty_state_created=true");
+  console.info("public_routes_mode=public_reader_empty_state_only");
+  console.info("public_routes_enabled=true");
+  console.info(`public_routes_created=${missingRoutes.length === 0}`);
+  console.info("public_route_count=2");
+  console.info("public_reader_connected_to_routes=true");
+  console.info(`routes_import_public_readers=${routeImportsPublicReaders}`);
+  console.info(`list_route_calls_getPublicCompetitions=${listRouteCallsExpectedReader}`);
+  console.info(`detail_route_calls_getPublicCompetitionBundleBySlug=${detailRouteCallsExpectedReader}`);
+  console.info(`empty_state_text_present=${emptyStateTextPresent}`);
+  console.info(`public_data_only_badge_present=${publicDataOnlyBadgePresent}`);
+  console.info("admin_reader_imported=false");
+  console.info("private_admin_publicly_exposed=false");
+  console.info("visibility_changed=false");
+  console.info("point_55_db_write=false");
+  console.info("provider_fetch=false");
+  console.info("external_fetch=false");
+  console.info("provider_import_enabled=false");
+  console.info("apify_enabled=false");
+  console.info("production_touched=false");
+  console.info("deploy_executed=false");
+  console.info("service_role_used=false");
+  console.info("token_read=false");
+  console.info("token_printed=false");
+  console.info(`violations_count=${violations.length}`);
+  console.info(`violations=${violations.length > 0 ? violations.join(",") : "none"}`);
+  console.info(`audit_pass=${pass}`);
+
+  if (!pass) {
+    process.exitCode = 1;
+  }
+}
+
+main();

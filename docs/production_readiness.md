@@ -1862,3 +1862,18 @@ Prima di qualsiasi route pubblica resta obbligatoria una fase dedicata con test 
   - Apify off;
   - deploy non eseguito;
   - Production non toccata.
+
+- Punto 55 — public routes mock/empty-state:
+  - readiness Production ancora non concessa;
+  - create route pubbliche minimali `/competitions` e `/competitions/[slug]`;
+  - route collegate solo ai public reader filtrati `visibility='public'`;
+  - dataset corrente `private_admin` produce empty state;
+  - nessun dato `private_admin` esposto;
+  - nessun cambio visibility;
+  - nessuna DB write;
+  - nessun provider/import;
+  - Apify off;
+  - deploy non eseguito;
+  - Production non toccata.
+
+Prima di rendere le route parte della readiness Production serve verifica browser locale/Preview e incognito, con conferma che `/competitions/manual-serie-a` non esponga dati privati.

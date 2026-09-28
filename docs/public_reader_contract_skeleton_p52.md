@@ -194,3 +194,14 @@ Esito atteso/verificabile:
 - nessuna query di scrittura;
 - nessun provider/import;
 - nessun cambio visibility.
+
+## P55 result
+
+Punto 55 usa il contratto P52/P53 per route pubbliche empty-state:
+
+- public reader collegati solo a `/competitions` e `/competitions/[slug]`;
+- nessun import admin reader;
+- nessun `service_role`;
+- nessuna route usa provider/import;
+- nessuna DB write;
+- dataset `private_admin` continua a produrre 0 risultati pubblici.

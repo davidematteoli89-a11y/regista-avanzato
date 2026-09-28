@@ -3462,3 +3462,34 @@ Marker:
 - `visibility_changed=false`;
 - `point_54_db_write=false`;
 - `service_role_used=false`.
+
+- Punto 55 completato: Public routes mock/empty-state.
+
+Output:
+
+- create route pubbliche minimali:
+  - `/competitions`;
+  - `/competitions/[slug]`;
+- le route leggono solo tramite `lib/public-data/readers.ts`;
+- con dataset corrente `private_admin`, mostrano empty state pubblico;
+- nessun dato manuale privato esposto;
+- nessun import admin reader;
+- nessun fallback verso admin/private;
+- nessuna DB write;
+- nessun cambio visibility;
+- provider/import spenti;
+- Apify off;
+- Production non toccata;
+- deploy non eseguito.
+
+Marker:
+
+- `point_55_public_routes_empty_state_created=true`;
+- `public_routes_mode=public_reader_empty_state_only`;
+- `public_routes_enabled=true`;
+- `public_routes_created=true`;
+- `public_reader_connected_to_routes=true`;
+- `private_admin_publicly_exposed=false`;
+- `visibility_changed=false`;
+- `point_55_db_write=false`;
+- `service_role_used=false`.

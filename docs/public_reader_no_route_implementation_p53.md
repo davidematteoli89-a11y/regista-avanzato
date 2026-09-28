@@ -107,7 +107,7 @@ Con dataset attuale `private_admin`, il risultato atteso è:
 - `public_bundle_status=not_found`;
 - `private_admin_dataset_hidden=true`.
 
-Nota: il comando package usa `node --experimental-strip-types`, coerente con gli altri script TypeScript del repository, perché `tsx` non è installato nel progetto.
+Nota: il comando package usa `tsx`, già presente nei dev tool del progetto.
 
 ## Punto 53 status markers
 
@@ -153,3 +153,23 @@ Punto 54 ha rafforzato audit e dry-run:
 - `violations_count=0`;
 - nessuna route pubblica creata;
 - nessun dato `private_admin` esposto.
+
+## P55 result
+
+Punto 55 ha collegato i public reader a due route pubbliche minimali, ma solo per empty-state sicuro:
+
+- `/competitions`;
+- `/competitions/[slug]`.
+
+Nota: P53 resta il riferimento per il comportamento dei reader; P55 aggiunge route che leggono solo da `lib/public-data/readers.ts`.
+
+Con dataset corrente `private_admin`:
+
+- `public_competitions_count=0`;
+- `public_teams_count=0`;
+- `public_standings_count=0`;
+- `public_bundle_status=not_found`;
+- le route mostrano empty state;
+- nessun dato `private_admin` viene esposto;
+- nessun cambio visibility;
+- nessuna DB write.

@@ -20,6 +20,9 @@ const ALLOWED_READER_IMPORT_FILES = new Set([
   "scripts/provider/publicReaderNoRouteDryRun.ts",
   "scripts/provider/auditPublicReaderContracts.ts",
   "scripts/provider/auditPublicReadersNoRoute.ts",
+  "scripts/provider/auditPublicRoutesEmptyState.ts",
+  "app/(public)/competitions/page.tsx",
+  "app/(public)/competitions/[slug]/page.tsx",
 ]);
 
 const IGNORED_DIRS = new Set([

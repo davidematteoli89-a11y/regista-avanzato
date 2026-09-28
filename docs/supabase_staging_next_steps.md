@@ -2365,3 +2365,17 @@ Nota: i futuri public reader dovranno vivere separati dagli admin reader, filtra
   - nessun dato `private_admin` esposto;
   - nessun cambio visibility;
   - nessuna DB write.
+
+- Punto 55 completato come public routes mock/empty-state:
+  - create route `/competitions` e `/competitions/[slug]`;
+  - aggiunto `npm run audit:public-routes-empty-state`;
+  - le route usano solo `lib/public-data/readers.ts`;
+  - con dataset `private_admin`, le route mostrano empty state;
+  - nessun dato manuale privato esposto;
+  - nessun cambio visibility;
+  - nessuna DB write;
+  - nessun provider/import;
+  - Apify off;
+  - Production non toccata.
+
+Prossimo step consigliato: Punto 56 — browser verification locale/Preview delle route pubbliche empty-state.

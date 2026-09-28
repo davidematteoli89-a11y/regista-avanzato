@@ -1345,3 +1345,22 @@ Nessun dry-run P53 esegue fetch provider o scrittura DB; il reader è no-route e
   - `service_role_used=false`.
 
 Nessun dry-run P54 esegue fetch provider o scrittura DB.
+
+- Punto 55 aggiunge audit route pubbliche empty-state:
+  - `point_55_public_routes_empty_state_created=true`;
+  - `public_routes_mode=public_reader_empty_state_only`;
+  - `public_routes_enabled=true`;
+  - `public_routes_created=true`;
+  - `public_reader_connected_to_routes=true`;
+  - `private_admin_publicly_exposed=false`;
+  - `visibility_changed=false`;
+  - `point_55_db_write=false`;
+  - `provider_fetch=false`;
+  - `external_fetch=false`;
+  - `provider_import_enabled=false`;
+  - `apify_enabled=false`;
+  - `production_touched=false`;
+  - `deploy_executed=false`;
+  - `service_role_used=false`.
+
+Nessun audit/dry-run P55 esegue fetch provider o scrittura DB.
