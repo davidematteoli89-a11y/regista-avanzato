@@ -3425,3 +3425,40 @@ Marker:
 - `visibility_changed=false`;
 - `point_53_db_write=false`;
 - `service_role_used=false`.
+
+- Punto 54 completato: Public reader tests hardening.
+
+Output:
+
+- creato `scripts/provider/auditPublicReadersNoRoute.ts`;
+- creato `docs/public_reader_hardening_tests_p54.md`;
+- creato `docs/public_reader_hardening_safety_checklist_p54.md`;
+- creato `docs/manual_import_point_55_decision_p54.md`;
+- creato `docs/provider_point_54_closure.md`;
+- dry-run public readers reso assertivo;
+- audit no-route verifica import admin, service_role, write operation, provider fetch, visibility e route wiring;
+- `public_competitions_count=0`;
+- `public_teams_count=0`;
+- `public_standings_count=0`;
+- `public_bundle_status=not_found`;
+- nessuna route pubblica creata;
+- nessun dato `private_admin` esposto;
+- nessun cambio visibility;
+- nessuna DB write;
+- provider/import spenti;
+- Apify off;
+- Production non toccata;
+- deploy non eseguito.
+
+Marker:
+
+- `point_54_public_reader_tests_hardened=true`;
+- `public_reader_hardening_mode=static_audit_and_assertive_dry_run`;
+- `public_reader_no_route_verified=true`;
+- `public_reader_route_wiring_detected=false`;
+- `public_reader_dry_run_assertions_enabled=true`;
+- `dry_run_assertions_pass=true`;
+- `private_admin_publicly_exposed=false`;
+- `visibility_changed=false`;
+- `point_54_db_write=false`;
+- `service_role_used=false`.

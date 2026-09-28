@@ -1695,3 +1695,14 @@ Il nuovo audit `npm run audit:public-reader-contracts` è locale/statico e non l
   - nessun deploy.
 
 Le query pubbliche P53 sono filtrate su `visibility='public'` e non avviano import o refresh provider.
+
+- Punto 54 non modifica lo stato provider:
+  - nessuna chiamata TheStatsAPI / Stats API;
+  - nessuna chiamata API-Football;
+  - nessuna chiamata Apify/SofaScore;
+  - nessun provider fetch;
+  - nessun import provider;
+  - nessun writer provider;
+  - audit/dry-run solo locali;
+  - nessuna route pubblica;
+  - nessun deploy.

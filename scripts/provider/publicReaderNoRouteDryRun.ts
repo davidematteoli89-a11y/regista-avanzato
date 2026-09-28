@@ -24,6 +24,15 @@ async function main() {
   ]);
 
   const status = bundleStatus(bundle);
+  const validBundleStatus = status === "not_found" || status === "empty";
+  const assertionsPass =
+    competitions.items.length === 0 &&
+    teams.items.length === 0 &&
+    standings.items.length === 0 &&
+    validBundleStatus &&
+    !bundle.competition &&
+    bundle.teams.length === 0 &&
+    bundle.standings.length === 0;
 
   console.info("Regista Avanzato — Public Readers No-Route Dry Run");
   console.info("point_53_public_reader_no_route_implemented=true");
@@ -33,6 +42,8 @@ async function main() {
   console.info("public_routes_enabled=false");
   console.info("public_routes_created=false");
   console.info("public_reader_connected_to_routes=false");
+  console.info("point_54_public_reader_dry_run_assertions_enabled=true");
+  console.info("public_reader_dry_run_assertions_enabled=true");
   console.info("public_visibility_filter_required=true");
   console.info("public_visibility_filter_value=public");
   console.info("private_admin_publicly_exposed=false");
@@ -49,10 +60,18 @@ async function main() {
   console.info("token_read=false");
   console.info("token_printed=false");
   console.info(`test_slug=${TEST_SLUG}`);
+  console.info("expected_public_competitions_count=0");
+  console.info(`actual_public_competitions_count=${competitions.items.length}`);
   console.info(`public_competitions_count=${competitions.items.length}`);
   console.info(`public_competition_by_slug_count=${competitionBySlug.items.length}`);
+  console.info("expected_public_teams_count=0");
+  console.info(`actual_public_teams_count=${teams.items.length}`);
   console.info(`public_teams_count=${teams.items.length}`);
+  console.info("expected_public_standings_count=0");
+  console.info(`actual_public_standings_count=${standings.items.length}`);
   console.info(`public_standings_count=${standings.items.length}`);
+  console.info("expected_public_bundle_status=not_found_or_empty");
+  console.info(`actual_public_bundle_status=${status}`);
   console.info(`public_bundle_status=${status}`);
   console.info(`public_bundle_teams_count=${bundle.teams.length}`);
   console.info(`public_bundle_standings_count=${bundle.standings.length}`);
@@ -61,19 +80,13 @@ async function main() {
   console.info(`standings_source=${standings.source}`);
   console.info(`bundle_source=${bundle.source}`);
 
-  const expectedPrivateAdminEmpty =
-    competitions.items.length === 0 &&
-    competitionBySlug.items.length === 0 &&
-    teams.items.length === 0 &&
-    standings.items.length === 0 &&
-    !bundle.competition &&
-    bundle.teams.length === 0 &&
-    bundle.standings.length === 0;
+  const expectedPrivateAdminEmpty = assertionsPass && competitionBySlug.items.length === 0;
 
   console.info(`private_admin_dataset_hidden=${expectedPrivateAdminEmpty}`);
+  console.info(`dry_run_assertions_pass=${assertionsPass}`);
   console.info(`dry_run_pass=${expectedPrivateAdminEmpty}`);
 
-  if (!expectedPrivateAdminEmpty) {
+  if (!expectedPrivateAdminEmpty || !assertionsPass) {
     process.exitCode = 1;
   }
 }

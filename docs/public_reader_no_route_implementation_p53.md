@@ -138,3 +138,18 @@ Prossimo step consigliato:
 
 - Punto 54 — public reader no-route runtime empty-state verification, solo read-only, se autorizzato;
 - oppure browser admin verification con sessione admin reale prima di qualunque route pubblica.
+
+## P54 result
+
+Punto 54 ha rafforzato audit e dry-run:
+
+- nuovo audit `npm run audit:public-readers-no-route`;
+- dry-run public readers assertivo;
+- `public_competitions_count=0`;
+- `public_teams_count=0`;
+- `public_standings_count=0`;
+- `public_bundle_status=not_found`;
+- `public_reader_route_wiring_detected=false`;
+- `violations_count=0`;
+- nessuna route pubblica creata;
+- nessun dato `private_admin` esposto.

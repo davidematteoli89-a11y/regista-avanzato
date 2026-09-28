@@ -178,3 +178,19 @@ Esito:
 - nessuna DB write;
 - nessun provider/import;
 - `private_admin` non esposto.
+
+## P54 result
+
+Punto 54 rafforza il contratto P52 con audit statico e dry-run assertivo dei public reader no-route.
+
+Esito atteso/verificabile:
+
+- `npm run audit:public-reader-contracts` resta il controllo del contratto skeleton;
+- `npm run audit:public-readers-no-route` verifica che i reader pubblici non siano collegati a route operative;
+- `npm run dry-run:public-readers` deve restituire `0/0/0` con il dataset attuale `private_admin`;
+- nessun fallback verso admin reader;
+- nessun import da `lib/manual-data/readers.ts`;
+- nessuna route pubblica operativa;
+- nessuna query di scrittura;
+- nessun provider/import;
+- nessun cambio visibility.

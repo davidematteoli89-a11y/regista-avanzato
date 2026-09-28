@@ -2350,3 +2350,18 @@ Nota: i futuri public reader dovranno vivere separati dagli admin reader, filtra
   - Apify off;
   - Production non toccata;
   - deploy non eseguito.
+
+- Punto 54 completato come public reader tests hardening:
+  - creato `scripts/provider/auditPublicReadersNoRoute.ts`;
+  - aggiunto `npm run audit:public-readers-no-route`;
+  - dry-run public readers reso assertivo;
+  - `public_competitions_count=0`;
+  - `public_teams_count=0`;
+  - `public_standings_count=0`;
+  - `public_bundle_status=not_found`;
+  - `public_reader_route_wiring_detected=false`;
+  - `violations_count=0`;
+  - nessuna route pubblica creata;
+  - nessun dato `private_admin` esposto;
+  - nessun cambio visibility;
+  - nessuna DB write.

@@ -1321,3 +1321,27 @@ Nessun dry-run P52 esegue query Supabase, fetch provider o scrittura DB.
   - `service_role_used=false`.
 
 Nessun dry-run P53 esegue fetch provider o scrittura DB; il reader è no-route e non collegato a pagine pubbliche.
+
+- Punto 54 rafforza i dry-run:
+  - `point_54_public_reader_tests_hardened=true`;
+  - `public_reader_hardening_mode=static_audit_and_assertive_dry_run`;
+  - `public_reader_no_route_verified=true`;
+  - `public_reader_route_wiring_detected=false`;
+  - `public_reader_dry_run_assertions_enabled=true`;
+  - `dry_run_assertions_pass=true`;
+  - `public_competitions_count=0`;
+  - `public_teams_count=0`;
+  - `public_standings_count=0`;
+  - `public_bundle_status=not_found`;
+  - `private_admin_publicly_exposed=false`;
+  - `visibility_changed=false`;
+  - `point_54_db_write=false`;
+  - `provider_fetch=false`;
+  - `external_fetch=false`;
+  - `provider_import_enabled=false`;
+  - `apify_enabled=false`;
+  - `production_touched=false`;
+  - `deploy_executed=false`;
+  - `service_role_used=false`.
+
+Nessun dry-run P54 esegue fetch provider o scrittura DB.

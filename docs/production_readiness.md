@@ -1849,3 +1849,16 @@ Il file `lib/public-data/contracts.ts` è solo un contratto di tipi/costanti. No
   - Production non toccata.
 
 Prima di qualsiasi route pubblica resta obbligatoria una fase dedicata con test incognito e conferma che il dataset `private_admin` produca empty state pubblico.
+
+- Punto 54 — public reader tests hardening:
+  - readiness Production invariata;
+  - audit no-route rafforzato;
+  - dry-run assertivo conferma `0/0/0`;
+  - nessuna route pubblica creata;
+  - nessun dato `private_admin` esposto;
+  - nessun cambio visibility;
+  - nessuna DB write;
+  - nessun provider/import;
+  - Apify off;
+  - deploy non eseguito;
+  - Production non toccata.
