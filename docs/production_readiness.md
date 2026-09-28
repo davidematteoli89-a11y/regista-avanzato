@@ -1819,3 +1819,18 @@ Production resta bloccata finché non esistono public reader separati, filtro `v
   - Production non toccata.
 
 Prima di qualunque esposizione pubblica reale resta obbligatoria una fase separata con public reader implementato in namespace dedicato, filtro `visibility='public'`, test incognito e verifica che non importi admin reader.
+
+- Punto 52 — public reader contract skeleton:
+  - readiness Production invariata;
+  - nessuna route pubblica creata;
+  - nessun reader pubblico operativo;
+  - nessuna query Supabase nel nuovo skeleton;
+  - nessun dato `private_admin` esposto;
+  - nessun cambio visibility;
+  - nessuna DB write;
+  - nessun provider/import;
+  - Apify off;
+  - deploy non eseguito;
+  - Production non toccata.
+
+Il file `lib/public-data/contracts.ts` è solo un contratto di tipi/costanti. Non deve essere interpretato come autorizzazione a creare route pubbliche o query operative.

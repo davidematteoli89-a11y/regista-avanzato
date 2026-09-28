@@ -159,3 +159,16 @@ Esito:
 - `private_admin` non esposto;
 - `visibility_changed=false`;
 - `public_exposure_enabled=false`.
+
+## P52 result
+
+Punto 52 ha creato solo contratti TypeScript e audit statico:
+
+- `lib/public-data/contracts.ts`;
+- `scripts/provider/auditPublicReaderContracts.ts`;
+- nessun reader operativo;
+- nessuna route pubblica operativa;
+- nessuna query Supabase;
+- nessun dato `private_admin` esposto;
+- nessun cambio visibility;
+- nessuna DB write.

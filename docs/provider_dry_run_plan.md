@@ -1275,3 +1275,25 @@ Provider/import restano spenti.
   - `service_role_used=false`.
 
 Nessun dry-run P51 esegue fetch provider o scrittura DB.
+
+- Punto 52 aggiunge audit statico locale:
+  - comando: `npm run audit:public-reader-contracts`;
+  - `point_52_public_reader_contract_skeleton_created=true`;
+  - `public_reader_contract_mode=contract_skeleton_only`;
+  - `public_readers_implemented=false`;
+  - `public_reader_operational=false`;
+  - `public_routes_enabled=false`;
+  - `supabase_queries_implemented=false`;
+  - `admin_reader_imported=false`;
+  - `private_admin_publicly_exposed=false`;
+  - `visibility_changed=false`;
+  - `point_52_db_write=false`;
+  - `provider_fetch=false`;
+  - `external_fetch=false`;
+  - `provider_import_enabled=false`;
+  - `apify_enabled=false`;
+  - `production_touched=false`;
+  - `deploy_executed=false`;
+  - `service_role_used=false`.
+
+Nessun dry-run P52 esegue query Supabase, fetch provider o scrittura DB.

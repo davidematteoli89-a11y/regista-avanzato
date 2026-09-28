@@ -199,3 +199,17 @@ Prossimo step consigliato:
 
 - Punto 52 — public reader skeleton no-route/no-op con test statici, solo se autorizzato;
 - oppure ripetere la browser admin verification con sessione admin reale prima di qualsiasi public work operativo.
+
+## P52 result
+
+Punto 52 ha creato solo il contract skeleton:
+
+- `lib/public-data/contracts.ts`;
+- nessun `lib/public-data/readers.ts` operativo;
+- nessuna query Supabase;
+- nessuna route pubblica;
+- nessun collegamento a pagine reali;
+- audit statico locale `npm run audit:public-reader-contracts`;
+- `private_admin` non esposto;
+- `visibility_changed=false`;
+- `point_52_db_write=false`.

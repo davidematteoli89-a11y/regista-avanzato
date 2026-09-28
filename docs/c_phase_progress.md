@@ -3348,3 +3348,40 @@ Marker:
 - `visibility_changed=false`;
 - `point_51_db_write=false`;
 - `service_role_used=false`.
+
+- Punto 52 completato: Public reader contract skeleton.
+
+Output:
+
+- creato `lib/public-data/contracts.ts`;
+- creato `scripts/provider/auditPublicReaderContracts.ts`;
+- aggiunto `npm run audit:public-reader-contracts`;
+- definito solo contract skeleton con tipi/costanti;
+- nessun reader operativo;
+- nessuna query Supabase;
+- nessuna route pubblica;
+- nessun collegamento a pagine reali;
+- nessun dato `private_admin` esposto;
+- nessun cambio visibility;
+- nessuna DB write;
+- provider/import spenti;
+- Apify off;
+- Production non toccata;
+- deploy non eseguito.
+
+Marker:
+
+- `point_52_public_reader_contract_skeleton_created=true`;
+- `public_reader_contract_mode=contract_skeleton_only`;
+- `public_readers_implemented=false`;
+- `public_reader_operational=false`;
+- `public_reader_skeleton_operational=false`;
+- `public_routes_enabled=false`;
+- `public_routes_created=false`;
+- `public_reader_connected_to_routes=false`;
+- `supabase_queries_implemented=false`;
+- `admin_reader_imported=false`;
+- `private_admin_publicly_exposed=false`;
+- `visibility_changed=false`;
+- `point_52_db_write=false`;
+- `service_role_used=false`.

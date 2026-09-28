@@ -2320,3 +2320,19 @@ Prossimo step consigliato: Punto 51 — public reader design dry-run, oppure rip
   - nessun deploy.
 
 Nota: i futuri public reader dovranno vivere separati dagli admin reader, filtrare sempre `visibility='public'` e non importare `lib/manual-data/readers.ts`. Nessun reader pubblico è stato reso operativo nel Punto 51.
+
+- Punto 52 completato come public reader contract skeleton:
+  - creato `lib/public-data/contracts.ts`;
+  - creato `scripts/provider/auditPublicReaderContracts.ts`;
+  - aggiunto `npm run audit:public-reader-contracts`;
+  - nessun `lib/public-data/readers.ts` operativo;
+  - nessuna query Supabase;
+  - nessuna route pubblica creata;
+  - nessun public reader collegato a route reali;
+  - `public_reader_contract_mode=contract_skeleton_only`;
+  - `public_readers_implemented=false`;
+  - `supabase_queries_implemented=false`;
+  - `admin_reader_imported=false`;
+  - `private_admin_publicly_exposed=false`;
+  - `visibility_changed=false`;
+  - `point_52_db_write=false`.

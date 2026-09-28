@@ -1669,3 +1669,16 @@ La progettazione dei futuri public reader resta separata dai provider:
 - nessun deploy.
 
 I futuri public reader dovranno leggere solo dati già pubblicabili con `visibility='public'`; non devono attivare provider, import o fallback verso dati admin.
+
+- Punto 52 resta fuori dal percorso provider:
+  - solo contract skeleton;
+  - nessuna chiamata TheStatsAPI / Stats API;
+  - nessuna chiamata API-Football;
+  - nessuna chiamata Apify/SofaScore;
+  - nessun provider fetch;
+  - nessun import provider;
+  - nessun writer;
+  - nessuna route pubblica;
+  - nessun deploy.
+
+Il nuovo audit `npm run audit:public-reader-contracts` è locale/statico e non legge token, non fa fetch e non scrive DB.
