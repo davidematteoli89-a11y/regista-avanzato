@@ -2442,3 +2442,21 @@ Prossimo step consigliato: Punto 59 — Public data promotion plan only.
   - deploy non eseguito.
 
 Prossimo step consigliato: Punto 60 — Public data promotion dry-run/no-apply.
+
+
+- Punto 60 completato come public data promotion dry-run/no-apply:
+  - candidate: `manual-serie-a`;
+  - scope calcolato: 1 competition / 2 teams / 2 standings;
+  - scope atteso confermato;
+  - SQL/manual instructions solo no-apply;
+  - rollback no-apply preparato;
+  - post-verification no-apply preparata;
+  - nessuna promotion eseguita;
+  - nessun cambio visibility;
+  - nessuna DB write;
+  - nessun provider/import;
+  - Apify off;
+  - Production non toccata;
+  - deploy non eseguito.
+
+Prossimo step consigliato: Punto 61 — Public data promotion authorization gate.

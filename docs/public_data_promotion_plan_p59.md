@@ -223,3 +223,24 @@ Obiettivo P60:
 - `production_touched=false`
 - `deploy_executed=false`
 - `service_role_used=false`
+
+
+## P60 dry-run result
+
+Punto 60 ha calcolato lo scope tecnico no-apply per la futura promotion.
+
+- `point_60_public_data_promotion_dry_run_created=true`
+- `public_data_promotion_mode=dry_run_no_apply`
+- `candidate_slug=manual-serie-a`
+- `candidate_competitions_count=1`
+- `candidate_teams_count=2`
+- `candidate_standings_count=2`
+- `scope_matches_expected=true`
+- `promotion_sql_no_apply_prepared=true`
+- `rollback_sql_no_apply_prepared=true`
+- `post_promotion_verification_no_apply_prepared=true`
+- `real_sql_executed=false`
+- `point_60_db_write=false`
+- `visibility_changed=false`
+
+Nessuna promotion è stata eseguita.

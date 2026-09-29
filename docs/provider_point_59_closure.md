@@ -19,3 +19,19 @@ La verifica browser admin reale resta pendente finché non sarà disponibile una
 Prossimo step consigliato:
 
 - Punto 60 — Public data promotion dry-run/no-apply.
+
+## P60 follow-up
+
+Punto 60 ha completato il dry-run tecnico/no-apply della promotion candidate.
+
+- candidate: `manual-serie-a`;
+- scope confermato: 1 competition / 2 teams / 2 standings;
+- promotion instructions solo no-apply;
+- rollback instructions solo no-apply;
+- post-verification instructions solo no-apply;
+- nessuna promotion eseguita;
+- nessuna DB write;
+- nessun cambio visibility;
+- nessun provider/import;
+- Apify off;
+- Production non toccata.

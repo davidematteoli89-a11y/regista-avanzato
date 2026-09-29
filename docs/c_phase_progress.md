@@ -3641,3 +3641,49 @@ Marker:
 - `apify_enabled=false`;
 - `production_touched=false`;
 - `deploy_executed=false`.
+
+
+## Punto 60 — Public data promotion dry-run/no-apply
+
+Stato: completato.
+
+Output:
+
+- dry-run tecnico no-apply creato;
+- scope candidate `manual-serie-a` calcolato da fixture locali;
+- expected scope 1/2/2 confermato;
+- promotion SQL/manual instructions preparate solo no-apply;
+- rollback SQL/manual instructions preparate solo no-apply;
+- post-promotion verification plan preparato solo no-apply;
+- nessuna promotion eseguita;
+- nessun cambio visibility;
+- nessuna DB write;
+- provider/import spenti;
+- Apify off;
+- Production non toccata;
+- deploy non eseguito.
+
+Marker:
+
+- `point_60_public_data_promotion_dry_run_created=true`;
+- `public_data_promotion_mode=dry_run_no_apply`;
+- `public_data_promotion_executed=false`;
+- `candidate_slug=manual-serie-a`;
+- `expected_competitions_count=1`;
+- `expected_teams_count=2`;
+- `expected_standings_count=2`;
+- `candidate_competitions_count=1`;
+- `candidate_teams_count=2`;
+- `candidate_standings_count=2`;
+- `scope_matches_expected=true`;
+- `promotion_sql_no_apply_prepared=true`;
+- `rollback_sql_no_apply_prepared=true`;
+- `post_promotion_verification_no_apply_prepared=true`;
+- `real_sql_executed=false`;
+- `point_60_db_write=false`;
+- `visibility_changed=false`;
+- `provider_fetch=false`;
+- `provider_import_enabled=false`;
+- `apify_enabled=false`;
+- `production_touched=false`;
+- `deploy_executed=false`.

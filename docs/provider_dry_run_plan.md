@@ -1443,3 +1443,26 @@ Nessun audit/dry-run P58 esegue fetch provider o scrittura DB.
   - `deploy_executed=false`.
 
 Nessun audit/dry-run P59 esegue fetch provider, promotion reale o scrittura DB.
+
+
+- Punto 60 aggiunge dry-run promotion scope no-apply:
+  - `point_60_public_data_promotion_dry_run_created=true`;
+  - `public_data_promotion_mode=dry_run_no_apply`;
+  - `candidate_slug=manual-serie-a`;
+  - `candidate_competitions_count=1`;
+  - `candidate_teams_count=2`;
+  - `candidate_standings_count=2`;
+  - `scope_matches_expected=true`;
+  - `promotion_sql_no_apply_prepared=true`;
+  - `rollback_sql_no_apply_prepared=true`;
+  - `post_promotion_verification_no_apply_prepared=true`;
+  - `real_sql_executed=false`;
+  - `point_60_db_write=false`;
+  - `visibility_changed=false`;
+  - `provider_fetch=false`;
+  - `provider_import_enabled=false`;
+  - `apify_enabled=false`;
+  - `production_touched=false`;
+  - `deploy_executed=false`.
+
+Nessun audit/dry-run P60 esegue fetch provider, promotion reale o scrittura DB.

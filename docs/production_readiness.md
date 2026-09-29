@@ -1938,3 +1938,17 @@ Readiness Production resta non concessa: prima servono promotion plan, autorizza
   - Production non toccata.
 
 Production resta bloccata finché non esistono dati public verificati, promotion autorizzata e checklist dedicata.
+
+
+- Punto 60 — public data promotion dry-run/no-apply:
+  - readiness Production ancora non concessa;
+  - scope 1/2/2 confermato solo in dry-run locale;
+  - nessuna promotion eseguita;
+  - nessun cambio visibility;
+  - nessuna DB write;
+  - nessun provider/import;
+  - Apify off;
+  - deploy non eseguito;
+  - Production non toccata.
+
+Production resta bloccata finché una promotion reale non sarà autorizzata, verificata e coperta da checklist dedicata.

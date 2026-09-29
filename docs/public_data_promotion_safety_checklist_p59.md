@@ -43,3 +43,17 @@
 - `apify_enabled=false`
 - `production_touched=false`
 - `deploy_executed=false`
+
+
+## P60 checklist update
+
+- [x] Dry-run tecnico no-apply creato.
+- [x] Scope 1/2/2 confermato da fixture locali.
+- [x] Promotion SQL/manual instructions preparate solo no-apply.
+- [x] Rollback SQL/manual instructions preparate solo no-apply.
+- [x] Post-promotion verification plan preparato solo no-apply.
+- [x] Nessuna DB write.
+- [x] Nessun cambio visibility.
+- [x] Nessun provider/import.
+- [x] Nessun deploy.
+- [x] Nessuna Production.
