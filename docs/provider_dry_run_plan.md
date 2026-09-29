@@ -1487,3 +1487,26 @@ Nessun audit/dry-run P60 esegue fetch provider, promotion reale o scrittura DB.
   - `deploy_executed=false`.
 
 Nessun audit/dry-run P61 esegue fetch provider, SQL reale, promotion reale o scrittura DB.
+
+
+- Punto 62 aggiunge marker authorization review no-write:
+  - `point_62_public_data_promotion_authorization_review_completed=true`;
+  - `public_data_promotion_mode=authorization_review_no_write`;
+  - `promotion_candidate=manual-serie-a`;
+  - `expected_promotion_competitions_count=1`;
+  - `expected_promotion_teams_count=2`;
+  - `expected_promotion_standings_count=2`;
+  - `explicit_authorization_required=true`;
+  - `generic_proceed_authorizes_write=false`;
+  - `promotion_executed=false`;
+  - `real_sql_executed=false`;
+  - `point_62_db_write=false`;
+  - `visibility_changed=false`;
+  - `provider_fetch=false`;
+  - `provider_import_enabled=false`;
+  - `apify_enabled=false`;
+  - `production_touched=false`;
+  - `deploy_executed=false`;
+  - `service_role_used=false`.
+
+Nessun audit/dry-run P62 esegue fetch provider, SQL reale, promotion reale o scrittura DB.

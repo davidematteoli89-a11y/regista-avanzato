@@ -1967,3 +1967,21 @@ Production resta bloccata finché una promotion reale non sarà autorizzata, ver
   - Production non toccata.
 
 Production resta bloccata finché non saranno completate autorizzazione esplicita, eventuale staging promotion, rollback readiness e verifica post-promotion.
+
+
+- Punto 62 — authorization review no-write:
+  - readiness Production ancora non concessa;
+  - candidate `manual-serie-a` rivista solo come futura promotion staging;
+  - scope atteso confermato: 1 competition / 2 teams / 2 standings;
+  - `explicit_authorization_required=true`;
+  - `generic_proceed_authorizes_write=false`;
+  - nessuna promotion eseguita;
+  - nessun SQL reale eseguito;
+  - nessuna DB write;
+  - nessun cambio visibility;
+  - nessun provider/import;
+  - Apify off;
+  - deploy non eseguito;
+  - Production non toccata.
+
+Production resta bloccata finché una promotion staging non sarà esplicitamente autorizzata, applicata in modo controllato, verificata e coperta da rollback/readiness dedicati.

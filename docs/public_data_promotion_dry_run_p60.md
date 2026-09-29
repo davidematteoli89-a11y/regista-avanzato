@@ -185,3 +185,25 @@ Punto 61 ha preparato il pack SQL/manuale finale, solo no-apply.
 - `visibility_changed=false`
 
 Nessuna promotion è stata eseguita.
+
+## P62 authorization review
+
+Punto 62 ha chiuso la revisione autorizzativa per la futura promotion reale, senza eseguire SQL e senza DB write.
+
+- `point_62_public_data_promotion_authorization_review_completed=true`
+- `public_data_promotion_mode=authorization_review_no_write`
+- `promotion_candidate=manual-serie-a`
+- `expected_promotion_competitions_count=1`
+- `expected_promotion_teams_count=2`
+- `expected_promotion_standings_count=2`
+- `explicit_authorization_required=true`
+- `generic_proceed_authorizes_write=false`
+- `promotion_executed=false`
+- `real_sql_executed=false`
+- `db_write=false`
+- `visibility_changed=false`
+- `provider_fetch=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `production_touched=false`
+- `deploy_executed=false`

@@ -222,3 +222,28 @@ After future explicitly authorized promotion:
 - `deploy_executed=false`
 - `requires_explicit_p62_authorization=true`
 - `generic_proceed_authorizes_write=false`
+
+## P62 authorization review result
+
+Punto 62 ha rivisto il pack P61 senza applicarlo.
+
+- `point_62_public_data_promotion_authorization_review_completed=true`
+- `public_data_promotion_mode=authorization_review_no_write`
+- `promotion_candidate=manual-serie-a`
+- `expected_promotion_competitions_count=1`
+- `expected_promotion_teams_count=2`
+- `expected_promotion_standings_count=2`
+- `explicit_authorization_required=true`
+- `generic_proceed_authorizes_write=false`
+- `promotion_executed=false`
+- `real_sql_executed=false`
+- `db_write=false`
+- `visibility_changed=false`
+- `provider_fetch=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `production_touched=false`
+- `deploy_executed=false`
+- `service_role_used=false`
+
+La prossima scrittura reale su staging richiede una nuova autorizzazione esplicita e completa per Punto 63. Un generico “procedi” non autorizza promotion, SQL reale, DB write o cambio visibility.

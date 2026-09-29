@@ -2477,3 +2477,21 @@ Prossimo step consigliato: Punto 61 — Public data promotion authorization gate
   - deploy non eseguito.
 
 Prossimo step consigliato: Punto 62 — explicit authorization review for real staging promotion.
+
+
+- Punto 62 completato come authorization review no-write:
+  - candidate `manual-serie-a` confermata;
+  - scope atteso: 1 competition / 2 teams / 2 standings;
+  - pack P61, rollback e post-verification rivisti ma non applicati;
+  - `explicit_authorization_required=true`;
+  - `generic_proceed_authorizes_write=false`;
+  - nessuna promotion eseguita;
+  - nessun SQL reale eseguito;
+  - nessuna DB write;
+  - nessun cambio visibility;
+  - provider/import spenti;
+  - Apify off;
+  - Production non toccata;
+  - deploy non eseguito.
+
+Prossimo step consigliato: Punto 63 — final pre-apply no-write checklist oppure real staging promotion solo con autorizzazione esplicita completa.
