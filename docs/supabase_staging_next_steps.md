@@ -2407,3 +2407,21 @@ Prossimo step consigliato: Punto 57 — Public routes UI polish oppure Public da
   - deploy non eseguito.
 
 Prossimo step consigliato: Punto 58 — Browser verification after UI polish oppure Public data promotion plan only.
+
+- Punto 58 completato come public routes browser verification after UI polish:
+  - environment: `localhost`;
+  - auth: no-auth;
+  - `/competitions`: empty state;
+  - `/competitions/manual-serie-a`: not_found/empty;
+  - nessun dato `private_admin` visibile;
+  - nessun admin link pubblico;
+  - nessun debug/raw payload;
+  - nessun bottone operativo;
+  - nessuna DB write;
+  - nessun cambio visibility;
+  - nessun provider/import;
+  - Apify off;
+  - Production non toccata;
+  - deploy non eseguito.
+
+Prossimo step consigliato: Punto 59 — Public data promotion plan only.

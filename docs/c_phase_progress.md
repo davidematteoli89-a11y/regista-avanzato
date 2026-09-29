@@ -3558,3 +3558,40 @@ Marker:
 - `private_admin_publicly_exposed=false`;
 - `visibility_changed=false`;
 - `point_57_db_write=false`.
+
+## Punto 58 — Public routes browser verification after UI polish
+
+Stato: completato.
+
+Output:
+
+- verifica browser no-auth eseguita su localhost;
+- `/competitions` caricata e rimasta empty state pubblico;
+- `/competitions/manual-serie-a` caricata e rimasta not_found/empty pubblico;
+- nessun dato `private_admin` visibile;
+- nessun admin link pubblico;
+- nessun debug/raw payload;
+- nessun bottone operativo;
+- nessun provider/import trigger visibile;
+- nessun cambio visibility;
+- nessuna DB write;
+- provider/import spenti;
+- Apify off;
+- Production non toccata;
+- deploy non eseguito.
+
+Marker:
+
+- `point_58_public_routes_browser_verification_after_ui_polish_completed=true`;
+- `public_routes_browser_verification_result=passed_no_auth_empty_state_after_ui_polish`;
+- `public_routes_no_auth_verified=true`;
+- `public_competitions_page_browser_state=empty`;
+- `public_competition_detail_browser_state=not_found`;
+- `private_admin_publicly_exposed=false`;
+- `visibility_changed=false`;
+- `point_58_db_write=false`;
+- `provider_fetch=false`;
+- `provider_import_enabled=false`;
+- `apify_enabled=false`;
+- `production_touched=false`;
+- `deploy_executed=false`.

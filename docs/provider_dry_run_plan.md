@@ -1398,3 +1398,23 @@ Nessun audit/dry-run P56 esegue fetch provider o scrittura DB.
   - `point_57_db_write=false`.
 
 Nessun audit/dry-run P57 esegue fetch provider o scrittura DB.
+
+- Punto 58 aggiunge marker verifica browser no-auth post-polish:
+  - `point_58_public_routes_browser_verification_after_ui_polish_completed=true`;
+  - `public_routes_browser_verification_result=passed_no_auth_empty_state_after_ui_polish`;
+  - `public_routes_no_auth_verified=true`;
+  - `public_competitions_page_browser_state=empty`;
+  - `public_competition_detail_browser_state=not_found`;
+  - `public_routes_admin_links_visible=false`;
+  - `public_routes_debug_payload_visible=false`;
+  - `public_routes_operational_buttons=false`;
+  - `private_admin_publicly_exposed=false`;
+  - `visibility_changed=false`;
+  - `point_58_db_write=false`;
+  - `provider_fetch=false`;
+  - `provider_import_enabled=false`;
+  - `apify_enabled=false`;
+  - `production_touched=false`;
+  - `deploy_executed=false`.
+
+Nessun audit/dry-run P58 esegue fetch provider o scrittura DB.

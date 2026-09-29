@@ -68,3 +68,21 @@ Markers:
 ## Next step
 
 Prossimo step consigliato: Punto 58 — Browser verification after UI polish oppure Public data promotion plan only.
+
+## P58 browser verification result
+
+Il Punto 58 ha verificato via browser no-auth che il polish UI P57 non espone dati `private_admin`.
+
+- `public_routes_browser_verification_result=passed_no_auth_empty_state_after_ui_polish`
+- `/competitions` resta empty state pubblico.
+- `/competitions/manual-serie-a` resta not_found/empty pubblico.
+- Nessun dato `private_admin` visibile.
+- Nessun link admin pubblico.
+- Nessun debug/raw payload.
+- Nessun bottone operativo.
+- `visibility_changed=false`
+- `point_58_db_write=false`
+- `provider_fetch=false`
+- `apify_enabled=false`
+- `production_touched=false`
+- `deploy_executed=false`

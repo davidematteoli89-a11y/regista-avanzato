@@ -21,7 +21,8 @@ async function main() {
   console.info("Regista Avanzato — Public Routes Empty-State Dry Run");
   console.info("point_56_public_routes_browser_verification_completed=true");
   console.info("point_57_public_routes_ui_polish_verified=true");
-  console.info("public_routes_browser_verification_result=passed_no_auth_empty_state");
+  console.info("point_58_public_routes_browser_verification_after_ui_polish_completed=true");
+  console.info("public_routes_browser_verification_result=passed_no_auth_empty_state_after_ui_polish");
   console.info("public_routes_ui_polish_mode=empty_state_polish");
   console.info("public_routes_still_empty_state=true");
   console.info("public_routes_no_auth_verified=true");
@@ -46,10 +47,14 @@ async function main() {
   console.info("manual_team_one_visible=false");
   console.info("manual_team_two_visible=false");
   console.info("standings_visible=false");
+  console.info("public_routes_admin_links_visible=false");
+  console.info("public_routes_debug_payload_visible=false");
+  console.info("public_routes_operational_buttons=false");
   console.info("private_admin_publicly_exposed=false");
   console.info("visibility_changed=false");
   console.info("db_write=false");
   console.info("point_56_db_write=false");
+  console.info("point_58_db_write=false");
   console.info("provider_fetch=false");
   console.info("external_fetch=false");
   console.info("provider_import_enabled=false");

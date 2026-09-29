@@ -1905,3 +1905,20 @@ Readiness Production resta non concessa: manca ancora decisione sul primo dato p
   - Production non toccata.
 
 Prima della Production resta necessaria una decisione dedicata su dati pubblici reali, promotion plan e verifica browser finale.
+
+- Punto 58 — public routes browser verification after UI polish:
+  - verifica browser no-auth locale passata;
+  - `/competitions` resta empty state;
+  - `/competitions/manual-serie-a` resta not_found/empty;
+  - nessun dato `private_admin` esposto;
+  - nessun link admin pubblico;
+  - nessun debug/raw payload;
+  - nessun bottone operativo;
+  - nessuna DB write;
+  - nessun cambio visibility;
+  - nessun provider/import;
+  - Apify off;
+  - deploy non eseguito;
+  - Production non toccata.
+
+Readiness Production resta non concessa: prima servono promotion plan, autorizzazione dedicata e verifica finale sui dati pubblici reali.

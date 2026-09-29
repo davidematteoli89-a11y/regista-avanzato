@@ -120,3 +120,19 @@ Conferme:
 - Apify off;
 - Production non toccata;
 - deploy non eseguito.
+
+## P58 result
+
+Punto 58 ha ripetuto la verifica browser no-auth dopo il polish UI del Punto 57.
+
+- `public_routes_browser_verification_result=passed_no_auth_empty_state_after_ui_polish`
+- `/competitions` resta empty.
+- `/competitions/manual-serie-a` resta not_found/empty.
+- Nessun dato `private_admin` visibile.
+- Nessun admin link pubblico.
+- Nessun debug/raw payload.
+- Nessun bottone operativo.
+- Nessuna DB write.
+- Nessun provider/import.
+- Apify off.
+- Production non toccata.
