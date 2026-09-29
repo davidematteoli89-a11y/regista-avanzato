@@ -85,6 +85,14 @@ async function main() {
   console.info("rollback_sql_no_apply_prepared=true");
   console.info("post_promotion_verification_no_apply_prepared=true");
   console.info("real_sql_executed=false");
+  console.info("point_61_public_data_promotion_sql_manual_pack_created=true");
+  console.info("promotion_sql_pack_mode=no_apply");
+  console.info("promotion_sql_outline_prepared=true");
+  console.info("point_61_db_write=false");
+  console.info("rollback_sql_outline_prepared=true");
+  console.info("post_verification_sql_outline_prepared=true");
+  console.info("requires_explicit_p62_authorization=true");
+  console.info("generic_proceed_authorizes_write=false");
   console.info("point_60_db_write=false");
   console.info("visibility_changed=false");
   console.info("provider_fetch=false");

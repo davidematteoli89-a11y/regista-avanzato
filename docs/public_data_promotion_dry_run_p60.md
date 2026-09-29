@@ -166,3 +166,22 @@ Qualsiasi generico “procedi”, “vai”, “continua”, “ok” non autori
 - `production_touched=false`
 - `deploy_executed=false`
 - `service_role_used=false`
+
+
+## P61 SQL/manual pack result
+
+Punto 61 ha preparato il pack SQL/manuale finale, solo no-apply.
+
+- `point_61_public_data_promotion_sql_manual_pack_created=true`
+- `promotion_sql_pack_mode=no_apply`
+- `promotion_sql_outline_prepared=true`
+- `rollback_sql_outline_prepared=true`
+- `post_verification_sql_outline_prepared=true`
+- `requires_explicit_p62_authorization=true`
+- `generic_proceed_authorizes_write=false`
+- `public_data_promotion_executed=false`
+- `real_sql_executed=false`
+- `db_write=false`
+- `visibility_changed=false`
+
+Nessuna promotion è stata eseguita.

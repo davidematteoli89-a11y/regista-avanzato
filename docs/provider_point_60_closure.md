@@ -28,3 +28,19 @@ Conferme:
 Prossimo step consigliato:
 
 - Punto 61 — Public data promotion authorization gate.
+
+
+## P61 follow-up
+
+Punto 61 ha preparato il pack SQL/manual no-apply finale.
+
+- promotion outline preparato;
+- rollback outline preparato;
+- post-verification outline preparato;
+- autorizzazione esplicita Punto 62 richiesta;
+- nessun SQL eseguito;
+- nessuna DB write;
+- nessun cambio visibility;
+- nessun provider/import;
+- Apify off;
+- Production non toccata.

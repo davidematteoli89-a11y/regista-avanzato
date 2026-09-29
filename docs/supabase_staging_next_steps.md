@@ -2460,3 +2460,20 @@ Prossimo step consigliato: Punto 60 — Public data promotion dry-run/no-apply.
   - deploy non eseguito.
 
 Prossimo step consigliato: Punto 61 — Public data promotion authorization gate.
+
+
+- Punto 61 completato come SQL/manual pack no-apply finale:
+  - promotion outline preparato solo documentale;
+  - rollback outline preparato solo documentale;
+  - post-verification outline preparato solo documentale;
+  - autorizzazione Punto 62 richiesta per qualsiasi DB write;
+  - nessuna promotion eseguita;
+  - nessun SQL eseguito;
+  - nessuna DB write;
+  - nessun cambio visibility;
+  - nessun provider/import;
+  - Apify off;
+  - Production non toccata;
+  - deploy non eseguito.
+
+Prossimo step consigliato: Punto 62 — explicit authorization review for real staging promotion.

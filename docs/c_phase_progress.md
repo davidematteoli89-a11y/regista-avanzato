@@ -3687,3 +3687,43 @@ Marker:
 - `apify_enabled=false`;
 - `production_touched=false`;
 - `deploy_executed=false`.
+
+
+## Punto 61 — Public data promotion SQL/manual pack no-apply finale
+
+Stato: completato.
+
+Output:
+
+- pack SQL/manual finale no-apply creato;
+- promotion SQL outline preparato solo come documento;
+- rollback SQL outline preparato solo come documento;
+- post-verification SQL outline preparato solo come documento;
+- gate autorizzazione esplicita Punto 62 documentato;
+- nessuna promotion eseguita;
+- nessun SQL eseguito;
+- nessuna DB write;
+- nessun cambio visibility;
+- provider/import spenti;
+- Apify off;
+- Production non toccata;
+- deploy non eseguito.
+
+Marker:
+
+- `point_61_public_data_promotion_sql_manual_pack_created=true`;
+- `promotion_sql_pack_mode=no_apply`;
+- `promotion_sql_outline_prepared=true`;
+- `rollback_sql_outline_prepared=true`;
+- `post_verification_sql_outline_prepared=true`;
+- `requires_explicit_p62_authorization=true`;
+- `generic_proceed_authorizes_write=false`;
+- `public_data_promotion_executed=false`;
+- `real_sql_executed=false`;
+- `point_61_db_write=false`;
+- `visibility_changed=false`;
+- `provider_fetch=false`;
+- `provider_import_enabled=false`;
+- `apify_enabled=false`;
+- `production_touched=false`;
+- `deploy_executed=false`.

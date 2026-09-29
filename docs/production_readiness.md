@@ -1952,3 +1952,18 @@ Production resta bloccata finché non esistono dati public verificati, promotion
   - Production non toccata.
 
 Production resta bloccata finché una promotion reale non sarà autorizzata, verificata e coperta da checklist dedicata.
+
+
+- Punto 61 — SQL/manual pack no-apply finale:
+  - readiness Production ancora non concessa;
+  - pack SQL/manual solo documentale;
+  - nessuna promotion eseguita;
+  - nessun SQL eseguito;
+  - nessuna DB write;
+  - nessun cambio visibility;
+  - nessun provider/import;
+  - Apify off;
+  - deploy non eseguito;
+  - Production non toccata.
+
+Production resta bloccata finché non saranno completate autorizzazione esplicita, eventuale staging promotion, rollback readiness e verifica post-promotion.

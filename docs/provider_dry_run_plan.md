@@ -1466,3 +1466,24 @@ Nessun audit/dry-run P59 esegue fetch provider, promotion reale o scrittura DB.
   - `deploy_executed=false`.
 
 Nessun audit/dry-run P60 esegue fetch provider, promotion reale o scrittura DB.
+
+
+- Punto 61 aggiunge marker SQL/manual pack no-apply:
+  - `point_61_public_data_promotion_sql_manual_pack_created=true`;
+  - `promotion_sql_pack_mode=no_apply`;
+  - `promotion_sql_outline_prepared=true`;
+  - `rollback_sql_outline_prepared=true`;
+  - `post_verification_sql_outline_prepared=true`;
+  - `requires_explicit_p62_authorization=true`;
+  - `generic_proceed_authorizes_write=false`;
+  - `public_data_promotion_executed=false`;
+  - `real_sql_executed=false`;
+  - `point_61_db_write=false`;
+  - `visibility_changed=false`;
+  - `provider_fetch=false`;
+  - `provider_import_enabled=false`;
+  - `apify_enabled=false`;
+  - `production_touched=false`;
+  - `deploy_executed=false`.
+
+Nessun audit/dry-run P61 esegue fetch provider, SQL reale, promotion reale o scrittura DB.
