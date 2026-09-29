@@ -86,3 +86,16 @@ Il Punto 58 ha verificato via browser no-auth che il polish UI P57 non espone da
 - `apify_enabled=false`
 - `production_touched=false`
 - `deploy_executed=false`
+
+## P59 follow-up
+
+Punto 59 ha definito il piano di promotion futura dei dati manuali da `private_admin` a `public`, senza eseguirla.
+
+- Nessuna promotion eseguita.
+- Nessun cambio `visibility`.
+- Nessuna DB write.
+- Public routes ancora empty/not_found.
+- Dati `private_admin` ancora non pubblici.
+- Nessun provider/import.
+- Apify off.
+- Production non toccata.

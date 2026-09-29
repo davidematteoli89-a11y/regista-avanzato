@@ -106,3 +106,18 @@ nessuno
 - `service_role_used=false`
 
 Decisione: Punto 58 passato.
+
+## P59 follow-up
+
+Punto 59 ha creato solo un piano di promotion pubblica.
+
+- `public_data_promotion_mode=plan_only`
+- `public_data_promotion_executed=false`
+- `visibility_changed=false`
+- `point_59_db_write=false`
+- I dati `private_admin` restano non pubblici.
+- Le route pubbliche restano empty/not_found finché non esistono dati `public`.
+- Nessun provider/import.
+- Apify off.
+- Production non toccata.
+- Nessun deploy.

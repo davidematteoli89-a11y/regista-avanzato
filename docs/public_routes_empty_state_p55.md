@@ -111,3 +111,18 @@ Punto 57 ha migliorato UI e testi delle route empty-state senza cambiare comport
 - nessuna DB write;
 - nessun provider/import;
 - Production non toccata.
+
+## P59 result
+
+Punto 59 ha creato un piano di promotion pubblica, senza eseguire la promotion.
+
+- `public_data_promotion_mode=plan_only`;
+- `public_data_promotion_executed=false`;
+- `visibility_changed=false`;
+- `point_59_db_write=false`;
+- dati `private_admin` restano non pubblici;
+- route pubbliche restano empty/not_found finché non esistono dati `public`;
+- nessun provider/import;
+- Apify off;
+- Production non toccata;
+- deploy non eseguito.

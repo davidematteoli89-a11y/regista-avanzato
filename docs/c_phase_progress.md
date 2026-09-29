@@ -3595,3 +3595,49 @@ Marker:
 - `apify_enabled=false`;
 - `production_touched=false`;
 - `deploy_executed=false`.
+
+
+## Punto 59 — Public data promotion plan only
+
+Stato: completato.
+
+Output:
+
+- piano di promotion pubblica creato;
+- nessuna promotion eseguita;
+- nessun cambio visibility;
+- nessuna DB write;
+- candidate futura: `manual-serie-a`;
+- scope atteso futuro: 1 competition, 2 teams, 2 standings;
+- promotion order definito: competition → teams → standings;
+- rollback plan creato;
+- post-promotion verification plan creato;
+- dati `private_admin` restano non pubblici;
+- route pubbliche restano empty/not_found;
+- provider/import spenti;
+- Apify off;
+- Production non toccata;
+- deploy non eseguito.
+
+Marker:
+
+- `point_59_public_data_promotion_plan_created=true`;
+- `public_data_promotion_mode=plan_only`;
+- `public_data_promotion_executed=false`;
+- `visibility_changed=false`;
+- `public_routes_current_state=empty_not_found`;
+- `public_competitions_count=0`;
+- `public_teams_count=0`;
+- `public_standings_count=0`;
+- `future_promotion_candidate=manual-serie-a`;
+- `future_promotion_expected_competitions_count=1`;
+- `future_promotion_expected_teams_count=2`;
+- `future_promotion_expected_standings_count=2`;
+- `rollback_plan_created=true`;
+- `post_promotion_verification_plan_created=true`;
+- `point_59_db_write=false`;
+- `provider_fetch=false`;
+- `provider_import_enabled=false`;
+- `apify_enabled=false`;
+- `production_touched=false`;
+- `deploy_executed=false`.

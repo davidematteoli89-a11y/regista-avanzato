@@ -1418,3 +1418,28 @@ Nessun audit/dry-run P57 esegue fetch provider o scrittura DB.
   - `deploy_executed=false`.
 
 Nessun audit/dry-run P58 esegue fetch provider o scrittura DB.
+
+
+- Punto 59 aggiunge marker promotion plan only:
+  - `point_59_public_data_promotion_plan_created=true`;
+  - `public_data_promotion_mode=plan_only`;
+  - `public_data_promotion_executed=false`;
+  - `visibility_changed=false`;
+  - `public_routes_current_state=empty_not_found`;
+  - `public_competitions_count=0`;
+  - `public_teams_count=0`;
+  - `public_standings_count=0`;
+  - `future_promotion_candidate=manual-serie-a`;
+  - `future_promotion_expected_competitions_count=1`;
+  - `future_promotion_expected_teams_count=2`;
+  - `future_promotion_expected_standings_count=2`;
+  - `rollback_plan_created=true`;
+  - `post_promotion_verification_plan_created=true`;
+  - `point_59_db_write=false`;
+  - `provider_fetch=false`;
+  - `provider_import_enabled=false`;
+  - `apify_enabled=false`;
+  - `production_touched=false`;
+  - `deploy_executed=false`.
+
+Nessun audit/dry-run P59 esegue fetch provider, promotion reale o scrittura DB.

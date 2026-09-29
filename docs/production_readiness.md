@@ -1922,3 +1922,19 @@ Prima della Production resta necessaria una decisione dedicata su dati pubblici 
   - Production non toccata.
 
 Readiness Production resta non concessa: prima servono promotion plan, autorizzazione dedicata e verifica finale sui dati pubblici reali.
+
+
+- Punto 59 — public data promotion plan only:
+  - readiness Production ancora non concessa;
+  - nessuna promotion eseguita;
+  - nessun cambio visibility;
+  - nessuna DB write;
+  - dati `private_admin` restano non pubblici;
+  - candidate futura `manual-serie-a` documentata solo come piano;
+  - rollback e post-verification plan creati;
+  - nessun provider/import;
+  - Apify off;
+  - deploy non eseguito;
+  - Production non toccata.
+
+Production resta bloccata finché non esistono dati public verificati, promotion autorizzata e checklist dedicata.

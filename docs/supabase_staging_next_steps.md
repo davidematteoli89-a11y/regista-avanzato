@@ -2425,3 +2425,20 @@ Prossimo step consigliato: Punto 58 — Browser verification after UI polish opp
   - deploy non eseguito.
 
 Prossimo step consigliato: Punto 59 — Public data promotion plan only.
+
+
+- Punto 59 completato come public data promotion plan only:
+  - nessuna promotion eseguita;
+  - nessun cambio visibility;
+  - nessuna DB write;
+  - candidate futura: `manual-serie-a`;
+  - scope atteso futuro: 1 competition / 2 teams / 2 standings;
+  - rollback plan creato;
+  - post-promotion verification plan creato;
+  - dati `private_admin` restano non pubblici;
+  - nessun provider/import;
+  - Apify off;
+  - Production non toccata;
+  - deploy non eseguito.
+
+Prossimo step consigliato: Punto 60 — Public data promotion dry-run/no-apply.
