@@ -80,3 +80,21 @@ Controlla localmente:
 ## Next step
 
 Prossimo step consigliato: Punto 56 — browser verification locale/Preview delle route `/competitions` e `/competitions/manual-serie-a`, confermando empty state e assenza dati `private_admin`.
+
+## P56 result
+
+La verifica browser no-auth è stata completata localmente con Chrome headless e profilo temporaneo isolato.
+
+Risultato:
+
+- `public_routes_browser_verification_result=passed_no_auth_empty_state`;
+- `/competitions` carica e mostra “Competizioni non ancora disponibili.”;
+- `/competitions/manual-serie-a` carica e mostra “Dati competizione non ancora disponibili.”;
+- `Serie A Manual Sample` non visibile;
+- `manual-serie-a` non visibile;
+- `Manual Team One` non visibile;
+- `Manual Team Two` non visibile;
+- standings private non visibili;
+- nessun bottone operativo;
+- nessun admin link pubblico;
+- nessun provider/import trigger.

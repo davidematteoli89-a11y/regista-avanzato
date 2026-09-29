@@ -1877,3 +1877,17 @@ Prima di qualsiasi route pubblica resta obbligatoria una fase dedicata con test 
   - Production non toccata.
 
 Prima di rendere le route parte della readiness Production serve verifica browser locale/Preview e incognito, con conferma che `/competitions/manual-serie-a` non esponga dati privati.
+
+- Punto 56 — public routes browser verification no-auth:
+  - verifica locale completata con Chrome headless no-auth;
+  - `/competitions` mostra empty state;
+  - `/competitions/manual-serie-a` mostra not found/empty;
+  - nessun dato `private_admin` esposto;
+  - nessun cambio visibility;
+  - nessuna DB write;
+  - nessun provider/import;
+  - Apify off;
+  - deploy non eseguito;
+  - Production non toccata.
+
+Readiness Production resta non concessa: manca ancora decisione sul primo dato pubblico reale e/o polish UI pubblico dedicato.

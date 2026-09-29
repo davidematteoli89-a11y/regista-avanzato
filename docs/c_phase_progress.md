@@ -3493,3 +3493,33 @@ Marker:
 - `visibility_changed=false`;
 - `point_55_db_write=false`;
 - `service_role_used=false`.
+
+- Punto 56 completato: Public routes browser verification no-auth.
+
+Output:
+
+- verifica eseguita su `localhost` con Chrome headless e profilo temporaneo isolato;
+- `/competitions` carica e mostra empty state;
+- `/competitions/manual-serie-a` carica e mostra not found/empty;
+- nessun dato `private_admin` visibile;
+- nessun bottone operativo;
+- nessun admin link pubblico;
+- nessun provider/import trigger;
+- nessuna DB write;
+- nessun cambio visibility;
+- provider/import spenti;
+- Apify off;
+- Production non toccata;
+- deploy non eseguito.
+
+Marker:
+
+- `point_56_public_routes_browser_verification_completed=true`;
+- `public_routes_browser_verification_result=passed_no_auth_empty_state`;
+- `public_routes_no_auth_verified=true`;
+- `public_competitions_page_browser_state=empty`;
+- `public_competition_detail_browser_state=not_found`;
+- `private_admin_publicly_exposed=false`;
+- `visibility_changed=false`;
+- `point_56_db_write=false`;
+- `service_role_used=false`.

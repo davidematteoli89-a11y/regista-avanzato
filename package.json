@@ -21,6 +21,7 @@
     "audit:public-reader-contracts": "node --no-warnings --experimental-strip-types scripts/provider/auditPublicReaderContracts.ts",
     "audit:public-readers-no-route": "node --no-warnings --experimental-strip-types scripts/provider/auditPublicReadersNoRoute.ts",
     "audit:public-routes-empty-state": "tsx scripts/provider/auditPublicRoutesEmptyState.ts",
+    "dry-run:public-routes-empty-state": "tsx scripts/provider/publicRoutesEmptyStateDryRun.ts",
     "dry-run:public-readers": "tsx scripts/provider/publicReaderNoRouteDryRun.ts",
     "probe:stable-provider:disabled": "node --no-warnings --experimental-strip-types scripts/provider/disabledStableProviderProbe.ts",
     "probe:api-football:gated": "node --no-warnings --experimental-strip-types scripts/provider/apiFootballProbe.ts",

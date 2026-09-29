@@ -1364,3 +1364,22 @@ Nessun dry-run P54 esegue fetch provider o scrittura DB.
   - `service_role_used=false`.
 
 Nessun audit/dry-run P55 esegue fetch provider o scrittura DB.
+
+- Punto 56 aggiunge dry-run marker per verifica browser route pubbliche:
+  - `point_56_public_routes_browser_verification_completed=true`;
+  - `public_routes_browser_verification_result=passed_no_auth_empty_state`;
+  - `public_routes_no_auth_verified=true`;
+  - `public_competitions_page_browser_state=empty`;
+  - `public_competition_detail_browser_state=not_found`;
+  - `private_admin_publicly_exposed=false`;
+  - `visibility_changed=false`;
+  - `point_56_db_write=false`;
+  - `provider_fetch=false`;
+  - `external_fetch=false`;
+  - `provider_import_enabled=false`;
+  - `apify_enabled=false`;
+  - `production_touched=false`;
+  - `deploy_executed=false`;
+  - `service_role_used=false`.
+
+Nessun audit/dry-run P56 esegue fetch provider o scrittura DB.

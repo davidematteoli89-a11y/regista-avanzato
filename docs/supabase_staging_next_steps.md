@@ -2379,3 +2379,18 @@ Nota: i futuri public reader dovranno vivere separati dagli admin reader, filtra
   - Production non toccata.
 
 Prossimo step consigliato: Punto 56 — browser verification locale/Preview delle route pubbliche empty-state.
+
+- Punto 56 completato come public routes browser verification no-auth:
+  - environment: `localhost`;
+  - auth: no-auth con profilo temporaneo isolato;
+  - `/competitions`: empty state;
+  - `/competitions/manual-serie-a`: not found/empty;
+  - nessun dato `private_admin` visibile;
+  - nessuna DB write;
+  - nessun cambio visibility;
+  - nessun provider/import;
+  - Apify off;
+  - Production non toccata;
+  - deploy non eseguito.
+
+Prossimo step consigliato: Punto 57 — Public routes UI polish oppure Public data promotion plan only.
