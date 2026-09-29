@@ -98,3 +98,16 @@ Risultato:
 - nessun bottone operativo;
 - nessun admin link pubblico;
 - nessun provider/import trigger.
+
+## P57 result
+
+Punto 57 ha migliorato UI e testi delle route empty-state senza cambiare comportamento dati.
+
+- `public_routes_ui_polish_mode=empty_state_polish`;
+- `public_routes_still_empty_state=true`;
+- public readers invariati;
+- nessun dato `private_admin` esposto;
+- nessun cambio visibility;
+- nessuna DB write;
+- nessun provider/import;
+- Production non toccata.

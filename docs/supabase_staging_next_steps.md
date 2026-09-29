@@ -2394,3 +2394,16 @@ Prossimo step consigliato: Punto 56 — browser verification locale/Preview dell
   - deploy non eseguito.
 
 Prossimo step consigliato: Punto 57 — Public routes UI polish oppure Public data promotion plan only.
+
+- Punto 57 completato come public routes UI polish:
+  - migliorati testi e struttura delle route `/competitions` e `/competitions/[slug]`;
+  - route ancora empty-state/not_found con dataset `private_admin`;
+  - nessun dato `private_admin` esposto;
+  - nessun cambio visibility;
+  - nessuna DB write;
+  - nessun provider/import;
+  - Apify off;
+  - Production non toccata;
+  - deploy non eseguito.
+
+Prossimo step consigliato: Punto 58 — Browser verification after UI polish oppure Public data promotion plan only.

@@ -7,15 +7,24 @@ export default async function PublicCompetitionsPage() {
   const competitions = await getPublicCompetitions();
 
   return (
-    <main className="stack">
+    <main className="stack" aria-labelledby="public-competitions-title">
       <header>
         <span className="eyebrow">Public data only</span>
-        <h1>Competitions</h1>
+        <h1 id="public-competitions-title">Competizioni</h1>
         <p>
-          Competizioni pubbliche approvate per la consultazione esterna. I dati
-          staging privati non vengono esposti.
+          Statistiche, classifiche e storie saranno pubblicate qui dopo la
+          revisione editoriale.
         </p>
       </header>
+
+      <section className="preview-block" aria-labelledby="public-data-note-title">
+        <span className="stats-badge">Dati pubblici in arrivo</span>
+        <h2 id="public-data-note-title">Solo contenuti approvati</h2>
+        <p>
+          Questa sezione mostra esclusivamente dati con visibilità pubblica.
+          Le bozze e i dati di staging restano fuori dalla consultazione esterna.
+        </p>
+      </section>
 
       {competitions.items.length > 0 ? (
         <section className="public-stats-grid" aria-label="Competizioni pubbliche">
@@ -36,9 +45,12 @@ export default async function PublicCompetitionsPage() {
           <span className="stats-badge">Public data only</span>
           <h2>Competizioni non ancora disponibili.</h2>
           <p>
-            Pubblicheremo questa sezione solo quando esisteranno dati con
-            visibilità pubblica. I contenuti privati di staging restano esclusi.
+            I dati pubblici saranno visibili solo dopo revisione e pubblicazione.
+            Nel frattempo puoi tornare alla homepage editoriale.
           </p>
+          <Link className="button-link" href="/">
+            Torna alla home
+          </Link>
         </section>
       )}
     </main>

@@ -1891,3 +1891,17 @@ Prima di rendere le route parte della readiness Production serve verifica browse
   - Production non toccata.
 
 Readiness Production resta non concessa: manca ancora decisione sul primo dato pubblico reale e/o polish UI pubblico dedicato.
+
+- Punto 57 — public routes UI polish:
+  - readiness Production ancora non concessa;
+  - UI polish only sulle route `/competitions` e `/competitions/[slug]`;
+  - route ancora empty-state/not_found;
+  - nessun dato `private_admin` esposto;
+  - nessun cambio visibility;
+  - nessuna DB write;
+  - nessun provider/import;
+  - Apify off;
+  - deploy non eseguito;
+  - Production non toccata.
+
+Prima della Production resta necessaria una decisione dedicata su dati pubblici reali, promotion plan e verifica browser finale.

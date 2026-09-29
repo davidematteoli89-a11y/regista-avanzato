@@ -104,3 +104,19 @@ Marker:
 ## Next step
 
 Prossimo step consigliato: Punto 57 — Public routes UI polish, oppure Public data promotion plan only se si vuole pianificare il primo dato pubblico reale senza eseguire promotion.
+
+## P57 result
+
+Punto 57 ha applicato polish UI alle route pubbliche empty-state già verificate in P56.
+
+Conferme:
+
+- `/competitions` resta empty-state;
+- `/competitions/[slug]` resta not_found/empty quando non ci sono dati public;
+- nessun dato `private_admin` esposto;
+- nessun cambio visibility;
+- nessuna DB write;
+- nessun provider/import;
+- Apify off;
+- Production non toccata;
+- deploy non eseguito.

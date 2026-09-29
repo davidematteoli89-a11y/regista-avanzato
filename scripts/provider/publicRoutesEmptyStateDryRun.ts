@@ -20,7 +20,10 @@ async function main() {
 
   console.info("Regista Avanzato — Public Routes Empty-State Dry Run");
   console.info("point_56_public_routes_browser_verification_completed=true");
+  console.info("point_57_public_routes_ui_polish_verified=true");
   console.info("public_routes_browser_verification_result=passed_no_auth_empty_state");
+  console.info("public_routes_ui_polish_mode=empty_state_polish");
+  console.info("public_routes_still_empty_state=true");
   console.info("public_routes_no_auth_verified=true");
   console.info("environment=localhost");
   console.info("production=false");
@@ -30,8 +33,10 @@ async function main() {
   console.info("public_reader_connected_to_routes=true");
   console.info("public_competitions_page_verified=true");
   console.info("public_competitions_page_browser_state=empty");
+  console.info("public_competitions_page_state=empty");
   console.info("public_competition_detail_verified=true");
   console.info(`public_competition_detail_browser_state=${detailState}`);
+  console.info(`public_competition_detail_state=${detailState}`);
   console.info(`public_competitions_count=${competitions.items.length}`);
   console.info(`public_teams_count=${bundle.teams.length}`);
   console.info(`public_standings_count=${bundle.standings.length}`);

@@ -1383,3 +1383,18 @@ Nessun audit/dry-run P55 esegue fetch provider o scrittura DB.
   - `service_role_used=false`.
 
 Nessun audit/dry-run P56 esegue fetch provider o scrittura DB.
+
+- Punto 57 aggiunge marker UI polish route pubbliche:
+  - `point_57_public_routes_ui_polish_completed=true`;
+  - `public_routes_ui_polish_mode=empty_state_polish`;
+  - `public_routes_still_empty_state=true`;
+  - `public_routes_use_public_readers=true`;
+  - `public_routes_private_admin_hardcoded=false`;
+  - `public_routes_admin_links_visible=false`;
+  - `public_routes_debug_payload_visible=false`;
+  - `public_routes_operational_buttons=false`;
+  - `public_competitions_page_state=empty`;
+  - `public_competition_detail_state=not_found`;
+  - `point_57_db_write=false`.
+
+Nessun audit/dry-run P57 esegue fetch provider o scrittura DB.

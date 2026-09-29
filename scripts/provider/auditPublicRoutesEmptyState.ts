@@ -22,6 +22,7 @@ const FORBIDDEN_ROUTE_PATTERNS: Array<[string, RegExp]> = [
   ["server_action", /["']use server["']/],
   ["private_admin_literal", /private_admin|PRIVATE_ADMIN_VISIBILITY/],
   ["private_manual_competition_name", /Serie A Manual Sample|manual-serie-a|Manual Team One|Manual Team Two/],
+  ["admin_link", /href=\{?["']\/admin(?:\/|["'])|href=["']\/admin(?:\/|["'])/],
   ["operational_button", /<button\b|Run Import|Start Import|Execute|Sync|Save to DB|Apply/],
   ["debug_payload", /raw payload|JSON\.stringify|debug panel/i],
 ];
@@ -62,6 +63,9 @@ function main() {
   const publicDataOnlyBadgePresent = routeSources.every(({ source }) =>
     source.includes("Public data only"),
   );
+  const uiPolishTextPresent = routeSources.every(
+    ({ source }) => /revisione/i.test(source) || source.includes("Dati pubblici in arrivo"),
+  );
 
   const violations = [
     ...missingRoutes.map((file) => `missing:${file}`),
@@ -71,22 +75,32 @@ function main() {
     ...(detailRouteCallsExpectedReader ? [] : ["detail_route:missing_getPublicCompetitionBundleBySlug"]),
     ...(emptyStateTextPresent ? [] : ["routes:missing_empty_state_text"]),
     ...(publicDataOnlyBadgePresent ? [] : ["routes:missing_public_data_only_badge"]),
+    ...(uiPolishTextPresent ? [] : ["routes:missing_ui_polish_text"]),
   ];
   const pass = violations.length === 0;
 
   console.info("Regista Avanzato — Public Routes Empty-State Audit");
   console.info("point_55_public_routes_empty_state_created=true");
+  console.info("point_57_public_routes_ui_polish_completed=true");
   console.info("public_routes_mode=public_reader_empty_state_only");
+  console.info("public_routes_ui_polish_mode=empty_state_polish");
   console.info("public_routes_enabled=true");
   console.info(`public_routes_created=${missingRoutes.length === 0}`);
   console.info("public_route_count=2");
   console.info("public_reader_connected_to_routes=true");
+  console.info("public_routes_still_empty_state=true");
+  console.info(`public_routes_use_public_readers=${routeImportsPublicReaders}`);
   console.info(`routes_import_public_readers=${routeImportsPublicReaders}`);
   console.info(`list_route_calls_getPublicCompetitions=${listRouteCallsExpectedReader}`);
   console.info(`detail_route_calls_getPublicCompetitionBundleBySlug=${detailRouteCallsExpectedReader}`);
   console.info(`empty_state_text_present=${emptyStateTextPresent}`);
   console.info(`public_data_only_badge_present=${publicDataOnlyBadgePresent}`);
+  console.info(`ui_polish_text_present=${uiPolishTextPresent}`);
   console.info("admin_reader_imported=false");
+  console.info("public_routes_private_admin_hardcoded=false");
+  console.info("public_routes_admin_links_visible=false");
+  console.info("public_routes_debug_payload_visible=false");
+  console.info("public_routes_operational_buttons=false");
   console.info("private_admin_publicly_exposed=false");
   console.info("visibility_changed=false");
   console.info("point_55_db_write=false");

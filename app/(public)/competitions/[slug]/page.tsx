@@ -13,34 +13,45 @@ export default async function PublicCompetitionDetailPage({ params }: PageProps)
 
   if (!bundle.competition) {
     return (
-      <main className="stack">
+      <main className="stack" aria-labelledby="public-competition-empty-title">
         <header>
           <span className="eyebrow">Public data only</span>
-          <h1>Dati competizione non ancora disponibili.</h1>
+          <h1 id="public-competition-empty-title">Competizione non ancora disponibile</h1>
           <p>
-            Questa pagina mostra solo dati approvati con visibilità pubblica. I
-            dati privati di staging non vengono esposti.
+            I dati pubblici per questa competizione non sono ancora stati
+            pubblicati.
           </p>
         </header>
 
-        <section className="empty-public-state" aria-live="polite">
-          <span className="stats-badge">Empty state</span>
-          <h2>Nessuna competizione pubblica trovata.</h2>
+        <section className="preview-block" aria-labelledby="public-competition-note-title">
+          <span className="stats-badge">Revisione editoriale</span>
+          <h2 id="public-competition-note-title">Dati in preparazione</h2>
           <p>
-            Quando una competizione verrà resa pubblica, qui appariranno squadre
-            e classifica filtrate dai public reader.
+            Squadre, classifiche e riepiloghi saranno visibili qui solo quando
+            verranno approvati per la consultazione pubblica.
           </p>
-          <Link href="/competitions">Torna alle competizioni</Link>
+        </section>
+
+        <section className="empty-public-state" aria-live="polite">
+          <span className="stats-badge">Public data only</span>
+          <h2>Dati competizione non ancora disponibili.</h2>
+          <p>
+            Quando una competizione sarà pubblica, questa pagina mostrerà solo
+            informazioni filtrate dai public reader.
+          </p>
+          <Link className="button-link" href="/competitions">
+            Torna alle competizioni
+          </Link>
         </section>
       </main>
     );
   }
 
   return (
-    <main className="stack">
+    <main className="stack" aria-labelledby="public-competition-title">
       <header>
         <span className="eyebrow">Public data only</span>
-        <h1>{bundle.competition.name}</h1>
+        <h1 id="public-competition-title">{bundle.competition.name}</h1>
         <p>
           {[bundle.competition.country, bundle.competition.season].filter(Boolean).join(" · ") ||
             "Dettagli in aggiornamento"}
