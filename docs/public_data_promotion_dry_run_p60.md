@@ -165,6 +165,26 @@ Qualsiasi generico “procedi”, “vai”, “continua”, “ok” non autori
 - `apify_enabled=false`
 - `production_touched=false`
 - `deploy_executed=false`
+
+## P63 final pre-apply checklist
+
+Punto 63 conferma lo stesso scope P60/P61/P62, ancora senza apply.
+
+- `point_63_public_data_promotion_final_pre_apply_checklist_completed=true`
+- `public_data_promotion_mode=final_pre_apply_no_write`
+- `promotion_candidate=manual-serie-a`
+- `expected_promotion_competitions_count=1`
+- `expected_promotion_teams_count=2`
+- `expected_promotion_standings_count=2`
+- `current_public_competitions_count=0`
+- `current_public_teams_count=0`
+- `current_public_standings_count=0`
+- `current_public_bundle_status=not_found`
+- `public_routes_current_state=empty_not_found`
+- `promotion_executed=false`
+- `real_sql_executed=false`
+- `db_write=false`
+- `visibility_changed=false`
 - `service_role_used=false`
 
 

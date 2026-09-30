@@ -2495,3 +2495,23 @@ Prossimo step consigliato: Punto 62 — explicit authorization review for real s
   - deploy non eseguito.
 
 Prossimo step consigliato: Punto 63 — final pre-apply no-write checklist oppure real staging promotion solo con autorizzazione esplicita completa.
+
+
+- Punto 63 completato come final pre-apply checklist no-write:
+  - candidate `manual-serie-a` confermata;
+  - scope atteso: 1 competition / 2 teams / 2 standings;
+  - public readers attuali: 0/0/0, bundle `not_found`;
+  - public routes attuali: empty/not_found;
+  - promotion SQL, rollback e post-verification pronti solo no-apply;
+  - `explicit_authorization_required=true`;
+  - `generic_proceed_authorizes_write=false`;
+  - nessuna promotion eseguita;
+  - nessun SQL reale eseguito;
+  - nessuna DB write;
+  - nessun cambio visibility;
+  - provider/import spenti;
+  - Apify off;
+  - Production non toccata;
+  - deploy non eseguito.
+
+Prossimo step consigliato: Punto 64 — real apply staging only con autorizzazione esplicita completa, oppure continuare senza DB write.

@@ -247,3 +247,27 @@ Punto 62 ha rivisto il pack P61 senza applicarlo.
 - `service_role_used=false`
 
 La prossima scrittura reale su staging richiede una nuova autorizzazione esplicita e completa per Punto 63. Un generico “procedi” non autorizza promotion, SQL reale, DB write o cambio visibility.
+
+## P63 final pre-apply checklist
+
+Punto 63 ha confermato il pack come pronto per una futura apply, ma ancora senza applicazione.
+
+- `point_63_public_data_promotion_final_pre_apply_checklist_completed=true`
+- `public_data_promotion_mode=final_pre_apply_no_write`
+- `promotion_candidate=manual-serie-a`
+- `expected_promotion_competitions_count=1`
+- `expected_promotion_teams_count=2`
+- `expected_promotion_standings_count=2`
+- `current_public_competitions_count=0`
+- `current_public_teams_count=0`
+- `current_public_standings_count=0`
+- `current_public_bundle_status=not_found`
+- `public_routes_current_state=empty_not_found`
+- `explicit_authorization_required=true`
+- `generic_proceed_authorizes_write=false`
+- `promotion_executed=false`
+- `real_sql_executed=false`
+- `db_write=false`
+- `visibility_changed=false`
+
+La prossima scrittura reale richiede autorizzazione esplicita completa per Punto 64.

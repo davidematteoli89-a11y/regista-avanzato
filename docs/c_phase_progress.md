@@ -3263,6 +3263,36 @@ Completata la review autorizzativa per la futura promotion di `manual-serie-a`, 
 - `service_role_used=false`.
 
 Decisione: un generico “procedi” non autorizza DB write, SQL reale, promotion o cambio visibility. Il prossimo punto può essere P63 final pre-apply no-write checklist, oppure promotion reale solo con autorizzazione esplicita completa.
+
+### Punto 63 — Final pre-apply no-write checklist
+
+Completata la checklist finale no-write prima di una possibile promotion reale di `manual-serie-a`.
+
+- `point_63_public_data_promotion_final_pre_apply_checklist_completed=true`;
+- `public_data_promotion_mode=final_pre_apply_no_write`;
+- `promotion_candidate=manual-serie-a`;
+- `expected_promotion_competitions_count=1`;
+- `expected_promotion_teams_count=2`;
+- `expected_promotion_standings_count=2`;
+- `current_public_competitions_count=0`;
+- `current_public_teams_count=0`;
+- `current_public_standings_count=0`;
+- `current_public_bundle_status=not_found`;
+- `public_routes_current_state=empty_not_found`;
+- `explicit_authorization_required=true`;
+- `generic_proceed_authorizes_write=false`;
+- `promotion_executed=false`;
+- `real_sql_executed=false`;
+- `point_63_db_write=false`;
+- `visibility_changed=false`;
+- `provider_fetch=false`;
+- `provider_import_enabled=false`;
+- `apify_enabled=false`;
+- `production_touched=false`;
+- `deploy_executed=false`;
+- `service_role_used=false`.
+
+Decisione: Punto 63 non autorizza la promotion. Punto 64 richiede una nuova autorizzazione esplicita completa per qualunque DB write.
 - `external_fetch=false`;
 - `provider_import_enabled=false`;
 - `apify_enabled=false`;

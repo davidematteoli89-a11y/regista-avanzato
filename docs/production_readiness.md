@@ -1985,3 +1985,21 @@ Production resta bloccata finché non saranno completate autorizzazione esplicit
   - Production non toccata.
 
 Production resta bloccata finché una promotion staging non sarà esplicitamente autorizzata, applicata in modo controllato, verificata e coperta da rollback/readiness dedicati.
+
+
+- Punto 63 — final pre-apply checklist no-write:
+  - readiness Production ancora non concessa;
+  - candidate `manual-serie-a` confermata solo per futura promotion staging;
+  - scope atteso: 1 competition / 2 teams / 2 standings;
+  - public readers attuali: 0/0/0;
+  - route pubbliche attuali: empty/not_found;
+  - nessuna promotion eseguita;
+  - nessun SQL reale eseguito;
+  - nessuna DB write;
+  - nessun cambio visibility;
+  - provider/import spenti;
+  - Apify off;
+  - deploy non eseguito;
+  - Production non toccata.
+
+Production resta bloccata finché non saranno completati apply staging esplicitamente autorizzato, verifica post-apply e checklist Production separata.
