@@ -12,8 +12,8 @@ export default async function PublicCompetitionsPage() {
         <span className="eyebrow">Public data only</span>
         <h1 id="public-competitions-title">Competizioni</h1>
         <p>
-          Statistiche, classifiche e storie saranno pubblicate qui dopo la
-          revisione editoriale.
+          Statistiche, classifiche e racconti saranno pubblicati qui solo dopo
+          revisione editoriale e controllo di visibilità pubblica.
         </p>
       </header>
 
@@ -24,6 +24,33 @@ export default async function PublicCompetitionsPage() {
           Questa sezione mostra esclusivamente dati con visibilità pubblica.
           Le bozze e i dati di staging restano fuori dalla consultazione esterna.
         </p>
+      </section>
+
+      <section className="public-stats-grid" aria-label="Come funzionerà la sezione">
+        <article className="public-stat-card">
+          <span className="stats-badge">Revisione</span>
+          <h2>Pubblicazione controllata</h2>
+          <p>
+            Ogni competizione passa da un controllo editoriale prima di comparire
+            nelle pagine pubbliche.
+          </p>
+        </article>
+        <article className="public-stat-card">
+          <span className="stats-badge">Lettura pubblica</span>
+          <h2>Dati filtrati</h2>
+          <p>
+            Le pagine pubbliche leggono soltanto record approvati per la
+            consultazione esterna.
+          </p>
+        </article>
+        <article className="public-stat-card">
+          <span className="stats-badge">In preparazione</span>
+          <h2>Prime coperture</h2>
+          <p>
+            Stiamo preparando le prime competizioni pubbliche con classifiche e
+            schede sintetiche.
+          </p>
+        </article>
       </section>
 
       {competitions.items.length > 0 ? (
@@ -45,8 +72,8 @@ export default async function PublicCompetitionsPage() {
           <span className="stats-badge">Public data only</span>
           <h2>Competizioni non ancora disponibili.</h2>
           <p>
-            I dati pubblici saranno visibili solo dopo revisione e pubblicazione.
-            Nel frattempo puoi tornare alla homepage editoriale.
+            Dati non ancora disponibili. La consultazione pubblica partirà quando
+            le prime competizioni saranno state approvate.
           </p>
           <Link className="button-link" href="/">
             Torna alla home

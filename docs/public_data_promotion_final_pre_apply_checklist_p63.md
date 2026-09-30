@@ -103,3 +103,22 @@ NON autorizzano la DB write.
 - `production_touched=false`
 - `deploy_executed=false`
 - `service_role_used=false`
+
+## P64 UI/product polish without promotion
+
+Punto 64 ha proseguito con polish UI/prodotto pubblico senza promotion.
+
+- `point_64_public_ui_product_polish_completed=true`
+- `public_ui_product_polish_mode=no_promotion`
+- `promotion_candidate=manual-serie-a`
+- `current_public_competitions_count=0`
+- `current_public_teams_count=0`
+- `current_public_standings_count=0`
+- `current_public_bundle_status=not_found`
+- `public_routes_current_state=empty_not_found`
+- `promotion_executed=false`
+- `real_sql_executed=false`
+- `db_write=false`
+- `visibility_changed=false`
+
+La promotion reale resta non autorizzata anche dopo il polish UI.

@@ -3293,6 +3293,36 @@ Completata la checklist finale no-write prima di una possibile promotion reale d
 - `service_role_used=false`.
 
 Decisione: Punto 63 non autorizza la promotion. Punto 64 richiede una nuova autorizzazione esplicita completa per qualunque DB write.
+
+### Punto 64 — Continue public UI/product polish without promotion
+
+Completato polish UI/prodotto pubblico senza promotion.
+
+- `/competitions` aggiornata con copy editoriale e card statiche sicure;
+- `/competitions/[slug]` aggiornata con empty state più chiaro;
+- navigazione pubblica aggiornata con link “Competizioni”;
+- `point_64_public_ui_product_polish_completed=true`;
+- `public_ui_product_polish_mode=no_promotion`;
+- `promotion_candidate=manual-serie-a`;
+- `current_public_competitions_count=0`;
+- `current_public_teams_count=0`;
+- `current_public_standings_count=0`;
+- `current_public_bundle_status=not_found`;
+- `public_routes_current_state=empty_not_found`;
+- `explicit_authorization_required=true`;
+- `generic_proceed_authorizes_write=false`;
+- `promotion_executed=false`;
+- `real_sql_executed=false`;
+- `point_64_db_write=false`;
+- `visibility_changed=false`;
+- `provider_fetch=false`;
+- `provider_import_enabled=false`;
+- `apify_enabled=false`;
+- `production_touched=false`;
+- `deploy_executed=false`;
+- `service_role_used=false`.
+
+Decisione: Punto 64 migliora il prodotto pubblico ma non autorizza promotion, SQL reale, DB write o cambio visibility.
 - `external_fetch=false`;
 - `provider_import_enabled=false`;
 - `apify_enabled=false`;

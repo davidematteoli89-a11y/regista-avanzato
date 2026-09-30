@@ -2515,3 +2515,22 @@ Prossimo step consigliato: Punto 63 — final pre-apply no-write checklist oppur
   - deploy non eseguito.
 
 Prossimo step consigliato: Punto 64 — real apply staging only con autorizzazione esplicita completa, oppure continuare senza DB write.
+
+
+- Punto 64 completato come public UI/product polish senza promotion:
+  - `/competitions` migliorata con copy e card statiche sicure;
+  - `/competitions/[slug]` migliorata con empty state più chiaro;
+  - navigazione pubblica aggiornata con link “Competizioni”;
+  - public readers restano 0/0/0;
+  - public routes restano empty/not_found;
+  - nessun dato `private_admin` esposto;
+  - nessuna promotion eseguita;
+  - nessun SQL reale eseguito;
+  - nessuna DB write;
+  - nessun cambio visibility;
+  - provider/import spenti;
+  - Apify off;
+  - Production non toccata;
+  - deploy non eseguito.
+
+Prossimo step consigliato: Punto 65 — browser verification after product polish, oppure real apply solo con autorizzazione esplicita completa.

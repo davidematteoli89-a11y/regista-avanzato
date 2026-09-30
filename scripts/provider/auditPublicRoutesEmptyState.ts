@@ -8,6 +8,8 @@ const ROUTE_FILES = [
   "app/(public)/competitions/[slug]/page.tsx",
 ] as const;
 
+const NAVIGATION_FILE = "components/public/PublicNavigation.tsx";
+
 const FORBIDDEN_ROUTE_PATTERNS: Array<[string, RegExp]> = [
   ["admin_reader_import", /(?:@\/)?lib\/manual-data\/readers|manual-data\/readers/],
   ["admin_namespace_import", /(?:@\/)?lib\/admin\/|from\s+["'][^"']*admin/],
@@ -37,6 +39,9 @@ function main() {
     file,
     source: readRoute(file),
   }));
+  const navigationSource = existsSync(path.join(ROOT, NAVIGATION_FILE))
+    ? readRoute(NAVIGATION_FILE)
+    : "";
 
   const routeViolations = routeSources.flatMap(({ file, source }) =>
     FORBIDDEN_ROUTE_PATTERNS.filter(([, pattern]) => pattern.test(source)).map(
@@ -66,6 +71,14 @@ function main() {
   const uiPolishTextPresent = routeSources.every(
     ({ source }) => /revisione/i.test(source) || source.includes("Dati pubblici in arrivo"),
   );
+  const productPolishTextPresent = routeSources.every(
+    ({ source }) =>
+      source.includes("Pubblicazione controllata") ||
+      source.includes("Nessun dato approvato"),
+  );
+  const publicNavigationLinkPresent =
+    navigationSource.includes('["Competizioni", "/competitions"]') ||
+    navigationSource.includes("['Competizioni', '/competitions']");
 
   const violations = [
     ...missingRoutes.map((file) => `missing:${file}`),
@@ -76,14 +89,18 @@ function main() {
     ...(emptyStateTextPresent ? [] : ["routes:missing_empty_state_text"]),
     ...(publicDataOnlyBadgePresent ? [] : ["routes:missing_public_data_only_badge"]),
     ...(uiPolishTextPresent ? [] : ["routes:missing_ui_polish_text"]),
+    ...(productPolishTextPresent ? [] : ["routes:missing_product_polish_text"]),
+    ...(publicNavigationLinkPresent ? [] : ["navigation:missing_competitions_link"]),
   ];
   const pass = violations.length === 0;
 
   console.info("Regista Avanzato — Public Routes Empty-State Audit");
   console.info("point_55_public_routes_empty_state_created=true");
   console.info("point_57_public_routes_ui_polish_completed=true");
+  console.info("point_64_public_ui_product_polish_completed=true");
   console.info("public_routes_mode=public_reader_empty_state_only");
   console.info("public_routes_ui_polish_mode=empty_state_polish");
+  console.info("public_ui_product_polish_mode=no_promotion");
   console.info("public_routes_enabled=true");
   console.info(`public_routes_created=${missingRoutes.length === 0}`);
   console.info("public_route_count=2");
@@ -96,6 +113,8 @@ function main() {
   console.info(`empty_state_text_present=${emptyStateTextPresent}`);
   console.info(`public_data_only_badge_present=${publicDataOnlyBadgePresent}`);
   console.info(`ui_polish_text_present=${uiPolishTextPresent}`);
+  console.info(`product_polish_text_present=${productPolishTextPresent}`);
+  console.info(`public_navigation_competitions_link_present=${publicNavigationLinkPresent}`);
   console.info("admin_reader_imported=false");
   console.info("public_routes_private_admin_hardcoded=false");
   console.info("public_routes_admin_links_visible=false");
@@ -104,6 +123,7 @@ function main() {
   console.info("private_admin_publicly_exposed=false");
   console.info("visibility_changed=false");
   console.info("point_55_db_write=false");
+  console.info("point_64_db_write=false");
   console.info("provider_fetch=false");
   console.info("external_fetch=false");
   console.info("provider_import_enabled=false");

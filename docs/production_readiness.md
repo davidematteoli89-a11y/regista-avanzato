@@ -2003,3 +2003,20 @@ Production resta bloccata finché una promotion staging non sarà esplicitamente
   - Production non toccata.
 
 Production resta bloccata finché non saranno completati apply staging esplicitamente autorizzato, verifica post-apply e checklist Production separata.
+
+
+- Punto 64 — public UI/product polish senza promotion:
+  - readiness Production ancora non concessa;
+  - route pubbliche migliorate solo lato UI/copy;
+  - public readers attuali: 0/0/0;
+  - route pubbliche attuali: empty/not_found;
+  - nessuna promotion eseguita;
+  - nessun SQL reale eseguito;
+  - nessuna DB write;
+  - nessun cambio visibility;
+  - provider/import spenti;
+  - Apify off;
+  - deploy non eseguito;
+  - Production non toccata.
+
+Production resta bloccata: il polish UI non equivale a dati public approvati né a readiness Production.

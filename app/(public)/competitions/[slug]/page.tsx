@@ -19,7 +19,7 @@ export default async function PublicCompetitionDetailPage({ params }: PageProps)
           <h1 id="public-competition-empty-title">Competizione non ancora disponibile</h1>
           <p>
             I dati pubblici per questa competizione non sono ancora stati
-            pubblicati.
+            pubblicati o non hanno superato la revisione editoriale.
           </p>
         </header>
 
@@ -30,6 +30,33 @@ export default async function PublicCompetitionDetailPage({ params }: PageProps)
             Squadre, classifiche e riepiloghi saranno visibili qui solo quando
             verranno approvati per la consultazione pubblica.
           </p>
+        </section>
+
+        <section className="public-stats-grid" aria-label="Stato della pubblicazione">
+          <article className="public-stat-card">
+            <span className="stats-badge">Accesso pubblico</span>
+            <h2>Nessun dato approvato</h2>
+            <p>
+              Questa pagina non usa scorciatoie verso contenuti interni o dati di
+              staging.
+            </p>
+          </article>
+          <article className="public-stat-card">
+            <span className="stats-badge">Sicurezza</span>
+            <h2>Solo lettura</h2>
+            <p>
+              La pagina mostra esclusivamente risultati dei public reader e non
+              avvia import, sincronizzazioni o modifiche.
+            </p>
+          </article>
+          <article className="public-stat-card">
+            <span className="stats-badge">Prossimo passo</span>
+            <h2>Revisione editoriale</h2>
+            <p>
+              Quando i dati saranno approvati, qui compariranno riepilogo,
+              squadre e classifica pubblica.
+            </p>
+          </article>
         </section>
 
         <section className="empty-public-state" aria-live="polite">
