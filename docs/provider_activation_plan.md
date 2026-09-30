@@ -1837,3 +1837,18 @@ Le query pubbliche P53 sono filtrate su `visibility='public'` e non avviano impo
   - nessun cambio visibility;
   - nessun deploy;
   - Production non toccata.
+
+
+- Punto 65 non modifica lo stato provider:
+  - browser verification no-auth locale;
+  - nessuna chiamata TheStatsAPI / Stats API;
+  - nessuna chiamata API-Football;
+  - nessuna chiamata Apify/SofaScore;
+  - nessun provider fetch;
+  - nessun import provider;
+  - nessun writer provider;
+  - nessuna DB write;
+  - nessun SQL reale;
+  - nessun cambio visibility;
+  - nessun deploy;
+  - Production non toccata.

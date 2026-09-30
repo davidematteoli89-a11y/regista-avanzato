@@ -3323,6 +3323,42 @@ Completato polish UI/prodotto pubblico senza promotion.
 - `service_role_used=false`.
 
 Decisione: Punto 64 migliora il prodotto pubblico ma non autorizza promotion, SQL reale, DB write o cambio visibility.
+
+### Punto 65 — Browser verification after product polish
+
+Completata verifica no-auth locale delle route pubbliche dopo il polish P64.
+
+- `point_65_public_routes_browser_verification_completed=true`;
+- `public_routes_browser_verification_mode=no_auth_local_http`;
+- `environment=localhost`;
+- `production=false`;
+- `auth=no-auth`;
+- `/competitions` status 200 e state `empty`;
+- `/competitions/manual-serie-a` status 200 e state `not_found`;
+- `public_competitions_count=0`;
+- `public_teams_count=0`;
+- `public_standings_count=0`;
+- `public_bundle_status=not_found`;
+- `serie_a_manual_sample_visible=false`;
+- `manual_serie_a_visible=false`;
+- `manual_team_one_visible=false`;
+- `manual_team_two_visible=false`;
+- `public_routes_admin_links_visible=false`;
+- `public_routes_debug_payload_visible=false`;
+- `public_routes_operational_buttons=false`;
+- `private_admin_publicly_exposed=false`;
+- `point_65_db_write=false`;
+- `visibility_changed=false`;
+- `promotion_executed=false`;
+- `real_sql_executed=false`;
+- `provider_fetch=false`;
+- `provider_import_enabled=false`;
+- `apify_enabled=false`;
+- `production_touched=false`;
+- `deploy_executed=false`;
+- `service_role_used=false`.
+
+Decisione: Punto 65 conferma che il polish P64 resta sicuro no-auth e non autorizza promotion o write.
 - `external_fetch=false`;
 - `provider_import_enabled=false`;
 - `apify_enabled=false`;

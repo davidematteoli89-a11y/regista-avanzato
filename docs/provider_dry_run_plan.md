@@ -1563,3 +1563,30 @@ Nessun audit/dry-run P63 esegue fetch provider, SQL reale, promotion reale o scr
   - `service_role_used=false`.
 
 Nessun audit/dry-run P64 esegue fetch provider, SQL reale, promotion reale o scrittura DB.
+
+
+- Punto 65 aggiunge marker browser verification no-auth:
+  - `point_65_public_routes_browser_verification_completed=true`;
+  - `public_routes_browser_verification_mode=no_auth_local_http`;
+  - `environment=localhost`;
+  - `production=false`;
+  - `auth=no-auth`;
+  - `public_competitions_page_state=empty`;
+  - `public_competition_detail_state=not_found`;
+  - `public_competitions_count=0`;
+  - `public_teams_count=0`;
+  - `public_standings_count=0`;
+  - `public_bundle_status=not_found`;
+  - `private_admin_publicly_exposed=false`;
+  - `visibility_changed=false`;
+  - `promotion_executed=false`;
+  - `real_sql_executed=false`;
+  - `point_65_db_write=false`;
+  - `provider_fetch=false`;
+  - `provider_import_enabled=false`;
+  - `apify_enabled=false`;
+  - `production_touched=false`;
+  - `deploy_executed=false`;
+  - `service_role_used=false`.
+
+Nessun audit/dry-run P65 esegue fetch provider, SQL reale, promotion reale o scrittura DB.

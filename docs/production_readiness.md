@@ -2020,3 +2020,20 @@ Production resta bloccata finché non saranno completati apply staging esplicita
   - Production non toccata.
 
 Production resta bloccata: il polish UI non equivale a dati public approvati né a readiness Production.
+
+
+- Punto 65 — browser verification no-auth after product polish:
+  - readiness Production ancora non concessa;
+  - `/competitions` verificata localmente come empty;
+  - `/competitions/manual-serie-a` verificata localmente come not_found/empty;
+  - nessun dato `private_admin` esposto;
+  - nessuna promotion eseguita;
+  - nessun SQL reale eseguito;
+  - nessuna DB write;
+  - nessun cambio visibility;
+  - provider/import spenti;
+  - Apify off;
+  - deploy non eseguito;
+  - Production non toccata.
+
+Production resta bloccata: la verifica P65 conferma sicurezza no-auth, non pubblicazione dati reali.

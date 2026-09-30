@@ -2534,3 +2534,22 @@ Prossimo step consigliato: Punto 64 — real apply staging only con autorizzazio
   - deploy non eseguito.
 
 Prossimo step consigliato: Punto 65 — browser verification after product polish, oppure real apply solo con autorizzazione esplicita completa.
+
+
+- Punto 65 completato come browser verification no-auth after product polish:
+  - verifica locale HTTP no-auth eseguita su `/competitions` e `/competitions/manual-serie-a`;
+  - `/competitions` resta empty;
+  - `/competitions/manual-serie-a` resta not_found/empty;
+  - public readers restano 0/0/0;
+  - nessun dato `private_admin` esposto;
+  - nessun link admin/debug payload/bottone operativo;
+  - nessuna promotion eseguita;
+  - nessun SQL reale eseguito;
+  - nessuna DB write;
+  - nessun cambio visibility;
+  - provider/import spenti;
+  - Apify off;
+  - Production non toccata;
+  - deploy non eseguito.
+
+Prossimo step consigliato: Punto 66 — real apply solo con autorizzazione esplicita completa, oppure ulteriore polish no-write.

@@ -68,3 +68,17 @@ Punto 64 è solo UI/product polish pubblico.
 ## Verification result label
 
 `passed_public_ui_polish_no_promotion`
+
+## P65 browser verification
+
+Punto 65 ha verificato localmente, senza autenticazione, le route pubbliche dopo il polish:
+
+- `/competitions`: reached, state `empty`;
+- `/competitions/manual-serie-a`: reached, state `not_found`;
+- nessun dato manuale/private visibile;
+- nessun link admin;
+- nessun debug/raw payload;
+- nessun bottone operativo;
+- nessuna DB write;
+- nessuna promotion;
+- nessun cambio visibility.
