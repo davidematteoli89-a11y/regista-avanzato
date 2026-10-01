@@ -1804,7 +1804,7 @@ Stato:
 - nessuna route pubblica operativa nuova;
 - nessun public reader implementato.
 
-Production resta bloccata finché non esistono public reader separati, filtro `visibility='public'`, test incognito, checklist sicurezza e autorizzazione deploy dedicata.
+Production resta bloccata finché non esistono public reader separati, filtro `visibility='public_free'`, test incognito, checklist sicurezza e autorizzazione deploy dedicata.
 - Punto 51 — public reader design dry-run:
   - readiness Production invariata;
   - nessuna route pubblica nuova;
@@ -1818,7 +1818,7 @@ Production resta bloccata finché non esistono public reader separati, filtro `v
   - deploy non eseguito;
   - Production non toccata.
 
-Prima di qualunque esposizione pubblica reale resta obbligatoria una fase separata con public reader implementato in namespace dedicato, filtro `visibility='public'`, test incognito e verifica che non importi admin reader.
+Prima di qualunque esposizione pubblica reale resta obbligatoria una fase separata con public reader implementato in namespace dedicato, filtro `visibility='public_free'`, test incognito e verifica che non importi admin reader.
 
 - Punto 52 — public reader contract skeleton:
   - readiness Production invariata;
@@ -1838,7 +1838,7 @@ Il file `lib/public-data/contracts.ts` è solo un contratto di tipi/costanti. No
 - Punto 53 — public reader implementation no-route:
   - readiness Production invariata;
   - reader pubblici implementati ma non collegati a route;
-  - query filtrate su `visibility='public'`;
+  - query filtrate su `visibility='public_free'`;
   - nessuna route pubblica creata;
   - nessun dato `private_admin` esposto;
   - nessun cambio visibility;
@@ -1866,7 +1866,7 @@ Prima di qualsiasi route pubblica resta obbligatoria una fase dedicata con test 
 - Punto 55 — public routes mock/empty-state:
   - readiness Production ancora non concessa;
   - create route pubbliche minimali `/competitions` e `/competitions/[slug]`;
-  - route collegate solo ai public reader filtrati `visibility='public'`;
+  - route collegate solo ai public reader filtrati `visibility='public_free'`;
   - dataset corrente `private_admin` produce empty state;
   - nessun dato `private_admin` esposto;
   - nessun cambio visibility;
@@ -2037,3 +2037,39 @@ Production resta bloccata: il polish UI non equivale a dati public approvati né
   - Production non toccata.
 
 Production resta bloccata: la verifica P65 conferma sicurezza no-auth, non pubblicazione dati reali.
+
+## Punto 66 — Public data promotion apply staging
+
+Punto 66 ha completato la promotion manuale staging della fixture `manual-serie-a` dopo correzione del target enum da `public` a `public_free`.
+
+- `point_66_public_data_promotion_apply_completed=true`
+- `public_data_promotion_mode=real_apply_staging_only`
+- `corrected_visibility=public_free`
+- `old_invalid_visibility=public`
+- `enum_verified=true`
+- `authorization_phrase_received=true`
+- `promotion_candidate=manual-serie-a`
+- `promotion_executed=true`
+- `real_sql_executed=true`
+- `visibility_changed=true`
+- `db_write=true`
+- `db_write_scope=manual-serie-a_competition_teams_standings`
+- `updated_competitions_count=1`
+- `updated_teams_count=2`
+- `updated_standings_count=2`
+- `public_competitions_count=1`
+- `public_teams_count=2`
+- `public_standings_count=2`
+- `public_bundle_status=ready`
+- `public_routes_current_state=data_visible`
+- `private_admin_publicly_exposed=false`
+- `provider_fetch=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `production_touched=false`
+- `deploy_executed=false`
+- `service_role_used=false`
+- `rollback_file_created=true`
+- `rollback_executed=false`
+
+La verifica post-apply è stata eseguita manualmente in Supabase SQL Editor staging e ha confermato `competitions=1`, `teams=2`, `standings=2` con `visibility=public_free`. Nessun rollback eseguito perché l'apply è riuscito.

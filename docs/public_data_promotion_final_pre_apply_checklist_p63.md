@@ -23,7 +23,7 @@ Punto 63 è una final checklist **no-write** prima di una possibile futura promo
 | teams | 2 | confirmed |
 | standings | 2 | confirmed |
 | current visibility | `private_admin` | confirmed |
-| future target visibility | `public` | not applied |
+| future target visibility | `public_free` | not applied |
 
 ## Current public state
 

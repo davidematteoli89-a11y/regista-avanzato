@@ -73,9 +73,9 @@ Istruzioni logiche future, non eseguibili in Punto 60:
    - linked standings = 2
 
 2. Solo dopo autorizzazione esplicita Punto 61, preparare SQL reviewed per:
-   - impostare visibility public sulla competition candidata;
-   - impostare visibility public sui teams collegati;
-   - impostare visibility public sulle standings collegate.
+   - impostare visibility public_free sulla competition candidata;
+   - impostare visibility public_free sui teams collegati;
+   - impostare visibility public_free sulle standings collegate.
 
 3. Non usare wildcard non verificate.
 4. Non toccare altre competition/team/standing.
@@ -110,7 +110,7 @@ Dopo una futura promotion reale autorizzata:
 
 Admin:
 
-- verificare `visibility=public` su 1/2/2;
+- verificare `visibility=public_free` su 1/2/2;
 - verificare che i dati siano ancora leggibili in admin.
 
 Public readers:

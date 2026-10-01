@@ -57,7 +57,7 @@ Il reader admin:
 Il futuro reader pubblico:
 
 - deve stare in namespace separato, consigliato `lib/public-data/readers.ts`;
-- deve filtrare sempre `visibility='public'`;
+- deve filtrare sempre `visibility='public_free'`;
 - non deve importare admin readers;
 - non deve avere fallback verso admin readers;
 - non deve usare `service_role`;
@@ -80,7 +80,7 @@ getPublicStandingsByCompetitionSlug(slug: string)
 
 Regole minime comuni:
 
-- ogni query deve includere filtro equivalente a `visibility = 'public'`;
+- ogni query deve includere filtro equivalente a `visibility = 'public_free'`;
 - nessuna query deve leggere `private_admin`;
 - nessuna funzione deve importare `lib/manual-data/readers.ts`;
 - nessuna funzione deve usare Supabase admin client o `service_role`;
@@ -121,9 +121,9 @@ Empty state richiesto:
 
 Query futura ammessa solo se contiene i filtri:
 
-- competitions: `visibility='public'`;
-- teams: `visibility='public'` e competition pubblica;
-- standings: `visibility='public'` e competition/team pubblici;
+- competitions: `visibility='public_free'`;
+- teams: `visibility='public_free'` e competition pubblica;
+- standings: `visibility='public_free'` e competition/team pubblici;
 - ordine deterministico;
 - limite esplicito quando utile.
 
@@ -219,7 +219,7 @@ Punto 52 ha creato solo il contract skeleton:
 Punto 53 ha creato i public reader no-route:
 
 - `lib/public-data/readers.ts`;
-- funzioni pubbliche filtrate su `visibility='public'`;
+- funzioni pubbliche filtrate su `visibility='public_free'`;
 - nessun collegamento a route pubbliche;
 - nessun fallback verso admin reader;
 - nessun cambio visibility;

@@ -8,7 +8,7 @@ Punto 53 implementa public readers reali ma non collegati a route pubbliche.
 
 - creare `lib/public-data/readers.ts`;
 - usare il client Supabase server anon/session già esistente;
-- eseguire solo query SELECT future con filtro obbligatorio `visibility='public'`;
+- eseguire solo query SELECT future con filtro obbligatorio `visibility='public_free'`;
 - aggiornare audit statico e dry-run markers.
 
 Non è consentito:

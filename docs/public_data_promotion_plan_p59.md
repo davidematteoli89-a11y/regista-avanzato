@@ -28,7 +28,7 @@ Route pubbliche già create e verificate:
 - `/competitions`: empty state.
 - `/competitions/manual-serie-a`: not_found/empty state.
 
-I public readers filtrano solo `visibility='public'`. I dati `private_admin` non sono esposti pubblicamente.
+I public readers filtrano solo `visibility='public_free'`. I dati `private_admin` non sono esposti pubblicamente.
 
 ## Promotion objective
 
@@ -86,9 +86,9 @@ Questa sezione definisce solo una candidata futura. Non autorizza nessuna modifi
 
 In una fase futura autorizzata, un piano SQL/manuale dovrà fare logicamente:
 
-- aggiornare la competition candidata a `visibility='public'`;
-- aggiornare i teams collegati alla competition candidata a `visibility='public'`;
-- aggiornare le standings collegate alla competition e ai teams candidati a `visibility='public'`.
+- aggiornare la competition candidata a `visibility='public_free'`;
+- aggiornare i teams collegati alla competition candidata a `visibility='public_free'`;
+- aggiornare le standings collegate alla competition e ai teams candidati a `visibility='public_free'`.
 
 Punto 59 non include SQL eseguibile.
 
@@ -138,7 +138,7 @@ Dopo una futura promotion reale, verificare:
 Admin:
 
 - dati ancora visibili in admin;
-- `visibility=public` su 1/2/2.
+- `visibility=public_free` su 1/2/2.
 
 Public readers:
 

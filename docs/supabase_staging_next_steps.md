@@ -2319,7 +2319,7 @@ Prossimo step consigliato: Punto 51 — public reader design dry-run, oppure rip
   - Production non toccata;
   - nessun deploy.
 
-Nota: i futuri public reader dovranno vivere separati dagli admin reader, filtrare sempre `visibility='public'` e non importare `lib/manual-data/readers.ts`. Nessun reader pubblico è stato reso operativo nel Punto 51.
+Nota: i futuri public reader dovranno vivere separati dagli admin reader, filtrare sempre `visibility='public_free'` e non importare `lib/manual-data/readers.ts`. Nessun reader pubblico è stato reso operativo nel Punto 51.
 
 - Punto 52 completato come public reader contract skeleton:
   - creato `lib/public-data/contracts.ts`;
@@ -2340,7 +2340,7 @@ Nota: i futuri public reader dovranno vivere separati dagli admin reader, filtra
 - Punto 53 completato come public reader implementation no-route:
   - creato `lib/public-data/readers.ts`;
   - public reader reali implementati ma non collegati a route;
-  - ogni query usa filtro `visibility='public'`;
+  - ogni query usa filtro `visibility='public_free'`;
   - nessun import da `lib/manual-data/readers.ts`;
   - nessuna route pubblica creata;
   - nessun public reader collegato a pagine reali;
@@ -2553,3 +2553,39 @@ Prossimo step consigliato: Punto 65 — browser verification after product polis
   - deploy non eseguito.
 
 Prossimo step consigliato: Punto 66 — real apply solo con autorizzazione esplicita completa, oppure ulteriore polish no-write.
+
+## Punto 66 — Public data promotion apply staging
+
+Punto 66 ha completato la promotion manuale staging della fixture `manual-serie-a` dopo correzione del target enum da `public` a `public_free`.
+
+- `point_66_public_data_promotion_apply_completed=true`
+- `public_data_promotion_mode=real_apply_staging_only`
+- `corrected_visibility=public_free`
+- `old_invalid_visibility=public`
+- `enum_verified=true`
+- `authorization_phrase_received=true`
+- `promotion_candidate=manual-serie-a`
+- `promotion_executed=true`
+- `real_sql_executed=true`
+- `visibility_changed=true`
+- `db_write=true`
+- `db_write_scope=manual-serie-a_competition_teams_standings`
+- `updated_competitions_count=1`
+- `updated_teams_count=2`
+- `updated_standings_count=2`
+- `public_competitions_count=1`
+- `public_teams_count=2`
+- `public_standings_count=2`
+- `public_bundle_status=ready`
+- `public_routes_current_state=data_visible`
+- `private_admin_publicly_exposed=false`
+- `provider_fetch=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `production_touched=false`
+- `deploy_executed=false`
+- `service_role_used=false`
+- `rollback_file_created=true`
+- `rollback_executed=false`
+
+La verifica post-apply è stata eseguita manualmente in Supabase SQL Editor staging e ha confermato `competitions=1`, `teams=2`, `standings=2` con `visibility=public_free`. Nessun rollback eseguito perché l'apply è riuscito.

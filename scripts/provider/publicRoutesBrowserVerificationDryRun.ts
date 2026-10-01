@@ -1,5 +1,7 @@
 const DEFAULT_BASE_URL = "http://localhost:3000";
 
+export {};
+
 type RouteCheck = {
   path: "/competitions" | "/competitions/manual-serie-a";
   expectedState: "empty" | "not_found";

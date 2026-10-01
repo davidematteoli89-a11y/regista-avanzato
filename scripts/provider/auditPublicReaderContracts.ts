@@ -41,7 +41,9 @@ function main() {
     .map(([name]) => `reader:${name}`);
   const violations = [...contractViolations, ...readerViolations];
 
-  const hasPublicVisibility = contractSource.includes('PUBLIC_VISIBILITY = "public"');
+  const hasPublicVisibility =
+    contractSource.includes('PUBLIC_FREE_VISIBILITY = "public_free"') &&
+    contractSource.includes("PUBLIC_VISIBILITY = PUBLIC_FREE_VISIBILITY");
   const hasPublicPreviewVisibility = contractSource.includes('PUBLIC_PREVIEW_VISIBILITY = "public_preview"');
   const hasContractStatus = contractSource.includes("PUBLIC_READER_CONTRACT_STATUS");
   const requiredReaderExports = [
@@ -84,7 +86,7 @@ function main() {
   console.info("point_52_public_reader_contract_skeleton_created=true");
   console.info("public_reader_contract_mode=contract_skeleton_only");
   console.info(`contract_file_exists=${contractExists}`);
-  console.info(`public_visibility_constant_present=${hasPublicVisibility}`);
+  console.info(`public_free_visibility_constant_present=${hasPublicVisibility}`);
   console.info(`public_preview_visibility_constant_present=${hasPublicPreviewVisibility}`);
   console.info(`contract_status_present=${hasContractStatus}`);
   console.info("point_53_public_readers_no_route_implemented=true");

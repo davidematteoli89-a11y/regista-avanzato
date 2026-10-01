@@ -72,7 +72,7 @@ Prima di eseguire in futuro:
 
 -- 2) Promote competition
 -- UPDATE competitions
--- SET visibility = 'public', updated_at = NOW()
+-- SET visibility = 'public_free', updated_at = NOW()
 -- WHERE (slug = 'manual-serie-a'
 --    OR internal_key = 'manual-serie-a'
 --    OR api_competition_id = 'manual-serie-a')
@@ -80,7 +80,7 @@ Prima di eseguire in futuro:
 
 -- 3) Promote linked teams
 -- UPDATE teams
--- SET visibility = 'public', updated_at = NOW()
+-- SET visibility = 'public_free', updated_at = NOW()
 -- WHERE competition_id = (
 --   SELECT id
 --   FROM competitions
@@ -93,7 +93,7 @@ Prima di eseguire in futuro:
 
 -- 4) Promote linked standings
 -- UPDATE standings
--- SET visibility = 'public', updated_at = NOW()
+-- SET visibility = 'public_free', updated_at = NOW()
 -- WHERE competition_id = (
 --   SELECT id
 --   FROM competitions
@@ -125,7 +125,7 @@ Prima di eseguire in futuro:
 --      OR api_competition_id = 'manual-serie-a'
 --   LIMIT 1
 -- )
--- AND visibility = 'public';
+-- AND visibility = 'public_free';
 
 -- 2) Rollback linked teams
 -- UPDATE teams
@@ -138,7 +138,7 @@ Prima di eseguire in futuro:
 --      OR api_competition_id = 'manual-serie-a'
 --   LIMIT 1
 -- )
--- AND visibility = 'public';
+-- AND visibility = 'public_free';
 
 -- 3) Rollback competition
 -- UPDATE competitions
@@ -146,7 +146,7 @@ Prima di eseguire in futuro:
 -- WHERE (slug = 'manual-serie-a'
 --    OR internal_key = 'manual-serie-a'
 --    OR api_competition_id = 'manual-serie-a')
---   AND visibility = 'public';
+--   AND visibility = 'public_free';
 ```
 
 ## Post-verification SQL — NO APPLY
@@ -166,7 +166,7 @@ Prima di eseguire in futuro:
 -- WHERE (slug = 'manual-serie-a'
 --    OR internal_key = 'manual-serie-a'
 --    OR api_competition_id = 'manual-serie-a')
---   AND visibility = 'public';
+--   AND visibility = 'public_free';
 
 -- SELECT count(*) AS public_teams_count
 -- FROM teams
@@ -178,7 +178,7 @@ Prima di eseguire in futuro:
 --      OR api_competition_id = 'manual-serie-a'
 --   LIMIT 1
 -- )
--- AND visibility = 'public';
+-- AND visibility = 'public_free';
 
 -- SELECT count(*) AS public_standings_count
 -- FROM standings
@@ -190,7 +190,7 @@ Prima di eseguire in futuro:
 --      OR api_competition_id = 'manual-serie-a'
 --   LIMIT 1
 -- )
--- AND visibility = 'public';
+-- AND visibility = 'public_free';
 ```
 
 ## Manual browser verification after future promotion

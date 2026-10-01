@@ -1852,3 +1852,39 @@ Le query pubbliche P53 sono filtrate su `visibility='public'` e non avviano impo
   - nessun cambio visibility;
   - nessun deploy;
   - Production non toccata.
+
+## Punto 66 — Public data promotion apply staging
+
+Punto 66 ha completato la promotion manuale staging della fixture `manual-serie-a` dopo correzione del target enum da `public` a `public_free`.
+
+- `point_66_public_data_promotion_apply_completed=true`
+- `public_data_promotion_mode=real_apply_staging_only`
+- `corrected_visibility=public_free`
+- `old_invalid_visibility=public`
+- `enum_verified=true`
+- `authorization_phrase_received=true`
+- `promotion_candidate=manual-serie-a`
+- `promotion_executed=true`
+- `real_sql_executed=true`
+- `visibility_changed=true`
+- `db_write=true`
+- `db_write_scope=manual-serie-a_competition_teams_standings`
+- `updated_competitions_count=1`
+- `updated_teams_count=2`
+- `updated_standings_count=2`
+- `public_competitions_count=1`
+- `public_teams_count=2`
+- `public_standings_count=2`
+- `public_bundle_status=ready`
+- `public_routes_current_state=data_visible`
+- `private_admin_publicly_exposed=false`
+- `provider_fetch=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `production_touched=false`
+- `deploy_executed=false`
+- `service_role_used=false`
+- `rollback_file_created=true`
+- `rollback_executed=false`
+
+La verifica post-apply è stata eseguita manualmente in Supabase SQL Editor staging e ha confermato `competitions=1`, `teams=2`, `standings=2` con `visibility=public_free`. Nessun rollback eseguito perché l'apply è riuscito.

@@ -49,8 +49,8 @@ I dati con `visibility='private_admin'` restano non pubblici.
 ## Public exposure principles
 
 1. Nessun dato `private_admin` può essere letto da route pubbliche.
-2. Le route pubbliche devono filtrare esplicitamente `visibility='public'`.
-3. Le route preview pubbliche future devono filtrare `visibility in ('public_preview', 'public')`, mai `private_admin`.
+2. Le route pubbliche devono filtrare esplicitamente `visibility='public_free'`.
+3. Le route preview pubbliche future devono filtrare `visibility in ('public_preview', 'public_free')`, mai `private_admin`.
 4. Nessun fallback deve mostrare dati admin se il filtro visibility fallisce.
 5. Gli empty state pubblici devono mostrare “nessun dato disponibile”, non dati privati.
 6. Il passaggio a `public` deve essere intenzionale, documentato e verificato.
@@ -82,7 +82,7 @@ I dati con `visibility='private_admin'` restano non pubblici.
 Futuri public reader devono:
 
 - vivere in file separato, ad esempio `lib/public-data/readers.ts`;
-- filtrare sempre `visibility='public'`;
+- filtrare sempre `visibility='public_free'`;
 - non avere fallback su admin reader;
 - non usare `service_role`;
 - non leggere dati `private_admin`;
@@ -113,7 +113,7 @@ Nel Punto 50 non viene eseguita nessuna promotion.
 
 Una futura route pubblica potrà essere considerata sicura solo se:
 
-- legge solo `visibility='public'`;
+- legge solo `visibility='public_free'`;
 - in incognito mostra solo dati public;
 - con dati `private_admin` mostra empty state;
 - non usa admin reader;
@@ -131,7 +131,7 @@ Una futura route pubblica potrà essere considerata sicura solo se:
 | `private_admin` leaked publicly | una route pubblica legge reader admin | bloccare release e rimuovere import/filtro errato |
 | fallback unsafe | se non trova `public`, mostra `private_admin` | mostrare empty state |
 | public reader imports admin reader | `lib/public-data` importa `lib/manual-data/readers.ts` | fallire review |
-| missing visibility filter | query senza `.eq('visibility', 'public')` | bloccare merge |
+| missing visibility filter | query senza `.eq('visibility', 'public_free')` | bloccare merge |
 | provider fetch triggered from public route | route pubblica chiama API esterna | bloccare merge |
 | stale preview route exposed | preview protetta diventa pubblica | bloccare deploy e disabilitare route |
 | `service_role` used in public code | Supabase admin client in route pubblica | bloccare merge/deploy |
@@ -191,7 +191,7 @@ Punto 55 abilita una prima esposizione pubblica controllata solo come empty-stat
 
 - route create: `/competitions`, `/competitions/[slug]`;
 - reader usato: `lib/public-data/readers.ts`;
-- filtro richiesto: `visibility='public'`;
+- filtro richiesto: `visibility='public_free'`;
 - dataset corrente `private_admin` non appare;
 - `private_admin_publicly_exposed=false`;
 - `visibility_changed=false`;

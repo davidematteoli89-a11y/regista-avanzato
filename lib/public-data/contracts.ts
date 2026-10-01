@@ -1,4 +1,5 @@
-export const PUBLIC_VISIBILITY = "public" as const;
+export const PUBLIC_FREE_VISIBILITY = "public_free" as const;
+export const PUBLIC_VISIBILITY = PUBLIC_FREE_VISIBILITY;
 export const PUBLIC_PREVIEW_VISIBILITY = "public_preview" as const;
 export const PRIVATE_ADMIN_VISIBILITY = "private_admin" as const;
 
