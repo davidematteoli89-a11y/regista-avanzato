@@ -2653,3 +2653,24 @@ Marker:
 - `point_68_db_write=false`
 
 Prossimo step: verifica Preview no-auth, senza deploy manuale e senza Production.
+## Punto 69 — Preview no-auth verification
+
+La Preview URL del branch `preview` è disponibile, ma il controllo no-auth viene bloccato da Vercel Authentication.
+
+- Nessuna DB write.
+- Nessun rollback.
+- Nessun cambio visibility.
+- Nessun provider/import.
+- Production non toccata.
+- Deploy manuale non eseguito.
+
+Marker:
+
+- `point_69_public_preview_verification_completed=true`
+- `preview_verification_result=partial_blocked_by_vercel_auth`
+- `preview_no_auth_blocked_by_vercel_auth=true`
+- `preview_data_visible=false`
+- `local_p68_verification_still_valid=true`
+- `point_69_db_write=false`
+
+Prossimo step: decidere se mantenere Preview protetta o autorizzare una finestra controllata di test no-auth.

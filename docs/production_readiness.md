@@ -2132,3 +2132,18 @@ Punto 68 migliora la UI pubblica dopo la promotion staging P66, senza cambiare d
 - `deploy_executed=false`
 
 Production resta non toccata. Prima di qualsiasi Production serve checklist dedicata.
+## Punto 69 — Preview no-auth verification
+
+Punto 69 ha verificato la Preview URL del branch `preview` senza deploy manuale.
+
+- `preview_url_available=true`
+- `preview_no_auth_blocked_by_vercel_auth=true`
+- `preview_verification_result=partial_blocked_by_vercel_auth`
+- `preview_data_visible=false`
+- `local_p68_verification_still_valid=true`
+- `point_69_db_write=false`
+- `provider_fetch=false`
+- `production_touched=false`
+- `deploy_executed=false`
+
+Production resta non toccata. La Preview resta protetta da Vercel Authentication.

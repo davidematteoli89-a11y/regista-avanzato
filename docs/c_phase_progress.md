@@ -3949,3 +3949,22 @@ Nessun deploy, nessuna Production e nessuna ulteriore DB write sono stati esegui
 - `production_touched=false`
 - `deploy_executed=false`
 - Prossimo step consigliato: Punto 69 — verifica Preview no-auth dopo polish, senza deploy manuale.
+## Punto 69 — Preview no-auth verification after visible-data UI polish
+
+- `point_69_public_preview_verification_completed=true`
+- `preview_verification_mode=no_auth_preview_http`
+- `preview_url_available=true`
+- `preview_url_source=known_branch_alias_docs`
+- `manual_deploy_executed=false`
+- `production_touched=false`
+- `preview_no_auth_blocked_by_vercel_auth=true`
+- `preview_verification_result=partial_blocked_by_vercel_auth`
+- `preview_data_visible=false`
+- `local_p68_verification_still_valid=true`
+- `point_69_db_write=false`
+- `rollback_executed=false`
+- `provider_fetch=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `deploy_executed=false`
+- Prossimo step consigliato: Punto 70 — decidere se mantenere Preview protetta o predisporre test no-auth controllato.

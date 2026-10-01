@@ -1686,3 +1686,21 @@ Dry-run/audit P68 confermano solo lo stato UI pubblico dopo promotion:
 - `production_touched=false`
 
 Nessuna probe provider o import reale viene eseguito nel Punto 68.
+## Punto 69 — Public Preview verification dry-run
+
+Il dry-run P69 verifica la Preview URL no-auth senza deploy manuale e senza provider.
+
+- `point_69_public_preview_verification_completed=true`
+- `preview_verification_mode=no_auth_preview_http`
+- `preview_url_available=true`
+- `preview_no_auth_blocked_by_vercel_auth=true`
+- `preview_verification_result=partial_blocked_by_vercel_auth`
+- `preview_data_visible=false`
+- `local_p68_verification_still_valid=true`
+- `point_69_db_write=false`
+- `provider_fetch=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `production_touched=false`
+
+Nessuna probe provider o import reale viene eseguito nel Punto 69.
