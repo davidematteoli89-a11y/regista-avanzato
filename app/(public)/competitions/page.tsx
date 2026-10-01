@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { PublicCompetitionCard } from "@/components/public/PublicCompetitionCard";
+import { PublicDataBadge } from "@/components/public/PublicDataBadge";
 import { getPublicCompetitions } from "@/lib/public-data/readers";
 
 export const dynamic = "force-dynamic";
@@ -10,19 +12,20 @@ export default async function PublicCompetitionsPage() {
     <main className="stack" aria-labelledby="public-competitions-title">
       <header>
         <span className="eyebrow">Public data only</span>
-        <h1 id="public-competitions-title">Competizioni</h1>
+        <h1 id="public-competitions-title">Competizioni pubbliche</h1>
         <p>
-          Statistiche, classifiche e racconti saranno pubblicati qui solo dopo
-          revisione editoriale e controllo di visibilità pubblica.
+          Archivio pubblico delle competizioni approvate: dati essenziali,
+          squadre e classifiche leggibili senza login.
         </p>
       </header>
 
       <section className="preview-block" aria-labelledby="public-data-note-title">
-        <span className="stats-badge">Dati pubblici in arrivo</span>
-        <h2 id="public-data-note-title">Solo contenuti approvati</h2>
+        <PublicDataBadge>Dati pubblici approvati</PublicDataBadge>
+        <h2 id="public-data-note-title">Coperture disponibili: {competitions.items.length}</h2>
         <p>
-          Questa sezione mostra esclusivamente dati con visibilità pubblica.
-          Le bozze e i dati di staging restano fuori dalla consultazione esterna.
+          Questa sezione mostra esclusivamente record `public_free` letti dai
+          public reader. Nessuna bozza interna o contenuto riservato viene usato
+          come fallback.
         </p>
       </section>
 
@@ -36,19 +39,19 @@ export default async function PublicCompetitionsPage() {
           </p>
         </article>
         <article className="public-stat-card">
-          <span className="stats-badge">Lettura pubblica</span>
-          <h2>Dati filtrati</h2>
+          <span className="stats-badge">Disponibili ora</span>
+          <h2>{competitions.items.length} competizioni</h2>
           <p>
-            Le pagine pubbliche leggono soltanto record approvati per la
-            consultazione esterna.
+            Le pagine pubbliche leggono soltanto competizioni approvate e
+            collegate a squadre/classifiche pubbliche.
           </p>
         </article>
         <article className="public-stat-card">
-          <span className="stats-badge">In preparazione</span>
-          <h2>Prime coperture</h2>
+          <span className="stats-badge">Sola lettura</span>
+          <h2>Nessuna azione operativa</h2>
           <p>
-            Stiamo preparando le prime competizioni pubbliche con classifiche e
-            schede sintetiche.
+            La navigazione non avvia import, sincronizzazioni o modifiche ai
+            dati pubblicati.
           </p>
         </article>
       </section>
@@ -56,15 +59,7 @@ export default async function PublicCompetitionsPage() {
       {competitions.items.length > 0 ? (
         <section className="public-stats-grid" aria-label="Competizioni pubbliche">
           {competitions.items.map((competition) => (
-            <article className="public-stat-card" key={competition.id}>
-              <span className="stats-badge">Public data only</span>
-              <h2>{competition.name}</h2>
-              <p>
-                {[competition.country, competition.season].filter(Boolean).join(" · ") ||
-                  "Dettagli in aggiornamento"}
-              </p>
-              <Link href={`/competitions/${competition.slug}`}>Apri dettaglio</Link>
-            </article>
+            <PublicCompetitionCard competition={competition} key={competition.id} />
           ))}
         </section>
       ) : (

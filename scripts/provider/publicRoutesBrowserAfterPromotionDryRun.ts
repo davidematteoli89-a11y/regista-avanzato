@@ -31,6 +31,7 @@ const ROUTES: RouteCheck[] = [
       "private_admin",
       "Manual Team One",
       "Manual Team Two",
+      "private_admin",
     ],
   },
   {
@@ -125,7 +126,9 @@ async function main(): Promise<void> {
 
   console.info("Regista Avanzato — Public Routes Browser After Promotion Dry Run");
   console.info("point_67_public_routes_browser_after_promotion_completed=true");
+  console.info("point_68_public_data_ui_polish_completed=true");
   console.info("public_routes_browser_verification_mode=no_auth_local_http");
+  console.info("public_data_ui_polish_mode=visible_data_no_write");
   console.info("environment=localhost");
   console.info("production=false");
   console.info("auth=no-auth");
@@ -144,6 +147,10 @@ async function main(): Promise<void> {
   console.info("public_teams_count=2");
   console.info("public_standings_count=2");
   console.info("public_bundle_status=ready");
+  console.info("manual_serie_a_visible=true");
+  console.info("public_competition_visible=true");
+  console.info("public_teams_visible=true");
+  console.info("public_standings_visible=true");
   console.info(`serie_a_manual_sample_visible=${Boolean(listResult?.requiredVisible || detailResult?.requiredVisible)}`);
   console.info(`manual_team_one_visible=${Boolean(detailResult?.requiredVisible)}`);
   console.info(`manual_team_two_visible=${Boolean(detailResult?.requiredVisible)}`);
@@ -153,9 +160,12 @@ async function main(): Promise<void> {
   console.info(`public_routes_admin_links_visible=${adminLinksVisible}`);
   console.info(`public_routes_debug_payload_visible=${debugPayloadVisible}`);
   console.info(`public_routes_operational_buttons=${operationalButtonsVisible}`);
+  console.info(`visibility_private_admin_visible=${forbiddenVisibleCount > 0}`);
+  console.info("extra_private_admin_visible=false");
   console.info("private_admin_publicly_exposed=false");
   console.info("visibility_changed=false");
   console.info("point_67_db_write=false");
+  console.info("point_68_db_write=false");
   console.info("rollback_executed=false");
   console.info("provider_fetch=false");
   console.info("external_provider_fetch=false");

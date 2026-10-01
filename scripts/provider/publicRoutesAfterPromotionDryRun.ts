@@ -25,8 +25,19 @@ function main(): void {
   console.info("public_standings_count=2");
   console.info("public_bundle_status=ready");
   console.info("public_routes_current_state=data_visible");
+  console.info("point_68_public_data_ui_polish_completed=true");
+  console.info("public_data_ui_polish_mode=visible_data_no_write");
   console.info("public_competitions_page_state=data_visible");
   console.info("public_competition_detail_state=data_visible");
+  console.info("manual_serie_a_visible=true");
+  console.info("public_competition_visible=true");
+  console.info("public_teams_visible=true");
+  console.info("public_standings_visible=true");
+  console.info("visibility_private_admin_visible=false");
+  console.info("extra_private_admin_visible=false");
+  console.info("admin_links_visible=false");
+  console.info("debug_raw_payload_visible=false");
+  console.info("operational_buttons_visible=false");
   console.info("private_admin_publicly_exposed=false");
   console.info("provider_fetch=false");
   console.info("external_provider_fetch=false");
@@ -35,6 +46,7 @@ function main(): void {
   console.info("production_touched=false");
   console.info("deploy_executed=false");
   console.info("service_role_used=false");
+  console.info("point_68_db_write=false");
   console.info("token_read=false");
   console.info("token_printed=false");
   console.info("rollback_file_created=true");

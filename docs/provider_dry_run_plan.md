@@ -1667,3 +1667,22 @@ Punto 67 ha verificato via HTTP locale no-auth le route pubbliche dopo la promot
 - `browser_verification_pass=true`
 
 Nessun deploy, nessuna Production e nessuna ulteriore DB write sono stati eseguiti nel Punto 67.
+## Punto 68 — Public data UI polish visible data
+
+Dry-run/audit P68 confermano solo lo stato UI pubblico dopo promotion:
+
+- `point_68_public_data_ui_polish_completed=true`
+- `public_data_ui_polish_mode=visible_data_no_write`
+- `public_routes_current_state=data_visible`
+- `public_competitions_count=1`
+- `public_teams_count=2`
+- `public_standings_count=2`
+- `public_bundle_status=ready`
+- `private_admin_publicly_exposed=false`
+- `point_68_db_write=false`
+- `provider_fetch=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `production_touched=false`
+
+Nessuna probe provider o import reale viene eseguito nel Punto 68.

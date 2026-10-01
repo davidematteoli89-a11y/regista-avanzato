@@ -2630,3 +2630,26 @@ Punto 67 ha verificato via HTTP locale no-auth le route pubbliche dopo la promot
 - `browser_verification_pass=true`
 
 Nessun deploy, nessuna Production e nessuna ulteriore DB write sono stati eseguiti nel Punto 67.
+## Punto 68 — Public data UI polish visible data
+
+La UI pubblica ora presenta i dati staging già promossi a `public_free` in modo più leggibile.
+
+- Nessuna nuova DB write.
+- Nessun rollback.
+- Nessun cambio visibility.
+- Nessun provider/import.
+- Public readers restano filtrati su `public_free`.
+- Route pubbliche restano no-auth e read-only.
+
+Marker:
+
+- `point_68_public_data_ui_polish_completed=true`
+- `public_routes_current_state=data_visible`
+- `public_competitions_count=1`
+- `public_teams_count=2`
+- `public_standings_count=2`
+- `public_bundle_status=ready`
+- `private_admin_publicly_exposed=false`
+- `point_68_db_write=false`
+
+Prossimo step: verifica Preview no-auth, senza deploy manuale e senza Production.

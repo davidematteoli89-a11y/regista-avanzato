@@ -3925,3 +3925,27 @@ Punto 67 ha verificato via HTTP locale no-auth le route pubbliche dopo la promot
 - `browser_verification_pass=true`
 
 Nessun deploy, nessuna Production e nessuna ulteriore DB write sono stati eseguiti nel Punto 67.
+## Punto 68 — Public data UI polish with visible data
+
+- `point_68_public_data_ui_polish_completed=true`
+- `public_data_ui_polish_mode=visible_data_no_write`
+- `public_routes_current_state=data_visible`
+- `public_competitions_count=1`
+- `public_teams_count=2`
+- `public_standings_count=2`
+- `public_bundle_status=ready`
+- `public_competitions_page_state=data_visible`
+- `public_competition_detail_state=data_visible`
+- `manual_serie_a_visible=true`
+- `public_competition_visible=true`
+- `public_teams_visible=true`
+- `public_standings_visible=true`
+- `private_admin_publicly_exposed=false`
+- `point_68_db_write=false`
+- `rollback_executed=false`
+- `provider_fetch=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `production_touched=false`
+- `deploy_executed=false`
+- Prossimo step consigliato: Punto 69 — verifica Preview no-auth dopo polish, senza deploy manuale.

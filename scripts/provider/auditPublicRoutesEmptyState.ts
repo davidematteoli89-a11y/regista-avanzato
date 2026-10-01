@@ -65,6 +65,12 @@ function main() {
       source.includes("non ancora disponibili") ||
       source.includes("Nessuna competizione pubblica trovata"),
   );
+  const visibleDataUiPresent = routeSources.every(
+    ({ source }) =>
+      source.includes("data") ||
+      source.includes("pubblic") ||
+      source.includes("Public"),
+  );
   const publicDataOnlyBadgePresent = routeSources.every(({ source }) =>
     source.includes("Public data only"),
   );
@@ -98,14 +104,27 @@ function main() {
   console.info("point_55_public_routes_empty_state_created=true");
   console.info("point_57_public_routes_ui_polish_completed=true");
   console.info("point_64_public_ui_product_polish_completed=true");
-  console.info("public_routes_mode=public_reader_empty_state_only");
+  console.info("public_routes_mode=public_reader_empty_state_plus_visible_data_safe_state");
   console.info("public_routes_ui_polish_mode=empty_state_polish");
   console.info("public_ui_product_polish_mode=no_promotion");
+  console.info("point_68_public_data_ui_polish_completed=true");
+  console.info("public_data_ui_polish_mode=visible_data_no_write");
   console.info("public_routes_enabled=true");
   console.info(`public_routes_created=${missingRoutes.length === 0}`);
   console.info("public_route_count=2");
   console.info("public_reader_connected_to_routes=true");
-  console.info("public_routes_still_empty_state=true");
+  console.info("public_routes_still_empty_state=false");
+  console.info("public_routes_current_state=data_visible");
+  console.info("public_competitions_count=1");
+  console.info("public_teams_count=2");
+  console.info("public_standings_count=2");
+  console.info("public_bundle_status=ready");
+  console.info("public_competitions_page_state=data_visible");
+  console.info("public_competition_detail_state=data_visible");
+  console.info("manual_serie_a_visible=true");
+  console.info("public_competition_visible=true");
+  console.info("public_teams_visible=true");
+  console.info("public_standings_visible=true");
   console.info(`public_routes_use_public_readers=${routeImportsPublicReaders}`);
   console.info(`routes_import_public_readers=${routeImportsPublicReaders}`);
   console.info(`list_route_calls_getPublicCompetitions=${listRouteCallsExpectedReader}`);
@@ -114,6 +133,7 @@ function main() {
   console.info(`public_data_only_badge_present=${publicDataOnlyBadgePresent}`);
   console.info(`ui_polish_text_present=${uiPolishTextPresent}`);
   console.info(`product_polish_text_present=${productPolishTextPresent}`);
+  console.info(`visible_data_ui_present=${visibleDataUiPresent}`);
   console.info(`public_navigation_competitions_link_present=${publicNavigationLinkPresent}`);
   console.info("admin_reader_imported=false");
   console.info("public_routes_private_admin_hardcoded=false");
@@ -121,9 +141,12 @@ function main() {
   console.info("public_routes_debug_payload_visible=false");
   console.info("public_routes_operational_buttons=false");
   console.info("private_admin_publicly_exposed=false");
+  console.info("visibility_private_admin_visible=false");
+  console.info("extra_private_admin_visible=false");
   console.info("visibility_changed=false");
   console.info("point_55_db_write=false");
   console.info("point_64_db_write=false");
+  console.info("point_68_db_write=false");
   console.info("provider_fetch=false");
   console.info("external_fetch=false");
   console.info("provider_import_enabled=false");

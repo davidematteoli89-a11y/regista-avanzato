@@ -1929,3 +1929,17 @@ Punto 67 ha verificato via HTTP locale no-auth le route pubbliche dopo la promot
 - `browser_verification_pass=true`
 
 Nessun deploy, nessuna Production e nessuna ulteriore DB write sono stati eseguiti nel Punto 67.
+## Punto 68 — Public UI polish, provider unchanged
+
+Punto 68 non cambia lo stato provider/import.
+
+- `provider_fetch=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `public_data_ui_polish_mode=visible_data_no_write`
+- `public_routes_current_state=data_visible`
+- `point_68_db_write=false`
+- `production_touched=false`
+- `deploy_executed=false`
+
+Provider reali restano sospesi/off. Nessuna attivazione provider/import è autorizzata da questo punto.

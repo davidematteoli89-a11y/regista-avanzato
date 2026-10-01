@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { PublicDataBadge } from "@/components/public/PublicDataBadge";
+import { PublicStandingsTable } from "@/components/public/PublicStandingsTable";
 import { getPublicCompetitionBundleBySlug } from "@/lib/public-data/readers";
 
 export const dynamic = "force-dynamic";
@@ -85,12 +87,36 @@ export default async function PublicCompetitionDetailPage({ params }: PageProps)
         </p>
       </header>
 
-      <section className="public-stat-card">
-        <h2>Squadre pubbliche</h2>
+      <section className="public-stats-grid" aria-label="Riepilogo pubblico competizione">
+        <article className="public-stat-card">
+          <PublicDataBadge>Competizione pubblica</PublicDataBadge>
+          <h2>{bundle.competition.name}</h2>
+          <p>
+            {[bundle.competition.country, bundle.competition.season].filter(Boolean).join(" · ") ||
+              "Dettagli in aggiornamento"}
+          </p>
+        </article>
+        <article className="public-stat-card">
+          <span className="stats-badge">Squadre</span>
+          <h2>{bundle.teams.length}</h2>
+          <p>Squadre visibili nella scheda pubblica della competizione.</p>
+        </article>
+        <article className="public-stat-card">
+          <span className="stats-badge">Classifica</span>
+          <h2>{bundle.standings.length} righe</h2>
+          <p>Righe classifica approvate per la consultazione senza login.</p>
+        </article>
+      </section>
+
+      <section className="public-stat-card" aria-labelledby="public-teams-title">
+        <h2 id="public-teams-title">Squadre pubbliche</h2>
         {bundle.teams.length > 0 ? (
           <ul>
             {bundle.teams.map((team) => (
-              <li key={team.id}>{team.name}</li>
+              <li key={team.id}>
+                {team.name}
+                {team.shortName ? ` · ${team.shortName}` : ""}
+              </li>
             ))}
           </ul>
         ) : (
@@ -98,34 +124,18 @@ export default async function PublicCompetitionDetailPage({ params }: PageProps)
         )}
       </section>
 
-      <section className="public-stat-card">
-        <h2>Classifica pubblica</h2>
-        {bundle.standings.length > 0 ? (
-          <div className="table-scroll">
-            <table className="stats-table">
-              <thead>
-                <tr>
-                  <th>Pos.</th>
-                  <th>Squadra</th>
-                  <th>Punti</th>
-                  <th>Giocate</th>
-                </tr>
-              </thead>
-              <tbody>
-                {bundle.standings.map((standing) => (
-                  <tr key={standing.id}>
-                    <td>{standing.rank}</td>
-                    <td>{standing.teamName}</td>
-                    <td>{standing.points}</td>
-                    <td>{standing.played}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        ) : (
-          <p>Dati classifica non ancora disponibili.</p>
-        )}
+      <section className="public-stat-card" aria-labelledby="public-standings-title">
+        <h2 id="public-standings-title">Classifica pubblica</h2>
+        <PublicStandingsTable standings={bundle.standings} />
+      </section>
+
+      <section className="preview-block" aria-labelledby="public-data-safety-title">
+        <PublicDataBadge>Sola lettura</PublicDataBadge>
+        <h2 id="public-data-safety-title">Dati pubblici verificati</h2>
+        <p>
+          Questa pagina non contiene azioni operative e non usa fallback verso
+          dati interni. Se un dato non è pubblico, resta nascosto.
+        </p>
       </section>
     </main>
   );
