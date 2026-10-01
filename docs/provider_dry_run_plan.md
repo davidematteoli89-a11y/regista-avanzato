@@ -1626,3 +1626,44 @@ Punto 66 ha completato la promotion manuale staging della fixture `manual-serie-
 - `rollback_executed=false`
 
 La verifica post-apply è stata eseguita manualmente in Supabase SQL Editor staging e ha confermato `competitions=1`, `teams=2`, `standings=2` con `visibility=public_free`. Nessun rollback eseguito perché l'apply è riuscito.
+
+## Punto 67 — Browser verification after real promotion
+
+Punto 67 ha verificato via HTTP locale no-auth le route pubbliche dopo la promotion P66 a `public_free`.
+
+- `point_67_public_routes_browser_after_promotion_completed=true`
+- `public_routes_browser_verification_mode=no_auth_local_http`
+- `environment=localhost`
+- `production=false`
+- `auth=no-auth`
+- `verification_source=manual_sql_staging_plus_route_http_check`
+- `public_competitions_http_status=200`
+- `public_competitions_page_reached=true`
+- `public_competitions_page_state=data_visible`
+- `public_competition_detail_http_status=200`
+- `public_competition_detail_reached=true`
+- `public_competition_detail_state=data_visible`
+- `public_competitions_count=1`
+- `public_teams_count=2`
+- `public_standings_count=2`
+- `public_bundle_status=ready`
+- `serie_a_manual_sample_visible=true`
+- `manual_team_one_visible=true`
+- `manual_team_two_visible=true`
+- `standings_visible=true`
+- `forbidden_private_text_visible=false`
+- `public_routes_admin_links_visible=false`
+- `public_routes_debug_payload_visible=false`
+- `public_routes_operational_buttons=false`
+- `private_admin_publicly_exposed=false`
+- `point_67_db_write=false`
+- `rollback_executed=false`
+- `provider_fetch=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `production_touched=false`
+- `deploy_executed=false`
+- `service_role_used=false`
+- `browser_verification_pass=true`
+
+Nessun deploy, nessuna Production e nessuna ulteriore DB write sono stati eseguiti nel Punto 67.

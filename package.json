@@ -23,6 +23,7 @@
     "audit:public-routes-empty-state": "tsx scripts/provider/auditPublicRoutesEmptyState.ts",
     "dry-run:public-routes-empty-state": "tsx scripts/provider/publicRoutesEmptyStateDryRun.ts",
     "dry-run:public-routes-after-promotion": "tsx scripts/provider/publicRoutesAfterPromotionDryRun.ts",
+    "dry-run:public-routes-browser-after-promotion": "tsx scripts/provider/publicRoutesBrowserAfterPromotionDryRun.ts",
     "dry-run:public-routes-browser-verification": "tsx scripts/provider/publicRoutesBrowserVerificationDryRun.ts",
     "dry-run:public-readers": "tsx scripts/provider/publicReaderNoRouteDryRun.ts",
     "dry-run:public-data-promotion-scope": "tsx scripts/provider/publicDataPromotionScopeDryRun.ts",
