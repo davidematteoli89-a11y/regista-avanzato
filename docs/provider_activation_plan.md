@@ -1983,6 +1983,21 @@ P72 conferma che i provider restano fuori scope per il deploy plan no-apply.
 - Production toccata: false.
 
 La release MVP pubblica usa dati manuali/staging (`public_free`), non dati provider.
+## P74 — Final env checklist no-secret
+
+P74 conferma che provider/import restano off e non pronti per attivazione automatica.
+
+- `provider_import_flags_expected_off=true`
+- `provider_fetch_expected=false`
+- `provider_import_enabled=false`
+- `apify_expected_off=true`
+- `apify_enabled=false`
+- `writer_flags_expected_off=true`
+- `provider_writer_guards_required=true`
+- `deploy_authorized=false`
+
+Nessuna API provider è stata chiamata.
+
 ## P73 — Deploy plan no-apply
 
 P73 non attiva provider e non autorizza import.

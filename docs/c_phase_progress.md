@@ -1,5 +1,25 @@
 # C phase progress
 
+## P74 — Final env checklist no-secret
+
+Stato: completato senza deploy, senza Production e senza segreti stampati.
+
+Conferme:
+
+- `point_74_final_env_checklist_no_secret_completed=true`;
+- `env_checklist_mode=no_secret_no_deploy`;
+- Supabase public env category documentata;
+- `service_role_app_usage=false`;
+- provider/import flags attesi off;
+- writer flags attesi off;
+- Vercel Auth/config invariati;
+- `.env.local` non letto/stampato;
+- `secrets_hygiene_pass=true`;
+- `ready_for_deploy=false`;
+- `ready_for_deploy_authorization_gate=true`.
+
+Prossimo step consigliato: Punto 75 — Deploy authorization gate.
+
 ## P73 — Deploy plan no-apply
 
 Stato: completato senza deploy e senza scritture.

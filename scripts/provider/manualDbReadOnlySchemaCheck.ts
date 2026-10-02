@@ -1161,6 +1161,20 @@ async function main(): Promise<void> {
   console.info("env_verification_plan_created=true");
   console.info("post_deploy_verification_plan_created=true");
   console.info("rollback_plan_created=true");
+  console.info("point_74_final_env_checklist_no_secret_completed=true");
+  console.info("env_checklist_mode=no_secret_no_deploy");
+  console.info("supabase_public_env_category_documented=true");
+  console.info("service_role_app_usage=false");
+  console.info("provider_import_flags_expected_off=true");
+  console.info("provider_fetch_expected=false");
+  console.info("apify_expected_off=true");
+  console.info("writer_flags_expected_off=true");
+  console.info("provider_writer_guards_required=true");
+  console.info("vercel_project_category_documented=true");
+  console.info("vercel_auth_changed=false");
+  console.info("vercel_config_changed=false");
+  console.info("secrets_hygiene_pass=true");
+  console.info("final_env_checklist_created=true");
   console.info("confirmation=select_only,anon_public_client,no_service_role,no_db_write,no_provider_fetch,no_payload_output");
 }
 

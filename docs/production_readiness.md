@@ -1,5 +1,30 @@
 # Production Readiness
 
+## Nota P74 — Final env checklist no-secret
+
+P74 ha completato la checklist finale env/config senza leggere o stampare valori sensibili.
+
+Decisione:
+
+- `point_74_final_env_checklist_no_secret_completed=true`
+- `env_checklist_mode=no_secret_no_deploy`
+- `supabase_public_env_category_documented=true`
+- `service_role_app_usage=false`
+- `provider_import_flags_expected_off=true`
+- `provider_fetch_expected=false`
+- `apify_expected_off=true`
+- `writer_flags_expected_off=true`
+- `provider_writer_guards_required=true`
+- `vercel_project_category_documented=true`
+- `vercel_auth_changed=false`
+- `vercel_config_changed=false`
+- `secrets_hygiene_pass=true`
+- `final_env_checklist_created=true`
+- `ready_for_deploy=false`
+- `ready_for_deploy_authorization_gate=true`
+
+P74 non autorizza deploy. Serve ancora gate esplicito separato.
+
 ## Nota P73 — Deploy plan no-apply
 
 P73 ha creato il piano di deploy controllato senza eseguire deploy.

@@ -1751,6 +1751,26 @@ P72 aggiunge i marker di readiness finale ai dry-run manual/import:
 - `service_role_used=false`
 
 Questi marker non autorizzano deploy, provider activation o import.
+## P74 — Final env checklist no-secret
+
+P74 aggiunge il dry-run:
+
+- `npm run dry-run:final-env-checklist`
+
+Output atteso:
+
+- `point_74_final_env_checklist_no_secret_completed=true`
+- `env_checklist_mode=no_secret_no_deploy`
+- `service_role_app_usage=false`
+- `provider_import_flags_expected_off=true`
+- `writer_flags_expected_off=true`
+- `vercel_auth_changed=false`
+- `vercel_config_changed=false`
+- `secrets_hygiene_pass=true`
+- `dry_run_pass=true`
+
+Il comando non legge `.env.local`, non stampa valori env, non chiama provider e non scrive nel DB.
+
 ## P73 — Deploy plan no-apply
 
 P73 ha aggiornato il piano di dry-run/staging con marker deploy no-apply.

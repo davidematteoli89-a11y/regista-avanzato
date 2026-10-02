@@ -2721,6 +2721,22 @@ Marker:
 - `apify_enabled=false`
 
 Next step consigliato: Punto 73 — Deploy plan no-apply.
+## P74 — Final env checklist no-secret
+
+P74 ha verificato solo categorie env/config senza leggere/stampare valori.
+
+- `point_74_final_env_checklist_no_secret_completed=true`
+- `supabase_public_env_category_documented=true`
+- `service_role_app_usage=false`
+- `provider_import_flags_expected_off=true`
+- `writer_flags_expected_off=true`
+- `secrets_hygiene_pass=true`
+- `db_write=false`
+- `rollback_executed=false`
+- `production_touched=false`
+
+Nessun cambio Supabase staging è stato eseguito nel Punto 74.
+
 ## P73 — Deploy plan no-apply
 
 P73 ha completato il piano di deploy senza eseguirlo.
