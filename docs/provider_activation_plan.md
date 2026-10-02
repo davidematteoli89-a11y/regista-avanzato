@@ -1983,3 +1983,21 @@ P72 conferma che i provider restano fuori scope per il deploy plan no-apply.
 - Production toccata: false.
 
 La release MVP pubblica usa dati manuali/staging (`public_free`), non dati provider.
+## P73 — Deploy plan no-apply
+
+P73 non attiva provider e non autorizza import.
+
+Conferme:
+
+- `point_73_deploy_plan_no_apply_completed=true`
+- `deploy_plan_created=true`
+- `deploy_executed=false`
+- `deploy_authorized=false`
+- `provider_fetch=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `service_role_used=false`
+- `production_touched=false`
+- `manual_deploy_executed=false`
+
+TheStatsAPI, API-Football, Apify/SofaScore e qualsiasi import reale restano fuori scope dal deploy plan.

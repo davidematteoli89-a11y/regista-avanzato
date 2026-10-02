@@ -2721,3 +2721,22 @@ Marker:
 - `apify_enabled=false`
 
 Next step consigliato: Punto 73 — Deploy plan no-apply.
+## P73 — Deploy plan no-apply
+
+P73 ha completato il piano di deploy senza eseguirlo.
+
+- `deploy_plan_created=true`
+- `deploy_executed=false`
+- `deploy_authorized=false`
+- `ready_for_deploy=false`
+- `ready_for_deploy_authorization_gate=true`
+- `production_touched=false`
+- `manual_deploy_executed=false`
+- `point_73_db_write=false`
+- `rollback_executed=false`
+- `provider_fetch=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `rollback_plan_created=true`
+
+Supabase staging resta nello stato post-P66: dati `manual-serie-a` promossi a `public_free`, rollback disponibile ma non eseguito. Nessuna nuova scrittura DB è stata fatta nel Punto 73.

@@ -1751,3 +1751,20 @@ P72 aggiunge i marker di readiness finale ai dry-run manual/import:
 - `service_role_used=false`
 
 Questi marker non autorizzano deploy, provider activation o import.
+## P73 — Deploy plan no-apply
+
+P73 ha aggiornato il piano di dry-run/staging con marker deploy no-apply.
+
+- `deploy_plan_created=true`
+- `deploy_executed=false`
+- `deploy_authorized=false`
+- `ready_for_deploy=false`
+- `ready_for_deploy_authorization_gate=true`
+- `env_verification_plan_created=true`
+- `post_deploy_verification_plan_created=true`
+- `rollback_plan_created=true`
+- `provider_fetch=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+
+Le probe provider restano gated/disabled e non devono essere abilitate da un deploy plan.

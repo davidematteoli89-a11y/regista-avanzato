@@ -1,5 +1,29 @@
 # C phase progress
 
+## P73 — Deploy plan no-apply
+
+Stato: completato senza deploy e senza scritture.
+
+Conferme:
+
+- `point_73_deploy_plan_no_apply_completed=true`;
+- `deploy_plan_created=true`;
+- `deploy_executed=false`;
+- `deploy_authorized=false`;
+- `ready_for_deploy=false`;
+- `ready_for_deploy_authorization_gate=true`;
+- Production non toccata;
+- nessun deploy manuale;
+- nessuna DB write nel Punto 73;
+- rollback non eseguito;
+- provider/import off;
+- Apify off;
+- env verification plan creato senza valori;
+- post-deploy verification plan creato;
+- rollback plan creato.
+
+Prossimo step consigliato: Punto 74 — Deploy authorization gate oppure final env checklist no-secret.
+
 ## P72 — Production readiness final review
 
 Stato: completato senza deploy e senza scritture.

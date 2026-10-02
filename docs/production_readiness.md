@@ -1,5 +1,31 @@
 # Production Readiness
 
+## Nota P73 — Deploy plan no-apply
+
+P73 ha creato il piano di deploy controllato senza eseguire deploy.
+
+Decisione:
+
+- `point_73_deploy_plan_no_apply_completed=true`
+- `deploy_plan_created=true`
+- `deploy_executed=false`
+- `deploy_authorized=false`
+- `ready_for_deploy=false`
+- `ready_for_deploy_authorization_gate=true`
+- `production_touched=false`
+- `manual_deploy_executed=false`
+- `point_73_db_write=false`
+- `rollback_executed=false`
+- `provider_fetch=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `service_role_used=false`
+- `env_verification_plan_created=true`
+- `post_deploy_verification_plan_created=true`
+- `rollback_plan_created=true`
+
+P73 non autorizza deploy reale. Il prossimo passaggio consigliato è un gate autorizzativo esplicito o una checklist env no-secret.
+
 ## Verdetto
 
 Regista Avanzato non è ancora pronto per produzione reale.
