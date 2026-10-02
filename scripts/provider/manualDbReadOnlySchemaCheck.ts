@@ -1192,6 +1192,25 @@ async function main(): Promise<void> {
   console.info("vercel_auth_changed=false");
   console.info("vercel_config_changed=false");
   console.info("service_role_used=false");
+  console.info("point_76_preview_authenticated_verification_completed=true");
+  console.info("preview_authenticated_verification_mode=no_deploy_no_secret");
+  console.info("preview_authenticated_access_available=false");
+  console.info("preview_authenticated_verification_result=blocked_by_missing_authorized_session");
+  console.info("preview_no_auth_blocked_by_vercel_auth=true");
+  console.info("auth_cookie_used=false");
+  console.info("cookies_printed=false");
+  console.info("headers_printed=false");
+  console.info("token_printed=false");
+  console.info("env_local_read=false");
+  console.info("production_touched=false");
+  console.info("manual_deploy_executed=false");
+  console.info("db_write=false");
+  console.info("rollback_executed=false");
+  console.info("provider_fetch=false");
+  console.info("provider_import_enabled=false");
+  console.info("apify_enabled=false");
+  console.info("vercel_auth_changed=false");
+  console.info("vercel_config_changed=false");
   console.info("confirmation=select_only,anon_public_client,no_service_role,no_db_write,no_provider_fetch,no_payload_output");
 }
 

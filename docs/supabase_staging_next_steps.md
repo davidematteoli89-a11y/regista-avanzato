@@ -2721,6 +2721,21 @@ Marker:
 - `apify_enabled=false`
 
 Next step consigliato: Punto 73 — Deploy plan no-apply.
+## P76 — Preview authenticated verification
+
+P76 non ha eseguito scritture su Supabase.
+
+- `point_76_preview_authenticated_verification_completed=true`
+- `preview_authenticated_verification_result=blocked_by_missing_authorized_session`
+- `db_write=false`
+- `rollback_executed=false`
+- `provider_fetch=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `production_touched=false`
+
+Lo stato staging resta invariato.
+
 ## P75 — Deploy authorization gate
 
 P75 ha preparato il gate autorizzativo deploy senza eseguire deploy e senza scritture DB.

@@ -1,5 +1,25 @@
 # C phase progress
 
+## P76 — Preview authenticated verification
+
+Stato: completato in modalità no-deploy/no-secret con accesso autenticato non disponibile.
+
+Conferme:
+
+- `point_76_preview_authenticated_verification_completed=true`;
+- `preview_authenticated_access_available=false`;
+- `preview_authenticated_verification_result=blocked_by_missing_authorized_session`;
+- Preview protetta da Vercel Auth;
+- nessun deploy manuale;
+- Production non toccata;
+- nessuna DB write;
+- rollback non eseguito;
+- provider/import off;
+- Apify off;
+- nessun token/cookie/header auth stampato.
+
+Prossimo step consigliato: Punto 77 — manual authenticated Preview report oppure deploy controllato solo con autorizzazione esplicita.
+
 ## P75 — Deploy authorization gate
 
 Stato: completato senza deploy, senza Production e senza scritture.

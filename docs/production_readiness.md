@@ -1,5 +1,33 @@
 # Production Readiness
 
+## Nota P76 — Preview authenticated verification
+
+P76 ha verificato la Preview protetta in modalità no-deploy/no-secret.
+
+Esito:
+
+- `point_76_preview_authenticated_verification_completed=true`
+- `preview_authenticated_verification_mode=no_deploy_no_secret`
+- `preview_authenticated_access_available=false`
+- `preview_authenticated_verification_result=blocked_by_missing_authorized_session`
+- `preview_no_auth_blocked_by_vercel_auth=true`
+- `auth_cookie_used=false`
+- `cookies_printed=false`
+- `headers_printed=false`
+- `token_printed=false`
+- `env_local_read=false`
+- `production_touched=false`
+- `manual_deploy_executed=false`
+- `db_write=false`
+- `rollback_executed=false`
+- `provider_fetch=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `vercel_auth_changed=false`
+- `vercel_config_changed=false`
+
+P76 non autorizza deploy. La verifica autenticata reale resta da completare manualmente o con sessione autorizzata sicura.
+
 ## Nota P75 — Deploy authorization gate
 
 P75 ha preparato il gate di autorizzazione deploy senza eseguire deploy.

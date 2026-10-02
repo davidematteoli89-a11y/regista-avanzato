@@ -1751,6 +1751,25 @@ P72 aggiunge i marker di readiness finale ai dry-run manual/import:
 - `service_role_used=false`
 
 Questi marker non autorizzano deploy, provider activation o import.
+## P76 — Preview authenticated verification
+
+P76 aggiunge il dry-run:
+
+- `npm run dry-run:preview-authenticated-verification`
+
+Output atteso in assenza di sessione autorizzata:
+
+- `preview_authenticated_access_available=false`
+- `preview_authenticated_verification_result=blocked_by_missing_authorized_session`
+- `preview_no_auth_blocked_by_vercel_auth=true`
+- `cookies_printed=false`
+- `headers_printed=false`
+- `token_printed=false`
+- `provider_fetch=false`
+- `db_write=false`
+
+Il comando non usa cookie/header auth e non tenta workaround sulla Vercel Authentication.
+
 ## P75 — Deploy authorization gate
 
 P75 aggiunge il gate di autorizzazione deploy.

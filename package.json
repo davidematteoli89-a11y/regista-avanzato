@@ -32,6 +32,7 @@
     "dry-run:public-readers": "tsx scripts/provider/publicReaderNoRouteDryRun.ts",
     "dry-run:public-data-promotion-scope": "tsx scripts/provider/publicDataPromotionScopeDryRun.ts",
     "dry-run:final-env-checklist": "tsx scripts/provider/finalEnvChecklistNoSecretDryRun.ts",
+    "dry-run:preview-authenticated-verification": "tsx scripts/provider/previewAuthenticatedVerificationDryRun.ts",
     "probe:stable-provider:disabled": "node --no-warnings --experimental-strip-types scripts/provider/disabledStableProviderProbe.ts",
     "probe:api-football:gated": "node --no-warnings --experimental-strip-types scripts/provider/apiFootballProbe.ts",
     "probe:thestatsapi:gated": "node --no-warnings --experimental-strip-types scripts/provider/theStatsApiProbe.ts"

@@ -1983,6 +1983,18 @@ P72 conferma che i provider restano fuori scope per il deploy plan no-apply.
 - Production toccata: false.
 
 La release MVP pubblica usa dati manuali/staging (`public_free`), non dati provider.
+## P76 — Preview authenticated verification
+
+P76 non attiva provider/import.
+
+- `preview_authenticated_verification_result=blocked_by_missing_authorized_session`
+- `provider_fetch=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `deploy_executed=false`
+
+Provider, Apify e import restano off.
+
 ## P75 — Deploy authorization gate
 
 P75 conferma che un futuro deploy controllato non deve attivare provider/import.
