@@ -1969,3 +1969,17 @@ Punto 70 non cambia lo stato provider/import.
 - `deploy_executed=false`
 
 Provider reali restano sospesi/off. Nessuna attivazione provider/import è autorizzata da questo punto.
+# P72 — Provider status in Production readiness review
+
+P72 conferma che i provider restano fuori scope per il deploy plan no-apply.
+
+- TheStatsAPI: off/sospeso.
+- API-Football: off/sospeso, no retry.
+- Apify/SofaScore: off.
+- Provider probes: gated e disabled.
+- Provider import: non attivo.
+- Provider fetch in P72: false.
+- Deploy autorizzato: false.
+- Production toccata: false.
+
+La release MVP pubblica usa dati manuali/staging (`public_free`), non dati provider.

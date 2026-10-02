@@ -1724,3 +1724,30 @@ Il dry-run P70 verifica il percorso pubblico locale senza deploy manuale.
 - `production_touched=false`
 
 Nessuna probe provider o import reale viene eseguito nel Punto 70.
+# P72 — Dry-run readiness markers
+
+P72 aggiunge i marker di readiness finale ai dry-run manual/import:
+
+- `point_72_production_readiness_final_review_completed=true`
+- `readiness_result=ready_for_deploy_plan_no_apply`
+- `ready_for_deploy=false`
+- `deploy_authorized=false`
+- `public_path_verified=true`
+- `public_routes_current_state=data_visible`
+- `public_competitions_count=1`
+- `public_teams_count=2`
+- `public_standings_count=2`
+- `public_bundle_status=ready`
+- `rollback_file_available=true`
+- `rollback_executed=false`
+- `preview_protected=true`
+- `preview_auth_changed=false`
+- `production_touched=false`
+- `manual_deploy_executed=false`
+- `point_72_db_write=false`
+- `provider_fetch=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `service_role_used=false`
+
+Questi marker non autorizzano deploy, provider activation o import.

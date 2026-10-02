@@ -1,5 +1,25 @@
 # C phase progress
 
+## P72 — Production readiness final review
+
+Stato: completato senza deploy e senza scritture.
+
+Conferme:
+
+- `ready_for_deploy_plan_no_apply=true`;
+- `ready_for_deploy=false`;
+- `deploy_authorized=false`;
+- Production non toccata;
+- nessun deploy manuale;
+- nessuna DB write nel Punto 72;
+- provider/import off;
+- Apify off;
+- Preview protetta;
+- rollback disponibile e non eseguito;
+- percorso pubblico locale verificato con dati visibili.
+
+Prossimo step consigliato: Punto 73 — Deploy plan no-apply.
+
 ## C.1 — Public readers Supabase
 
 Stato: implementazione minima completata in locale.

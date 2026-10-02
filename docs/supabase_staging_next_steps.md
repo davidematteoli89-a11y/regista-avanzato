@@ -2696,3 +2696,28 @@ Marker:
 - `point_70_db_write=false`
 
 Prossimo step: SEO/copy metadata o verifica Preview autenticata.
+# P72 — Production readiness final review
+
+P72 ha confermato che lo staging è pronto per preparare un piano deploy no-apply, non per un deploy reale.
+
+Marker:
+
+- `readiness_result=ready_for_deploy_plan_no_apply`
+- `ready_for_deploy=false`
+- `deploy_authorized=false`
+- `public_path_verified=true`
+- `public_routes_current_state=data_visible`
+- `public_competitions_count=1`
+- `public_teams_count=2`
+- `public_standings_count=2`
+- `public_bundle_status=ready`
+- `rollback_file_available=true`
+- `rollback_executed=false`
+- `production_touched=false`
+- `manual_deploy_executed=false`
+- `point_72_db_write=false`
+- `provider_fetch=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+
+Next step consigliato: Punto 73 — Deploy plan no-apply.

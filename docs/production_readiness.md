@@ -6,6 +6,35 @@ Regista Avanzato non è ancora pronto per produzione reale.
 
 È pronto per staging/Preview protetto, con Supabase Auth/RLS e admin server-side funzionanti, ma non per utenti o dati reali non controllati.
 
+## Nota P72 — Production readiness final review
+
+P72 ha completato la review finale di readiness senza deploy e senza scritture.
+
+Decisione:
+
+- `point_72_production_readiness_final_review_completed=true`
+- `readiness_result=ready_for_deploy_plan_no_apply`
+- `ready_for_deploy=false`
+- `deploy_authorized=false`
+- `public_path_verified=true`
+- `public_routes_current_state=data_visible`
+- `public_competitions_count=1`
+- `public_teams_count=2`
+- `public_standings_count=2`
+- `public_bundle_status=ready`
+- `rollback_file_available=true`
+- `rollback_executed=false`
+- `preview_protected=true`
+- `preview_auth_changed=false`
+- `production_touched=false`
+- `manual_deploy_executed=false`
+- `point_72_db_write=false`
+- `provider_fetch=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+
+P72 autorizza solo la preparazione di un deploy plan no-apply. Il deploy reale resta non autorizzato e richiede una frase esplicita separata.
+
 ## Stato dopo FASE B
 
 Pronto per staging/Preview protetto:

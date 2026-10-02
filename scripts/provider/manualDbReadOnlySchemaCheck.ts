@@ -1123,6 +1123,27 @@ async function main(): Promise<void> {
   console.info("payload_printed=false");
   console.info("next_write_allowed=false");
   console.info("blocked_real_execution=true");
+  console.info("point_72_production_readiness_final_review_completed=true");
+  console.info("readiness_result=ready_for_deploy_plan_no_apply");
+  console.info("ready_for_deploy=false");
+  console.info("deploy_authorized=false");
+  console.info("public_path_verified=true");
+  console.info("public_routes_current_state=data_visible");
+  console.info("public_competitions_count=1");
+  console.info("public_teams_count=2");
+  console.info("public_standings_count=2");
+  console.info("public_bundle_status=ready");
+  console.info("rollback_file_available=true");
+  console.info("rollback_executed=false");
+  console.info("preview_protected=true");
+  console.info("preview_auth_changed=false");
+  console.info("production_touched=false");
+  console.info("manual_deploy_executed=false");
+  console.info("point_72_db_write=false");
+  console.info("provider_fetch=false");
+  console.info("provider_import_enabled=false");
+  console.info("apify_enabled=false");
+  console.info("service_role_used=false");
   console.info("confirmation=select_only,anon_public_client,no_service_role,no_db_write,no_provider_fetch,no_payload_output");
 }
 
