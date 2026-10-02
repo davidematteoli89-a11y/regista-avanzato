@@ -2721,6 +2721,22 @@ Marker:
 - `apify_enabled=false`
 
 Next step consigliato: Punto 73 — Deploy plan no-apply.
+## P75 — Deploy authorization gate
+
+P75 ha preparato il gate autorizzativo deploy senza eseguire deploy e senza scritture DB.
+
+- `point_75_deploy_authorization_gate_completed=true`
+- `deploy_authorization_gate_completed=true`
+- `deploy_authorized=false`
+- `deploy_executed=false`
+- `ready_for_controlled_deploy_authorization=true`
+- `generic_proceed_authorizes_deploy=false`
+- `point_75_db_write=false`
+- `rollback_executed=false`
+- `production_touched=false`
+
+Supabase staging resta invariato nel Punto 75. Il rollback resta disponibile ma non eseguito.
+
 ## P74 — Final env checklist no-secret
 
 P74 ha verificato solo categorie env/config senza leggere/stampare valori.

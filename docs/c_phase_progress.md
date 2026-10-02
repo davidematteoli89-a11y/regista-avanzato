@@ -1,5 +1,28 @@
 # C phase progress
 
+## P75 — Deploy authorization gate
+
+Stato: completato senza deploy, senza Production e senza scritture.
+
+Conferme:
+
+- `point_75_deploy_authorization_gate_completed=true`;
+- `deploy_authorization_gate_completed=true`;
+- `deploy_authorized=false`;
+- `deploy_executed=false`;
+- `ready_for_controlled_deploy_authorization=true`;
+- `generic_proceed_authorizes_deploy=false`;
+- `authorization_phrase_created=true`;
+- Production non toccata;
+- nessun deploy manuale;
+- nessuna DB write nel Punto 75;
+- rollback non eseguito;
+- provider/import off;
+- Apify off;
+- Vercel Auth/config invariati.
+
+Prossimo step consigliato: Punto 76 — controlled deploy solo con autorizzazione esplicita, oppure Preview authenticated verification.
+
 ## P74 — Final env checklist no-secret
 
 Stato: completato senza deploy, senza Production e senza segreti stampati.

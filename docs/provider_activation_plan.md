@@ -1983,6 +1983,20 @@ P72 conferma che i provider restano fuori scope per il deploy plan no-apply.
 - Production toccata: false.
 
 La release MVP pubblica usa dati manuali/staging (`public_free`), non dati provider.
+## P75 — Deploy authorization gate
+
+P75 conferma che un futuro deploy controllato non deve attivare provider/import.
+
+- `deploy_authorization_gate_completed=true`
+- `deploy_authorized=false`
+- `provider_fetch=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `vercel_auth_changed=false`
+- `vercel_config_changed=false`
+
+Provider, Apify e import restano esclusi anche da un futuro deploy salvo autorizzazione separata.
+
 ## P74 — Final env checklist no-secret
 
 P74 conferma che provider/import restano off e non pronti per attivazione automatica.

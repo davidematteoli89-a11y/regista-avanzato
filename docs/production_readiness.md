@@ -1,5 +1,30 @@
 # Production Readiness
 
+## Nota P75 — Deploy authorization gate
+
+P75 ha preparato il gate di autorizzazione deploy senza eseguire deploy.
+
+Decisione:
+
+- `point_75_deploy_authorization_gate_completed=true`
+- `deploy_authorization_gate_completed=true`
+- `deploy_authorized=false`
+- `deploy_executed=false`
+- `ready_for_controlled_deploy_authorization=true`
+- `generic_proceed_authorizes_deploy=false`
+- `authorization_phrase_created=true`
+- `production_touched=false`
+- `manual_deploy_executed=false`
+- `point_75_db_write=false`
+- `rollback_executed=false`
+- `provider_fetch=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `vercel_auth_changed=false`
+- `vercel_config_changed=false`
+
+P75 non autorizza deploy. Il deploy reale richiede P76 con frase esplicita completa, branch e commit target.
+
 ## Nota P74 — Final env checklist no-secret
 
 P74 ha completato la checklist finale env/config senza leggere o stampare valori sensibili.

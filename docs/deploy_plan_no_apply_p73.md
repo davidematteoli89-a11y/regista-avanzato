@@ -1,5 +1,18 @@
 # Deploy Plan No-Apply — P73
 
+## P75 gate update
+
+P75 ha preparato il deploy authorization gate.
+
+- `deploy_authorization_gate_completed=true`
+- `deploy_authorized=false`
+- `deploy_executed=false`
+- `ready_for_controlled_deploy_authorization=true`
+- `generic_proceed_authorizes_deploy=false`
+- `authorization_phrase_created=true`
+
+Il deploy reale resta bloccato fino a P76 con frase esplicita completa.
+
 ## Scope
 
 Punto 73 è solo un piano di deploy controllato.

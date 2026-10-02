@@ -1751,6 +1751,26 @@ P72 aggiunge i marker di readiness finale ai dry-run manual/import:
 - `service_role_used=false`
 
 Questi marker non autorizzano deploy, provider activation o import.
+## P75 — Deploy authorization gate
+
+P75 aggiunge il gate di autorizzazione deploy.
+
+Marker attesi:
+
+- `point_75_deploy_authorization_gate_completed=true`
+- `deploy_authorization_gate_completed=true`
+- `deploy_authorized=false`
+- `deploy_executed=false`
+- `ready_for_controlled_deploy_authorization=true`
+- `generic_proceed_authorizes_deploy=false`
+- `provider_fetch=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `vercel_auth_changed=false`
+- `vercel_config_changed=false`
+
+Il gate non esegue deploy e non abilita fetch/import provider.
+
 ## P74 — Final env checklist no-secret
 
 P74 aggiunge il dry-run:

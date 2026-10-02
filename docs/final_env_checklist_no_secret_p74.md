@@ -1,5 +1,17 @@
 # Final Env Checklist No-Secret — P74
 
+## P75 gate update
+
+P75 ha usato questa checklist come input del gate autorizzativo.
+
+- `deploy_authorization_gate_completed=true`
+- `deploy_authorized=false`
+- `deploy_executed=false`
+- `ready_for_controlled_deploy_authorization=true`
+- `generic_proceed_authorizes_deploy=false`
+
+La checklist resta no-secret e non autorizza deploy.
+
 ## Scope
 
 Punto 74 verifica solo categorie env/config prima del deploy authorization gate.
