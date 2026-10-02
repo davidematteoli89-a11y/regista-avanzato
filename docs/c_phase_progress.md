@@ -3968,3 +3968,29 @@ Nessun deploy, nessuna Production e nessuna ulteriore DB write sono stati esegui
 - `apify_enabled=false`
 - `deploy_executed=false`
 - Prossimo step consigliato: Punto 70 — decidere se mantenere Preview protetta o predisporre test no-auth controllato.
+## Punto 70 — Homepage/navigation polish without deployment
+
+- `point_70_homepage_navigation_polish_completed=true`
+- `public_path_verification_mode=local_no_auth_http`
+- `home_links_competitions=true`
+- `competitions_links_detail=true`
+- `competition_detail_links_back=true`
+- `competitions_page_state=data_visible`
+- `competition_detail_state=data_visible`
+- `public_competitions_count=1`
+- `public_teams_count=2`
+- `public_standings_count=2`
+- `public_bundle_status=ready`
+- `private_admin_publicly_exposed=false`
+- `public_routes_admin_links_visible=false`
+- `public_routes_debug_payload_visible=false`
+- `public_routes_operational_buttons=false`
+- `point_70_db_write=false`
+- `rollback_executed=false`
+- `provider_fetch=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `production_touched=false`
+- `deploy_executed=false`
+- `vercel_auth_changed=false`
+- Prossimo step consigliato: Punto 71 — SEO/copy metadata o verifica Preview autenticata, senza deploy manuale.

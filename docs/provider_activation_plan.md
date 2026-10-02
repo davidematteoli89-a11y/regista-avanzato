@@ -1956,3 +1956,16 @@ Punto 69 non cambia lo stato provider/import.
 - `deploy_executed=false`
 
 Provider reali restano sospesi/off. Nessuna attivazione provider/import è autorizzata da questo punto.
+## Punto 70 — Homepage/navigation polish, provider unchanged
+
+Punto 70 non cambia lo stato provider/import.
+
+- `provider_fetch=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `public_path_verification_mode=local_no_auth_http`
+- `point_70_db_write=false`
+- `production_touched=false`
+- `deploy_executed=false`
+
+Provider reali restano sospesi/off. Nessuna attivazione provider/import è autorizzata da questo punto.

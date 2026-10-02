@@ -2147,3 +2147,17 @@ Punto 69 ha verificato la Preview URL del branch `preview` senza deploy manuale.
 - `deploy_executed=false`
 
 Production resta non toccata. La Preview resta protetta da Vercel Authentication.
+## Punto 70 — Homepage/navigation polish without deployment
+
+Punto 70 migliora il percorso pubblico locale senza deploy e senza cambiare configurazioni Vercel.
+
+- `point_70_homepage_navigation_polish_completed=true`
+- `public_path_verification_mode=local_no_auth_http`
+- `private_admin_publicly_exposed=false`
+- `point_70_db_write=false`
+- `provider_fetch=false`
+- `production_touched=false`
+- `deploy_executed=false`
+- `vercel_auth_changed=false`
+
+Production resta non toccata. La Preview resta protetta da Vercel Authentication.

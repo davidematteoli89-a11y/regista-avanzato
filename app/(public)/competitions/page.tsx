@@ -11,6 +11,7 @@ export default async function PublicCompetitionsPage() {
   return (
     <main className="stack" aria-labelledby="public-competitions-title">
       <header>
+        <Link href="/">Home</Link>
         <span className="eyebrow">Public data only</span>
         <h1 id="public-competitions-title">Competizioni pubbliche</h1>
         <p>

@@ -79,6 +79,7 @@ export default async function PublicCompetitionDetailPage({ params }: PageProps)
   return (
     <main className="stack" aria-labelledby="public-competition-title">
       <header>
+        <Link href="/competitions">← Torna alle competizioni</Link>
         <span className="eyebrow">Public data only</span>
         <h1 id="public-competition-title">{bundle.competition.name}</h1>
         <p>

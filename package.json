@@ -27,6 +27,7 @@
     "dry-run:public-routes-browser-verification": "tsx scripts/provider/publicRoutesBrowserVerificationDryRun.ts",
     "dry-run:public-data-ui-polish": "tsx scripts/provider/publicDataUiPolishVisibleDataDryRun.ts",
     "dry-run:public-preview-verification": "tsx scripts/provider/publicPreviewVerificationDryRun.ts",
+    "dry-run:public-path-verification": "tsx scripts/provider/publicPathVerificationDryRun.ts",
     "dry-run:public-readers": "tsx scripts/provider/publicReaderNoRouteDryRun.ts",
     "dry-run:public-data-promotion-scope": "tsx scripts/provider/publicDataPromotionScopeDryRun.ts",
     "probe:stable-provider:disabled": "node --no-warnings --experimental-strip-types scripts/provider/disabledStableProviderProbe.ts",

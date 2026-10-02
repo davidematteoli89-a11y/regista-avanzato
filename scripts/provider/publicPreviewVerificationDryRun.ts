@@ -1,5 +1,7 @@
 const DEFAULT_PREVIEW_URL = "https://regista-avanzato-git-preview-davide-matteoli.vercel.app";
 
+export {};
+
 type RoutePath = "/competitions" | "/competitions/manual-serie-a";
 
 type RouteCheck = {

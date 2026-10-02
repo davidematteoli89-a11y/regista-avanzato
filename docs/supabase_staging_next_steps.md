@@ -2674,3 +2674,25 @@ Marker:
 - `point_69_db_write=false`
 
 Prossimo step: decidere se mantenere Preview protetta o autorizzare una finestra controllata di test no-auth.
+## Punto 70 — Homepage/navigation polish without deployment
+
+Punto 70 non richiede modifiche Supabase.
+
+- Nessuna DB write.
+- Nessun rollback.
+- Nessun cambio visibility.
+- Nessun provider/import.
+- Production non toccata.
+- Deploy manuale non eseguito.
+- Vercel Authentication non modificata.
+
+Marker:
+
+- `point_70_homepage_navigation_polish_completed=true`
+- `public_path_verification_mode=local_no_auth_http`
+- `home_links_competitions=true`
+- `competitions_links_detail=true`
+- `competition_detail_links_back=true`
+- `point_70_db_write=false`
+
+Prossimo step: SEO/copy metadata o verifica Preview autenticata.

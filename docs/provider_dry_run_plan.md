@@ -1704,3 +1704,23 @@ Il dry-run P69 verifica la Preview URL no-auth senza deploy manuale e senza prov
 - `production_touched=false`
 
 Nessuna probe provider o import reale viene eseguito nel Punto 69.
+## Punto 70 — Public path verification dry-run
+
+Il dry-run P70 verifica il percorso pubblico locale senza deploy manuale.
+
+- `point_70_homepage_navigation_polish_completed=true`
+- `public_path_verification_mode=local_no_auth_http`
+- `home_links_competitions=true`
+- `competitions_links_detail=true`
+- `competition_detail_links_back=true`
+- `public_competitions_count=1`
+- `public_teams_count=2`
+- `public_standings_count=2`
+- `public_bundle_status=ready`
+- `point_70_db_write=false`
+- `provider_fetch=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `production_touched=false`
+
+Nessuna probe provider o import reale viene eseguito nel Punto 70.
