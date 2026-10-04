@@ -1,5 +1,27 @@
 # C phase progress
 
+## P80 — Production authorization gate no-apply
+
+Stato: completato come gate no-apply.
+
+Conferme:
+
+- `point_80_production_authorization_gate_completed=true`;
+- `production_authorization_gate_completed=true`;
+- `production_deploy_authorized=false`;
+- `merge_authorized=false`;
+- `production_deploy_executed=false`;
+- `merge_executed=false`;
+- `production_touched=false`;
+- `ready_for_controlled_production_release_authorization=true`;
+- `generic_proceed_authorizes_production=false`;
+- `provider_import_enabled=false`;
+- `apify_enabled=false`;
+- `db_write_additional=false`;
+- `rollback_executed=false`.
+
+Il prossimo step consigliato è P81 — merge `preview` → `main` + Production deploy solo con autorizzazione esplicita completa.
+
 ## P79 — Production release plan no-apply
 
 Stato: completato come piano no-apply.

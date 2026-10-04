@@ -1,5 +1,25 @@
 # Production Release Plan No-Apply — P79
 
+## P80 gate update
+
+P80 ha preparato il Production authorization gate senza eseguire merge o deploy.
+
+- `point_80_production_authorization_gate_completed=true`
+- `production_authorization_gate_completed=true`
+- `production_deploy_authorized=false`
+- `merge_authorized=false`
+- `production_deploy_executed=false`
+- `merge_executed=false`
+- `production_touched=false`
+- `ready_for_controlled_production_release_authorization=true`
+- `generic_proceed_authorizes_production=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `db_write_additional=false`
+- `rollback_executed=false`
+
+P81 resta bloccato fino a frase autorizzativa completa con commit target.
+
 ## Scope
 
 Punto 79 prepara il piano di rilascio Production dopo il freeze MVP Preview P78.

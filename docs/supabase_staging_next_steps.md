@@ -1,5 +1,27 @@
 # Supabase staging next steps
 
+## P80 — Production authorization gate no-apply
+
+P80 non modifica Supabase staging.
+
+Marker:
+
+- `point_80_production_authorization_gate_completed=true`
+- `production_authorization_gate_completed=true`
+- `production_deploy_authorized=false`
+- `merge_authorized=false`
+- `production_deploy_executed=false`
+- `merge_executed=false`
+- `production_touched=false`
+- `ready_for_controlled_production_release_authorization=true`
+- `generic_proceed_authorizes_production=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `db_write_additional=false`
+- `rollback_executed=false`
+
+Supabase staging resta invariato. Nessuna DB write aggiuntiva, rollback, provider/import o Apify sono stati eseguiti in P80.
+
 ## P79 — Production release plan no-apply
 
 P79 non modifica Supabase staging.

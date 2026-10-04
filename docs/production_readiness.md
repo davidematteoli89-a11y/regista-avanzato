@@ -1,5 +1,27 @@
 # Production Readiness
 
+## Nota P80 — Production authorization gate no-apply
+
+P80 ha preparato il gate autorizzativo finale per Production senza eseguire merge o deploy.
+
+Esito:
+
+- `point_80_production_authorization_gate_completed=true`
+- `production_authorization_gate_completed=true`
+- `production_deploy_authorized=false`
+- `merge_authorized=false`
+- `production_deploy_executed=false`
+- `merge_executed=false`
+- `production_touched=false`
+- `ready_for_controlled_production_release_authorization=true`
+- `generic_proceed_authorizes_production=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `db_write_additional=false`
+- `rollback_executed=false`
+
+P80 non autorizza merge, push su main, deploy Production, provider/import, Apify o DB write aggiuntive. P81 richiede la frase autorizzativa completa con commit target.
+
 ## Nota P79 — Production release plan no-apply
 
 P79 ha preparato il piano di rilascio Production senza eseguirlo.

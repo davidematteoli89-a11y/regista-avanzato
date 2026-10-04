@@ -1,5 +1,19 @@
 # Provider dry-run plan — D.1
 
+## P80 — Production authorization gate no-apply
+
+P80 conferma che il gate Production non autorizza provider dry-run reali o import.
+
+- `point_80_production_authorization_gate_completed=true`
+- `production_deploy_authorized=false`
+- `merge_authorized=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `db_write_additional=false`
+- `rollback_executed=false`
+
+Provider dry-run e probe reali restano separati dal percorso Production MVP.
+
 ## P79 — Production release plan no-apply
 
 P79 conferma che il piano Production non autorizza provider dry-run reali o import.
