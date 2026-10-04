@@ -1,5 +1,36 @@
 # Production Readiness
 
+## Nota P82-A — Vercel Production Git integration investigation
+
+P82-A ha diagnosticato in sola lettura perché il push di `main` non ha aggiornato la Production URL.
+
+Esito:
+
+- `point_82a_vercel_git_integration_investigation_completed=true`
+- `p81b_merge_executed=true`
+- `p81b_main_pushed=true`
+- `origin/main=ab5067ca2f40c434d13ada87a71be0024069e8bd`
+- `origin/preview=ccaf417357ee6159a6fe96504893d12f4b65cd3a`
+- `main_contains_competitions_locally=true`
+- `main_local_build_passed=true`
+- `main_local_competitions_http_status=200`
+- `main_local_competition_detail_http_status=200`
+- `production_url_still_old=true`
+- `production_competitions_404=true`
+- `deployment_for_ab5067_exists=unknown`
+- `vercel_project_correct=unknown`
+- `repository_linked_correct=unknown`
+- `likely_cause=G_OR_A`
+- `deploy_executed=false`
+- `vercel_config_changed=false`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `rollback_executed=false`
+
+La diagnosi locale esclude un problema di route nel commit `main`: `/competitions` e `/competitions/manual-serie-a` sono presenti, buildano e rispondono 200 in locale. Il dominio Production continua invece a servire una versione vecchia. Prossimo step consigliato: verifica manuale Dashboard Vercel di progetto/dominio/Git integration prima di autorizzare qualunque deploy o modifica.
+
 ## Nota P81-A — Main untracked cleanup no-deploy
 
 P81 è stato fermato prima del merge perché `main` conteneva untracked locali.

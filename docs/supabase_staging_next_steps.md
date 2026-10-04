@@ -1,5 +1,21 @@
 # Supabase staging next steps
 
+## P82-A — Vercel Production Git integration investigation
+
+P82-A non modifica Supabase staging.
+
+Marker:
+
+- `point_82a_vercel_git_integration_investigation_completed=true`
+- `db_write_additional=false`
+- `rollback_executed=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `production_touched=false`
+- `deploy_executed=false`
+
+Supabase staging resta nello stato MVP validato. La diagnosi riguarda solo il collegamento Git/Vercel/Production dopo il push su `main`.
+
 ## P80 — Production authorization gate no-apply
 
 P80 non modifica Supabase staging.
