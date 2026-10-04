@@ -52,7 +52,7 @@ export type AdvancedSearchResponse = {
   mode: "safe_mock";
   query: SearchQuery;
   allowed: boolean;
-  quotaConsumed: false;
+  quotaConsumed: boolean;
   totalResults: number;
   groups: SearchResultGroup[];
   limitStatus: SearchLimitStatus;

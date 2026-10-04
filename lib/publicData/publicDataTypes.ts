@@ -1,6 +1,7 @@
 import type { DataConfidence, TrackingLevel } from "@/config/competitions";
 
-export type PublicDataMeta = { source: "mock_public_snapshot"; isMock: true; confidence: DataConfidence; coverage: "complete" | "partial" | "demo"; updatedAt: string };
+export type PublicDataSource = "mock_public_snapshot" | "supabase_public_view";
+export type PublicDataMeta = { source: PublicDataSource; isMock: boolean; confidence: DataConfidence; coverage: "complete" | "partial" | "demo"; updatedAt: string };
 export type PublicCompetition = { id: string; name: string; country: string; continent: string; trackingLevel: TrackingLevel; publicStatsEnabled: boolean; loginRequiredForFullStats: boolean; meta: PublicDataMeta };
 export type PublicTeam = { id: string; competitionId: string; name: string; shortName: string; country: string; crestUrl: null; position: number | null; meta: PublicDataMeta };
 export type PublicPlayer = { id: string; teamId: string; competitionId: string; name: string; position: string; nationality: string; age: number | null; shirtNumber: number | null; meta: PublicDataMeta };
@@ -14,4 +15,4 @@ export type PublicCompetitionDetail = { competition: PublicCompetition; standing
 export type PublicTeamProfile = { team: PublicTeam; recentMatches: PublicMatch[]; baseStats: Pick<PublicTeamStats, "matches" | "wins" | "draws" | "losses" | "goalsFor" | "goalsAgainst">; fullStats: PublicTeamStats | null };
 export type PublicPlayerProfile = { player: PublicPlayer; team: PublicTeam | null; baseStats: Pick<PublicPlayerStats, "appearances" | "minutes" | "goals" | "assists">; fullStats: PublicPlayerStats | null };
 export type PublicMatchDetail = { match: PublicMatch; baseSummary: string; teamStats: PublicMatchTeamStats[] | null; highlights: PublicHighlightLink[] | null };
-export type PublicDataList<T> = { items: T[]; meta: { source: "mock_public_snapshot"; total: number; warning: string | null } };
+export type PublicDataList<T> = { items: T[]; meta: { source: PublicDataSource; total: number; warning: string | null } };

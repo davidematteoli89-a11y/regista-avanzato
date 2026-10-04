@@ -4,6 +4,8 @@ import { LoginFreeCTA } from "@/components/public/LoginFreeCTA";
 import { NewsletterCTA } from "@/components/public/NewsletterCTA";
 import { getPublicArticleDetail } from "@/lib/publicWebsite/getPublicArticleDetail";
 
+export const dynamic = "force-dynamic";
+
 type Params = { articleId: string };
 
 export default async function ArticleDetailPage({ params }: { params: Params | Promise<Params> }) {

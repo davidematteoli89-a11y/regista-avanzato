@@ -49,7 +49,7 @@ export const PROVIDERS = [
     warning_budget_eur: null,
     hard_stop_budget_eur: null,
     notes:
-      "Alias del futuro provider stabile. Rimane disattivato fino alla scelta del fornitore, del piano e alla configurazione server-side.",
+      "Alias del futuro provider stabile. Rimane disattivato: Punto 18 consente solo manual/mock data e dry-run da fixture locali.",
   },
   {
     id: "the_stats_api",
@@ -61,7 +61,7 @@ export const PROVIDERS = [
     warning_budget_eur: null,
     hard_stop_budget_eur: null,
     notes:
-      "Candidato da identificare e valutare con precisione prima dell'uso: copertura, licenza, SLA, costi e diritti di pubblicazione sono da confermare.",
+      "Sospeso dopo Punto 17: HTTP 403 e account/key/piano/base URL non chiariti. Nessun retry/import autorizzato.",
   },
   {
     id: "api_football",
@@ -73,7 +73,7 @@ export const PROVIDERS = [
     warning_budget_eur: null,
     hard_stop_budget_eur: null,
     notes:
-      "Provider candidato. Attivazione subordinata a verifica di piano, copertura, rate limit, licenza e credenziali server-side.",
+      "Sospeso/no retry dopo precedente 403. Attivazione subordinata a nuova readiness checklist e conferma esplicita.",
   },
   {
     id: "apify_sofascore",
@@ -85,7 +85,7 @@ export const PROVIDERS = [
     warning_budget_eur: 24,
     hard_stop_budget_eur: 30,
     notes:
-      "Solo import batch programmati per campionati minori. Disattivato fino alla configurazione del token e alla verifica dei termini; mai chiamato durante una visita utente.",
+      "Off. Futuro light provider per campionati minori solo dopo budget guard e autorizzazione; nessuna run Apify attiva.",
   },
   {
     id: "manual_provider",

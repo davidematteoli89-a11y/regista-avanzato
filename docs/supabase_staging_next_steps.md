@@ -1,0 +1,2851 @@
+# Supabase staging next steps
+
+## P80 — Production authorization gate no-apply
+
+P80 non modifica Supabase staging.
+
+Marker:
+
+- `point_80_production_authorization_gate_completed=true`
+- `production_authorization_gate_completed=true`
+- `production_deploy_authorized=false`
+- `merge_authorized=false`
+- `production_deploy_executed=false`
+- `merge_executed=false`
+- `production_touched=false`
+- `ready_for_controlled_production_release_authorization=true`
+- `generic_proceed_authorizes_production=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `db_write_additional=false`
+- `rollback_executed=false`
+
+Supabase staging resta invariato. Nessuna DB write aggiuntiva, rollback, provider/import o Apify sono stati eseguiti in P80.
+
+## P79 — Production release plan no-apply
+
+P79 non modifica Supabase staging.
+
+Marker:
+
+- `point_79_production_release_plan_completed=true`
+- `production_release_plan_created=true`
+- `merge_executed=false`
+- `production_deploy_executed=false`
+- `production_touched=false`
+- `ready_for_production_authorization_gate=true`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `db_write_additional=false`
+- `rollback_executed=false`
+
+Supabase staging resta nello stato MVP Preview validato. Nessuna ulteriore DB write, rollback, provider/import o Apify sono stati eseguiti in P79.
+
+## P78 — Preview release closure / MVP freeze
+
+La Preview corretta è stata verificata manualmente dall'utente:
+
+- `preview_release_verified=true`
+- `preview_url=https://regista-avanzato-kw9gtwlc4-davide-matteoli.vercel.app`
+- `preview_competitions_working=true`
+- `preview_competition_detail_working=true`
+- `mvp_preview_freeze=true`
+
+Nessun cambiamento Supabase aggiuntivo nel Punto 78:
+
+- `db_write_additional=false`
+- `rollback_executed=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `production_touched=false`
+- `production_deploy_executed=false`
+
+Il prossimo step richiede autorizzazione esplicita Production. Fino ad allora Supabase staging resta nello stato validato e non si eseguono ulteriori write, rollback o import provider.
+
+## Stato attuale
+
+Supabase staging e Vercel Preview sono collegati e funzionanti per Auth, account, preferenze, ricerca quota e admin protetto.
+
+Completato:
+
+- Trigger/profilo utente verificato.
+- RPC quota ricerca verificata fino al limite 3/3.
+- RLS anon/free user testata senza leakage noto.
+- Utente test promosso admin in staging e helper RBAC verificati.
+- UI locale e Preview online testate su login, account, preferenze, ricerca, admin e logout.
+- Provider reali e Apify restano spenti.
+
+## Migration history risk
+
+Le migrazioni `0001`-`0006` sono state applicate manualmente via `db query --file`.
+
+Questo significa che `supabase_migrations.schema_migrations` potrebbe non essere allineata allo stato reale del database.
+
+Regole fino a decisione:
+
+- Non usare `supabase db push`.
+- Non usare `supabase db reset`.
+- Non rilanciare migrazioni già applicate.
+- Non creare nuove migrazioni senza piano di tracking.
+
+## Opzioni migration tracking
+
+### Opzione A — Continuare manualmente nello staging attuale
+
+Lasciare staging così com'è e applicare eventuali fix SQL mirati con query controllate.
+
+Pro:
+
+- Rischio basso sullo staging già funzionante.
+- Non richiede reset.
+
+Contro:
+
+- Tracking migrazioni non standard.
+- Richiede disciplina manuale.
+
+### Opzione B — Allineare `schema_migrations`
+
+Inserire/registrare con procedura controllata le migrazioni già applicate, dopo verifica esatta dello stato database.
+
+Pro:
+
+- Porta lo staging verso flusso Supabase più ordinato.
+
+Contro:
+
+- Va fatto con estrema prudenza.
+- Rischio mismatch se una migrazione è stata applicata con piccole differenze manuali.
+
+### Opzione C — Ricreare staging in futuro
+
+Creare un nuovo staging vuoto e applicare le migrazioni con flusso Supabase corretto.
+
+Pro:
+
+- Stato pulito e riproducibile.
+
+Contro:
+
+- Richiede rifare seed, utente test e configurazioni.
+
+## Prossima fase consigliata
+
+FASE C:
+
+1. Public readers Supabase per competitions/teams/matches: avviato in C.1.
+2. Seed demo pubblicato e controllato: prossimo passo C.2.
+3. Admin editorial content reale manuale.
+4. Provider stable solo in dry-run.
+5. Primo import reale solo dopo conferma.
+6. Apify ancora spento fino a test budget.
+7. Substack CTA finale.
+
+## Stato C.1
+
+- `public_competitions`, `public_teams`, `public_matches` e `public_standings` sono predisposte come fonti pubbliche.
+- I reader pubblici provano Supabase staging e cadono in fallback mock solo se Supabase non è configurato o la view non è disponibile.
+- Se Supabase è configurato ma le view sono vuote, la UI deve mostrare un empty state controllato.
+- Non sono stati attivati provider, Apify, import o Production.
+
+## Stato C.2
+
+- Seed demo corretto applicato manualmente.
+- `public_competitions`: 1.
+- `public_teams`: 4.
+- `public_matches`: 2.
+- `public_standings`: 4.
+- Provider attivi: 0.
+- Import abilitati: 0.
+- Route pubbliche principali verificate localmente con dati demo Supabase.
+- Prossimo passo: C.3 admin/editorial content reale manuale oppure commit C.1/C.2 prima di procedere.
+
+## Stato C.4.2
+
+- L'area admin ha un tasto `Esci` visibile nell'header.
+- Il logout admin usa Supabase Auth server-side e reindirizza a `/login`.
+- La navbar pubblica non mostra più `Accedi`/`Registrati gratis` quando esiste una sessione Supabase: mostra `Account`.
+- Il route group pubblico è dinamico per leggere i cookie/sessione a ogni richiesta.
+- Da verificare su Preview dopo push: login, navbar `Account`, logout, navbar `Accedi`/`Registrati gratis`, `/admin` bloccato dopo logout.
+
+## Stato C.4.3
+
+- Deployment Preview del branch `preview` trovato e Ready.
+- Preview protetto da Vercel Authentication: richiesta anonima reindirizzata a Vercel SSO.
+- Commit fix CTA: `11646dc`.
+- URL Preview individuato: `https://regista-avanzato-kwh385tqr-davide-matteoli.vercel.app`.
+- Alias branch Preview: `https://regista-avanzato-git-preview-davide-matteoli.vercel.app`.
+- Bug manuale rilevato: il CTA `Accedi gratis` da non loggato era visibile ma non navigava correttamente sul dominio Preview.
+- Fix locale preparato: CTA separati `Accedi` -> `/login` e `Registrati gratis` -> `/registrati`; `Accedi` usa anchor HTML standard.
+- Test browser autenticato completato manualmente e verificato come funzionante.
+- Conferme:
+  - navbar `Accedi`/`Registrati gratis` da non loggato;
+  - `Accedi` apre `/login`;
+  - `Registrati gratis` apre `/registrati`;
+  - registrazione funzionante;
+  - navbar `Account` da loggato;
+  - `/account` funzionante;
+  - `/admin` funzionante solo con account admin;
+  - utenti non loggati/non admin bloccati o 404;
+  - tasto `Esci` admin funzionante;
+  - `/admin` bloccato dopo logout.
+- Test manuale Preview completato dall'utente: flusso funzionale, login/logout percepiti come lenti.
+- Ottimizzazione locale applicata:
+  - deduplica per-request di `getCurrentUser()`;
+  - quota ricerca senza lettura sessione duplicata quando `userId` è già noto.
+
+## Supabase Auth URL/Redirect per Preview
+
+- Per Preview, Supabase Auth deve avere `Site URL` e `Redirect URLs` coerenti con il dominio Preview/alias usato.
+- `localhost` resta corretto solo per sviluppo locale.
+- I link email già generati prima della modifica URL possono continuare a puntare al vecchio URL.
+- Dopo aver cambiato URL Supabase Auth, rigenerare la registrazione o l'email di conferma.
+
+## Performance auth da monitorare
+
+- Vercel Authentication su Preview può aggiungere latenza percepita.
+- Supabase Auth staging remoto può rendere login/logout più lenti del mock locale.
+- Il layout pubblico resta dinamico per mostrare correttamente `Accedi`/`Account`.
+- Prima di altre modifiche, raccogliere tempi approssimativi e Network panel su `/login`, `/account`, `/admin`.
+
+## Cose da non fare ancora
+
+- Non fare deploy production.
+- Non inserire env su Production.
+- Non attivare provider reali.
+- Non chiamare TheStatsAPI, API-Football o Apify.
+- Non importare dati reali.
+- Non pubblicare contenuti reali.
+- Non rimuovere Deployment Protection dal Preview.
+
+## D.17-B2 — TheStatsAPI key setup locale
+
+La key TheStatsAPI è stata verificata solo come presenza locale in `.env.local`, senza stampare valori.
+
+Stato:
+
+- `.env.local` ignorato da Git;
+- `.env.local` non staged;
+- `THESTATSAPI_API_KEY_PRESENT=true`;
+- `THESTATSAPI_BASE_URL_PRESENT=true`;
+- `THESTATSAPI_PROBE_ENABLED=false`;
+- nessuna real-call;
+- nessuna fetch provider;
+- nessuna scrittura DB;
+- provider/import spenti;
+- Apify spento;
+- API-Football sospeso/no retry;
+- Production non toccata.
+
+Prossimo step: preparare uno script TheStatsAPI gated e disabilitato di default, senza collegarlo a import o writer.
+
+## D.17-C — Script TheStatsAPI gated senza DB
+
+Preparato script locale:
+
+- `scripts/provider/theStatsApiProbe.ts`.
+
+Il comando `npm run probe:thestatsapi:gated` resta bloccato di default e non tocca Supabase:
+
+- nessuna lettura token in modalità disabled;
+- nessuna fetch provider;
+- nessuna scrittura DB;
+- nessuna riga `provider_import_runs`;
+- nessun log import/API usage scritto;
+- nessun import abilitato;
+- nessun provider attivato.
+
+Qualunque futura real-call TheStatsAPI dovrà essere una fase separata, con conferma esplicita e massimo una richiesta read-only.
+
+## D.17-D — Checklist pre-real-call senza Supabase write
+
+La checklist finale TheStatsAPI è stata preparata.
+
+Per Supabase staging non cambia nulla:
+
+- nessuna scrittura DB;
+- nessun insert/update/delete/upsert;
+- nessun write su `provider_import_runs`;
+- nessun write su `provider_import_logs`;
+- nessun write su `api_usage_logs`;
+- nessun write su `import_logs`;
+- provider/import spenti;
+- `realWritesEnabled=false`;
+- Apify spento;
+- Production non toccata.
+
+Prima di D.17-E bisogna confermare endpoint TheStatsAPI, auth/header e parametri. In caso contrario il gate resta chiuso.
+
+## D.17-E0 — Endpoint verificato senza Supabase write
+
+D.17-E0 non ha modificato Supabase staging.
+
+Risultato:
+
+- endpoint candidato TheStatsAPI scelto per prima probe: `GET /football/competitions/comp_5840/seasons/sn_6199313/standings`;
+- base URL `https://api.thestatsapi.com/api`;
+- auth Bearer;
+- nessuna real-call;
+- nessuna fetch provider;
+- nessun token letto/stampato;
+- nessun write su `provider_import_runs`, `provider_import_logs`, `api_usage_logs` o `import_logs`;
+- provider/import spenti;
+- `realWritesEnabled=false`;
+- Apify spento;
+- Production non toccata.
+
+D.17-E dovrà restare una singola richiesta read-only e non dovrà scrivere alcun log o dato su Supabase.
+
+## Stato C.3
+
+- Reader editoriali predisposti in locale per leggere solo public view Supabase sicure.
+- View usate:
+  - `public_articles_published`;
+  - `public_news_published`;
+  - `public_stories_published`;
+  - `public_historical_echoes`.
+- File seed manuale creato: `supabase/manual/editorial_seed_c3.sql`.
+- Il seed C.3 non è stato applicato.
+
+## Prossimo passo C.3
+
+Se confermato, applicare manualmente nello staging solo la SEZIONE 1 del file:
+
+- `supabase/manual/editorial_seed_c3.sql`
+
+Poi eseguire la SEZIONE 2 per verificare:
+
+- 1 articolo demo in `public_articles_published`;
+- 1 news demo in `public_news_published`;
+- 1 story demo in `public_stories_published`;
+- 1 Historical Echo demo in `public_historical_echoes`;
+- `active_providers = 0`;
+- `enabled_imports = 0`.
+
+Non usare `db push`, `db reset`, provider reali o Apify.
+
+## Stato C.4
+
+- Admin editoriale collegato in lettura a Supabase staging.
+- Sezioni coinvolte:
+  - `/admin/generated-content/articles`;
+  - `/admin/news-radar`;
+  - `/admin/story-library`;
+  - `/admin/historical-echo`.
+- View usate:
+  - `admin_public_articles`;
+  - `admin_news_archive`;
+  - `admin_story_library`;
+  - `admin_historical_echoes`.
+- Nessuna scrittura admin reale è stata implementata.
+- Nessun provider/import/Apify è stato attivato.
+
+## Prossimo passo staging
+
+Prima di rendere operative azioni manuali:
+
+- definire Server Actions separate per create/update/unpublish;
+- aggiungere audit log obbligatorio;
+- testare RLS per editor e admin;
+- preferire unpublish/rollback a delete;
+- mantenere publish massivo disabilitato.
+
+## C.4.4-A — Hardening SQL manuale applicato
+
+Migrazione applicata manualmente su Supabase staging:
+
+- `supabase/migrations/0007_admin_editorial_views_explicit_columns.sql`.
+
+Obiettivo:
+
+- sostituire le view admin editoriali `select *` con view a colonne esplicite;
+- preservare i nomi view già usati dai reader admin;
+- ridurre rischio di leakage futuro se le tabelle base ricevono nuove colonne.
+
+Esito:
+
+- le view `admin_public_articles`, `admin_news_archive`, `admin_story_library` e `admin_historical_echoes` sono state ricreate;
+- `information_schema.columns` conferma le colonne esplicite;
+- `pg_views` conferma il filtro RBAC `where public.is_editor_or_admin()`;
+- `anon` non ha grant;
+- `authenticated` ha `select`, ma i profili non staff non ricevono righe dal filtro RBAC;
+- provider reali e Apify restano spenti;
+- Production non è stata toccata.
+
+Prossimi controlli consigliati:
+
+1. verificare in locale le quattro pagine admin editoriali dopo la modifica SQL;
+2. verificare in Preview al prossimo deploy non Production;
+3. pianificare audit delle altre view `admin_*` fuori scope editoriale.
+
+Non usare ancora:
+
+- `supabase db push`;
+- `supabase db reset`;
+- Production;
+- provider o Apify.
+
+## C.5.1 — Piano scritture admin auditate
+
+Audit completato senza modifiche DB:
+
+- le tabelle editoriali sono pronte per aggiornamenti manuali minimi;
+- `admin_audit_logs` è presente e append-only;
+- le policy attuali proteggono le tabelle da anon/free_user;
+- manca però una RPC transazionale per garantire `update + audit log` come singola operazione.
+
+Prossimo passo consigliato:
+
+1. preparare una nuova migrazione SQL versionata, non applicata automaticamente;
+2. creare funzioni RPC per:
+   - aggiornamento `internal_notes`;
+   - rollback/unpublish singolo da `published` a `draft` o `archived`;
+3. validare in SQL:
+   - content type whitelistato;
+   - UUID;
+   - transizioni status ammesse;
+   - update solo per `id`;
+4. scrivere sempre su `admin_audit_logs` nello stesso blocco;
+5. decidere se abilitare solo admin/super_admin o anche editor;
+6. testare anon/free_user/editor/admin su staging.
+
+Fino a quel momento:
+
+- nessuna form admin deve modificare dati reali;
+- nessun delete reale;
+- nessun publish massivo;
+- nessun uso di service role per bypassare RLS.
+
+## C.5.2-A — Applicazione manuale RPC admin
+
+Migrazione applicata manualmente su Supabase staging:
+
+- `supabase/migrations/0008_admin_editorial_transactional_actions.sql`.
+
+Verifica eseguita:
+
+- dal Supabase SQL Editor, `auth.uid()` risulta `null`;
+- dal Supabase SQL Editor, `public.is_admin()` risulta `false`;
+- una chiamata diretta a `update_editorial_internal_notes` fallisce correttamente con `admin_editorial_action_forbidden`;
+- il blocco è atteso perché il SQL Editor non rappresenta la sessione Supabase Auth dell’utente admin dell’app;
+- il controllo `public.is_admin()` resta corretto e non va rimosso.
+
+Resta da testare:
+
+- chiamata positiva tramite Server Action con sessione admin reale;
+- scrittura audit log associata alla modifica;
+- fallimento per anon/free_user da contesto applicativo;
+- eventuale test `unpublish_editorial_content` solo su contenuto demo sacrificabile.
+
+Prossimo passo consigliato:
+
+- C.5.3: creare un piano per Server Action di test controllata, senza UI definitiva e senza abbassare la sicurezza.
+
+Rollback SQL, se necessario:
+
+```sql
+drop function if exists public.update_editorial_internal_notes(text, uuid, text);
+drop function if exists public.unpublish_editorial_content(text, uuid, text, text);
+```
+
+Non usare:
+
+- `supabase db push`;
+- `supabase db reset`;
+- Production;
+- provider o Apify.
+
+## C.5.3 — Test Server Action note interne
+
+Implementazione locale pronta:
+
+- Server Action: `updateAdminEditorialInternalNotesAction`;
+- RPC chiamata: `update_editorial_internal_notes`;
+- UI: textarea `Note interne` + bottone `Salva note` nelle tabelle admin Supabase staging.
+
+Test manuale staging/Preview consigliato:
+
+1. login come account admin;
+2. aprire `/admin/generated-content/articles`;
+3. modificare la nota interna di un contenuto demo;
+4. verificare redirect/reload della pagina admin;
+5. controllare che la nota risulti aggiornata;
+6. controllare `admin_audit_logs` per action `update_editorial_internal_notes`;
+7. ripetere su `news`, `story` o `historical_echo` solo se il primo test è pulito;
+8. verificare logout e blocco `/admin`;
+9. verificare che provider/import/Apify restino spenti.
+
+Da non testare ancora:
+
+- `unpublish_editorial_content`;
+- delete;
+- publish;
+- create;
+- azioni massive.
+
+Se il test fallisce:
+
+- non abbassare `is_admin()`;
+- non usare service role;
+- registrare codice errore applicativo;
+- verificare sessione Supabase Auth e ruolo `users_profile`.
+
+## C.5.3-A — Verifica Preview note interne completata
+
+La verifica manuale su Vercel Preview è stata completata con sessione admin reale.
+
+Confermato:
+
+- deployment Preview del commit `91e3e89` Ready;
+- login admin riuscito;
+- `/admin/generated-content/articles` accessibile;
+- textarea `Note interne`, bottone `Salva note` e badge `Staging manual action` visibili;
+- salvataggio nota interna demo riuscito;
+- pagina aggiornata senza errore;
+- `admin_audit_logs` contiene una nuova riga `update_editorial_internal_notes`;
+- `before_data`, `after_data`, `metadata` e `created_at` recente presenti;
+- unpublish/publish/delete/create draft non presenti;
+- provider/Apify spenti;
+- Production non toccata.
+
+Query audit usata per la verifica:
+
+```sql
+select
+  action,
+  entity_type,
+  entity_id,
+  before_data,
+  after_data,
+  metadata,
+  created_at
+from public.admin_audit_logs
+where action = 'update_editorial_internal_notes'
+order by created_at desc
+limit 5;
+```
+
+Risultato atteso:
+
+- `action = update_editorial_internal_notes`;
+- `entity_type` coerente con la sezione testata, inizialmente `article`;
+- `entity_id` uguale al contenuto modificato;
+- `before_data` presente;
+- `after_data` presente;
+- `metadata` presente;
+- `created_at` recente.
+
+Non eseguire ancora:
+
+- `unpublish_editorial_content`;
+- publish;
+- delete;
+- create draft;
+- azioni massive.
+
+## C.6 — Prossimi passi dopo chiusura MVP staging
+
+Stato attuale:
+
+- Supabase staging funzionante;
+- public views demo verificate;
+- view admin editoriali esplicite verificate;
+- RPC `update_editorial_internal_notes` verificata tramite Server Action;
+- audit log confermato;
+- provider/Apify/import spenti.
+
+Da decidere prima di nuove migrazioni:
+
+- strategia migration tracking:
+  - lasciare staging manuale fino alla prossima migrazione;
+  - allineare `supabase_migrations.schema_migrations` con procedura controllata;
+  - ricreare staging in futuro usando il flow Supabase migrations corretto;
+- piano C.5.4 per testare `unpublish_editorial_content` solo su contenuti demo;
+- audit delle altre view `admin_*` non editoriali;
+- eventuale generazione tipi Supabase.
+
+Da non fare ancora:
+
+- `db push`;
+- `db reset`;
+- provider reali;
+- Apify;
+- import automatici;
+- Production deploy.
+
+## C.5.4 — Test staging richiesto per unpublish
+
+La UI e la Server Action per `unpublish_editorial_content` sono preparate localmente.
+
+Prima del test Preview:
+
+- confermare commit/push della modifica;
+- attendere deployment Preview Ready;
+- usare solo utente admin test;
+- scegliere un contenuto demo sacrificabile;
+- non usare dati reali.
+
+Query audit post-test:
+
+```sql
+select
+  action,
+  entity_type,
+  entity_id,
+  before_data,
+  after_data,
+  metadata,
+  created_at
+from public.admin_audit_logs
+where action = 'unpublish_editorial_content'
+order by created_at desc
+limit 5;
+```
+
+Esito atteso:
+
+- `action = unpublish_editorial_content`;
+- `before_data.status = published`;
+- `after_data.status` uguale a `draft` oppure `archived`;
+- `after_data.visibility = private_admin`;
+- `published_at` nullo dopo l’azione;
+- `metadata.target_status` valorizzato;
+- `metadata.reason_present` coerente;
+- provider/Apify/import ancora spenti.
+
+Rollback manuale:
+
+- non previsto automaticamente in app;
+- se serve ripubblicare il demo, usare una query manuale controllata oppure un futuro workflow `publish` separato;
+- non implementare publish nella stessa fase.
+
+## C.5.4-A — Verifica Preview unpublish completata
+
+Deployment:
+
+- Preview Ready per il commit `08d03bd`;
+- target `preview`;
+- alias branch Preview confermato.
+
+Risultato:
+
+- unpublish manuale controllato riuscito;
+- contenuto demo `f528beb7-6c57-4cb3-9c0b-4cca9757bd38`;
+- target finale `draft`;
+- `visibility = private_admin`;
+- `published_at = null`;
+- audit log presente con `action = unpublish_editorial_content`;
+- provider/Apify/import spenti;
+- Production non toccata.
+
+Nota `reason`:
+
+- audit metadata: `reason_present = false`, `reason_preview = ""`;
+- il codice passa il campo `reason` alla RPC;
+- se il motivo è stato lasciato vuoto, nessun fix necessario;
+- se il motivo era compilato, prossimo micro-fix consigliato: rendere `reason` obbligatorio lato form e Server Action.
+
+Non usare:
+
+- service role;
+- SQL Editor per simulare sessione admin app;
+- db push/reset;
+- provider/Apify;
+- Production.
+
+## D.1 — Query read-only provider staging
+
+Usare solo in Supabase SQL Editor/staging e senza modifiche dati.
+
+```sql
+select count(*) as active_providers
+from public.data_providers
+where is_active = true;
+
+select provider_key, name, provider_type, is_active, priority, monthly_budget_eur, warning_budget_eur, hard_stop_budget_eur
+from public.data_providers
+order by priority;
+
+select count(*) as enabled_imports
+from public.provider_competition_config
+where import_enabled = true;
+
+select tracking_level, count(*) as competitions
+from public.competitions
+group by tracking_level
+order by tracking_level;
+
+select c.slug, c.name, c.tracking_level, c.apify_enabled, c.apify_priority, p.provider_key, pc.import_enabled, pc.priority, pc.data_confidence
+from public.provider_competition_config pc
+join public.competitions c on c.id = pc.competition_id
+join public.data_providers p on p.id = pc.provider_id
+order by c.tracking_level, c.slug, pc.priority;
+
+select status, count(*) as import_runs
+from public.import_logs
+group by status
+order by status;
+
+select status, count(*) as provider_runs
+from public.provider_import_logs
+group by status
+order by status;
+
+select provider_key, is_active, monthly_budget_eur, warning_budget_eur, hard_stop_budget_eur
+from public.data_providers
+where provider_key = 'apify_sofascore';
+
+select *
+from public.apify_budget_status
+order by period_start desc
+limit 12;
+
+select count(*) as teams_demo from public.public_teams;
+select count(*) as matches_demo from public.public_matches;
+select count(*) as standings_demo from public.public_standings;
+```
+
+D.2 consigliato:
+
+- audit provider config in script locale dry-run;
+- nessun token;
+- nessun provider attivo;
+- nessun import reale;
+- nessun db push/reset.
+
+## D.2 — Audit provider locale completato
+
+Comando:
+
+```bash
+npm run audit:providers
+```
+
+Risultato:
+
+- provider reali spenti;
+- Apify spento;
+- import seed default `false`;
+- warnings `0`;
+- nessuna lettura DB;
+- nessuna scrittura DB.
+
+Uso consigliato prima di ogni futura attivazione:
+
+1. eseguire `npm run audit:providers`;
+2. confermare provider reali off se si è ancora in fase dry-run;
+3. confermare Apify off;
+4. confermare warning `0`;
+5. solo dopo procedere con piani D.3/D.4.
+
+## D.3 — Stable provider dry-run locale
+
+Comando:
+
+```bash
+npm run dry-run:stable-provider
+```
+
+Risultato D.3:
+
+- competizione `serie-a`;
+- FULL_OFFICIAL confermato;
+- stable provider simulato;
+- 4 team payload futuri;
+- 2 match payload futuri;
+- 4 standing payload futuri;
+- planned tables:
+  - `teams`;
+  - `matches`;
+  - `standings`;
+  - `provider_import_logs`;
+- nessuna scrittura DB.
+
+Prima di usare Supabase staging per import reali:
+
+- definire mapping provider UUID;
+- definire mapping competition/team/match external ID;
+- creare batch id;
+- loggare `provider_import_logs`;
+- loggare `api_usage_logs`;
+- avere rollback per batch;
+- tenere `import_enabled=false` finché non viene approvato un writer.
+
+## D.4 — Logging/budget provider in dry-run
+
+È disponibile un nuovo controllo locale:
+
+```bash
+npm run dry-run:provider-logging
+```
+
+Lo script prepara solo la forma futura di:
+
+- `provider_import_logs`;
+- `api_usage_logs`;
+- guardia budget Apify.
+
+Non legge Supabase staging e non modifica dati.
+
+Prima di scrivere davvero log nello staging serviranno:
+
+1. writer server-side con client Supabase sicuro;
+2. flag esplicito `realWritesEnabled`;
+3. batch id per import;
+4. rollback documentato;
+5. test RLS/admin sui log;
+6. conferma manuale per primo writer.
+
+Nota migration history:
+
+- le migrazioni applicate manualmente restano da allineare con una strategia di tracking prima di usare flussi automatici.
+
+## D.5 — Prima dei writer provider reali
+
+Il layer D.5 è volutamente bloccante:
+
+- nessuna insert su `provider_import_logs`;
+- nessuna insert su `api_usage_logs`;
+- nessuna insert su `import_logs`;
+- nessun upsert dati calcistici;
+- nessun uso service role.
+
+Prima di scrivere log reali nello staging decidere:
+
+1. se aggiungere `batch_id`/`import_run_id` alle tabelle log;
+2. come collegare `provider_import_logs` e `import_logs`;
+3. come gestire rollback per batch;
+4. come testare RLS/admin sui log;
+5. quale flag abilita scritture staging;
+6. come impedire esecuzioni lato utente.
+
+D.5 fornisce solo preview locali e guardie.
+
+## D.6 — Migrazione 0009 preparata
+
+Preparata, ma non applicata:
+
+- `supabase/migrations/0009_provider_import_runs.sql`.
+
+La migrazione aggiunge un modello tracciabile per import provider:
+
+- tabella `provider_import_runs`;
+- `batch_id`;
+- collegamenti opzionali dai log esistenti tramite `import_run_id`/`batch_id`;
+- indici;
+- RLS;
+- policy lettura editor/admin e scrittura admin.
+
+Prima di applicarla allo staging:
+
+1. confermare manualmente che Supabase Regista Avanzato sia il progetto target;
+2. non usare `db push/reset`;
+3. copiare solo 0009 nel SQL Editor o usare comando manuale controllato;
+4. verificare tabelle/colonne/indici;
+5. verificare anon/free_user bloccati;
+6. verificare editor/admin read;
+7. lasciare provider/import spenti.
+
+Supabase live non è stato modificato in D.6.
+
+## D.6-B — 0009 applicata manualmente
+
+La migrazione `0009_provider_import_runs.sql` è stata applicata su Supabase staging “Regista Avanzato”.
+
+Metodo:
+
+- SQL Editor;
+- nessun `supabase db push`;
+- nessun `supabase db reset`;
+- nessuna Production.
+
+Verifiche read-only registrate:
+
+- tabella `provider_import_runs` presente;
+- RLS attiva;
+- policy create;
+- colonne `batch_id` e `import_run_id` presenti su:
+  - `provider_import_logs`;
+  - `api_usage_logs`;
+  - `import_logs`;
+- indici presenti;
+- `provider_import_runs_count = 0`;
+- provider esterni ancora off;
+- import ancora disabilitati.
+
+Residui prima di writer reali:
+
+1. test RLS con sessione app;
+2. test admin/editor visibility;
+3. verificare blocco anon/free_user;
+4. definire writer transazionale staging;
+5. mantenere `realWritesEnabled=false` fino a conferma.
+
+Prossimo step consigliato:
+
+- D.7 — RLS/readiness test per `provider_import_runs`, senza provider e senza import reali.
+
+## D.7 — Query read-only pronte
+
+Per verificare `provider_import_runs` su staging usare:
+
+```bash
+pbcopy < supabase/manual/provider_import_runs_rls_d7.sql
+```
+
+Poi incollare nel SQL Editor del progetto Supabase staging “Regista Avanzato”.
+
+Il file controlla:
+
+- esistenza tabella;
+- RLS;
+- policy;
+- grants;
+- colonne;
+- indici;
+- count righe;
+- provider off;
+- import disabilitati;
+- assenza policy delete.
+
+Se i risultati sono corretti, il prossimo step può essere:
+
+- D.7-A documentazione risultati; oppure
+- D.8 reader admin read-only per import runs, se serve visibilità UI.
+
+## D.7-B — Risultati query read-only ricevuti
+
+Risultati manuali D.7-A registrati da SQL Editor staging “Regista Avanzato”:
+
+- `provider_import_runs` esiste;
+- RLS attiva;
+- conteggio righe = 0;
+- provider esterni off;
+- nessuna riga con import abilitato;
+- nessuna policy `DELETE`;
+- contesto SQL Editor non autenticato come app user:
+  - `auth.uid() = null`;
+  - `is_admin() = false`;
+  - `is_editor_or_admin() = false`.
+
+Conferme:
+
+- nessuna scrittura DB;
+- nessun seed/provider/import reale;
+- nessun `db push/reset`;
+- Production non toccata;
+- `realWritesEnabled=false`.
+
+Prossimi step sicuri:
+
+1. D.8 — reader admin read-only per mostrare `provider_import_runs` in `/admin/imports`;
+2. test RLS con sessione applicativa admin/editor/free_user;
+3. mantenere writer reali disabilitati fino a conferma esplicita.
+
+## D.8 — Reader admin read-only implementato
+
+La pagina `/admin/imports` ora include una sezione read-only per `provider_import_runs`.
+
+Stato atteso in staging:
+
+- tabella vuota;
+- empty state visibile;
+- provider reali off;
+- Apify off;
+- import disabilitati;
+- `realWritesEnabled=false`.
+
+Verifiche da fare dopo commit/push e Preview:
+
+1. login come admin;
+2. aprire `/admin/imports`;
+3. confermare sezione `Provider import runs`;
+4. confermare empty state;
+5. confermare assenza di bottoni `run`, `import`, `delete`, `refresh provider`;
+6. verificare che logout/non admin restino bloccati da `/admin`.
+
+Non eseguire ancora:
+
+- writer reali;
+- insert run;
+- update run;
+- delete run;
+- provider fetch;
+- Apify.
+
+## D.9 — Verifica Preview da completare manualmente
+
+Verifica tecnica già completata:
+
+- Vercel Preview Ready;
+- alias branch Preview attivo;
+- `/admin/imports` incluso nella build;
+- Vercel Authentication attiva;
+- accesso non autenticato bloccato da SSO;
+- nessun deploy CLI;
+- nessun provider/import/Apify.
+
+Da verificare manualmente con admin Supabase:
+
+1. `/admin/imports` accessibile dopo login admin;
+2. sezione `Provider import runs` visibile;
+3. badge sicurezza visibili;
+4. empty state coerente con `provider_import_runs_count = 0`;
+5. nessun bottone di scrittura/import/delete/update;
+6. dopo logout la route torna bloccata.
+
+Se la UI non mostra empty state, verificare:
+
+- presenza env Supabase solo Preview;
+- RLS su `provider_import_runs`;
+- ruolo admin/editor del profilo;
+- eventuali errori runtime Vercel.
+
+## D.9-B — Preview `/admin/imports` verificata
+
+La verifica manuale su Preview ha confermato:
+
+- `/admin/imports` accessibile da admin;
+- sezione `Provider import runs` visibile;
+- empty state corretto;
+- badge sicurezza presenti;
+- nessun bottone di scrittura/import/run/delete/update;
+- non autenticato bloccato da Vercel Authentication.
+
+Stato invariato:
+
+- provider reali spenti;
+- Apify spento;
+- import spenti;
+- `realWritesEnabled=false`;
+- nessuna Production.
+
+Prossimo step consigliato:
+
+- D.10 — test RLS applicativo con free_user/editor/admin oppure preparazione reader/log visibility successiva, sempre senza provider reali e senza scritture.
+
+## D.10 — Audit accessi applicativi `/admin/imports`
+
+Il codice è coerente con la matrice attesa:
+
+- non autenticato bloccato prima da Vercel Authentication o poi da login app;
+- `free_user` bloccato da `requireAdmin()`;
+- `editor/admin/super_admin` approved ammessi;
+- reader `provider_import_runs` solo SELECT e RLS-aware;
+- nessuna service role;
+- nessuna scrittura.
+
+Da fare solo con conferma separata:
+
+- creare o usare utente `free_user` controllato per test negativo;
+- creare o usare utente `editor` controllato per test positivo read-only;
+- non modificare ruoli dell’admin test senza piano.
+
+Prossimo step consigliato:
+
+- D.11 — piano test ruoli controllato o chiusura residuo se si decide di non creare utenti aggiuntivi ora.
+
+## D.11 — Residui ruoli chiusi come consapevoli
+
+Decisione:
+
+- non creare utenti `free_user`/`editor` ora;
+- non modificare ruoli ora;
+- mantenere test `free_user`/`editor` come residuo documentato.
+
+Prima di writer reali:
+
+1. predisporre utenti controllati per test ruoli;
+2. verificare RLS applicativo con admin/editor/free_user/non autenticato;
+3. confermare repo privato e service role ruotata;
+4. confermare env Supabase solo Preview;
+5. mantenere `realWritesEnabled=false`;
+6. completare piano rollback/audit/log per batch.
+
+Non fare ancora:
+
+- provider reali;
+- Apify;
+- import;
+- writer DB;
+- Production deploy.
+
+## D.12-A — Suite ruoli prima dei writer reali
+
+Preparata la suite:
+
+- `docs/role_access_test_suite_d12a.md`.
+
+Stato:
+
+- admin già verificato manualmente su `/admin/imports`;
+- non autenticato già bloccato;
+- `free_user` ed `editor` restano test residui, da eseguire solo con utenti controllati e conferma separata;
+- nessun utente creato;
+- nessun ruolo modificato;
+- nessuna scrittura DB.
+
+Prossimo passo consigliato:
+
+- D.12-B — eseguire test applicativo `free_user`/`editor` solo quando saranno disponibili utenti staging controllati;
+- in alternativa D.13 — ulteriore audit documentale provider/import, mantenendo writer reali disabilitati.
+
+## D.12-B — Piano pronto, test non eseguito
+
+Preparato:
+
+- `docs/role_access_test_suite_d12b.md`.
+
+Prima di eseguire il test servono istruzioni dell’utente su:
+
+1. riutilizzare utenti staging esistenti o crearne di nuovi;
+2. quale email test usare, senza password in chat;
+3. se autorizzare una promozione manuale a `editor`;
+4. come effettuare cleanup dopo il test.
+
+D.12-B conferma che il test può essere completato senza service role e senza Production, usando sessioni browser reali su Preview.
+
+## D.13 — Readiness prima chiamata provider stabile
+
+Preparato:
+
+- `docs/stable_provider_real_call_readiness_d13.md`.
+
+D.13 non usa Supabase live e non scrive dati.
+
+Prima di qualunque real-call:
+
+- confermare provider tra API-Football e TheStatsAPI;
+- verificare manualmente docs, prezzi, rate limit e licenza;
+- creare eventuale script probe separato da import/writer;
+- mantenere `provider_import_runs_count = 0`;
+- mantenere provider/import off;
+- mantenere `realWritesEnabled=false`;
+- non usare service role;
+- non toccare Production.
+
+Prossimo step consigliato:
+
+- D.14 — scelta provider e bozza script probe read-only, ancora senza eseguirlo;
+- oppure D.12-C — completare prima test utenti `free_user`/`editor`.
+
+## D.14-A — Script probe stabile disabilitato
+
+Creato comando:
+
+```bash
+npm run probe:stable-provider:disabled
+```
+
+Lo script non tocca Supabase staging:
+
+- nessun client Supabase;
+- nessuna scrittura DB;
+- nessun provider attivato;
+- nessun import attivato;
+- nessuna service role;
+- nessuna Production.
+
+Serve solo a fissare il contratto sicuro della futura probe.
+
+## D.14-B — Checklist manuale accessi ruoli
+
+Preparata:
+
+- `docs/role_access_manual_test_checklist_d14b.md`.
+
+Da eseguire manualmente quando disponibili utenti staging:
+
+- `regista-test-free-user`;
+- `regista-test-editor`.
+
+Fino alla conferma:
+
+- non creare utenti;
+- non modificare ruoli;
+- non usare service role;
+- non scrivere DB;
+- non toccare Production.
+
+## D.14-C — Esecuzione manuale ruoli
+
+Preparato:
+
+- `docs/role_access_manual_test_d14c.md`.
+
+Prima di proseguire servono risultati manuali:
+
+- esistenza o assenza utenti test staging;
+- esito `free_user` su `/admin/imports`;
+- esito `editor` su `/admin/imports`;
+- conferma DB invariato con query read-only.
+
+Non creare utenti o modificare ruoli senza conferma esplicita.
+
+## D.14-D — Utenti test assenti
+
+Verifica manuale read-only completata:
+
+- query utenti `regista-test-*` eseguita nel SQL Editor staging;
+- risultato: nessuna riga;
+- nessun utente creato;
+- nessun ruolo modificato;
+- nessuna scrittura DB.
+
+Prossimo passo:
+
+- D.14-E — piano creazione controllata utenti test staging, usando solo email mascherate nei documenti e nessuna password.
+
+## D.14-E — Piano creazione utenti test
+
+Creato:
+
+- `docs/staging_test_users_creation_plan_d14e.md`.
+
+Azioni ancora non autorizzate:
+
+- creare utenti;
+- modificare ruoli;
+- eseguire update ruolo editor;
+- cancellare utenti;
+- toccare Production.
+
+Le email operative sono documentate solo in forma mascherata.
+
+## D.15 — Provider probe readiness
+
+Creato:
+
+- `docs/provider_probe_readiness_d15.md`.
+
+Stato:
+
+- probe provider ancora disabilitata;
+- nessun token letto;
+- nessuna fetch;
+- nessuna scrittura DB;
+- provider/import spenti;
+- Production non toccata.
+
+Prima di D.16:
+
+- decidere provider definitivo;
+- verificare manualmente prezzo/rate limit/licenza;
+- decidere se completare prima i test ruoli `free_user`/`editor`.
+
+## D.16-A — Verifica manuale provider/costi/licenze
+
+Aggiunto:
+
+- `docs/provider_manual_verification_checklist_d16a.md`.
+
+Staging resta invariato:
+
+- nessuna real-call;
+- nessuna fetch provider;
+- nessun token letto/stampato;
+- nessuna scrittura DB;
+- nessun `provider_import_runs` insert;
+- nessun provider attivato;
+- nessun import attivato;
+- Apify spento;
+- Production non toccata.
+
+Prima di D.16-B servono:
+
+- scelta provider confermata manualmente;
+- prezzo e rate limit verificati;
+- licenza/caching/pubblicazione verificati;
+- endpoint scelto;
+- token solo in env sicura;
+- `real_provider_probe_enabled=false` fino ad autorizzazione esplicita;
+- `realWritesEnabled=false`;
+- DB write ancora vietati.
+
+## D.16-B — Piano API-Football Free senza real-call
+
+Aggiunto:
+
+- `docs/api_football_free_probe_plan_d16b.md`.
+
+Staging non cambia:
+
+- nessuna scrittura DB;
+- nessun insert/update/delete/upsert;
+- nessun `provider_import_runs` insert;
+- provider/import ancora spenti;
+- Apify spento;
+- `realWritesEnabled=false`;
+- `/admin/imports` read-only.
+
+Prima di D.16-C:
+
+- account/API-Football Free creato manualmente;
+- token in env sicura;
+- token non committato/stampato;
+- massimo una richiesta read-only;
+- nessun DB write;
+- Production non toccata.
+
+## D.16-C1 — Preparazione sicura API-Football key
+
+Aggiunto:
+
+- `docs/api_football_key_setup_d16c1.md`.
+
+Nessun cambiamento a Supabase staging:
+
+- nessuna scrittura DB;
+- nessun provider attivato;
+- nessun import attivato;
+- nessun token letto/stampato;
+- nessun `provider_import_runs` insert;
+- `realWritesEnabled=false`.
+
+La futura chiave API-Football Free dovrà essere inserita solo manualmente in env sicura locale/Preview, mai in Production e mai in chat.
+
+## D.16-C2-B — Script probe preparato senza DB write
+
+Aggiunto:
+
+- `scripts/provider/apiFootballProbe.ts`;
+- `docs/api_football_probe_script_d16c2b.md`.
+
+Supabase staging resta invariato:
+
+- nessuna scrittura DB;
+- nessun insert in `provider_import_runs`;
+- nessun log provider scritto;
+- nessun provider attivato;
+- nessun import attivato;
+- `/admin/imports` read-only.
+
+Il prossimo step consigliato è provare solo l’output disabled dello script, non una real-call.
+
+## D.16-C2-C — Checklist finale pre-real-call
+
+Aggiunto:
+
+- `docs/api_football_pre_real_call_checklist_d16c2c.md`.
+
+Supabase staging resta invariato:
+
+- nessuna scrittura DB;
+- nessun `provider_import_runs` write;
+- nessun `api_usage_logs` write;
+- nessun `provider_import_logs` write;
+- nessun `import_logs` write;
+- provider/import spenti;
+- `realWritesEnabled=false`.
+
+La futura D.16-C3 dovrà essere massimo una richiesta read-only su standings Serie A, senza DB write.
+
+## D.16-C3 — Tentativo API-Football bloccato prima della fetch
+
+Risultato:
+
+- nessuna richiesta API-Football completata;
+- `requests_executed=0`;
+- blocco sanificato: `API_FOOTBALL_API_KEY_MISSING`;
+- `.env.local` non letto/caricato da Codex;
+- nessuna scrittura su Supabase staging;
+- nessun `provider_import_runs` write;
+- nessun `api_usage_logs` write;
+- nessun `provider_import_logs` write;
+- nessun `import_logs` write;
+- provider/import spenti;
+- Apify spento;
+- Production non toccata.
+
+Prossimo passo:
+
+- riprovare solo con procedura esplicita che renda la key disponibile nel process environment sicuro senza stampare valori;
+- mantenere comunque massimo una richiesta read-only e nessuna scrittura DB.
+
+## D.16-C3-R1 — Supabase invariato dopo real-call read-only
+
+La real-call API-Football R1 ha eseguito una sola richiesta esterna read-only e ha ricevuto HTTP `403`.
+
+Supabase staging resta invariato:
+
+- nessuna scrittura DB;
+- nessun insert/update/delete/upsert;
+- nessun write su `provider_import_runs`;
+- nessun write su `api_usage_logs`;
+- nessun write su `provider_import_logs`;
+- nessun write su `import_logs`;
+- provider/import spenti;
+- `realWritesEnabled=false`;
+- writer guards ancora bloccanti.
+
+Prima di ulteriori provider step:
+
+- verificare manualmente la causa del `403`;
+- mantenere ogni retry come fase separata e massimo una richiesta.
+
+## D.16-C3-R2 — Nessun impatto su Supabase staging
+
+D.16-C3-R2 è solo readiness/documentazione:
+
+- nessuna seconda richiesta provider;
+- nessuna fetch;
+- nessuna scrittura DB;
+- nessun write su `provider_import_runs`;
+- nessun write su `api_usage_logs`;
+- nessun write su `provider_import_logs`;
+- nessun write su `import_logs`;
+- provider/import spenti;
+- `realWritesEnabled=false`;
+- writer guards ancora bloccanti.
+
+Prossimo step eventuale: retry R2 solo dopo verifica manuale API-Football e nuova conferma esplicita.
+
+## D.16-C3-R2 manual check — Staging invariato
+
+La verifica dashboard API-Football è solo documentale/manuale.
+
+Supabase staging resta invariato:
+
+- nessuna scrittura DB;
+- nessun provider/import attivato;
+- nessun write su tabelle log/import;
+- `realWritesEnabled=false`;
+- writer guards attivi.
+
+R2 reale resta bloccato finché non vengono chiariti manualmente piano/key/restrizioni e la stagione da usare.
+
+## D.17-A — Pivot provider senza impatto DB
+
+TheStatsAPI diventa il provider scelto per i prossimi test, ma D.17-A non cambia Supabase staging.
+
+Staging resta invariato:
+
+- nessuna scrittura DB;
+- nessun write su tabelle log/import;
+- nessun provider/import attivato;
+- `realWritesEnabled=false`;
+- writer guards attivi;
+- Apify spento.
+
+API-Football resta documentato come R1 con HTTP `403` e sospeso per ora.
+
+## D.17-E/F — TheStatsAPI probe senza Supabase write
+
+La probe TheStatsAPI non ha scritto nulla in Supabase.
+
+Risultato:
+
+- richiesta `/football/competitions`: HTTP `404`;
+- standings non eseguito;
+- nessuna riga creata in `provider_import_runs`;
+- nessun write su `provider_import_logs`;
+- nessun write su `api_usage_logs`;
+- nessun write su `import_logs`;
+- provider/import spenti;
+- `realWritesEnabled=false`;
+- Apify spento;
+- Production non toccata.
+
+Non procedere con writer o import finché non viene individuato e testato un endpoint valido.
+
+## D.17-G — Nessun impatto Supabase
+
+D.17-G ha corretto solo la composizione URL dello script provider.
+
+Supabase staging invariato:
+
+- nessuna scrittura DB;
+- nessun log provider scritto;
+- nessun import abilitato;
+- nessun provider attivato;
+- `realWritesEnabled=false`;
+- writer guards attivi.
+
+Prossimo eventuale retry resta read-only e senza DB write.
+
+## D.17-H — Supabase invariato dopo retry TheStatsAPI
+
+D.17-H ha eseguito una sola richiesta provider read-only, senza toccare Supabase.
+
+Conferme:
+
+- nessuna scrittura su `provider_import_runs`;
+- nessuna scrittura su `api_usage_logs`;
+- nessuna scrittura su `provider_import_logs`;
+- nessuna scrittura su `import_logs`;
+- nessun insert/update/delete/upsert;
+- `realWritesEnabled=false`;
+- writer guards attivi;
+- provider/import spenti.
+
+Risultato provider: HTTP `403`, quindi nessun mapping/import da portare su staging.
+
+## D.17-J — Supabase invariato
+
+D.17-J non ha eseguito chiamate provider e non ha scritto dati.
+
+Conferme:
+
+- nessuna scrittura DB;
+- nessun `provider_import_runs` write;
+- nessun `api_usage_logs` write;
+- nessun `provider_import_logs` write;
+- nessun `import_logs` write;
+- provider/import spenti;
+- writer guards attivi.
+
+Nessun prossimo step Supabase finché TheStatsAPI non è chiarito.
+
+## D.17-K — Nessun impatto Supabase
+
+D.17-K non richiede azioni Supabase:
+
+- nessuna API call;
+- nessun import;
+- nessun provider log;
+- nessuna scrittura DB;
+- writer guards invariati.
+
+Supabase staging resta invariato finché non esiste una probe provider riuscita e autorizzata.
+
+## D.17-L — Nessun impatto Supabase
+
+D.17-L modifica solo lo script gated e la documentazione.
+
+Supabase invariato:
+
+- nessuna scrittura DB;
+- nessun import log;
+- nessun provider import run;
+- writer guards invariati.
+
+## D.17-M/N/Z — Nessun prossimo step Supabase
+
+Punto 17 non produce dati da importare.
+
+Supabase resta invariato:
+
+- nessuna scrittura DB;
+- nessun provider log;
+- nessun import run;
+- nessun writer reale.
+
+## Punto 18 — Nessun prossimo step DB per provider
+
+Punto 18 non richiede azioni Supabase.
+
+Conferme:
+
+- nessuna migrazione;
+- nessun `db push/reset`;
+- nessun insert/update/delete/upsert;
+- nessun provider log;
+- nessun import run;
+- nessun `service_role`;
+- `provider_import_runs` non viene popolata da Punto 18;
+- writer reali restano disabilitati.
+
+La modalità manual/mock usa fixture locali e dry-run senza DB write.
+
+## Punto 19 — Preview admin senza impatto Supabase
+
+Punto 19 non richiede azioni Supabase.
+
+La pagina `/admin/imports` legge fixture locali e mostra una preview read-only.
+
+Conferme:
+
+- nessun insert/update/delete/upsert;
+- nessun provider import run scritto;
+- nessun audit/log provider scritto;
+- nessun `service_role`;
+- nessun client Supabase admin;
+- nessuna migrazione;
+- nessun `db push/reset`.
+
+Un eventuale import manuale staging resta fuori scope e richiede step separato con autorizzazione esplicita.
+
+## Punto 20 — Piano import senza scritture Supabase
+
+Punto 20 prepara un piano per futuro import manuale staging, ma non modifica Supabase.
+
+Conferme:
+
+- nessun import eseguito;
+- nessuna scrittura DB;
+- nessun provider log scritto;
+- nessun import log scritto;
+- nessun `provider_import_runs` scritto;
+- nessuna migrazione;
+- nessun `db push/reset`.
+
+Prima di qualsiasi step che tocchi Supabase servirà conferma esplicita e checklist preflight completa.
+
+## Punto 21 — Readiness staging senza toccare Supabase
+
+Punto 21 rivede lo schema locale e prepara batch/collision/rollback preview, ma non usa Supabase live.
+
+Conferme:
+
+- nessuna query DB;
+- nessun insert/update/delete/upsert;
+- nessun `service_role`;
+- nessun client Supabase admin;
+- nessuna migrazione;
+- nessun `db push/reset`;
+- nessun log import scritto.
+
+Prima di qualsiasi write staging servirà un Punto 22 separato con autorizzazione esplicita.
+
+## Punto 22 — Schema confirmation senza Supabase live
+
+Punto 22 usa solo migrazioni e file locali.
+
+Conferme:
+
+- nessuna query Supabase;
+- nessuna scrittura DB;
+- nessuna migrazione;
+- nessun `db push/reset`;
+- nessun `service_role`;
+- nessun audit log reale.
+
+Il prossimo eventuale step richiede decisione Punto 23 e autorizzazione esplicita.
+
+## Punto 23 — Nessun prossimo step Supabase automatico
+
+Punto 23 non usa Supabase live.
+
+Restano da decidere prima di qualunque DB touch:
+
+- policy `season`;
+- regole slug;
+- lookup competition/team;
+- manual provider id;
+- stage/matchday;
+- backup/rollback/audit.
+
+Consiglio conservativo per Punto 24: ulteriore no-write review oppure DB read-only check autorizzato, non write.
+
+## Punto 24 — Risultato no-write
+
+Punto 24 non ha interrogato Supabase staging.
+
+La review locale indica che non serve migrazione immediata, perché tabelle e colonne core sono presenti nei file locali. Restano però necessari controlli read-only prima di qualsiasi write:
+
+- verificare provider manual/mock presente e inattivo/controllato;
+- verificare competizione Serie A/manual fixture già presente o assente;
+- confermare lookup da `provider_competition_id` a `competitions.id`;
+- confermare lookup da `provider_team_id` a `teams.id`;
+- verificare assenza drift tra schema locale e staging applicato manualmente.
+
+Punto 25 consigliato:
+
+```text
+Punto 25-A — DB read-only schema/data lookup check, ancora no-write.
+```
+
+Non autorizzato:
+
+- insert/update/delete/upsert;
+- import reale;
+- provider reali;
+- Apify;
+- Production.
+
+## Punto 25 — Read-only DB check eseguito
+
+Il primo check read-only ha usato solo client anon/pubblico e non service role.
+
+Risultato:
+
+- DB read eseguito: sì;
+- DB write: no;
+- tabelle target confermate: no;
+- public views confermate: no;
+- lookup fixture confermati: no;
+- payload completo stampato/salvato: no.
+
+Stato per staging:
+
+- competitions: `blocked`;
+- teams: `blocked`;
+- standings: `blocked`;
+- `next_write_allowed=false`.
+
+Prossimo step consigliato:
+
+```text
+Punto 26-A — investigazione read-only schema/accesso Supabase staging.
+```
+
+Possibili verifiche Punto 26, ancora senza write:
+
+- confermare che env pubblica punti allo staging corretto senza stampare valori;
+- preparare query manuali SELECT da SQL Editor staging;
+- verificare grants/RLS/public views;
+- verificare eventuale schema drift.
+
+## Punto 26 — Esito investigazione accesso read-only
+
+L'investigazione locale/read-only indica che:
+
+- il client anon/pubblico non è un percorso affidabile per lookup import;
+- le public views esistenti sono orientate al sito pubblico, non all'import lookup;
+- i reader admin richiedono sessione/ruolo e non sono utilizzabili da script anon;
+- una futura view read-only dedicata o una verifica manuale dashboard sono i percorsi più sicuri.
+
+Punto 27 consigliato:
+
+```text
+Punto 27-A — proposta migrazione read-only view, non applicata.
+```
+
+Alternativa:
+
+```text
+Punto 27-C — conferma manuale da Supabase dashboard con sole SELECT.
+```
+
+Non autorizzato: write staging, provider, Apify, Production.
+
+## Punto 27 — Proposta view read-only dedicata
+
+Punto 27 prepara una proposta documentale per sbloccare in futuro i lookup import manuale senza service role.
+
+View future proposte:
+
+- `manual_import_competitions_lookup`;
+- `manual_import_teams_lookup`;
+- `manual_import_standings_lookup`.
+
+Stato:
+
+- requisiti documentati;
+- field mapping documentato;
+- pseudo-SQL marcato non eseguibile;
+- nessuna migrazione applicata;
+- nessuna scrittura DB;
+- `next_write_allowed=false`.
+
+Prossimo step: Punto 28, scegliere tra migrazione non applicata oppure SELECT manuali da SQL Editor staging.
+
+## Punto 28 — Migration proposal documentale
+
+Creato documento:
+
+- `docs/migration_proposals/manual_import_read_only_views_p28.sql.md`
+
+Questo documento descrive una futura migrazione per view lookup read-only, ma:
+
+- non è in `supabase/migrations`;
+- non è auto-applicabile;
+- non è revisionato per esecuzione;
+- non autorizza scritture;
+- non autorizza Punto 29/write staging.
+
+Prossimo step consigliato: review statica o SELECT manuali read-only, ancora senza write.
+
+## Punto 29 — Review proposal e placeholder
+
+Punto 29 ha revisionato la proposal e classificato i placeholder.
+
+Esito:
+
+- tabelle/colonne candidate supportate da evidenza locale;
+- conferma live dashboard/read-only ancora richiesta;
+- nessuna migration `.sql` creata;
+- nessuna migration applicata;
+- nessuna scrittura DB;
+- `next_write_allowed=false`.
+
+Prossimo step consigliato:
+
+```text
+Punto 30-B — dashboard confirmation manuale no-write.
+```
+
+## Punto 30-B — Dashboard confirmation manuale registrata
+
+È stata registrata la conferma manuale dichiarata dall'utente, ma i nomi reali di tabelle/colonne non sono stati forniti.
+
+Stato:
+
+- SQL executed: `false`;
+- DB write: `false`;
+- service_role used: `false`;
+- placeholders resolved count: `0`;
+- placeholders unclear count: `16`;
+- read-only view still required: `true`;
+- ready for migration draft: `false`;
+- `next_write_allowed=false`.
+
+Prossimo step consigliato:
+
+```text
+Punto 30-C — completare dashboard confirmation manuale no-write con valori reali.
+```
+
+## Punto 30-C — Manual schema values collection
+
+Punto 30-C prepara una checklist per raccogliere manualmente da Supabase Dashboard i valori reali di competitions, teams e standings.
+
+Stato:
+
+- collection prepared: `true`;
+- real schema values provided: `false`;
+- placeholders resolved count: `0`;
+- placeholders uncollected count: `16`;
+- ready for migration draft: `false`;
+- `next_write_allowed=false`.
+
+Non creare migration e non applicare nulla finché i valori reali non vengono forniti.
+
+## Punto 30-D — Local migration schema extraction
+
+È stata completata estrazione da file locali versionati senza Dashboard e senza DB query.
+
+Stato:
+
+- local schema extraction completed: `true`;
+- Supabase Dashboard used: `false`;
+- DB query executed: `false`;
+- DB write: `false`;
+- service_role used: `false`;
+- placeholders resolved from local files count: `16`;
+- placeholders unresolved count: `0`;
+- placeholders unclear count: `0`;
+- ready for migration draft: `true`;
+- `next_write_allowed=false`.
+
+Prossimo step possibile: Punto 31 migration draft `.sql` non applicata/no-apply. Non applicare nulla e non usare `db push/reset`.
+
+## Punto 33 — Staging apply plan no-apply
+
+Stato aggiornato:
+
+- staging apply plan created: `true`;
+- backup checklist created: `true`;
+- rollback checklist created: `true`;
+- pre-apply checklist created: `true`;
+- post-apply verification plan created: `true`;
+- draft path: `docs/migration_drafts/manual_import_read_only_views_p31.sql.draft`;
+- draft fuori da `supabase/migrations`;
+- migration applied: `false`;
+- db push/reset: `false`;
+- DB write: `false`;
+- service role used: `false`;
+- provider/import/Apify off;
+- Production untouched;
+- ready for apply: `false`;
+- `next_write_allowed=false`.
+
+Prossimo step consigliato: Punto 34 final pre-apply authorization gate no-write. Non applicare nulla prima di autorizzazione esplicita.
+
+## Punto 34 — Final pre-apply gate
+
+Stato aggiornato:
+
+- final pre-apply gate created: `true`;
+- authorization language defined: `true`;
+- no-apply safety lock created: `true`;
+- point 35 readiness criteria created: `true`;
+- explicit user authorization received: `false`;
+- point 35 blocked without explicit authorization: `true`;
+- draft fuori da `supabase/migrations`;
+- migration applied: `false`;
+- db push/reset: `false`;
+- DB write: `false`;
+- service role used: `false`;
+- provider/import/Apify off;
+- Production untouched;
+- ready for apply: `false`;
+- `next_write_allowed=false`.
+
+Punto 35 richiede frase esplicita; conferme generiche non autorizzano apply.
+
+## Punto 35 — Migration reale creata, apply bloccato
+
+Stato:
+
+- explicit authorization received: `true`;
+- staging target confirmed: `true`;
+- production excluded: `true`;
+- real migration created: `true`;
+- real migration path: `supabase/migrations/20260922120000_manual_import_read_only_views.sql`;
+- migration applied: `false`;
+- db write: `false`;
+- db push/reset: `false`;
+- service role used: `false`;
+- provider/import off;
+- Apify off;
+- Production untouched;
+- next write allowed: `false`.
+
+Motivo blocco: apply remoto non eseguito perché le regole vietano `db push/reset` e non è stato usato un canale alternativo con credenziali/prompt ambigui.
+
+Prossimo step: definire Punto 36-Fix/canale apply controllato o apply manuale da SQL Editor staging con conferma separata.
+
+## Punto 36-B — Manual SQL Editor apply riuscito
+
+Stato:
+
+- apply channel: `manual_sql_editor`;
+- migration file: `supabase/migrations/20260922120000_manual_import_read_only_views.sql`;
+- apply executed manually by user: `true`;
+- apply result: `Success. No rows returned`;
+- migration applied: `true`;
+- db write: `true`;
+- db write scope: `schema_read_only_views_only`;
+- provider/import off;
+- Apify off;
+- Production untouched;
+- next write allowed: `false`.
+
+Prossimo step: verifica read-only metadata/colonne delle 3 view, poi verifica app/admin read-only.
+
+## Punto 37 — View metadata verification completata
+
+La verifica manuale read-only su metadata Supabase staging è completata.
+
+Risultato:
+
+- metadata_verification_completed: `true`;
+- query_read_only: `true`;
+- source: `information_schema.columns`;
+- app_data_read: `false`;
+- db_write: `false`;
+- service_role_used: `false`;
+- provider_import_enabled: `false`;
+- apify_enabled: `false`;
+- production_touched: `false`;
+- views_expected_count: `3`;
+- views_verified_count: `3`;
+- competitions_view_status: `verified`;
+- teams_view_status: `verified`;
+- standings_view_status: `verified`;
+- column_check_status: `pass`;
+- post_apply_verification_passed: `true`;
+- `next_write_allowed=false`.
+
+Prossimo step: Punto 38/app-admin read-only integration check. Non attivare provider/import e non aggiungere azioni di scrittura.
+
+## Punto 38 — Admin read-only integration completata
+
+`/admin/imports` mostra lo stato delle view manual import in sola lettura.
+
+Conferme:
+
+- admin_read_only_integration_checked: `true`;
+- admin_imports_read_only: `true`;
+- migration_applied: `true`;
+- metadata_verification_completed: `true`;
+- views_expected_count: `3`;
+- views_verified_count: `3`;
+- competitions_view_status: `verified`;
+- teams_view_status: `verified`;
+- standings_view_status: `verified`;
+- post_apply_verification_passed: `true`;
+- db_write: `false`;
+- service_role_used: `false`;
+- provider_import_enabled: `false`;
+- apify_enabled: `false`;
+- production_touched: `false`;
+- `next_write_allowed=false`.
+
+Prossimo step: Punto 39 manual fixture/read-only import preview contro le view verificate. Nessun provider/import e nessuna DB write.
+
+## Punto 39 — Manual import preview local-only
+
+Preview completata senza letture DB aggiuntive e senza scritture.
+
+- preview_mode: `local_only_unresolved`;
+- fixtures_loaded: `true`;
+- competitions_fixture_count: `1`;
+- teams_fixture_count: `2`;
+- standings_fixture_count: `2`;
+- views_verified_count: `3`;
+- view_lookup_executed: `false`;
+- create_count: `0`;
+- update_count: `0`;
+- skip_count: `0`;
+- conflict_count: `0`;
+- unresolved_count: `5`;
+- db_write: `false`;
+- provider_fetch: `false`;
+- next_write_allowed: `false`.
+
+Prossimo step: Punto 40-Fix per risolvere mapping/lookup preview read-only prima di qualunque write plan.
+
+## Punto 40-Fix — Query lookup live preparata
+
+File:
+
+- `supabase/manual/manual_import_preview_lookup_p40fix.sql`
+
+Stato:
+
+- manual_sql_execution_required: `true`;
+- staging_target_confirmed_by_user: `pending`;
+- query_executed: `pending`;
+- query_read_only: `true`;
+- db_write: `false`;
+- provider_fetch: `false`;
+- production_touched: `false`;
+- view_lookup_executed: `false`;
+- preview_mode: `read_only_lookup_pending`;
+- unresolved_count: `5`;
+- next_write_allowed: `false`.
+
+Eseguire solo manualmente in Supabase SQL Editor staging “Regista Avanzato”.
+
+## Punto 40-Fix-B — Lookup live read-only completato
+
+Risultato manuale SQL Editor staging:
+
+- query_result: `success_no_rows_returned`;
+- query_executed: `true`;
+- query_read_only: `true`;
+- db_write: `false`;
+- service_role_used: `false`;
+- provider_fetch: `false`;
+- production_touched: `false`;
+- views_verified_count: `3`;
+- live_lookup_rows_count: `0`;
+- existing_competitions_rows: `0`;
+- existing_teams_rows: `0`;
+- existing_standings_rows: `0`;
+- preview_mode: `read_only_lookup_completed`;
+- create_count: `5`;
+- update_count: `0`;
+- skip_count: `0`;
+- conflict_count: `0`;
+- unresolved_count: `0`;
+- next_write_allowed: `false`.
+
+Prossimo step consigliato: Punto 40-B manual import write plan no-apply. Nessun DB write autorizzato in questo step.
+
+## Punto 40-B — Manual import write plan no-apply
+
+Piano creato senza scritture:
+
+- write_plan_created: `true`;
+- write_plan_mode: `no_apply`;
+- create_candidates_count: `5`;
+- update_candidates_count: `0`;
+- skip_candidates_count: `0`;
+- conflict_count: `0`;
+- unresolved_count: `0`;
+- proposed_write_order: `competitions,teams,standings`;
+- rollback_plan_created: `true`;
+- post_write_verification_plan_created: `true`;
+- db_write: `false`;
+- service_role_used: `false`;
+- provider_fetch: `false`;
+- provider_import_enabled: `false`;
+- apify_enabled: `false`;
+- production_touched: `false`;
+- next_write_allowed: `false`.
+
+Prossimo step consigliato: Punto 41 final authorization gate for manual fixture write, ancora no-write.
+
+## Punto 42-B — Manual fixture write staging completato
+
+Autorizzazione utente ricevuta per Punto 42, limitata a staging e alle 5 fixture manuali. Il write è stato eseguito manualmente in Supabase SQL Editor staging.
+
+File preparati:
+
+- `supabase/manual/manual_import_fixture_write_p42.sql`;
+- `supabase/manual/manual_import_fixture_rollback_p42.sql`;
+- `supabase/manual/manual_import_fixture_post_verify_p42.sql`.
+
+Stato finale:
+
+- point_42_authorized: `true`;
+- write_sql_prepared: `true`;
+- rollback_sql_prepared: `true`;
+- post_verify_sql_prepared: `true`;
+- manual_fixture_write_executed: `true`;
+- execution_channel: `manual_sql_editor_staging`;
+- db_write: `true`;
+- written_competitions_count: `1`;
+- written_teams_count: `2`;
+- written_standings_count: `2`;
+- total_written_rows: `5`;
+- post_write_verification_executed: `true`;
+- post_write_verification_passed: `true`;
+- rollback_executed: `false`;
+- provider_fetch: `false`;
+- provider_import_enabled: `false`;
+- apify_enabled: `false`;
+- production_touched: `false`;
+- deploy_executed: `false`;
+- service_role_used: `false`.
+
+La competition è stata verificata con `api_competition_id=manual-serie-a`. Il primo count competition a zero era dovuto a una query non allineata che cercava `manual-competition-1`.
+
+## Punto 43 — Read-only UI/admin verification
+
+Punto 43 completato in modalità read-only.
+
+- query manuale preparata: `supabase/manual/manual_import_fixture_ui_verify_p43.sql`;
+- `/admin/imports` aggiornato come dashboard read-only dello stato post-write;
+- manual_fixture_write_executed: `true`;
+- written_competitions_count: `1`;
+- written_teams_count: `2`;
+- written_standings_count: `2`;
+- total_written_rows: `5`;
+- post_write_verification_passed: `true`;
+- rollback_executed: `false`;
+- point_43_db_write: `false`;
+- provider_fetch: `false`;
+- provider_import_enabled: `false`;
+- apify_enabled: `false`;
+- production_touched: `false`;
+- deploy_executed: `false`;
+- service_role_used: `false`;
+- next_write_allowed: `false`.
+
+Prossimo step consigliato: Punto 44 — piano read-only di consumo dati manuali in admin/pubblico.
+
+## Punto 31 — Migration draft no-apply
+
+Creata draft:
+
+- `docs/migration_drafts/manual_import_read_only_views_p31.sql.draft`
+
+Stato:
+
+- fuori da `supabase/migrations`;
+- non applicata;
+- nessun `db push/reset`;
+- nessuna scrittura DB;
+- nessun `service_role`;
+- `ready_for_apply=false`;
+- `next_write_allowed=false`.
+
+Prossimo step consigliato: Punto 32 review manuale no-apply.
+
+## Punto 32 — Review no-apply della migration draft
+
+Review completata e draft hardenata.
+
+Stato:
+
+- blocking issues: `0`;
+- needs review: `3`;
+- ready for staging apply candidate: `true`;
+- ready for apply: `false`;
+- migration applied: `false`;
+- DB write: `false`;
+- service_role used: `false`;
+- `next_write_allowed=false`.
+
+Prossimo step consigliato: Punto 33 staging apply plan no-apply, senza applicare nulla.
+
+## Punto 44 — Piano consumo dati manuali read-only
+
+Punto 44 completato.
+
+- docs creati:
+  - `docs/manual_data_consumption_plan_p44.md`;
+  - `docs/manual_data_readers_plan_p44.md`;
+  - `docs/manual_data_routes_plan_p44.md`;
+  - `docs/manual_import_point_45_decision_p44.md`;
+  - `docs/provider_point_44_closure.md`;
+- point_44_manual_data_consumption_plan_created: `true`;
+- data_consumption_mode: `read_only_plan`;
+- available_competitions_count: `1`;
+- available_teams_count: `2`;
+- available_standings_count: `2`;
+- admin_consumption_planned: `true`;
+- public_consumption_planned: `true`;
+- public_exposure_enabled: `false`;
+- current_visibility: `private_admin`;
+- point_44_db_write: `false`;
+- provider_fetch: `false`;
+- provider_import_enabled: `false`;
+- apify_enabled: `false`;
+- production_touched: `false`;
+- deploy_executed: `false`.
+
+Prossimo step consigliato: Punto 45 — superficie admin read-only per competizioni manuali.
+
+## Punto 45 — Superficie admin read-only per dati manuali
+
+Punto 45 completato.
+
+- route create:
+  - `/admin/data`;
+  - `/admin/data/competitions`;
+  - `/admin/data/competitions/[slug]`;
+- reader creati in `lib/manual-data/readers.ts`;
+- link read-only aggiunto in `/admin/imports`;
+- point_45_admin_read_only_surface_implemented: `true`;
+- admin_manual_competitions_route_created: `true`;
+- admin_manual_competition_detail_route_created: `true`;
+- admin_imports_link_created: `true`;
+- public_exposure_enabled: `false`;
+- current_visibility: `private_admin`;
+- point_45_db_write: `false`;
+- provider_fetch: `false`;
+- provider_import_enabled: `false`;
+- apify_enabled: `false`;
+- production_touched: `false`;
+- deploy_executed: `false`;
+- service_role_used: `false`.
+
+Prossimo step consigliato: Punto 46 — verifica read-only della superficie admin con dati manuali.
+
+## Punto 46-B — Browser/admin real session verification
+
+Punto 46-B tentato, ma la verifica browser/admin real session resta pending.
+
+- verification_channel: `unavailable`;
+- browser_automation_available: `false`;
+- admin_session_available: `false`;
+- browser_admin_verification_result: `pending_no_admin_session`;
+- controllo HTTP locale: route admin redirectano a `/login?next=/admin` per utente non autenticato;
+- point_46b_db_write: `false`;
+- provider_fetch: `false`;
+- provider_import_enabled: `false`;
+- apify_enabled: `false`;
+- production_touched: `false`;
+- deploy_executed: `false`;
+- service_role_used: `false`;
+- public_exposure_enabled: `false`.
+
+Prossimo step consigliato: Punto 46-C — ottenere sessione admin/browser reale e ripetere la verifica.
+## Punto 46-C — Real admin session browser verification pending
+
+Punto 46-C ha ripetuto la verifica browser/admin real session per la superficie admin read-only:
+
+- `/admin/data`;
+- `/admin/data/competitions`;
+- `/admin/data/competitions/manual-serie-a`;
+- `/admin/imports`.
+
+Risultato:
+
+- point_46c_real_admin_session_verification_completed: `false`;
+- browser_admin_verification_result: `pending_no_admin_session`;
+- verification_channel: `unavailable`;
+- admin_session_available: `false`;
+- browser displayed competitions/teams/standings: `0/0/0`.
+
+Nessuna nuova scrittura DB è stata eseguita nel Punto 46-C. Nessun provider è stato chiamato, nessun import provider è stato attivato, Apify resta off, nessun deploy è stato eseguito e Production non è stata toccata. I dati `private_admin` restano non pubblici.
+
+Prossimo step consigliato: Punto 46-Fix / 46-D per predisporre un canale browser/admin session verificabile e ripetere la verifica read-only.
+
+## Punto 46-D — Admin session channel prepared
+
+Punto 46-D ha predisposto il canale sicuro per completare la verifica browser/admin reale:
+
+- point_46d_admin_session_channel_prepared: `true`;
+- admin_session_channel_status: `manual_user_browser_session`;
+- recommended_verification_channel: `manual_user_browser_session`;
+- browser_admin_verification_result: `pending_admin_session_channel`;
+- admin_session_available: `false`.
+
+Nessuna modifica a Supabase staging:
+
+- db_write: `false`;
+- user_created: `false`;
+- role_modified: `false`;
+- rls_modified: `false`;
+- service_role_used: `false`.
+
+Prossimo step consigliato: Punto 46-E — user-guided admin browser verification usando `docs/admin_browser_verification_checklist_p46d.md`.
+
+## Punto 46-E — Direct admin browser verification still blocked
+
+Punto 46-E ha tentato la verifica diretta dall’assistente, ma non c’è sessione admin reale disponibile.
+
+- point_46e_user_guided_admin_browser_verification_completed: `false`;
+- browser_admin_verification_result: `pending_no_admin_session`;
+- admin_session_available: `false`;
+- db_write: `false`;
+- user_created: `false`;
+- role_modified: `false`;
+- rls_modified: `false`;
+- provider_fetch: `false`;
+- provider_import_enabled: `false`;
+- apify_enabled: `false`.
+
+Nessuna modifica a Supabase staging. Prossimo step: Punto 46-E2 / 46-Fix per ottenere un canale browser admin verificabile senza segreti.
+
+## Punto 47 — Admin read-only UX polish plan
+
+Punto 47 non modifica Supabase staging.
+
+- point_47_admin_read_only_ux_polish_plan_created: `true`;
+- admin_ux_polish_mode: `read_only_plan`;
+- browser_admin_verification_result: `pending_no_admin_session`;
+- db_write: `false`;
+- provider_fetch: `false`;
+- provider_import_enabled: `false`;
+- apify_enabled: `false`;
+- service_role_used: `false`.
+
+Il piano raccomanda polish UI read-only futuro, senza modificare reader, dati, RLS, auth o visibility. I dati `private_admin` restano non pubblici.
+
+## Punto 48 — Admin read-only UX polish
+
+Punto 48 implementato come modifica UI/read-only:
+
+- link diretto `/admin/data` aggiunto in `/admin/imports`;
+- link `/admin/data/competitions` confermato in `/admin/imports`;
+- voce `Manual Data` aggiunta alla navigazione admin;
+- nessuna modifica Supabase;
+- nessuna DB write nel Punto 48;
+- nessun provider/import;
+- Apify off;
+- Production non toccata;
+- nessun deploy;
+- dati `private_admin` non esposti pubblicamente.
+
+Safety:
+
+- `point_48_admin_read_only_ux_polish_implemented=true`;
+- `admin_imports_data_hub_link_added=true`;
+- `admin_imports_competitions_link_present=true`;
+- `admin_ux_polish_mode=read_only_ui`;
+- `public_exposure_enabled=false`;
+- `current_visibility=private_admin`;
+- `db_write=false`;
+- `provider_fetch=false`;
+- `external_fetch=false`;
+- `provider_import_enabled=false`;
+- `apify_enabled=false`;
+- `production_touched=false`;
+- `deploy_executed=false`;
+- `service_role_used=false`.
+
+Prossimo step consigliato: Punto 49 — repeat browser admin verification after UX polish.
+
+## Punto 49 — Browser admin verification after polish
+
+Punto 49 tentato.
+
+Risultato:
+
+- `browser_admin_verification_result=pending_no_admin_session`;
+- `admin_session_available=false`;
+- `environment=preview-url`;
+- `incognito_result=redirect_login_vercel`;
+- `public_exposure_enabled=false`;
+- nessuna nuova DB write;
+- nessun provider/import;
+- Apify off;
+- Production non toccata;
+- nessun deploy.
+
+La Preview non autenticata ha mostrato `Login – Vercel` sulle route admin controllate. La verifica admin reale va ripetuta quando sarà disponibile una sessione admin osservabile.
+
+## Punto 50 — Public exposure policy plan
+
+Punto 50 completato come policy/plan only.
+
+- nessuna exposure pubblica;
+- dati `private_admin` non pubblici;
+- nessun cambio visibility;
+- nessuna DB write;
+- nessun provider/import;
+- Apify off;
+- Production non toccata;
+- deploy non eseguito;
+- nessuna route pubblica operativa nuova;
+- nessun public reader implementato.
+
+Documenti creati:
+
+- `docs/public_exposure_policy_plan_p50.md`;
+- `docs/public_exposure_safety_checklist_p50.md`;
+- `docs/manual_import_point_51_decision_p50.md`;
+- `docs/provider_point_50_closure.md`.
+
+Prossimo step consigliato: Punto 51 — public reader design dry-run, oppure ripetere verifica admin con sessione reale.
+- Punto 51 completato come public reader design dry-run:
+  - `point_51_public_reader_design_dry_run_created=true`;
+  - `public_reader_design_mode=dry_run_only`;
+  - `public_readers_implemented=false`;
+  - `public_reader_skeleton_operational=false`;
+  - `public_routes_enabled=false`;
+  - `public_routes_created=false`;
+  - `public_reader_connected_to_routes=false`;
+  - `private_admin_publicly_exposed=false`;
+  - `visibility_changed=false`;
+  - `point_51_db_write=false`;
+  - provider/import spenti;
+  - Apify off;
+  - Production non toccata;
+  - nessun deploy.
+
+Nota: i futuri public reader dovranno vivere separati dagli admin reader, filtrare sempre `visibility='public_free'` e non importare `lib/manual-data/readers.ts`. Nessun reader pubblico è stato reso operativo nel Punto 51.
+
+- Punto 52 completato come public reader contract skeleton:
+  - creato `lib/public-data/contracts.ts`;
+  - creato `scripts/provider/auditPublicReaderContracts.ts`;
+  - aggiunto `npm run audit:public-reader-contracts`;
+  - nessun `lib/public-data/readers.ts` operativo;
+  - nessuna query Supabase;
+  - nessuna route pubblica creata;
+  - nessun public reader collegato a route reali;
+  - `public_reader_contract_mode=contract_skeleton_only`;
+  - `public_readers_implemented=false`;
+  - `supabase_queries_implemented=false`;
+  - `admin_reader_imported=false`;
+  - `private_admin_publicly_exposed=false`;
+  - `visibility_changed=false`;
+  - `point_52_db_write=false`.
+
+- Punto 53 completato come public reader implementation no-route:
+  - creato `lib/public-data/readers.ts`;
+  - public reader reali implementati ma non collegati a route;
+  - ogni query usa filtro `visibility='public_free'`;
+  - nessun import da `lib/manual-data/readers.ts`;
+  - nessuna route pubblica creata;
+  - nessun public reader collegato a pagine reali;
+  - nessun cambio visibility;
+  - nessuna DB write;
+  - provider/import spenti;
+  - Apify off;
+  - Production non toccata;
+  - deploy non eseguito.
+
+- Punto 54 completato come public reader tests hardening:
+  - creato `scripts/provider/auditPublicReadersNoRoute.ts`;
+  - aggiunto `npm run audit:public-readers-no-route`;
+  - dry-run public readers reso assertivo;
+  - `public_competitions_count=0`;
+  - `public_teams_count=0`;
+  - `public_standings_count=0`;
+  - `public_bundle_status=not_found`;
+  - `public_reader_route_wiring_detected=false`;
+  - `violations_count=0`;
+  - nessuna route pubblica creata;
+  - nessun dato `private_admin` esposto;
+  - nessun cambio visibility;
+  - nessuna DB write.
+
+- Punto 55 completato come public routes mock/empty-state:
+  - create route `/competitions` e `/competitions/[slug]`;
+  - aggiunto `npm run audit:public-routes-empty-state`;
+  - le route usano solo `lib/public-data/readers.ts`;
+  - con dataset `private_admin`, le route mostrano empty state;
+  - nessun dato manuale privato esposto;
+  - nessun cambio visibility;
+  - nessuna DB write;
+  - nessun provider/import;
+  - Apify off;
+  - Production non toccata.
+
+Prossimo step consigliato: Punto 56 — browser verification locale/Preview delle route pubbliche empty-state.
+
+- Punto 56 completato come public routes browser verification no-auth:
+  - environment: `localhost`;
+  - auth: no-auth con profilo temporaneo isolato;
+  - `/competitions`: empty state;
+  - `/competitions/manual-serie-a`: not found/empty;
+  - nessun dato `private_admin` visibile;
+  - nessuna DB write;
+  - nessun cambio visibility;
+  - nessun provider/import;
+  - Apify off;
+  - Production non toccata;
+  - deploy non eseguito.
+
+Prossimo step consigliato: Punto 57 — Public routes UI polish oppure Public data promotion plan only.
+
+- Punto 57 completato come public routes UI polish:
+  - migliorati testi e struttura delle route `/competitions` e `/competitions/[slug]`;
+  - route ancora empty-state/not_found con dataset `private_admin`;
+  - nessun dato `private_admin` esposto;
+  - nessun cambio visibility;
+  - nessuna DB write;
+  - nessun provider/import;
+  - Apify off;
+  - Production non toccata;
+  - deploy non eseguito.
+
+Prossimo step consigliato: Punto 58 — Browser verification after UI polish oppure Public data promotion plan only.
+
+- Punto 58 completato come public routes browser verification after UI polish:
+  - environment: `localhost`;
+  - auth: no-auth;
+  - `/competitions`: empty state;
+  - `/competitions/manual-serie-a`: not_found/empty;
+  - nessun dato `private_admin` visibile;
+  - nessun admin link pubblico;
+  - nessun debug/raw payload;
+  - nessun bottone operativo;
+  - nessuna DB write;
+  - nessun cambio visibility;
+  - nessun provider/import;
+  - Apify off;
+  - Production non toccata;
+  - deploy non eseguito.
+
+Prossimo step consigliato: Punto 59 — Public data promotion plan only.
+
+
+- Punto 59 completato come public data promotion plan only:
+  - nessuna promotion eseguita;
+  - nessun cambio visibility;
+  - nessuna DB write;
+  - candidate futura: `manual-serie-a`;
+  - scope atteso futuro: 1 competition / 2 teams / 2 standings;
+  - rollback plan creato;
+  - post-promotion verification plan creato;
+  - dati `private_admin` restano non pubblici;
+  - nessun provider/import;
+  - Apify off;
+  - Production non toccata;
+  - deploy non eseguito.
+
+Prossimo step consigliato: Punto 60 — Public data promotion dry-run/no-apply.
+
+
+- Punto 60 completato come public data promotion dry-run/no-apply:
+  - candidate: `manual-serie-a`;
+  - scope calcolato: 1 competition / 2 teams / 2 standings;
+  - scope atteso confermato;
+  - SQL/manual instructions solo no-apply;
+  - rollback no-apply preparato;
+  - post-verification no-apply preparata;
+  - nessuna promotion eseguita;
+  - nessun cambio visibility;
+  - nessuna DB write;
+  - nessun provider/import;
+  - Apify off;
+  - Production non toccata;
+  - deploy non eseguito.
+
+Prossimo step consigliato: Punto 61 — Public data promotion authorization gate.
+
+
+- Punto 61 completato come SQL/manual pack no-apply finale:
+  - promotion outline preparato solo documentale;
+  - rollback outline preparato solo documentale;
+  - post-verification outline preparato solo documentale;
+  - autorizzazione Punto 62 richiesta per qualsiasi DB write;
+  - nessuna promotion eseguita;
+  - nessun SQL eseguito;
+  - nessuna DB write;
+  - nessun cambio visibility;
+  - nessun provider/import;
+  - Apify off;
+  - Production non toccata;
+  - deploy non eseguito.
+
+Prossimo step consigliato: Punto 62 — explicit authorization review for real staging promotion.
+
+
+- Punto 62 completato come authorization review no-write:
+  - candidate `manual-serie-a` confermata;
+  - scope atteso: 1 competition / 2 teams / 2 standings;
+  - pack P61, rollback e post-verification rivisti ma non applicati;
+  - `explicit_authorization_required=true`;
+  - `generic_proceed_authorizes_write=false`;
+  - nessuna promotion eseguita;
+  - nessun SQL reale eseguito;
+  - nessuna DB write;
+  - nessun cambio visibility;
+  - provider/import spenti;
+  - Apify off;
+  - Production non toccata;
+  - deploy non eseguito.
+
+Prossimo step consigliato: Punto 63 — final pre-apply no-write checklist oppure real staging promotion solo con autorizzazione esplicita completa.
+
+
+- Punto 63 completato come final pre-apply checklist no-write:
+  - candidate `manual-serie-a` confermata;
+  - scope atteso: 1 competition / 2 teams / 2 standings;
+  - public readers attuali: 0/0/0, bundle `not_found`;
+  - public routes attuali: empty/not_found;
+  - promotion SQL, rollback e post-verification pronti solo no-apply;
+  - `explicit_authorization_required=true`;
+  - `generic_proceed_authorizes_write=false`;
+  - nessuna promotion eseguita;
+  - nessun SQL reale eseguito;
+  - nessuna DB write;
+  - nessun cambio visibility;
+  - provider/import spenti;
+  - Apify off;
+  - Production non toccata;
+  - deploy non eseguito.
+
+Prossimo step consigliato: Punto 64 — real apply staging only con autorizzazione esplicita completa, oppure continuare senza DB write.
+
+
+- Punto 64 completato come public UI/product polish senza promotion:
+  - `/competitions` migliorata con copy e card statiche sicure;
+  - `/competitions/[slug]` migliorata con empty state più chiaro;
+  - navigazione pubblica aggiornata con link “Competizioni”;
+  - public readers restano 0/0/0;
+  - public routes restano empty/not_found;
+  - nessun dato `private_admin` esposto;
+  - nessuna promotion eseguita;
+  - nessun SQL reale eseguito;
+  - nessuna DB write;
+  - nessun cambio visibility;
+  - provider/import spenti;
+  - Apify off;
+  - Production non toccata;
+  - deploy non eseguito.
+
+Prossimo step consigliato: Punto 65 — browser verification after product polish, oppure real apply solo con autorizzazione esplicita completa.
+
+
+- Punto 65 completato come browser verification no-auth after product polish:
+  - verifica locale HTTP no-auth eseguita su `/competitions` e `/competitions/manual-serie-a`;
+  - `/competitions` resta empty;
+  - `/competitions/manual-serie-a` resta not_found/empty;
+  - public readers restano 0/0/0;
+  - nessun dato `private_admin` esposto;
+  - nessun link admin/debug payload/bottone operativo;
+  - nessuna promotion eseguita;
+  - nessun SQL reale eseguito;
+  - nessuna DB write;
+  - nessun cambio visibility;
+  - provider/import spenti;
+  - Apify off;
+  - Production non toccata;
+  - deploy non eseguito.
+
+Prossimo step consigliato: Punto 66 — real apply solo con autorizzazione esplicita completa, oppure ulteriore polish no-write.
+
+## Punto 66 — Public data promotion apply staging
+
+Punto 66 ha completato la promotion manuale staging della fixture `manual-serie-a` dopo correzione del target enum da `public` a `public_free`.
+
+- `point_66_public_data_promotion_apply_completed=true`
+- `public_data_promotion_mode=real_apply_staging_only`
+- `corrected_visibility=public_free`
+- `old_invalid_visibility=public`
+- `enum_verified=true`
+- `authorization_phrase_received=true`
+- `promotion_candidate=manual-serie-a`
+- `promotion_executed=true`
+- `real_sql_executed=true`
+- `visibility_changed=true`
+- `db_write=true`
+- `db_write_scope=manual-serie-a_competition_teams_standings`
+- `updated_competitions_count=1`
+- `updated_teams_count=2`
+- `updated_standings_count=2`
+- `public_competitions_count=1`
+- `public_teams_count=2`
+- `public_standings_count=2`
+- `public_bundle_status=ready`
+- `public_routes_current_state=data_visible`
+- `private_admin_publicly_exposed=false`
+- `provider_fetch=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `production_touched=false`
+- `deploy_executed=false`
+- `service_role_used=false`
+- `rollback_file_created=true`
+- `rollback_executed=false`
+
+La verifica post-apply è stata eseguita manualmente in Supabase SQL Editor staging e ha confermato `competitions=1`, `teams=2`, `standings=2` con `visibility=public_free`. Nessun rollback eseguito perché l'apply è riuscito.
+
+## Punto 67 — Browser verification after real promotion
+
+Punto 67 ha verificato via HTTP locale no-auth le route pubbliche dopo la promotion P66 a `public_free`.
+
+- `point_67_public_routes_browser_after_promotion_completed=true`
+- `public_routes_browser_verification_mode=no_auth_local_http`
+- `environment=localhost`
+- `production=false`
+- `auth=no-auth`
+- `verification_source=manual_sql_staging_plus_route_http_check`
+- `public_competitions_http_status=200`
+- `public_competitions_page_reached=true`
+- `public_competitions_page_state=data_visible`
+- `public_competition_detail_http_status=200`
+- `public_competition_detail_reached=true`
+- `public_competition_detail_state=data_visible`
+- `public_competitions_count=1`
+- `public_teams_count=2`
+- `public_standings_count=2`
+- `public_bundle_status=ready`
+- `serie_a_manual_sample_visible=true`
+- `manual_team_one_visible=true`
+- `manual_team_two_visible=true`
+- `standings_visible=true`
+- `forbidden_private_text_visible=false`
+- `public_routes_admin_links_visible=false`
+- `public_routes_debug_payload_visible=false`
+- `public_routes_operational_buttons=false`
+- `private_admin_publicly_exposed=false`
+- `point_67_db_write=false`
+- `rollback_executed=false`
+- `provider_fetch=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `production_touched=false`
+- `deploy_executed=false`
+- `service_role_used=false`
+- `browser_verification_pass=true`
+
+Nessun deploy, nessuna Production e nessuna ulteriore DB write sono stati eseguiti nel Punto 67.
+## Punto 68 — Public data UI polish visible data
+
+La UI pubblica ora presenta i dati staging già promossi a `public_free` in modo più leggibile.
+
+- Nessuna nuova DB write.
+- Nessun rollback.
+- Nessun cambio visibility.
+- Nessun provider/import.
+- Public readers restano filtrati su `public_free`.
+- Route pubbliche restano no-auth e read-only.
+
+Marker:
+
+- `point_68_public_data_ui_polish_completed=true`
+- `public_routes_current_state=data_visible`
+- `public_competitions_count=1`
+- `public_teams_count=2`
+- `public_standings_count=2`
+- `public_bundle_status=ready`
+- `private_admin_publicly_exposed=false`
+- `point_68_db_write=false`
+
+Prossimo step: verifica Preview no-auth, senza deploy manuale e senza Production.
+## Punto 69 — Preview no-auth verification
+
+La Preview URL del branch `preview` è disponibile, ma il controllo no-auth viene bloccato da Vercel Authentication.
+
+- Nessuna DB write.
+- Nessun rollback.
+- Nessun cambio visibility.
+- Nessun provider/import.
+- Production non toccata.
+- Deploy manuale non eseguito.
+
+Marker:
+
+- `point_69_public_preview_verification_completed=true`
+- `preview_verification_result=partial_blocked_by_vercel_auth`
+- `preview_no_auth_blocked_by_vercel_auth=true`
+- `preview_data_visible=false`
+- `local_p68_verification_still_valid=true`
+- `point_69_db_write=false`
+
+Prossimo step: decidere se mantenere Preview protetta o autorizzare una finestra controllata di test no-auth.
+## Punto 70 — Homepage/navigation polish without deployment
+
+Punto 70 non richiede modifiche Supabase.
+
+- Nessuna DB write.
+- Nessun rollback.
+- Nessun cambio visibility.
+- Nessun provider/import.
+- Production non toccata.
+- Deploy manuale non eseguito.
+- Vercel Authentication non modificata.
+
+Marker:
+
+- `point_70_homepage_navigation_polish_completed=true`
+- `public_path_verification_mode=local_no_auth_http`
+- `home_links_competitions=true`
+- `competitions_links_detail=true`
+- `competition_detail_links_back=true`
+- `point_70_db_write=false`
+
+Prossimo step: SEO/copy metadata o verifica Preview autenticata.
+# P72 — Production readiness final review
+
+P72 ha confermato che lo staging è pronto per preparare un piano deploy no-apply, non per un deploy reale.
+
+Marker:
+
+- `readiness_result=ready_for_deploy_plan_no_apply`
+- `ready_for_deploy=false`
+- `deploy_authorized=false`
+- `public_path_verified=true`
+- `public_routes_current_state=data_visible`
+- `public_competitions_count=1`
+- `public_teams_count=2`
+- `public_standings_count=2`
+- `public_bundle_status=ready`
+- `rollback_file_available=true`
+- `rollback_executed=false`
+- `production_touched=false`
+- `manual_deploy_executed=false`
+- `point_72_db_write=false`
+- `provider_fetch=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+
+Next step consigliato: Punto 73 — Deploy plan no-apply.
+## P76 — Preview authenticated verification
+
+P76 non ha eseguito scritture su Supabase.
+
+- `point_76_preview_authenticated_verification_completed=true`
+- `preview_authenticated_verification_result=blocked_by_missing_authorized_session`
+- `db_write=false`
+- `rollback_executed=false`
+- `provider_fetch=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `production_touched=false`
+
+Lo stato staging resta invariato.
+
+## P75 — Deploy authorization gate
+
+P75 ha preparato il gate autorizzativo deploy senza eseguire deploy e senza scritture DB.
+
+- `point_75_deploy_authorization_gate_completed=true`
+- `deploy_authorization_gate_completed=true`
+- `deploy_authorized=false`
+- `deploy_executed=false`
+- `ready_for_controlled_deploy_authorization=true`
+- `generic_proceed_authorizes_deploy=false`
+- `point_75_db_write=false`
+- `rollback_executed=false`
+- `production_touched=false`
+
+Supabase staging resta invariato nel Punto 75. Il rollback resta disponibile ma non eseguito.
+
+## P74 — Final env checklist no-secret
+
+P74 ha verificato solo categorie env/config senza leggere/stampare valori.
+
+- `point_74_final_env_checklist_no_secret_completed=true`
+- `supabase_public_env_category_documented=true`
+- `service_role_app_usage=false`
+- `provider_import_flags_expected_off=true`
+- `writer_flags_expected_off=true`
+- `secrets_hygiene_pass=true`
+- `db_write=false`
+- `rollback_executed=false`
+- `production_touched=false`
+
+Nessun cambio Supabase staging è stato eseguito nel Punto 74.
+
+## P73 — Deploy plan no-apply
+
+P73 ha completato il piano di deploy senza eseguirlo.
+
+- `deploy_plan_created=true`
+- `deploy_executed=false`
+- `deploy_authorized=false`
+- `ready_for_deploy=false`
+- `ready_for_deploy_authorization_gate=true`
+- `production_touched=false`
+- `manual_deploy_executed=false`
+- `point_73_db_write=false`
+- `rollback_executed=false`
+- `provider_fetch=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `rollback_plan_created=true`
+
+Supabase staging resta nello stato post-P66: dati `manual-serie-a` promossi a `public_free`, rollback disponibile ma non eseguito. Nessuna nuova scrittura DB è stata fatta nel Punto 73.

@@ -7,6 +7,7 @@ import { SearchLimitBanner } from "@/components/public/SearchLimitBanner";
 import { SearchResultCard } from "@/components/public/SearchResultCard";
 import { getCurrentUser } from "@/lib/auth/access";
 import { checkUserSearchLimit } from "@/lib/freeSearch/checkUserSearchLimit";
+import { incrementUserSearchUsage } from "@/lib/freeSearch/incrementUserSearchUsage";
 import { advancedSearch, getAdvancedSearchPreview } from "@/lib/search/advancedSearch";
 import { DEFAULT_SEARCH_FILTERS, isSearchType, normalizeSearchQuery } from "@/lib/search/searchFilters";
 
@@ -34,7 +35,24 @@ export default async function AdvancedSearchPage({ searchParams }: { searchParam
     },
   });
   const requestedSearch = first(params.search) === "1";
-  const response = user && requestedSearch ? await advancedSearch({ query, limitStatus }) : null;
+  const consumedLimitStatus = user && requestedSearch && limitStatus.allowed
+    ? await incrementUserSearchUsage({ searchType: "advanced", userId: user.id })
+    : null;
+  const effectiveLimitStatus = consumedLimitStatus
+    ? {
+        mode: consumedLimitStatus.mode,
+        user_id: user?.id ?? null,
+        allowed: consumedLimitStatus.incremented,
+        used_count: consumedLimitStatus.used_count,
+        search_limit: consumedLimitStatus.search_limit,
+        remaining: consumedLimitStatus.remaining,
+        period_start: limitStatus.period_start,
+        period_end: limitStatus.period_end,
+        reason: consumedLimitStatus.reason,
+        persisted: consumedLimitStatus.persisted,
+      }
+    : limitStatus;
+  const response = user && requestedSearch ? await advancedSearch({ query, limitStatus: effectiveLimitStatus }) : null;
   const preview = getAdvancedSearchPreview();
 
   return (
@@ -46,15 +64,15 @@ export default async function AdvancedSearchPage({ searchParams }: { searchParam
       </header>
 
       {user && <SearchUsageBox usage={{
-        mode: "safe_mock", userId: user.id, periodStart: limitStatus.period_start, periodEnd: limitStatus.period_end,
-        used: limitStatus.used_count, limit: limitStatus.search_limit, remaining: limitStatus.remaining,
-        canSearch: limitStatus.allowed, persisted: false, message: limitStatus.reason,
+        mode: effectiveLimitStatus.mode, userId: user.id, periodStart: effectiveLimitStatus.period_start, periodEnd: effectiveLimitStatus.period_end,
+        used: effectiveLimitStatus.used_count, limit: effectiveLimitStatus.search_limit, remaining: effectiveLimitStatus.remaining,
+        canSearch: effectiveLimitStatus.allowed, persisted: effectiveLimitStatus.persisted, message: effectiveLimitStatus.reason,
       }} />}
 
       <AdvancedSearchBox
         query={query}
-        disabled={!user || !limitStatus.allowed}
-        filtersPanel={<SearchFiltersPanel filters={query.filters} disabled={!user || !limitStatus.allowed} />}
+        disabled={!user || !effectiveLimitStatus.allowed}
+        filtersPanel={<SearchFiltersPanel filters={query.filters} disabled={!user || !effectiveLimitStatus.allowed} />}
       />
 
       {!user && (
@@ -66,7 +84,7 @@ export default async function AdvancedSearchPage({ searchParams }: { searchParam
         </aside>
       )}
 
-      {user && !limitStatus.allowed && <><SearchLimitBanner /><SubstackCTA /></>}
+      {user && !effectiveLimitStatus.allowed && <><SearchLimitBanner /><SubstackCTA /></>}
 
       {response && (
         <section className="stack" aria-live="polite">

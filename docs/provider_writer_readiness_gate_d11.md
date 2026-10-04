@@ -1,0 +1,301 @@
+# D.11 — Chiusura residui ruoli e readiness gate writer reali
+
+## Stato
+
+Ultimo commit Preview di partenza:
+
+- `2bc38ae4df975ce1863da4365671f440acfb5504`.
+
+Stato operativo:
+
+- `/admin/imports` verificata da admin;
+- non autenticato bloccato da Vercel Authentication;
+- `provider_import_runs` presente su staging;
+- RLS attiva;
+- `provider_import_runs_count = 0`;
+- provider reali spenti;
+- Apify spento;
+- import spenti;
+- `realWritesEnabled=false`;
+- `write_attempt_blocked=true`;
+- Production non toccata.
+
+## Decisione D.11
+
+Per D.11 non vengono creati utenti `free_user`/`editor` e non vengono modificati ruoli.
+
+I test `free_user`/`editor` restano residui consapevoli.
+
+La fase provider/import resta safe perché:
+
+- admin è verificato;
+- non autenticato è bloccato;
+- il codice `requireAdmin()` esclude `free_user`;
+- `editor` è ammesso solo secondo regola admin layout e RLS;
+- UI `/admin/imports` è read-only;
+- writer reali sono disabilitati;
+- provider reali sono spenti;
+- Apify è spento;
+- import sono spenti.
+
+## Matrice ruoli attuale
+
+| Ruolo/sessione | Stato test | Comportamento |
+| --- | --- | --- |
+| Non autenticato | Verificato | Bloccato da Vercel Authentication / SSO Preview. |
+| Admin | Verificato manualmente | Accede a `/admin/imports`, vede `Provider import runs`, empty state, badge sicurezza e nessun bottone di scrittura. |
+| Free user | Non testato end-to-end | Atteso bloccato da `requireAdmin()` / `notFound()`. Non creare utente ora. |
+| Editor | Non testato end-to-end | Atteso ammesso se `status=approved`, solo read-only. Non creare/modificare ruolo ora. |
+
+## Readiness gate: NO WRITER REALI finché
+
+Prima di qualsiasi writer/import reale devono essere completati tutti questi punti:
+
+- repository GitHub confermato Private;
+- service role key Supabase esposta in passato ruotata/rigenerata;
+- env Supabase Vercel limitate a Preview, non Production e non All Environments;
+- migrazioni Supabase manuali tracciate e coerenti;
+- test RLS applicativo completato con:
+  - admin;
+  - editor;
+  - `free_user`;
+  - non autenticato;
+- writer reali dietro flag esplicito;
+- `realWritesEnabled=false` resta default;
+- nessun writer usa service role lato UI;
+- ogni import ha:
+  - `import_run_id`;
+  - `batch_id`;
+  - status lifecycle;
+  - rollback plan;
+  - audit/log;
+- provider stabile reale scelto ma non ancora attivato;
+- budget guard Apify confermato prima di qualsiasi run Apify;
+- hard stop Apify a 30 €/mese;
+- warning Apify a 24 €/mese;
+- nessuna chiamata provider lato utente;
+- nessuna chiamata Apify lato utente;
+- nessun import live;
+- nessun import storico massivo;
+- nessun deploy Production senza checklist dedicata.
+
+## Stato DB/provider
+
+In D.11:
+
+- nessuna scrittura DB;
+- nessun insert/update/delete/upsert;
+- nessun utente creato;
+- nessun ruolo modificato;
+- nessun provider attivato;
+- nessun import attivato;
+- nessuna chiamata Apify.
+
+## Prossimo step consigliato
+
+D.12 — preparare una checklist operativa per test ruoli controllati `free_user`/`editor` oppure iniziare un piano provider reale solo documentale, mantenendo writer e provider disabilitati.
+
+## D.12-A — Suite test ruoli controllata
+
+D.12-A aggiunge una suite documentale senza creare utenti e senza modificare ruoli.
+
+Documento dedicato:
+
+- `docs/role_access_test_suite_d12a.md`.
+
+La suite chiude il requisito operativo di pianificazione, ma non sostituisce i test end-to-end futuri con utenti `free_user` ed `editor`.
+
+Gate invariato:
+
+- nessun writer reale;
+- nessun import reale;
+- nessun provider reale;
+- nessun Apify;
+- nessuna Production;
+- `realWritesEnabled=false` resta default;
+- test `free_user`/`editor` richiesti prima di qualunque scrittura reale.
+
+## D.12-B — Gate operativo utenti test
+
+D.12-B definisce come eseguire i test `free_user`/`editor` senza abbassare la sicurezza.
+
+Il readiness gate resta chiuso finché:
+
+- non viene verificato un `free_user approved` bloccato da `/admin/imports`;
+- non viene verificato un `editor approved` ammesso solo read-only;
+- `provider_import_runs_count` resta invariato salvo test writer esplicitamente autorizzati;
+- provider/Apify/import restano spenti;
+- nessuna UI di import reale viene aggiunta.
+
+La creazione o modifica ruoli degli utenti test richiede conferma separata.
+
+## D.13 — Gate real-call provider stabile
+
+Il readiness gate viene esteso alla prima real-call provider.
+
+Prima di qualsiasi chiamata TheStatsAPI/API-Football devono essere confermati:
+
+- provider scelto;
+- copertura Serie A;
+- endpoint e rate limit;
+- costo;
+- licenza/caching;
+- token in env sicuro, mai committato;
+- script probe separato da writer/import;
+- massimo una richiesta;
+- nessuna scrittura DB;
+- `realWritesEnabled=false`;
+- provider non attivato in `data_providers`;
+- nessun `import_enabled=true`;
+- Apify off;
+- Production non toccata.
+
+D.13 non autorizza chiamate reali: documenta solo la procedura.
+
+## D.14-A — Probe disabilitata nel gate
+
+La presenza di `npm run probe:stable-provider:disabled` non apre il gate provider.
+
+Il gate resta chiuso perché:
+
+- `real_provider_probe_enabled=false`;
+- `realWritesEnabled=false`;
+- `external_fetch=false`;
+- `db_write=false`;
+- `token_read=false`;
+- provider/import non attivati;
+- Production non toccata.
+
+Per passare a una real-call servirà una nuova conferma esplicita.
+
+## D.14-B — Checklist ruoli prima dei writer
+
+La checklist manuale D.14-B è parte del gate prima di writer/provider reali.
+
+Documento:
+
+- `docs/role_access_manual_test_checklist_d14b.md`.
+
+Il gate resta chiuso finché:
+
+- `free_user` non è verificato come bloccato;
+- `editor` non è verificato come read-only;
+- nessuna scrittura provider/import è stata introdotta;
+- `provider_import_runs_count` resta 0 salvo test writer approvato;
+- provider/Apify/import restano spenti.
+
+## D.14-E — Utenti test e writer gate
+
+La creazione utenti test staging non apre il gate writer.
+
+Anche dopo D.14-E, restano obbligatori:
+
+- conferma esplicita prima di creare utenti;
+- conferma esplicita prima di modificare ruolo editor;
+- nessun writer provider/import;
+- `realWritesEnabled=false`;
+- nessun provider/Apify/import;
+- Production non toccata.
+
+## D.15 — Provider probe readiness gate
+
+D.15 aggiunge un gate specifico per la futura prima probe reale.
+
+Il gate non abilita writer:
+
+- `realWritesEnabled=false`;
+- nessuna scrittura DB;
+- nessun `provider_import_runs` insert;
+- nessun import;
+- provider in `data_providers` ancora off.
+
+Prima di D.16 serve verifica manuale di provider, costi, rate limit e licenza.
+
+## D.16-A — Gate provider aggiornato
+
+D.16-A documenta la checklist manuale:
+
+- `docs/provider_manual_verification_checklist_d16a.md`.
+
+Il gate resta chiuso per writer e probe reale finché:
+
+- provider scelto manualmente;
+- prezzo/piano verificato;
+- rate limit verificato;
+- licenza/caching/pubblicazione verificati;
+- endpoint scelto;
+- token creato solo in env sicura, non committato e non stampato;
+- GitHub repo Private confermato;
+- service role Supabase ruotata/confermata;
+- env Vercel solo Preview;
+- provider off;
+- import off;
+- Apify off;
+- `real_provider_probe_enabled=false`;
+- `realWritesEnabled=false`;
+- nessun DB write;
+- nessun `provider_import_runs` insert;
+- Production non toccata.
+
+D.16-A non modifica codice, migrazioni, ruoli, provider o dati.
+
+## D.16-B — Scelta provider senza apertura writer
+
+D.16-B sceglie `api_football` Free per una futura probe read-only, ma non apre il gate writer.
+
+Il gate writer resta chiuso:
+
+- nessun writer reale;
+- nessuna scrittura DB;
+- nessun insert in `provider_import_runs`;
+- nessun import;
+- nessuna attivazione provider;
+- `realWritesEnabled=false`;
+- `/admin/imports` read-only;
+- Production non toccata.
+
+L’eventuale D.16-C dovrà restare separata dai writer e limitata a una singola richiesta read-only.
+
+## D.16-C1 — Env provider senza writer
+
+D.16-C1 aggiunge solo documentazione e placeholder env non segreti.
+
+Il gate writer resta chiuso:
+
+- nessuna chiave letta;
+- nessuna scrittura DB;
+- nessun `provider_import_runs` insert;
+- nessun import;
+- nessuna attivazione provider;
+- `realWritesEnabled=false`;
+- Production non toccata.
+
+## D.16-C2-B — Probe separata dai writer
+
+Lo script `scripts/provider/apiFootballProbe.ts` è separato dai writer provider.
+
+Il gate writer resta chiuso anche dopo D.16-C2-B:
+
+- nessun import writer chiamato;
+- nessun Supabase client admin;
+- nessuna service role;
+- nessun insert/update/delete/upsert;
+- nessun log provider scritto;
+- nessun `provider_import_runs` insert;
+- `realWritesEnabled=false`.
+
+## D.16-C2-C — Writer gate ancora chiuso
+
+La checklist finale pre-real-call non modifica il gate writer.
+
+Prima di qualunque writer reale restano vietati:
+
+- DB write;
+- provider_import_runs write;
+- provider_import_logs write;
+- api_usage_logs write;
+- import_logs write;
+- provider activation;
+- import activation.
+
+La futura D.16-C3, se autorizzata, resta solo read-only e non apre i writer.

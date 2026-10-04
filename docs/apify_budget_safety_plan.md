@@ -1,0 +1,219 @@
+# Apify budget safety plan — D.1
+
+Stato: piano preparato, Apify spento.
+
+## Budget
+
+- budget massimo mensile: 30 €;
+- warning: 24 €;
+- hard stop: 30 €.
+
+## Uso consentito futuro
+
+Apify/SofaScore può essere usato solo per:
+
+- campionati `apify_light_plus_p1`;
+- campionati `apify_light_plus_p2`;
+- import settimanale/manuale;
+- latest round only;
+- arricchimento campionati minori.
+
+Vietato:
+
+- FULL_OFFICIAL via Apify;
+- live scraping;
+- scraping quando un utente apre una pagina;
+- storico completo massivo;
+- download video;
+- reupload highlights;
+- chiamate lato client;
+- chiamate lato pagina pubblica.
+
+## Stato codice
+
+Moduli già presenti:
+
+- `lib/dataProvider/apifySofaScoreProvider.ts`;
+- `lib/apify/checkApifyMonthlyBudget.ts`;
+- `lib/apify/getApifyImportPriority.ts`;
+- `lib/apify/createWeeklyApifyPlan.ts`;
+- `lib/apify/estimateApifyRunCost.ts`;
+- `lib/apify/apifyImportGuards.ts`;
+- `lib/apify/buildSofaScoreActorInput.ts`;
+- `lib/apify/validateApifyInput.ts`;
+- `scripts/runWeeklyApifyLightImport.ts`;
+- `scripts/importApifyLastMatchday.ts`.
+
+Tutti devono restare dry-run/mock finché non viene approvata una fase dedicata.
+
+## Audit D.2
+
+Lo script locale:
+
+```bash
+npm run audit:providers
+```
+
+conferma:
+
+- `apify_sofascore:off`;
+- competizioni P1: 15;
+- competizioni P2: 14;
+- documentazione hard stop presente;
+- `warnings=0`;
+- chiamate Apify = 0;
+- chiamate SofaScore = 0;
+- scraping = 0;
+- scritture DB = 0.
+
+Nota:
+
+- lo script non legge token;
+- non legge `.env.local`;
+- non costruisce actor input operativo;
+- non lancia run;
+- non modifica budget.
+
+## Piano dry-run Apify
+
+1. Lasciare `apify_sofascore` disattivato.
+2. Non configurare token in Production.
+3. Simulare budget:
+   - `< 24 €`: P1 poi P2 se budget residuo;
+   - `>= 24 €`: solo P1 essenziali;
+   - `>= 30 €`: hard stop.
+4. Creare piano weekly senza actor reale.
+5. Escludere automaticamente FULL_OFFICIAL.
+6. Limitare scope a `latest_round`.
+7. Stampare solo riepilogo:
+   - competizioni candidate;
+   - priorità;
+   - costo stimato mock;
+   - skip reason;
+   - run reali = 0;
+   - scritture Supabase = 0.
+
+## Prima vera chiamata futura
+
+Solo dopo conferma esplicita:
+
+1. verificare termini/licenza actor e fonte;
+2. configurare token solo server-side in Preview;
+3. selezionare una sola competizione piccola P1;
+4. impostare budget residuo sicuro;
+5. eseguire una run manuale non schedulata;
+6. salvare payload raw solo se consentito e redatto;
+7. non pubblicare automaticamente;
+8. validare mapping;
+9. scrivere log Apify;
+10. mantenere ultimo dato valido in caso di errore.
+
+## Query read-only staging
+
+```sql
+select provider_key, is_active, monthly_budget_eur, warning_budget_eur, hard_stop_budget_eur
+from public.data_providers
+where provider_key = 'apify_sofascore';
+
+select *
+from public.apify_budget_status
+order by period_start desc
+limit 12;
+
+select c.slug, c.name, c.tracking_level, c.apify_enabled, c.apify_priority, pc.import_enabled
+from public.competitions c
+left join public.provider_competition_config pc on pc.competition_id = c.id
+where c.tracking_level in ('apify_light_plus_p1', 'apify_light_plus_p2')
+order by c.tracking_level, c.slug;
+
+select status, count(*) as runs
+from public.apify_usage_logs
+group by status
+order by status;
+```
+
+## Hard stop operativo
+
+Se il budget stimato è `>= 30`:
+
+- non costruire actor input operativo;
+- non lanciare run;
+- loggare skip;
+- mantenere dati precedenti;
+- non cancellare nulla.
+
+Se il budget stimato è `>= 24`:
+
+- saltare P2;
+- importare solo P1 essenziali in futura modalità approvata;
+- nessuna promessa di copertura profonda.
+
+## D.4 — Scenari budget simulati
+
+È stato preparato lo script locale:
+
+```bash
+npm run dry-run:provider-logging
+```
+
+Lo script non usa Apify e non legge token. Simula solo le decisioni budget in memoria.
+
+Scenari verificati:
+
+| Scenario | Spesa mese | Costo stimato run | Esito |
+| --- | ---: | ---: | --- |
+| A | 0 € | 0 € | `should_run=true`, nessun warning |
+| B | 24 € | 1 € | `should_run=true`, `warning=true`, revisione manuale richiesta |
+| C | 30 € | 1 € | `should_run=false`, `hard_stop=true` |
+
+Interpretazione:
+
+- sotto 24 € il budget è disponibile;
+- da 24 € scatta warning e P2 va trattata con estrema cautela;
+- a 30 € o oltre non parte nessuna run;
+- il dry-run non scrive `apify_budget_status` e non crea `apify_usage_logs`.
+
+Prima di una run Apify reale serviranno ancora:
+
+- verifica termini/licenza;
+- token solo server-side;
+- budget letto da Supabase staging;
+- log persistiti;
+- dry-run su una sola competizione P1;
+- conferma manuale.
+
+## D.5 — Writer guard e budget ancora spenti
+
+D.5 aggiunge solo guardie locali per impedire scritture provider/import.
+
+Impatto su Apify:
+
+- nessuna run Apify;
+- nessuna lettura token;
+- nessuna scrittura `apify_usage_logs`;
+- nessun aggiornamento `apify_budget_status`;
+- nessun actor input operativo.
+
+Il budget guard resta simulato. Prima di Apify reale servirà un writer separato con:
+
+- controllo budget letto da Supabase staging;
+- hard stop transazionale prima della run;
+- log `skipped_budget` se bloccato;
+- preservazione ultimo dato valido;
+- approvazione manuale.
+
+## D.6 — Collegamento futuro Apify a import run
+
+La migrazione 0009 proposta riguarda il modello generale `provider_import_runs`.
+
+Per Apify, in una fase futura, andrà valutato se collegare anche:
+
+- `apify_usage_logs.import_run_id`;
+- `apify_usage_logs.batch_id`.
+
+In D.6 non viene aggiunto nulla ad Apify:
+
+- nessuna run;
+- nessun token;
+- nessun budget live;
+- nessuna scrittura.

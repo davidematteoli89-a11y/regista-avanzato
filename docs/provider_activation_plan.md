@@ -1,21 +1,135 @@
 # Provider Activation Plan
 
+## P80 — Production authorization gate no-apply
+
+P80 non cambia lo stato dei provider.
+
+- `point_80_production_authorization_gate_completed=true`
+- `production_deploy_authorized=false`
+- `merge_authorized=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `db_write_additional=false`
+- `rollback_executed=false`
+- `production_touched=false`
+
+Anche durante un futuro P81 resteranno vietati provider/import, Apify e chiamate TheStatsAPI/API-Football salvo autorizzazione separata dedicata.
+
+## P79 — Production release plan no-apply
+
+P79 non cambia lo stato dei provider.
+
+- `point_79_production_release_plan_completed=true`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `db_write_additional=false`
+- `rollback_executed=false`
+- `production_deploy_executed=false`
+- `production_touched=false`
+
+Qualunque rilascio Production futuro deve mantenere provider/import e Apify off, salvo autorizzazione separata e dedicata.
+
 ## Principio
 
 Il frontend non conosce provider esterni. Solo job server-side chiamano adapter, normalizzano dati e scrivono su Supabase. Le pagine leggono snapshot salvati.
 
-## Scelta del provider stabile
+## Stato attuale
 
-Prima di scegliere TheStatsAPI o API-Football, confrontare con prova documentata:
+- `mock_provider`: usato per sviluppo/demo.
+- Stable provider: disattivato.
+- TheStatsAPI adapter: placeholder, scelto per la prossima futura probe gated.
+- API-Football adapter: placeholder, sospeso dopo tentativo R1 con HTTP 403 e nessun retry previsto.
+- Apify/SofaScore: disattivato.
+- Manual provider: disponibile per contenuti/link inseriti manualmente.
 
-- copertura dei 14 campionati FULL;
-- disponibilità storica e frequenza aggiornamento;
-- match, eventi, standings, team/player stats e qualità degli ID;
-- rate limit, costo, overage e SLA;
-- termini di memorizzazione, pubblicazione e attribuzione;
-- supporto, stabilità payload e ambiente sandbox.
+## D.17-B2 — Setup locale TheStatsAPI
 
-Non attivare entrambi nella prima integrazione.
+TheStatsAPI è stato preparato solo a livello locale/documentale:
+
+- key inserita dall'utente in `.env.local`;
+- `.env.local` ignorato da Git e non staged;
+- `THESTATSAPI_PROBE_ENABLED=false`;
+- nessun token letto/stampato nei report;
+- nessuna real-call TheStatsAPI;
+- nessuna fetch provider;
+- nessuna scrittura DB;
+- provider/import ancora spenti;
+- Apify spento;
+- Production non toccata.
+
+## D.17-C — Script TheStatsAPI gated
+
+Preparato script separato dagli import:
+
+- `scripts/provider/theStatsApiProbe.ts`;
+- comando: `npm run probe:thestatsapi:gated`.
+
+Il comando default non effettua real-call:
+
+- `THESTATSAPI_PROBE_ENABLED=false`;
+- `enabled=false`;
+- `external_fetch=false`;
+- `db_write=false`;
+- `token_read=false`;
+- `token_printed=false`;
+- `requests_executed=0`.
+
+La futura real-call TheStatsAPI resta vietata finché non saranno confermati endpoint, licenza, rate limit e gate espliciti.
+
+## D.17-D — Checklist pre-real-call TheStatsAPI
+
+Checklist creata:
+
+- `docs/thestatsapi_pre_real_call_checklist_d17d.md`.
+
+Stato:
+
+- nessuna real-call TheStatsAPI;
+- nessuna fetch provider;
+- nessun token letto/stampato;
+- nessuna scrittura DB;
+- endpoint candidato `/football/standings` non ancora definitivo;
+- API-Football sospeso/no retry;
+- Apify spento;
+- provider/import spenti;
+- Production non toccata.
+
+La prossima fase D.17-E richiede conferma esplicita e deve restare limitata a una sola richiesta read-only.
+
+## D.17-E0 — Verifica endpoint TheStatsAPI
+
+Verifica documentale completata senza real-call.
+
+Endpoint candidato finale per D.17-E:
+
+- `GET https://api.thestatsapi.com/api/football/competitions/comp_5840/seasons/sn_6199313/standings`;
+- auth `Authorization: Bearer <token>`;
+- header `Accept: application/json`.
+
+Decisione:
+
+- usare standings Serie A come prima prova read-only;
+- nessuna paginazione;
+- massimo una richiesta;
+- nessun DB write;
+- nessun import;
+- nessun provider activation;
+- API-Football sospeso/no retry;
+- Apify spento;
+- Production non toccata.
+
+## Checklist prima dei provider reali
+
+- [ ] Confermare provider stabile da usare.
+- [ ] Definire mapping ID esterni per competizioni/squadre/giocatori/partite.
+- [ ] Configurare budget richieste giornaliero/mensile.
+- [ ] Verificare logging `api_usage_logs`.
+- [ ] Eseguire dry-run senza scrittura.
+- [ ] Eseguire import su un sottoinsieme minimo.
+- [ ] Verificare deduplica e rollback.
+- [ ] Verificare che nessuna pagina pubblica chiami provider.
+- [ ] Verificare che il sito legga solo Supabase.
+- [ ] Verificare contratto/licenza, attribuzione e diritti di memorizzazione/pubblicazione.
 
 ## Pilot FULL consigliato
 
@@ -25,9 +139,22 @@ Non attivare entrambi nella prima integrazione.
 4. Salvare fixture anonimizzate dei payload per i test.
 5. Completare mapping ID esterni e normalizzatori conservativi.
 6. Eseguire dry-run e confrontare quantità/identità.
-7. Attivare upsert su Supabase dev con chiavi univoche.
+7. Attivare upsert su Supabase staging solo dopo conferma.
 8. Aggiungere fixtures/results, poi standings, infine statistiche.
 9. Misurare richieste e costo prima di ampliare copertura.
+
+## Checklist prima di Apify
+
+- [ ] Lasciare `apify_sofascore` disattivato fino a test budget.
+- [ ] Confermare budget 30 €/mese, warning 24 €, hard stop 30 €.
+- [ ] Testare `checkApifyMonthlyBudget`.
+- [ ] Testare piano weekly import solo latest round.
+- [ ] Verificare che priority 1 venga prima di priority 2.
+- [ ] Verificare che FULL_OFFICIAL non usi mai Apify.
+- [ ] Nessun live scraping.
+- [ ] Nessun download/reupload video.
+- [ ] Nessuna chiamata lato utente.
+- [ ] Verificare termini/licenze di Apify, actor e fonte dati.
 
 ## Guardie operative
 
@@ -39,28 +166,1908 @@ Non attivare entrambi nella prima integrazione.
 - Import idempotenti; correzioni provider aggiornano senza duplicare.
 - Fallback all'ultimo snapshot valido; un failure non cancella dati.
 
-## Piano Apify/SofaScore
+## FASE C consigliata
 
-Apify resta separato dal provider FULL:
-
-- solo P1/P2, mai FULL;
-- una run settimanale, latest round only;
-- P1 prima di P2;
-- sotto 24 €: P1 e P2 se resta budget;
-- da 24 € a meno di 30 €: solo P1 essenziali;
-- da 30 €: hard stop;
-- nessuna live call, storico massivo o video.
-
-Prima del pilot verificare licenze e termini sia di Apify/actor sia della fonte dati. Iniziare con una sola competizione P1 e almeno quattro run controllate prima di considerare P2.
-
-## Mapping e deduplica
-
-- Conservare `(provider_id, external_id, entity_type)` in una tabella/mappa stabile.
-- Non usare il nome visuale come unica chiave.
-- Gestire cambi nome, promozioni/retrocessioni, fusioni e squadre omonime.
-- Per i match combinare external ID, stagione, competizione e provider.
-- Registrare mapper version e payload hash per riconciliazione.
+1. Collegare public readers Supabase minimi.
+2. Pubblicare seed demo controllato.
+3. Rendere admin editoriale manuale utile.
+4. Tenere stable provider in dry-run.
+5. Attivare primo import reale solo dopo conferma.
+6. Tenere Apify spento fino a test budget.
+7. Rifinire CTA Substack.
 
 ## Go/no-go
 
 Go solo se contratto/licenza, budget, mapper testati, upsert idempotente, monitoraggio e fallback sono tutti verificati. In assenza di uno di questi elementi, mantenere `active: false` e usare mock.
+
+## D.1 — Provider activation dry-run audit
+
+Stato: piano dry-run preparato, nessun provider attivato.
+
+Provider modellati nel codice:
+
+- `mock_provider`: attivo nel catalogo locale, usato come fallback sviluppo/demo;
+- `manual_provider`: attivo nel catalogo locale, dedicato a fonti editoriali e link ufficiali manuali;
+- `stable_provider`: wrapper astratto per futuro provider stabile FULL_OFFICIAL, disattivato;
+- `the_stats_api`: adapter placeholder, disattivato;
+- `api_football`: adapter placeholder, disattivato;
+- `apify_sofascore`: adapter placeholder/dry-run per campionati minori, disattivato.
+
+Provider seedati nello staging:
+
+- 6 provider base da `0006_seed_base_data.sql`;
+- provider reali disattivati;
+- Apify disattivato;
+- import non abilitati.
+
+Competizioni modellate:
+
+- totale catalogo locale: 43;
+- FULL_OFFICIAL: 14;
+- APIFY_LIGHT_PLUS_PRIORITY_1: 15;
+- APIFY_LIGHT_PLUS_PRIORITY_2: 14;
+- TRIGGER concreti: 0.
+
+FULL_OFFICIAL:
+
+- Serie A;
+- Premier League;
+- LaLiga;
+- Bundesliga;
+- Ligue 1;
+- UEFA Champions League;
+- UEFA Europa League;
+- Copa Libertadores;
+- Brasileirão Série A;
+- Argentina Primera División;
+- Eredivisie;
+- Jupiler Pro League;
+- Primeira Liga;
+- Süper Lig.
+
+APIFY_LIGHT_PLUS_PRIORITY_1:
+
+- Swiss Super League;
+- Austrian Bundesliga;
+- Danish Superliga;
+- Allsvenskan;
+- Eliteserien;
+- Ekstraklasa;
+- HNL;
+- Serbian SuperLiga;
+- J1 League;
+- K League 1;
+- Major League Soccer;
+- Uruguayan Primera División;
+- Categoría Primera A;
+- Chilean Primera División;
+- Ligue 2.
+
+APIFY_LIGHT_PLUS_PRIORITY_2:
+
+- Super League Greece;
+- Czech First League;
+- Ukrainian Premier League;
+- Liga I Romania;
+- Nemzeti Bajnokság I;
+- Slovak Super Liga;
+- Slovenian PrvaLiga;
+- Premier League Bosnia and Herzegovina;
+- Bulgarian First League;
+- Liga 1 Peru;
+- Paraguayan Primera División;
+- Venezuelan Primera División;
+- Bolivian División Profesional;
+- Russian Premier League.
+
+Admin stato provider/import:
+
+- `/admin/providers` legge `data_providers` da Supabase staging se configurato, fallback mock;
+- `/admin/competitions` mostra configurazione descrittiva locale;
+- `/admin/imports` resta mock/dry-run;
+- `/admin/apify-usage` resta mock/dry-run;
+- nessuna pagina pubblica usa provider esterni.
+
+Tabelle principali coinvolte:
+
+- provider: `data_providers`, `provider_competition_config`;
+- import/log: `provider_import_logs`, `import_logs`, `api_usage_logs`;
+- Apify: `apify_usage_logs`, `apify_budget_status`;
+- calcio: `competitions`, `teams`, `players`, `matches`, `match_events`, `standings`;
+- statistiche: `team_match_stats`, `team_season_stats`, `player_match_stats`, `player_season_stats`.
+
+Query read-only staging:
+
+```sql
+select count(*) as active_providers
+from public.data_providers
+where is_active = true;
+
+select provider_key, name, provider_type, is_active, priority, monthly_budget_eur, warning_budget_eur, hard_stop_budget_eur
+from public.data_providers
+order by priority;
+
+select count(*) as enabled_imports
+from public.provider_competition_config
+where import_enabled = true;
+
+select tracking_level, count(*) as competitions
+from public.competitions
+group by tracking_level
+order by tracking_level;
+
+select c.slug, c.name, c.tracking_level, p.provider_key, pc.import_enabled, pc.priority, pc.data_confidence
+from public.provider_competition_config pc
+join public.competitions c on c.id = pc.competition_id
+join public.data_providers p on p.id = pc.provider_id
+order by c.tracking_level, c.slug, pc.priority;
+
+select status, count(*) as runs
+from public.import_logs
+group by status
+order by status;
+
+select status, count(*) as provider_runs
+from public.provider_import_logs
+group by status
+order by status;
+
+select *
+from public.apify_budget_status
+order by period_start desc
+limit 12;
+
+select count(*) as teams_demo from public.public_teams;
+select count(*) as matches_demo from public.public_matches;
+select count(*) as standings_demo from public.public_standings;
+```
+
+Go/no-go D.2:
+
+- non inserire token prima del dry-run;
+- non attivare `is_active` o `import_enabled`;
+- non aggiungere env su Production;
+- prima simulare un provider stabile su una sola competizione demo;
+- prima simulare Apify con budget mock e latest round only.
+
+## D.2 — Provider config audit script
+
+Stato: implementato localmente, nessuna chiamata esterna.
+
+File:
+
+- `scripts/provider/auditProviderConfig.ts`;
+- comando `npm run audit:providers`.
+
+Cosa fa:
+
+- legge solo file statici versionati;
+- analizza `config/providers.ts`;
+- analizza `config/competitions.ts`;
+- controlla la migrazione seed per `import_enabled=false`;
+- controlla che il documento budget Apify citi hard stop;
+- stampa report testuale sicuro.
+
+Cosa non fa:
+
+- non legge `.env.local`;
+- non stampa env;
+- non legge token;
+- non chiama provider;
+- non chiama Apify;
+- non chiama SofaScore;
+- non fa scraping;
+- non apre connessioni DB;
+- non scrive Supabase;
+- non attiva import.
+
+Esito corrente:
+
+- provider totali: 6;
+- provider reali spenti;
+- Apify spento;
+- competizioni totali: 43;
+- FULL_OFFICIAL: 14;
+- APIFY P1: 15;
+- APIFY P2: 14;
+- TRIGGER: 0;
+- warnings: 0.
+
+D.3 consigliato:
+
+- dry-run stabile limitato a `serie-a`, usando solo adapter mock/fallback e payload futuri;
+- nessun fetch reale;
+- nessun token;
+- nessuna scrittura DB.
+
+## D.3 — Stable provider dry-run eseguito
+
+Stato: completato localmente, nessun provider attivato.
+
+Comando:
+
+```bash
+npm run dry-run:stable-provider
+```
+
+Risultato:
+
+- competizione: `serie-a`;
+- tracking level: `full_official`;
+- provider candidato: `stable_provider`;
+- candidati esterni: `the_stats_api/api_football`;
+- mapped teams: 4;
+- mapped matches: 2;
+- mapped standings: 4;
+- planned tables: `teams`, `matches`, `standings`, `provider_import_logs`;
+- warnings: 0.
+
+Safety checks:
+
+- `stable_provider` off;
+- `the_stats_api` off;
+- `api_football` off;
+- Apify off;
+- fetch esterne 0;
+- scritture DB 0;
+- token letti/stampati 0.
+
+Questo dry-run non abilita l’import reale. Serve solo a validare forma del piano dati e guardie operative.
+
+## D.4 — Provider logging/budget dry-run
+
+Stato: completato localmente, senza provider reali e senza DB write.
+
+Nuovo comando:
+
+```bash
+npm run dry-run:provider-logging
+```
+
+Controlli simulati:
+
+- `provider_import_logs` shape compatibile con schema staging;
+- `api_usage_logs` shape compatibile con schema staging;
+- budget guard Apify 30/24/30 €;
+- run mock su `serie-a`;
+- provider stabile ancora spento;
+- TheStatsAPI/API-Football ancora spenti;
+- Apify ancora spento;
+- import ancora spenti.
+
+Scenari budget simulati:
+
+- A: 0 € + 0 € → run consentita;
+- B: 24 € + 1 € → run consentita con warning;
+- C: 30 € + 1 € → run bloccata da hard stop.
+
+Il dry-run conferma la forma futura dei report, ma non rende ancora attivabile il provider reale.
+
+Prima dell’attivazione reale restano obbligatori:
+
+- scelta provider effettivo;
+- credenziali solo server-side;
+- writer log transazionale;
+- mapping ID esterni;
+- budget reale da Supabase;
+- rollback batch;
+- approvazione manuale per ogni primo import.
+
+## D.5 — Writer/log guard disabilitati
+
+Stato: preparato localmente.
+
+Sono stati introdotti contratti safe per i futuri writer provider:
+
+- `assertProviderWritesDisabled()`;
+- `buildProviderImportBatchId()`;
+- `buildProviderImportLogPreview()`;
+- `buildApiUsageLogPreview()`;
+- `buildRollbackPlanPreview()`.
+
+Il comportamento voluto è conservativo:
+
+- un tentativo di scrittura viene bloccato;
+- il writer restituisce solo preview/report;
+- non apre client Supabase;
+- non usa service role;
+- non chiama provider;
+- non chiama Apify.
+
+Comando di verifica:
+
+```bash
+npm run dry-run:provider-writer-guards
+```
+
+Risultato atteso:
+
+- `real_writes_enabled=false`;
+- `write_attempt_blocked=true`;
+- preview log ok;
+- rollback preview ok;
+- warnings 0.
+
+Prima di trasformare questo layer in writer reale serviranno:
+
+1. decisione su `batch_id/import_run_id` nello schema;
+2. writer server-side esplicito e testato;
+3. RLS/admin policy sui log;
+4. rollback query;
+5. flag manuale per ambiente staging;
+6. conferma utente prima del primo DB write.
+
+## D.6 — Modello `provider_import_runs`
+
+Decisione tecnica proposta, non applicata:
+
+- introdurre `provider_import_runs` come testata batch;
+- collegare `provider_import_logs`, `api_usage_logs` e `import_logs` tramite `import_run_id` e `batch_id`;
+- mantenere RLS stretta;
+- nessun accesso anon;
+- lettura editor/admin;
+- scrittura admin soltanto in futura fase server-side controllata;
+- nessuna policy delete.
+
+La migrazione preparata è:
+
+- `supabase/migrations/0009_provider_import_runs.sql`.
+
+Il layer preview è stato aggiornato:
+
+- `buildProviderImportRunPreview()`;
+- `provider_import_log_preview` include `import_run_id` e `batch_id`;
+- `api_usage_log_preview` include `import_run_id` e `batch_id`;
+- rollback preview ora considera `provider_import_runs`.
+
+Prima dell’applicazione manuale:
+
+1. rileggere integralmente la migrazione;
+2. verificare che lo staging sia sacrificabile;
+3. applicare solo 0009;
+4. controllare RLS/grant;
+5. non attivare writer reali.
+
+## D.6-B — 0009 applicata, writer ancora bloccati
+
+La migrazione `0009_provider_import_runs.sql` è stata applicata manualmente su Supabase staging “Regista Avanzato”.
+
+Metodo:
+
+- SQL Editor;
+- no `db push`;
+- no `db reset`;
+- no Production.
+
+Risultato:
+
+- `provider_import_runs` disponibile;
+- log provider/API/import collegabili tramite `import_run_id` e `batch_id`;
+- RLS/policy create;
+- nessuna riga reale inserita;
+- provider/import ancora disattivati;
+- `realWritesEnabled=false`.
+
+## D.13 — Stable provider real-call readiness
+
+D.13 prepara solo il piano per una futura prima chiamata reale read-only.
+
+Documento dedicato:
+
+- `docs/stable_provider_real_call_readiness_d13.md`.
+
+Stato:
+
+- nessuna chiamata TheStatsAPI;
+- nessuna chiamata API-Football;
+- nessuna fetch esterna;
+- nessun token letto;
+- nessuna scrittura DB;
+- provider reali ancora off;
+- `import_enabled=false`;
+- Apify off;
+- Production non toccata.
+
+Decisione provvisoria:
+
+- `api_football` è il provider preferito provvisorio solo per una futura probe read-only;
+- `the_stats_api` resta alternativa;
+- la scelta finale richiede verifica manuale di copertura, prezzo, rate limit, licenza e payload.
+
+La futura real-call dovrà essere uno script separato dall’import writer, massimo una richiesta su `serie-a`, output sanificato e nessuna scrittura DB.
+
+## D.14-A — Script probe disabilitato
+
+Creato:
+
+- `scripts/provider/disabledStableProviderProbe.ts`.
+
+Aggiunto comando:
+
+- `npm run probe:stable-provider:disabled`.
+
+La probe è soltanto preparatoria:
+
+- non chiama API-Football;
+- non chiama TheStatsAPI;
+- non legge token;
+- non fa fetch;
+- non scrive DB;
+- non attiva provider/import;
+- conferma `blocked_reason=REAL_PROVIDER_PROBE_DISABLED`.
+
+## D.15 — Gate prima della probe reale
+
+Creato:
+
+- `docs/provider_probe_readiness_d15.md`.
+
+Il gate richiede:
+
+- provider scelto definitivamente;
+- prezzo/rate limit/licenza verificati manualmente;
+- token solo in env sicura;
+- una sola request;
+- output sanificato;
+- nessun DB write;
+- nessun `import_enabled=true`;
+- provider ancora off in `data_providers`;
+- `realWritesEnabled=false`;
+- Production non toccata.
+
+Prima di qualunque writer reale:
+
+1. testare RLS con sessione app admin/editor/free_user;
+2. verificare che anon/free_user non leggano o scrivano run/log;
+3. preparare solo writer staging con rollback;
+4. mantenere provider reali spenti;
+5. richiedere conferma manuale.
+
+## D.7 — Readiness senza writer reali
+
+Prima di qualunque writer provider è stato preparato un controllo read-only:
+
+- `supabase/manual/provider_import_runs_rls_d7.sql`;
+- `docs/provider_import_runs_rls_test_plan.md`.
+
+Il controllo non inserisce dati e non abilita import.
+
+Serve a confermare:
+
+- `provider_import_runs` protetta da RLS;
+- nessuna policy delete;
+- log collegati tramite colonne batch/import;
+- provider e import ancora spenti.
+
+## D.7-B — Esito readiness provider_import_runs
+
+La verifica manuale read-only D.7-A è stata completata sullo staging “Regista Avanzato”.
+
+Confermato:
+
+- `provider_import_runs` presente;
+- RLS attiva;
+- count = 0;
+- provider esterni ancora off;
+- import ancora disabilitati;
+- nessuna policy `DELETE`;
+- SQL Editor non ha sessione app admin (`auth.uid() = null`, helper admin/editor = false).
+
+Impatto sul piano provider:
+
+- il modello run/batch è pronto come base di tracciamento;
+- nessun writer reale è ancora consentito;
+- nessun provider reale può essere attivato prima di test RLS applicativi;
+- Apify resta spento;
+- `realWritesEnabled=false` resta il blocco operativo principale.
+
+Prossimo step:
+
+- D.8 — visibilità admin read-only delle import run, senza import reali.
+
+## D.8 — Reader admin import runs
+
+Implementata visibilità read-only in `/admin/imports` per le future run provider/import.
+
+Stato:
+
+- reader server-side con sessione utente;
+- RLS rispettata;
+- nessuna service role;
+- nessuna scrittura DB;
+- nessun comando import;
+- nessun provider reale;
+- nessun Apify;
+- empty state atteso con `provider_import_runs_count = 0`.
+
+La sezione serve solo a rendere auditabile lo stato futuro dei batch. Non autorizza ancora run reali.
+
+Prossimo step consigliato:
+
+- D.9 — verifica Preview di `/admin/imports` e test RLS applicativo con admin/editor/free_user, senza creare run reali.
+
+## D.9 — Preview check import runs
+
+Verifica tecnica Preview completata:
+
+- deployment Preview Ready;
+- alias branch Preview attivo;
+- route `/admin/imports` presente;
+- Vercel Authentication attiva per accesso non autenticato.
+
+Il test admin UI resta manuale perché richiede sessione Vercel e sessione Supabase admin.
+
+Fino al completamento manuale:
+
+- non attivare provider;
+- non attivare import;
+- non creare run;
+- non abilitare writer;
+- mantenere `realWritesEnabled=false`.
+
+## D.9-B — Preview imports verificata manualmente
+
+La pagina `/admin/imports` è stata verificata manualmente su Preview.
+
+Confermato:
+
+- admin vede la sezione `Provider import runs`;
+- empty state corretto;
+- badge `Read-only`, `Provider off`, `Apify off`, `realWritesEnabled=false`;
+- nessun bottone di run/import/delete/update;
+- accesso non autenticato bloccato da Vercel Authentication;
+- provider/import restano spenti;
+- DB invariato per quanto verificato;
+- Production non toccata.
+
+Questa verifica abilita solo maggiore visibilità read-only. Non abilita provider o writer.
+
+Prossimo step consigliato:
+
+- D.10 — test RLS applicativo per ruoli su import runs, senza run reali.
+
+## D.10 — Ruoli applicativi import runs
+
+Audit completato senza modifiche a utenti/ruoli.
+
+La visibilità import runs è coerente con il piano provider:
+
+- `free_user` non accede ad admin;
+- `editor/admin` approved possono accedere in sola lettura;
+- nessuna azione writer presente;
+- provider/import restano spenti;
+- `realWritesEnabled=false`.
+
+Prima di qualunque attivazione provider restano necessari:
+
+- test `free_user` negativo con utente controllato;
+- test `editor` positivo read-only con utente controllato;
+- conferma DB invariato;
+- nessun writer reale.
+
+## D.11 — Readiness gate provider/import
+
+Decisione D.11:
+
+- non creare utenti;
+- non modificare ruoli;
+- non abilitare writer;
+- non attivare provider;
+- non attivare Apify;
+- non attivare import.
+
+I test `free_user`/`editor` restano residui consapevoli.
+
+NO writer reali finché:
+
+- GitHub repo Private confermato;
+- service role Supabase ruotata/rigenerata se esposta;
+- env Supabase solo Preview;
+- migrazioni manuali tracciate;
+- RLS testata da app con admin/editor/free_user/non autenticato;
+- `realWritesEnabled=false` resta default;
+- ogni import ha `import_run_id`, `batch_id`, lifecycle, rollback e audit/log;
+- budget Apify con warning 24 €/mese e hard stop 30 €/mese;
+- nessuna chiamata provider/Apify lato utente;
+- nessun deploy Production senza checklist dedicata.
+
+## D.16-A — Provider manual verification checklist
+
+Creato:
+
+- `docs/provider_manual_verification_checklist_d16a.md`.
+
+Obiettivo:
+
+- confrontare manualmente `api_football` e `the_stats_api` prima di qualunque probe reale;
+- non inventare prezzi, rate limit, licenze o copertura;
+- mantenere tutte le voci non confermate come “da verificare manualmente”.
+
+Decisione provvisoria:
+
+- preferred provvisorio: `api_football`;
+- alternative: `the_stats_api`;
+- nessuna modifica a config, DB, provider o import.
+
+Gate prima di real-call:
+
+- provider scelto manualmente;
+- prezzo, rate limit e licenza verificati;
+- endpoint scelto;
+- token solo in env sicura;
+- provider ancora off in `data_providers`;
+- nessun `import_enabled=true`;
+- `real_provider_probe_enabled=false` fino a nuova conferma;
+- `realWritesEnabled=false`;
+- nessun DB write;
+- Production non toccata.
+
+## D.16-B — API-Football Free per prima probe
+
+Creato:
+
+- `docs/api_football_free_probe_plan_d16b.md`.
+
+Decisione:
+
+- prima probe futura su `api_football`;
+- piano Free;
+- `the_stats_api` resta alternativa.
+
+Motivazione:
+
+- ridurre rischio economico;
+- testare endpoint/auth/payload prima di qualunque piano a pagamento;
+- evitare attivazioni provider/import premature.
+
+La probe non è stata eseguita. Restano spenti:
+
+- API-Football in DB/config runtime;
+- TheStatsAPI;
+- Apify;
+- import;
+- writer reali.
+
+Prima di D.16-C:
+
+- account/API-Football Free creato manualmente;
+- token solo in env sicura;
+- massimo una richiesta;
+- nessuna scrittura DB;
+- nessun provider/import attivato;
+- `realWritesEnabled=false`;
+- Production non toccata.
+
+## D.16-C1 — Preparazione API-Football key
+
+Creato:
+
+- `docs/api_football_key_setup_d16c1.md`.
+
+Aggiornato:
+
+- `.env.example` con placeholder non segreti:
+  - `API_FOOTBALL_API_KEY=`;
+  - `API_FOOTBALL_BASE_URL=`;
+  - `API_FOOTBALL_PROBE_ENABLED=false`.
+
+La chiave reale non viene inserita né letta. Il piano conferma:
+
+- token solo in env sicura;
+- mai token in chat o docs;
+- mai token in Production;
+- nessuna real-call;
+- nessun provider/import attivato;
+- writer ancora bloccati.
+
+## D.16-C2-B — Script probe API-Football preparato
+
+Creato:
+
+- `scripts/provider/apiFootballProbe.ts`;
+- `docs/api_football_probe_script_d16c2b.md`.
+
+Aggiornato:
+
+- `package.json` con `probe:api-football:gated`.
+
+La fase non esegue il comando e non abilita provider.
+
+Il piano operativo resta:
+
+- script separato dagli import;
+- massimo una richiesta futura;
+- default disabled;
+- nessuna fetch in D.16-C2-B;
+- nessuna scrittura DB;
+- provider/import spenti;
+- Production non toccata.
+
+## D.16-C3 — Real-call non completata
+
+- Tentativo effettuato con gate temporanei abilitati.
+- La richiesta reale non è partita perché la key non era disponibile nel process environment.
+- `requests_executed=0`.
+- Nessuna fetch provider completata.
+- Nessuna scrittura DB.
+- Nessun import attivato.
+- Nessun provider attivato.
+- Apify e TheStatsAPI non chiamati.
+- Production non toccata.
+
+Decisione:
+
+- non abbassare le protezioni;
+- non caricare `.env.local` da Codex;
+- riprovare solo con una procedura esplicita che renda la key disponibile al processo senza stamparla.
+
+## D.16-C3-R1 — API-Football raggiunta, risposta 403
+
+La prima richiesta controllata è stata eseguita una sola volta.
+
+- Provider: API-Football.
+- Endpoint: standings Serie A.
+- Richieste eseguite: 1.
+- HTTP status: `403`.
+- Errori API sanificati: `2`.
+- Righe standings: `0`.
+- Mapping teorico: non possibile in questa prova.
+
+Conferme:
+
+- nessun retry;
+- nessuna seconda richiesta;
+- nessun payload completo stampato;
+- nessun token stampato;
+- nessuna scrittura DB;
+- provider/import ancora spenti;
+- Apify spento;
+- TheStatsAPI non chiamato;
+- Production non toccata.
+
+Prima di qualunque ulteriore real-call, verificare manualmente piano/key/endpoint nel provider e aprire una nuova fase autorizzata.
+
+## D.16-C3-R2 — Preparazione retry 403
+
+Documento:
+
+- `docs/api_football_403_retry_readiness_d16c3r2.md`.
+
+R2 readiness non autorizza chiamate provider. Serve solo a chiarire i gate manuali:
+
+- piano Free attivo;
+- API Football v3 abilitata;
+- key corretta e non esposta;
+- eventuali restrizioni IP/domain risolte;
+- endpoint/parametri verificati;
+- massimo una richiesta;
+- nessun retry automatico;
+- nessun DB write.
+
+Provider/import restano spenti e Production resta esclusa.
+
+## D.16-C3-R2 manual check — Nessuna attivazione provider
+
+Documento:
+
+- `docs/api_football_dashboard_manual_check_d16c3r2.md`.
+
+La fase prepara controlli manuali dashboard e non attiva nulla:
+
+- nessuna chiamata API-Football;
+- nessuna fetch provider;
+- nessuna scrittura DB;
+- nessun provider/import attivato;
+- Apify spento;
+- TheStatsAPI non chiamato;
+- Production non toccata.
+
+Prima del retry R2 servirà scegliere se usare ancora `season=2026` o modificare in fase dedicata verso `season=2025`.
+
+## D.17-A — Pivot verso TheStatsAPI
+
+Decisione:
+
+- API-Football resta sospeso dopo HTTP `403`;
+- nessun retry API-Football previsto per ora;
+- TheStatsAPI diventa provider scelto per i prossimi test;
+- API-Football resta fallback futuro documentato;
+- Apify resta separato e spento.
+
+Preparazione:
+
+- aggiunto `docs/thestatsapi_provider_pivot_d17a.md`;
+- aggiunti placeholder non segreti in `.env.example`:
+  - `THESTATSAPI_API_KEY=`;
+  - `THESTATSAPI_BASE_URL=`;
+  - `THESTATSAPI_PROBE_ENABLED=false`.
+
+Conferme:
+
+- nessuna real-call TheStatsAPI;
+- nessuna fetch provider;
+- nessun token letto/stampato;
+- nessuna scrittura DB;
+- provider/import spenti;
+- Production non toccata.
+
+## D.16-C2-C — Checklist finale prima della probe
+
+Creato:
+
+- `docs/api_football_pre_real_call_checklist_d16c2c.md`.
+
+Endpoint consigliato:
+
+- API-Football standings Serie A.
+
+Condizioni per D.16-C3:
+
+- key rigenerata;
+- massimo una richiesta;
+- niente retry/loop/paginazione;
+- output summary sanificato;
+- nessun DB write;
+- nessun provider/import attivato;
+- Production esclusa;
+- conferma esplicita dell’utente.
+
+## D.17-E/F — TheStatsAPI real probe
+
+Probe reale controllata eseguita:
+
+- `requests_planned=2`;
+- `requests_executed=1`;
+- `/football/competitions`: HTTP `404`;
+- standings non eseguito;
+- nessun retry;
+- nessuna paginazione;
+- nessun DB write;
+- provider/import non attivati;
+- Apify spento;
+- Production non toccata.
+
+Non procedere con import o mapping operativo finché non viene individuato un endpoint valido.
+
+## D.17-G — Debug endpoint 404
+
+D.17-G non ha chiamato provider.
+
+Correzione:
+
+- normalizzazione URL nello script TheStatsAPI;
+- preservazione `/api` nel base URL;
+- output disabled con URL shape sanificata.
+
+Decisione:
+
+- prossimo eventuale retry: singola richiesta `GET /football/competitions`;
+- no standings nello stesso step;
+- nessun import;
+- nessun DB write;
+- provider/import spenti.
+
+## D.17-H — TheStatsAPI competitions retry
+
+Risultato della singola richiesta reale controllata:
+
+- provider: TheStatsAPI;
+- endpoint: `GET /football/competitions`;
+- URL shape: `https://api.thestatsapi.com/api/football/competitions`;
+- `requests_executed=1`;
+- HTTP status: `403`;
+- standings non eseguito;
+- nessun retry;
+- nessuna scrittura DB;
+- provider/import non attivati.
+
+Il piano di attivazione resta bloccato: non procedere con standings/import finché il `403` non è chiarito.
+
+## D.17-J — Nessuna attivazione provider
+
+D.17-J è solo debug del `403`.
+
+Non sono stati attivati:
+
+- provider reali;
+- import;
+- writer;
+- Apify;
+- API-Football.
+
+Prima di qualsiasi retry serve conferma manuale di piano/key/auth/endpoint TheStatsAPI.
+
+## D.17-K — Piano provider aggiornato
+
+D.17-K non attiva provider e non autorizza retry.
+
+Decisione consigliata:
+
+- preparare supporto alla base URL documentata `https://stats-api.com/api/v1`;
+- mantenere lo script gated/disabled;
+- non fare request finché account/key/base URL non sono confermati.
+
+## D.17-L — Nessuna attivazione, solo supporto URL v1
+
+Lo script gated ora può rappresentare la URL alternativa Stats API v1 in output disabled.
+
+Non cambia lo stato provider:
+
+- TheStatsAPI non attivato;
+- import non attivati;
+- nessun writer;
+- nessuna chiamata provider.
+
+## D.17-M/N/Z — Piano attivazione bloccato
+
+Punto 17 chiuso senza provider attivabile.
+
+Non procedere con:
+
+- mapping reale;
+- standings;
+- import;
+- writer;
+- cron/provider run.
+
+Prossimo passo: chiarire account/key/piano o scegliere provider alternativo.
+
+## Punto 18 — Strategia fallback senza provider reali
+
+Decisione finale Punto 18:
+
+- TheStatsAPI / Stats API resta sospeso;
+- API-Football resta sospeso/no retry;
+- Apify resta spento;
+- `stable_provider` resta off;
+- nessun provider reale è attivo;
+- nessun import reale è autorizzato.
+
+Il percorso operativo consentito è:
+
+- dati manuali;
+- dati mock;
+- fixture locali versionate;
+- dry-run locali senza fetch e senza DB write.
+
+Documenti collegati:
+
+- `docs/provider_status_matrix_p18.md`;
+- `docs/manual_mock_data_mode_p18.md`;
+- `docs/provider_future_readiness_checklist_p18.md`;
+- `docs/provider_point_18_closure.md`.
+
+Nuovo comando sicuro:
+
+```bash
+npm run dry-run:manual-fixtures
+```
+
+Il comando non chiama provider, non legge token e non scrive nel database.
+
+## Punto 19 — Admin preview manual/mock senza import
+
+Punto 19 rende visibile in `/admin/imports` la preview delle fixture locali.
+
+Stato:
+
+- provider reali ancora sospesi/off;
+- import reali ancora disabilitati;
+- DB writes non autorizzate;
+- pagina admin solo read-only.
+
+La preview consente di controllare:
+
+- conteggi fixture;
+- validità riferimenti;
+- mapping teorico;
+- tabelle competitions/teams/standings locali.
+
+Non sono stati aggiunti bottoni run/import/sync/save/delete.
+
+## Punto 20 — Piano import manuale staging
+
+Punto 20 non attiva provider e non autorizza import.
+
+È stato preparato solo un piano tecnico per un futuro manual import staging:
+
+- definizione di manual import approvato;
+- mapping fixture → tabelle Supabase candidate;
+- audit/rollback plan;
+- checklist preflight;
+- dry-run testuale `npm run dry-run:manual-import-plan`.
+
+Stato operativo:
+
+- import reale non disponibile;
+- DB write disabled;
+- nessun SQL eseguibile generato;
+- provider reali sospesi;
+- Production non toccata.
+
+## Punto 21 — Readiness manual import non eseguibile
+
+Punto 21 aggiunge readiness finale per un futuro import manuale staging:
+
+- schema target review locale;
+- batch id preview;
+- collision strategy create/update/skip;
+- rollback preview;
+- comando `npm run dry-run:manual-import-readiness`;
+- sezione admin read-only.
+
+Non cambia lo stato:
+
+- import reale non disponibile;
+- DB write disabled;
+- SQL eseguibile non generato;
+- provider reali sospesi;
+- Production non toccata.
+
+## Punto 22 — Schema confirmation read-only
+
+Punto 22 aggiunge schema confirmation locale:
+
+- tabelle candidate confermate localmente;
+- stato `needs_review` per competitions/teams/standings;
+- RLS/audit review teorica;
+- gate decisionale per Punto 23;
+- comando `npm run dry-run:manual-schema-confirmation`.
+
+Non cambia lo stato operativo:
+
+- write allowed=false;
+- next write allowed=false;
+- nessun import reale;
+- nessuna migration;
+- nessuna Production.
+
+## Punto 23 — Nessuna attivazione dopo schema review
+
+Punto 23 non abilita import né provider.
+
+Risultato:
+
+- competitions/teams/standings restano `needs_review`;
+- nessuna area `ready`;
+- schema confidence matrix disponibile;
+- Punto 24 richiesto per qualunque step successivo;
+- write authorization ancora assente.
+
+Lo stato operativo resta:
+
+- provider reali sospesi;
+- DB write disabled;
+- import reali disabilitati;
+- Production non toccata.
+
+## Punto 24 — Local schema deep review no-write
+
+Punto 24 non attiva provider e non autorizza import.
+
+La review locale conferma che il problema non è una tabella/colonna mancante, ma la mancanza di decisioni operative su:
+
+- dedup `competitions` (`internal_key`, `slug`, `season`);
+- lookup FK `teams.competition_id`;
+- lookup FK `standings.competition_id` e `standings.team_id`;
+- default `season`, `stage`, `matchday`;
+- calcolo/documentazione `goal_difference`;
+- mapping editoriale `category/status`.
+
+Stato:
+
+- competitions: `needs_review`;
+- teams: `needs_review`;
+- standings: `needs_review`;
+- migration recommended: `false`;
+- db read-only check recommended: `true`;
+- next write allowed: `false`.
+
+Provider/import restano spenti. Punto 25 consigliato: check DB read-only, non write.
+
+## Punto 25 — Nessuna attivazione dopo DB read-only check
+
+Punto 25 non attiva provider e non abilita import.
+
+Il check DB read-only con client anon/pubblico ha raggiunto la fase di lettura ma non ha confermato:
+
+- `competitions`;
+- `teams`;
+- `standings`;
+- public views correlate;
+- lookup fixture.
+
+Stato finale:
+
+- competitions: `blocked`;
+- teams: `blocked`;
+- standings: `blocked`;
+- write preconditions met: `false`;
+- next write allowed: `false`.
+
+Provider/import restano spenti. Punto 26 consigliato: investigazione read-only accesso/schema, senza write.
+
+## Punto 26 — Nessuna attivazione dopo investigazione read-only
+
+Punto 26 conferma che l'accesso anon/pubblico non è sufficiente per validare il lookup import manuale.
+
+Stato:
+
+- direct table lookup: `unknown`;
+- public view lookup: `unknown`;
+- admin view lookup: `not_attempted`;
+- likely blocker: `rls_or_missing_view_or_wrong_table_name_or_insufficient_anon_access`;
+- requires read-only view: `true`;
+- requires service role: `false`;
+- next write allowed: `false`.
+
+Provider/import restano spenti. Punto 27 consigliato: proposta no-write di view read-only dedicate oppure conferma manuale dashboard con sole SELECT.
+
+## Punto 27 — Provider/import ancora non attivabili
+
+La proposta di view read-only non attiva provider e non abilita import.
+
+Prima di qualsiasi import manuale reale serve Punto 28:
+
+- confermare struttura view;
+- eventualmente preparare migrazione non applicata;
+- oppure eseguire solo SELECT manuali in SQL Editor staging;
+- mantenere `next_write_allowed=false` finché non esiste nuova autorizzazione.
+
+TheStatsAPI, Stats API v1, API-Football e Apify restano sospesi/spenti.
+
+## Punto 28 — Nessuna attivazione dopo migration proposal
+
+La migration proposal read-only non attiva provider e non abilita import.
+
+Confermato:
+
+- TheStatsAPI / Stats API sospesi;
+- API-Football sospeso/no retry;
+- Apify spento;
+- real import disabilitato;
+- `next_write_allowed=false`.
+
+## Punto 35 — Provider/import still off
+
+Punto 35 non attiva provider/import.
+
+Conferme:
+
+- real migration created: `true`;
+- migration applied: `false`;
+- db write: `false`;
+- provider import enabled: `false`;
+- Apify enabled: `false`;
+- no provider fetch;
+- Production untouched.
+
+## Punto 34 — Final pre-apply gate
+
+Punto 34 non attiva provider/import e non autorizza DB write.
+
+Conferme:
+
+- final pre-apply gate created: `true`;
+- authorization language defined: `true`;
+- explicit user authorization received: `false`;
+- point 35 blocked without explicit authorization: `true`;
+- provider/import/Apify off;
+- ready for apply: `false`;
+- `next_write_allowed=false`.
+
+Punto 29/write staging non è autorizzato.
+
+## Punto 29 — Nessuna attivazione dopo review proposal
+
+La review della migration proposal non cambia lo stato dei provider.
+
+Confermato:
+
+- TheStatsAPI / Stats API sospesi;
+- API-Football sospeso/no retry;
+- Apify spento;
+- real import disabilitato;
+- nessun provider fetch;
+- `next_write_allowed=false`.
+
+Punto 30 consigliato: dashboard confirmation no-write, non attivazione.
+
+## Punto 30-B — Nessuna attivazione dopo dashboard confirmation manuale
+
+La dashboard confirmation reale è stata dichiarata dall'utente senza SQL/write e nessun provider viene attivato.
+
+Confermato:
+
+- nessuna real-call provider;
+- nessun import;
+- nessun Apify;
+- nessuna scrittura DB;
+- `ready_for_migration_draft=false`;
+- `next_write_allowed=false`.
+
+## Punto 30-C — Manual schema values collection
+
+Punto 30-C prepara solo la raccolta manuale dei valori reali di schema.
+
+Confermato:
+
+- schema values collection prepared: `true`;
+- real schema values provided: `false`;
+- placeholders resolved count: `0`;
+- placeholders uncollected count: `16`;
+- ready for migration draft: `false`;
+- `next_write_allowed=false`;
+- nessuna migration;
+- nessuna scrittura DB;
+- nessun provider/fetch;
+- nessuna Production.
+
+## Punto 30-D — Local migration schema extraction
+
+Punto 30-D non attiva provider né import. Usa solo file locali versionati.
+
+Confermato:
+
+- local schema extraction completed: `true`;
+- Supabase Dashboard used: `false`;
+- DB query executed: `false`;
+- DB write: `false`;
+- service_role used: `false`;
+
+## Punto 33 — Manual import staging apply plan
+
+Punto 33 aggiunge solo un piano documentale no-apply per future view read-only di manual import.
+
+Conferme:
+
+- nessun provider attivato;
+- nessuna fetch provider;
+- nessun import reale;
+- nessun DB write;
+- nessun `service_role`;
+- migration applied: `false`;
+- ready for apply: `false`;
+- `next_write_allowed=false`.
+- placeholders resolved from local files count: `16`;
+- placeholders unresolved count: `0`;
+- placeholders unclear count: `0`;
+- ready for migration draft: `true`;
+- `next_write_allowed=false`.
+
+Il prossimo step possibile è Punto 31 come migration draft non applicata/no-apply. Nessun write staging è autorizzato.
+
+## Punto 31 — Migration draft no-apply
+
+Punto 31 crea solo una draft SQL revisionabile per view read-only manual import.
+
+Confermato:
+
+- migration_draft_created: `true`;
+- migration_draft_path: `docs/migration_drafts/manual_import_read_only_views_p31.sql.draft`;
+- migration_draft_in_supabase_migrations: `false`;
+- migration_applied: `false`;
+- db_push_reset: `false`;
+- db_write: `false`;
+- service_role_used: `false`;
+- ready_for_apply: `false`;
+- `next_write_allowed=false`.
+
+Provider/import restano spenti. Prossimo step consigliato: Punto 32 review manuale no-apply.
+
+## Punto 38 — Provider activation status
+
+Punto 38 non attiva provider e non autorizza import.
+
+Stato:
+
+- admin_read_only_integration_checked: `true`;
+- provider_import_enabled: `false`;
+- provider_fetch: `false`;
+- apify_enabled: `false`;
+- db_write: `false`;
+- service_role_used: `false`;
+- production_touched: `false`;
+- next_write_allowed: `false`.
+
+Il prossimo step Punto 39 deve restare preview read-only/manual fixture. Nessun provider reale può essere attivato da questa fase.
+
+## Punto 39 — Provider activation status
+
+Punto 39 non attiva provider e non autorizza import.
+
+- preview_mode: `local_only_unresolved`;
+- provider_fetch: `false`;
+- external_fetch: `false`;
+- provider_import_enabled: `false`;
+- apify_enabled: `false`;
+- import_real_execution: `false`;
+- db_write: `false`;
+- unresolved_count: `5`;
+- next_write_allowed: `false`.
+
+Il prossimo step consigliato è Punto 40-Fix, ancora senza provider/import.
+
+## Punto 40-Fix — Provider activation status
+
+Punto 40-Fix prepara solo lookup live read-only manuale.
+
+- read_only_live_view_lookup_prepared: `true`;
+- provider_fetch: `false`;
+- external_fetch: `false`;
+- provider_import_enabled: `false`;
+- apify_enabled: `false`;
+- import_real_execution: `false`;
+- db_write: `false`;
+- preview_mode: `read_only_lookup_pending`;
+- unresolved_count: `5`;
+- next_write_allowed: `false`.
+
+Nessun provider reale può essere attivato da questa fase.
+
+## Punto 40-Fix-B — Provider activation status
+
+Punto 40-Fix-B non attiva provider e non autorizza import.
+
+- read_only_live_view_lookup_executed: `true`;
+- query_result: `success_no_rows_returned`;
+- provider_fetch: `false`;
+- external_fetch: `false`;
+- provider_import_enabled: `false`;
+- import_real_execution: `false`;
+- apify_enabled: `false`;
+- db_write: `false`;
+- preview_mode: `read_only_lookup_completed`;
+- create_count: `5`;
+- update_count: `0`;
+- skip_count: `0`;
+- conflict_count: `0`;
+- unresolved_count: `0`;
+- next_write_allowed: `false`.
+
+Nessun provider reale può essere attivato da questa fase. Prossimo step ammesso: Punto 40-B no-apply.
+
+## Punto 40-B — Provider activation status
+
+Punto 40-B non attiva provider e non autorizza import.
+
+- write_plan_created: `true`;
+- write_plan_mode: `no_apply`;
+- provider_fetch: `false`;
+- external_fetch: `false`;
+- provider_import_enabled: `false`;
+- import_real_execution: `false`;
+- apify_enabled: `false`;
+- db_write: `false`;
+- service_role_used: `false`;
+- production_touched: `false`;
+- next_write_allowed: `false`.
+
+Provider/import restano spenti. Prossimo step consigliato: Punto 41 no-write gate.
+
+## Punto 42 — Provider activation status
+
+Punto 42 non attiva provider/import. Il write manuale delle fixture è stato eseguito solo in staging tramite SQL Editor.
+
+- point_42_authorized: `true`;
+- write_sql_prepared: `true`;
+- manual_fixture_write_executed: `true`;
+- execution_channel: `manual_sql_editor_staging`;
+- db_write: `true`;
+- total_written_rows: `5`;
+- post_write_verification_passed: `true`;
+- provider_fetch: `false`;
+- external_fetch: `false`;
+- provider_import_enabled: `false`;
+- import_real_execution: `false`;
+- apify_enabled: `false`;
+- service_role_used: `false`;
+- production_touched: `false`.
+
+I file SQL sono manuali e limitati alle 5 fixture staging. Nessun provider/import è stato attivato.
+
+## Punto 43 — Provider activation status
+
+Punto 43 non attiva provider/import e non esegue nuove scritture DB.
+
+- point_43_ui_admin_read_only_verification_completed: `true`;
+- ui_admin_verification_mode: `read_only`;
+- point_43_db_write: `false`;
+- provider_fetch: `false`;
+- external_fetch: `false`;
+- provider_import_enabled: `false`;
+- import_real_execution: `false`;
+- apify_enabled: `false`;
+- service_role_used: `false`;
+- production_touched: `false`;
+- deploy_executed: `false`.
+
+Provider/import restano spenti. Prossimo step consigliato: Punto 44 read-only data consumption plan.
+
+## Punto 32 — Review no-apply della migration draft
+
+Punto 32 revisiona e hardena la draft P31 senza applicarla.
+
+Confermato:
+
+- migration_draft_reviewed: `true`;
+- draft_hardened: `true`;
+- blocking_issues_count: `0`;
+- needs_review_count: `3`;
+- ready_for_staging_apply_candidate: `true`;
+- ready_for_apply: `false`;
+- db_write: `false`;
+- service_role_used: `false`;
+- `next_write_allowed=false`.
+
+Provider/import restano spenti. Prossimo step consigliato: Punto 33 come staging apply plan no-apply.
+
+## Punto 44 — Provider activation status
+
+Punto 44 è solo piano read-only e non attiva provider/import.
+
+- point_44_manual_data_consumption_plan_created: `true`;
+- data_consumption_mode: `read_only_plan`;
+- provider_fetch: `false`;
+- external_fetch: `false`;
+- provider_import_enabled: `false`;
+- import_real_execution: `false`;
+- apify_enabled: `false`;
+- point_44_db_write: `false`;
+- service_role_used: `false`;
+- production_touched: `false`;
+- deploy_executed: `false`.
+
+Provider/import restano spenti. La prossima fase consigliata è admin read-only, non provider activation.
+
+## Punto 45 — Provider activation status
+
+Punto 45 implementa superfici admin read-only e non attiva provider/import.
+
+- point_45_admin_read_only_surface_implemented: `true`;
+- provider_fetch: `false`;
+- external_fetch: `false`;
+- provider_import_enabled: `false`;
+- import_real_execution: `false`;
+- apify_enabled: `false`;
+- point_45_db_write: `false`;
+- service_role_used: `false`;
+- production_touched: `false`;
+- deploy_executed: `false`.
+
+Provider/import restano spenti. La prossima fase consigliata è verifica UI/read-only, non provider activation.
+
+## Punto 47 — Provider activation status
+
+Punto 47 crea solo un piano UX/read-only per superfici admin manual data e non attiva provider/import.
+
+- point_47_admin_read_only_ux_polish_plan_created: `true`;
+- admin_ux_polish_mode: `read_only_plan`;
+- provider_fetch: `false`;
+- external_fetch: `false`;
+- provider_import_enabled: `false`;
+- import_real_execution: `false`;
+- apify_enabled: `false`;
+- point_47_db_write: `false`;
+- service_role_used: `false`;
+- production_touched: `false`;
+- deploy_executed: `false`.
+
+Provider/import restano spenti. La prossima fase consigliata è Punto 48 admin read-only UX polish oppure browser verification se diventa disponibile una sessione admin reale.
+
+## Punto 48 — Admin read-only UX polish
+
+Punto 48 non attiva provider e non modifica il piano di activation:
+
+- provider reali sospesi;
+- provider fetch: `false`;
+- provider import enabled: `false`;
+- Apify: `off`;
+- link `/admin/data` aggiunto in `/admin/imports` come navigazione read-only;
+- nessuna azione Run/Import/Execute/Sync/Save/Apply;
+- nessuna DB write;
+- Production non toccata;
+- deploy non eseguito.
+
+Prossimo step consigliato: Punto 49 — repeat browser admin verification after UX polish.
+
+## Punto 50 — Public exposure policy plan
+
+Punto 50 non attiva provider:
+
+- provider fetch: `false`;
+- provider import enabled: `false`;
+- Apify: `off`;
+- public exposure: `false`;
+- visibility changed: `false`;
+- DB write: `false`;
+- Production touched: `false`;
+- deploy executed: `false`.
+
+La futura esposizione pubblica dovrà avvenire solo tramite reader pubblici separati e filtro `visibility='public'`.
+- Punto 51 non modifica lo stato provider.
+
+La progettazione dei futuri public reader resta separata dai provider:
+
+- nessuna chiamata TheStatsAPI / Stats API;
+- nessuna chiamata API-Football;
+- nessuna chiamata Apify/SofaScore;
+- nessun provider fetch;
+- nessun import provider;
+- nessun writer;
+- nessun deploy.
+
+I futuri public reader dovranno leggere solo dati già pubblicabili con `visibility='public'`; non devono attivare provider, import o fallback verso dati admin.
+
+- Punto 52 resta fuori dal percorso provider:
+  - solo contract skeleton;
+  - nessuna chiamata TheStatsAPI / Stats API;
+  - nessuna chiamata API-Football;
+  - nessuna chiamata Apify/SofaScore;
+  - nessun provider fetch;
+  - nessun import provider;
+  - nessun writer;
+  - nessuna route pubblica;
+  - nessun deploy.
+
+Il nuovo audit `npm run audit:public-reader-contracts` è locale/statico e non legge token, non fa fetch e non scrive DB.
+
+- Punto 53 non attiva provider:
+  - public reader creati solo per dati già presenti e pubblicabili;
+  - nessuna chiamata TheStatsAPI / Stats API;
+  - nessuna chiamata API-Football;
+  - nessuna chiamata Apify/SofaScore;
+  - nessun provider fetch;
+  - nessun import provider;
+  - nessun writer provider;
+  - nessuna route pubblica;
+  - nessun deploy.
+
+Le query pubbliche P53 sono filtrate su `visibility='public'` e non avviano import o refresh provider.
+
+- Punto 54 non modifica lo stato provider:
+  - nessuna chiamata TheStatsAPI / Stats API;
+  - nessuna chiamata API-Football;
+  - nessuna chiamata Apify/SofaScore;
+  - nessun provider fetch;
+  - nessun import provider;
+  - nessun writer provider;
+  - audit/dry-run solo locali;
+  - nessuna route pubblica;
+  - nessun deploy.
+
+- Punto 55 non modifica lo stato provider:
+  - create route pubbliche empty-state `/competitions` e `/competitions/[slug]`;
+  - le route leggono solo dati già presenti tramite public reader filtrati `visibility='public'`;
+  - nessuna chiamata TheStatsAPI / Stats API;
+  - nessuna chiamata API-Football;
+  - nessuna chiamata Apify/SofaScore;
+  - nessun provider fetch;
+  - nessun import provider;
+  - nessun writer provider;
+  - nessun deploy.
+
+- Punto 56 non modifica lo stato provider:
+  - verifica browser no-auth solo su route pubbliche empty-state;
+  - nessuna chiamata TheStatsAPI / Stats API;
+  - nessuna chiamata API-Football;
+  - nessuna chiamata Apify/SofaScore;
+  - nessun provider fetch;
+  - nessun import provider;
+  - nessun writer provider;
+  - nessun deploy.
+
+- Punto 57 non modifica lo stato provider:
+  - UI polish only su route pubbliche empty-state;
+  - nessuna chiamata TheStatsAPI / Stats API;
+  - nessuna chiamata API-Football;
+  - nessuna chiamata Apify/SofaScore;
+  - nessun provider fetch;
+  - nessun import provider;
+  - nessun writer provider;
+  - nessun deploy.
+
+- Punto 58 non modifica lo stato provider:
+  - verifica browser no-auth post-polish su route pubbliche;
+  - nessuna chiamata TheStatsAPI / Stats API;
+  - nessuna chiamata API-Football;
+  - nessuna chiamata Apify/SofaScore;
+  - nessun provider fetch;
+  - nessun import provider;
+  - nessun writer provider;
+  - nessun deploy;
+  - Production non toccata.
+
+
+- Punto 59 non modifica lo stato provider:
+  - promotion plan only;
+  - nessuna promotion eseguita;
+  - nessuna chiamata TheStatsAPI / Stats API;
+  - nessuna chiamata API-Football;
+  - nessuna chiamata Apify/SofaScore;
+  - nessun provider fetch;
+  - nessun import provider;
+  - nessun writer provider;
+  - nessuna DB write;
+  - nessun deploy;
+  - Production non toccata.
+
+
+- Punto 60 non modifica lo stato provider:
+  - dry-run promotion scope solo locale/no-apply;
+  - nessuna chiamata TheStatsAPI / Stats API;
+  - nessuna chiamata API-Football;
+  - nessuna chiamata Apify/SofaScore;
+  - nessun provider fetch;
+  - nessun import provider;
+  - nessun writer provider;
+  - nessuna DB write;
+  - nessun deploy;
+  - Production non toccata.
+
+
+- Punto 61 non modifica lo stato provider:
+  - SQL/manual pack no-apply solo documentale;
+  - nessuna chiamata TheStatsAPI / Stats API;
+  - nessuna chiamata API-Football;
+  - nessuna chiamata Apify/SofaScore;
+  - nessun provider fetch;
+  - nessun import provider;
+  - nessun writer provider;
+  - nessuna DB write;
+  - nessun deploy;
+  - Production non toccata.
+
+
+- Punto 62 non modifica lo stato provider:
+  - authorization review no-write solo documentale;
+  - nessuna chiamata TheStatsAPI / Stats API;
+  - nessuna chiamata API-Football;
+  - nessuna chiamata Apify/SofaScore;
+  - nessun provider fetch;
+  - nessun import provider;
+  - nessun writer provider;
+  - nessuna DB write;
+  - nessun SQL reale;
+  - nessun cambio visibility;
+  - nessun deploy;
+  - Production non toccata;
+  - `explicit_authorization_required=true`;
+  - `generic_proceed_authorizes_write=false`.
+
+
+- Punto 63 non modifica lo stato provider:
+  - final pre-apply checklist no-write;
+  - nessuna chiamata TheStatsAPI / Stats API;
+  - nessuna chiamata API-Football;
+  - nessuna chiamata Apify/SofaScore;
+  - nessun provider fetch;
+  - nessun import provider;
+  - nessun writer provider;
+  - nessuna DB write;
+  - nessun SQL reale;
+  - nessun cambio visibility;
+  - nessun deploy;
+  - Production non toccata;
+  - `explicit_authorization_required=true`;
+  - `generic_proceed_authorizes_write=false`.
+
+
+- Punto 64 non modifica lo stato provider:
+  - public UI/product polish senza promotion;
+  - nessuna chiamata TheStatsAPI / Stats API;
+  - nessuna chiamata API-Football;
+  - nessuna chiamata Apify/SofaScore;
+  - nessun provider fetch;
+  - nessun import provider;
+  - nessun writer provider;
+  - nessuna DB write;
+  - nessun SQL reale;
+  - nessun cambio visibility;
+  - nessun deploy;
+  - Production non toccata.
+
+
+- Punto 65 non modifica lo stato provider:
+  - browser verification no-auth locale;
+  - nessuna chiamata TheStatsAPI / Stats API;
+  - nessuna chiamata API-Football;
+  - nessuna chiamata Apify/SofaScore;
+  - nessun provider fetch;
+  - nessun import provider;
+  - nessun writer provider;
+  - nessuna DB write;
+  - nessun SQL reale;
+  - nessun cambio visibility;
+  - nessun deploy;
+  - Production non toccata.
+
+## Punto 66 — Public data promotion apply staging
+
+Punto 66 ha completato la promotion manuale staging della fixture `manual-serie-a` dopo correzione del target enum da `public` a `public_free`.
+
+- `point_66_public_data_promotion_apply_completed=true`
+- `public_data_promotion_mode=real_apply_staging_only`
+- `corrected_visibility=public_free`
+- `old_invalid_visibility=public`
+- `enum_verified=true`
+- `authorization_phrase_received=true`
+- `promotion_candidate=manual-serie-a`
+- `promotion_executed=true`
+- `real_sql_executed=true`
+- `visibility_changed=true`
+- `db_write=true`
+- `db_write_scope=manual-serie-a_competition_teams_standings`
+- `updated_competitions_count=1`
+- `updated_teams_count=2`
+- `updated_standings_count=2`
+- `public_competitions_count=1`
+- `public_teams_count=2`
+- `public_standings_count=2`
+- `public_bundle_status=ready`
+- `public_routes_current_state=data_visible`
+- `private_admin_publicly_exposed=false`
+- `provider_fetch=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `production_touched=false`
+- `deploy_executed=false`
+- `service_role_used=false`
+- `rollback_file_created=true`
+- `rollback_executed=false`
+
+La verifica post-apply è stata eseguita manualmente in Supabase SQL Editor staging e ha confermato `competitions=1`, `teams=2`, `standings=2` con `visibility=public_free`. Nessun rollback eseguito perché l'apply è riuscito.
+
+## Punto 67 — Browser verification after real promotion
+
+Punto 67 ha verificato via HTTP locale no-auth le route pubbliche dopo la promotion P66 a `public_free`.
+
+- `point_67_public_routes_browser_after_promotion_completed=true`
+- `public_routes_browser_verification_mode=no_auth_local_http`
+- `environment=localhost`
+- `production=false`
+- `auth=no-auth`
+- `verification_source=manual_sql_staging_plus_route_http_check`
+- `public_competitions_http_status=200`
+- `public_competitions_page_reached=true`
+- `public_competitions_page_state=data_visible`
+- `public_competition_detail_http_status=200`
+- `public_competition_detail_reached=true`
+- `public_competition_detail_state=data_visible`
+- `public_competitions_count=1`
+- `public_teams_count=2`
+- `public_standings_count=2`
+- `public_bundle_status=ready`
+- `serie_a_manual_sample_visible=true`
+- `manual_team_one_visible=true`
+- `manual_team_two_visible=true`
+- `standings_visible=true`
+- `forbidden_private_text_visible=false`
+- `public_routes_admin_links_visible=false`
+- `public_routes_debug_payload_visible=false`
+- `public_routes_operational_buttons=false`
+- `private_admin_publicly_exposed=false`
+- `point_67_db_write=false`
+- `rollback_executed=false`
+- `provider_fetch=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `production_touched=false`
+- `deploy_executed=false`
+- `service_role_used=false`
+- `browser_verification_pass=true`
+
+Nessun deploy, nessuna Production e nessuna ulteriore DB write sono stati eseguiti nel Punto 67.
+## Punto 68 — Public UI polish, provider unchanged
+
+Punto 68 non cambia lo stato provider/import.
+
+- `provider_fetch=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `public_data_ui_polish_mode=visible_data_no_write`
+- `public_routes_current_state=data_visible`
+- `point_68_db_write=false`
+- `production_touched=false`
+- `deploy_executed=false`
+
+Provider reali restano sospesi/off. Nessuna attivazione provider/import è autorizzata da questo punto.
+## Punto 69 — Preview verification, provider unchanged
+
+Punto 69 non cambia lo stato provider/import.
+
+- `provider_fetch=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `preview_verification_result=partial_blocked_by_vercel_auth`
+- `point_69_db_write=false`
+- `production_touched=false`
+- `deploy_executed=false`
+
+Provider reali restano sospesi/off. Nessuna attivazione provider/import è autorizzata da questo punto.
+## Punto 70 — Homepage/navigation polish, provider unchanged
+
+Punto 70 non cambia lo stato provider/import.
+
+- `provider_fetch=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `public_path_verification_mode=local_no_auth_http`
+- `point_70_db_write=false`
+- `production_touched=false`
+- `deploy_executed=false`
+
+Provider reali restano sospesi/off. Nessuna attivazione provider/import è autorizzata da questo punto.
+# P72 — Provider status in Production readiness review
+
+P72 conferma che i provider restano fuori scope per il deploy plan no-apply.
+
+- TheStatsAPI: off/sospeso.
+- API-Football: off/sospeso, no retry.
+- Apify/SofaScore: off.
+- Provider probes: gated e disabled.
+- Provider import: non attivo.
+- Provider fetch in P72: false.
+- Deploy autorizzato: false.
+- Production toccata: false.
+
+La release MVP pubblica usa dati manuali/staging (`public_free`), non dati provider.
+## P76 — Preview authenticated verification
+
+P76 non attiva provider/import.
+
+- `preview_authenticated_verification_result=blocked_by_missing_authorized_session`
+- `provider_fetch=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `deploy_executed=false`
+
+Provider, Apify e import restano off.
+
+## P75 — Deploy authorization gate
+
+P75 conferma che un futuro deploy controllato non deve attivare provider/import.
+
+- `deploy_authorization_gate_completed=true`
+- `deploy_authorized=false`
+- `provider_fetch=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `vercel_auth_changed=false`
+- `vercel_config_changed=false`
+
+Provider, Apify e import restano esclusi anche da un futuro deploy salvo autorizzazione separata.
+
+## P74 — Final env checklist no-secret
+
+P74 conferma che provider/import restano off e non pronti per attivazione automatica.
+
+- `provider_import_flags_expected_off=true`
+- `provider_fetch_expected=false`
+- `provider_import_enabled=false`
+- `apify_expected_off=true`
+- `apify_enabled=false`
+- `writer_flags_expected_off=true`
+- `provider_writer_guards_required=true`
+- `deploy_authorized=false`
+
+Nessuna API provider è stata chiamata.
+
+## P73 — Deploy plan no-apply
+
+P73 non attiva provider e non autorizza import.
+
+Conferme:
+
+- `point_73_deploy_plan_no_apply_completed=true`
+- `deploy_plan_created=true`
+- `deploy_executed=false`
+- `deploy_authorized=false`
+- `provider_fetch=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `service_role_used=false`
+- `production_touched=false`
+- `manual_deploy_executed=false`
+
+TheStatsAPI, API-Football, Apify/SofaScore e qualsiasi import reale restano fuori scope dal deploy plan.

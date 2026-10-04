@@ -1,5 +1,6 @@
 import "server-only";
 
+import { cache } from "react";
 import { createSupabaseServerClient } from "../supabase/server";
 import { getSupabaseRuntimeStatus } from "./config";
 import type { AccessDecision, AuthUser } from "./types";
@@ -7,7 +8,7 @@ import type { AccessDecision, AuthUser } from "./types";
 export const LOGIN_REQUIRED_MESSAGE =
   "Accedi gratis per vedere statistiche complete, link highlights ufficiali e Video Radar.";
 
-export async function getCurrentUser(): Promise<AuthUser | null> {
+export const getCurrentUser = cache(async (): Promise<AuthUser | null> => {
   const runtime = getSupabaseRuntimeStatus();
   if (!runtime.configured) return null;
 
@@ -20,7 +21,7 @@ export async function getCurrentUser(): Promise<AuthUser | null> {
   } catch {
     return null;
   }
-}
+});
 
 async function requireFreeLogin(feature: string): Promise<AccessDecision> {
   const runtime = getSupabaseRuntimeStatus();

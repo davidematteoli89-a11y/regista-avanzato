@@ -1,5 +1,24 @@
 # Security TODO
 
+## Stato B.9
+
+- Preview Vercel online e protetta da Vercel Authentication.
+- Supabase staging collegato solo a Preview.
+- Auth/account/search/admin verificati nello staging.
+- Provider reali spenti.
+- Apify spento.
+- Production non collegata a Supabase staging.
+- `.env.local`, `.env*`, `.vercel/`, `supabase/.temp/`, `.next/`, `node_modules/` e `*.tsbuildinfo` ignorati.
+- `AGENTS.md` e `CLAUDE.md` ignorati come file locali/tooling generati.
+
+## Conferme manuali ancora richieste
+
+- [ ] GitHub repository impostato su Private.
+- [ ] Service role key ruotata dopo esposizione accidentale.
+- [ ] Vercel env Supabase presenti solo su Preview, non Production.
+- [ ] Production Branch impostato a `production`.
+- [ ] Deployment Protection ancora attiva prima di condividere il Preview URL.
+
 ## Bloccanti prima di collegare utenti reali
 
 - [ ] Inizializzare/verificare il repository Git e controllare anche la storia per secret accidentalmente committati.
