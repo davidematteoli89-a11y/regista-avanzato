@@ -1,5 +1,27 @@
 # Production Readiness
 
+## Nota P81-A — Main untracked cleanup no-deploy
+
+P81 è stato fermato prima del merge perché `main` conteneva untracked locali.
+
+P81-A ha ripulito solo i path esplicitamente autorizzati, senza merge, senza push main e senza deploy.
+
+Esito:
+
+- `point_81a_main_untracked_cleanup_completed=true`
+- `main_untracked_cleanup_performed=true`
+- `main_working_tree_clean_after_cleanup=true`
+- `merge_executed=false`
+- `main_pushed=false`
+- `production_deploy_executed=false`
+- `production_touched=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `db_write_additional=false`
+- `rollback_executed=false`
+
+I path rimossi dal working tree sono stati spostati fuori repo in una directory temporanea recuperabile. P81 resta da ripetere solo con nuova autorizzazione esplicita.
+
 ## Nota P80 — Production authorization gate no-apply
 
 P80 ha preparato il gate autorizzativo finale per Production senza eseguire merge o deploy.

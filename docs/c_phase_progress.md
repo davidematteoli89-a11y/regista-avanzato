@@ -1,5 +1,31 @@
 # C phase progress
 
+## P81-A — Main untracked cleanup no-deploy
+
+Stato: completato senza merge, senza deploy e senza Production.
+
+Conferme:
+
+- `point_81a_main_untracked_cleanup_completed=true`;
+- `main_untracked_cleanup_performed=true`;
+- `main_working_tree_clean_after_cleanup=true`;
+- `merge_executed=false`;
+- `main_pushed=false`;
+- `production_deploy_executed=false`;
+- `production_touched=false`;
+- `provider_import_enabled=false`;
+- `apify_enabled=false`;
+- `db_write_additional=false`;
+- `rollback_executed=false`.
+
+Untracked rimossi dal working tree di `main`:
+
+- `AGENTS.md`;
+- `CLAUDE.md`;
+- `supabase/.temp/`.
+
+I file sono stati spostati fuori repo in una directory temporanea recuperabile. Prossimo step consigliato: ripetere P81 con nuova autorizzazione esplicita.
+
 ## P80 — Production authorization gate no-apply
 
 Stato: completato come gate no-apply.
