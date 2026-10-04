@@ -1,5 +1,24 @@
 # C phase progress
 
+## P79 — Production release plan no-apply
+
+Stato: completato come piano no-apply.
+
+Conferme:
+
+- `point_79_production_release_plan_completed=true`;
+- `production_release_plan_created=true`;
+- `merge_executed=false`;
+- `production_deploy_executed=false`;
+- `production_touched=false`;
+- `ready_for_production_authorization_gate=true`;
+- `provider_import_enabled=false`;
+- `apify_enabled=false`;
+- `db_write_additional=false`;
+- `rollback_executed=false`.
+
+Production resta vecchia/main su `regista-avanzato-rouge.vercel.app`. La Preview P78 resta il freeze MVP verificato. Prossimo step consigliato: P80 — Production authorization gate.
+
 ## P76 — Preview authenticated verification
 
 Stato: completato in modalità no-deploy/no-secret con accesso autenticato non disponibile.

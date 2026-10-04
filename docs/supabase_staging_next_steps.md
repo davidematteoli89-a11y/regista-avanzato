@@ -1,5 +1,24 @@
 # Supabase staging next steps
 
+## P79 — Production release plan no-apply
+
+P79 non modifica Supabase staging.
+
+Marker:
+
+- `point_79_production_release_plan_completed=true`
+- `production_release_plan_created=true`
+- `merge_executed=false`
+- `production_deploy_executed=false`
+- `production_touched=false`
+- `ready_for_production_authorization_gate=true`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `db_write_additional=false`
+- `rollback_executed=false`
+
+Supabase staging resta nello stato MVP Preview validato. Nessuna ulteriore DB write, rollback, provider/import o Apify sono stati eseguiti in P79.
+
 ## P78 — Preview release closure / MVP freeze
 
 La Preview corretta è stata verificata manualmente dall'utente:

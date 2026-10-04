@@ -1,5 +1,18 @@
 # Provider dry-run plan — D.1
 
+## P79 — Production release plan no-apply
+
+P79 conferma che il piano Production non autorizza provider dry-run reali o import.
+
+- `point_79_production_release_plan_completed=true`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `db_write_additional=false`
+- `rollback_executed=false`
+- `production_touched=false`
+
+Provider dry-run e probe reali restano separati dal percorso Production MVP.
+
 Stato: piano preparato, nessuna chiamata reale.
 
 ## Obiettivo

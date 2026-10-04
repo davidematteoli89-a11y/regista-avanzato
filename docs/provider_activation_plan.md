@@ -1,5 +1,19 @@
 # Provider Activation Plan
 
+## P79 — Production release plan no-apply
+
+P79 non cambia lo stato dei provider.
+
+- `point_79_production_release_plan_completed=true`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `db_write_additional=false`
+- `rollback_executed=false`
+- `production_deploy_executed=false`
+- `production_touched=false`
+
+Qualunque rilascio Production futuro deve mantenere provider/import e Apify off, salvo autorizzazione separata e dedicata.
+
 ## Principio
 
 Il frontend non conosce provider esterni. Solo job server-side chiamano adapter, normalizzano dati e scrivono su Supabase. Le pagine leggono snapshot salvati.
