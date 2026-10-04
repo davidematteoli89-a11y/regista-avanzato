@@ -1,5 +1,26 @@
 # Supabase staging next steps
 
+## P78 — Preview release closure / MVP freeze
+
+La Preview corretta è stata verificata manualmente dall'utente:
+
+- `preview_release_verified=true`
+- `preview_url=https://regista-avanzato-kw9gtwlc4-davide-matteoli.vercel.app`
+- `preview_competitions_working=true`
+- `preview_competition_detail_working=true`
+- `mvp_preview_freeze=true`
+
+Nessun cambiamento Supabase aggiuntivo nel Punto 78:
+
+- `db_write_additional=false`
+- `rollback_executed=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `production_touched=false`
+- `production_deploy_executed=false`
+
+Il prossimo step richiede autorizzazione esplicita Production. Fino ad allora Supabase staging resta nello stato validato e non si eseguono ulteriori write, rollback o import provider.
+
 ## Stato attuale
 
 Supabase staging e Vercel Preview sono collegati e funzionanti per Auth, account, preferenze, ricerca quota e admin protetto.

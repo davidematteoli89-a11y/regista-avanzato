@@ -1,5 +1,30 @@
 # Production Readiness
 
+## Nota P78 — Preview release closure / MVP freeze
+
+P78 chiude la release MVP in Preview, senza aggiornare Production/main.
+
+Esito:
+
+- `point_78_preview_release_closure_completed=true`
+- `preview_release_verified=true`
+- `preview_url=https://regista-avanzato-kw9gtwlc4-davide-matteoli.vercel.app`
+- `preview_competitions_working=true`
+- `preview_competition_detail_working=true`
+- `production_still_old_main=true`
+- `production_touched=false`
+- `production_deploy_executed=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `rollback_executed=false`
+- `mvp_preview_freeze=true`
+- `next_step_requires_explicit_production_authorization=true`
+
+Il dominio `https://regista-avanzato-rouge.vercel.app` resta Production/main vecchia. Il 404 su `/competitions` e `/competitions/manual-serie-a` era dovuto all'ambiente osservato, non al codice del commit Preview verificato.
+
+P78 non autorizza deploy Production, merge main, provider/import, Apify o DB write aggiuntive.
+
 ## Nota P76 — Preview authenticated verification
 
 P76 ha verificato la Preview protetta in modalità no-deploy/no-secret.

@@ -4101,3 +4101,24 @@ Nessun deploy, nessuna Production e nessuna ulteriore DB write sono stati esegui
 - `deploy_executed=false`
 - `vercel_auth_changed=false`
 - Prossimo step consigliato: Punto 71 — SEO/copy metadata o verifica Preview autenticata, senza deploy manuale.
+
+## Punto 78 — Preview release closure / MVP freeze
+
+- `point_78_preview_release_closure_completed=true`
+- `preview_release_verified=true`
+- `preview_url=https://regista-avanzato-kw9gtwlc4-davide-matteoli.vercel.app`
+- `preview_competitions_working=true`
+- `preview_competition_detail_working=true`
+- `production_still_old_main=true`
+- `production_touched=false`
+- `production_deploy_executed=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `rollback_executed=false`
+- `mvp_preview_freeze=true`
+- `next_step_requires_explicit_production_authorization=true`
+
+La Preview corretta è stata verificata manualmente dall'utente con `/competitions` e `/competitions/manual-serie-a` funzionanti e dati visibili. Il dominio `regista-avanzato-rouge.vercel.app` resta Production/main vecchia: il 404 osservato lì è spiegato dall'ambiente, non dal codice.
+
+P78 chiude l'MVP Preview e ferma il lavoro prima di Production, merge main, provider/import, Apify o ulteriori DB write.
