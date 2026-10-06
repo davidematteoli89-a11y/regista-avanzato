@@ -1,5 +1,36 @@
 # C phase progress
 
+## P83 — Post-production verification + MVP Production freeze
+
+Stato: completato.
+
+Conferme:
+
+- `point_83_post_production_verification_completed=true`;
+- `production_release_verified=true`;
+- `mvp_production_freeze=true`;
+- `production_url=https://regista-avanzato-rouge.vercel.app`;
+- `/` Production: HTTP 200;
+- `/competitions` Production: HTTP 200;
+- `/competitions/manual-serie-a` Production: HTTP 200;
+- `public_competitions_count=1`;
+- `public_teams_count=2`;
+- `public_standings_count=2`;
+- `public_bundle_status=ready`;
+- `private_admin_publicly_exposed=false`;
+- `admin_links_visible=false`;
+- `debug_payload_visible=false`;
+- `operational_buttons_visible=false`;
+- `provider_import_enabled=false`;
+- `apify_enabled=false`;
+- `db_write_additional=false`;
+- `rollback_executed=false`;
+- `vercel_config_changed=false`;
+- `vercel_env_changed=false`;
+- `vercel_root_directory_changed=false`.
+
+Prossimo step consigliato: P84 — production monitoring checklist oppure post-release product polish, senza provider/import e senza DB write salvo nuova autorizzazione esplicita.
+
 ## P81-A — Main untracked cleanup no-deploy
 
 Stato: completato senza merge, senza deploy e senza Production.

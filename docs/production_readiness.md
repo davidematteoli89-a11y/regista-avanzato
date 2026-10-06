@@ -1,5 +1,36 @@
 # Production Readiness
 
+## Nota P83 — Post-production verification + MVP Production freeze
+
+P83 ha verificato la Production e congelato il MVP Production.
+
+Esito:
+
+- `point_83_post_production_verification_completed=true`
+- `production_release_verified=true`
+- `mvp_production_freeze=true`
+- `production_url=https://regista-avanzato-rouge.vercel.app`
+- `production_home_working=true`
+- `production_competitions_working=true`
+- `production_competition_detail_working=true`
+- `public_competitions_count=1`
+- `public_teams_count=2`
+- `public_standings_count=2`
+- `public_bundle_status=ready`
+- `private_admin_publicly_exposed=false`
+- `admin_links_visible=false`
+- `debug_payload_visible=false`
+- `operational_buttons_visible=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `db_write_additional=false`
+- `rollback_executed=false`
+- `vercel_config_changed=false`
+- `vercel_env_changed=false`
+- `vercel_root_directory_changed=false`
+
+Production MVP è verificata sulle route pubbliche principali. Provider/import e Apify restano spenti.
+
 ## Nota P81-A — Main untracked cleanup no-deploy
 
 P81 è stato fermato prima del merge perché `main` conteneva untracked locali.
