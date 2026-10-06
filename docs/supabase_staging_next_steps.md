@@ -1,5 +1,23 @@
 # Supabase staging next steps
 
+## P84 — Production monitoring checklist
+
+P84 non modifica Supabase staging.
+
+Marker:
+
+- `point_84_production_monitoring_checklist_completed=true`
+- `production_monitoring_ready=true`
+- `production_release_stable_baseline=true`
+- `no_code_change=true`
+- `no_deploy=true`
+- `db_write_additional=false`
+- `rollback_executed=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+
+La checklist include solo controlli Supabase read-only: dati `public_free` ancora leggibili, nessuna DB write imprevista, nessuna modifica RLS/ruoli/utenti e nessun uso `service_role` lato app.
+
 ## P83 — Post-production verification + MVP Production freeze
 
 P83 non modifica Supabase staging.

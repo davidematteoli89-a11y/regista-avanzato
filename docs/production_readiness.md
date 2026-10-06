@@ -1,5 +1,23 @@
 # Production Readiness
 
+## Nota P84 — Production monitoring checklist
+
+P84 ha creato la checklist di monitoraggio Production post-release, senza codice, deploy o scritture.
+
+Esito:
+
+- `point_84_production_monitoring_checklist_completed=true`
+- `production_monitoring_ready=true`
+- `production_release_stable_baseline=true`
+- `no_code_change=true`
+- `no_deploy=true`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `rollback_executed=false`
+
+Monitoraggio definito per route principali, dati pubblici, sicurezza esposizione, provider/import, Vercel, Supabase read-only e rollback readiness.
+
 ## Nota P83 — Post-production verification + MVP Production freeze
 
 P83 ha verificato la Production e congelato il MVP Production.

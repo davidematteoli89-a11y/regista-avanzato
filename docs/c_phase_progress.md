@@ -1,5 +1,25 @@
 # C phase progress
 
+## P84 — Production monitoring checklist
+
+Stato: completato.
+
+Conferme:
+
+- `point_84_production_monitoring_checklist_completed=true`;
+- `production_monitoring_ready=true`;
+- `production_release_stable_baseline=true`;
+- `no_code_change=true`;
+- `no_deploy=true`;
+- `db_write_additional=false`;
+- `provider_import_enabled=false`;
+- `apify_enabled=false`;
+- `rollback_executed=false`.
+
+La checklist copre monitoraggio per route Production, dati pubblici, assenza di esposizione privata/admin/debug, provider/import off, controlli Vercel, controlli Supabase read-only e rollback readiness.
+
+Prossimo step consigliato: P85 — Fase 2 backlog + priorità.
+
 ## P83 — Post-production verification + MVP Production freeze
 
 Stato: completato.
