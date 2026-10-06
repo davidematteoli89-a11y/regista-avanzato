@@ -1,5 +1,22 @@
 # Production Readiness
 
+## Nota P86 — Public product polish plan
+
+P86 ha creato il piano di polish prodotto pubblico post-MVP, senza modificare codice o Production.
+
+Esito:
+
+- `point_86_public_product_polish_plan_completed=true`
+- `public_product_polish_plan_created=true`
+- `p87_recommended=implement_public_product_polish`
+- `no_code_change=true`
+- `no_deploy=true`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+
+Il piano P87 consigliato riguarda solo UI/copy pubblico: homepage più chiara, CTA newsletter senza URL inventata, pagine `/competitions` più editoriali e microcopy trasparente su MVP/dati manuali. Provider/import, Apify, DB write e deploy Production restano fuori scope.
+
 ## Nota P85 — Phase 2 backlog + priorities
 
 P85 ha definito il backlog Fase 2 post-MVP e la priorità operativa iniziale.

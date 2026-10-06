@@ -1,5 +1,22 @@
 # Supabase staging next steps
 
+## P86 — Public product polish plan
+
+P86 non modifica Supabase staging.
+
+Marker:
+
+- `point_86_public_product_polish_plan_completed=true`
+- `public_product_polish_plan_created=true`
+- `p87_recommended=implement_public_product_polish`
+- `no_code_change=true`
+- `no_deploy=true`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+
+Il piano P87 è solo UI/copy pubblico. Nessuna nuova DB write, rollback, visibility change, provider/import o Apify è prevista da P86.
+
 ## P85 — Fase 2 backlog + priorità
 
 P85 non modifica Supabase staging.

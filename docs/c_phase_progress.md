@@ -1,5 +1,24 @@
 # C phase progress
 
+## P86 — Public product polish plan
+
+Stato: completato come piano/documentazione.
+
+Conferme:
+
+- `point_86_public_product_polish_plan_completed=true`;
+- `public_product_polish_plan_created=true`;
+- `p87_recommended=implement_public_product_polish`;
+- `no_code_change=true`;
+- `no_deploy=true`;
+- `db_write_additional=false`;
+- `provider_import_enabled=false`;
+- `apify_enabled=false`.
+
+P86 definisce il primo polish pubblico post-MVP: homepage più chiara, messaggio prodotto più forte, CTA newsletter/Substack senza URL inventata, `/competitions` più leggibile, dettaglio competizione più editoriale e microcopy trasparente su dati MVP/manuali.
+
+Prossimo step consigliato: P87 — implement public product polish, solo UI/copy e senza DB write/provider/import/Apify.
+
 ## P85 — Fase 2 backlog + priorità
 
 Stato: completato.
