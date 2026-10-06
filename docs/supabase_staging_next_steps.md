@@ -1,5 +1,23 @@
 # Supabase staging next steps
 
+## P90-Retry — Production polish release
+
+P90-Retry non modifica Supabase staging.
+
+Marker:
+
+- `point_90_retry_production_polish_release_completed=true`
+- `production_polish_released=true`
+- `merge_executed=true`
+- `main_pushed=true`
+- `production_deploy_verified=true`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `rollback_executed=false`
+
+Le attività P90-Retry hanno riguardato merge/deploy del public product polish e verifiche Production. Nessun dato, visibility, schema/RLS, migration, rollback, provider/import o Apify è stato modificato.
+
 ## P90-B — Full public path verification stabilization
 
 P90-B non modifica Supabase staging.
