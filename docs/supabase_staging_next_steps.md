@@ -1,5 +1,25 @@
 # Supabase staging next steps
 
+## P89 — Production polish release gate no-apply
+
+P89 non modifica Supabase staging.
+
+Marker:
+
+- `point_89_production_polish_release_gate_completed=true`
+- `production_polish_release_gate_ready=true`
+- `p90_requires_explicit_authorization=true`
+- `candidate_preview_commit=8ec5be6b8087cacb559ed85796c30d17e4637f9f`
+- `no_merge=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `no_code_change=true`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+
+Il gate P89 è solo documentale. Nessun dato, visibility, schema/RLS, migration, rollback, provider/import o Apify è stato modificato.
+
 ## P88 — Preview verification public polish
 
 P88 non modifica Supabase staging.

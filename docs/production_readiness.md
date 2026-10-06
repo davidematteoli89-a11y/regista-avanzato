@@ -1,5 +1,26 @@
 # Production Readiness
 
+## Nota P89 — Production polish release gate no-apply
+
+P89 ha preparato il gate di rilascio Production per il public product polish, senza applicarlo.
+
+Esito:
+
+- `point_89_production_polish_release_gate_completed=true`
+- `production_polish_release_gate_ready=true`
+- `p90_requires_explicit_authorization=true`
+- `candidate_preview_commit=8ec5be6b8087cacb559ed85796c30d17e4637f9f`
+- `current_main_commit=690742762615b6cd5dcd434d1635968269a9dacd`
+- `no_merge=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `no_code_change=true`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+
+P90 richiede autorizzazione esplicita con commit e scope. I comandi generici “procedi”, “vai”, “continua” o “ok” non autorizzano merge/deploy Production.
+
 ## Nota P88 — Preview verification public polish
 
 P88 ha verificato localmente il polish pubblico implementato in P87, senza modificare codice e senza deploy Production.

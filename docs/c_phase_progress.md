@@ -1,5 +1,28 @@
 # C phase progress
 
+## P89 — Production polish release gate no-apply
+
+Stato: completato come release gate no-apply.
+
+Conferme:
+
+- `point_89_production_polish_release_gate_completed=true`;
+- `production_polish_release_gate_ready=true`;
+- `p90_requires_explicit_authorization=true`;
+- `candidate_preview_commit=8ec5be6b8087cacb559ed85796c30d17e4637f9f`;
+- `current_main_commit=690742762615b6cd5dcd434d1635968269a9dacd`;
+- `no_merge=true`;
+- `no_deploy=true`;
+- `production_touched=false`;
+- `no_code_change=true`;
+- `db_write_additional=false`;
+- `provider_import_enabled=false`;
+- `apify_enabled=false`.
+
+P89 ha documentato candidato release, baseline Production, piano P90, stop conditions e frase esatta di autorizzazione. Nessun merge, deploy, codice, DB write o provider/import è stato eseguito.
+
+Prossimo step consigliato: P90 — merge preview to main + Production polish deploy solo con autorizzazione esplicita.
+
 ## P88 — Preview verification public polish
 
 Stato: completato come verifica locale/no-auth e documentazione.
