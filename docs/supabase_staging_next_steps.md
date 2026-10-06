@@ -1,5 +1,25 @@
 # Supabase staging next steps
 
+## P90-A — Preview public data visibility diagnosis
+
+P90-A non modifica Supabase staging.
+
+Marker:
+
+- `point_90a_preview_public_data_visibility_diagnosis_completed=true`
+- `p90_remains_blocked=true`
+- `production_polish_released=false`
+- `p90b_recommended=true`
+- `diagnosis_category=fixture_local_data_not_available_in_this_execution`
+- `no_merge=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+
+La diagnosi ha confermato che i reader pubblici restano configurati per `public_free`; non sono state eseguite query write, migration, rollback o modifiche RLS/schema.
+
 ## P89 — Production polish release gate no-apply
 
 P89 non modifica Supabase staging.

@@ -1,5 +1,27 @@
 # Production Readiness
 
+## Nota P90-A — Preview public data visibility diagnosis
+
+P90-A ha diagnosticato lo stop condition che aveva bloccato P90 prima del merge.
+
+Esito:
+
+- `point_90a_preview_public_data_visibility_diagnosis_completed=true`
+- `p90_remains_blocked=true`
+- `production_polish_released=false`
+- `p90b_recommended=true`
+- `diagnosis_category=fixture_local_data_not_available_in_this_execution`
+- `no_merge=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+
+La diagnosi non ha trovato modifiche app/components/scripts tra P88 e P90, solo docs P89. I reader pubblici restano filtrati su `public_free`. Il dry-run è passato in P90-A con dev server locale attivo, indicando una dipendenza runtime/local data availability più che una regressione del polish.
+
+P90 resta bloccato. Prossimo step consigliato: P90-B — harden full public path dry-run o ripetere il gate con precondizione dev server/data visibility esplicita.
+
 ## Nota P89 — Production polish release gate no-apply
 
 P89 ha preparato il gate di rilascio Production per il public product polish, senza applicarlo.

@@ -1,5 +1,27 @@
 # C phase progress
 
+## P90-A — Preview public data visibility diagnosis
+
+Stato: completato come diagnosi no-write/no-deploy.
+
+Conferme:
+
+- `point_90a_preview_public_data_visibility_diagnosis_completed=true`;
+- `p90_remains_blocked=true`;
+- `production_polish_released=false`;
+- `p90b_recommended=true`;
+- `diagnosis_category=fixture_local_data_not_available_in_this_execution`;
+- `no_merge=true`;
+- `no_deploy=true`;
+- `production_touched=false`;
+- `db_write_additional=false`;
+- `provider_import_enabled=false`;
+- `apify_enabled=false`.
+
+Risultato: nessuna regressione app/components/scripts identificata. Il diff P88→HEAD contiene solo docs P89. I reader pubblici restano su `public_free`. Il dry-run full public path è passato con dev server attivo in P90-A, quindi lo stop P90 è classificato come problema di disponibilità runtime/local data o precondizione dry-run non esplicita.
+
+Prossimo step consigliato: P90-B — rendere il dry-run più diagnostico/stabile prima di ripetere P90.
+
 ## P89 — Production polish release gate no-apply
 
 Stato: completato come release gate no-apply.
