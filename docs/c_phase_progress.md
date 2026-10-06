@@ -1,5 +1,33 @@
 # C phase progress
 
+## P90-Retry — Production polish release
+
+Stato: completato.
+
+Conferme:
+
+- `point_90_retry_production_polish_release_completed=true`;
+- `production_polish_released=true`;
+- `candidate_preview_commit=659c2c88fe62f9f5a8a83414cc8fb6daf9b1d70c`;
+- `main_before_merge=690742762615b6cd5dcd434d1635968269a9dacd`;
+- `main_after_merge=d890f6e8f68f6d76ef12d659930855971c72d627`;
+- `pushed_main_commit=d890f6e8f68f6d76ef12d659930855971c72d627`;
+- `merge_executed=true`;
+- `main_pushed=true`;
+- `production_deploy_verified=true`;
+- `stabilized_dry_run_used=true`;
+- `db_write_additional=false`;
+- `provider_import_enabled=false`;
+- `apify_enabled=false`;
+- `vercel_config_changed=false`;
+- `vercel_env_changed=false`;
+- `vercel_root_directory_changed=false`;
+- `rollback_executed=false`.
+
+Production verificata su `/`, `/competitions`, `/competitions/manual-serie-a`: HTTP 200, polish visibile, dati pubblici visibili, nessun `private_admin`, admin link, debug/raw payload o bottone operativo rilevato.
+
+Prossimo step consigliato: P91 — Post-production polish verification.
+
 ## P90-B — Full public path verification stabilization
 
 Stato: completato.
