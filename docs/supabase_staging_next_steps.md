@@ -1,5 +1,24 @@
 # Supabase staging next steps
 
+## P91 — Post-production polish verification
+
+P91 non modifica Supabase staging.
+
+Marker:
+
+- `point_91_post_production_polish_verification_completed=true`
+- `production_polish_verified_stable=true`
+- `production_polish_released=true`
+- `no_merge=true`
+- `no_deploy=true`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `rollback_executed=false`
+- `p92_recommended=editorial_content_plan`
+
+La verifica P91 è solo post-release/documentale. Nessun dato, visibility, schema/RLS, migration, rollback, provider/import o Apify è stato modificato.
+
 ## P90-Retry — Production polish release
 
 P90-Retry non modifica Supabase staging.

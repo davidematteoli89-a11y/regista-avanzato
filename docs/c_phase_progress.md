@@ -1,5 +1,28 @@
 # C phase progress
 
+## P91 — Post-production polish verification
+
+Stato: completato.
+
+Conferme:
+
+- `point_91_post_production_polish_verification_completed=true`;
+- `production_polish_verified_stable=true`;
+- `production_polish_released=true`;
+- `no_merge=true`;
+- `no_deploy=true`;
+- `db_write_additional=false`;
+- `provider_import_enabled=false`;
+- `apify_enabled=false`;
+- `rollback_executed=false`;
+- `p92_recommended=editorial_content_plan`.
+
+Production verificata su `/`, `/competitions`, `/competitions/manual-serie-a`: HTTP 200, polish visibile, dati pubblici visibili, nessun `private_admin`, admin link, debug/raw payload o bottone operativo rilevato.
+
+Verifiche locali passate: final env checklist, full public path con server, audit provider, writer guards, lint, typecheck e build.
+
+Prossimo step consigliato: P92 — Editorial content plan.
+
 ## P90-Retry — Production polish release
 
 Stato: completato.

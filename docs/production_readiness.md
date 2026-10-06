@@ -1,5 +1,32 @@
 # Production Readiness
 
+## Nota P91 — Post-production polish verification
+
+P91 ha completato la verifica post-release Production del public product polish, senza merge, deploy, DB write, rollback o provider/import.
+
+Esito:
+
+- `point_91_post_production_polish_verification_completed=true`
+- `production_polish_verified_stable=true`
+- `production_polish_released=true`
+- `no_merge=true`
+- `no_deploy=true`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `rollback_executed=false`
+- `p92_recommended=editorial_content_plan`
+
+Production verificata:
+
+- `/` → HTTP 200;
+- `/competitions` → HTTP 200, dati pubblici visibili;
+- `/competitions/manual-serie-a` → HTTP 200, dati pubblici visibili.
+
+Nessun `private_admin`, admin link, debug/raw payload o bottone operativo rilevato.
+
+Prossimo step consigliato: P92 — Editorial content plan.
+
 ## Nota P90-Retry — Production polish release
 
 P90-Retry ha completato il merge controllato `preview` → `main` e il rilascio Production del public product polish.
