@@ -1,5 +1,150 @@
 # Supabase staging next steps
 
+## P90-B — Full public path verification stabilization
+
+P90-B non modifica Supabase staging.
+
+Marker:
+
+- `point_90b_full_public_path_verification_stabilized=true`
+- `full_public_path_dry_run_diagnostic_states=true`
+- `p90_can_be_retried=true`
+- `production_polish_released=false`
+- `no_merge=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+
+Le modifiche P90-B riguardano solo diagnostica locale del dry-run e documentazione. Nessun dato, visibility, schema/RLS, migration, rollback, provider/import o Apify è stato modificato.
+
+## P90-A — Preview public data visibility diagnosis
+
+P90-A non modifica Supabase staging.
+
+Marker:
+
+- `point_90a_preview_public_data_visibility_diagnosis_completed=true`
+- `p90_remains_blocked=true`
+- `production_polish_released=false`
+- `p90b_recommended=true`
+- `diagnosis_category=fixture_local_data_not_available_in_this_execution`
+- `no_merge=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+
+La diagnosi ha confermato che i reader pubblici restano configurati per `public_free`; non sono state eseguite query write, migration, rollback o modifiche RLS/schema.
+
+## P89 — Production polish release gate no-apply
+
+P89 non modifica Supabase staging.
+
+Marker:
+
+- `point_89_production_polish_release_gate_completed=true`
+- `production_polish_release_gate_ready=true`
+- `p90_requires_explicit_authorization=true`
+- `candidate_preview_commit=8ec5be6b8087cacb559ed85796c30d17e4637f9f`
+- `no_merge=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `no_code_change=true`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+
+Il gate P89 è solo documentale. Nessun dato, visibility, schema/RLS, migration, rollback, provider/import o Apify è stato modificato.
+
+## P88 — Preview verification public polish
+
+P88 non modifica Supabase staging.
+
+Marker:
+
+- `point_88_preview_verification_completed=true`
+- `public_product_polish_preview_verified=true`
+- `p89_recommended=production_polish_release_gate`
+- `no_code_change=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+
+La verifica P88 è solo locale/no-auth e documentale. Nessun dato, visibility, schema/RLS, migration, rollback, provider/import o Apify è stato modificato.
+
+## P87 — Public product polish implementation
+
+P87 non modifica Supabase staging.
+
+Marker:
+
+- `point_87_public_product_polish_implemented=true`
+- `public_product_polish_implemented=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+
+Le modifiche P87 sono solo UI/copy pubblico. Nessun dato, visibility, schema/RLS, migration, rollback, provider/import o Apify è stato modificato.
+
+## P86 — Public product polish plan
+
+P86 non modifica Supabase staging.
+
+Marker:
+
+- `point_86_public_product_polish_plan_completed=true`
+- `public_product_polish_plan_created=true`
+- `p87_recommended=implement_public_product_polish`
+- `no_code_change=true`
+- `no_deploy=true`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+
+Il piano P87 è solo UI/copy pubblico. Nessuna nuova DB write, rollback, visibility change, provider/import o Apify è prevista da P86.
+
+## P85 — Fase 2 backlog + priorità
+
+P85 non modifica Supabase staging.
+
+Marker:
+
+- `point_85_phase_2_backlog_completed=true`
+- `phase_2_backlog_created=true`
+- `sprint_1_recommended=public_product_polish`
+- `no_code_change=true`
+- `no_deploy=true`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+
+Gli item di dati manuali e provider futuri restano backlog pianificato, non eseguito. Nessuna nuova scrittura DB, import provider o Apify è stata eseguita in P85.
+
+## P84 — Production monitoring checklist
+
+P84 non modifica Supabase staging.
+
+Marker:
+
+- `point_84_production_monitoring_checklist_completed=true`
+- `production_monitoring_ready=true`
+- `production_release_stable_baseline=true`
+- `no_code_change=true`
+- `no_deploy=true`
+- `db_write_additional=false`
+- `rollback_executed=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+
+La checklist include solo controlli Supabase read-only: dati `public_free` ancora leggibili, nessuna DB write imprevista, nessuna modifica RLS/ruoli/utenti e nessun uso `service_role` lato app.
+
 ## P83 — Post-production verification + MVP Production freeze
 
 P83 non modifica Supabase staging.
@@ -16,6 +161,22 @@ Marker:
 - `private_admin_publicly_exposed=false`
 
 Supabase staging resta nello stato già promosso e validato per il MVP pubblico: 1 competition, 2 teams e 2 standings visibili via public readers. Nessuna ulteriore scrittura DB è stata eseguita in P83.
+
+## P82-A — Vercel Production Git integration investigation
+
+P82-A non modifica Supabase staging.
+
+Marker:
+
+- `point_82a_vercel_git_integration_investigation_completed=true`
+- `db_write_additional=false`
+- `rollback_executed=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `production_touched=false`
+- `deploy_executed=false`
+
+Supabase staging resta nello stato MVP validato. La diagnosi riguarda solo il collegamento Git/Vercel/Production dopo il push su `main`.
 
 ## P80 — Production authorization gate no-apply
 

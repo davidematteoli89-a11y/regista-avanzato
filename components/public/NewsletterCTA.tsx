@@ -1,5 +1,17 @@
 import { SubstackCTA } from "./SubstackCTA";
 
 export function NewsletterCTA() {
-  return <section className="newsletter-magazine-cta"><div><span className="eyebrow">Digest settimanale</span><h2>Le storie migliori, nella tua settimana</h2><p>Il canale newsletter resta su Substack: nessun pagamento o premium interno è gestito dal sito.</p></div><SubstackCTA label="Iscriviti gratis" compact /></section>;
+  return (
+    <section className="newsletter-magazine-cta">
+      <div>
+        <span className="eyebrow">Newsletter</span>
+        <h2>Segui il progetto fuori dal rumore quotidiano</h2>
+        <p>
+          La newsletter raccoglierà storie, campionati radar e segnali editoriali.
+          Se Substack non è configurato, la CTA resta disabilitata senza URL inventate.
+        </p>
+      </div>
+      <SubstackCTA label="Iscriviti gratis" compact />
+    </section>
+  );
 }

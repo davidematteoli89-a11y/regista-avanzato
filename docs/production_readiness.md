@@ -1,5 +1,161 @@
 # Production Readiness
 
+## Nota P90-B — Full public path verification stabilization
+
+P90-B ha stabilizzato il dry-run `full-public-path-verification`, senza merge, deploy, Production touch, DB write o provider/import.
+
+Esito:
+
+- `point_90b_full_public_path_verification_stabilized=true`
+- `full_public_path_dry_run_diagnostic_states=true`
+- `p90_can_be_retried=true`
+- `production_polish_released=false`
+- `no_merge=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+
+Il dry-run ora distingue server non raggiungibile, HTTP error, empty public dataset, detail not found, data visible e markup unexpected. Senza server fallisce con `server_unreachable`; con server locale attivo passa con `/`, `/competitions` e `/competitions/manual-serie-a` verificate.
+
+P90 può essere riprovato solo con nuova autorizzazione esplicita.
+
+## Nota P90-A — Preview public data visibility diagnosis
+
+P90-A ha diagnosticato lo stop condition che aveva bloccato P90 prima del merge.
+
+Esito:
+
+- `point_90a_preview_public_data_visibility_diagnosis_completed=true`
+- `p90_remains_blocked=true`
+- `production_polish_released=false`
+- `p90b_recommended=true`
+- `diagnosis_category=fixture_local_data_not_available_in_this_execution`
+- `no_merge=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+
+La diagnosi non ha trovato modifiche app/components/scripts tra P88 e P90, solo docs P89. I reader pubblici restano filtrati su `public_free`. Il dry-run è passato in P90-A con dev server locale attivo, indicando una dipendenza runtime/local data availability più che una regressione del polish.
+
+P90 resta bloccato. Prossimo step consigliato: P90-B — harden full public path dry-run o ripetere il gate con precondizione dev server/data visibility esplicita.
+
+## Nota P89 — Production polish release gate no-apply
+
+P89 ha preparato il gate di rilascio Production per il public product polish, senza applicarlo.
+
+Esito:
+
+- `point_89_production_polish_release_gate_completed=true`
+- `production_polish_release_gate_ready=true`
+- `p90_requires_explicit_authorization=true`
+- `candidate_preview_commit=8ec5be6b8087cacb559ed85796c30d17e4637f9f`
+- `current_main_commit=690742762615b6cd5dcd434d1635968269a9dacd`
+- `no_merge=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `no_code_change=true`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+
+P90 richiede autorizzazione esplicita con commit e scope. I comandi generici “procedi”, “vai”, “continua” o “ok” non autorizzano merge/deploy Production.
+
+## Nota P88 — Preview verification public polish
+
+P88 ha verificato localmente il polish pubblico implementato in P87, senza modificare codice e senza deploy Production.
+
+Esito:
+
+- `point_88_preview_verification_completed=true`
+- `public_product_polish_preview_verified=true`
+- `p89_recommended=production_polish_release_gate`
+- `no_code_change=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+
+Route verificate in locale/no-auth:
+
+- `/` → HTTP 200;
+- `/competitions` → HTTP 200, dati visibili;
+- `/competitions/manual-serie-a` → HTTP 200, dati visibili.
+
+Safety confermata: nessun `private_admin`, admin link, debug/raw payload o bottone operativo rilevato. Provider/import e Apify restano spenti.
+
+## Nota P87 — Public product polish implementation
+
+P87 ha implementato il polish UI/copy pubblico pianificato in P86, senza deploy Production.
+
+Esito:
+
+- `point_87_public_product_polish_implemented=true`
+- `public_product_polish_implemented=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+
+Modifiche limitate a homepage, `/competitions`, `/competitions/[slug]` e componenti pubblici condivisi. Nessun reader DB, filtro visibility, schema/RLS/migration, provider/import, Apify o Vercel config/env/root directory è stato modificato. Prossimo step consigliato: P88 — Preview verification public polish.
+
+## Nota P86 — Public product polish plan
+
+P86 ha creato il piano di polish prodotto pubblico post-MVP, senza modificare codice o Production.
+
+Esito:
+
+- `point_86_public_product_polish_plan_completed=true`
+- `public_product_polish_plan_created=true`
+- `p87_recommended=implement_public_product_polish`
+- `no_code_change=true`
+- `no_deploy=true`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+
+Il piano P87 consigliato riguarda solo UI/copy pubblico: homepage più chiara, CTA newsletter senza URL inventata, pagine `/competitions` più editoriali e microcopy trasparente su MVP/dati manuali. Provider/import, Apify, DB write e deploy Production restano fuori scope.
+
+## Nota P85 — Phase 2 backlog + priorities
+
+P85 ha definito il backlog Fase 2 post-MVP e la priorità operativa iniziale.
+
+Esito:
+
+- `point_85_phase_2_backlog_completed=true`
+- `phase_2_backlog_created=true`
+- `sprint_1_recommended=public_product_polish`
+- `no_code_change=true`
+- `no_deploy=true`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+
+La priorità consigliata è Sprint 1 — Public product polish. Provider/import e Apify restano off fino ad autorizzazione esplicita futura.
+
+## Nota P84 — Production monitoring checklist
+
+P84 ha creato la checklist di monitoraggio Production post-release, senza codice, deploy o scritture.
+
+Esito:
+
+- `point_84_production_monitoring_checklist_completed=true`
+- `production_monitoring_ready=true`
+- `production_release_stable_baseline=true`
+- `no_code_change=true`
+- `no_deploy=true`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `rollback_executed=false`
+
+Monitoraggio definito per route principali, dati pubblici, sicurezza esposizione, provider/import, Vercel, Supabase read-only e rollback readiness.
+
 ## Nota P83 — Post-production verification + MVP Production freeze
 
 P83 ha verificato la Production e congelato il MVP Production.
@@ -30,6 +186,37 @@ Esito:
 - `vercel_root_directory_changed=false`
 
 Production MVP è verificata sulle route pubbliche principali. Provider/import e Apify restano spenti.
+
+## Nota P82-A — Vercel Production Git integration investigation
+
+P82-A ha diagnosticato in sola lettura perché il push di `main` non ha aggiornato la Production URL.
+
+Esito:
+
+- `point_82a_vercel_git_integration_investigation_completed=true`
+- `p81b_merge_executed=true`
+- `p81b_main_pushed=true`
+- `origin/main=ab5067ca2f40c434d13ada87a71be0024069e8bd`
+- `origin/preview=ccaf417357ee6159a6fe96504893d12f4b65cd3a`
+- `main_contains_competitions_locally=true`
+- `main_local_build_passed=true`
+- `main_local_competitions_http_status=200`
+- `main_local_competition_detail_http_status=200`
+- `production_url_still_old=true`
+- `production_competitions_404=true`
+- `deployment_for_ab5067_exists=unknown`
+- `vercel_project_correct=unknown`
+- `repository_linked_correct=unknown`
+- `likely_cause=G_OR_A`
+- `deploy_executed=false`
+- `vercel_config_changed=false`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `rollback_executed=false`
+
+La diagnosi locale esclude un problema di route nel commit `main`: `/competitions` e `/competitions/manual-serie-a` sono presenti, buildano e rispondono 200 in locale. Il dominio Production continua invece a servire una versione vecchia. Prossimo step consigliato: verifica manuale Dashboard Vercel di progetto/dominio/Git integration prima di autorizzare qualunque deploy o modifica.
 
 ## Nota P81-A — Main untracked cleanup no-deploy
 

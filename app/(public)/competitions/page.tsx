@@ -12,47 +12,49 @@ export default async function PublicCompetitionsPage() {
     <main className="stack" aria-labelledby="public-competitions-title">
       <header>
         <Link href="/">Home</Link>
-        <span className="eyebrow">Public data only</span>
-        <h1 id="public-competitions-title">Competizioni pubbliche</h1>
+        <span className="eyebrow">Osservatorio Regista Avanzato</span>
+        <h1 id="public-competitions-title">Campionati nel radar</h1>
         <p>
-          Archivio pubblico delle competizioni approvate: dati essenziali,
-          squadre e classifiche leggibili senza login.
+          Competizioni pubbliche nel radar: una prima selezione di campionati
+          monitorati da Regista Avanzato. In questa fase MVP i dati sono curati
+          manualmente e servono a testare struttura, esperienza pubblica e
+          racconto.
         </p>
       </header>
 
       <section className="preview-block" aria-labelledby="public-data-note-title">
-        <PublicDataBadge>Dati pubblici approvati</PublicDataBadge>
-        <h2 id="public-data-note-title">Coperture disponibili: {competitions.items.length}</h2>
+        <PublicDataBadge>Public data only</PublicDataBadge>
+        <h2 id="public-data-note-title">Competizioni disponibili: {competitions.items.length}</h2>
         <p>
-          Questa sezione mostra esclusivamente record `public_free` letti dai
-          public reader. Nessuna bozza interna o contenuto riservato viene usato
-          come fallback.
+          I dati visibili sono un campione pubblico iniziale. Le competizioni
+          pubbliche restano curate manualmente: i provider automatici sono
+          disattivati fino ad autorizzazione esplicita.
         </p>
       </section>
 
-      <section className="public-stats-grid" aria-label="Come funzionerà la sezione">
+      <section className="public-stats-grid" aria-label="Come leggere questa sezione">
         <article className="public-stat-card">
-          <span className="stats-badge">Revisione</span>
-          <h2>Pubblicazione controllata</h2>
+          <span className="stats-badge">Radar</span>
+          <h2>Campionati osservati</h2>
           <p>
-            Ogni competizione passa da un controllo editoriale prima di comparire
-            nelle pagine pubbliche.
+            Ogni scheda nasce per dare un punto di ingresso leggibile a un
+            campionato fuori dal racconto mainstream.
           </p>
         </article>
         <article className="public-stat-card">
           <span className="stats-badge">Disponibili ora</span>
           <h2>{competitions.items.length} competizioni</h2>
           <p>
-            Le pagine pubbliche leggono soltanto competizioni approvate e
-            collegate a squadre/classifiche pubbliche.
+            La selezione crescerà solo dopo nuove revisioni e autorizzazioni
+            esplicite sui dati da pubblicare.
           </p>
         </article>
         <article className="public-stat-card">
-          <span className="stats-badge">Sola lettura</span>
-          <h2>Nessuna azione operativa</h2>
+          <span className="stats-badge">MVP</span>
+          <h2>Dati curati manualmente</h2>
           <p>
-            La navigazione non avvia import, sincronizzazioni o modifiche ai
-            dati pubblicati.
+            Questa versione valida esperienza, struttura e racconto prima di
+            qualsiasi import automatico.
           </p>
         </article>
       </section>
@@ -65,7 +67,7 @@ export default async function PublicCompetitionsPage() {
         </section>
       ) : (
         <section className="empty-public-state" aria-live="polite">
-          <span className="stats-badge">Public data only</span>
+          <span className="stats-badge">MVP pubblico</span>
           <h2>Competizioni non ancora disponibili.</h2>
           <p>
             Dati non ancora disponibili. La consultazione pubblica partirà quando

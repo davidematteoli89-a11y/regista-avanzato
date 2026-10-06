@@ -1,5 +1,173 @@
 # C phase progress
 
+## P90-B — Full public path verification stabilization
+
+Stato: completato.
+
+Conferme:
+
+- `point_90b_full_public_path_verification_stabilized=true`;
+- `full_public_path_dry_run_diagnostic_states=true`;
+- `p90_can_be_retried=true`;
+- `production_polish_released=false`;
+- `no_merge=true`;
+- `no_deploy=true`;
+- `production_touched=false`;
+- `db_write_additional=false`;
+- `provider_import_enabled=false`;
+- `apify_enabled=false`.
+
+Risultato: `dry-run:full-public-path-verification` ora produce stati diagnostici distinti. Senza runtime locale segnala `server_unreachable`; con server locale attivo passa e conferma `data_visible` su `/competitions` e `/competitions/manual-serie-a`.
+
+Prossimo step consigliato: ripetere P90 solo con nuova autorizzazione esplicita.
+
+## P90-A — Preview public data visibility diagnosis
+
+Stato: completato come diagnosi no-write/no-deploy.
+
+Conferme:
+
+- `point_90a_preview_public_data_visibility_diagnosis_completed=true`;
+- `p90_remains_blocked=true`;
+- `production_polish_released=false`;
+- `p90b_recommended=true`;
+- `diagnosis_category=fixture_local_data_not_available_in_this_execution`;
+- `no_merge=true`;
+- `no_deploy=true`;
+- `production_touched=false`;
+- `db_write_additional=false`;
+- `provider_import_enabled=false`;
+- `apify_enabled=false`.
+
+Risultato: nessuna regressione app/components/scripts identificata. Il diff P88→HEAD contiene solo docs P89. I reader pubblici restano su `public_free`. Il dry-run full public path è passato con dev server attivo in P90-A, quindi lo stop P90 è classificato come problema di disponibilità runtime/local data o precondizione dry-run non esplicita.
+
+Prossimo step consigliato: P90-B — rendere il dry-run più diagnostico/stabile prima di ripetere P90.
+
+## P89 — Production polish release gate no-apply
+
+Stato: completato come release gate no-apply.
+
+Conferme:
+
+- `point_89_production_polish_release_gate_completed=true`;
+- `production_polish_release_gate_ready=true`;
+- `p90_requires_explicit_authorization=true`;
+- `candidate_preview_commit=8ec5be6b8087cacb559ed85796c30d17e4637f9f`;
+- `current_main_commit=690742762615b6cd5dcd434d1635968269a9dacd`;
+- `no_merge=true`;
+- `no_deploy=true`;
+- `production_touched=false`;
+- `no_code_change=true`;
+- `db_write_additional=false`;
+- `provider_import_enabled=false`;
+- `apify_enabled=false`.
+
+P89 ha documentato candidato release, baseline Production, piano P90, stop conditions e frase esatta di autorizzazione. Nessun merge, deploy, codice, DB write o provider/import è stato eseguito.
+
+Prossimo step consigliato: P90 — merge preview to main + Production polish deploy solo con autorizzazione esplicita.
+
+## P88 — Preview verification public polish
+
+Stato: completato come verifica locale/no-auth e documentazione.
+
+Conferme:
+
+- `point_88_preview_verification_completed=true`;
+- `public_product_polish_preview_verified=true`;
+- `p89_recommended=production_polish_release_gate`;
+- `no_code_change=true`;
+- `no_deploy=true`;
+- `production_touched=false`;
+- `db_write_additional=false`;
+- `provider_import_enabled=false`;
+- `apify_enabled=false`.
+
+Route verificate:
+
+- `/` HTTP 200;
+- `/competitions` HTTP 200, dati visibili;
+- `/competitions/manual-serie-a` HTTP 200, dati visibili.
+
+Verifiche tecniche passate: final env checklist, full public path verification, audit provider, writer guards, lint, typecheck e build.
+
+Prossimo step consigliato: P89 — Production polish release gate.
+
+## P87 — Public product polish implementation
+
+Stato: completato come implementazione UI/copy pubblica.
+
+Conferme:
+
+- `point_87_public_product_polish_implemented=true`;
+- `public_product_polish_implemented=true`;
+- `no_deploy=true`;
+- `production_touched=false`;
+- `db_write_additional=false`;
+- `provider_import_enabled=false`;
+- `apify_enabled=false`.
+
+Homepage, `/competitions` e dettaglio competizione sono stati resi più chiari/editoriali, con CTA e microcopy MVP/dati manuali. Nessuna nuova DB write, nessun provider/import, nessun Apify e nessun deploy Production.
+
+Prossimo step consigliato: P88 — Preview verification public polish.
+
+## P86 — Public product polish plan
+
+Stato: completato come piano/documentazione.
+
+Conferme:
+
+- `point_86_public_product_polish_plan_completed=true`;
+- `public_product_polish_plan_created=true`;
+- `p87_recommended=implement_public_product_polish`;
+- `no_code_change=true`;
+- `no_deploy=true`;
+- `db_write_additional=false`;
+- `provider_import_enabled=false`;
+- `apify_enabled=false`.
+
+P86 definisce il primo polish pubblico post-MVP: homepage più chiara, messaggio prodotto più forte, CTA newsletter/Substack senza URL inventata, `/competitions` più leggibile, dettaglio competizione più editoriale e microcopy trasparente su dati MVP/manuali.
+
+Prossimo step consigliato: P87 — implement public product polish, solo UI/copy e senza DB write/provider/import/Apify.
+
+## P85 — Fase 2 backlog + priorità
+
+Stato: completato.
+
+Conferme:
+
+- `point_85_phase_2_backlog_completed=true`;
+- `phase_2_backlog_created=true`;
+- `sprint_1_recommended=public_product_polish`;
+- `no_code_change=true`;
+- `no_deploy=true`;
+- `db_write_additional=false`;
+- `provider_import_enabled=false`;
+- `apify_enabled=false`.
+
+Backlog creato per: prodotto pubblico, contenuti/editoriale, login/free quota, admin workflow, dati manuali e provider futuri.
+
+Prossimo step consigliato: P86 — Public product polish plan.
+
+## P84 — Production monitoring checklist
+
+Stato: completato.
+
+Conferme:
+
+- `point_84_production_monitoring_checklist_completed=true`;
+- `production_monitoring_ready=true`;
+- `production_release_stable_baseline=true`;
+- `no_code_change=true`;
+- `no_deploy=true`;
+- `db_write_additional=false`;
+- `provider_import_enabled=false`;
+- `apify_enabled=false`;
+- `rollback_executed=false`.
+
+La checklist copre monitoraggio per route Production, dati pubblici, assenza di esposizione privata/admin/debug, provider/import off, controlli Vercel, controlli Supabase read-only e rollback readiness.
+
+Prossimo step consigliato: P85 — Fase 2 backlog + priorità.
+
 ## P83 — Post-production verification + MVP Production freeze
 
 Stato: completato.
@@ -30,6 +198,33 @@ Conferme:
 - `vercel_root_directory_changed=false`.
 
 Prossimo step consigliato: P84 — production monitoring checklist oppure post-release product polish, senza provider/import e senza DB write salvo nuova autorizzazione esplicita.
+
+## P82-A — Vercel Production Git integration investigation
+
+Stato: completato in sola lettura, senza deploy e senza modifiche Vercel.
+
+Conferme:
+
+- `point_82a_vercel_git_integration_investigation_completed=true`;
+- `origin/main=ab5067ca2f40c434d13ada87a71be0024069e8bd`;
+- `origin/preview=ccaf417357ee6159a6fe96504893d12f4b65cd3a`;
+- `main_contains_competitions_locally=true`;
+- `main_local_build_passed=true`;
+- `main_local_competitions_http_status=200`;
+- `main_local_competition_detail_http_status=200`;
+- `production_url_still_old=true`;
+- `production_competitions_404=true`;
+- `deployment_for_ab5067_exists=unknown`;
+- `likely_cause=G_OR_A`;
+- `deploy_executed=false`;
+- `vercel_config_changed=false`;
+- `production_touched=false`;
+- `db_write_additional=false`;
+- `provider_import_enabled=false`;
+- `apify_enabled=false`;
+- `rollback_executed=false`.
+
+Il problema non risulta nel codice del commit `main`: la build locale contiene e serve le route nuove. Il prossimo step consigliato è controllare manualmente in Vercel quale progetto/dominio/Git integration governa `regista-avanzato-rouge.vercel.app`.
 
 ## P81-A — Main untracked cleanup no-deploy
 

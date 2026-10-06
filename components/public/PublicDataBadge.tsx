@@ -4,6 +4,6 @@ type PublicDataBadgeProps = {
   children?: ReactNode;
 };
 
-export function PublicDataBadge({ children = "Public data only" }: PublicDataBadgeProps) {
+export function PublicDataBadge({ children = "Dati pubblici" }: PublicDataBadgeProps) {
   return <span className="stats-badge">{children}</span>;
 }
