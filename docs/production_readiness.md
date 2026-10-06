@@ -1,5 +1,29 @@
 # Production Readiness
 
+## Nota P88 — Preview verification public polish
+
+P88 ha verificato localmente il polish pubblico implementato in P87, senza modificare codice e senza deploy Production.
+
+Esito:
+
+- `point_88_preview_verification_completed=true`
+- `public_product_polish_preview_verified=true`
+- `p89_recommended=production_polish_release_gate`
+- `no_code_change=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+
+Route verificate in locale/no-auth:
+
+- `/` → HTTP 200;
+- `/competitions` → HTTP 200, dati visibili;
+- `/competitions/manual-serie-a` → HTTP 200, dati visibili.
+
+Safety confermata: nessun `private_admin`, admin link, debug/raw payload o bottone operativo rilevato. Provider/import e Apify restano spenti.
+
 ## Nota P87 — Public product polish implementation
 
 P87 ha implementato il polish UI/copy pubblico pianificato in P86, senza deploy Production.

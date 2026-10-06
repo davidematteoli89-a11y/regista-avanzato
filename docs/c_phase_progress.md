@@ -1,5 +1,31 @@
 # C phase progress
 
+## P88 — Preview verification public polish
+
+Stato: completato come verifica locale/no-auth e documentazione.
+
+Conferme:
+
+- `point_88_preview_verification_completed=true`;
+- `public_product_polish_preview_verified=true`;
+- `p89_recommended=production_polish_release_gate`;
+- `no_code_change=true`;
+- `no_deploy=true`;
+- `production_touched=false`;
+- `db_write_additional=false`;
+- `provider_import_enabled=false`;
+- `apify_enabled=false`.
+
+Route verificate:
+
+- `/` HTTP 200;
+- `/competitions` HTTP 200, dati visibili;
+- `/competitions/manual-serie-a` HTTP 200, dati visibili.
+
+Verifiche tecniche passate: final env checklist, full public path verification, audit provider, writer guards, lint, typecheck e build.
+
+Prossimo step consigliato: P89 — Production polish release gate.
+
 ## P87 — Public product polish implementation
 
 Stato: completato come implementazione UI/copy pubblica.

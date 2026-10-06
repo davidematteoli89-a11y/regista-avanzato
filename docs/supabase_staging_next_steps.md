@@ -1,5 +1,23 @@
 # Supabase staging next steps
 
+## P88 — Preview verification public polish
+
+P88 non modifica Supabase staging.
+
+Marker:
+
+- `point_88_preview_verification_completed=true`
+- `public_product_polish_preview_verified=true`
+- `p89_recommended=production_polish_release_gate`
+- `no_code_change=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+
+La verifica P88 è solo locale/no-auth e documentale. Nessun dato, visibility, schema/RLS, migration, rollback, provider/import o Apify è stato modificato.
+
 ## P87 — Public product polish implementation
 
 P87 non modifica Supabase staging.
