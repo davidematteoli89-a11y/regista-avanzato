@@ -1,5 +1,22 @@
 # Production Readiness
 
+## Nota P85 — Phase 2 backlog + priorities
+
+P85 ha definito il backlog Fase 2 post-MVP e la priorità operativa iniziale.
+
+Esito:
+
+- `point_85_phase_2_backlog_completed=true`
+- `phase_2_backlog_created=true`
+- `sprint_1_recommended=public_product_polish`
+- `no_code_change=true`
+- `no_deploy=true`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+
+La priorità consigliata è Sprint 1 — Public product polish. Provider/import e Apify restano off fino ad autorizzazione esplicita futura.
+
 ## Nota P84 — Production monitoring checklist
 
 P84 ha creato la checklist di monitoraggio Production post-release, senza codice, deploy o scritture.

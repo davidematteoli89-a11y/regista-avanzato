@@ -1,5 +1,24 @@
 # C phase progress
 
+## P85 — Fase 2 backlog + priorità
+
+Stato: completato.
+
+Conferme:
+
+- `point_85_phase_2_backlog_completed=true`;
+- `phase_2_backlog_created=true`;
+- `sprint_1_recommended=public_product_polish`;
+- `no_code_change=true`;
+- `no_deploy=true`;
+- `db_write_additional=false`;
+- `provider_import_enabled=false`;
+- `apify_enabled=false`.
+
+Backlog creato per: prodotto pubblico, contenuti/editoriale, login/free quota, admin workflow, dati manuali e provider futuri.
+
+Prossimo step consigliato: P86 — Public product polish plan.
+
 ## P84 — Production monitoring checklist
 
 Stato: completato.

@@ -1,5 +1,22 @@
 # Supabase staging next steps
 
+## P85 — Fase 2 backlog + priorità
+
+P85 non modifica Supabase staging.
+
+Marker:
+
+- `point_85_phase_2_backlog_completed=true`
+- `phase_2_backlog_created=true`
+- `sprint_1_recommended=public_product_polish`
+- `no_code_change=true`
+- `no_deploy=true`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+
+Gli item di dati manuali e provider futuri restano backlog pianificato, non eseguito. Nessuna nuova scrittura DB, import provider o Apify è stata eseguita in P85.
+
 ## P84 — Production monitoring checklist
 
 P84 non modifica Supabase staging.
