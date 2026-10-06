@@ -1,5 +1,26 @@
 # C phase progress
 
+## P90-B — Full public path verification stabilization
+
+Stato: completato.
+
+Conferme:
+
+- `point_90b_full_public_path_verification_stabilized=true`;
+- `full_public_path_dry_run_diagnostic_states=true`;
+- `p90_can_be_retried=true`;
+- `production_polish_released=false`;
+- `no_merge=true`;
+- `no_deploy=true`;
+- `production_touched=false`;
+- `db_write_additional=false`;
+- `provider_import_enabled=false`;
+- `apify_enabled=false`.
+
+Risultato: `dry-run:full-public-path-verification` ora produce stati diagnostici distinti. Senza runtime locale segnala `server_unreachable`; con server locale attivo passa e conferma `data_visible` su `/competitions` e `/competitions/manual-serie-a`.
+
+Prossimo step consigliato: ripetere P90 solo con nuova autorizzazione esplicita.
+
 ## P90-A — Preview public data visibility diagnosis
 
 Stato: completato come diagnosi no-write/no-deploy.

@@ -1,5 +1,26 @@
 # Production Readiness
 
+## Nota P90-B — Full public path verification stabilization
+
+P90-B ha stabilizzato il dry-run `full-public-path-verification`, senza merge, deploy, Production touch, DB write o provider/import.
+
+Esito:
+
+- `point_90b_full_public_path_verification_stabilized=true`
+- `full_public_path_dry_run_diagnostic_states=true`
+- `p90_can_be_retried=true`
+- `production_polish_released=false`
+- `no_merge=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+
+Il dry-run ora distingue server non raggiungibile, HTTP error, empty public dataset, detail not found, data visible e markup unexpected. Senza server fallisce con `server_unreachable`; con server locale attivo passa con `/`, `/competitions` e `/competitions/manual-serie-a` verificate.
+
+P90 può essere riprovato solo con nuova autorizzazione esplicita.
+
 ## Nota P90-A — Preview public data visibility diagnosis
 
 P90-A ha diagnosticato lo stop condition che aveva bloccato P90 prima del merge.

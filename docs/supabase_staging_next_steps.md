@@ -1,5 +1,24 @@
 # Supabase staging next steps
 
+## P90-B — Full public path verification stabilization
+
+P90-B non modifica Supabase staging.
+
+Marker:
+
+- `point_90b_full_public_path_verification_stabilized=true`
+- `full_public_path_dry_run_diagnostic_states=true`
+- `p90_can_be_retried=true`
+- `production_polish_released=false`
+- `no_merge=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+
+Le modifiche P90-B riguardano solo diagnostica locale del dry-run e documentazione. Nessun dato, visibility, schema/RLS, migration, rollback, provider/import o Apify è stato modificato.
+
 ## P90-A — Preview public data visibility diagnosis
 
 P90-A non modifica Supabase staging.
