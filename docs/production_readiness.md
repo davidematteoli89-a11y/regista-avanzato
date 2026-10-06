@@ -1,5 +1,21 @@
 # Production Readiness
 
+## Nota P87 — Public product polish implementation
+
+P87 ha implementato il polish UI/copy pubblico pianificato in P86, senza deploy Production.
+
+Esito:
+
+- `point_87_public_product_polish_implemented=true`
+- `public_product_polish_implemented=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+
+Modifiche limitate a homepage, `/competitions`, `/competitions/[slug]` e componenti pubblici condivisi. Nessun reader DB, filtro visibility, schema/RLS/migration, provider/import, Apify o Vercel config/env/root directory è stato modificato. Prossimo step consigliato: P88 — Preview verification public polish.
+
 ## Nota P86 — Public product polish plan
 
 P86 ha creato il piano di polish prodotto pubblico post-MVP, senza modificare codice o Production.

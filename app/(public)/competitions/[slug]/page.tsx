@@ -17,7 +17,7 @@ export default async function PublicCompetitionDetailPage({ params }: PageProps)
     return (
       <main className="stack" aria-labelledby="public-competition-empty-title">
         <header>
-          <span className="eyebrow">Public data only</span>
+          <span className="eyebrow">Campionati nel radar</span>
           <h1 id="public-competition-empty-title">Competizione non ancora disponibile</h1>
           <p>
             I dati pubblici per questa competizione non sono ancora stati
@@ -62,7 +62,7 @@ export default async function PublicCompetitionDetailPage({ params }: PageProps)
         </section>
 
         <section className="empty-public-state" aria-live="polite">
-          <span className="stats-badge">Public data only</span>
+          <span className="stats-badge">Dati pubblici</span>
           <h2>Dati competizione non ancora disponibili.</h2>
           <p>
             Quando una competizione sarà pubblica, questa pagina mostrerà solo
@@ -80,17 +80,21 @@ export default async function PublicCompetitionDetailPage({ params }: PageProps)
     <main className="stack" aria-labelledby="public-competition-title">
       <header>
         <Link href="/competitions">← Torna alle competizioni</Link>
-        <span className="eyebrow">Public data only</span>
+        <span className="eyebrow">Scheda competizione</span>
         <h1 id="public-competition-title">{bundle.competition.name}</h1>
         <p>
           {[bundle.competition.country, bundle.competition.season].filter(Boolean).join(" · ") ||
             "Dettagli in aggiornamento"}
         </p>
+        <p className="notice">
+          Scheda dimostrativa MVP: dati manuali usati per validare la struttura
+          pubblica del prodotto.
+        </p>
       </header>
 
       <section className="public-stats-grid" aria-label="Riepilogo pubblico competizione">
         <article className="public-stat-card">
-          <PublicDataBadge>Competizione pubblica</PublicDataBadge>
+          <PublicDataBadge>Public data only</PublicDataBadge>
           <h2>{bundle.competition.name}</h2>
           <p>
             {[bundle.competition.country, bundle.competition.season].filter(Boolean).join(" · ") ||
@@ -110,7 +114,7 @@ export default async function PublicCompetitionDetailPage({ params }: PageProps)
       </section>
 
       <section className="public-stat-card" aria-labelledby="public-teams-title">
-        <h2 id="public-teams-title">Squadre pubbliche</h2>
+        <h2 id="public-teams-title">Squadre pubbliche da seguire</h2>
         {bundle.teams.length > 0 ? (
           <ul>
             {bundle.teams.map((team) => (
@@ -126,16 +130,17 @@ export default async function PublicCompetitionDetailPage({ params }: PageProps)
       </section>
 
       <section className="public-stat-card" aria-labelledby="public-standings-title">
-        <h2 id="public-standings-title">Classifica pubblica</h2>
+        <h2 id="public-standings-title">Classifica pubblica essenziale</h2>
         <PublicStandingsTable standings={bundle.standings} />
       </section>
 
       <section className="preview-block" aria-labelledby="public-data-safety-title">
-        <PublicDataBadge>Sola lettura</PublicDataBadge>
-        <h2 id="public-data-safety-title">Dati pubblici verificati</h2>
+        <PublicDataBadge>Prossimi sviluppi</PublicDataBadge>
+        <h2 id="public-data-safety-title">Storie, talenti e video radar</h2>
         <p>
-          Questa pagina non contiene azioni operative e non usa fallback verso
-          dati interni. Se un dato non è pubblico, resta nascosto.
+          Le prossime evoluzioni della scheda includeranno storie, giocatori da
+          seguire, video radar e link ad highlights ufficiali. Questa pagina
+          resta in sola lettura e non avvia import o sincronizzazioni.
         </p>
       </section>
     </main>

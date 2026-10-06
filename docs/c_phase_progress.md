@@ -1,5 +1,23 @@
 # C phase progress
 
+## P87 — Public product polish implementation
+
+Stato: completato come implementazione UI/copy pubblica.
+
+Conferme:
+
+- `point_87_public_product_polish_implemented=true`;
+- `public_product_polish_implemented=true`;
+- `no_deploy=true`;
+- `production_touched=false`;
+- `db_write_additional=false`;
+- `provider_import_enabled=false`;
+- `apify_enabled=false`.
+
+Homepage, `/competitions` e dettaglio competizione sono stati resi più chiari/editoriali, con CTA e microcopy MVP/dati manuali. Nessuna nuova DB write, nessun provider/import, nessun Apify e nessun deploy Production.
+
+Prossimo step consigliato: P88 — Preview verification public polish.
+
 ## P86 — Public product polish plan
 
 Stato: completato come piano/documentazione.

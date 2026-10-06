@@ -1,5 +1,21 @@
 # Supabase staging next steps
 
+## P87 — Public product polish implementation
+
+P87 non modifica Supabase staging.
+
+Marker:
+
+- `point_87_public_product_polish_implemented=true`
+- `public_product_polish_implemented=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+
+Le modifiche P87 sono solo UI/copy pubblico. Nessun dato, visibility, schema/RLS, migration, rollback, provider/import o Apify è stato modificato.
+
 ## P86 — Public product polish plan
 
 P86 non modifica Supabase staging.

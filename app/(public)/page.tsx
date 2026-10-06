@@ -25,35 +25,40 @@ function SafeHomepageFallback() {
     <main className="magazine-home">
       <section className="home-hero">
         <div>
-          <span className="eyebrow">Magazine calcistico</span>
-          <h1>Dove i numeri incontrano le storie</h1>
+          <span className="eyebrow">Osservatorio calcistico narrativo</span>
+          <h1>Regista Avanzato</h1>
           <p>
-            Regista Avanzato raccoglie dati pubblici, storie e segnali editoriali
-            in percorsi leggibili e controllati.
+            Il calcio fuori dal mainstream, letto con dati, storie e contesto.
+            Un osservatorio narrativo per seguire campionati, squadre e talenti
+            meno raccontati.
           </p>
           <div className="actions">
             <Link className="button-link" href="/competitions">
               Esplora le competizioni
             </Link>
-            <Link href="/radar">Apri il Radar</Link>
+            <Link href="/newsletter">Segui la newsletter</Link>
           </div>
+          <p className="notice">
+            MVP pubblico: i primi dati sono curati manualmente per validare
+            struttura, esperienza e racconto.
+          </p>
         </div>
         <article className="hero-feature">
-          <span className="stats-badge">Public data only</span>
-          <p className="muted">Percorso pubblico sicuro</p>
-          <h2>Competizioni, squadre e classifiche approvate</h2>
+          <span className="stats-badge">MVP pubblico</span>
+          <p className="muted">Campionati radar, dati essenziali, contesto</p>
+          <h2>Meno rumore, più profondità</h2>
           <p>
-            La sezione Competizioni mostra solo dati resi pubblici dopo review e
-            filtrati dai public reader.
+            Regista Avanzato nasce per dare spazio a campionati e giocatori che
+            spesso restano fuori dal racconto quotidiano.
           </p>
         </article>
       </section>
       <section className="preview-block" aria-labelledby="homepage-public-path-title">
-        <span className="stats-badge">Sola lettura</span>
-        <h2 id="homepage-public-path-title">Percorso pubblico verificabile</h2>
+        <span className="stats-badge">Cosa puoi fare ora</span>
+        <h2 id="homepage-public-path-title">Entra nei primi campionati disponibili</h2>
         <p>
-          Dalla homepage puoi aprire le competizioni pubbliche e consultare il
-          dettaglio senza login e senza azioni operative.
+          Dalla homepage puoi aprire le competizioni, leggere la scheda pubblica
+          e seguire l’evoluzione editoriale del progetto.
         </p>
         <Link href="/competitions">Vai alle competizioni</Link>
       </section>
@@ -72,18 +77,46 @@ export default async function Page() {
     <main className="magazine-home">
       <HomeHero article={data.hero} />
       <HomeSection
-        description="Il percorso dati approvato: competizioni, squadre e classifiche filtrate per la consultazione esterna."
+        description="Primi campionati disponibili nel radar di Regista Avanzato. In questa fase MVP i dati sono curati manualmente e servono a validare esperienza, struttura e racconto."
         href="/competitions"
-        title="Competizioni pubbliche"
+        linkLabel="Esplora i campionati"
+        title="Campionati nel radar"
       >
         <section className="preview-block" aria-labelledby="home-competitions-title">
           <span className="stats-badge">Public data only</span>
-          <h2 id="home-competitions-title">Dati visibili dopo review</h2>
+          <h2 id="home-competitions-title">Dati manuali, racconto pubblico</h2>
           <p>
-            La sezione Competizioni è il punto di ingresso per leggere i dati
-            pubblici promossi a `public_free`, senza usare fallback admin.
+            Le prime schede uniscono dati essenziali, squadre e classifiche per
+            costruire il percorso pubblico prima di attivare import automatici.
           </p>
           <Link href="/competitions">Apri le competizioni pubbliche</Link>
+        </section>
+      </HomeSection>
+      <HomeSection
+        description="Regista Avanzato nasce per dare profondità a campionati e giocatori che spesso restano fuori dal racconto quotidiano: meno rumore, più contesto."
+        title="Cosa trovi"
+      >
+        <section className="public-stats-grid" aria-label="Cosa trovi su Regista Avanzato">
+          <article className="public-stat-card">
+            <span className="stats-badge">Radar</span>
+            <h2>Campionati radar</h2>
+            <p>Competizioni meno raccontate, selezionate per potenziale narrativo e interesse calcistico.</p>
+          </article>
+          <article className="public-stat-card">
+            <span className="stats-badge">Dati</span>
+            <h2>Squadre e classifiche</h2>
+            <p>Statistiche essenziali e leggibili, pensate per orientare la scoperta senza rumore.</p>
+          </article>
+          <article className="public-stat-card">
+            <span className="stats-badge">Storie</span>
+            <h2>Storie e talenti</h2>
+            <p>Spunti editoriali, giocatori da seguire e percorsi da sviluppare nel tempo.</p>
+          </article>
+          <article className="public-stat-card">
+            <span className="stats-badge">Video</span>
+            <h2>Video e highlights ufficiali</h2>
+            <p>Radar video con link a fonti ufficiali, senza scaricare o ripubblicare clip.</p>
+          </article>
         </section>
       </HomeSection>
       <HomeSection description="Storie e profili approvati dalla redazione." href="/articoli" title="In evidenza">
