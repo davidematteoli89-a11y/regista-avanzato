@@ -1,5 +1,22 @@
 # Supabase staging next steps
 
+## P83 — Post-production verification + MVP Production freeze
+
+P83 non modifica Supabase staging.
+
+Marker:
+
+- `point_83_post_production_verification_completed=true`
+- `production_release_verified=true`
+- `mvp_production_freeze=true`
+- `db_write_additional=false`
+- `rollback_executed=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `private_admin_publicly_exposed=false`
+
+Supabase staging resta nello stato già promosso e validato per il MVP pubblico: 1 competition, 2 teams e 2 standings visibili via public readers. Nessuna ulteriore scrittura DB è stata eseguita in P83.
+
 ## P82-A — Vercel Production Git integration investigation
 
 P82-A non modifica Supabase staging.
