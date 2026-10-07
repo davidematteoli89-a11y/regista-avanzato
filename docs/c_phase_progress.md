@@ -1,5 +1,25 @@
 # C phase progress
 
+## P95 — Substack launch pack
+
+Stato: completato.
+
+Conferme:
+
+- `point_95_substack_launch_pack_completed=true`;
+- `substack_launch_pack_created=true`;
+- `newsletter_zero_finalized=true`;
+- `p96_recommended=implement_editorial_pages_or_substack_manual_launch`;
+- `no_code_change=true`;
+- `no_deploy=true`;
+- `db_write_additional=false`;
+- `provider_import_enabled=false`;
+- `apify_enabled=false`.
+
+Risultato: preparati newsletter zero finalizzata, subject/preview text, nome e sottotitolo pubblicazione, tre bio, about page, CTA, piano dei prossimi 3 post e checklist pubblicazione manuale Substack.
+
+Prossimo step consigliato: P96 — Substack manual launch checklist oppure Implement editorial pages on site.
+
 ## P94 — Editorial content review + publication plan
 
 Stato: completato.

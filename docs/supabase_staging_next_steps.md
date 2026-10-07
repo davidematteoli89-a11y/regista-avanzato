@@ -1,5 +1,23 @@
 # Supabase staging next steps
 
+## P95 — Substack launch pack
+
+P95 non modifica Supabase staging.
+
+Marker:
+
+- `point_95_substack_launch_pack_completed=true`
+- `substack_launch_pack_created=true`
+- `newsletter_zero_finalized=true`
+- `p96_recommended=implement_editorial_pages_or_substack_manual_launch`
+- `no_code_change=true`
+- `no_deploy=true`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+
+Il pacchetto P95 è solo editoriale/documentale. Nessun dato, visibility, schema/RLS, migration, rollback, provider/import o Apify è stato modificato.
+
 ## P94 — Editorial content review + publication plan
 
 P94 non modifica Supabase staging.
