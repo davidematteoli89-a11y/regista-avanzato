@@ -1,5 +1,25 @@
 # C phase progress
 
+## P93 — First editorial content pack + voice samples
+
+Stato: completato.
+
+Conferme:
+
+- `point_93_first_editorial_content_pack_completed=true`;
+- `first_editorial_content_pack_created=true`;
+- `voice_samples_created=true`;
+- `p94_recommended=editorial_content_review_or_publication_plan`;
+- `no_code_change=true`;
+- `no_deploy=true`;
+- `db_write_additional=false`;
+- `provider_import_enabled=false`;
+- `apify_enabled=false`.
+
+Risultato: creati manifesto, newsletter zero, voice cards, voice samples, rubriche pilota, idee articolo, idee social/reel e guida operativa per scegliere la voce editoriale.
+
+Prossimo step consigliato: P94 — Editorial content review + publication plan.
+
 ## P92 — Editorial content plan + voices architecture
 
 Stato: completato.
