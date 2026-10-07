@@ -18,6 +18,8 @@ export function HomeHero({ article }: { article: PublicArticleView }) {
           <Link className="button-link" href="/competitions">
             Esplora le competizioni
           </Link>
+          <Link href="/manifesto">Leggi il manifesto</Link>
+          <Link href="/rubriche">Scopri le rubriche</Link>
           <Link href="/newsletter">Segui la newsletter</Link>
           <Link href={`/articoli/${article.slug}`}>Scopri il progetto</Link>
         </div>

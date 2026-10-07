@@ -1,5 +1,174 @@
 # C phase progress
 
+## P98 — Production editorial pages release gate
+
+Stato: completato.
+
+Conferme:
+
+- `point_98_production_editorial_pages_release_gate_completed=true`;
+- `production_editorial_pages_release_gate_ready=true`;
+- `p99_requires_explicit_authorization=true`;
+- `candidate_preview_commit=750ab823056c4e63b258a7014637899e8578fcc0`;
+- `current_main_commit=4a0b4f190e9e118bb770545742b9ad56cf295789`;
+- `no_merge=true`;
+- `no_deploy=true`;
+- `production_touched=false`;
+- `no_code_change=true`;
+- `db_write_additional=false`;
+- `provider_import_enabled=false`;
+- `apify_enabled=false`;
+- `substack_auto_published=false`.
+
+Risultato: creato gate no-apply per il rilascio Production delle pagine editoriali `/manifesto` e `/rubriche`; documentata la frase esatta richiesta per P99; nessun merge/deploy/DB write/provider/import/Apify/Substack auto-publish eseguito.
+
+Prossimo step consigliato: P99 — merge controllato preview → main + deploy Production pagine editoriali, solo con autorizzazione esplicita esatta.
+
+## P97 — Editorial pages preview verification
+
+Stato: completato.
+
+Conferme:
+
+- `point_97_editorial_pages_preview_verification_completed=true`;
+- `editorial_pages_preview_verified=true`;
+- `p98_recommended=production_editorial_pages_release_gate`;
+- `no_code_change=true`;
+- `no_deploy=true`;
+- `production_touched=false`;
+- `db_write_additional=false`;
+- `provider_import_enabled=false`;
+- `apify_enabled=false`.
+
+Risultato: verificate homepage, `/manifesto`, `/rubriche`, `/competitions` e `/competitions/manual-serie-a`; manifesto/rubriche/navigation/footer/responsive base passati; nessun `private_admin`, link admin, debug/raw payload, URL Substack inventato o bottone operativo rilevato.
+
+Prossimo step consigliato: P98 — Production editorial pages release gate.
+
+## P96 — Editorial pages implementation
+
+Stato: completato.
+
+Conferme:
+
+- `point_96_editorial_pages_implemented=true`;
+- `editorial_pages_created=true`;
+- `manifesto_page_created=true`;
+- `rubriche_page_created=true`;
+- `p97_recommended=preview_verification_editorial_pages`;
+- `no_deploy=true`;
+- `production_touched=false`;
+- `db_write_additional=false`;
+- `provider_import_enabled=false`;
+- `apify_enabled=false`.
+
+Risultato: create le pagine pubbliche statiche `/manifesto` e `/rubriche`, aggiornati link in navigazione pubblica, homepage e footer. Nessun link Substack inventato e nessuna pubblicazione automatica.
+
+Prossimo step consigliato: P97 — Preview verification editorial pages.
+
+## P95 — Substack launch pack
+
+Stato: completato.
+
+Conferme:
+
+- `point_95_substack_launch_pack_completed=true`;
+- `substack_launch_pack_created=true`;
+- `newsletter_zero_finalized=true`;
+- `p96_recommended=implement_editorial_pages_or_substack_manual_launch`;
+- `no_code_change=true`;
+- `no_deploy=true`;
+- `db_write_additional=false`;
+- `provider_import_enabled=false`;
+- `apify_enabled=false`.
+
+Risultato: preparati newsletter zero finalizzata, subject/preview text, nome e sottotitolo pubblicazione, tre bio, about page, CTA, piano dei prossimi 3 post e checklist pubblicazione manuale Substack.
+
+Prossimo step consigliato: P96 — Substack manual launch checklist oppure Implement editorial pages on site.
+
+## P94 — Editorial content review + publication plan
+
+Stato: completato.
+
+Conferme:
+
+- `point_94_editorial_publication_plan_completed=true`;
+- `editorial_publication_plan_created=true`;
+- `first_site_content_selected=manifesto`;
+- `first_substack_content_selected=newsletter_zero`;
+- `p95_recommended=substack_launch_pack`;
+- `no_code_change=true`;
+- `no_deploy=true`;
+- `db_write_additional=false`;
+- `provider_import_enabled=false`;
+- `apify_enabled=false`.
+
+Risultato: revisionato il pacchetto editoriale P93, scelti i primi contenuti sito/Substack/social, selezionate le rubriche iniziali e creato il piano pubblicazione 14 giorni.
+
+Prossimo step consigliato: P95 — Substack launch pack.
+
+## P93 — First editorial content pack + voice samples
+
+Stato: completato.
+
+Conferme:
+
+- `point_93_first_editorial_content_pack_completed=true`;
+- `first_editorial_content_pack_created=true`;
+- `voice_samples_created=true`;
+- `p94_recommended=editorial_content_review_or_publication_plan`;
+- `no_code_change=true`;
+- `no_deploy=true`;
+- `db_write_additional=false`;
+- `provider_import_enabled=false`;
+- `apify_enabled=false`.
+
+Risultato: creati manifesto, newsletter zero, voice cards, voice samples, rubriche pilota, idee articolo, idee social/reel e guida operativa per scegliere la voce editoriale.
+
+Prossimo step consigliato: P94 — Editorial content review + publication plan.
+
+## P92 — Editorial content plan + voices architecture
+
+Stato: completato.
+
+Conferme:
+
+- `point_92_editorial_content_plan_completed=true`;
+- `editorial_content_plan_created=true`;
+- `editorial_voices_architecture_created=true`;
+- `p93_recommended=first_editorial_content_pack`;
+- `no_code_change=true`;
+- `no_deploy=true`;
+- `db_write_additional=false`;
+- `provider_import_enabled=false`;
+- `apify_enabled=false`.
+
+Risultato: creati identità editoriale, tono generale, sei voci editoriali interne, rubriche iniziali, architettura sito/Substack, piano 4 settimane, template contenuti e regole editoriali/safety.
+
+Prossimo step consigliato: P93 — First editorial content pack + voice samples.
+
+## P91 — Post-production polish verification
+
+Stato: completato.
+
+Conferme:
+
+- `point_91_post_production_polish_verification_completed=true`;
+- `production_polish_verified_stable=true`;
+- `production_polish_released=true`;
+- `no_merge=true`;
+- `no_deploy=true`;
+- `db_write_additional=false`;
+- `provider_import_enabled=false`;
+- `apify_enabled=false`;
+- `rollback_executed=false`;
+- `p92_recommended=editorial_content_plan`.
+
+Production verificata su `/`, `/competitions`, `/competitions/manual-serie-a`: HTTP 200, polish visibile, dati pubblici visibili, nessun `private_admin`, admin link, debug/raw payload o bottone operativo rilevato.
+
+Verifiche locali passate: final env checklist, full public path con server, audit provider, writer guards, lint, typecheck e build.
+
+Prossimo step consigliato: P92 — Editorial content plan.
+
 ## P90-Retry — Production polish release
 
 Stato: completato.

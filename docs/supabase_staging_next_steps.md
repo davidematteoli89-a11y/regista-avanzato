@@ -1,5 +1,155 @@
 # Supabase staging next steps
 
+## P98 — Production editorial pages release gate
+
+P98 non modifica Supabase staging.
+
+Marker:
+
+- `point_98_production_editorial_pages_release_gate_completed=true`
+- `production_editorial_pages_release_gate_ready=true`
+- `p99_requires_explicit_authorization=true`
+- `candidate_preview_commit=750ab823056c4e63b258a7014637899e8578fcc0`
+- `no_merge=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `no_code_change=true`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `substack_auto_published=false`
+
+La preparazione P98 è solo documentale/release gate. Nessun dato, visibility, schema/RLS, migration, rollback, provider/import o Apify è stato modificato.
+
+## P97 — Editorial pages preview verification
+
+P97 non modifica Supabase staging.
+
+Marker:
+
+- `point_97_editorial_pages_preview_verification_completed=true`
+- `editorial_pages_preview_verified=true`
+- `p98_recommended=production_editorial_pages_release_gate`
+- `no_code_change=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+
+La verifica P97 è solo local/preview e documentale. Nessun dato, visibility, schema/RLS, migration, rollback, provider/import o Apify è stato modificato.
+
+## P96 — Editorial pages implementation
+
+P96 non modifica Supabase staging.
+
+Marker:
+
+- `point_96_editorial_pages_implemented=true`
+- `editorial_pages_created=true`
+- `manifesto_page_created=true`
+- `rubriche_page_created=true`
+- `p97_recommended=preview_verification_editorial_pages`
+- `no_deploy=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+
+L’implementazione P96 è solo UI/editoriale statica. Nessun dato, visibility, schema/RLS, migration, rollback, provider/import o Apify è stato modificato.
+
+## P95 — Substack launch pack
+
+P95 non modifica Supabase staging.
+
+Marker:
+
+- `point_95_substack_launch_pack_completed=true`
+- `substack_launch_pack_created=true`
+- `newsletter_zero_finalized=true`
+- `p96_recommended=implement_editorial_pages_or_substack_manual_launch`
+- `no_code_change=true`
+- `no_deploy=true`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+
+Il pacchetto P95 è solo editoriale/documentale. Nessun dato, visibility, schema/RLS, migration, rollback, provider/import o Apify è stato modificato.
+
+## P94 — Editorial content review + publication plan
+
+P94 non modifica Supabase staging.
+
+Marker:
+
+- `point_94_editorial_publication_plan_completed=true`
+- `editorial_publication_plan_created=true`
+- `first_site_content_selected=manifesto`
+- `first_substack_content_selected=newsletter_zero`
+- `p95_recommended=substack_launch_pack`
+- `no_code_change=true`
+- `no_deploy=true`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+
+Il piano P94 è solo editoriale/documentale. Nessun dato, visibility, schema/RLS, migration, rollback, provider/import o Apify è stato modificato.
+
+## P93 — First editorial content pack + voice samples
+
+P93 non modifica Supabase staging.
+
+Marker:
+
+- `point_93_first_editorial_content_pack_completed=true`
+- `first_editorial_content_pack_created=true`
+- `voice_samples_created=true`
+- `p94_recommended=editorial_content_review_or_publication_plan`
+- `no_code_change=true`
+- `no_deploy=true`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+
+Il pacchetto P93 è solo editoriale/documentale. Nessun dato, visibility, schema/RLS, migration, rollback, provider/import o Apify è stato modificato.
+
+## P92 — Editorial content plan + voices architecture
+
+P92 non modifica Supabase staging.
+
+Marker:
+
+- `point_92_editorial_content_plan_completed=true`
+- `editorial_content_plan_created=true`
+- `editorial_voices_architecture_created=true`
+- `p93_recommended=first_editorial_content_pack`
+- `no_code_change=true`
+- `no_deploy=true`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+
+La pianificazione P92 è solo editoriale/documentale. Nessun dato, visibility, schema/RLS, migration, rollback, provider/import o Apify è stato modificato.
+
+## P91 — Post-production polish verification
+
+P91 non modifica Supabase staging.
+
+Marker:
+
+- `point_91_post_production_polish_verification_completed=true`
+- `production_polish_verified_stable=true`
+- `production_polish_released=true`
+- `no_merge=true`
+- `no_deploy=true`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `rollback_executed=false`
+- `p92_recommended=editorial_content_plan`
+
+La verifica P91 è solo post-release/documentale. Nessun dato, visibility, schema/RLS, migration, rollback, provider/import o Apify è stato modificato.
+
 ## P90-Retry — Production polish release
 
 P90-Retry non modifica Supabase staging.

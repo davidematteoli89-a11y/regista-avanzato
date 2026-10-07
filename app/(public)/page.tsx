@@ -36,6 +36,8 @@ function SafeHomepageFallback() {
             <Link className="button-link" href="/competitions">
               Esplora le competizioni
             </Link>
+            <Link href="/manifesto">Leggi il manifesto</Link>
+            <Link href="/rubriche">Scopri le rubriche</Link>
             <Link href="/newsletter">Segui la newsletter</Link>
           </div>
           <p className="notice">
@@ -94,6 +96,8 @@ export default async function Page() {
       </HomeSection>
       <HomeSection
         description="Regista Avanzato nasce per dare profondità a campionati e giocatori che spesso restano fuori dal racconto quotidiano: meno rumore, più contesto."
+        href="/manifesto"
+        linkLabel="Leggi il manifesto"
         title="Cosa trovi"
       >
         <section className="public-stats-grid" aria-label="Cosa trovi su Regista Avanzato">
@@ -116,6 +120,12 @@ export default async function Page() {
             <span className="stats-badge">Video</span>
             <h2>Video e highlights ufficiali</h2>
             <p>Radar video con link a fonti ufficiali, senza scaricare o ripubblicare clip.</p>
+          </article>
+          <article className="public-stat-card">
+            <span className="stats-badge">Rubriche</span>
+            <h2>Manifesto e rubriche</h2>
+            <p>Pagine editoriali statiche per capire identità, metodo e percorsi del progetto.</p>
+            <Link href="/rubriche">Scopri le rubriche</Link>
           </article>
         </section>
       </HomeSection>
