@@ -1,5 +1,29 @@
 # C phase progress
 
+## P98 — Production editorial pages release gate
+
+Stato: completato.
+
+Conferme:
+
+- `point_98_production_editorial_pages_release_gate_completed=true`;
+- `production_editorial_pages_release_gate_ready=true`;
+- `p99_requires_explicit_authorization=true`;
+- `candidate_preview_commit=750ab823056c4e63b258a7014637899e8578fcc0`;
+- `current_main_commit=4a0b4f190e9e118bb770545742b9ad56cf295789`;
+- `no_merge=true`;
+- `no_deploy=true`;
+- `production_touched=false`;
+- `no_code_change=true`;
+- `db_write_additional=false`;
+- `provider_import_enabled=false`;
+- `apify_enabled=false`;
+- `substack_auto_published=false`.
+
+Risultato: creato gate no-apply per il rilascio Production delle pagine editoriali `/manifesto` e `/rubriche`; documentata la frase esatta richiesta per P99; nessun merge/deploy/DB write/provider/import/Apify/Substack auto-publish eseguito.
+
+Prossimo step consigliato: P99 — merge controllato preview → main + deploy Production pagine editoriali, solo con autorizzazione esplicita esatta.
+
 ## P97 — Editorial pages preview verification
 
 Stato: completato.

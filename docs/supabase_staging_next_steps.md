@@ -1,5 +1,26 @@
 # Supabase staging next steps
 
+## P98 — Production editorial pages release gate
+
+P98 non modifica Supabase staging.
+
+Marker:
+
+- `point_98_production_editorial_pages_release_gate_completed=true`
+- `production_editorial_pages_release_gate_ready=true`
+- `p99_requires_explicit_authorization=true`
+- `candidate_preview_commit=750ab823056c4e63b258a7014637899e8578fcc0`
+- `no_merge=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `no_code_change=true`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `substack_auto_published=false`
+
+La preparazione P98 è solo documentale/release gate. Nessun dato, visibility, schema/RLS, migration, rollback, provider/import o Apify è stato modificato.
+
 ## P97 — Editorial pages preview verification
 
 P97 non modifica Supabase staging.

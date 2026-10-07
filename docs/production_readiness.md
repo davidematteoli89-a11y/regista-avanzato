@@ -1,5 +1,29 @@
 # Production Readiness
 
+## Nota P98 — Production editorial pages release gate
+
+P98 ha preparato il gate no-apply per il rilascio Production delle pagine editoriali pubbliche, senza merge main, deploy Production, DB write, provider/import, Apify o pubblicazione automatica Substack.
+
+Esito:
+
+- `point_98_production_editorial_pages_release_gate_completed=true`
+- `production_editorial_pages_release_gate_ready=true`
+- `p99_requires_explicit_authorization=true`
+- `candidate_preview_commit=750ab823056c4e63b258a7014637899e8578fcc0`
+- `current_main_commit=4a0b4f190e9e118bb770545742b9ad56cf295789`
+- `no_merge=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `no_code_change=true`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `substack_auto_published=false`
+
+P99 richiede autorizzazione esplicita esatta; risposte generiche come `procedi`, `vai`, `continua` o `ok` non autorizzano merge/deploy Production.
+
+Prossimo step consigliato: P99 — merge controllato preview → main + deploy Production pagine editoriali, solo se autorizzato con frase esatta.
+
 ## Nota P97 — Editorial pages preview verification
 
 P97 ha verificato localmente le pagine editoriali statiche implementate in P96, senza modifiche codice, merge main, deploy Production, DB write o provider/import.
