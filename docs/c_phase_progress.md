@@ -1,5 +1,25 @@
 # C phase progress
 
+## P92 — Editorial content plan + voices architecture
+
+Stato: completato.
+
+Conferme:
+
+- `point_92_editorial_content_plan_completed=true`;
+- `editorial_content_plan_created=true`;
+- `editorial_voices_architecture_created=true`;
+- `p93_recommended=first_editorial_content_pack`;
+- `no_code_change=true`;
+- `no_deploy=true`;
+- `db_write_additional=false`;
+- `provider_import_enabled=false`;
+- `apify_enabled=false`.
+
+Risultato: creati identità editoriale, tono generale, sei voci editoriali interne, rubriche iniziali, architettura sito/Substack, piano 4 settimane, template contenuti e regole editoriali/safety.
+
+Prossimo step consigliato: P93 — First editorial content pack + voice samples.
+
 ## P91 — Post-production polish verification
 
 Stato: completato.

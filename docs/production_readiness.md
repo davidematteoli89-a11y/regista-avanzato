@@ -1,5 +1,25 @@
 # Production Readiness
 
+## Nota P92 — Editorial content plan + voices architecture
+
+P92 ha creato il piano editoriale iniziale di Regista Avanzato e l’architettura delle voci editoriali, senza modifiche codice, deploy, DB write o provider/import.
+
+Esito:
+
+- `point_92_editorial_content_plan_completed=true`
+- `editorial_content_plan_created=true`
+- `editorial_voices_architecture_created=true`
+- `p93_recommended=first_editorial_content_pack`
+- `no_code_change=true`
+- `no_deploy=true`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+
+Sono state definite sei voci editoriali interne/originali: Regista, Scout, Archivio, Radar, Social/Video e Podcast/Intervista.
+
+Prossimo step consigliato: P93 — First editorial content pack + voice samples.
+
 ## Nota P91 — Post-production polish verification
 
 P91 ha completato la verifica post-release Production del public product polish, senza merge, deploy, DB write, rollback o provider/import.

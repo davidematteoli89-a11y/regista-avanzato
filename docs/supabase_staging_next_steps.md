@@ -1,5 +1,23 @@
 # Supabase staging next steps
 
+## P92 — Editorial content plan + voices architecture
+
+P92 non modifica Supabase staging.
+
+Marker:
+
+- `point_92_editorial_content_plan_completed=true`
+- `editorial_content_plan_created=true`
+- `editorial_voices_architecture_created=true`
+- `p93_recommended=first_editorial_content_pack`
+- `no_code_change=true`
+- `no_deploy=true`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+
+La pianificazione P92 è solo editoriale/documentale. Nessun dato, visibility, schema/RLS, migration, rollback, provider/import o Apify è stato modificato.
+
 ## P91 — Post-production polish verification
 
 P91 non modifica Supabase staging.
