@@ -1,5 +1,24 @@
 # Supabase staging next steps
 
+## P94 — Editorial content review + publication plan
+
+P94 non modifica Supabase staging.
+
+Marker:
+
+- `point_94_editorial_publication_plan_completed=true`
+- `editorial_publication_plan_created=true`
+- `first_site_content_selected=manifesto`
+- `first_substack_content_selected=newsletter_zero`
+- `p95_recommended=substack_launch_pack`
+- `no_code_change=true`
+- `no_deploy=true`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+
+Il piano P94 è solo editoriale/documentale. Nessun dato, visibility, schema/RLS, migration, rollback, provider/import o Apify è stato modificato.
+
 ## P93 — First editorial content pack + voice samples
 
 P93 non modifica Supabase staging.

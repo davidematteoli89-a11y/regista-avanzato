@@ -1,5 +1,26 @@
 # C phase progress
 
+## P94 — Editorial content review + publication plan
+
+Stato: completato.
+
+Conferme:
+
+- `point_94_editorial_publication_plan_completed=true`;
+- `editorial_publication_plan_created=true`;
+- `first_site_content_selected=manifesto`;
+- `first_substack_content_selected=newsletter_zero`;
+- `p95_recommended=substack_launch_pack`;
+- `no_code_change=true`;
+- `no_deploy=true`;
+- `db_write_additional=false`;
+- `provider_import_enabled=false`;
+- `apify_enabled=false`.
+
+Risultato: revisionato il pacchetto editoriale P93, scelti i primi contenuti sito/Substack/social, selezionate le rubriche iniziali e creato il piano pubblicazione 14 giorni.
+
+Prossimo step consigliato: P95 — Substack launch pack.
+
 ## P93 — First editorial content pack + voice samples
 
 Stato: completato.

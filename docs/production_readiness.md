@@ -1,5 +1,26 @@
 # Production Readiness
 
+## Nota P94 — Editorial content review + publication plan
+
+P94 ha revisionato il primo pacchetto editoriale P93 e ha definito il piano di pubblicazione editoriale iniziale, senza modifiche codice, deploy, DB write o provider/import.
+
+Esito:
+
+- `point_94_editorial_publication_plan_completed=true`
+- `editorial_publication_plan_created=true`
+- `first_site_content_selected=manifesto`
+- `first_substack_content_selected=newsletter_zero`
+- `p95_recommended=substack_launch_pack`
+- `no_code_change=true`
+- `no_deploy=true`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+
+Sono stati scelti il manifesto come primo contenuto sito, la newsletter zero come primo contenuto Substack/newsletter, tre rubriche iniziali e tre contenuti social/reel di lancio. È stato creato un piano operativo di 14 giorni.
+
+Prossimo step consigliato: P95 — Substack launch pack.
+
 ## Nota P93 — First editorial content pack
 
 P93 ha creato il primo pacchetto editoriale concreto di Regista Avanzato, senza modifiche codice, deploy, DB write o provider/import.
