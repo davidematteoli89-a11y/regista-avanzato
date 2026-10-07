@@ -1,5 +1,24 @@
 # Supabase staging next steps
 
+## P96 — Editorial pages implementation
+
+P96 non modifica Supabase staging.
+
+Marker:
+
+- `point_96_editorial_pages_implemented=true`
+- `editorial_pages_created=true`
+- `manifesto_page_created=true`
+- `rubriche_page_created=true`
+- `p97_recommended=preview_verification_editorial_pages`
+- `no_deploy=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+
+L’implementazione P96 è solo UI/editoriale statica. Nessun dato, visibility, schema/RLS, migration, rollback, provider/import o Apify è stato modificato.
+
 ## P95 — Substack launch pack
 
 P95 non modifica Supabase staging.

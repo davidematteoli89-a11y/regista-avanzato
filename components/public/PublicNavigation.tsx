@@ -2,7 +2,7 @@ import Link from "next/link";
 import { getCurrentUser } from "@/lib/auth/access";
 
 const links = [
-  ["Home", "/"], ["Competizioni", "/competitions"], ["Radar", "/radar"], ["News", "/news"], ["Articoli", "/articoli"], ["Storie", "/storie"], ["Talenti", "/talenti"], ["Partite pazze", "/partite-pazze"], ["Stats", "/competizioni"], ["Video Radar", "/video-radar"], ["Newsletter", "/newsletter"],
+  ["Home", "/"], ["Manifesto", "/manifesto"], ["Rubriche", "/rubriche"], ["Competizioni", "/competitions"], ["Radar", "/radar"], ["News", "/news"], ["Articoli", "/articoli"], ["Storie", "/storie"], ["Talenti", "/talenti"], ["Partite pazze", "/partite-pazze"], ["Stats", "/competizioni"], ["Video Radar", "/video-radar"], ["Newsletter", "/newsletter"],
 ] as const;
 
 export async function PublicNavigation() {

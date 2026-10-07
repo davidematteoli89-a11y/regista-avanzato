@@ -1,5 +1,31 @@
 # Production Readiness
 
+## Nota P96 — Editorial pages implementation
+
+P96 ha implementato pagine editoriali statiche pubbliche per Regista Avanzato, senza merge main, deploy Production, DB write o provider/import.
+
+Esito:
+
+- `point_96_editorial_pages_implemented=true`
+- `editorial_pages_created=true`
+- `manifesto_page_created=true`
+- `rubriche_page_created=true`
+- `p97_recommended=preview_verification_editorial_pages`
+- `no_deploy=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+
+Pagine create:
+
+- `/manifesto`;
+- `/rubriche`.
+
+Sono stati aggiunti link pubblici coerenti in navigazione, homepage e footer. Non sono stati aggiunti link Substack inventati o pubblicazioni automatiche.
+
+Prossimo step consigliato: P97 — Preview verification editorial pages.
+
 ## Nota P95 — Substack launch pack
 
 P95 ha creato il Substack/newsletter launch pack di Regista Avanzato, senza modifiche codice, deploy, DB write o provider/import.

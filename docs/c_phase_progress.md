@@ -1,5 +1,26 @@
 # C phase progress
 
+## P96 — Editorial pages implementation
+
+Stato: completato.
+
+Conferme:
+
+- `point_96_editorial_pages_implemented=true`;
+- `editorial_pages_created=true`;
+- `manifesto_page_created=true`;
+- `rubriche_page_created=true`;
+- `p97_recommended=preview_verification_editorial_pages`;
+- `no_deploy=true`;
+- `production_touched=false`;
+- `db_write_additional=false`;
+- `provider_import_enabled=false`;
+- `apify_enabled=false`.
+
+Risultato: create le pagine pubbliche statiche `/manifesto` e `/rubriche`, aggiornati link in navigazione pubblica, homepage e footer. Nessun link Substack inventato e nessuna pubblicazione automatica.
+
+Prossimo step consigliato: P97 — Preview verification editorial pages.
+
 ## P95 — Substack launch pack
 
 Stato: completato.
