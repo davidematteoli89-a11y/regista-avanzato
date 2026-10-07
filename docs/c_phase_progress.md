@@ -1,5 +1,25 @@
 # C phase progress
 
+## P97 — Editorial pages preview verification
+
+Stato: completato.
+
+Conferme:
+
+- `point_97_editorial_pages_preview_verification_completed=true`;
+- `editorial_pages_preview_verified=true`;
+- `p98_recommended=production_editorial_pages_release_gate`;
+- `no_code_change=true`;
+- `no_deploy=true`;
+- `production_touched=false`;
+- `db_write_additional=false`;
+- `provider_import_enabled=false`;
+- `apify_enabled=false`.
+
+Risultato: verificate homepage, `/manifesto`, `/rubriche`, `/competitions` e `/competitions/manual-serie-a`; manifesto/rubriche/navigation/footer/responsive base passati; nessun `private_admin`, link admin, debug/raw payload, URL Substack inventato o bottone operativo rilevato.
+
+Prossimo step consigliato: P98 — Production editorial pages release gate.
+
 ## P96 — Editorial pages implementation
 
 Stato: completato.

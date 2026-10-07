@@ -1,5 +1,33 @@
 # Production Readiness
 
+## Nota P97 — Editorial pages preview verification
+
+P97 ha verificato localmente le pagine editoriali statiche implementate in P96, senza modifiche codice, merge main, deploy Production, DB write o provider/import.
+
+Esito:
+
+- `point_97_editorial_pages_preview_verification_completed=true`
+- `editorial_pages_preview_verified=true`
+- `p98_recommended=production_editorial_pages_release_gate`
+- `no_code_change=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+
+Route verificate:
+
+- `/` → HTTP 200;
+- `/manifesto` → HTTP 200;
+- `/rubriche` → HTTP 200;
+- `/competitions` → HTTP 200;
+- `/competitions/manual-serie-a` → HTTP 200.
+
+Nessun `private_admin`, admin link, debug/raw payload, URL Substack inventato o bottone operativo rilevato.
+
+Prossimo step consigliato: P98 — Production editorial pages release gate.
+
 ## Nota P96 — Editorial pages implementation
 
 P96 ha implementato pagine editoriali statiche pubbliche per Regista Avanzato, senza merge main, deploy Production, DB write o provider/import.

@@ -1,5 +1,23 @@
 # Supabase staging next steps
 
+## P97 — Editorial pages preview verification
+
+P97 non modifica Supabase staging.
+
+Marker:
+
+- `point_97_editorial_pages_preview_verification_completed=true`
+- `editorial_pages_preview_verified=true`
+- `p98_recommended=production_editorial_pages_release_gate`
+- `no_code_change=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+
+La verifica P97 è solo local/preview e documentale. Nessun dato, visibility, schema/RLS, migration, rollback, provider/import o Apify è stato modificato.
+
 ## P96 — Editorial pages implementation
 
 P96 non modifica Supabase staging.
