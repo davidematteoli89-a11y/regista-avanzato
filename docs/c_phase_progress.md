@@ -1,5 +1,32 @@
 # C phase progress
 
+## P99-D — Vercel Production promote/assign
+
+Stato: completato.
+
+Conferme:
+
+- `point_99d_vercel_production_promote_completed=true`;
+- `production_editorial_pages_released=true`;
+- `p99_recovered_after_alias_promote=true`;
+- `production_deploy_verified=true`;
+- `target_deployment_assigned_to_domain=true`;
+- `editorial_pages_visible=true`;
+- `public_data_visible=true`;
+- `p100_recommended=post_production_editorial_pages_verification`;
+- `db_write_additional=false`;
+- `provider_import_enabled=false`;
+- `apify_enabled=false`;
+- `vercel_config_changed=false`;
+- `vercel_env_changed=false`;
+- `vercel_root_directory_changed=false`;
+- `substack_auto_published=false`;
+- `rollback_executed=false`.
+
+Risultato: il dominio Production `regista-avanzato-rouge.vercel.app` è stato assegnato al deployment `dpl_C8icKQYUPNxvhELo9e9b2LkQ4Up4` del commit `8d20c0e6d6088d9a1a525fd3b8f11de3dcf0ce83`. `/manifesto`, `/rubriche`, `/competitions` e dettaglio competizione sono HTTP 200.
+
+Prossimo step consigliato: P100 — Post-production editorial pages verification.
+
 ## P99-C — Vercel Production deployment/alias check
 
 Stato: completato.

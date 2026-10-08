@@ -1,5 +1,38 @@
 # Production Readiness
 
+## Nota P99-D — Vercel Production promote/assign
+
+P99-D ha assegnato il deployment Vercel READY autorizzato al dominio Production `regista-avanzato-rouge.vercel.app`.
+
+Esito:
+
+- `point_99d_vercel_production_promote_completed=true`
+- `production_editorial_pages_released=true`
+- `p99_recovered_after_alias_promote=true`
+- `production_deploy_verified=true`
+- `target_deployment_assigned_to_domain=true`
+- `editorial_pages_visible=true`
+- `public_data_visible=true`
+- `p100_recommended=post_production_editorial_pages_verification`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `vercel_config_changed=false`
+- `vercel_env_changed=false`
+- `vercel_root_directory_changed=false`
+- `substack_auto_published=false`
+- `rollback_executed=false`
+
+Production verificata:
+
+- `/` → HTTP 200;
+- `/manifesto` → HTTP 200;
+- `/rubriche` → HTTP 200;
+- `/competitions` → HTTP 200, dati pubblici visibili;
+- `/competitions/manual-serie-a` → HTTP 200, dati pubblici visibili.
+
+Prossimo step consigliato: P100 — Post-production editorial pages verification.
+
 ## Nota P99-C — Vercel Production deployment/alias check
 
 P99-C ha completato il controllo read-only Vercel deployment/alias.
