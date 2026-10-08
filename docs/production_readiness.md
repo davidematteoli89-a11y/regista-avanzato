@@ -1,5 +1,31 @@
 # Production Readiness
 
+## Nota P99-B — Production editorial pages deploy diagnosis
+
+P99-B ha diagnosticato la stop condition di P99: `main` è stato pushato correttamente, ma Production non serve ancora le nuove route editoriali.
+
+Esito:
+
+- `point_99b_production_deploy_diagnosis_completed=true`
+- `p99_still_incomplete=true`
+- `production_editorial_pages_released=false`
+- `diagnosis_category=8_cause_not_determined_deployment_or_alias_not_serving_main_commit`
+- `p99c_recommended=true`
+- `no_merge=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `rollback_executed=false`
+- `vercel_config_changed=false`
+- `vercel_env_changed=false`
+- `vercel_root_directory_changed=false`
+
+Evidenza principale: `origin/main=8d20c0e6d6088d9a1a525fd3b8f11de3dcf0ce83` contiene e serve localmente `/manifesto` e `/rubriche`, mentre Production restituisce ancora HTTP 404 cached per entrambe.
+
+Prossimo step consigliato: P99-C — verifica manuale/read-only dello stato deployment Vercel/alias Production prima di qualunque promote, redeploy o rollback.
+
 ## Nota P98 — Production editorial pages release gate
 
 P98 ha preparato il gate no-apply per il rilascio Production delle pagine editoriali pubbliche, senza merge main, deploy Production, DB write, provider/import, Apify o pubblicazione automatica Substack.

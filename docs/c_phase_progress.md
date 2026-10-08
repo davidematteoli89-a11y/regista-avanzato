@@ -1,5 +1,31 @@
 # C phase progress
 
+## P99-B — Production editorial pages deploy diagnosis
+
+Stato: completato.
+
+Conferme:
+
+- `point_99b_production_deploy_diagnosis_completed=true`;
+- `p99_still_incomplete=true`;
+- `production_editorial_pages_released=false`;
+- `diagnosis_category=8_cause_not_determined_deployment_or_alias_not_serving_main_commit`;
+- `p99c_recommended=true`;
+- `no_merge=true`;
+- `no_deploy=true`;
+- `production_touched=false`;
+- `db_write_additional=false`;
+- `provider_import_enabled=false`;
+- `apify_enabled=false`;
+- `rollback_executed=false`;
+- `vercel_config_changed=false`;
+- `vercel_env_changed=false`;
+- `vercel_root_directory_changed=false`.
+
+Risultato: `main` locale contiene `/manifesto` e `/rubriche`, build/check passano e le route rispondono HTTP 200 localmente. Production continua a restituire HTTP 404 cached per `/manifesto` e `/rubriche`, mentre `/competitions` e dettaglio restano HTTP 200. La causa precisa richiede controllo Vercel Dashboard/deployment state.
+
+Prossimo step consigliato: P99-C — Vercel deployment/alias read-only check o gate dedicato per promote/redeploy solo con autorizzazione esplicita.
+
 ## P98 — Production editorial pages release gate
 
 Stato: completato.

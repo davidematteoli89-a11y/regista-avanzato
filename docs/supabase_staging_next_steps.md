@@ -1,5 +1,29 @@
 # Supabase staging next steps
 
+## P99-B — Production editorial pages deploy diagnosis
+
+P99-B non modifica Supabase staging.
+
+Marker:
+
+- `point_99b_production_deploy_diagnosis_completed=true`
+- `p99_still_incomplete=true`
+- `production_editorial_pages_released=false`
+- `diagnosis_category=8_cause_not_determined_deployment_or_alias_not_serving_main_commit`
+- `p99c_recommended=true`
+- `no_merge=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `rollback_executed=false`
+- `vercel_config_changed=false`
+- `vercel_env_changed=false`
+- `vercel_root_directory_changed=false`
+
+La diagnosi P99-B è solo Git/local/Production HTTP read-only. Nessun dato, visibility, schema/RLS, migration, rollback, provider/import o Apify è stato modificato.
+
 ## P98 — Production editorial pages release gate
 
 P98 non modifica Supabase staging.
