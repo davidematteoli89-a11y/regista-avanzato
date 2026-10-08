@@ -1,5 +1,33 @@
 # Production Readiness
 
+## Nota P99-C — Vercel Production deployment/alias check
+
+P99-C ha completato il controllo read-only Vercel deployment/alias.
+
+Esito:
+
+- `point_99c_vercel_production_alias_check_completed=true`
+- `p99_still_incomplete=true`
+- `production_editorial_pages_released=false`
+- `diagnosis_category=A_deployment_8d20c0e_exists_ready_but_domain_not_assigned`
+- `p99d_recommended=manual_promote_or_assign_domain_gate`
+- `no_deploy=true`
+- `no_promote=true`
+- `no_alias_assignment=true`
+- `no_merge=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `rollback_executed=false`
+- `vercel_config_changed=false`
+- `vercel_env_changed=false`
+- `vercel_root_directory_changed=false`
+
+Evidenza principale: il deployment Vercel per `main` commit `8d20c0e6d6088d9a1a525fd3b8f11de3dcf0ce83` esiste ed è `READY`, ma il dominio `regista-avanzato-rouge.vercel.app` resta assegnato al deployment precedente `ab5067ca2f40c434d13ada87a71be0024069e8bd`.
+
+Prossimo step consigliato: P99-D — manual promote/assign Production domain gate, solo con autorizzazione esplicita.
+
 ## Nota P99-B — Production editorial pages deploy diagnosis
 
 P99-B ha diagnosticato la stop condition di P99: `main` è stato pushato correttamente, ma Production non serve ancora le nuove route editoriali.

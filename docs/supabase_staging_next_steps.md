@@ -1,5 +1,31 @@
 # Supabase staging next steps
 
+## P99-C — Vercel Production deployment/alias check
+
+P99-C non modifica Supabase staging.
+
+Marker:
+
+- `point_99c_vercel_production_alias_check_completed=true`
+- `p99_still_incomplete=true`
+- `production_editorial_pages_released=false`
+- `diagnosis_category=A_deployment_8d20c0e_exists_ready_but_domain_not_assigned`
+- `p99d_recommended=manual_promote_or_assign_domain_gate`
+- `no_deploy=true`
+- `no_promote=true`
+- `no_alias_assignment=true`
+- `no_merge=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `rollback_executed=false`
+- `vercel_config_changed=false`
+- `vercel_env_changed=false`
+- `vercel_root_directory_changed=false`
+
+La verifica P99-C è solo Vercel/deployment read-only. Nessun dato, visibility, schema/RLS, migration, rollback, provider/import o Apify è stato modificato.
+
 ## P99-B — Production editorial pages deploy diagnosis
 
 P99-B non modifica Supabase staging.
