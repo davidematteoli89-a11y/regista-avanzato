@@ -1,5 +1,41 @@
 # Production Readiness
 
+## Nota P100 — Post-production editorial pages verification
+
+P100 ha completato la verifica post-production delle pagine editoriali e dello stato pubblico del sito, senza modifiche codice, merge, deploy, DB write, provider/import, Apify, rollback o modifiche Vercel.
+
+Esito:
+
+- `point_100_post_production_editorial_pages_verification_completed=true`
+- `production_editorial_pages_stable=true`
+- `production_editorial_pages_released=true`
+- `production_deploy_verified=true`
+- `editorial_pages_visible=true`
+- `public_data_visible=true`
+- `p101_recommended=substack_manual_launch_checklist`
+- `no_code_change=true`
+- `no_merge=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `vercel_config_changed=false`
+- `vercel_env_changed=false`
+- `vercel_root_directory_changed=false`
+- `substack_auto_published=false`
+- `rollback_executed=false`
+
+Production verificata:
+
+- `/` → HTTP 200;
+- `/manifesto` → HTTP 200;
+- `/rubriche` → HTTP 200;
+- `/competitions` → HTTP 200, dati pubblici visibili;
+- `/competitions/manual-serie-a` → HTTP 200, dati pubblici visibili.
+
+Prossimo step consigliato: P101 — Substack manual launch checklist.
+
 ## Nota P99-D — Vercel Production promote/assign
 
 P99-D ha assegnato il deployment Vercel READY autorizzato al dominio Production `regista-avanzato-rouge.vercel.app`.

@@ -1,5 +1,35 @@
 # C phase progress
 
+## P100 — Post-production editorial pages verification
+
+Stato: completato.
+
+Conferme:
+
+- `point_100_post_production_editorial_pages_verification_completed=true`;
+- `production_editorial_pages_stable=true`;
+- `production_editorial_pages_released=true`;
+- `production_deploy_verified=true`;
+- `editorial_pages_visible=true`;
+- `public_data_visible=true`;
+- `p101_recommended=substack_manual_launch_checklist`;
+- `no_code_change=true`;
+- `no_merge=true`;
+- `no_deploy=true`;
+- `production_touched=false`;
+- `db_write_additional=false`;
+- `provider_import_enabled=false`;
+- `apify_enabled=false`;
+- `vercel_config_changed=false`;
+- `vercel_env_changed=false`;
+- `vercel_root_directory_changed=false`;
+- `substack_auto_published=false`;
+- `rollback_executed=false`.
+
+Risultato: Production verificata su `/`, `/manifesto`, `/rubriche`, `/competitions` e `/competitions/manual-serie-a`; pagine editoriali visibili, dati pubblici visibili, nessun `private_admin`, link admin, debug/raw payload, bottone operativo o URL Substack inventato rilevato.
+
+Prossimo step consigliato: P101 — Substack manual launch checklist.
+
 ## P99-D — Vercel Production promote/assign
 
 Stato: completato.
