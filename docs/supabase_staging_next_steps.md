@@ -1,5 +1,27 @@
 # Supabase staging next steps
 
+## P103 — Editorial calendar first 14 days
+
+P103 non modifica Supabase staging.
+
+Marker:
+
+- `point_103_editorial_calendar_first_14_days_completed=true`
+- `editorial_calendar_first_14_days_ready=true`
+- `substack_url_status=not_created_or_not_confirmed`
+- `social_auto_published=false`
+- `substack_auto_published=false`
+- `p104_recommended=first_article_newsletter_production_pack`
+- `no_code_change=true`
+- `no_merge=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+
+La preparazione P103 è solo editoriale/manuale. Nessun dato, visibility, schema/RLS, migration, rollback, provider/import o Apify è stato modificato.
+
 ## P102 — Social/reel launch pack
 
 P102 non modifica Supabase staging.

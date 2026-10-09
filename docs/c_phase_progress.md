@@ -1,5 +1,29 @@
 # C phase progress
 
+## P103 — Editorial calendar first 14 days
+
+Stato: completato.
+
+Conferme:
+
+- `point_103_editorial_calendar_first_14_days_completed=true`;
+- `editorial_calendar_first_14_days_ready=true`;
+- `substack_url_status=not_created_or_not_confirmed`;
+- `social_auto_published=false`;
+- `substack_auto_published=false`;
+- `p104_recommended=first_article_newsletter_production_pack`;
+- `no_code_change=true`;
+- `no_merge=true`;
+- `no_deploy=true`;
+- `production_touched=false`;
+- `db_write_additional=false`;
+- `provider_import_enabled=false`;
+- `apify_enabled=false`.
+
+Risultato: preparato calendario editoriale operativo dei primi 14 giorni con strategia, contenuti giorno per giorno, bozze prioritarie, template rubriche e policy CTA/link. Nessuna pubblicazione automatica, nessun URL Substack inventato e nessun dato live inventato.
+
+Prossimo step consigliato: P104 — First article/newsletter production pack.
+
 ## P102 — Social/reel launch pack
 
 Stato: completato.

@@ -1,5 +1,29 @@
 # Production Readiness
 
+## Nota P103 — Editorial calendar first 14 days
+
+P103 ha preparato il calendario editoriale operativo dei primi 14 giorni di Regista Avanzato, senza pubblicazione automatica social/Substack, senza URL Substack inventati, senza modifiche codice, merge, deploy, DB write, provider/import o Apify.
+
+Esito:
+
+- `point_103_editorial_calendar_first_14_days_completed=true`
+- `editorial_calendar_first_14_days_ready=true`
+- `substack_url_status=not_created_or_not_confirmed`
+- `social_auto_published=false`
+- `substack_auto_published=false`
+- `p104_recommended=first_article_newsletter_production_pack`
+- `no_code_change=true`
+- `no_merge=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+
+Sono stati preparati strategia 14 giorni, calendario giorno per giorno, sei bozze operative prioritarie, template rubriche e policy CTA/link.
+
+Prossimo step consigliato: P104 — First article/newsletter production pack.
+
 ## Nota P102 — Social/reel launch pack
 
 P102 ha preparato il social/reel launch pack di Regista Avanzato, senza pubblicazione automatica sui social o su Substack, senza URL Substack inventati, senza modifiche codice, merge, deploy, DB write, provider/import o Apify.
