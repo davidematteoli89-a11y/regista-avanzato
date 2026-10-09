@@ -1,5 +1,27 @@
 # Supabase staging next steps
 
+## P102 — Social/reel launch pack
+
+P102 non modifica Supabase staging.
+
+Marker:
+
+- `point_102_social_reel_launch_pack_completed=true`
+- `social_reel_launch_pack_ready=true`
+- `substack_url_status=not_created_or_not_confirmed`
+- `social_auto_published=false`
+- `substack_auto_published=false`
+- `p103_recommended=editorial_calendar_first_14_days`
+- `no_code_change=true`
+- `no_merge=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+
+La preparazione P102 è solo editoriale/social manuale. Nessun dato, visibility, schema/RLS, migration, rollback, provider/import o Apify è stato modificato.
+
 ## P101 — Substack manual launch checklist
 
 P101 non modifica Supabase staging.
