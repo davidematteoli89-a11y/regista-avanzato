@@ -1,5 +1,28 @@
 # C phase progress
 
+## P101 — Substack manual launch checklist
+
+Stato: completato.
+
+Conferme:
+
+- `point_101_substack_manual_launch_checklist_completed=true`;
+- `substack_manual_launch_ready=true`;
+- `substack_auto_published=false`;
+- `substack_url_status=not_created_or_not_confirmed`;
+- `p102_recommended=social_reel_launch_pack`;
+- `no_code_change=true`;
+- `no_merge=true`;
+- `no_deploy=true`;
+- `production_touched=false`;
+- `db_write_additional=false`;
+- `provider_import_enabled=false`;
+- `apify_enabled=false`.
+
+Risultato: checklist manuale Substack pronta con posizionamento, setup account, About page, welcome email, newsletter zero, piano primi tre invii e checklist pre/post pubblicazione. Nessun URL Substack inventato e nessuna pubblicazione automatica.
+
+Prossimo step consigliato: P102 — Social/reel launch pack.
+
 ## P100 — Post-production editorial pages verification
 
 Stato: completato.

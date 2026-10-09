@@ -1,5 +1,28 @@
 # Production Readiness
 
+## Nota P101 — Substack manual launch checklist
+
+P101 ha preparato la checklist manuale per il lancio Substack di Regista Avanzato, senza pubblicazione automatica, modifiche codice, merge, deploy, DB write, provider/import o Apify.
+
+Esito:
+
+- `point_101_substack_manual_launch_checklist_completed=true`
+- `substack_manual_launch_ready=true`
+- `substack_auto_published=false`
+- `substack_url_status=not_created_or_not_confirmed`
+- `p102_recommended=social_reel_launch_pack`
+- `no_code_change=true`
+- `no_merge=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+
+Sono stati preparati posizionamento, setup checklist, About page, welcome email, newsletter zero, piano primi tre invii e checklist pre/post pubblicazione.
+
+Prossimo step consigliato: P102 — Social/reel launch pack.
+
 ## Nota P100 — Post-production editorial pages verification
 
 P100 ha completato la verifica post-production delle pagine editoriali e dello stato pubblico del sito, senza modifiche codice, merge, deploy, DB write, provider/import, Apify, rollback o modifiche Vercel.

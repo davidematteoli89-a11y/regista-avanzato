@@ -1,5 +1,26 @@
 # Supabase staging next steps
 
+## P101 — Substack manual launch checklist
+
+P101 non modifica Supabase staging.
+
+Marker:
+
+- `point_101_substack_manual_launch_checklist_completed=true`
+- `substack_manual_launch_ready=true`
+- `substack_auto_published=false`
+- `substack_url_status=not_created_or_not_confirmed`
+- `p102_recommended=social_reel_launch_pack`
+- `no_code_change=true`
+- `no_merge=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+
+La preparazione P101 è solo editoriale/manuale. Nessun dato, visibility, schema/RLS, migration, rollback, provider/import o Apify è stato modificato.
+
 ## P100 — Post-production editorial pages verification
 
 P100 non modifica Supabase staging.
