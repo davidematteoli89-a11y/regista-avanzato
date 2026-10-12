@@ -1,5 +1,30 @@
 # C phase progress
 
+## P106 — First publication manual checklist
+
+Stato: completato.
+
+Conferme:
+
+- `point_106_first_publication_manual_checklist_completed=true`;
+- `first_publication_manual_checklist_ready=true`;
+- `assets_generated=false`;
+- `social_auto_published=false`;
+- `substack_auto_published=false`;
+- `substack_url_status=not_created_or_not_confirmed`;
+- `p107_recommended=substack_url_or_canva_asset_generation_gate`;
+- `no_code_change=true`;
+- `no_merge=true`;
+- `no_deploy=true`;
+- `production_touched=false`;
+- `db_write_additional=false`;
+- `provider_import_enabled=false`;
+- `apify_enabled=false`.
+
+Risultato: preparata checklist manuale per la prima pubblicazione con strategia, controlli pre-pubblicazione, checklist Substack/social, scenari operativi, stop conditions e monitoraggio 2h/24h/48h. Nessuna pubblicazione e nessun asset generato.
+
+Prossimo step consigliato: P107 — Canva asset generation prompt pack oppure Substack URL integration gate.
+
 ## P105 — Social asset production checklist
 
 Stato: completato.

@@ -1,5 +1,28 @@
 # Supabase staging next steps
 
+## P106 — First publication manual checklist
+
+P106 non modifica Supabase staging.
+
+Marker:
+
+- `point_106_first_publication_manual_checklist_completed=true`
+- `first_publication_manual_checklist_ready=true`
+- `assets_generated=false`
+- `social_auto_published=false`
+- `substack_auto_published=false`
+- `substack_url_status=not_created_or_not_confirmed`
+- `p107_recommended=substack_url_or_canva_asset_generation_gate`
+- `no_code_change=true`
+- `no_merge=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+
+La preparazione P106 è solo editoriale/manuale. Nessun dato, visibility, schema/RLS, migration, rollback, provider/import o Apify è stato modificato.
+
 ## P105 — Social asset production checklist
 
 P105 non modifica Supabase staging.

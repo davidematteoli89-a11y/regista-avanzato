@@ -1,5 +1,30 @@
 # Production Readiness
 
+## Nota P106 — First publication manual checklist
+
+P106 ha preparato la checklist manuale per la prima pubblicazione editoriale di Regista Avanzato, senza pubblicare contenuti, senza generare asset, senza URL Substack inventati, senza modifiche codice, merge, deploy, DB write, provider/import o Apify.
+
+Esito:
+
+- `point_106_first_publication_manual_checklist_completed=true`
+- `first_publication_manual_checklist_ready=true`
+- `assets_generated=false`
+- `social_auto_published=false`
+- `substack_auto_published=false`
+- `substack_url_status=not_created_or_not_confirmed`
+- `p107_recommended=substack_url_or_canva_asset_generation_gate`
+- `no_code_change=true`
+- `no_merge=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+
+Sono stati definiti strategia di pubblicazione, checklist pre-pubblicazione, checklist Substack, checklist social, scenari operativi e monitoraggio post-pubblicazione.
+
+Prossimo step consigliato: P107 — Canva asset generation prompt pack oppure Substack URL integration gate, in base alla disponibilità dell’URL reale.
+
 ## Nota P105 — Social asset production checklist
 
 P105 ha preparato la checklist operativa per la produzione degli asset social/editoriali di Regista Avanzato, senza generare asset, senza pubblicazioni, senza URL Substack inventati, senza modifiche codice, merge, deploy, DB write, provider/import o Apify.
