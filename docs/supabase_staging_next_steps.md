@@ -1,5 +1,28 @@
 # Supabase staging next steps
 
+## P105 — Social asset production checklist
+
+P105 non modifica Supabase staging.
+
+Marker:
+
+- `point_105_social_asset_production_checklist_completed=true`
+- `social_asset_production_checklist_ready=true`
+- `assets_generated=false`
+- `social_auto_published=false`
+- `substack_auto_published=false`
+- `substack_url_status=not_created_or_not_confirmed`
+- `p106_recommended=first_publication_manual_checklist`
+- `no_code_change=true`
+- `no_merge=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+
+La preparazione P105 è solo editoriale/asset planning. Nessun dato, visibility, schema/RLS, migration, rollback, provider/import o Apify è stato modificato.
+
 ## P104 — First article/newsletter production pack
 
 P104 non modifica Supabase staging.
