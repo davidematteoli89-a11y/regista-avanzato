@@ -1,5 +1,29 @@
 # Supabase staging next steps
 
+## P109 — Canva asset generation prompt pack
+
+P109 non modifica Supabase staging.
+
+Marker:
+
+- `point_109_canva_asset_generation_prompt_pack_completed=true`
+- `canva_asset_generation_prompt_pack_ready=true`
+- `assets_generated=false`
+- `substack_created=false`
+- `substack_url_status=not_created_or_not_confirmed`
+- `social_auto_published=false`
+- `substack_auto_published=false`
+- `p110_recommended=canva_asset_generation_or_substack_creation_manual_execution`
+- `no_code_change=true`
+- `no_merge=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+
+La preparazione P109 è solo editoriale/asset planning. Nessun dato, visibility, schema/RLS, migration, rollback, provider/import o Apify è stato modificato.
+
 ## P108 — Substack creation manual checklist
 
 P108 non modifica Supabase staging.

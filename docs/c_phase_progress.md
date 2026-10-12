@@ -1,5 +1,31 @@
 # C phase progress
 
+## P109 — Canva asset generation prompt pack
+
+Stato: completato.
+
+Conferme:
+
+- `point_109_canva_asset_generation_prompt_pack_completed=true`;
+- `canva_asset_generation_prompt_pack_ready=true`;
+- `assets_generated=false`;
+- `substack_created=false`;
+- `substack_url_status=not_created_or_not_confirmed`;
+- `social_auto_published=false`;
+- `substack_auto_published=false`;
+- `p110_recommended=canva_asset_generation_or_substack_creation_manual_execution`;
+- `no_code_change=true`;
+- `no_merge=true`;
+- `no_deploy=true`;
+- `production_touched=false`;
+- `db_write_additional=false`;
+- `provider_import_enabled=false`;
+- `apify_enabled=false`.
+
+Risultato: preparato il prompt/brief pack per asset Canva/Figma con brief visuale, palette/font direction, prompt Manifesto/Rubriche, primo articolo, stories, reel cover, template rubriche future, export, naming e checklist revisione. Nessun asset generato e nessuna pubblicazione effettuata.
+
+Prossimo step consigliato: P110 — Canva asset generation manual execution oppure Substack creation manual execution.
+
 ## P108 — Substack creation manual checklist
 
 Stato: completato.
