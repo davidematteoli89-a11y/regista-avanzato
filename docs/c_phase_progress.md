@@ -1,5 +1,31 @@
 # C phase progress
 
+## P108 — Substack creation manual checklist
+
+Stato: completato.
+
+Conferme:
+
+- `point_108_substack_creation_manual_checklist_completed=true`;
+- `substack_creation_manual_checklist_ready=true`;
+- `substack_created=false`;
+- `substack_url_status=not_created_or_not_confirmed`;
+- `substack_auto_published=false`;
+- `social_auto_published=false`;
+- `assets_generated=false`;
+- `p109_recommended=substack_url_integration_gate_after_real_url`;
+- `no_code_change=true`;
+- `no_merge=true`;
+- `no_deploy=true`;
+- `production_touched=false`;
+- `db_write_additional=false`;
+- `provider_import_enabled=false`;
+- `apify_enabled=false`.
+
+Risultato: preparata checklist manuale per creare Substack con identità, descrizioni, opzioni slug, About page, welcome email, impostazioni consigliate, checklist caricamento newsletter zero, stop conditions e processo post-URL reale. Nessuna creazione automatica, nessuna pubblicazione, nessun URL inventato.
+
+Prossimo step consigliato: P109 — Substack URL integration gate dopo disponibilità dell’URL reale.
+
 ## P107 — Editorial inspirations and writer guidelines
 
 Stato: completato.

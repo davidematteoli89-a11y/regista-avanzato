@@ -1,5 +1,29 @@
 # Supabase staging next steps
 
+## P108 — Substack creation manual checklist
+
+P108 non modifica Supabase staging.
+
+Marker:
+
+- `point_108_substack_creation_manual_checklist_completed=true`
+- `substack_creation_manual_checklist_ready=true`
+- `substack_created=false`
+- `substack_url_status=not_created_or_not_confirmed`
+- `substack_auto_published=false`
+- `social_auto_published=false`
+- `assets_generated=false`
+- `p109_recommended=substack_url_integration_gate_after_real_url`
+- `no_code_change=true`
+- `no_merge=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+
+La preparazione P108 è solo editoriale/manuale per Substack. Nessun dato, visibility, schema/RLS, migration, rollback, provider/import o Apify è stato modificato.
+
 ## P107 — Editorial inspirations and writer guidelines
 
 P107 non modifica Supabase staging.

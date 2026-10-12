@@ -1,5 +1,31 @@
 # Production Readiness
 
+## Nota P108 — Substack creation manual checklist
+
+P108 ha preparato la checklist manuale per creare la pubblicazione Substack di Regista Avanzato, senza creazione automatica, senza pubblicazione, senza invio email, senza URL Substack inventati, senza modifiche codice, merge, deploy, DB write, provider/import o Apify.
+
+Esito:
+
+- `point_108_substack_creation_manual_checklist_completed=true`
+- `substack_creation_manual_checklist_ready=true`
+- `substack_created=false`
+- `substack_url_status=not_created_or_not_confirmed`
+- `substack_auto_published=false`
+- `social_auto_published=false`
+- `assets_generated=false`
+- `p109_recommended=substack_url_integration_gate_after_real_url`
+- `no_code_change=true`
+- `no_merge=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+
+Sono stati definiti identità pubblicazione, descrizioni, opzioni slug, policy URL reale, About page, welcome email, impostazioni consigliate, checklist caricamento newsletter zero, stop conditions e processo P109 dopo disponibilità dell’URL reale.
+
+Prossimo step consigliato: P109 — Substack URL integration gate dopo disponibilità dell’URL reale.
+
 ## Nota P107 — Editorial inspirations and writer guidelines
 
 P107 ha creato il manuale editoriale ufficiale di Regista Avanzato, con mappa delle ispirazioni, regole anti-imitazione, identità, tono di voce, voci interne, policy fonti/dati/video, anti-hype, anti-betting, strutture contenuto, checklist di consegna e regole AI-assisted writing.
