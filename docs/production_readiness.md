@@ -1,5 +1,29 @@
 # Production Readiness
 
+## Nota P104 — First article/newsletter production pack
+
+P104 ha preparato il primo production pack editoriale di Regista Avanzato, senza pubblicazione automatica social/Substack, senza URL Substack inventati, senza modifiche codice, merge, deploy, DB write, provider/import o Apify.
+
+Esito:
+
+- `point_104_first_article_newsletter_production_pack_completed=true`
+- `first_article_newsletter_pack_ready=true`
+- `substack_url_status=not_created_or_not_confirmed`
+- `social_auto_published=false`
+- `substack_auto_published=false`
+- `p105_recommended=social_asset_production_checklist`
+- `no_code_change=true`
+- `no_merge=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+
+Sono stati preparati articolo lungo, versione newsletter, copy social, script reel, stories, asset brief e checklist pre-pubblicazione per il tema “Dove guardare quando tutti guardano altrove”.
+
+Prossimo step consigliato: P105 — Social asset production checklist.
+
 ## Nota P103 — Editorial calendar first 14 days
 
 P103 ha preparato il calendario editoriale operativo dei primi 14 giorni di Regista Avanzato, senza pubblicazione automatica social/Substack, senza URL Substack inventati, senza modifiche codice, merge, deploy, DB write, provider/import o Apify.

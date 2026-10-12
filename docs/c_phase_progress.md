@@ -1,5 +1,29 @@
 # C phase progress
 
+## P104 — First article/newsletter production pack
+
+Stato: completato.
+
+Conferme:
+
+- `point_104_first_article_newsletter_production_pack_completed=true`;
+- `first_article_newsletter_pack_ready=true`;
+- `substack_url_status=not_created_or_not_confirmed`;
+- `social_auto_published=false`;
+- `substack_auto_published=false`;
+- `p105_recommended=social_asset_production_checklist`;
+- `no_code_change=true`;
+- `no_merge=true`;
+- `no_deploy=true`;
+- `production_touched=false`;
+- `db_write_additional=false`;
+- `provider_import_enabled=false`;
+- `apify_enabled=false`.
+
+Risultato: preparato production pack completo per “Dove guardare quando tutti guardano altrove”, con articolo lungo, newsletter, versioni social, script reel, stories, asset brief e checklist pre-pubblicazione. Nessuna pubblicazione automatica, nessun URL Substack inventato, nessun dato live inventato.
+
+Prossimo step consigliato: P105 — Social asset production checklist.
+
 ## P103 — Editorial calendar first 14 days
 
 Stato: completato.
