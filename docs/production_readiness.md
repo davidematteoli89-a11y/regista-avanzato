@@ -1,5 +1,32 @@
 # Production Readiness
 
+## Nota P107 — Editorial inspirations and writer guidelines
+
+P107 ha creato il manuale editoriale ufficiale di Regista Avanzato, con mappa delle ispirazioni, regole anti-imitazione, identità, tono di voce, voci interne, policy fonti/dati/video, anti-hype, anti-betting, strutture contenuto, checklist di consegna e regole AI-assisted writing.
+
+Esito:
+
+- `point_107_editorial_inspirations_writer_guidelines_completed=true`
+- `editorial_inspirations_map_ready=true`
+- `writer_guidelines_ready=true`
+- `editorial_manual_ready=true`
+- `assets_generated=false`
+- `social_auto_published=false`
+- `substack_auto_published=false`
+- `substack_url_status=not_created_or_not_confirmed`
+- `p108_recommended=canva_asset_generation_prompt_pack_or_substack_creation_manual_checklist`
+- `no_code_change=true`
+- `no_merge=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+
+Il manuale consente ispirazione astratta da riferimenti editoriali, ma vieta imitazione diretta di persone pubbliche viventi, formule riconoscibili, fonti inventate, dati inventati, contenuti betting e asset/video non autorizzati.
+
+Prossimo step consigliato: P108 — Canva asset generation prompt pack oppure Substack creation manual checklist.
+
 ## Nota P106 — First publication manual checklist
 
 P106 ha preparato la checklist manuale per la prima pubblicazione editoriale di Regista Avanzato, senza pubblicare contenuti, senza generare asset, senza URL Substack inventati, senza modifiche codice, merge, deploy, DB write, provider/import o Apify.

@@ -1,5 +1,30 @@
 # Supabase staging next steps
 
+## P107 — Editorial inspirations and writer guidelines
+
+P107 non modifica Supabase staging.
+
+Marker:
+
+- `point_107_editorial_inspirations_writer_guidelines_completed=true`
+- `editorial_inspirations_map_ready=true`
+- `writer_guidelines_ready=true`
+- `editorial_manual_ready=true`
+- `assets_generated=false`
+- `social_auto_published=false`
+- `substack_auto_published=false`
+- `substack_url_status=not_created_or_not_confirmed`
+- `p108_recommended=canva_asset_generation_prompt_pack_or_substack_creation_manual_checklist`
+- `no_code_change=true`
+- `no_merge=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+
+La preparazione P107 è solo editoriale/documentale. Nessun dato, visibility, schema/RLS, migration, rollback, provider/import o Apify è stato modificato.
+
 ## P106 — First publication manual checklist
 
 P106 non modifica Supabase staging.
