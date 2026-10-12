@@ -1,5 +1,31 @@
 # Production Readiness
 
+## Nota P110 — Canva asset generation manual execution
+
+P110 ha preparato il documento operativo per eseguire manualmente la creazione degli asset grafici di Regista Avanzato in Canva/Figma, senza generare asset automaticamente, senza creare file Canva/Figma tramite API, senza pubblicazione, senza Substack, senza URL Substack inventati, senza modifiche codice, merge, deploy, DB write, provider/import o Apify.
+
+Esito:
+
+- `point_110_canva_asset_generation_manual_execution_completed=true`
+- `canva_asset_generation_manual_execution_ready=true`
+- `assets_generated=false`
+- `substack_created=false`
+- `substack_url_status=not_created_or_not_confirmed`
+- `social_auto_published=false`
+- `substack_auto_published=false`
+- `p111_recommended=canva_manual_asset_creation_or_substack_creation_manual_execution`
+- `no_code_change=true`
+- `no_merge=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+
+Sono stati definiti piano priorità asset, tabella tracking, workflow manuale, struttura cartelle, naming, checklist qualità, guida uso prompt, policy stato asset e stop conditions.
+
+Prossimo step consigliato: P111 — Canva manual asset creation report oppure Substack creation manual execution.
+
 ## Nota P109 — Canva asset generation prompt pack
 
 P109 ha preparato il prompt/brief pack per produrre manualmente asset grafici di Regista Avanzato in Canva/Figma, senza generare asset, senza creare file Canva/Figma, senza pubblicazione, senza URL Substack inventati, senza modifiche codice, merge, deploy, DB write, provider/import o Apify.

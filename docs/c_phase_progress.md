@@ -1,5 +1,31 @@
 # C phase progress
 
+## P110 — Canva asset generation manual execution
+
+Stato: completato.
+
+Conferme:
+
+- `point_110_canva_asset_generation_manual_execution_completed=true`;
+- `canva_asset_generation_manual_execution_ready=true`;
+- `assets_generated=false`;
+- `substack_created=false`;
+- `substack_url_status=not_created_or_not_confirmed`;
+- `social_auto_published=false`;
+- `substack_auto_published=false`;
+- `p111_recommended=canva_manual_asset_creation_or_substack_creation_manual_execution`;
+- `no_code_change=true`;
+- `no_merge=true`;
+- `no_deploy=true`;
+- `production_touched=false`;
+- `db_write_additional=false`;
+- `provider_import_enabled=false`;
+- `apify_enabled=false`.
+
+Risultato: preparato documento operativo Canva/Figma con priorità asset, tracking table, workflow manuale, cartelle, naming, checklist qualità, guida prompt, policy asset status e stop conditions. Nessun asset generato e nessuna pubblicazione effettuata.
+
+Prossimo step consigliato: P111 — Canva manual asset creation report oppure Substack creation manual execution.
+
 ## P109 — Canva asset generation prompt pack
 
 Stato: completato.

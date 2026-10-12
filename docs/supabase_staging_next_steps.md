@@ -1,5 +1,29 @@
 # Supabase staging next steps
 
+## P110 — Canva asset generation manual execution
+
+P110 non modifica Supabase staging.
+
+Marker:
+
+- `point_110_canva_asset_generation_manual_execution_completed=true`
+- `canva_asset_generation_manual_execution_ready=true`
+- `assets_generated=false`
+- `substack_created=false`
+- `substack_url_status=not_created_or_not_confirmed`
+- `social_auto_published=false`
+- `substack_auto_published=false`
+- `p111_recommended=canva_manual_asset_creation_or_substack_creation_manual_execution`
+- `no_code_change=true`
+- `no_merge=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+
+La preparazione P110 è solo editoriale/asset execution planning. Nessun dato, visibility, schema/RLS, migration, rollback, provider/import o Apify è stato modificato.
+
 ## P109 — Canva asset generation prompt pack
 
 P109 non modifica Supabase staging.
