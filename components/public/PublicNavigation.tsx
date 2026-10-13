@@ -1,8 +1,12 @@
+import Image from "next/image";
 import Link from "next/link";
 import { getCurrentUser } from "@/lib/auth/access";
 
 const links = [
-  ["Home", "/"], ["Manifesto", "/manifesto"], ["Rubriche", "/rubriche"], ["Competizioni", "/competitions"], ["Radar", "/radar"], ["News", "/news"], ["Articoli", "/articoli"], ["Storie", "/storie"], ["Talenti", "/talenti"], ["Partite pazze", "/partite-pazze"], ["Stats", "/competizioni"], ["Video Radar", "/video-radar"], ["Newsletter", "/newsletter"],
+  ["Home", "/"],
+  ["Manifesto", "/manifesto"],
+  ["Rubriche", "/rubriche"],
+  ["Competitions", "/competitions"],
 ] as const;
 
 export async function PublicNavigation() {
@@ -11,7 +15,11 @@ export async function PublicNavigation() {
   return (
     <nav className="public-navigation" aria-label="Navigazione principale">
       <Link className="public-brand" href="/">
-        Regista Avanzato<span>Dati, storie, calcio</span>
+        <Image alt="" aria-hidden="true" className="public-brand-logo" height={42} src="/regista-avanzato-logo.png" width={42} />
+        <span className="public-brand-copy">
+          <strong>Regista Avanzato</strong>
+          <small>Dati, storie, calcio</small>
+        </span>
       </Link>
       <div className="public-navigation-links">
         {links.map(([label, href]) => <Link key={href} href={href}>{label}</Link>)}

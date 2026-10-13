@@ -12,7 +12,7 @@ function formatCompetitionMeta(competition: PublicCompetition): string {
 
 export function PublicCompetitionCard({ competition }: PublicCompetitionCardProps) {
   return (
-    <article className="public-stat-card">
+    <article className="public-stat-card public-competition-card">
       <PublicDataBadge>Campionato nel radar</PublicDataBadge>
       <h2>{competition.name}</h2>
       <p>{formatCompetitionMeta(competition)}</p>
@@ -20,7 +20,7 @@ export function PublicCompetitionCard({ competition }: PublicCompetitionCardProp
         Una scheda pubblica per leggere il campionato con contesto, squadre e
         classifica essenziale. In questa fase MVP i dati sono curati manualmente.
       </p>
-      <Link href={`/competitions/${competition.slug}`}>Apri la scheda</Link>
+      <Link className="button-link" href={`/competitions/${competition.slug}`}>Apri la scheda</Link>
     </article>
   );
 }

@@ -6,7 +6,6 @@ import { HistoricalEchoGrid } from "@/components/public/HistoricalEchoGrid";
 import { HomeHero } from "@/components/public/HomeHero";
 import { HomeSection } from "@/components/public/HomeSection";
 import { LoginFreeCTA } from "@/components/public/LoginFreeCTA";
-import { NewsletterCTA } from "@/components/public/NewsletterCTA";
 import { TalentGrid } from "@/components/public/TalentGrid";
 import { VideoRadarGrid } from "@/components/public/VideoRadarGrid";
 import { getHomepageData } from "@/lib/publicWebsite/getHomepageData";
@@ -25,33 +24,30 @@ function SafeHomepageFallback() {
     <main className="magazine-home">
       <section className="home-hero">
         <div>
-          <span className="eyebrow">Osservatorio calcistico narrativo</span>
+          <span className="eyebrow">Dashboard editoriale calcistica</span>
           <h1>Regista Avanzato</h1>
           <p>
-            Il calcio fuori dal mainstream, letto con dati, storie e contesto.
-            Un osservatorio narrativo per seguire campionati, squadre e talenti
-            meno raccontati.
+            Il calcio raccontato meglio. Storie, tattica, cultura e attualità
+            fuori dal rumore del mainstream.
           </p>
           <div className="actions">
-            <Link className="button-link" href="/competitions">
-              Esplora le competizioni
-            </Link>
-            <Link href="/manifesto">Leggi il manifesto</Link>
-            <Link href="/rubriche">Scopri le rubriche</Link>
-            <Link href="/newsletter">Segui la newsletter</Link>
+            <Link className="button-link" href="/manifesto">Leggi il Manifesto</Link>
+            <Link className="button-secondary" href="/rubriche">Scopri le Rubriche</Link>
+            <Link href="/competitions">Esplora i campionati</Link>
           </div>
-          <p className="notice">
-            MVP pubblico: i primi dati sono curati manualmente per validare
-            struttura, esperienza e racconto.
-          </p>
+          <div className="hero-badge-row" aria-label="Principi editoriali">
+            <span className="stats-badge">No betting</span>
+            <span className="stats-badge">No hype facile</span>
+            <span className="stats-badge">Dati, storie, contesto</span>
+          </div>
         </div>
         <article className="hero-feature">
-          <span className="stats-badge">MVP pubblico</span>
+          <span className="stats-badge">Control room</span>
           <p className="muted">Campionati radar, dati essenziali, contesto</p>
-          <h2>Meno rumore, più profondità</h2>
+          <h2>Football Manager, ma editoriale</h2>
           <p>
-            Regista Avanzato nasce per dare spazio a campionati e giocatori che
-            spesso restano fuori dal racconto quotidiano.
+            Una plancia premium per seguire competizioni, storie e segnali
+            prima che entrino nel rumore quotidiano.
           </p>
         </article>
       </section>
@@ -153,7 +149,15 @@ export default async function Page() {
       </HomeSection>
       <div className="home-cta-grid">
         <LoginFreeCTA />
-        <NewsletterCTA />
+        <section className="public-cta cta-editorial">
+          <span className="eyebrow">Metodo</span>
+          <h2>No betting. No hype facile.</h2>
+          <p>
+            Regista Avanzato resta un prodotto editoriale: dati manuali, fonti
+            dichiarate e nessuna promessa da scouting certificato.
+          </p>
+          <Link className="button-link" href="/manifesto">Leggi il Manifesto</Link>
+        </section>
       </div>
       <p className="notice">
         Magazine mock: nessuna query live, pubblicazione automatica o quota

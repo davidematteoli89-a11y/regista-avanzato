@@ -47,8 +47,8 @@ const columns = [
 
 export default function RubrichePage() {
   return (
-    <main className="stack">
-      <header>
+    <main className="stack brand-page">
+      <header className="brand-page-hero">
         <span className="eyebrow">Rubriche</span>
         <h1>Le voci editoriali di Regista Avanzato</h1>
         <p>
@@ -63,12 +63,13 @@ export default function RubrichePage() {
         </div>
       </header>
 
-      <section className="public-stats-grid" aria-label="Rubriche editoriali">
+      <section className="rubriche-grid" aria-label="Rubriche editoriali">
         {columns.map((column) => (
-          <article className="public-stat-card" key={column.name}>
+          <article className="public-stat-card rubrica-card" key={column.name}>
             <span className="stats-badge">{column.voice}</span>
             <h2>{column.name}</h2>
             <p>{column.description}</p>
+            <span className="radar-dot" aria-hidden="true" />
           </article>
         ))}
       </section>

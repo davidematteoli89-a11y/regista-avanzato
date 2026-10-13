@@ -1,5 +1,42 @@
 # Production Readiness
 
+## Nota P116 — Site brand refresh with logo palette
+
+P116 ha aggiornato il sito pubblico di Regista Avanzato con la nuova palette blu/indaco/viola del logo e una direzione visiva Football Manager / dashboard calcistica premium. Sono state aggiornate homepage, navbar, footer, Manifesto, Rubriche e pagine Competitions mantenendo invariata la logica dati.
+
+Esito:
+
+- `point_116_site_brand_refresh_completed=true`
+- `site_brand_refresh_ready=true`
+- `code_change=true`
+- `brand_palette_applied=true`
+- `football_manager_style_applied=true`
+- `homepage_refreshed=true`
+- `manifesto_refreshed=true`
+- `rubriche_refreshed=true`
+- `competitions_refreshed=true`
+- `navbar_footer_refreshed=true`
+- `logo_asset_used=true`
+- `logo_asset_pending=false`
+- `public_routes_verified=true`
+- `public_data_visible=true`
+- `substack_created=false`
+- `substack_url_status=not_created_or_not_confirmed`
+- `substack_url_real=`
+- `site_integration_done=false`
+- `publication_ready=false`
+- `no_merge=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `p117_recommended=preview_brand_verification_or_brand_refresh_iteration`
+
+Nessun deploy, merge, Production touch, DB write, provider/import, Apify o integrazione Substack è stato eseguito in P116.
+
+Prossimo step consigliato: P117 — Preview brand verification oppure brand refresh iteration.
+
 ## Nota P115 — Manual asset creation with links
 
 P115 ha registrato il primo asset Canva reale del progetto: `A01 — Carosello Manifesto`. Sono stati registrati link editabile, link view e design ID. L’asset resta `needs_revision` perché il page count rilevato è 8 invece delle 7 slide previste e non sono stati forniti export.

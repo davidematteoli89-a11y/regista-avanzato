@@ -10,7 +10,7 @@ export function PublicStandingsTable({ standings }: PublicStandingsTableProps) {
   }
 
   return (
-    <div className="table-scroll">
+    <div className="table-scroll standings-scroll">
       <table className="stats-table">
         <thead>
           <tr>
