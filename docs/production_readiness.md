@@ -1,5 +1,32 @@
 # Production Readiness
 
+## Nota P111 — Substack creation manual execution
+
+P111 ha preparato il documento operativo per creare manualmente la pubblicazione Substack di Regista Avanzato e tracciarne URL, slug, impostazioni, About page, welcome email e verifica pubblica, senza creazione automatica, senza pubblicazione, senza invio newsletter, senza integrazione sito, senza modifiche codice, merge, deploy, DB write, provider/import o Apify.
+
+Esito:
+
+- `point_111_substack_creation_manual_execution_completed=true`
+- `substack_creation_manual_execution_ready=true`
+- `substack_created=false`
+- `substack_url_status=not_created_or_not_confirmed`
+- `substack_url_real=`
+- `substack_auto_published=false`
+- `social_auto_published=false`
+- `assets_generated=false`
+- `p112_recommended=substack_url_integration_gate_after_real_url_or_canva_manual_asset_creation_report`
+- `no_code_change=true`
+- `no_merge=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+
+URL reale Substack non fornito o verificato in P111. Nessuna integrazione sito è stata effettuata.
+
+Prossimo step consigliato: P112 — Substack URL integration gate dopo URL reale verificato, oppure Canva manual asset creation report.
+
 ## Nota P110 — Canva asset generation manual execution
 
 P110 ha preparato il documento operativo per eseguire manualmente la creazione degli asset grafici di Regista Avanzato in Canva/Figma, senza generare asset automaticamente, senza creare file Canva/Figma tramite API, senza pubblicazione, senza Substack, senza URL Substack inventati, senza modifiche codice, merge, deploy, DB write, provider/import o Apify.

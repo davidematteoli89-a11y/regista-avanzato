@@ -1,5 +1,30 @@
 # Supabase staging next steps
 
+## P111 — Substack creation manual execution
+
+P111 non modifica Supabase staging.
+
+Marker:
+
+- `point_111_substack_creation_manual_execution_completed=true`
+- `substack_creation_manual_execution_ready=true`
+- `substack_created=false`
+- `substack_url_status=not_created_or_not_confirmed`
+- `substack_url_real=`
+- `substack_auto_published=false`
+- `social_auto_published=false`
+- `assets_generated=false`
+- `p112_recommended=substack_url_integration_gate_after_real_url_or_canva_manual_asset_creation_report`
+- `no_code_change=true`
+- `no_merge=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+
+La preparazione P111 è solo editoriale/manuale per Substack. Nessun dato, visibility, schema/RLS, migration, rollback, provider/import o Apify è stato modificato.
+
 ## P110 — Canva asset generation manual execution
 
 P110 non modifica Supabase staging.

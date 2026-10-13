@@ -1,5 +1,32 @@
 # C phase progress
 
+## P111 — Substack creation manual execution
+
+Stato: completato.
+
+Conferme:
+
+- `point_111_substack_creation_manual_execution_completed=true`;
+- `substack_creation_manual_execution_ready=true`;
+- `substack_created=false`;
+- `substack_url_status=not_created_or_not_confirmed`;
+- `substack_url_real=`;
+- `substack_auto_published=false`;
+- `social_auto_published=false`;
+- `assets_generated=false`;
+- `p112_recommended=substack_url_integration_gate_after_real_url_or_canva_manual_asset_creation_report`;
+- `no_code_change=true`;
+- `no_merge=true`;
+- `no_deploy=true`;
+- `production_touched=false`;
+- `db_write_additional=false`;
+- `provider_import_enabled=false`;
+- `apify_enabled=false`.
+
+Risultato: preparato documento operativo per creazione manuale Substack, con istruzioni, identità pubblicazione, slug policy, checklist About/welcome/settings, verifica URL, status policy e stop conditions. Nessun URL reale fornito/verificato, nessuna pubblicazione e nessuna integrazione sito.
+
+Prossimo step consigliato: P112 — Substack URL integration gate dopo URL reale verificato, oppure Canva manual asset creation report.
+
 ## P110 — Canva asset generation manual execution
 
 Stato: completato.
