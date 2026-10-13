@@ -1,5 +1,39 @@
 # Production Readiness
 
+## Nota P114 — Substack creation with real URL
+
+P114 ha preparato il tracking per la creazione manuale reale della pubblicazione Substack di Regista Avanzato, includendo flow creazione, identità publication, policy slug, verifica About, verifica welcome email, impostazioni, verifica URL pubblico, status decision policy e stop conditions.
+
+Nessun URL reale/verificato è stato fornito in P114, quindi lo stato resta non creato/non confermato.
+
+Esito:
+
+- `point_114_substack_creation_with_real_url_completed=true`
+- `substack_creation_with_real_url_ready=true`
+- `substack_created=false`
+- `substack_url_status=not_created_or_not_confirmed`
+- `substack_url_real=`
+- `substack_url_verified=false`
+- `substack_auto_published=false`
+- `social_auto_published=false`
+- `newsletter_sent=false`
+- `site_integration_done=false`
+- `assets_generated=false`
+- `priority_1_assets_ready=false`
+- `publication_ready=false`
+- `p115_recommended=substack_creation_with_real_url_or_manual_asset_creation_with_links`
+- `no_code_change=true`
+- `no_merge=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+
+Nessuna creazione automatica Substack, pubblicazione, invio newsletter, social publish, integrazione sito, modifica codice, merge, deploy, DB write, provider/import o Apify è stata eseguita in P114.
+
+Prossimo step consigliato: P115 — Substack creation with real URL oppure Manual asset creation with links.
+
 ## Nota P113 — Manual asset creation execution
 
 P113 ha preparato l’esecuzione manuale degli asset Canva/Figma per Regista Avanzato, con priorità, workflow, tabella asset A01-A18, checklist qualità, checklist diritti e publication readiness. Non sono stati forniti link Canva/Figma o export reali, quindi nessun asset è stato dichiarato generato.

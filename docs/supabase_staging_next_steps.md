@@ -1,5 +1,35 @@
 # Supabase staging next steps
 
+## P114 — Substack creation with real URL
+
+P114 non modifica Supabase staging.
+
+Marker:
+
+- `point_114_substack_creation_with_real_url_completed=true`
+- `substack_creation_with_real_url_ready=true`
+- `substack_created=false`
+- `substack_url_status=not_created_or_not_confirmed`
+- `substack_url_real=`
+- `substack_url_verified=false`
+- `substack_auto_published=false`
+- `social_auto_published=false`
+- `newsletter_sent=false`
+- `site_integration_done=false`
+- `assets_generated=false`
+- `priority_1_assets_ready=false`
+- `publication_ready=false`
+- `p115_recommended=substack_creation_with_real_url_or_manual_asset_creation_with_links`
+- `no_code_change=true`
+- `no_merge=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+
+La preparazione P114 è solo editoriale/manuale per Substack. Nessun dato, visibility, schema/RLS, migration, rollback, provider/import o Apify è stato modificato.
+
 ## P113 — Manual asset creation execution
 
 P113 non modifica Supabase staging.
