@@ -1,5 +1,42 @@
 # C phase progress
 
+## P115 — Manual asset creation with links
+
+Stato: completato.
+
+Conferme:
+
+- `point_115_manual_asset_creation_with_links_completed=true`;
+- `manual_asset_creation_with_links_ready=true`;
+- `assets_generated=partial_manual`;
+- `asset_execution_status=partial`;
+- `canva_links_available=true`;
+- `exports_available=false`;
+- `priority_1_assets_ready=partial`;
+- `a01_manifesto_carousel_status=needs_revision`;
+- `a01_manifesto_carousel_canva_edit_url=https://www.canva.com/d/KvnesiOIH2alDX9`;
+- `a01_manifesto_carousel_canva_view_url=https://www.canva.com/d/IVvWQK-TL5-LcYI`;
+- `publication_ready=false`;
+- `substack_created=false`;
+- `substack_url_status=not_created_or_not_confirmed`;
+- `substack_url_real=`;
+- `substack_auto_published=false`;
+- `social_auto_published=false`;
+- `newsletter_sent=false`;
+- `site_integration_done=false`;
+- `p116_recommended=site_brand_refresh_with_logo_palette`;
+- `no_code_change=true`;
+- `no_merge=true`;
+- `no_deploy=true`;
+- `production_touched=false`;
+- `db_write_additional=false`;
+- `provider_import_enabled=false`;
+- `apify_enabled=false`.
+
+Risultato: registrato il primo asset Canva reale, A01 Carosello Manifesto, con link editabile e view link. Stato `needs_revision` per page count 8 vs 7 attese e assenza export.
+
+Prossimo step consigliato: P116 — Site brand refresh with logo palette.
+
 ## P114 — Substack creation with real URL
 
 Stato: completato.
