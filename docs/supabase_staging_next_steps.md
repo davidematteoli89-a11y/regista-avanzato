@@ -1,5 +1,35 @@
 # Supabase staging next steps
 
+## P117 — Brand refresh green cleanup
+
+P117 non modifica Supabase staging.
+
+Marker:
+
+- `point_117_brand_refresh_green_cleanup_completed=true`
+- `brand_green_cleanup_ready=true`
+- `code_change=true`
+- `green_leftovers_removed=true`
+- `chi_siamo_green_fixed=true`
+- `account_green_fixed=true`
+- `metodo_green_fixed=true`
+- `public_routes_verified=true`
+- `public_data_visible=true`
+- `legacy_marker_false_negative=true`
+- `substack_created=false`
+- `substack_url_status=not_created_or_not_confirmed`
+- `site_integration_done=false`
+- `publication_ready=false`
+- `no_merge=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `p118_recommended=preview_brand_verification_or_legacy_marker_update`
+
+La preparazione P117 è solo cleanup UI pubblico. Nessun dato, visibility, schema/RLS, migration, rollback, provider/import o Apify è stato modificato.
+
 ## P116 — Site brand refresh with logo palette
 
 P116 non modifica Supabase staging.

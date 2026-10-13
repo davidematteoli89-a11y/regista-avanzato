@@ -1,5 +1,37 @@
 # Production Readiness
 
+## Nota P117 — Brand refresh green cleanup
+
+P117 ha rimosso i residui verdi della vecchia identità visiva nello scope pubblico, con focus sulle sezioni segnalate: Chi siamo, Account e Metodo. Il sito resta allineato alla palette logo blu/indaco/viola.
+
+Esito:
+
+- `point_117_brand_refresh_green_cleanup_completed=true`
+- `brand_green_cleanup_ready=true`
+- `code_change=true`
+- `green_leftovers_removed=true`
+- `chi_siamo_green_fixed=true`
+- `account_green_fixed=true`
+- `metodo_green_fixed=true`
+- `public_routes_verified=true`
+- `public_data_visible=true`
+- `legacy_marker_false_negative=true`
+- `substack_created=false`
+- `substack_url_status=not_created_or_not_confirmed`
+- `site_integration_done=false`
+- `publication_ready=false`
+- `no_merge=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `p118_recommended=preview_brand_verification_or_legacy_marker_update`
+
+Nessun deploy, merge, Production touch, DB write, provider/import, Apify o integrazione Substack è stato eseguito in P117.
+
+Prossimo step consigliato: P118 — Preview brand verification oppure Legacy marker update.
+
 ## Nota P116 — Site brand refresh with logo palette
 
 P116 ha aggiornato il sito pubblico di Regista Avanzato con la nuova palette blu/indaco/viola del logo e una direzione visiva Football Manager / dashboard calcistica premium. Sono state aggiornate homepage, navbar, footer, Manifesto, Rubriche e pagine Competitions mantenendo invariata la logica dati.
