@@ -1,5 +1,35 @@
 # Supabase staging next steps
 
+## P113 — Manual asset creation execution
+
+P113 non modifica Supabase staging.
+
+Marker:
+
+- `point_113_manual_asset_creation_execution_completed=true`
+- `manual_asset_creation_execution_ready=true`
+- `assets_generated=false`
+- `asset_execution_status=prepared_no_assets`
+- `canva_links_available=false`
+- `exports_available=false`
+- `priority_1_assets_ready=false`
+- `publication_ready=false`
+- `substack_created=false`
+- `substack_url_status=not_created_or_not_confirmed`
+- `substack_url_real=`
+- `social_auto_published=false`
+- `substack_auto_published=false`
+- `p114_recommended=manual_asset_creation_with_links_or_substack_creation_with_real_url`
+- `no_code_change=true`
+- `no_merge=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+
+La preparazione P113 è solo editoriale/manuale per asset Canva/Figma. Nessun dato, visibility, schema/RLS, migration, rollback, provider/import o Apify è stato modificato.
+
 ## P112 — Canva manual asset creation report
 
 P112 non modifica Supabase staging.

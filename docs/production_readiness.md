@@ -1,5 +1,37 @@
 # Production Readiness
 
+## Nota P113 — Manual asset creation execution
+
+P113 ha preparato l’esecuzione manuale degli asset Canva/Figma per Regista Avanzato, con priorità, workflow, tabella asset A01-A18, checklist qualità, checklist diritti e publication readiness. Non sono stati forniti link Canva/Figma o export reali, quindi nessun asset è stato dichiarato generato.
+
+Esito:
+
+- `point_113_manual_asset_creation_execution_completed=true`
+- `manual_asset_creation_execution_ready=true`
+- `assets_generated=false`
+- `asset_execution_status=prepared_no_assets`
+- `canva_links_available=false`
+- `exports_available=false`
+- `priority_1_assets_ready=false`
+- `publication_ready=false`
+- `substack_created=false`
+- `substack_url_status=not_created_or_not_confirmed`
+- `substack_url_real=`
+- `social_auto_published=false`
+- `substack_auto_published=false`
+- `p114_recommended=manual_asset_creation_with_links_or_substack_creation_with_real_url`
+- `no_code_change=true`
+- `no_merge=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+
+Nessun asset reale, URL Substack, pubblicazione, integrazione sito, modifica codice, merge, deploy, DB write, provider/import o Apify è stato eseguito in P113.
+
+Prossimo step consigliato: P114 — manual asset creation with real links oppure Substack creation with real URL.
+
 ## Nota P112 — Canva manual asset creation report
 
 P112 ha preparato il report per tracciare la creazione manuale degli asset Canva/Figma di Regista Avanzato, senza generare asset automaticamente, senza pubblicazione, senza Substack, senza URL Substack inventati, senza integrazione sito, senza modifiche codice, merge, deploy, DB write, provider/import o Apify.
