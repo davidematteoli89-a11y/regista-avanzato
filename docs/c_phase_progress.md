@@ -1,5 +1,36 @@
 # C phase progress
 
+## P112 — Canva manual asset creation report
+
+Stato: completato.
+
+Conferme:
+
+- `point_112_canva_manual_asset_creation_report_completed=true`;
+- `canva_manual_asset_creation_report_ready=true`;
+- `assets_generated=false`;
+- `asset_report_status=prepared_empty`;
+- `canva_links_available=false`;
+- `exports_available=false`;
+- `publication_ready=false`;
+- `substack_created=false`;
+- `substack_url_status=not_created_or_not_confirmed`;
+- `substack_url_real=`;
+- `social_auto_published=false`;
+- `substack_auto_published=false`;
+- `p113_recommended=manual_asset_creation_or_substack_creation_with_real_url`;
+- `no_code_change=true`;
+- `no_merge=true`;
+- `no_deploy=true`;
+- `production_touched=false`;
+- `db_write_additional=false`;
+- `provider_import_enabled=false`;
+- `apify_enabled=false`.
+
+Risultato: preparato report asset Canva/Figma con tabella asset, campi link/editabili/export, checklist qualità, checklist diritti, asset mancanti e criteri publication readiness. Nessun link/file reale fornito e nessuna pubblicazione effettuata.
+
+Prossimo step consigliato: P113 — Manual asset creation execution oppure Substack creation with real URL.
+
 ## P111 — Substack creation manual execution
 
 Stato: completato.
