@@ -1,5 +1,34 @@
 # Supabase staging next steps
 
+## P118 — Preview brand verification
+
+P118 non modifica Supabase staging.
+
+Marker:
+
+- `point_118_preview_brand_verification_completed=true`
+- `preview_brand_verification_ready=true`
+- `code_change=false`
+- `public_routes_verified=true`
+- `public_data_visible=true`
+- `responsive_verified=true`
+- `brand_visual_verified=true`
+- `green_leftovers_removed=true`
+- `legacy_marker_false_negative=true`
+- `substack_created=false`
+- `substack_url_status=not_created_or_not_confirmed`
+- `site_integration_done=false`
+- `publication_ready=false`
+- `no_merge=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `p119_recommended=legacy_marker_update_or_brand_refresh_iteration`
+
+La verifica P118 è solo preview/local brand verification. Nessun dato, visibility, schema/RLS, migration, rollback, provider/import o Apify è stato modificato.
+
 ## P117 — Brand refresh green cleanup
 
 P117 non modifica Supabase staging.

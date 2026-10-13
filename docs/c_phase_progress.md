@@ -1,5 +1,38 @@
 # C phase progress
 
+## P118 — Preview brand verification
+
+Stato: completato.
+
+Conferme:
+
+- `point_118_preview_brand_verification_completed=true`;
+- `preview_brand_verification_ready=true`;
+- `code_change=false`;
+- `public_routes_verified=true`;
+- `public_data_visible=true`;
+- `responsive_verified=true`;
+- `brand_visual_verified=true`;
+- `green_leftovers_removed=true`;
+- `legacy_marker_false_negative=true`;
+- `substack_created=false`;
+- `substack_url_status=not_created_or_not_confirmed`;
+- `site_integration_done=false`;
+- `publication_ready=false`;
+- `no_merge=true`;
+- `no_deploy=true`;
+- `production_touched=false`;
+- `db_write_additional=false`;
+- `provider_import_enabled=false`;
+- `apify_enabled=false`;
+- `p119_recommended=legacy_marker_update_or_brand_refresh_iteration`.
+
+Risultato: verificate localmente le route pubbliche principali dopo il brand refresh P116/P117. Le route rispondono 200, i dati pubblici sono visibili, non sono emersi residui green visibili, né private/admin/debug/raw, né URL Substack inventati.
+
+Nota: resta il falso negativo del marker legacy home in `dry-run:full-public-path-verification`.
+
+Prossimo step consigliato: P119 — Legacy marker update oppure brand refresh iteration.
+
 ## P117 — Brand refresh green cleanup
 
 Stato: completato.

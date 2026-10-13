@@ -1,5 +1,47 @@
 # Production Readiness
 
+## Nota P118 — Preview brand verification
+
+P118 ha verificato localmente su branch `preview` il brand refresh pubblico dopo P116/P117, senza modifiche UI, deploy, merge, Production touch, DB write, provider/import, Apify o integrazione Substack.
+
+Esito:
+
+- `point_118_preview_brand_verification_completed=true`
+- `preview_brand_verification_ready=true`
+- `code_change=false`
+- `public_routes_verified=true`
+- `public_data_visible=true`
+- `responsive_verified=true`
+- `brand_visual_verified=true`
+- `green_leftovers_removed=true`
+- `legacy_marker_false_negative=true`
+- `substack_created=false`
+- `substack_url_status=not_created_or_not_confirmed`
+- `site_integration_done=false`
+- `publication_ready=false`
+- `no_merge=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `p119_recommended=legacy_marker_update_or_brand_refresh_iteration`
+
+Route pubbliche verificate localmente:
+
+- `/` → 200
+- `/manifesto` → 200
+- `/rubriche` → 200
+- `/competitions` → 200, dati pubblici visibili
+- `/competitions/manual-serie-a` → 200, dati pubblici visibili
+- `/chi-siamo` → 200
+- `/account` → 200
+- `/metodo` → 200
+
+Nota: il dry-run legacy `full-public-path-verification` resta `dry_run_pass=false` con `home_state=markup_unexpected` perché il marker home non è aggiornato al markup P116/P117. Le route reali sono state verificate e funzionano.
+
+Prossimo step consigliato: P119 — Legacy marker update oppure brand refresh iteration.
+
 ## Nota P117 — Brand refresh green cleanup
 
 P117 ha rimosso i residui verdi della vecchia identità visiva nello scope pubblico, con focus sulle sezioni segnalate: Chi siamo, Account e Metodo. Il sito resta allineato alla palette logo blu/indaco/viola.
