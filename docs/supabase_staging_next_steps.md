@@ -3941,3 +3941,18 @@ P125 non ha modificato Supabase staging. La verifica post-alias ha confermato il
 - `site_integration_done=false`
 - `publication_ready=false`
 - `p126_recommended=substack_creation_with_real_url_or_canva_a01_revision_export`
+# P126 — Substack URL registration and verification
+
+P126 non ha modificato Supabase staging. Ha registrato e verificato esclusivamente l’URL pubblico reale di Substack.
+
+- `point_126_substack_url_registration_verification_completed=true`
+- `substack_created=true`
+- `substack_url_real=https://registaavanzato.substack.com/`
+- `substack_url_verified=true`
+- `substack_url_status=real_url_verified`
+- `site_integration_done=false`
+- `publication_ready=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `p127_recommended=site_substack_url_integration_gate`
