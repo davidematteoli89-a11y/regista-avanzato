@@ -1,5 +1,36 @@
 # C phase progress
 
+## P119 — Legacy marker update
+
+Stato: completato.
+
+Conferme:
+
+- `point_119_legacy_marker_update_completed=true`;
+- `legacy_marker_update_ready=true`;
+- `code_change=true`;
+- `ui_code_change=false`;
+- `dry_run_full_public_path_passed=true`;
+- `legacy_marker_false_negative=false`;
+- `public_routes_verified=true`;
+- `public_data_visible=true`;
+- `private_admin_publicly_exposed=false`;
+- `substack_created=false`;
+- `substack_url_status=not_created_or_not_confirmed`;
+- `site_integration_done=false`;
+- `publication_ready=false`;
+- `no_merge=true`;
+- `no_deploy=true`;
+- `production_touched=false`;
+- `db_write_additional=false`;
+- `provider_import_enabled=false`;
+- `apify_enabled=false`;
+- `p120_recommended=production_release_gate_for_brand_refresh`.
+
+Risultato: il dry-run full public path riconosce il nuovo markup home P116/P117 e passa senza mascherare controlli su route, dati pubblici, private/admin/debug/raw e bottoni operativi.
+
+Prossimo step consigliato: P120 — Production release gate for brand refresh.
+
 ## P118 — Preview brand verification
 
 Stato: completato.

@@ -1,5 +1,42 @@
 # Production Readiness
 
+## Nota P119 — Legacy marker update
+
+P119 ha aggiornato solo il dry-run `full-public-path-verification` per riconoscere il nuovo markup home introdotto dal brand refresh P116/P117. Non sono state modificate UI pubbliche, logica dati, route, Production o configurazioni di deploy.
+
+Esito:
+
+- `point_119_legacy_marker_update_completed=true`
+- `legacy_marker_update_ready=true`
+- `code_change=true`
+- `ui_code_change=false`
+- `dry_run_full_public_path_passed=true`
+- `legacy_marker_false_negative=false`
+- `public_routes_verified=true`
+- `public_data_visible=true`
+- `private_admin_publicly_exposed=false`
+- `substack_created=false`
+- `substack_url_status=not_created_or_not_confirmed`
+- `site_integration_done=false`
+- `publication_ready=false`
+- `no_merge=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `p120_recommended=production_release_gate_for_brand_refresh`
+
+`dry-run:full-public-path-verification` ora passa con:
+
+- `home_state=verification_passed`;
+- `competitions_page_state=data_visible`;
+- `competition_detail_state=data_visible`;
+- `private_admin_publicly_exposed=false`;
+- `dry_run_pass=true`.
+
+Prossimo step consigliato: P120 — Production release gate for brand refresh.
+
 ## Nota P118 — Preview brand verification
 
 P118 ha verificato localmente su branch `preview` il brand refresh pubblico dopo P116/P117, senza modifiche UI, deploy, merge, Production touch, DB write, provider/import, Apify o integrazione Substack.

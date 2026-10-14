@@ -1,5 +1,34 @@
 # Supabase staging next steps
 
+## P119 — Legacy marker update
+
+P119 non modifica Supabase staging.
+
+Marker:
+
+- `point_119_legacy_marker_update_completed=true`
+- `legacy_marker_update_ready=true`
+- `code_change=true`
+- `ui_code_change=false`
+- `dry_run_full_public_path_passed=true`
+- `legacy_marker_false_negative=false`
+- `public_routes_verified=true`
+- `public_data_visible=true`
+- `private_admin_publicly_exposed=false`
+- `substack_created=false`
+- `substack_url_status=not_created_or_not_confirmed`
+- `site_integration_done=false`
+- `publication_ready=false`
+- `no_merge=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `p120_recommended=production_release_gate_for_brand_refresh`
+
+La modifica P119 è solo su script dry-run e documentazione. Nessun dato, visibility, schema/RLS, migration, rollback, provider/import o Apify è stato modificato.
+
 ## P118 — Preview brand verification
 
 P118 non modifica Supabase staging.
