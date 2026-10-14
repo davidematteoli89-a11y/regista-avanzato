@@ -3716,3 +3716,27 @@ P126 ha registrato e verificato il Substack reale di Regista Avanzato senza inte
 - `provider_import_enabled=false`
 - `apify_enabled=false`
 - `p127_recommended=site_substack_url_integration_gate`
+# P127 — Site Substack URL integration
+
+P127 ha integrato su `preview` il link pubblico reale e verificato di Substack in navbar, footer, homepage e CTA condivise. Nessun deploy o merge è stato eseguito.
+
+- `point_127_site_substack_url_integration_completed=true`
+- `site_substack_url_integration_ready=true`
+- `code_change=true`
+- `substack_created=true`
+- `substack_url_real=https://registaavanzato.substack.com/`
+- `substack_url_verified=true`
+- `substack_url_status=real_url_verified`
+- `site_integration_done=true`
+- `production_touched=false`
+- `no_merge=true`
+- `no_deploy=true`
+- `publication_ready=false`
+- `newsletter_sent=false`
+- `social_auto_published=false`
+- `substack_auto_published=false`
+- `brand_refresh_production_closed=true`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `p128_recommended=preview_substack_integration_verification`

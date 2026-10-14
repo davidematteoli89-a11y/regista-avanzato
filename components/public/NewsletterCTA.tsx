@@ -7,8 +7,8 @@ export function NewsletterCTA() {
         <span className="eyebrow">Newsletter</span>
         <h2>Segui il progetto fuori dal rumore quotidiano</h2>
         <p>
-          La newsletter raccoglierà storie, campionati radar e segnali editoriali.
-          Se Substack non è configurato, la CTA resta disabilitata senza URL inventate.
+          Storie, tattica, cultura e attualità calcistica direttamente nella tua
+          inbox, sul canale Substack ufficiale di Regista Avanzato.
         </p>
       </div>
       <SubstackCTA label="Iscriviti gratis" compact />

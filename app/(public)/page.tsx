@@ -10,6 +10,7 @@ import { TalentGrid } from "@/components/public/TalentGrid";
 import { VideoRadarGrid } from "@/components/public/VideoRadarGrid";
 import { getHomepageData } from "@/lib/publicWebsite/getHomepageData";
 import type { PublicHomepageData } from "@/lib/publicWebsite/publicWebsiteTypes";
+import { REGISTA_AVANZATO_SUBSTACK_URL, SUBSTACK_EXTERNAL_LINK_PROPS } from "@/lib/substack/publicSubstack";
 
 async function getSafeHomepageData(): Promise<PublicHomepageData | null> {
   try {
@@ -17,6 +18,22 @@ async function getSafeHomepageData(): Promise<PublicHomepageData | null> {
   } catch {
     return null;
   }
+}
+
+function HomeSubstackCTA() {
+  return (
+    <section className="preview-block" aria-labelledby="home-substack-title">
+      <span className="stats-badge">Newsletter</span>
+      <h2 id="home-substack-title">La newsletter di Regista Avanzato</h2>
+      <p>
+        Storie, tattica, cultura e attualità calcistica direttamente nella tua
+        inbox. Fuori dal rumore, sul nostro canale Substack ufficiale.
+      </p>
+      <a className="button-link" href={REGISTA_AVANZATO_SUBSTACK_URL} {...SUBSTACK_EXTERNAL_LINK_PROPS}>
+        Leggi su Substack
+      </a>
+    </section>
+  );
 }
 
 function SafeHomepageFallback() {
@@ -60,6 +77,7 @@ function SafeHomepageFallback() {
         </p>
         <Link href="/competitions">Vai alle competizioni</Link>
       </section>
+      <HomeSubstackCTA />
     </main>
   );
 }
@@ -147,6 +165,7 @@ export default async function Page() {
           ))}
         </div>
       </HomeSection>
+      <HomeSubstackCTA />
       <div className="home-cta-grid">
         <LoginFreeCTA />
         <section className="public-cta cta-editorial">

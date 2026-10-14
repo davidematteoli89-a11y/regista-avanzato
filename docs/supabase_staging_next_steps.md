@@ -3956,3 +3956,19 @@ P126 non ha modificato Supabase staging. Ha registrato e verificato esclusivamen
 - `provider_import_enabled=false`
 - `apify_enabled=false`
 - `p127_recommended=site_substack_url_integration_gate`
+# P127 — Site Substack URL integration
+
+P127 non ha modificato Supabase staging. Ha integrato sul solo branch `preview` il link pubblico reale di Substack.
+
+- `point_127_site_substack_url_integration_completed=true`
+- `substack_url_real=https://registaavanzato.substack.com/`
+- `substack_url_verified=true`
+- `site_integration_done=true`
+- `production_touched=false`
+- `no_merge=true`
+- `no_deploy=true`
+- `publication_ready=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `p128_recommended=preview_substack_integration_verification`

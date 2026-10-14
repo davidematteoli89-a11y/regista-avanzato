@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { getCurrentUser } from "@/lib/auth/access";
+import { REGISTA_AVANZATO_SUBSTACK_URL, SUBSTACK_EXTERNAL_LINK_PROPS } from "@/lib/substack/publicSubstack";
 
 const links = [
   ["Home", "/"],
@@ -23,6 +24,7 @@ export async function PublicNavigation() {
       </Link>
       <div className="public-navigation-links">
         {links.map(([label, href]) => <Link key={href} href={href}>{label}</Link>)}
+        <a href={REGISTA_AVANZATO_SUBSTACK_URL} {...SUBSTACK_EXTERNAL_LINK_PROPS}>Newsletter</a>
       </div>
       {user ? (
         <Link className="button-link" href="/account">Account</Link>
