@@ -3667,3 +3667,32 @@ Punto 70 migliora il percorso pubblico locale senza deploy e senza cambiare conf
 - `vercel_auth_changed=false`
 
 Production resta non toccata. La Preview resta protetta da Vercel Authentication.
+# P125 — Post-alias assignment Production verification
+
+P125 ha verificato il dominio Production dopo l’assegnazione alias autorizzata in P124. Il dominio serve il deployment READY del brand refresh e tutte le route previste rispondono HTTP 200.
+
+- `point_125_post_alias_assignment_production_verification_completed=true`
+- `post_alias_assignment_production_verification_ready=true`
+- `production_alias_assignment_verified=true`
+- `production_deployment_id=dpl_4kQYEV8dX8StepSoNb9a1TEqsBXh`
+- `production_previous_deployment_id=dpl_C8icKQYUPNxvhELo9e9b2LkQ4Up4`
+- `production_commit_verified=1f4942f834da54bf336145e3d9cd07e44effae66`
+- `production_previous_commit=8d20c0e6d6088d9a1a525fd3b8f11de3dcf0ce83`
+- `production_routes_verified=true`
+- `production_brand_visible=true`
+- `production_logo_200=true`
+- `production_public_data_visible=true`
+- `production_safety_verified=true`
+- `brand_refresh_production_closed=true`
+- `private_admin_publicly_exposed=false`
+- `admin_links_visible=false`
+- `debug_payload_visible=false`
+- `operational_buttons_visible=false`
+- `substack_created=false`
+- `substack_url_status=not_created_or_not_confirmed`
+- `site_integration_done=false`
+- `publication_ready=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `p126_recommended=substack_creation_with_real_url_or_canva_a01_revision_export`

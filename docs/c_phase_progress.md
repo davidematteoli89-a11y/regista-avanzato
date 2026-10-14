@@ -5400,3 +5400,27 @@ Nessun deploy, nessuna Production e nessuna ulteriore DB write sono stati esegui
 La Preview corretta è stata verificata manualmente dall'utente con `/competitions` e `/competitions/manual-serie-a` funzionanti e dati visibili. Il dominio `regista-avanzato-rouge.vercel.app` resta Production/main vecchia: il 404 osservato lì è spiegato dall'ambiente, non dal codice.
 
 P78 chiude l'MVP Preview e ferma il lavoro prima di Production, merge main, provider/import, Apify o ulteriori DB write.
+# P125 — Post-alias assignment Production verification
+
+- `point_125_post_alias_assignment_production_verification_completed=true`
+- `production_alias_assignment_verified=true`
+- `production_deployment_id=dpl_4kQYEV8dX8StepSoNb9a1TEqsBXh`
+- `production_commit_verified=1f4942f834da54bf336145e3d9cd07e44effae66`
+- `production_routes_verified=true`
+- `production_brand_visible=true`
+- `production_logo_200=true`
+- `production_public_data_visible=true`
+- `production_safety_verified=true`
+- `brand_refresh_production_closed=true`
+- `private_admin_publicly_exposed=false`
+- `admin_links_visible=false`
+- `debug_payload_visible=false`
+- `operational_buttons_visible=false`
+- `substack_created=false`
+- `substack_url_status=not_created_or_not_confirmed`
+- `site_integration_done=false`
+- `publication_ready=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `p126_recommended=substack_creation_with_real_url_or_canva_a01_revision_export`

@@ -3927,3 +3927,17 @@ P73 ha completato il piano di deploy senza eseguirlo.
 - `rollback_plan_created=true`
 
 Supabase staging resta nello stato post-P66: dati `manual-serie-a` promossi a `public_free`, rollback disponibile ma non eseguito. Nessuna nuova scrittura DB è stata fatta nel Punto 73.
+# P125 — Post-alias assignment Production verification
+
+P125 non ha modificato Supabase staging. La verifica post-alias ha confermato il brand refresh e i dati pubblici già approvati in Production.
+
+- `point_125_post_alias_assignment_production_verification_completed=true`
+- `brand_refresh_production_closed=true`
+- `private_admin_publicly_exposed=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `substack_created=false`
+- `site_integration_done=false`
+- `publication_ready=false`
+- `p126_recommended=substack_creation_with_real_url_or_canva_a01_revision_export`
