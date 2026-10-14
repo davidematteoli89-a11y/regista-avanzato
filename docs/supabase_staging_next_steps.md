@@ -1,5 +1,42 @@
 # Supabase staging next steps
 
+## P123 — Production brand refresh deploy diagnosis
+
+P123 non modifica Supabase staging.
+
+Marker:
+
+- `point_123_production_brand_refresh_deploy_diagnosis_completed=true`
+- `production_brand_refresh_deploy_diagnosis_ready=true`
+- `code_change=false`
+- `diagnosis_only=true`
+- `main_contains_brand_refresh=true`
+- `logo_file_exists_in_main=true`
+- `local_main_brand_visible=true`
+- `local_main_logo_200=true`
+- `production_home_brand_visible=false`
+- `production_logo_200=false`
+- `production_old_nav_visible=true`
+- `production_public_data_visible=true`
+- `production_safety_verified=true`
+- `vercel_metadata_available=true`
+- `production_domain_current_commit=8d20c0e6d6088d9a1a525fd3b8f11de3dcf0ce83`
+- `ready_deployment_for_main_found=true`
+- `ready_deployment_assigned_to_domain=false`
+- `root_cause=production_alias_points_to_old_deployment`
+- `brand_refresh_production_closed=false`
+- `private_admin_publicly_exposed=false`
+- `substack_created=false`
+- `substack_url_status=not_created_or_not_confirmed`
+- `site_integration_done=false`
+- `publication_ready=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `p124_recommended=production_alias_assignment_to_brand_refresh_deployment`
+
+La diagnosi P123 è solo repository/local build/HTTP/Vercel metadata read-only. Nessun dato, visibility, schema/RLS, migration, rollback, provider/import o Apify è stato modificato.
+
 ## P122 — Post-production brand refresh verification
 
 P122 non modifica Supabase staging.

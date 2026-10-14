@@ -1,5 +1,46 @@
 # Production Readiness
 
+## Nota P123 — Production brand refresh deploy diagnosis
+
+P123 ha diagnosticato in sola lettura perché il brand refresh non risulta visibile sul dominio Production pur avendo route e dati pubblici funzionanti.
+
+Esito:
+
+- `point_123_production_brand_refresh_deploy_diagnosis_completed=true`
+- `production_brand_refresh_deploy_diagnosis_ready=true`
+- `code_change=false`
+- `diagnosis_only=true`
+- `main_contains_brand_refresh=true`
+- `logo_file_exists_in_main=true`
+- `local_main_brand_visible=true`
+- `local_main_logo_200=true`
+- `production_home_brand_visible=false`
+- `production_logo_200=false`
+- `production_old_nav_visible=true`
+- `production_public_data_visible=true`
+- `production_safety_verified=true`
+- `vercel_metadata_available=true`
+- `production_domain_current_commit=8d20c0e6d6088d9a1a525fd3b8f11de3dcf0ce83`
+- `ready_deployment_for_main_found=true`
+- `ready_deployment_assigned_to_domain=false`
+- `root_cause=production_alias_points_to_old_deployment`
+- `brand_refresh_production_closed=false`
+- `private_admin_publicly_exposed=false`
+- `substack_created=false`
+- `substack_url_status=not_created_or_not_confirmed`
+- `site_integration_done=false`
+- `publication_ready=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `p124_recommended=production_alias_assignment_to_brand_refresh_deployment`
+
+Diagnosi: `main` contiene brand refresh e logo, la build locale main è corretta, ma `regista-avanzato-rouge.vercel.app` serve ancora il deployment legato al commit `8d20c0e6d6088d9a1a525fd3b8f11de3dcf0ce83`. Esistono deployment READY per i commit main più recenti, ma non risultano assegnati al dominio Production.
+
+P123 non ha eseguito deploy, merge, assegnazioni dominio, DB write, provider/import, Apify o integrazione Substack.
+
+Prossimo step consigliato: P124 — Production alias assignment to brand refresh deployment, solo con autorizzazione esplicita separata.
+
 ## Nota P122 — Post-production brand refresh verification
 
 P122 ha eseguito una verifica post-produzione a freddo del brand refresh. Le route Production e i dati pubblici risultano disponibili, ma la chiusura completa del brand refresh in Production non è confermata perché sono stati rilevati marker del vecchio header/nav e il logo asset pubblico risponde 404.
