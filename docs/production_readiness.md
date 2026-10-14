@@ -1,5 +1,51 @@
 # Production Readiness
 
+## Nota P121 — Merge deploy brand refresh
+
+P121 ha eseguito il merge controllato `preview` → `main`, il push su `main` e la verifica Production del brand refresh con autorizzazione esplicita dell’utente.
+
+Esito:
+
+- `point_121_merge_deploy_brand_refresh_completed=true`
+- `merge_deploy_brand_refresh_ready=true`
+- `merge_executed=true`
+- `main_pushed=true`
+- `production_deployed=true`
+- `production_assignment_done=true`
+- `candidate_preview_commit=d9266d1b9ee9a62b3aa44e39445bdea94bf0ebbe`
+- `preview_head_at_merge=f14548d269b06d092c94255d98bbabc1cdf31d2f`
+- `main_before_merge=8d20c0e6d6088d9a1a525fd3b8f11de3dcf0ce83`
+- `main_after_merge=374ee02d846dc1604b8529d3fb5e3676fe2e1a84`
+- `pushed_main_commit=374ee02d846dc1604b8529d3fb5e3676fe2e1a84`
+- `production_commit_verified=unknown_metadata_unavailable`
+- `production_routes_verified=true`
+- `production_brand_visible=true`
+- `production_public_data_visible=true`
+- `private_admin_publicly_exposed=false`
+- `substack_created=false`
+- `substack_url_status=not_created_or_not_confirmed`
+- `site_integration_done=false`
+- `publication_ready=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `p122_recommended=post_production_brand_refresh_verification`
+
+Route Production verificate:
+
+- `/` → 200
+- `/manifesto` → 200
+- `/rubriche` → 200
+- `/competitions` → 200, dati visibili
+- `/competitions/manual-serie-a` → 200, dati visibili
+- `/chi-siamo` → 200
+- `/account` → 200
+- `/metodo` → 200
+
+Nessuna DB write, provider/import, Apify, Substack integration o pubblicazione social/newsletter è stata eseguita.
+
+Prossimo step consigliato: P122 — Post-production brand refresh verification.
+
 ## Nota P120 — Production release gate brand refresh
 
 P120 ha preparato il gate no-apply per portare in Production il brand refresh P116/P117/P119. Il gate non ha eseguito merge, deploy, Production touch, DB write, provider/import, Apify o Substack integration.
