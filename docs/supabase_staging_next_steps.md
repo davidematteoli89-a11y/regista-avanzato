@@ -1,5 +1,36 @@
 # Supabase staging next steps
 
+## P120 — Production release gate brand refresh
+
+P120 non modifica Supabase staging.
+
+Marker:
+
+- `point_120_production_release_gate_brand_refresh_completed=true`
+- `production_release_gate_brand_refresh_ready=true`
+- `release_candidate_ready=true`
+- `candidate_preview_commit=d9266d1b9ee9a62b3aa44e39445bdea94bf0ebbe`
+- `current_main_commit=8d20c0e6d6088d9a1a525fd3b8f11de3dcf0ce83`
+- `dry_run_full_public_path_passed=true`
+- `public_routes_verified=true`
+- `public_data_visible=true`
+- `brand_visual_verified=true`
+- `responsive_verified=true`
+- `private_admin_publicly_exposed=false`
+- `substack_created=false`
+- `substack_url_status=not_created_or_not_confirmed`
+- `site_integration_done=false`
+- `publication_ready=false`
+- `no_merge=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `p121_recommended=merge_preview_to_main_and_deploy_brand_refresh`
+
+La preparazione P120 è solo release gate documentale/no-apply. Nessun dato, visibility, schema/RLS, migration, rollback, provider/import o Apify è stato modificato.
+
 ## P119 — Legacy marker update
 
 P119 non modifica Supabase staging.
