@@ -1,5 +1,33 @@
 # C phase progress
 
+## P122 — Post-production brand refresh verification
+
+Stato: completato con issue.
+
+Conferme:
+
+- `point_122_post_production_brand_refresh_verification_completed=true`;
+- `post_production_brand_refresh_verification_ready=true`;
+- `production_routes_verified=true`;
+- `production_brand_visible=false`;
+- `production_public_data_visible=true`;
+- `production_safety_verified=true`;
+- `production_commit_verified=unknown_metadata_unavailable`;
+- `brand_refresh_production_closed=false`;
+- `private_admin_publicly_exposed=false`;
+- `substack_created=false`;
+- `substack_url_status=not_created_or_not_confirmed`;
+- `site_integration_done=false`;
+- `publication_ready=false`;
+- `db_write_additional=false`;
+- `provider_import_enabled=false`;
+- `apify_enabled=false`;
+- `p123_recommended=production_brand_refresh_deploy_diagnosis`.
+
+Risultato: route Production e dati pubblici OK; safety OK. Brand refresh Production non chiuso perché la home/nav mostrano ancora marker vecchi e il logo asset pubblico risponde 404.
+
+Prossimo step consigliato: P123 — Production brand refresh deploy diagnosis.
+
 ## P121 — Merge deploy brand refresh
 
 Stato: completato.

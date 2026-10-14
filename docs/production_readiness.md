@@ -1,5 +1,48 @@
 # Production Readiness
 
+## Nota P122 — Post-production brand refresh verification
+
+P122 ha eseguito una verifica post-produzione a freddo del brand refresh. Le route Production e i dati pubblici risultano disponibili, ma la chiusura completa del brand refresh in Production non è confermata perché sono stati rilevati marker del vecchio header/nav e il logo asset pubblico risponde 404.
+
+Esito:
+
+- `point_122_post_production_brand_refresh_verification_completed=true`
+- `post_production_brand_refresh_verification_ready=true`
+- `production_routes_verified=true`
+- `production_brand_visible=false`
+- `production_public_data_visible=true`
+- `production_safety_verified=true`
+- `production_commit_verified=unknown_metadata_unavailable`
+- `brand_refresh_production_closed=false`
+- `private_admin_publicly_exposed=false`
+- `substack_created=false`
+- `substack_url_status=not_created_or_not_confirmed`
+- `site_integration_done=false`
+- `publication_ready=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `p123_recommended=production_brand_refresh_deploy_diagnosis`
+
+Route Production verificate:
+
+- `/` → 200
+- `/manifesto` → 200
+- `/rubriche` → 200
+- `/competitions` → 200, dati visibili
+- `/competitions/manual-serie-a` → 200, dati visibili
+- `/chi-siamo` → 200
+- `/account` → 200
+- `/metodo` → 200
+
+Issue rilevati:
+
+- vecchi marker nav/header ancora visibili;
+- `/regista-avanzato-logo.png` → 404;
+- headline P116/P117 non rilevata in Production.
+
+Prossimo step consigliato: P123 — Production brand refresh deploy diagnosis.
+
 ## Nota P121 — Merge deploy brand refresh
 
 P121 ha eseguito il merge controllato `preview` → `main`, il push su `main` e la verifica Production del brand refresh con autorizzazione esplicita dell’utente.
