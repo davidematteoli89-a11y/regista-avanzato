@@ -1,5 +1,720 @@
 # Production Readiness
 
+## Nota P120 — Production release gate brand refresh
+
+P120 ha preparato il gate no-apply per portare in Production il brand refresh P116/P117/P119. Il gate non ha eseguito merge, deploy, Production touch, DB write, provider/import, Apify o Substack integration.
+
+Esito:
+
+- `point_120_production_release_gate_brand_refresh_completed=true`
+- `production_release_gate_brand_refresh_ready=true`
+- `release_candidate_ready=true`
+- `candidate_preview_commit=d9266d1b9ee9a62b3aa44e39445bdea94bf0ebbe`
+- `current_main_commit=8d20c0e6d6088d9a1a525fd3b8f11de3dcf0ce83`
+- `dry_run_full_public_path_passed=true`
+- `public_routes_verified=true`
+- `public_data_visible=true`
+- `brand_visual_verified=true`
+- `responsive_verified=true`
+- `private_admin_publicly_exposed=false`
+- `substack_created=false`
+- `substack_url_status=not_created_or_not_confirmed`
+- `site_integration_done=false`
+- `publication_ready=false`
+- `no_merge=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `p121_recommended=merge_preview_to_main_and_deploy_brand_refresh`
+
+P121 richiede autorizzazione esplicita separata per merge `preview` → `main`, push main, deploy/assegnazione Production e verifica post-deploy.
+
+Prossimo step consigliato: P121 — Merge preview to main and deploy brand refresh.
+
+## Nota P119 — Legacy marker update
+
+P119 ha aggiornato solo il dry-run `full-public-path-verification` per riconoscere il nuovo markup home introdotto dal brand refresh P116/P117. Non sono state modificate UI pubbliche, logica dati, route, Production o configurazioni di deploy.
+
+Esito:
+
+- `point_119_legacy_marker_update_completed=true`
+- `legacy_marker_update_ready=true`
+- `code_change=true`
+- `ui_code_change=false`
+- `dry_run_full_public_path_passed=true`
+- `legacy_marker_false_negative=false`
+- `public_routes_verified=true`
+- `public_data_visible=true`
+- `private_admin_publicly_exposed=false`
+- `substack_created=false`
+- `substack_url_status=not_created_or_not_confirmed`
+- `site_integration_done=false`
+- `publication_ready=false`
+- `no_merge=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `p120_recommended=production_release_gate_for_brand_refresh`
+
+`dry-run:full-public-path-verification` ora passa con:
+
+- `home_state=verification_passed`;
+- `competitions_page_state=data_visible`;
+- `competition_detail_state=data_visible`;
+- `private_admin_publicly_exposed=false`;
+- `dry_run_pass=true`.
+
+Prossimo step consigliato: P120 — Production release gate for brand refresh.
+
+## Nota P118 — Preview brand verification
+
+P118 ha verificato localmente su branch `preview` il brand refresh pubblico dopo P116/P117, senza modifiche UI, deploy, merge, Production touch, DB write, provider/import, Apify o integrazione Substack.
+
+Esito:
+
+- `point_118_preview_brand_verification_completed=true`
+- `preview_brand_verification_ready=true`
+- `code_change=false`
+- `public_routes_verified=true`
+- `public_data_visible=true`
+- `responsive_verified=true`
+- `brand_visual_verified=true`
+- `green_leftovers_removed=true`
+- `legacy_marker_false_negative=true`
+- `substack_created=false`
+- `substack_url_status=not_created_or_not_confirmed`
+- `site_integration_done=false`
+- `publication_ready=false`
+- `no_merge=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `p119_recommended=legacy_marker_update_or_brand_refresh_iteration`
+
+Route pubbliche verificate localmente:
+
+- `/` → 200
+- `/manifesto` → 200
+- `/rubriche` → 200
+- `/competitions` → 200, dati pubblici visibili
+- `/competitions/manual-serie-a` → 200, dati pubblici visibili
+- `/chi-siamo` → 200
+- `/account` → 200
+- `/metodo` → 200
+
+Nota: il dry-run legacy `full-public-path-verification` resta `dry_run_pass=false` con `home_state=markup_unexpected` perché il marker home non è aggiornato al markup P116/P117. Le route reali sono state verificate e funzionano.
+
+Prossimo step consigliato: P119 — Legacy marker update oppure brand refresh iteration.
+
+## Nota P117 — Brand refresh green cleanup
+
+P117 ha rimosso i residui verdi della vecchia identità visiva nello scope pubblico, con focus sulle sezioni segnalate: Chi siamo, Account e Metodo. Il sito resta allineato alla palette logo blu/indaco/viola.
+
+Esito:
+
+- `point_117_brand_refresh_green_cleanup_completed=true`
+- `brand_green_cleanup_ready=true`
+- `code_change=true`
+- `green_leftovers_removed=true`
+- `chi_siamo_green_fixed=true`
+- `account_green_fixed=true`
+- `metodo_green_fixed=true`
+- `public_routes_verified=true`
+- `public_data_visible=true`
+- `legacy_marker_false_negative=true`
+- `substack_created=false`
+- `substack_url_status=not_created_or_not_confirmed`
+- `site_integration_done=false`
+- `publication_ready=false`
+- `no_merge=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `p118_recommended=preview_brand_verification_or_legacy_marker_update`
+
+Nessun deploy, merge, Production touch, DB write, provider/import, Apify o integrazione Substack è stato eseguito in P117.
+
+Prossimo step consigliato: P118 — Preview brand verification oppure Legacy marker update.
+
+## Nota P116 — Site brand refresh with logo palette
+
+P116 ha aggiornato il sito pubblico di Regista Avanzato con la nuova palette blu/indaco/viola del logo e una direzione visiva Football Manager / dashboard calcistica premium. Sono state aggiornate homepage, navbar, footer, Manifesto, Rubriche e pagine Competitions mantenendo invariata la logica dati.
+
+Esito:
+
+- `point_116_site_brand_refresh_completed=true`
+- `site_brand_refresh_ready=true`
+- `code_change=true`
+- `brand_palette_applied=true`
+- `football_manager_style_applied=true`
+- `homepage_refreshed=true`
+- `manifesto_refreshed=true`
+- `rubriche_refreshed=true`
+- `competitions_refreshed=true`
+- `navbar_footer_refreshed=true`
+- `logo_asset_used=true`
+- `logo_asset_pending=false`
+- `public_routes_verified=true`
+- `public_data_visible=true`
+- `substack_created=false`
+- `substack_url_status=not_created_or_not_confirmed`
+- `substack_url_real=`
+- `site_integration_done=false`
+- `publication_ready=false`
+- `no_merge=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `p117_recommended=preview_brand_verification_or_brand_refresh_iteration`
+
+Nessun deploy, merge, Production touch, DB write, provider/import, Apify o integrazione Substack è stato eseguito in P116.
+
+Prossimo step consigliato: P117 — Preview brand verification oppure brand refresh iteration.
+
+## Nota P115 — Manual asset creation with links
+
+P115 ha registrato il primo asset Canva reale del progetto: `A01 — Carosello Manifesto`. Sono stati registrati link editabile, link view e design ID. L’asset resta `needs_revision` perché il page count rilevato è 8 invece delle 7 slide previste e non sono stati forniti export.
+
+Esito:
+
+- `point_115_manual_asset_creation_with_links_completed=true`
+- `manual_asset_creation_with_links_ready=true`
+- `assets_generated=partial_manual`
+- `asset_execution_status=partial`
+- `canva_links_available=true`
+- `exports_available=false`
+- `priority_1_assets_ready=partial`
+- `a01_manifesto_carousel_status=needs_revision`
+- `a01_manifesto_carousel_canva_edit_url=https://www.canva.com/d/KvnesiOIH2alDX9`
+- `a01_manifesto_carousel_canva_view_url=https://www.canva.com/d/IVvWQK-TL5-LcYI`
+- `publication_ready=false`
+- `substack_created=false`
+- `substack_url_status=not_created_or_not_confirmed`
+- `substack_url_real=`
+- `substack_auto_published=false`
+- `social_auto_published=false`
+- `newsletter_sent=false`
+- `site_integration_done=false`
+- `p116_recommended=site_brand_refresh_with_logo_palette`
+- `no_code_change=true`
+- `no_merge=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+
+Nessuna pubblicazione, Substack, integrazione sito, modifica codice, merge, deploy, DB write, provider/import o Apify è stata eseguita in P115.
+
+Prossimo step consigliato: P116 — Site brand refresh with logo palette.
+
+## Nota P114 — Substack creation with real URL
+
+P114 ha preparato il tracking per la creazione manuale reale della pubblicazione Substack di Regista Avanzato, includendo flow creazione, identità publication, policy slug, verifica About, verifica welcome email, impostazioni, verifica URL pubblico, status decision policy e stop conditions.
+
+Nessun URL reale/verificato è stato fornito in P114, quindi lo stato resta non creato/non confermato.
+
+Esito:
+
+- `point_114_substack_creation_with_real_url_completed=true`
+- `substack_creation_with_real_url_ready=true`
+- `substack_created=false`
+- `substack_url_status=not_created_or_not_confirmed`
+- `substack_url_real=`
+- `substack_url_verified=false`
+- `substack_auto_published=false`
+- `social_auto_published=false`
+- `newsletter_sent=false`
+- `site_integration_done=false`
+- `assets_generated=false`
+- `priority_1_assets_ready=false`
+- `publication_ready=false`
+- `p115_recommended=substack_creation_with_real_url_or_manual_asset_creation_with_links`
+- `no_code_change=true`
+- `no_merge=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+
+Nessuna creazione automatica Substack, pubblicazione, invio newsletter, social publish, integrazione sito, modifica codice, merge, deploy, DB write, provider/import o Apify è stata eseguita in P114.
+
+Prossimo step consigliato: P115 — Substack creation with real URL oppure Manual asset creation with links.
+
+## Nota P113 — Manual asset creation execution
+
+P113 ha preparato l’esecuzione manuale degli asset Canva/Figma per Regista Avanzato, con priorità, workflow, tabella asset A01-A18, checklist qualità, checklist diritti e publication readiness. Non sono stati forniti link Canva/Figma o export reali, quindi nessun asset è stato dichiarato generato.
+
+Esito:
+
+- `point_113_manual_asset_creation_execution_completed=true`
+- `manual_asset_creation_execution_ready=true`
+- `assets_generated=false`
+- `asset_execution_status=prepared_no_assets`
+- `canva_links_available=false`
+- `exports_available=false`
+- `priority_1_assets_ready=false`
+- `publication_ready=false`
+- `substack_created=false`
+- `substack_url_status=not_created_or_not_confirmed`
+- `substack_url_real=`
+- `social_auto_published=false`
+- `substack_auto_published=false`
+- `p114_recommended=manual_asset_creation_with_links_or_substack_creation_with_real_url`
+- `no_code_change=true`
+- `no_merge=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+
+Nessun asset reale, URL Substack, pubblicazione, integrazione sito, modifica codice, merge, deploy, DB write, provider/import o Apify è stato eseguito in P113.
+
+Prossimo step consigliato: P114 — manual asset creation with real links oppure Substack creation with real URL.
+
+## Nota P112 — Canva manual asset creation report
+
+P112 ha preparato il report per tracciare la creazione manuale degli asset Canva/Figma di Regista Avanzato, senza generare asset automaticamente, senza pubblicazione, senza Substack, senza URL Substack inventati, senza integrazione sito, senza modifiche codice, merge, deploy, DB write, provider/import o Apify.
+
+Esito:
+
+- `point_112_canva_manual_asset_creation_report_completed=true`
+- `canva_manual_asset_creation_report_ready=true`
+- `assets_generated=false`
+- `asset_report_status=prepared_empty`
+- `canva_links_available=false`
+- `exports_available=false`
+- `publication_ready=false`
+- `substack_created=false`
+- `substack_url_status=not_created_or_not_confirmed`
+- `substack_url_real=`
+- `social_auto_published=false`
+- `substack_auto_published=false`
+- `p113_recommended=manual_asset_creation_or_substack_creation_with_real_url`
+- `no_code_change=true`
+- `no_merge=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+
+Nessun link Canva/Figma o file export reale è stato fornito in P112. Publication readiness resta false.
+
+Prossimo step consigliato: P113 — Manual asset creation execution oppure Substack creation with real URL.
+
+## Nota P111 — Substack creation manual execution
+
+P111 ha preparato il documento operativo per creare manualmente la pubblicazione Substack di Regista Avanzato e tracciarne URL, slug, impostazioni, About page, welcome email e verifica pubblica, senza creazione automatica, senza pubblicazione, senza invio newsletter, senza integrazione sito, senza modifiche codice, merge, deploy, DB write, provider/import o Apify.
+
+Esito:
+
+- `point_111_substack_creation_manual_execution_completed=true`
+- `substack_creation_manual_execution_ready=true`
+- `substack_created=false`
+- `substack_url_status=not_created_or_not_confirmed`
+- `substack_url_real=`
+- `substack_auto_published=false`
+- `social_auto_published=false`
+- `assets_generated=false`
+- `p112_recommended=substack_url_integration_gate_after_real_url_or_canva_manual_asset_creation_report`
+- `no_code_change=true`
+- `no_merge=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+
+URL reale Substack non fornito o verificato in P111. Nessuna integrazione sito è stata effettuata.
+
+Prossimo step consigliato: P112 — Substack URL integration gate dopo URL reale verificato, oppure Canva manual asset creation report.
+
+## Nota P110 — Canva asset generation manual execution
+
+P110 ha preparato il documento operativo per eseguire manualmente la creazione degli asset grafici di Regista Avanzato in Canva/Figma, senza generare asset automaticamente, senza creare file Canva/Figma tramite API, senza pubblicazione, senza Substack, senza URL Substack inventati, senza modifiche codice, merge, deploy, DB write, provider/import o Apify.
+
+Esito:
+
+- `point_110_canva_asset_generation_manual_execution_completed=true`
+- `canva_asset_generation_manual_execution_ready=true`
+- `assets_generated=false`
+- `substack_created=false`
+- `substack_url_status=not_created_or_not_confirmed`
+- `social_auto_published=false`
+- `substack_auto_published=false`
+- `p111_recommended=canva_manual_asset_creation_or_substack_creation_manual_execution`
+- `no_code_change=true`
+- `no_merge=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+
+Sono stati definiti piano priorità asset, tabella tracking, workflow manuale, struttura cartelle, naming, checklist qualità, guida uso prompt, policy stato asset e stop conditions.
+
+Prossimo step consigliato: P111 — Canva manual asset creation report oppure Substack creation manual execution.
+
+## Nota P109 — Canva asset generation prompt pack
+
+P109 ha preparato il prompt/brief pack per produrre manualmente asset grafici di Regista Avanzato in Canva/Figma, senza generare asset, senza creare file Canva/Figma, senza pubblicazione, senza URL Substack inventati, senza modifiche codice, merge, deploy, DB write, provider/import o Apify.
+
+Esito:
+
+- `point_109_canva_asset_generation_prompt_pack_completed=true`
+- `canva_asset_generation_prompt_pack_ready=true`
+- `assets_generated=false`
+- `substack_created=false`
+- `substack_url_status=not_created_or_not_confirmed`
+- `social_auto_published=false`
+- `substack_auto_published=false`
+- `p110_recommended=canva_asset_generation_or_substack_creation_manual_execution`
+- `no_code_change=true`
+- `no_merge=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+
+Sono stati definiti brief visuale, palette/font direction, prompt Manifesto/Rubriche, primo articolo, stories, reel cover, template rubriche future, export, naming e checklist revisione asset.
+
+Prossimo step consigliato: P110 — Canva asset generation manual execution oppure Substack creation manual execution.
+
+## Nota P108 — Substack creation manual checklist
+
+P108 ha preparato la checklist manuale per creare la pubblicazione Substack di Regista Avanzato, senza creazione automatica, senza pubblicazione, senza invio email, senza URL Substack inventati, senza modifiche codice, merge, deploy, DB write, provider/import o Apify.
+
+Esito:
+
+- `point_108_substack_creation_manual_checklist_completed=true`
+- `substack_creation_manual_checklist_ready=true`
+- `substack_created=false`
+- `substack_url_status=not_created_or_not_confirmed`
+- `substack_auto_published=false`
+- `social_auto_published=false`
+- `assets_generated=false`
+- `p109_recommended=substack_url_integration_gate_after_real_url`
+- `no_code_change=true`
+- `no_merge=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+
+Sono stati definiti identità pubblicazione, descrizioni, opzioni slug, policy URL reale, About page, welcome email, impostazioni consigliate, checklist caricamento newsletter zero, stop conditions e processo P109 dopo disponibilità dell’URL reale.
+
+Prossimo step consigliato: P109 — Substack URL integration gate dopo disponibilità dell’URL reale.
+
+## Nota P107 — Editorial inspirations and writer guidelines
+
+P107 ha creato il manuale editoriale ufficiale di Regista Avanzato, con mappa delle ispirazioni, regole anti-imitazione, identità, tono di voce, voci interne, policy fonti/dati/video, anti-hype, anti-betting, strutture contenuto, checklist di consegna e regole AI-assisted writing.
+
+Esito:
+
+- `point_107_editorial_inspirations_writer_guidelines_completed=true`
+- `editorial_inspirations_map_ready=true`
+- `writer_guidelines_ready=true`
+- `editorial_manual_ready=true`
+- `assets_generated=false`
+- `social_auto_published=false`
+- `substack_auto_published=false`
+- `substack_url_status=not_created_or_not_confirmed`
+- `p108_recommended=canva_asset_generation_prompt_pack_or_substack_creation_manual_checklist`
+- `no_code_change=true`
+- `no_merge=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+
+Il manuale consente ispirazione astratta da riferimenti editoriali, ma vieta imitazione diretta di persone pubbliche viventi, formule riconoscibili, fonti inventate, dati inventati, contenuti betting e asset/video non autorizzati.
+
+Prossimo step consigliato: P108 — Canva asset generation prompt pack oppure Substack creation manual checklist.
+
+## Nota P106 — First publication manual checklist
+
+P106 ha preparato la checklist manuale per la prima pubblicazione editoriale di Regista Avanzato, senza pubblicare contenuti, senza generare asset, senza URL Substack inventati, senza modifiche codice, merge, deploy, DB write, provider/import o Apify.
+
+Esito:
+
+- `point_106_first_publication_manual_checklist_completed=true`
+- `first_publication_manual_checklist_ready=true`
+- `assets_generated=false`
+- `social_auto_published=false`
+- `substack_auto_published=false`
+- `substack_url_status=not_created_or_not_confirmed`
+- `p107_recommended=substack_url_or_canva_asset_generation_gate`
+- `no_code_change=true`
+- `no_merge=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+
+Sono stati definiti strategia di pubblicazione, checklist pre-pubblicazione, checklist Substack, checklist social, scenari operativi e monitoraggio post-pubblicazione.
+
+Prossimo step consigliato: P107 — Canva asset generation prompt pack oppure Substack URL integration gate, in base alla disponibilità dell’URL reale.
+
+## Nota P105 — Social asset production checklist
+
+P105 ha preparato la checklist operativa per la produzione degli asset social/editoriali di Regista Avanzato, senza generare asset, senza pubblicazioni, senza URL Substack inventati, senza modifiche codice, merge, deploy, DB write, provider/import o Apify.
+
+Esito:
+
+- `point_105_social_asset_production_checklist_completed=true`
+- `social_asset_production_checklist_ready=true`
+- `assets_generated=false`
+- `social_auto_published=false`
+- `substack_auto_published=false`
+- `substack_url_status=not_created_or_not_confirmed`
+- `p106_recommended=first_publication_manual_checklist`
+- `no_code_change=true`
+- `no_merge=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+
+Sono state definite specifiche per caroselli Manifesto/Rubriche, asset primo articolo, stories, reel, checklist Canva/Figma, naming file, export e note diritti.
+
+Prossimo step consigliato: P106 — First publication manual checklist.
+
+## Nota P104 — First article/newsletter production pack
+
+P104 ha preparato il primo production pack editoriale di Regista Avanzato, senza pubblicazione automatica social/Substack, senza URL Substack inventati, senza modifiche codice, merge, deploy, DB write, provider/import o Apify.
+
+Esito:
+
+- `point_104_first_article_newsletter_production_pack_completed=true`
+- `first_article_newsletter_pack_ready=true`
+- `substack_url_status=not_created_or_not_confirmed`
+- `social_auto_published=false`
+- `substack_auto_published=false`
+- `p105_recommended=social_asset_production_checklist`
+- `no_code_change=true`
+- `no_merge=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+
+Sono stati preparati articolo lungo, versione newsletter, copy social, script reel, stories, asset brief e checklist pre-pubblicazione per il tema “Dove guardare quando tutti guardano altrove”.
+
+Prossimo step consigliato: P105 — Social asset production checklist.
+
+## Nota P103 — Editorial calendar first 14 days
+
+P103 ha preparato il calendario editoriale operativo dei primi 14 giorni di Regista Avanzato, senza pubblicazione automatica social/Substack, senza URL Substack inventati, senza modifiche codice, merge, deploy, DB write, provider/import o Apify.
+
+Esito:
+
+- `point_103_editorial_calendar_first_14_days_completed=true`
+- `editorial_calendar_first_14_days_ready=true`
+- `substack_url_status=not_created_or_not_confirmed`
+- `social_auto_published=false`
+- `substack_auto_published=false`
+- `p104_recommended=first_article_newsletter_production_pack`
+- `no_code_change=true`
+- `no_merge=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+
+Sono stati preparati strategia 14 giorni, calendario giorno per giorno, sei bozze operative prioritarie, template rubriche e policy CTA/link.
+
+Prossimo step consigliato: P104 — First article/newsletter production pack.
+
+## Nota P102 — Social/reel launch pack
+
+P102 ha preparato il social/reel launch pack di Regista Avanzato, senza pubblicazione automatica sui social o su Substack, senza URL Substack inventati, senza modifiche codice, merge, deploy, DB write, provider/import o Apify.
+
+Esito:
+
+- `point_102_social_reel_launch_pack_completed=true`
+- `social_reel_launch_pack_ready=true`
+- `substack_url_status=not_created_or_not_confirmed`
+- `social_auto_published=false`
+- `substack_auto_published=false`
+- `p103_recommended=editorial_calendar_first_14_days`
+- `no_code_change=true`
+- `no_merge=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+
+Sono stati preparati copy di lancio, reel, caroselli Manifesto/Rubriche, stories, bio, hashtag e piano social di 7 giorni.
+
+Prossimo step consigliato: P103 — Editorial calendar first 14 days.
+
+## Nota P101 — Substack manual launch checklist
+
+P101 ha preparato la checklist manuale per il lancio Substack di Regista Avanzato, senza pubblicazione automatica, modifiche codice, merge, deploy, DB write, provider/import o Apify.
+
+Esito:
+
+- `point_101_substack_manual_launch_checklist_completed=true`
+- `substack_manual_launch_ready=true`
+- `substack_auto_published=false`
+- `substack_url_status=not_created_or_not_confirmed`
+- `p102_recommended=social_reel_launch_pack`
+- `no_code_change=true`
+- `no_merge=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+
+Sono stati preparati posizionamento, setup checklist, About page, welcome email, newsletter zero, piano primi tre invii e checklist pre/post pubblicazione.
+
+Prossimo step consigliato: P102 — Social/reel launch pack.
+
+## Nota P100 — Post-production editorial pages verification
+
+P100 ha completato la verifica post-production delle pagine editoriali e dello stato pubblico del sito, senza modifiche codice, merge, deploy, DB write, provider/import, Apify, rollback o modifiche Vercel.
+
+Esito:
+
+- `point_100_post_production_editorial_pages_verification_completed=true`
+- `production_editorial_pages_stable=true`
+- `production_editorial_pages_released=true`
+- `production_deploy_verified=true`
+- `editorial_pages_visible=true`
+- `public_data_visible=true`
+- `p101_recommended=substack_manual_launch_checklist`
+- `no_code_change=true`
+- `no_merge=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `vercel_config_changed=false`
+- `vercel_env_changed=false`
+- `vercel_root_directory_changed=false`
+- `substack_auto_published=false`
+- `rollback_executed=false`
+
+Production verificata:
+
+- `/` → HTTP 200;
+- `/manifesto` → HTTP 200;
+- `/rubriche` → HTTP 200;
+- `/competitions` → HTTP 200, dati pubblici visibili;
+- `/competitions/manual-serie-a` → HTTP 200, dati pubblici visibili.
+
+Prossimo step consigliato: P101 — Substack manual launch checklist.
+
+## Nota P99-D — Vercel Production promote/assign
+
+P99-D ha assegnato il deployment Vercel READY autorizzato al dominio Production `regista-avanzato-rouge.vercel.app`.
+
+Esito:
+
+- `point_99d_vercel_production_promote_completed=true`
+- `production_editorial_pages_released=true`
+- `p99_recovered_after_alias_promote=true`
+- `production_deploy_verified=true`
+- `target_deployment_assigned_to_domain=true`
+- `editorial_pages_visible=true`
+- `public_data_visible=true`
+- `p100_recommended=post_production_editorial_pages_verification`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `vercel_config_changed=false`
+- `vercel_env_changed=false`
+- `vercel_root_directory_changed=false`
+- `substack_auto_published=false`
+- `rollback_executed=false`
+
+Production verificata:
+
+- `/` → HTTP 200;
+- `/manifesto` → HTTP 200;
+- `/rubriche` → HTTP 200;
+- `/competitions` → HTTP 200, dati pubblici visibili;
+- `/competitions/manual-serie-a` → HTTP 200, dati pubblici visibili.
+
+Prossimo step consigliato: P100 — Post-production editorial pages verification.
+
+## Nota P99-C — Vercel Production deployment/alias check
+
+P99-C ha completato il controllo read-only Vercel deployment/alias.
+
+Esito:
+
+- `point_99c_vercel_production_alias_check_completed=true`
+- `p99_still_incomplete=true`
+- `production_editorial_pages_released=false`
+- `diagnosis_category=A_deployment_8d20c0e_exists_ready_but_domain_not_assigned`
+- `p99d_recommended=manual_promote_or_assign_domain_gate`
+- `no_deploy=true`
+- `no_promote=true`
+- `no_alias_assignment=true`
+- `no_merge=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `rollback_executed=false`
+- `vercel_config_changed=false`
+- `vercel_env_changed=false`
+- `vercel_root_directory_changed=false`
+
+Evidenza principale: il deployment Vercel per `main` commit `8d20c0e6d6088d9a1a525fd3b8f11de3dcf0ce83` esiste ed è `READY`, ma il dominio `regista-avanzato-rouge.vercel.app` resta assegnato al deployment precedente `ab5067ca2f40c434d13ada87a71be0024069e8bd`.
+
+Prossimo step consigliato: P99-D — manual promote/assign Production domain gate, solo con autorizzazione esplicita.
+
+## Nota P99-B — Production editorial pages deploy diagnosis
+
+P99-B ha diagnosticato la stop condition di P99: `main` è stato pushato correttamente, ma Production non serve ancora le nuove route editoriali.
+
+Esito:
+
+- `point_99b_production_deploy_diagnosis_completed=true`
+- `p99_still_incomplete=true`
+- `production_editorial_pages_released=false`
+- `diagnosis_category=8_cause_not_determined_deployment_or_alias_not_serving_main_commit`
+- `p99c_recommended=true`
+- `no_merge=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `rollback_executed=false`
+- `vercel_config_changed=false`
+- `vercel_env_changed=false`
+- `vercel_root_directory_changed=false`
+
+Evidenza principale: `origin/main=8d20c0e6d6088d9a1a525fd3b8f11de3dcf0ce83` contiene e serve localmente `/manifesto` e `/rubriche`, mentre Production restituisce ancora HTTP 404 cached per entrambe.
+
+Prossimo step consigliato: P99-C — verifica manuale/read-only dello stato deployment Vercel/alias Production prima di qualunque promote, redeploy o rollback.
+
 ## Nota P98 — Production editorial pages release gate
 
 P98 ha preparato il gate no-apply per il rilascio Production delle pagine editoriali pubbliche, senza merge main, deploy Production, DB write, provider/import, Apify o pubblicazione automatica Substack.

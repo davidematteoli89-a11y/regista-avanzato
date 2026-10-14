@@ -43,8 +43,8 @@ type RouteResult = {
 const ROUTES: RouteCheck[] = [
   {
     path: "/",
-    requiredVisibleText: ["Regista Avanzato", "Esplora le competizioni"],
-    requiredHref: ["/competitions"],
+    requiredVisibleText: ["Regista Avanzato", "Il calcio raccontato meglio", "No betting"],
+    requiredHref: ["/manifesto", "/rubriche", "/competitions"],
     forbiddenVisibleText: ["private_admin", "Manual Team One", "Manual Team Two"],
   },
   {

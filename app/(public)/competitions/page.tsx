@@ -9,8 +9,8 @@ export default async function PublicCompetitionsPage() {
   const competitions = await getPublicCompetitions();
 
   return (
-    <main className="stack" aria-labelledby="public-competitions-title">
-      <header>
+    <main className="stack brand-page" aria-labelledby="public-competitions-title">
+      <header className="brand-page-hero">
         <Link href="/">Home</Link>
         <span className="eyebrow">Osservatorio Regista Avanzato</span>
         <h1 id="public-competitions-title">Campionati nel radar</h1>
@@ -22,7 +22,7 @@ export default async function PublicCompetitionsPage() {
         </p>
       </header>
 
-      <section className="preview-block" aria-labelledby="public-data-note-title">
+      <section className="preview-block dashboard-panel" aria-labelledby="public-data-note-title">
         <PublicDataBadge>Public data only</PublicDataBadge>
         <h2 id="public-data-note-title">Competizioni disponibili: {competitions.items.length}</h2>
         <p>

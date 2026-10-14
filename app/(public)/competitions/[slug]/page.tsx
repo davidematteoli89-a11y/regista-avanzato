@@ -15,8 +15,8 @@ export default async function PublicCompetitionDetailPage({ params }: PageProps)
 
   if (!bundle.competition) {
     return (
-      <main className="stack" aria-labelledby="public-competition-empty-title">
-        <header>
+      <main className="stack brand-page" aria-labelledby="public-competition-empty-title">
+        <header className="brand-page-hero">
           <span className="eyebrow">Campionati nel radar</span>
           <h1 id="public-competition-empty-title">Competizione non ancora disponibile</h1>
           <p>
@@ -77,8 +77,8 @@ export default async function PublicCompetitionDetailPage({ params }: PageProps)
   }
 
   return (
-    <main className="stack" aria-labelledby="public-competition-title">
-      <header>
+    <main className="stack brand-page" aria-labelledby="public-competition-title">
+      <header className="brand-page-hero">
         <Link href="/competitions">← Torna alle competizioni</Link>
         <span className="eyebrow">Scheda competizione</span>
         <h1 id="public-competition-title">{bundle.competition.name}</h1>

@@ -1,5 +1,641 @@
 # Supabase staging next steps
 
+## P120 — Production release gate brand refresh
+
+P120 non modifica Supabase staging.
+
+Marker:
+
+- `point_120_production_release_gate_brand_refresh_completed=true`
+- `production_release_gate_brand_refresh_ready=true`
+- `release_candidate_ready=true`
+- `candidate_preview_commit=d9266d1b9ee9a62b3aa44e39445bdea94bf0ebbe`
+- `current_main_commit=8d20c0e6d6088d9a1a525fd3b8f11de3dcf0ce83`
+- `dry_run_full_public_path_passed=true`
+- `public_routes_verified=true`
+- `public_data_visible=true`
+- `brand_visual_verified=true`
+- `responsive_verified=true`
+- `private_admin_publicly_exposed=false`
+- `substack_created=false`
+- `substack_url_status=not_created_or_not_confirmed`
+- `site_integration_done=false`
+- `publication_ready=false`
+- `no_merge=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `p121_recommended=merge_preview_to_main_and_deploy_brand_refresh`
+
+La preparazione P120 è solo release gate documentale/no-apply. Nessun dato, visibility, schema/RLS, migration, rollback, provider/import o Apify è stato modificato.
+
+## P119 — Legacy marker update
+
+P119 non modifica Supabase staging.
+
+Marker:
+
+- `point_119_legacy_marker_update_completed=true`
+- `legacy_marker_update_ready=true`
+- `code_change=true`
+- `ui_code_change=false`
+- `dry_run_full_public_path_passed=true`
+- `legacy_marker_false_negative=false`
+- `public_routes_verified=true`
+- `public_data_visible=true`
+- `private_admin_publicly_exposed=false`
+- `substack_created=false`
+- `substack_url_status=not_created_or_not_confirmed`
+- `site_integration_done=false`
+- `publication_ready=false`
+- `no_merge=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `p120_recommended=production_release_gate_for_brand_refresh`
+
+La modifica P119 è solo su script dry-run e documentazione. Nessun dato, visibility, schema/RLS, migration, rollback, provider/import o Apify è stato modificato.
+
+## P118 — Preview brand verification
+
+P118 non modifica Supabase staging.
+
+Marker:
+
+- `point_118_preview_brand_verification_completed=true`
+- `preview_brand_verification_ready=true`
+- `code_change=false`
+- `public_routes_verified=true`
+- `public_data_visible=true`
+- `responsive_verified=true`
+- `brand_visual_verified=true`
+- `green_leftovers_removed=true`
+- `legacy_marker_false_negative=true`
+- `substack_created=false`
+- `substack_url_status=not_created_or_not_confirmed`
+- `site_integration_done=false`
+- `publication_ready=false`
+- `no_merge=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `p119_recommended=legacy_marker_update_or_brand_refresh_iteration`
+
+La verifica P118 è solo preview/local brand verification. Nessun dato, visibility, schema/RLS, migration, rollback, provider/import o Apify è stato modificato.
+
+## P117 — Brand refresh green cleanup
+
+P117 non modifica Supabase staging.
+
+Marker:
+
+- `point_117_brand_refresh_green_cleanup_completed=true`
+- `brand_green_cleanup_ready=true`
+- `code_change=true`
+- `green_leftovers_removed=true`
+- `chi_siamo_green_fixed=true`
+- `account_green_fixed=true`
+- `metodo_green_fixed=true`
+- `public_routes_verified=true`
+- `public_data_visible=true`
+- `legacy_marker_false_negative=true`
+- `substack_created=false`
+- `substack_url_status=not_created_or_not_confirmed`
+- `site_integration_done=false`
+- `publication_ready=false`
+- `no_merge=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `p118_recommended=preview_brand_verification_or_legacy_marker_update`
+
+La preparazione P117 è solo cleanup UI pubblico. Nessun dato, visibility, schema/RLS, migration, rollback, provider/import o Apify è stato modificato.
+
+## P116 — Site brand refresh with logo palette
+
+P116 non modifica Supabase staging.
+
+Marker:
+
+- `point_116_site_brand_refresh_completed=true`
+- `site_brand_refresh_ready=true`
+- `code_change=true`
+- `brand_palette_applied=true`
+- `football_manager_style_applied=true`
+- `homepage_refreshed=true`
+- `manifesto_refreshed=true`
+- `rubriche_refreshed=true`
+- `competitions_refreshed=true`
+- `navbar_footer_refreshed=true`
+- `logo_asset_used=true`
+- `logo_asset_pending=false`
+- `public_routes_verified=true`
+- `public_data_visible=true`
+- `substack_created=false`
+- `substack_url_status=not_created_or_not_confirmed`
+- `substack_url_real=`
+- `site_integration_done=false`
+- `publication_ready=false`
+- `no_merge=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `p117_recommended=preview_brand_verification_or_brand_refresh_iteration`
+
+La preparazione P116 è solo UI/code refresh pubblico. Nessun dato, visibility, schema/RLS, migration, rollback, provider/import o Apify è stato modificato.
+
+## P115 — Manual asset creation with links
+
+P115 non modifica Supabase staging.
+
+Marker:
+
+- `point_115_manual_asset_creation_with_links_completed=true`
+- `manual_asset_creation_with_links_ready=true`
+- `assets_generated=partial_manual`
+- `asset_execution_status=partial`
+- `canva_links_available=true`
+- `exports_available=false`
+- `priority_1_assets_ready=partial`
+- `a01_manifesto_carousel_status=needs_revision`
+- `a01_manifesto_carousel_canva_edit_url=https://www.canva.com/d/KvnesiOIH2alDX9`
+- `a01_manifesto_carousel_canva_view_url=https://www.canva.com/d/IVvWQK-TL5-LcYI`
+- `publication_ready=false`
+- `substack_created=false`
+- `substack_url_status=not_created_or_not_confirmed`
+- `substack_url_real=`
+- `substack_auto_published=false`
+- `social_auto_published=false`
+- `newsletter_sent=false`
+- `site_integration_done=false`
+- `p116_recommended=site_brand_refresh_with_logo_palette`
+- `no_code_change=true`
+- `no_merge=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+
+La preparazione P115 è solo editoriale/manuale per asset Canva. Nessun dato, visibility, schema/RLS, migration, rollback, provider/import o Apify è stato modificato.
+
+## P114 — Substack creation with real URL
+
+P114 non modifica Supabase staging.
+
+Marker:
+
+- `point_114_substack_creation_with_real_url_completed=true`
+- `substack_creation_with_real_url_ready=true`
+- `substack_created=false`
+- `substack_url_status=not_created_or_not_confirmed`
+- `substack_url_real=`
+- `substack_url_verified=false`
+- `substack_auto_published=false`
+- `social_auto_published=false`
+- `newsletter_sent=false`
+- `site_integration_done=false`
+- `assets_generated=false`
+- `priority_1_assets_ready=false`
+- `publication_ready=false`
+- `p115_recommended=substack_creation_with_real_url_or_manual_asset_creation_with_links`
+- `no_code_change=true`
+- `no_merge=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+
+La preparazione P114 è solo editoriale/manuale per Substack. Nessun dato, visibility, schema/RLS, migration, rollback, provider/import o Apify è stato modificato.
+
+## P113 — Manual asset creation execution
+
+P113 non modifica Supabase staging.
+
+Marker:
+
+- `point_113_manual_asset_creation_execution_completed=true`
+- `manual_asset_creation_execution_ready=true`
+- `assets_generated=false`
+- `asset_execution_status=prepared_no_assets`
+- `canva_links_available=false`
+- `exports_available=false`
+- `priority_1_assets_ready=false`
+- `publication_ready=false`
+- `substack_created=false`
+- `substack_url_status=not_created_or_not_confirmed`
+- `substack_url_real=`
+- `social_auto_published=false`
+- `substack_auto_published=false`
+- `p114_recommended=manual_asset_creation_with_links_or_substack_creation_with_real_url`
+- `no_code_change=true`
+- `no_merge=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+
+La preparazione P113 è solo editoriale/manuale per asset Canva/Figma. Nessun dato, visibility, schema/RLS, migration, rollback, provider/import o Apify è stato modificato.
+
+## P112 — Canva manual asset creation report
+
+P112 non modifica Supabase staging.
+
+Marker:
+
+- `point_112_canva_manual_asset_creation_report_completed=true`
+- `canva_manual_asset_creation_report_ready=true`
+- `assets_generated=false`
+- `asset_report_status=prepared_empty`
+- `canva_links_available=false`
+- `exports_available=false`
+- `publication_ready=false`
+- `substack_created=false`
+- `substack_url_status=not_created_or_not_confirmed`
+- `substack_url_real=`
+- `social_auto_published=false`
+- `substack_auto_published=false`
+- `p113_recommended=manual_asset_creation_or_substack_creation_with_real_url`
+- `no_code_change=true`
+- `no_merge=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+
+La preparazione P112 è solo editoriale/asset report planning. Nessun dato, visibility, schema/RLS, migration, rollback, provider/import o Apify è stato modificato.
+
+## P111 — Substack creation manual execution
+
+P111 non modifica Supabase staging.
+
+Marker:
+
+- `point_111_substack_creation_manual_execution_completed=true`
+- `substack_creation_manual_execution_ready=true`
+- `substack_created=false`
+- `substack_url_status=not_created_or_not_confirmed`
+- `substack_url_real=`
+- `substack_auto_published=false`
+- `social_auto_published=false`
+- `assets_generated=false`
+- `p112_recommended=substack_url_integration_gate_after_real_url_or_canva_manual_asset_creation_report`
+- `no_code_change=true`
+- `no_merge=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+
+La preparazione P111 è solo editoriale/manuale per Substack. Nessun dato, visibility, schema/RLS, migration, rollback, provider/import o Apify è stato modificato.
+
+## P110 — Canva asset generation manual execution
+
+P110 non modifica Supabase staging.
+
+Marker:
+
+- `point_110_canva_asset_generation_manual_execution_completed=true`
+- `canva_asset_generation_manual_execution_ready=true`
+- `assets_generated=false`
+- `substack_created=false`
+- `substack_url_status=not_created_or_not_confirmed`
+- `social_auto_published=false`
+- `substack_auto_published=false`
+- `p111_recommended=canva_manual_asset_creation_or_substack_creation_manual_execution`
+- `no_code_change=true`
+- `no_merge=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+
+La preparazione P110 è solo editoriale/asset execution planning. Nessun dato, visibility, schema/RLS, migration, rollback, provider/import o Apify è stato modificato.
+
+## P109 — Canva asset generation prompt pack
+
+P109 non modifica Supabase staging.
+
+Marker:
+
+- `point_109_canva_asset_generation_prompt_pack_completed=true`
+- `canva_asset_generation_prompt_pack_ready=true`
+- `assets_generated=false`
+- `substack_created=false`
+- `substack_url_status=not_created_or_not_confirmed`
+- `social_auto_published=false`
+- `substack_auto_published=false`
+- `p110_recommended=canva_asset_generation_or_substack_creation_manual_execution`
+- `no_code_change=true`
+- `no_merge=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+
+La preparazione P109 è solo editoriale/asset planning. Nessun dato, visibility, schema/RLS, migration, rollback, provider/import o Apify è stato modificato.
+
+## P108 — Substack creation manual checklist
+
+P108 non modifica Supabase staging.
+
+Marker:
+
+- `point_108_substack_creation_manual_checklist_completed=true`
+- `substack_creation_manual_checklist_ready=true`
+- `substack_created=false`
+- `substack_url_status=not_created_or_not_confirmed`
+- `substack_auto_published=false`
+- `social_auto_published=false`
+- `assets_generated=false`
+- `p109_recommended=substack_url_integration_gate_after_real_url`
+- `no_code_change=true`
+- `no_merge=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+
+La preparazione P108 è solo editoriale/manuale per Substack. Nessun dato, visibility, schema/RLS, migration, rollback, provider/import o Apify è stato modificato.
+
+## P107 — Editorial inspirations and writer guidelines
+
+P107 non modifica Supabase staging.
+
+Marker:
+
+- `point_107_editorial_inspirations_writer_guidelines_completed=true`
+- `editorial_inspirations_map_ready=true`
+- `writer_guidelines_ready=true`
+- `editorial_manual_ready=true`
+- `assets_generated=false`
+- `social_auto_published=false`
+- `substack_auto_published=false`
+- `substack_url_status=not_created_or_not_confirmed`
+- `p108_recommended=canva_asset_generation_prompt_pack_or_substack_creation_manual_checklist`
+- `no_code_change=true`
+- `no_merge=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+
+La preparazione P107 è solo editoriale/documentale. Nessun dato, visibility, schema/RLS, migration, rollback, provider/import o Apify è stato modificato.
+
+## P106 — First publication manual checklist
+
+P106 non modifica Supabase staging.
+
+Marker:
+
+- `point_106_first_publication_manual_checklist_completed=true`
+- `first_publication_manual_checklist_ready=true`
+- `assets_generated=false`
+- `social_auto_published=false`
+- `substack_auto_published=false`
+- `substack_url_status=not_created_or_not_confirmed`
+- `p107_recommended=substack_url_or_canva_asset_generation_gate`
+- `no_code_change=true`
+- `no_merge=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+
+La preparazione P106 è solo editoriale/manuale. Nessun dato, visibility, schema/RLS, migration, rollback, provider/import o Apify è stato modificato.
+
+## P105 — Social asset production checklist
+
+P105 non modifica Supabase staging.
+
+Marker:
+
+- `point_105_social_asset_production_checklist_completed=true`
+- `social_asset_production_checklist_ready=true`
+- `assets_generated=false`
+- `social_auto_published=false`
+- `substack_auto_published=false`
+- `substack_url_status=not_created_or_not_confirmed`
+- `p106_recommended=first_publication_manual_checklist`
+- `no_code_change=true`
+- `no_merge=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+
+La preparazione P105 è solo editoriale/asset planning. Nessun dato, visibility, schema/RLS, migration, rollback, provider/import o Apify è stato modificato.
+
+## P104 — First article/newsletter production pack
+
+P104 non modifica Supabase staging.
+
+Marker:
+
+- `point_104_first_article_newsletter_production_pack_completed=true`
+- `first_article_newsletter_pack_ready=true`
+- `substack_url_status=not_created_or_not_confirmed`
+- `social_auto_published=false`
+- `substack_auto_published=false`
+- `p105_recommended=social_asset_production_checklist`
+- `no_code_change=true`
+- `no_merge=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+
+La preparazione P104 è solo editoriale/manuale. Nessun dato, visibility, schema/RLS, migration, rollback, provider/import o Apify è stato modificato.
+
+## P103 — Editorial calendar first 14 days
+
+P103 non modifica Supabase staging.
+
+Marker:
+
+- `point_103_editorial_calendar_first_14_days_completed=true`
+- `editorial_calendar_first_14_days_ready=true`
+- `substack_url_status=not_created_or_not_confirmed`
+- `social_auto_published=false`
+- `substack_auto_published=false`
+- `p104_recommended=first_article_newsletter_production_pack`
+- `no_code_change=true`
+- `no_merge=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+
+La preparazione P103 è solo editoriale/manuale. Nessun dato, visibility, schema/RLS, migration, rollback, provider/import o Apify è stato modificato.
+
+## P102 — Social/reel launch pack
+
+P102 non modifica Supabase staging.
+
+Marker:
+
+- `point_102_social_reel_launch_pack_completed=true`
+- `social_reel_launch_pack_ready=true`
+- `substack_url_status=not_created_or_not_confirmed`
+- `social_auto_published=false`
+- `substack_auto_published=false`
+- `p103_recommended=editorial_calendar_first_14_days`
+- `no_code_change=true`
+- `no_merge=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+
+La preparazione P102 è solo editoriale/social manuale. Nessun dato, visibility, schema/RLS, migration, rollback, provider/import o Apify è stato modificato.
+
+## P101 — Substack manual launch checklist
+
+P101 non modifica Supabase staging.
+
+Marker:
+
+- `point_101_substack_manual_launch_checklist_completed=true`
+- `substack_manual_launch_ready=true`
+- `substack_auto_published=false`
+- `substack_url_status=not_created_or_not_confirmed`
+- `p102_recommended=social_reel_launch_pack`
+- `no_code_change=true`
+- `no_merge=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+
+La preparazione P101 è solo editoriale/manuale. Nessun dato, visibility, schema/RLS, migration, rollback, provider/import o Apify è stato modificato.
+
+## P100 — Post-production editorial pages verification
+
+P100 non modifica Supabase staging.
+
+Marker:
+
+- `point_100_post_production_editorial_pages_verification_completed=true`
+- `production_editorial_pages_stable=true`
+- `production_editorial_pages_released=true`
+- `production_deploy_verified=true`
+- `editorial_pages_visible=true`
+- `public_data_visible=true`
+- `p101_recommended=substack_manual_launch_checklist`
+- `no_code_change=true`
+- `no_merge=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `vercel_config_changed=false`
+- `vercel_env_changed=false`
+- `vercel_root_directory_changed=false`
+- `substack_auto_published=false`
+- `rollback_executed=false`
+
+La verifica P100 è solo post-production/read-only. Nessun dato, visibility, schema/RLS, migration, rollback, provider/import o Apify è stato modificato.
+
+## P99-D — Vercel Production promote/assign
+
+P99-D non modifica Supabase staging.
+
+Marker:
+
+- `point_99d_vercel_production_promote_completed=true`
+- `production_editorial_pages_released=true`
+- `p99_recovered_after_alias_promote=true`
+- `production_deploy_verified=true`
+- `target_deployment_assigned_to_domain=true`
+- `editorial_pages_visible=true`
+- `public_data_visible=true`
+- `p100_recommended=post_production_editorial_pages_verification`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `vercel_config_changed=false`
+- `vercel_env_changed=false`
+- `vercel_root_directory_changed=false`
+- `substack_auto_published=false`
+- `rollback_executed=false`
+
+L’azione P99-D riguarda solo assegnazione dominio/deployment Vercel e verifica Production. Nessun dato, visibility, schema/RLS, migration, rollback, provider/import o Apify è stato modificato.
+
+## P99-C — Vercel Production deployment/alias check
+
+P99-C non modifica Supabase staging.
+
+Marker:
+
+- `point_99c_vercel_production_alias_check_completed=true`
+- `p99_still_incomplete=true`
+- `production_editorial_pages_released=false`
+- `diagnosis_category=A_deployment_8d20c0e_exists_ready_but_domain_not_assigned`
+- `p99d_recommended=manual_promote_or_assign_domain_gate`
+- `no_deploy=true`
+- `no_promote=true`
+- `no_alias_assignment=true`
+- `no_merge=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `rollback_executed=false`
+- `vercel_config_changed=false`
+- `vercel_env_changed=false`
+- `vercel_root_directory_changed=false`
+
+La verifica P99-C è solo Vercel/deployment read-only. Nessun dato, visibility, schema/RLS, migration, rollback, provider/import o Apify è stato modificato.
+
+## P99-B — Production editorial pages deploy diagnosis
+
+P99-B non modifica Supabase staging.
+
+Marker:
+
+- `point_99b_production_deploy_diagnosis_completed=true`
+- `p99_still_incomplete=true`
+- `production_editorial_pages_released=false`
+- `diagnosis_category=8_cause_not_determined_deployment_or_alias_not_serving_main_commit`
+- `p99c_recommended=true`
+- `no_merge=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `rollback_executed=false`
+- `vercel_config_changed=false`
+- `vercel_env_changed=false`
+- `vercel_root_directory_changed=false`
+
+La diagnosi P99-B è solo Git/local/Production HTTP read-only. Nessun dato, visibility, schema/RLS, migration, rollback, provider/import o Apify è stato modificato.
+
 ## P98 — Production editorial pages release gate
 
 P98 non modifica Supabase staging.

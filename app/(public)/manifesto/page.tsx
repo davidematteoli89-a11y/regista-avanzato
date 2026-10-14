@@ -18,12 +18,14 @@ const manifestoParagraphs = [
 
 export default function ManifestoPage() {
   return (
-    <main className="stack article-detail">
-      <header>
+    <main className="stack article-detail brand-page">
+      <header className="brand-page-hero">
         <span className="eyebrow">Manifesto</span>
         <h1>Perché nasce Regista Avanzato</h1>
         <p>
-          Il calcio interessante non vive solo nei campionati più illuminati.
+          Il calcio interessante non vive solo nei campionati più illuminati:
+          serve una plancia per leggere segnali, contesto e storie con più
+          criterio.
         </p>
         <div className="actions">
           <Link className="button-link" href="/competitions">
@@ -33,7 +35,17 @@ export default function ManifestoPage() {
         </div>
       </header>
 
-      <article className="article-body">
+      <section className="manifesto-grid" aria-label="Principi del Manifesto">
+        {["Perché nasce", "Cosa guardiamo", "Cosa non siamo", "Metodo", "Regola editoriale"].map((item) => (
+          <article className="public-stat-card" key={item}>
+            <span className="stats-badge">Manifesto</span>
+            <h2>{item}</h2>
+            <p>Dati, storie e contesto al servizio di una scelta editoriale chiara.</p>
+          </article>
+        ))}
+      </section>
+
+      <article className="article-body manifesto-body">
         {manifestoParagraphs.map((paragraph) => (
           <p key={paragraph}>{paragraph}</p>
         ))}

@@ -1,5 +1,27 @@
+import Image from "next/image";
 import Link from "next/link";
 
 export function PublicFooter() {
-  return <footer className="public-footer"><div><strong>Regista Avanzato</strong><p>Magazine calcistico mock: dati, memoria e revisione umana.</p></div><nav><Link href="/manifesto">Manifesto</Link><Link href="/rubriche">Rubriche</Link><Link href="/chi-siamo">Chi siamo</Link><Link href="/metodo">Metodo</Link><Link href="/newsletter">Newsletter</Link><Link href="/login">Login free</Link></nav><p className="muted">Nessun dato live, scouting certificato o contenuto pubblicato automaticamente.</p></footer>;
+  return (
+    <footer className="public-footer">
+      <div className="public-footer-brand">
+        <Image alt="" aria-hidden="true" className="public-footer-logo" height={54} src="/regista-avanzato-logo.png" width={54} />
+        <div>
+          <strong>Regista Avanzato</strong>
+          <p>Magazine calcistico editoriale: dati, storie e contesto fuori dal rumore.</p>
+        </div>
+      </div>
+      <nav aria-label="Link principali footer">
+        <Link href="/manifesto">Manifesto</Link>
+        <Link href="/rubriche">Rubriche</Link>
+        <Link href="/competitions">Competitions</Link>
+        <Link href="/chi-siamo">Chi siamo</Link>
+        <Link href="/metodo">Metodo</Link>
+      </nav>
+      <p className="muted">
+        No betting. No hype facile. Nessun dato live, scouting certificato o
+        contenuto pubblicato automaticamente.
+      </p>
+    </footer>
+  );
 }
