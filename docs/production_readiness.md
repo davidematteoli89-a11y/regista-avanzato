@@ -1,5 +1,89 @@
 # Production Readiness
 
+## Nota P123 — Production brand refresh deploy diagnosis
+
+P123 ha diagnosticato in sola lettura perché il brand refresh non risulta visibile sul dominio Production pur avendo route e dati pubblici funzionanti.
+
+Esito:
+
+- `point_123_production_brand_refresh_deploy_diagnosis_completed=true`
+- `production_brand_refresh_deploy_diagnosis_ready=true`
+- `code_change=false`
+- `diagnosis_only=true`
+- `main_contains_brand_refresh=true`
+- `logo_file_exists_in_main=true`
+- `local_main_brand_visible=true`
+- `local_main_logo_200=true`
+- `production_home_brand_visible=false`
+- `production_logo_200=false`
+- `production_old_nav_visible=true`
+- `production_public_data_visible=true`
+- `production_safety_verified=true`
+- `vercel_metadata_available=true`
+- `production_domain_current_commit=8d20c0e6d6088d9a1a525fd3b8f11de3dcf0ce83`
+- `ready_deployment_for_main_found=true`
+- `ready_deployment_assigned_to_domain=false`
+- `root_cause=production_alias_points_to_old_deployment`
+- `brand_refresh_production_closed=false`
+- `private_admin_publicly_exposed=false`
+- `substack_created=false`
+- `substack_url_status=not_created_or_not_confirmed`
+- `site_integration_done=false`
+- `publication_ready=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `p124_recommended=production_alias_assignment_to_brand_refresh_deployment`
+
+Diagnosi: `main` contiene brand refresh e logo, la build locale main è corretta, ma `regista-avanzato-rouge.vercel.app` serve ancora il deployment legato al commit `8d20c0e6d6088d9a1a525fd3b8f11de3dcf0ce83`. Esistono deployment READY per i commit main più recenti, ma non risultano assegnati al dominio Production.
+
+P123 non ha eseguito deploy, merge, assegnazioni dominio, DB write, provider/import, Apify o integrazione Substack.
+
+Prossimo step consigliato: P124 — Production alias assignment to brand refresh deployment, solo con autorizzazione esplicita separata.
+
+## Nota P122 — Post-production brand refresh verification
+
+P122 ha eseguito una verifica post-produzione a freddo del brand refresh. Le route Production e i dati pubblici risultano disponibili, ma la chiusura completa del brand refresh in Production non è confermata perché sono stati rilevati marker del vecchio header/nav e il logo asset pubblico risponde 404.
+
+Esito:
+
+- `point_122_post_production_brand_refresh_verification_completed=true`
+- `post_production_brand_refresh_verification_ready=true`
+- `production_routes_verified=true`
+- `production_brand_visible=false`
+- `production_public_data_visible=true`
+- `production_safety_verified=true`
+- `production_commit_verified=unknown_metadata_unavailable`
+- `brand_refresh_production_closed=false`
+- `private_admin_publicly_exposed=false`
+- `substack_created=false`
+- `substack_url_status=not_created_or_not_confirmed`
+- `site_integration_done=false`
+- `publication_ready=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `p123_recommended=production_brand_refresh_deploy_diagnosis`
+
+Route Production verificate:
+
+- `/` → 200
+- `/manifesto` → 200
+- `/rubriche` → 200
+- `/competitions` → 200, dati visibili
+- `/competitions/manual-serie-a` → 200, dati visibili
+- `/chi-siamo` → 200
+- `/account` → 200
+- `/metodo` → 200
+
+Issue rilevati:
+
+- vecchi marker nav/header ancora visibili;
+- `/regista-avanzato-logo.png` → 404;
+- headline P116/P117 non rilevata in Production.
+
+Prossimo step consigliato: P123 — Production brand refresh deploy diagnosis.
+
 ## Nota P121 — Merge deploy brand refresh
 
 P121 ha eseguito il merge controllato `preview` → `main`, il push su `main` e la verifica Production del brand refresh con autorizzazione esplicita dell’utente.
@@ -3583,3 +3667,133 @@ Punto 70 migliora il percorso pubblico locale senza deploy e senza cambiare conf
 - `vercel_auth_changed=false`
 
 Production resta non toccata. La Preview resta protetta da Vercel Authentication.
+# P125 — Post-alias assignment Production verification
+
+P125 ha verificato il dominio Production dopo l’assegnazione alias autorizzata in P124. Il dominio serve il deployment READY del brand refresh e tutte le route previste rispondono HTTP 200.
+
+- `point_125_post_alias_assignment_production_verification_completed=true`
+- `post_alias_assignment_production_verification_ready=true`
+- `production_alias_assignment_verified=true`
+- `production_deployment_id=dpl_4kQYEV8dX8StepSoNb9a1TEqsBXh`
+- `production_previous_deployment_id=dpl_C8icKQYUPNxvhELo9e9b2LkQ4Up4`
+- `production_commit_verified=1f4942f834da54bf336145e3d9cd07e44effae66`
+- `production_previous_commit=8d20c0e6d6088d9a1a525fd3b8f11de3dcf0ce83`
+- `production_routes_verified=true`
+- `production_brand_visible=true`
+- `production_logo_200=true`
+- `production_public_data_visible=true`
+- `production_safety_verified=true`
+- `brand_refresh_production_closed=true`
+- `private_admin_publicly_exposed=false`
+- `admin_links_visible=false`
+- `debug_payload_visible=false`
+- `operational_buttons_visible=false`
+- `substack_created=false`
+- `substack_url_status=not_created_or_not_confirmed`
+- `site_integration_done=false`
+- `publication_ready=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `p126_recommended=substack_creation_with_real_url_or_canva_a01_revision_export`
+# P126 — Substack URL registration and verification
+
+P126 ha registrato e verificato il Substack reale di Regista Avanzato senza integrazione nel sito, deploy, merge o pubblicazione.
+
+- `point_126_substack_url_registration_verification_completed=true`
+- `substack_url_registration_verification_ready=true`
+- `substack_created=true`
+- `substack_url_real=https://registaavanzato.substack.com/`
+- `substack_url_verified=true`
+- `substack_url_status=real_url_verified`
+- `site_integration_done=false`
+- `publication_ready=false`
+- `newsletter_sent=false`
+- `social_auto_published=false`
+- `substack_auto_published=false`
+- `brand_refresh_production_closed=true`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `p127_recommended=site_substack_url_integration_gate`
+# P127 — Site Substack URL integration
+
+P127 ha integrato su `preview` il link pubblico reale e verificato di Substack in navbar, footer, homepage e CTA condivise. Nessun deploy o merge è stato eseguito.
+
+- `point_127_site_substack_url_integration_completed=true`
+- `site_substack_url_integration_ready=true`
+- `code_change=true`
+- `substack_created=true`
+- `substack_url_real=https://registaavanzato.substack.com/`
+- `substack_url_verified=true`
+- `substack_url_status=real_url_verified`
+- `site_integration_done=true`
+- `production_touched=false`
+- `no_merge=true`
+- `no_deploy=true`
+- `publication_ready=false`
+- `newsletter_sent=false`
+- `social_auto_published=false`
+- `substack_auto_published=false`
+- `brand_refresh_production_closed=true`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `p128_recommended=preview_substack_integration_verification`
+
+# P128 — Preview Substack integration verification
+
+P128 ha verificato localmente l'integrazione del link Substack reale e ha confermato il deployment Preview READY sul commit P127. La verifica del contenuto remoto protetto è rimasta bloccata dalla mancanza di una sessione Vercel autorizzata; non sono stati tentati bypass o workaround.
+
+- `point_128_preview_substack_integration_verification_completed=true`
+- `preview_substack_integration_verification_ready=true`
+- `code_change=false`
+- `substack_created=true`
+- `substack_url_real=https://registaavanzato.substack.com/`
+- `substack_url_verified=true`
+- `substack_url_status=real_url_verified`
+- `site_integration_done=true`
+- `substack_link_visible_local=true`
+- `substack_link_attrs_safe=true`
+- `responsive_verified=true`
+- `public_routes_verified=true`
+- `public_data_visible=true`
+- `production_touched=false`
+- `no_merge=true`
+- `no_deploy=true`
+- `publication_ready=false`
+- `newsletter_sent=false`
+- `social_auto_published=false`
+- `substack_auto_published=false`
+- `brand_refresh_production_closed=true`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `p129_recommended=production_release_gate_for_substack_link`
+
+# P129 — Production release gate for Substack link
+
+P129 ha completato il gate no-apply per il link Substack. Candidate, diff, route locali, asset, safety, build e stato Vercel sono stati verificati senza merge o deploy. Il contenuto remoto Preview protetto non è stato dichiarato verificato in assenza di una sessione autorizzata.
+
+- `point_129_production_release_gate_substack_link_completed=true`
+- `gate_ready=true`
+- `release_candidate_ready=true`
+- `candidate_code_commit=32f9397d9a720f433d1483bc620085cdc5f3ac1c`
+- `preview_head_at_gate=4e79aa8b2e260de28016e70ffe708fb5f64868ca`
+- `current_main_commit=1f4942f834da54bf336145e3d9cd07e44effae66`
+- `checks_passed=true`
+- `preview_remote_content_verified=false`
+- `responsive_static_verified=true`
+- `responsive_browser_verified=unknown`
+- `substack_created=true`
+- `substack_url_verified=true`
+- `site_integration_preview_done=true`
+- `site_integration_production_done=false`
+- `publication_ready=false`
+- `no_merge=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `p130_recommended=merge_deploy_substack_link_only_if_authorized`

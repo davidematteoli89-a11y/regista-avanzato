@@ -1,5 +1,72 @@
 # C phase progress
 
+## P123 — Production brand refresh deploy diagnosis
+
+Stato: completato.
+
+Conferme:
+
+- `point_123_production_brand_refresh_deploy_diagnosis_completed=true`;
+- `production_brand_refresh_deploy_diagnosis_ready=true`;
+- `code_change=false`;
+- `diagnosis_only=true`;
+- `main_contains_brand_refresh=true`;
+- `logo_file_exists_in_main=true`;
+- `local_main_brand_visible=true`;
+- `local_main_logo_200=true`;
+- `production_home_brand_visible=false`;
+- `production_logo_200=false`;
+- `production_old_nav_visible=true`;
+- `production_public_data_visible=true`;
+- `production_safety_verified=true`;
+- `vercel_metadata_available=true`;
+- `production_domain_current_commit=8d20c0e6d6088d9a1a525fd3b8f11de3dcf0ce83`;
+- `ready_deployment_for_main_found=true`;
+- `ready_deployment_assigned_to_domain=false`;
+- `root_cause=production_alias_points_to_old_deployment`;
+- `brand_refresh_production_closed=false`;
+- `private_admin_publicly_exposed=false`;
+- `substack_created=false`;
+- `substack_url_status=not_created_or_not_confirmed`;
+- `site_integration_done=false`;
+- `publication_ready=false`;
+- `db_write_additional=false`;
+- `provider_import_enabled=false`;
+- `apify_enabled=false`;
+- `p124_recommended=production_alias_assignment_to_brand_refresh_deployment`.
+
+Risultato: il dominio Production punta ancora a un deployment vecchio (`8d20c0e6d6088d9a1a525fd3b8f11de3dcf0ce83`). Main e build locale contengono il brand refresh e il logo; deployment READY più recenti esistono, ma non risultano assegnati al dominio Production.
+
+Prossimo step consigliato: P124 — Production alias assignment to brand refresh deployment, solo con autorizzazione esplicita separata.
+
+## P122 — Post-production brand refresh verification
+
+Stato: completato con issue.
+
+Conferme:
+
+- `point_122_post_production_brand_refresh_verification_completed=true`;
+- `post_production_brand_refresh_verification_ready=true`;
+- `production_routes_verified=true`;
+- `production_brand_visible=false`;
+- `production_public_data_visible=true`;
+- `production_safety_verified=true`;
+- `production_commit_verified=unknown_metadata_unavailable`;
+- `brand_refresh_production_closed=false`;
+- `private_admin_publicly_exposed=false`;
+- `substack_created=false`;
+- `substack_url_status=not_created_or_not_confirmed`;
+- `site_integration_done=false`;
+- `publication_ready=false`;
+- `db_write_additional=false`;
+- `provider_import_enabled=false`;
+- `apify_enabled=false`;
+- `p123_recommended=production_brand_refresh_deploy_diagnosis`.
+
+Risultato: route Production e dati pubblici OK; safety OK. Brand refresh Production non chiuso perché la home/nav mostrano ancora marker vecchi e il logo asset pubblico risponde 404.
+
+Prossimo step consigliato: P123 — Production brand refresh deploy diagnosis.
+
 ## P121 — Merge deploy brand refresh
 
 Stato: completato.
@@ -5333,3 +5400,120 @@ Nessun deploy, nessuna Production e nessuna ulteriore DB write sono stati esegui
 La Preview corretta è stata verificata manualmente dall'utente con `/competitions` e `/competitions/manual-serie-a` funzionanti e dati visibili. Il dominio `regista-avanzato-rouge.vercel.app` resta Production/main vecchia: il 404 osservato lì è spiegato dall'ambiente, non dal codice.
 
 P78 chiude l'MVP Preview e ferma il lavoro prima di Production, merge main, provider/import, Apify o ulteriori DB write.
+# P125 — Post-alias assignment Production verification
+
+- `point_125_post_alias_assignment_production_verification_completed=true`
+- `production_alias_assignment_verified=true`
+- `production_deployment_id=dpl_4kQYEV8dX8StepSoNb9a1TEqsBXh`
+- `production_commit_verified=1f4942f834da54bf336145e3d9cd07e44effae66`
+- `production_routes_verified=true`
+- `production_brand_visible=true`
+- `production_logo_200=true`
+- `production_public_data_visible=true`
+- `production_safety_verified=true`
+- `brand_refresh_production_closed=true`
+- `private_admin_publicly_exposed=false`
+- `admin_links_visible=false`
+- `debug_payload_visible=false`
+- `operational_buttons_visible=false`
+- `substack_created=false`
+- `substack_url_status=not_created_or_not_confirmed`
+- `site_integration_done=false`
+- `publication_ready=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `p126_recommended=substack_creation_with_real_url_or_canva_a01_revision_export`
+# P126 — Substack URL registration and verification
+
+- `point_126_substack_url_registration_verification_completed=true`
+- `substack_url_registration_verification_ready=true`
+- `substack_created=true`
+- `substack_url_real=https://registaavanzato.substack.com/`
+- `substack_url_verified=true`
+- `substack_url_status=real_url_verified`
+- `site_integration_done=false`
+- `publication_ready=false`
+- `newsletter_sent=false`
+- `social_auto_published=false`
+- `substack_auto_published=false`
+- `brand_refresh_production_closed=true`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `p127_recommended=site_substack_url_integration_gate`
+# P127 — Site Substack URL integration
+
+- `point_127_site_substack_url_integration_completed=true`
+- `site_substack_url_integration_ready=true`
+- `code_change=true`
+- `substack_created=true`
+- `substack_url_real=https://registaavanzato.substack.com/`
+- `substack_url_verified=true`
+- `substack_url_status=real_url_verified`
+- `site_integration_done=true`
+- `production_touched=false`
+- `no_merge=true`
+- `no_deploy=true`
+- `publication_ready=false`
+- `newsletter_sent=false`
+- `social_auto_published=false`
+- `substack_auto_published=false`
+- `brand_refresh_production_closed=true`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `p128_recommended=preview_substack_integration_verification`
+
+# P128 — Preview Substack integration verification
+
+- `point_128_preview_substack_integration_verification_completed=true`
+- `preview_substack_integration_verification_ready=true`
+- `code_change=false`
+- `substack_created=true`
+- `substack_url_real=https://registaavanzato.substack.com/`
+- `substack_url_verified=true`
+- `substack_url_status=real_url_verified`
+- `site_integration_done=true`
+- `substack_link_visible_local=true`
+- `substack_link_attrs_safe=true`
+- `responsive_verified=true`
+- `public_routes_verified=true`
+- `public_data_visible=true`
+- `production_touched=false`
+- `no_merge=true`
+- `no_deploy=true`
+- `publication_ready=false`
+- `newsletter_sent=false`
+- `social_auto_published=false`
+- `substack_auto_published=false`
+- `brand_refresh_production_closed=true`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `p129_recommended=production_release_gate_for_substack_link`
+
+# P129 — Production release gate for Substack link
+
+- `point_129_production_release_gate_substack_link_completed=true`
+- `gate_ready=true`
+- `release_candidate_ready=true`
+- `candidate_code_commit=32f9397d9a720f433d1483bc620085cdc5f3ac1c`
+- `preview_head_at_gate=4e79aa8b2e260de28016e70ffe708fb5f64868ca`
+- `current_main_commit=1f4942f834da54bf336145e3d9cd07e44effae66`
+- `checks_passed=true`
+- `preview_remote_content_verified=false`
+- `responsive_static_verified=true`
+- `responsive_browser_verified=unknown`
+- `substack_created=true`
+- `substack_url_verified=true`
+- `site_integration_preview_done=true`
+- `site_integration_production_done=false`
+- `publication_ready=false`
+- `no_merge=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `p130_recommended=merge_deploy_substack_link_only_if_authorized`

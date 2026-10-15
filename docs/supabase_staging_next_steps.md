@@ -1,5 +1,68 @@
 # Supabase staging next steps
 
+## P123 — Production brand refresh deploy diagnosis
+
+P123 non modifica Supabase staging.
+
+Marker:
+
+- `point_123_production_brand_refresh_deploy_diagnosis_completed=true`
+- `production_brand_refresh_deploy_diagnosis_ready=true`
+- `code_change=false`
+- `diagnosis_only=true`
+- `main_contains_brand_refresh=true`
+- `logo_file_exists_in_main=true`
+- `local_main_brand_visible=true`
+- `local_main_logo_200=true`
+- `production_home_brand_visible=false`
+- `production_logo_200=false`
+- `production_old_nav_visible=true`
+- `production_public_data_visible=true`
+- `production_safety_verified=true`
+- `vercel_metadata_available=true`
+- `production_domain_current_commit=8d20c0e6d6088d9a1a525fd3b8f11de3dcf0ce83`
+- `ready_deployment_for_main_found=true`
+- `ready_deployment_assigned_to_domain=false`
+- `root_cause=production_alias_points_to_old_deployment`
+- `brand_refresh_production_closed=false`
+- `private_admin_publicly_exposed=false`
+- `substack_created=false`
+- `substack_url_status=not_created_or_not_confirmed`
+- `site_integration_done=false`
+- `publication_ready=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `p124_recommended=production_alias_assignment_to_brand_refresh_deployment`
+
+La diagnosi P123 è solo repository/local build/HTTP/Vercel metadata read-only. Nessun dato, visibility, schema/RLS, migration, rollback, provider/import o Apify è stato modificato.
+
+## P122 — Post-production brand refresh verification
+
+P122 non modifica Supabase staging.
+
+Marker:
+
+- `point_122_post_production_brand_refresh_verification_completed=true`
+- `post_production_brand_refresh_verification_ready=true`
+- `production_routes_verified=true`
+- `production_brand_visible=false`
+- `production_public_data_visible=true`
+- `production_safety_verified=true`
+- `production_commit_verified=unknown_metadata_unavailable`
+- `brand_refresh_production_closed=false`
+- `private_admin_publicly_exposed=false`
+- `substack_created=false`
+- `substack_url_status=not_created_or_not_confirmed`
+- `site_integration_done=false`
+- `publication_ready=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `p123_recommended=production_brand_refresh_deploy_diagnosis`
+
+La verifica P122 è solo HTTP/read-only e documentale. Nessun dato, visibility, schema/RLS, migration, rollback, provider/import o Apify è stato modificato.
+
 ## P121 — Merge deploy brand refresh
 
 P121 non modifica Supabase staging.
@@ -3864,3 +3927,105 @@ P73 ha completato il piano di deploy senza eseguirlo.
 - `rollback_plan_created=true`
 
 Supabase staging resta nello stato post-P66: dati `manual-serie-a` promossi a `public_free`, rollback disponibile ma non eseguito. Nessuna nuova scrittura DB è stata fatta nel Punto 73.
+# P125 — Post-alias assignment Production verification
+
+P125 non ha modificato Supabase staging. La verifica post-alias ha confermato il brand refresh e i dati pubblici già approvati in Production.
+
+- `point_125_post_alias_assignment_production_verification_completed=true`
+- `brand_refresh_production_closed=true`
+- `private_admin_publicly_exposed=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `substack_created=false`
+- `site_integration_done=false`
+- `publication_ready=false`
+- `p126_recommended=substack_creation_with_real_url_or_canva_a01_revision_export`
+# P126 — Substack URL registration and verification
+
+P126 non ha modificato Supabase staging. Ha registrato e verificato esclusivamente l’URL pubblico reale di Substack.
+
+- `point_126_substack_url_registration_verification_completed=true`
+- `substack_created=true`
+- `substack_url_real=https://registaavanzato.substack.com/`
+- `substack_url_verified=true`
+- `substack_url_status=real_url_verified`
+- `site_integration_done=false`
+- `publication_ready=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `p127_recommended=site_substack_url_integration_gate`
+# P127 — Site Substack URL integration
+
+P127 non ha modificato Supabase staging. Ha integrato sul solo branch `preview` il link pubblico reale di Substack.
+
+- `point_127_site_substack_url_integration_completed=true`
+- `substack_url_real=https://registaavanzato.substack.com/`
+- `substack_url_verified=true`
+- `site_integration_done=true`
+- `production_touched=false`
+- `no_merge=true`
+- `no_deploy=true`
+- `publication_ready=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `p128_recommended=preview_substack_integration_verification`
+
+# P128 — Preview Substack integration verification
+
+P128 non ha modificato Supabase staging. Ha verificato localmente route pubbliche, dati già approvati e integrazione del link Substack reale.
+
+- `point_128_preview_substack_integration_verification_completed=true`
+- `preview_substack_integration_verification_ready=true`
+- `code_change=false`
+- `substack_created=true`
+- `substack_url_real=https://registaavanzato.substack.com/`
+- `substack_url_verified=true`
+- `substack_url_status=real_url_verified`
+- `site_integration_done=true`
+- `substack_link_visible_local=true`
+- `substack_link_attrs_safe=true`
+- `responsive_verified=true`
+- `public_routes_verified=true`
+- `public_data_visible=true`
+- `production_touched=false`
+- `no_merge=true`
+- `no_deploy=true`
+- `publication_ready=false`
+- `newsletter_sent=false`
+- `social_auto_published=false`
+- `substack_auto_published=false`
+- `brand_refresh_production_closed=true`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `p129_recommended=production_release_gate_for_substack_link`
+
+# P129 — Production release gate for Substack link
+
+P129 non ha modificato Supabase staging. Il gate ha verificato soltanto repository, integrazione pubblica, route locali, build, safety e stato Vercel read-only.
+
+- `point_129_production_release_gate_substack_link_completed=true`
+- `gate_ready=true`
+- `release_candidate_ready=true`
+- `candidate_code_commit=32f9397d9a720f433d1483bc620085cdc5f3ac1c`
+- `preview_head_at_gate=4e79aa8b2e260de28016e70ffe708fb5f64868ca`
+- `current_main_commit=1f4942f834da54bf336145e3d9cd07e44effae66`
+- `checks_passed=true`
+- `preview_remote_content_verified=false`
+- `responsive_static_verified=true`
+- `responsive_browser_verified=unknown`
+- `substack_created=true`
+- `substack_url_verified=true`
+- `site_integration_preview_done=true`
+- `site_integration_production_done=false`
+- `publication_ready=false`
+- `no_merge=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `p130_recommended=merge_deploy_substack_link_only_if_authorized`
