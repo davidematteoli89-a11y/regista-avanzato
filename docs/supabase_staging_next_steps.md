@@ -4002,3 +4002,30 @@ P128 non ha modificato Supabase staging. Ha verificato localmente route pubblich
 - `provider_import_enabled=false`
 - `apify_enabled=false`
 - `p129_recommended=production_release_gate_for_substack_link`
+
+# P129 — Production release gate for Substack link
+
+P129 non ha modificato Supabase staging. Il gate ha verificato soltanto repository, integrazione pubblica, route locali, build, safety e stato Vercel read-only.
+
+- `point_129_production_release_gate_substack_link_completed=true`
+- `gate_ready=true`
+- `release_candidate_ready=true`
+- `candidate_code_commit=32f9397d9a720f433d1483bc620085cdc5f3ac1c`
+- `preview_head_at_gate=4e79aa8b2e260de28016e70ffe708fb5f64868ca`
+- `current_main_commit=1f4942f834da54bf336145e3d9cd07e44effae66`
+- `checks_passed=true`
+- `preview_remote_content_verified=false`
+- `responsive_static_verified=true`
+- `responsive_browser_verified=unknown`
+- `substack_created=true`
+- `substack_url_verified=true`
+- `site_integration_preview_done=true`
+- `site_integration_production_done=false`
+- `publication_ready=false`
+- `no_merge=true`
+- `no_deploy=true`
+- `production_touched=false`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `p130_recommended=merge_deploy_substack_link_only_if_authorized`
