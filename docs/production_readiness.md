@@ -3740,3 +3740,33 @@ P127 ha integrato su `preview` il link pubblico reale e verificato di Substack i
 - `provider_import_enabled=false`
 - `apify_enabled=false`
 - `p128_recommended=preview_substack_integration_verification`
+
+# P128 — Preview Substack integration verification
+
+P128 ha verificato localmente l'integrazione del link Substack reale e ha confermato il deployment Preview READY sul commit P127. La verifica del contenuto remoto protetto è rimasta bloccata dalla mancanza di una sessione Vercel autorizzata; non sono stati tentati bypass o workaround.
+
+- `point_128_preview_substack_integration_verification_completed=true`
+- `preview_substack_integration_verification_ready=true`
+- `code_change=false`
+- `substack_created=true`
+- `substack_url_real=https://registaavanzato.substack.com/`
+- `substack_url_verified=true`
+- `substack_url_status=real_url_verified`
+- `site_integration_done=true`
+- `substack_link_visible_local=true`
+- `substack_link_attrs_safe=true`
+- `responsive_verified=true`
+- `public_routes_verified=true`
+- `public_data_visible=true`
+- `production_touched=false`
+- `no_merge=true`
+- `no_deploy=true`
+- `publication_ready=false`
+- `newsletter_sent=false`
+- `social_auto_published=false`
+- `substack_auto_published=false`
+- `brand_refresh_production_closed=true`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `p129_recommended=production_release_gate_for_substack_link`

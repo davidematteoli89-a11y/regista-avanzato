@@ -5464,3 +5464,31 @@ P78 chiude l'MVP Preview e ferma il lavoro prima di Production, merge main, prov
 - `provider_import_enabled=false`
 - `apify_enabled=false`
 - `p128_recommended=preview_substack_integration_verification`
+
+# P128 — Preview Substack integration verification
+
+- `point_128_preview_substack_integration_verification_completed=true`
+- `preview_substack_integration_verification_ready=true`
+- `code_change=false`
+- `substack_created=true`
+- `substack_url_real=https://registaavanzato.substack.com/`
+- `substack_url_verified=true`
+- `substack_url_status=real_url_verified`
+- `site_integration_done=true`
+- `substack_link_visible_local=true`
+- `substack_link_attrs_safe=true`
+- `responsive_verified=true`
+- `public_routes_verified=true`
+- `public_data_visible=true`
+- `production_touched=false`
+- `no_merge=true`
+- `no_deploy=true`
+- `publication_ready=false`
+- `newsletter_sent=false`
+- `social_auto_published=false`
+- `substack_auto_published=false`
+- `brand_refresh_production_closed=true`
+- `db_write_additional=false`
+- `provider_import_enabled=false`
+- `apify_enabled=false`
+- `p129_recommended=production_release_gate_for_substack_link`
